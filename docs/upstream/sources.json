@@ -1,0 +1,58 @@
+{
+  "recorded_date": "2026-10-25",
+  "base": {
+    "repository": "https://github.com/NodePassProject/nodepass",
+    "tag": "v1.17.0",
+    "commit": "114345043d9608e1e24e783a270cde75193e4f42"
+  },
+  "libraries": [
+    {
+      "repository": "https://github.com/NodePassProject/pool",
+      "tag": "v1.1.1",
+      "commit": "56223bcd3613c7cb4e81bb1eae85ee9c08621de5",
+      "source_path": "pool.go",
+      "initial_path": "internal/tunnelpool/pool/pool.go",
+      "sha256": {
+        "pool.go": "e4e9049648fa837ededcdf1adc7216dc768d3d951a171d1d0e761371c42e47f1",
+        "LICENSE": "98aa52c157179e2995554e59e6442744ae45365eb166f39d090addb82a5c906c"
+      },
+      "license": "BSD-3-Clause"
+    },
+    {
+      "repository": "https://github.com/NodePassProject/quic",
+      "tag": "v1.1.1",
+      "commit": "66e1a41288f524170f805bf5aba345788dc3de4e",
+      "source_path": "quic.go",
+      "initial_path": "internal/tunnelpool/quic/quic.go",
+      "sha256": {
+        "quic.go": "4fd692e955a987b3e3e926cbe204cb7817f2642ebbb171a258ab08694ef476bf",
+        "LICENSE": "09318bcacf25985a0ae6ec3f228c7c2d0328b24be47825a9ccdd55b3b593f401"
+      },
+      "license": "BSD-3-Clause"
+    },
+    {
+      "repository": "https://github.com/NodePassProject/npws",
+      "tag": "v1.1.1",
+      "commit": "e4d6d8ae75fc134923e39afaaa01aa74368413da",
+      "source_path": "npws.go",
+      "initial_path": "internal/tunnelpool/npws/npws.go",
+      "sha256": {
+        "npws.go": "d91a4f9fda12e9556d9e9fdd5bda890a3823e65a13a044fce466004c3cefa2a9",
+        "LICENSE": "2a884ba3fc0daf1076126ce09c5f7eff9818a75fd8679cb78426b4d3b774e846"
+      },
+      "license": "BSD-3-Clause"
+    },
+    {
+      "repository": "https://github.com/NodePassProject/nph2",
+      "tag": "v1.1.1",
+      "commit": "cd08c4516d0aa6ec247267af7cefc0abb74ee4b6",
+      "source_path": "nph2.go",
+      "initial_path": "internal/tunnelpool/nph2/nph2.go",
+      "sha256": {
+        "nph2.go": "c7181022ced4b62bf7266730fb4fe71030b10c045c64c9939d170601a54ac014",
+        "LICENSE": "2a884ba3fc0daf1076126ce09c5f7eff9818a75fd8679cb78426b4d3b774e846"
+      },
+      "license": "BSD-3-Clause"
+    }
+  ]
+}
