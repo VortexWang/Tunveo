@@ -1,0 +1,24 @@
+2026-10-24 22:56:07.755  DEBUG  Init log level: DEBUG
+2026-10-24 22:56:07.756  WARN  TLS code-0: unencrypted
+2026-10-24 22:56:07.757  INFO  Client started: client://[REDACTED]@127.0.0.1:56751/127.0.0.1:36039?dns=5m0s&sni=none&lbs=0&min=64&mode=2&dial=auto&read=0s&rate=0&slot=65536&proxy=0&block=0&notcp=0&noudp=0
+2026-10-24 22:56:07.757  INFO  Pending tunnel handshake...
+2026-10-24 22:56:07.759  INFO  Loading tunnel config: FLOW=+|MAX=1024|TLS=1|TYPE=1
+2026-10-24 22:56:07.759  INFO  Getting tunnel pool ready...
+2026-10-24 22:56:07.810  INFO  Marking tunnel handshake as complete in 53ms
+2026-10-24 22:56:07.810  INFO  TLS code-1: RAM cert fingerprint verifying...
+2026-10-24 22:56:07.811  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=63|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-24 22:56:12.811  DEBUG  TLS code-1: verify signal: cid 02a38055 -> 127.0.0.1:56751
+2026-10-24 22:56:12.812  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=64|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-24 22:56:12.812  DEBUG  TLS verify signal: cid 02a38055 <- 127.0.0.1:56751
+2026-10-24 22:56:17.811  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=64|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-24 22:56:17.812  ERROR  OutgoingVerify: request timeout: OutgoingGet: stream not found
+2026-10-24 22:56:17.812  ERROR  Client error: TunnelStart: tunnelControl failed: TunnelControl: context error: context canceled
+2026-10-24 22:56:17.813  DEBUG  Tunnel connection closed: pool active 64
+2026-10-24 22:56:17.813  DEBUG  Target connection closed: 127.0.0.1:36039
+2026-10-24 22:56:17.813  DEBUG  Control connection closed: [::]:40280
+2026-10-24 22:56:17.813  DEBUG  Target listener closed: 127.0.0.1:36039
+2026-10-24 22:56:17.835  DEBUG  Tunnel connection closed: pool active 0
+2026-10-24 22:56:17.836  DEBUG  Target connection closed: 127.0.0.1:36039
+2026-10-24 22:56:17.836  DEBUG  Control connection closed: [::]:40280
+2026-10-24 22:56:17.836  DEBUG  Target listener closed: 127.0.0.1:36039
+2026-10-24 22:56:17.836  INFO  Client shutdown complete

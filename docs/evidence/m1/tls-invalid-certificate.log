@@ -1,0 +1,6 @@
+2026-10-24 22:58:28.660  ERROR  Certificate load failed: open /definitely-missing-tunveo.crt: no such file or directory
+2026-10-24 22:58:28.660  WARN  TLS code-1: RAM cert with TLS 1.3
+2026-10-24 22:58:28.661  INFO  Server started: server://[REDACTED]@127.0.0.1:41905/127.0.0.1:12345?dns=5m0s&lbs=0&max=1024&mode=2&type=0&dial=auto&read=0s&rate=0&slot=65536&proxy=0&block=0&notcp=0&noudp=0
+2026-10-24 22:58:28.662  INFO  Pending tunnel handshake...
+2026-10-24 22:58:28.662  INFO  TLS code-1: RAM cert prepared with sha256 fingerprint: 761e0efbd3ea80be2213c9f29144a6358e2930b614606773bc7d9350cd145c58
+2026-10-24 22:58:28.678  INFO  Server shutdown complete

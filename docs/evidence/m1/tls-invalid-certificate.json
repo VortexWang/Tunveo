@@ -1,0 +1,8 @@
+{
+  "requested_tls": 2,
+  "missing_certificate": true,
+  "observed_certificate_load_failure": true,
+  "observed_tls_1_fallback": true,
+  "process_still_running": true,
+  "pending_handshake": true
+}

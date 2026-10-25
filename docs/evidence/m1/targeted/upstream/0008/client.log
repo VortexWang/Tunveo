@@ -1,0 +1,23 @@
+2026-10-24 22:55:23.447  DEBUG  Init log level: DEBUG
+2026-10-24 22:55:23.448  WARN  TLS code-0: unencrypted
+2026-10-24 22:55:23.449  INFO  Client started: client://[REDACTED]@127.0.0.1:48973/127.0.0.1:38703?dns=5m0s&sni=none&lbs=0&min=2&mode=2&dial=auto&read=0s&rate=0&slot=65536&proxy=0&block=0&notcp=0&noudp=0
+2026-10-24 22:55:23.449  INFO  Pending tunnel handshake...
+2026-10-24 22:55:23.451  INFO  Loading tunnel config: FLOW=+|MAX=8|TLS=1|TYPE=1
+2026-10-24 22:55:23.451  INFO  Getting tunnel pool ready...
+2026-10-24 22:55:23.502  INFO  Marking tunnel handshake as complete in 52ms
+2026-10-24 22:55:23.502  INFO  TLS code-1: RAM cert fingerprint verifying...
+2026-10-24 22:55:23.503  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=1|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-24 22:55:28.503  DEBUG  TLS code-1: verify signal: cid a2451296 -> 127.0.0.1:48973
+2026-10-24 22:55:28.503  DEBUG  TLS verify signal: cid a2451296 <- 127.0.0.1:48973
+2026-10-24 22:55:28.503  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=2|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-24 22:55:33.504  ERROR  OutgoingVerify: request timeout: OutgoingGet: stream not found
+2026-10-24 22:55:33.504  ERROR  Client error: TunnelStart: tunnelControl failed: TunnelControl: context error: context canceled
+2026-10-24 22:55:33.504  DEBUG  Tunnel connection closed: pool active 2
+2026-10-24 22:55:33.504  DEBUG  Target connection closed: 127.0.0.1:38703
+2026-10-24 22:55:33.504  DEBUG  Control connection closed: [::]:39764
+2026-10-24 22:55:33.504  DEBUG  Target listener closed: 127.0.0.1:38703
+2026-10-24 22:55:33.534  DEBUG  Tunnel connection closed: pool active 0
+2026-10-24 22:55:33.534  DEBUG  Target connection closed: 127.0.0.1:38703
+2026-10-24 22:55:33.534  DEBUG  Control connection closed: [::]:39764
+2026-10-24 22:55:33.534  DEBUG  Target listener closed: 127.0.0.1:38703
+2026-10-24 22:55:33.534  INFO  Client shutdown complete

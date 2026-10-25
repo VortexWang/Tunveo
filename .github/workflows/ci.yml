@@ -13,6 +13,7 @@ jobs:
       - uses: actions/setup-go@v6.1.0
         with:
           go-version-file: go.mod
+      - run: python3 -m unittest discover -s scripts/tests -v
       - run: go mod download
       - run: go mod verify
       - run: go mod tidy -diff
@@ -32,4 +33,29 @@ jobs:
         with:
           go-version-file: go.mod
       - run: go build -trimpath -o bin/tunveo ./cmd/tunveo
-      - run: python3 scripts/verify_forwarding.py --binary bin/tunveo
+      - run: python3 scripts/verify_forwarding.py --binary bin/tunveo --artifacts artifacts/forwarding
+      - name: Save forwarding evidence even on failure
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: forwarding-evidence
+          path: artifacts/forwarding
+          retention-days: 14
+  verification-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6.0.2
+      - uses: actions/setup-go@v6.1.0
+        with:
+          go-version-file: go.mod
+      - run: go build -o bin/repro-tls-verify ./scripts/repro_tls_verify
+      # Baseline must fail visibly until the actual handshake ownership bug is fixed.
+      - run: mkdir -p artifacts && ./bin/repro-tls-verify > artifacts/tls-verification-regression.json
+      - name: Save deterministic regression evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: tls-verification-regression
+          path: artifacts/tls-verification-regression.json
+          retention-days: 14
