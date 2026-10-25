@@ -1,0 +1,26 @@
+{
+  "runtime_source_commit": "0e5b551d0e2e7a0ea2f822512abde349bb57e7ed",
+  "before_source_commit": "a8a2ae7feda55bb2236ebe94402ef93cd345eccc",
+  "recorded_at": "2026-10-25T07:46:13.091319+00:00",
+  "binary_sha256": "c1b3026908974f36146d376cbe0f179acf353ede14aa2c01e85d22a84e6eb8bc",
+  "go_build_info": "BUILD/tunveo-tnv003: go1.26.10\n\tpath\tgithub.com/VortexWang/Tunveo/cmd/tunveo\n\tmod\tgithub.com/VortexWang/Tunveo\tv1.17.1-0.20261025074122-0e5b551d0e2e\t\n\tdep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\n\tdep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\n\tdep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\n\tdep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\n\tdep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\n\tdep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\n\tbuild\t-buildmode=exe\n\tbuild\t-compiler=gc\n\tbuild\t-trimpath=true\n\tbuild\tCGO_ENABLED=1\n\tbuild\tGOARCH=amd64\n\tbuild\tGOOS=linux\n\tbuild\tGOAMD64=v1\n\tbuild\tvcs=git\n\tbuild\tvcs.revision=0e5b551d0e2e7a0ea2f822512abde349bb57e7ed\n\tbuild\tvcs.time=2026-10-25T07:41:22Z\n\tbuild\tvcs.modified=false\n",
+  "source_ci": "https://github.com/VortexWang/Tunveo/actions/runs/40173736516",
+  "fixture_note": "The final test-only script/template adds the matching-ID scenario; production Go source is unchanged from runtime_source_commit. Script/template SHA-256 are shared by before/after native reports. Scheduling instrumentation exists only in temporary test compilation, not the runtime binary.",
+  "scope": "Loopback TLS=1; one sample/cell; no application retries; native schedule tests are not a failure-rate estimate. Complete run lifecycle and performance not certified.",
+  "normalization": "Log paths relative to each report; binary prefix BUILD/. Log bytes/results unchanged.",
+  "forwarding": {
+    "passed": 48,
+    "total": 48,
+    "transports": 4,
+    "flows": 2,
+    "capacities": [
+      "2:8",
+      "64:1024"
+    ],
+    "pairs": [
+      "tunveo/tunveo",
+      "tunveo/upstream",
+      "upstream/tunveo"
+    ]
+  }
+}

@@ -64,3 +64,5 @@ TLS startup failures and credential-safe logs: [security fix and migration notes
 Go/HTTP2 dependency security baseline and scan scope: [TNV-011](docs/security-dependencies.md).
 
 Reload interval startup validation and migration: [TNV-013](docs/reload-interval.md).
+
+Atomic idle resource publication and matching ID claims: [TNV-003](docs/pool-publication.md).

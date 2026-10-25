@@ -7,3 +7,5 @@ The four bundled v1.1.1 libraries were initially imported byte-for-byte with the
 The root LICENSE is retained unchanged from upstream. NOTICE connects each library to its license and provenance. Redistribution archives and the container include these notices.
 
 Direct upstream module dependencies are replaced by internal packages. Third-party dependencies remain external modules, managed at the root. Internalization does not remove responsibility to track upstream advisories and inherited code defects.
+
+Subsequent maintained changes: [TNV-003](../pool-publication.md) replaces the four libraries' private idle map/channel bookkeeping with a shared atomic FIFO/ID registry. The original import hashes in `sources.json` remain historical provenance; they are not claimed as hashes of the subsequently patched files. Licenses and original notices remain intact.

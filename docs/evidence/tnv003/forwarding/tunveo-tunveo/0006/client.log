@@ -1,0 +1,35 @@
+2026-10-25 00:42:31.957  DEBUG  Init log level: DEBUG
+2026-10-25 00:42:31.957  WARN  TLS code-0: unencrypted
+2026-10-25 00:42:31.958  INFO  Client started: [REDACTED-URL]
+2026-10-25 00:42:31.958  INFO  Pending tunnel handshake...
+2026-10-25 00:42:31.960  INFO  Loading tunnel config: FLOW=-|MAX=1024|TLS=1|TYPE=2|VERIFY=flow-v1
+2026-10-25 00:42:31.961  INFO  Getting tunnel pool ready...
+2026-10-25 00:42:32.012  INFO  Marking tunnel handshake as complete in 53ms
+2026-10-25 00:42:32.012  INFO  TLS code-1: RAM cert fingerprint verifying...
+2026-10-25 00:42:32.012  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=52|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-25 00:42:37.012  DEBUG  TLS code-1: verify signal: cid bfc023ee -> websocket/unknown-addr
+2026-10-25 00:42:37.012  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=64|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-25 00:42:37.012  INFO  TLS code-1: RAM cert verified with sha256 fingerprint: fbff94c6020ff4d1ba39b2f21b3a8025685b5aa5530f7b0f471f2d3527bf0c8b
+2026-10-25 00:42:37.026  DEBUG  TCP launch signal: cid f15b3418 <- websocket/unknown-addr
+2026-10-25 00:42:37.026  DEBUG  Tunnel connection: get f15b3418 <- pool active 63
+2026-10-25 00:42:37.026  DEBUG  Tunnel connection: websocket/unknown-addr <-> websocket/unknown-addr
+2026-10-25 00:42:37.026  DEBUG  Target connection: 127.0.0.1:49464 <-> 127.0.0.1:49521
+2026-10-25 00:42:37.026  INFO  Starting exchange: websocket/unknown-addr <-> 127.0.0.1:49521
+2026-10-25 00:42:37.027  INFO  Exchange complete: read tcp 127.0.0.1:49464->127.0.0.1:49521: use of closed network connection
+2026-10-25 00:42:37.027  DEBUG  Tunnel connection: closed f15b3418
+2026-10-25 00:42:37.030  DEBUG  UDP launch signal: cid a27b445f <- websocket/unknown-addr
+2026-10-25 00:42:37.030  DEBUG  Tunnel connection: get a27b445f <- pool active 62
+2026-10-25 00:42:37.030  DEBUG  Tunnel connection: websocket/unknown-addr <-> websocket/unknown-addr
+2026-10-25 00:42:37.030  DEBUG  Target connection: 127.0.0.1:41586 <-> 127.0.0.1:49521
+2026-10-25 00:42:37.030  DEBUG  Starting transfer: websocket/unknown-addr <-> 127.0.0.1:41586
+2026-10-25 00:42:37.030  DEBUG  Transfer complete: websocket/unknown-addr <-> 127.0.0.1:41586
+2026-10-25 00:42:37.030  DEBUG  Transfer complete: 127.0.0.1:41586 <-> websocket/unknown-addr
+2026-10-25 00:42:37.130  ERROR  Client error: TunnelStart: tunnelControl failed: TunnelControl: context error: context canceled
+2026-10-25 00:42:37.131  DEBUG  Tunnel connection closed: pool active 0
+2026-10-25 00:42:37.131  DEBUG  Control connection closed: websocket/unknown-addr
+2026-10-25 00:42:37.131  ERROR  TunnelUDPOnce: read from tunnel failed: failed to get reader: context canceled
+2026-10-25 00:42:37.131  ERROR  TunnelUDPOnce: read from target failed: read udp 127.0.0.1:41586->127.0.0.1:49521: use of closed network connection
+2026-10-25 00:42:37.131  DEBUG  Tunnel connection: closed a27b445f
+2026-10-25 00:42:37.132  DEBUG  Tunnel connection closed: pool active 62
+2026-10-25 00:42:37.132  DEBUG  Control connection closed: websocket/unknown-addr
+2026-10-25 00:42:37.132  INFO  Client shutdown complete
