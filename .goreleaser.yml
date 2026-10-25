@@ -1,6 +1,9 @@
 version: 2
 project_name: tunveo
 
+snapshot:
+  version_template: '0.0.0-SNAPSHOT-{{ .ShortCommit }}'
+
 builds:
   - binary: tunveo
     env:
