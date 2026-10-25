@@ -1,0 +1,108 @@
+{
+  "binary_sha256": "eb88089c3c79bbc6459db5214cf43d900f356be0c01cf890f1f08823fa0f535f",
+  "runner_sha256": "28ccd5ac23eeb4dcf160e5de55beebaa4ddbae510fe818e12bb568f8eceaaebb",
+  "started_at": "2026-10-25T13:06:33.955949+00:00",
+  "scope": "local loopback; synthetic credentials; no production state",
+  "results": [
+    {
+      "case": "server/missing-options",
+      "status": "passed",
+      "exit_code": 1
+    },
+    {
+      "case": "server/missing-file",
+      "status": "passed",
+      "exit_code": 1
+    },
+    {
+      "case": "server/malformed-pem",
+      "status": "passed",
+      "exit_code": 1
+    },
+    {
+      "case": "server/mismatched-key",
+      "status": "passed",
+      "exit_code": 1
+    },
+    {
+      "case": "server/invalid-mode",
+      "status": "passed",
+      "exit_code": 1
+    },
+    {
+      "case": "client/missing-options",
+      "status": "passed",
+      "exit_code": 1
+    },
+    {
+      "case": "client/missing-file",
+      "status": "passed",
+      "exit_code": 1
+    },
+    {
+      "case": "client/malformed-pem",
+      "status": "passed",
+      "exit_code": 1
+    },
+    {
+      "case": "client/mismatched-key",
+      "status": "passed",
+      "exit_code": 1
+    },
+    {
+      "case": "client/invalid-mode",
+      "status": "passed",
+      "exit_code": 1
+    },
+    {
+      "case": "master/missing-options",
+      "status": "passed",
+      "exit_code": 1
+    },
+    {
+      "case": "master/missing-file",
+      "status": "passed",
+      "exit_code": 1
+    },
+    {
+      "case": "master/malformed-pem",
+      "status": "passed",
+      "exit_code": 1
+    },
+    {
+      "case": "master/mismatched-key",
+      "status": "passed",
+      "exit_code": 1
+    },
+    {
+      "case": "master/invalid-mode",
+      "status": "passed",
+      "exit_code": 1
+    },
+    {
+      "case": "malformed-url-errors",
+      "status": "passed",
+      "inputs": 2
+    },
+    {
+      "case": "server/raw-startup-log",
+      "status": "passed"
+    },
+    {
+      "case": "client/raw-startup-log",
+      "status": "passed"
+    },
+    {
+      "case": "master/strict-https-reload-and-key-rotation",
+      "status": "passed",
+      "unauthenticated_status": 401,
+      "old_key_after_rotation_status": 401,
+      "raw_log_contains_key": false
+    },
+    {
+      "case": "master/restart-no-key-log",
+      "status": "passed"
+    }
+  ],
+  "status": "passed"
+}

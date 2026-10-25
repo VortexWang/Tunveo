@@ -76,3 +76,10 @@ Other zero-valued timeouts retain their existing meanings. Help, version and exp
 ## HTTP/2 stream deadlines
 
 [TNV-005](h2-stream-deadlines.md) supersedes the H2 deadline limitation noted above: deadlines now affect only the logical stream, can be reset after expiry, and do not set the physical TLS connection deadline. Timeouts expose os.ErrDeadlineExceeded through errors.Is. A timed-out Write can accept partial data; continue after clearing the deadline using its returned byte count. Close cancels pending work for that stream. No configuration, wire or state migration is needed. Shared HTTP/2 connection flow control still causes ordinary backpressure. Extra bounded buffering/workers require later performance validation.
+
+
+## Management request and SSE boundaries
+
+[TNV-009A](management-boundaries.md) fails closed with 503 if the API-key entry is missing/empty; invalid or duplicate key headers get 401. Restore valid persisted credentials rather than relying on an unauthenticated mode. Public docs/preflight remain available. Protected request bodies are limited to 1 MiB (413), must contain one JSON value, and have a read budget. Ordinary requests and SSE each allow 32 concurrent operations per master (429); clients should back off.
+
+SSE accepts bodyless GET, excludes the master API-key entry and disconnects on rotation. Reconnect with the new key; do not require a final shutdown data frame. Heartbeats run every 15s, each write has a 5s budget cleared after successful Flush. Existing authenticated REST credential responses and local api-key retrieval remain available. State/wire/dependencies are unchanged; local import files, instance totals and background process workloads are not capped by the HTTP body/handler limits. Full Instance concurrency and shutdown auditing remain TNV-009B.

@@ -742,3 +742,7 @@ curl -sS -X POST "$MCP_URL" \
 - The special internal ID `********` stores the API key and master ID. It is hidden from `list_instances` and protected from instance mutation tools.
 - `tags` in `update_instance` replace the whole tag map instead of merging with existing tags.
 - MCP returns structured data in addition to text content. Automation clients should consume the structured fields where possible.
+
+## Maintained request limits
+
+The authenticated HTTP transport now enforces the [TNV-009A boundaries](management-boundaries.md): 1 MiB total request body, one JSON value, bounded reads and 32 concurrent ordinary requests. Oversize bodies return HTTP 413 before dispatch, capacity returns 429, and trailing JSON values return a JSON-RPC parse error. TCPing respects request cancellation. These HTTP limits do not impose a local import-file or total child-process quota; those remain under audit.
