@@ -11,6 +11,8 @@ import (
 	"sync"
 	"sync/atomic"
 	"time"
+
+	idlequeue "github.com/VortexWang/Tunveo/internal/tunnelpool/idle"
 )
 
 const (
@@ -29,8 +31,7 @@ const (
 )
 
 type Pool struct {
-	conns     sync.Map
-	idChan    chan string
+	idle      *idlequeue.Queue[net.Conn]
 	tlsCode   string
 	hostname  string
 	clientIP  string
@@ -79,8 +80,7 @@ func NewClientPool(
 	}
 
 	pool := &Pool{
-		conns:     sync.Map{},
-		idChan:    make(chan string, maxCap),
+		idle:      idlequeue.New[net.Conn](maxCap),
 		tlsCode:   tlsCode,
 		hostname:  hostname,
 		dialer:    dialer,
@@ -112,8 +112,7 @@ func NewServerPool(
 	}
 
 	pool := &Pool{
-		conns:     sync.Map{},
-		idChan:    make(chan string, maxCap),
+		idle:      idlequeue.New[net.Conn](maxCap),
 		clientIP:  clientIP,
 		tlsConfig: tlsConfig,
 		listener:  listener,
@@ -169,15 +168,11 @@ func (p *Pool) createConnection() bool {
 	id = hex.EncodeToString(buf)
 	conn.SetReadDeadline(time.Time{})
 
-	p.conns.Store(id, conn)
-	select {
-	case p.idChan <- id:
-		return true
-	default:
-		p.conns.Delete(id)
+	if !p.idle.Publish(p.ctx, id, conn) {
 		conn.Close()
 		return false
 	}
+	return true
 }
 
 func (p *Pool) handleConnection(conn net.Conn) {
@@ -211,7 +206,7 @@ func (p *Pool) handleConnection(conn net.Conn) {
 		return
 	}
 
-	if _, exist := p.conns.Load(id); exist {
+	if p.idle.Contains(id) {
 		return
 	}
 
@@ -219,13 +214,10 @@ func (p *Pool) handleConnection(conn net.Conn) {
 		return
 	}
 
-	select {
-	case p.idChan <- id:
-		p.conns.Store(id, conn)
-		conn = nil
-	default:
+	if !p.idle.Publish(p.ctx, id, conn) {
 		return
 	}
+	conn = nil
 }
 
 func (p *Pool) ClientManager() {
@@ -237,7 +229,7 @@ func (p *Pool) ClientManager() {
 	for p.ctx.Err() == nil {
 		p.adjustInterval()
 		capacity := int(p.capacity.Load())
-		need := capacity - len(p.idChan)
+		need := capacity - p.idle.Len()
 		created := 0
 
 		if need > 0 {
@@ -295,49 +287,34 @@ func (p *Pool) ServerManager() {
 func (p *Pool) OutgoingGet(id string, timeout time.Duration) (net.Conn, error) {
 	ctx, cancel := context.WithTimeout(p.ctx, timeout)
 	defer cancel()
-	for {
-		if conn, ok := p.conns.LoadAndDelete(id); ok {
-			<-p.idChan
-			return conn.(net.Conn), nil
-		}
-		select {
-		case <-time.After(idRetryInterval):
-		case <-ctx.Done():
-			return nil, fmt.Errorf("OutgoingGet: pool connection not found")
-		}
+	conn, err := p.idle.TakeID(ctx, id)
+	if err != nil {
+		return nil, fmt.Errorf("OutgoingGet: connection not found: %w", err)
 	}
+	return conn, nil
 }
 
 func (p *Pool) IncomingGet(timeout time.Duration) (string, net.Conn, error) {
 	ctx, cancel := context.WithTimeout(p.ctx, timeout)
 	defer cancel()
-	for {
-		select {
-		case <-ctx.Done():
-			return "", nil, fmt.Errorf("IncomingGet: insufficient pool connections")
-		case id := <-p.idChan:
-			if conn, ok := p.conns.LoadAndDelete(id); ok {
-				return id, conn.(net.Conn), nil
-			}
-			continue
-		}
+	id, conn, err := p.idle.Take(ctx)
+	if err != nil {
+		return "", nil, fmt.Errorf("IncomingGet: insufficient connections: %w", err)
 	}
+	return id, conn, nil
 }
 
 func (p *Pool) Flush() {
+	values := p.idle.Drain()
 	var wg sync.WaitGroup
-	p.conns.Range(func(key, value any) bool {
+	for _, value := range values {
 		wg.Go(func() {
 			if value != nil {
-				value.(net.Conn).Close()
+				value.Close()
 			}
 		})
-		return true
-	})
+	}
 	wg.Wait()
-
-	p.conns = sync.Map{}
-	p.idChan = make(chan string, p.maxCap)
 }
 
 func (p *Pool) Close() {
@@ -352,7 +329,7 @@ func (p *Pool) Ready() bool {
 }
 
 func (p *Pool) Active() int {
-	return len(p.idChan)
+	return p.idle.Len()
 }
 
 func (p *Pool) Capacity() int {
@@ -376,7 +353,7 @@ func (p *Pool) ResetError() {
 }
 
 func (p *Pool) adjustInterval() {
-	idle := len(p.idChan)
+	idle := p.idle.Len()
 	capacity := int(p.capacity.Load())
 	interval := time.Duration(p.interval.Load())
 

@@ -107,3 +107,20 @@ jobs:
           name: vulnerability-evidence
           path: artifacts/govulncheck.txt
           retention-days: 14
+
+  pool-publication-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6.0.2
+      - uses: actions/setup-go@v6.1.0
+        with:
+          go-version-file: go.mod
+      - run: python3 scripts/repro_pool_publication.py --ref HEAD --mode fixed --go go --output artifacts/pool-publication.json
+      - name: Save publication schedule evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: pool-publication-evidence
+          path: artifacts/pool-publication.json
+          retention-days: 14

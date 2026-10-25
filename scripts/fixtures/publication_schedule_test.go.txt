@@ -1,0 +1,59 @@
+package tcp
+
+import (
+ "encoding/hex"
+ "io"
+ "net"
+ "testing"
+ "time"
+)
+
+func TestPublicationSchedule(t *testing.T) {
+ listener,err:=net.ListenTCP("tcp",&net.TCPAddr{IP:net.ParseIP("127.0.0.1")});if err!=nil{t.Fatal(err)};defer listener.Close()
+ client,err:=net.DialTCP("tcp",nil,listener.Addr().(*net.TCPAddr));if err!=nil{t.Fatal(err)};defer client.Close()
+ server,err:=listener.AcceptTCP();if err!=nil{t.Fatal(err)}
+ p:=NewServerPool(1,"",nil,listener,time.Second)
+ defer p.cancel()
+ paused,release,done:=make(chan struct{}),make(chan struct{}),make(chan struct{})
+ publicationScheduleHook=func(){close(paused);<-release}
+ go func(){defer close(done);p.handleConnection(server)}()
+ defer func(){close(release);select{case <-done:p.Flush();case <-time.After(time.Second):t.Error("publisher did not finish")}}()
+ client.SetReadDeadline(time.Now().Add(time.Second));var raw [4]byte;if _,err:=io.ReadFull(client,raw[:]);err!=nil{t.Fatal(err)}
+ select{case <-paused:case <-time.After(time.Second):t.Fatal("publication barrier not reached")}
+ id,conn,err:=p.IncomingGet(30*time.Millisecond)
+ if expectPublicationFailure {
+  if err==nil {if conn!=nil{conn.Close()};t.Fatal("expected original notification-before-store window")}
+  t.Log("REPRODUCED: ID notification consumed before storage; IncomingGet timed out while producer was paused")
+ } else {
+  if err!=nil||conn==nil||id!=hex.EncodeToString(raw[:]){t.Fatalf("published connection unavailable: %v",err)}
+  defer conn.Close()
+  client.SetReadDeadline(time.Now().Add(time.Second));conn.SetWriteDeadline(time.Now().Add(time.Second))
+  sent:=make(chan error,1);go func(){_,err:=conn.Write([]byte("ok"));sent<-err}();var data [2]byte
+  if _,err:=io.ReadFull(client,data[:]);err!=nil||string(data[:])!="ok"{t.Fatal("published connection unusable")};if err:=<-sent;err!=nil{t.Fatal(err)}
+  t.Log("PASSED: resource can be claimed and used before the paused publisher returns")
+ }
+}
+
+// No producer is paused in this case: publication finishes before either get.
+func TestMatchingIDNotification(t *testing.T) {
+ listener,err:=net.ListenTCP("tcp",&net.TCPAddr{IP:net.ParseIP("127.0.0.1")});if err!=nil{t.Fatal(err)};defer listener.Close()
+ p:=NewServerPool(2,"",nil,listener,time.Second);defer p.cancel();defer p.Flush()
+ publicationScheduleHook=func(){}
+ var ids [2]string
+ for i:=range 2 {
+  client,err:=net.DialTCP("tcp",nil,listener.Addr().(*net.TCPAddr));if err!=nil{t.Fatal(err)};defer client.Close()
+  server,err:=listener.AcceptTCP();if err!=nil{t.Fatal(err)}
+  done:=make(chan struct{});go func(){defer close(done);p.handleConnection(server)}()
+  client.SetReadDeadline(time.Now().Add(time.Second));var raw [4]byte;if _,err:=io.ReadFull(client,raw[:]);err!=nil{t.Fatal(err)}
+  ids[i]=hex.EncodeToString(raw[:]);select{case <-done:case <-time.After(time.Second):t.Fatal("publisher did not complete")}
+ }
+ selected,err:=p.OutgoingGet(ids[1],time.Second);if err!=nil{t.Fatal(err)};defer selected.Close()
+ id,remaining,err:=p.IncomingGet(30*time.Millisecond)
+ if expectPublicationFailure {
+  if err==nil {if remaining!=nil{remaining.Close()};t.Fatal("expected unrelated notification loss")}
+  t.Log("REPRODUCED-MATCH: taking second ID consumed first ID's notification; FIFO getter timed out")
+ } else {
+  if err!=nil||remaining==nil||id!=ids[0]{t.Fatalf("unrelated ID lost: %v",err)};remaining.Close()
+  t.Log("PASSED-MATCH: taking second ID preserves first ID for FIFO getter")
+ }
+}
