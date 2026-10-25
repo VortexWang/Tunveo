@@ -201,3 +201,25 @@ jobs:
           name: master-state-lifecycle-evidence
           path: artifacts/master*
           retention-days: 14
+
+  state-migration-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6.0.2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-go@v6.1.0
+        with:
+          go-version-file: go.mod
+      - run: go build -trimpath -o bin/tunveo ./cmd/tunveo
+      # The original source archive is used only as an isolated loopback oracle.
+      # It is not linked into or shipped with the maintained product.
+      - run: python3 scripts/verify_state_migration.py --binary bin/tunveo --go go --output artifacts/state-migration.json
+      - name: Save state migration evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: state-migration-evidence
+          path: artifacts/state-migration.json
+          retention-days: 14
