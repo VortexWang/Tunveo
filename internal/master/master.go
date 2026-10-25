@@ -172,7 +172,7 @@ func (m *Master) Run() {
 		}
 		m.Instances.Store(APIKeyID, apiKey)
 		m.SaveState()
-		fmt.Printf("%s  \033[32mINFO\033[0m  API Key created: %v\n", time.Now().Format("2006-01-02 15:04:05.000"), apiKey.URL)
+		m.Logger.Info("API Key created; use tunveo api-key --state <state-file> for local retrieval")
 	} else {
 		m.Alias = apiKey.Alias
 
@@ -184,7 +184,7 @@ func (m *Master) Run() {
 		}
 		m.MID = apiKey.Config
 
-		fmt.Printf("%s  \033[32mINFO\033[0m  API Key loaded: %v\n", time.Now().Format("2006-01-02 15:04:05.000"), apiKey.URL)
+		m.Logger.Info("API Key loaded; use tunveo api-key --state <state-file> for local retrieval")
 	}
 
 	mux := http.NewServeMux()

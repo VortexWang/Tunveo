@@ -35,6 +35,8 @@ For server and master modes, Tunveo offers three TLS security levels for data ch
 - **Mode 2**: Custom certificate (requires `crt` and `key` parameters)
   - Highest security with certificate validation
   - Requires providing certificate and key files
+  - Missing, unreadable, malformed or mismatched files abort startup with exit code 1; no fallback to mode 1 or 0. Invalid TLS mode values are rejected.
+  - Reload failure retains the last successfully loaded pair; it does not change the TLS mode. Replace certificate/key files as a complete matching pair.
   - Suitable for production environments
 
 Example with TLS Mode 1 (self-signed):
@@ -910,6 +912,7 @@ For optimizing TCP connections:
   - Higher values reduce log output but provide less immediate visibility
 
 - `NP_RELOAD_INTERVAL`: Controls how frequently TLS certificates are checked for changes and state backups are performed
+  - Use a strictly positive duration; zero/negative values can panic the inherited master maintenance ticker (TNV-013, still open).
   - Lower values provide faster certificate change detection and more frequent backups but increase file system operations
   - Higher values reduce overhead but delay certificate updates and backup frequency
 

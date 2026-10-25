@@ -58,3 +58,5 @@ The detailed usage documents were inherited from upstream and renamed. Their exa
 Based on [NodePass v1.17.0](https://github.com/NodePassProject/nodepass/tree/v1.17.0), with the `pool`, `quic`, `npws`, and `nph2` libraries at v1.1.1 incorporated as internal packages. Original copyright notices and BSD-3-Clause licenses are retained. See [LICENSE](LICENSE) and [NOTICE](NOTICE).
 
 Tunveo is independently maintained and is not an official NodePass release. Upstream names are used for attribution and compatibility documentation. No upstream logos, sponsorships, donations, community channels or distribution scripts are adopted as Tunveo branding.
+
+TLS startup failures and credential-safe logs: [security fix and migration notes](docs/tls-log-safety.md).

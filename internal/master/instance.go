@@ -255,7 +255,7 @@ func (m *Master) ProcessInstanceAction(instance *Instance, action string) {
 // ReGenerateAPIKey generates a new API key and notifies all SSE clients.
 //
 // Generates a new 32-character hexadecimal API key and updates the API key instance.
-// Prints the new key to stdout for visibility. Persists the new key to the state file
+// Logs rotation without the key value; authenticated responses still return the key. Persists the new key to the state file
 // and gracefully shuts down all SSE connections, forcing clients to reconnect with
 // the new key. This effectively invalidates all existing API keys, requiring clients
 // to restart and authenticate with the new key.
@@ -265,7 +265,7 @@ func (m *Master) ProcessInstanceAction(instance *Instance, action string) {
 func (m *Master) ReGenerateAPIKey(instance *Instance) {
 	instance.URL = GenerateAPIKey()
 	m.Instances.Store(APIKeyID, instance)
-	fmt.Printf("%s  \033[32mINFO\033[0m  API Key regenerated: %v\n", time.Now().Format("2006-01-02 15:04:05.000"), instance.URL)
+	m.Logger.Info("API Key regenerated; use tunveo api-key --state <state-file> for local retrieval")
 	go m.SaveState()
 	go m.ShutdownSSEConnections()
 }
@@ -289,7 +289,7 @@ func (m *Master) ReGenerateAPIKey(instance *Instance) {
 func (m *Master) EnhanceURL(instanceURL string, instanceType string) string {
 	parsedURL, err := url.Parse(instanceURL)
 	if err != nil {
-		m.Logger.Error("EnhanceURL: invalid URL format: %v", err)
+		m.Logger.Error("EnhanceURL: invalid URL format")
 		return instanceURL
 	}
 
@@ -340,7 +340,7 @@ func (m *Master) EnhanceURL(instanceURL string, instanceType string) string {
 func (m *Master) GenerateConfigURL(instance *Instance) string {
 	parsedURL, err := url.Parse(instance.URL)
 	if err != nil {
-		m.Logger.Error("GenerateConfigURL: invalid URL format: %v", err)
+		m.Logger.Error("GenerateConfigURL: invalid URL format")
 		return instance.URL
 	}
 

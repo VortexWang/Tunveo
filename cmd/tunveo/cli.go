@@ -11,6 +11,8 @@ import (
 	"os"
 	"runtime"
 	"strings"
+
+	"github.com/VortexWang/Tunveo/internal/master"
 )
 
 // commandLine represents the complete CLI configuration with all parsed flags
@@ -62,7 +64,7 @@ func newCommandLine(args []string) *commandLine {
 // Returns an error if parsing fails or the command is unrecognized.
 func (c *commandLine) parse() (*url.URL, error) {
 	if len(c.args) == 2 && strings.Contains(c.args[1], "://") {
-		return url.Parse(c.args[1])
+		return parseConfigURL(c.args[1])
 	}
 
 	if len(c.args) < 2 {
@@ -73,6 +75,21 @@ func (c *commandLine) parse() (*url.URL, error) {
 	cmdArgs := c.args[2:]
 
 	switch command {
+	case "api-key":
+		fs := flag.NewFlagSet("api-key", flag.ContinueOnError)
+		state := fs.String("state", "", "Existing master state file")
+		if err := fs.Parse(cmdArgs); err != nil {
+			return nil, err
+		}
+		if *state == "" || fs.NArg() != 0 {
+			return nil, fmt.Errorf("usage: tunveo api-key --state <state-file>")
+		}
+		key, err := master.ReadAPIKey(*state)
+		if err != nil {
+			return nil, err
+		}
+		fmt.Fprintln(os.Stdout, key)
+		os.Exit(0)
 	case "server":
 		return c.parseServerCommand(cmdArgs)
 	case "client":
@@ -88,7 +105,7 @@ func (c *commandLine) parse() (*url.URL, error) {
 	default:
 		fullArg := strings.Join(c.args[1:], " ")
 		if strings.Contains(fullArg, "://") {
-			return url.Parse(fullArg)
+			return parseConfigURL(fullArg)
 		}
 		return nil, fmt.Errorf("unknown command: %s", command)
 	}
@@ -414,6 +431,16 @@ Commands:
   master    Start a Tunveo master
   help      Show this helper message
   version   Show version information
+  api-key   Read a key explicitly: tunveo api-key --state <state-file>
 
 `)
+}
+
+// Do not include the raw input in parse errors: URL userinfo may contain secrets.
+func parseConfigURL(raw string) (*url.URL, error) {
+	u, err := url.Parse(raw)
+	if err != nil {
+		return nil, fmt.Errorf("invalid configuration URL")
+	}
+	return u, nil
 }

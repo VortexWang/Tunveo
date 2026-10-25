@@ -1,0 +1,7 @@
+{
+  "setting": "NP_RELOAD_INTERVAL=0s",
+  "role": "master",
+  "exit_code": 2,
+  "non_positive_ticker_panic": true,
+  "status": "reproduced; unfixed; outside this patch"
+}

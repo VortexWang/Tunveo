@@ -1,0 +1,22 @@
+{
+  "source_commit": "a41f346a071aac2e479dd96b7b7605d8b53eba45",
+  "go_version": "go1.26.5",
+  "binary_sha256": "37227ed294e928c9f29f7860807c8f61a955ed699517ce7f6a978806fb0d6827",
+  "go_build_info": "BUILD/tunveo-security-final: go1.26.5\n\tpath\tgithub.com/VortexWang/Tunveo/cmd/tunveo\n\tmod\tgithub.com/VortexWang/Tunveo\tv1.17.1-0.20261025070454-a41f346a071a\t\n\tdep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\n\tdep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\n\tdep\tgolang.org/x/crypto\tv0.53.0\th1:QZ4Muo8THX6CizN2vPPd5fBGHyogrdK9fG4wLPFUsto=\n\tdep\tgolang.org/x/net\tv0.56.0\th1:Rw8j/hFzGvJUZwNBXnAtf5sVDVt+65SK2C7IxCxZt5o=\n\tdep\tgolang.org/x/sys\tv0.46.0\th1:noSf2Fq6F8DBgS+LysIkx7rIExoNHJsxOAtPp4rthXw=\n\tdep\tgolang.org/x/text\tv0.39.0\th1:UbZz4pLOvn600D6Oh6GGEI6VAmndrEBLv8/6BEXzyus=\n\tbuild\t-buildmode=exe\n\tbuild\t-compiler=gc\n\tbuild\t-trimpath=true\n\tbuild\tCGO_ENABLED=1\n\tbuild\tGOARCH=amd64\n\tbuild\tGOOS=linux\n\tbuild\tGOAMD64=v1\n\tbuild\tvcs=git\n\tbuild\tvcs.revision=a41f346a071aac2e479dd96b7b7605d8b53eba45\n\tbuild\tvcs.time=2026-10-25T07:04:54Z\n\tbuild\tvcs.modified=false\n",
+  "scope": "Local loopback; synthetic credentials. Final runtime from clean source; initial failed pilot from uncommitted implementation. Secrets from explicit API key reads/rotation stay in memory, not evidence files.",
+  "initial_failure": "NP_RELOAD_INTERVAL=0s triggers inherited master maintenance ticker panic; retained as TNV-013, not counted as a pass. Final test uses 50ms.",
+  "forwarding_summary": {
+    "passed": 8,
+    "total": 8,
+    "tls": 1,
+    "pool": "2:8",
+    "transports": 4,
+    "server_modes": [
+      1,
+      2
+    ],
+    "repeat_per_cell": 1
+  },
+  "normalization": "Forwarding log paths relative to report; binary path prefix BUILD/. Log bytes and outcomes unchanged.",
+  "source_ci": "https://github.com/VortexWang/Tunveo/actions/runs/40171456599"
+}

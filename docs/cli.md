@@ -710,3 +710,15 @@ However, avoid mixing URL query parameters with command-line flags in the same i
 - Explore [configuration options in detail](/docs/configuration.md)
 - See [practical examples](/docs/examples.md) for common scenarios
 - Check the [troubleshooting guide](/docs/troubleshooting.md) if you encounter issues
+
+## Explicit local API key retrieval
+
+Master startup, state reload and key rotation no longer print API key values. To read the current key from existing local state:
+
+```bash
+tunveo api-key --state /path/to/gob/tunveo.gob
+```
+
+The command prints only the key to stdout, exits, and does not start a service or modify state. It requires local read access to the existing GOB file. The default master state is `gob/tunveo.gob` next to the executable. Do not send this explicit command's output to application logs. Authenticated API key rotation continues to return the new key in its response. URL credentials and complete query/fragment values are masked in ordinary logs.
+
+TLS startup errors are fatal: `tls=2` requires a loadable matching `crt`/`key` pair. Correct the files or explicitly select another mode before retrying. A runtime reload failure retains the prior pair; it cannot silently select a weaker TLS mode.
