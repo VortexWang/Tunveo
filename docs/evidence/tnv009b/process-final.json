@@ -1,0 +1,64 @@
+{
+  "binary_sha256": "93b795390a60792528d0d03fa47a928682a8523cecfdc4dce0741a3a404944d5",
+  "runner_sha256": "ae42727f500455c0928dc93bc4827ce1574461f6ecb5afc07248d8949275d960",
+  "helper_sha256": "28ccd5ac23eeb4dcf160e5de55beebaa4ddbae510fe818e12bb568f8eceaaebb",
+  "started_at": "2026-10-25T13:51:46.315511+00:00",
+  "scope": "race master and actual managed children; synthetic credentials, isolated state, loopback listeners; no external targets contacted",
+  "results": [
+    {
+      "case": "two-managed-children",
+      "status": "passed",
+      "count": 2
+    },
+    {
+      "case": "logs-metadata-json-backup-overlap",
+      "status": "passed",
+      "patches": 120,
+      "reads": 120
+    },
+    {
+      "case": "restart-new-generation",
+      "status": "passed"
+    },
+    {
+      "case": "coalesced-stop-and-reap",
+      "status": "passed",
+      "requests": 8
+    },
+    {
+      "case": "start-after-reap",
+      "status": "passed"
+    },
+    {
+      "case": "delete-no-resurrection",
+      "status": "passed"
+    },
+    {
+      "case": "master-graceful-shutdown",
+      "status": "passed",
+      "exit_code": 0,
+      "forced_kill": false,
+      "race_observed": false
+    },
+    {
+      "case": "bind-failure-no-autostart",
+      "status": "passed"
+    }
+  ],
+  "process_log": "process-final.log",
+  "raw_key_log_observed": false,
+  "children_seen": [
+    22,
+    23,
+    54,
+    68
+  ],
+  "children_reaped": [
+    22,
+    23,
+    54,
+    68
+  ],
+  "pid_observation": "parent startup and sole cmd.Wait completion records",
+  "status": "passed"
+}

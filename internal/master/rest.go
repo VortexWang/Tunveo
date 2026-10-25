@@ -79,17 +79,17 @@ func (m *Master) HandleInstances(w http.ResponseWriter, r *http.Request) {
 		}
 
 		instance.Config = m.GenerateConfigURL(instance)
-		m.Instances.Store(id, instance)
+		if err := m.registerLocked(instance); err != nil {
+			HTTPError(w, err.Error(), http.StatusConflict)
+			return
+		}
 
-		go m.StartInstance(instance)
+		m.queueActionLocked(instance, "start")
 
-		go func() {
-			time.Sleep(BaseDuration)
-			m.SaveState()
-		}()
+		m.requestSaveLocked()
 		WriteJSON(w, http.StatusCreated, instance)
 
-		m.SendSSEEvent("create", instance)
+		m.sendSSEEventLocked("create", instance)
 
 	default:
 		HTTPError(w, "Method not allowed", http.StatusMethodNotAllowed)
@@ -114,7 +114,7 @@ func (m *Master) HandleInstanceDetail(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	instance, ok := m.FindInstance(id)
+	instance, ok := m.findInstanceLocked(id)
 	if !ok {
 		HTTPError(w, "Instance not found", http.StatusNotFound)
 		return
@@ -167,10 +167,31 @@ func (m *Master) HandlePatchInstance(w http.ResponseWriter, r *http.Request, id 
 		} `json:"meta,omitempty"`
 	}
 	if err := decodeManagementJSON(r.Body, &reqData); err == nil {
+		args := map[string]any{"alias": reqData.Alias}
+		if reqData.Meta != nil {
+			if reqData.Meta.Peer != nil {
+				args["peer"] = map[string]any{"sid": reqData.Meta.Peer.SID, "type": reqData.Meta.Peer.Type, "alias": reqData.Meta.Peer.Alias}
+			}
+			if reqData.Meta.Tags != nil {
+				tags := map[string]any{}
+				for k, v := range reqData.Meta.Tags {
+					tags[k] = v
+				}
+				args["tags"] = tags
+			}
+		}
+		if err := validateMetadataArguments(args); err != nil {
+			HTTPError(w, err.Error(), 400)
+			return
+		}
+		if reqData.Action != "" && reqData.Action != "start" && reqData.Action != "stop" && reqData.Action != "restart" && reqData.Action != "reset" {
+			HTTPError(w, "Invalid action", 400)
+			return
+		}
 		if id == APIKeyID {
 			if reqData.Action == "restart" {
-				instance = m.ReGenerateAPIKey(instance)
-				m.SendSSEEvent("update", instance)
+				instance = m.regenerateAPIKeyLocked(instance)
+				m.sendSSEEventLocked("update", instance)
 			}
 		} else {
 			if reqData.Alias != "" && instance.Alias != reqData.Alias {
@@ -180,10 +201,10 @@ func (m *Master) HandlePatchInstance(w http.ResponseWriter, r *http.Request, id 
 				}
 				instance.Alias = reqData.Alias
 				m.Instances.Store(id, instance)
-				go m.SaveState()
+				m.requestSaveLocked()
 				m.Logger.Info("Alias updated: %v [%v]", reqData.Alias, instance.ID)
 
-				m.SendSSEEvent("update", instance)
+				m.sendSSEEventLocked("update", instance)
 			}
 
 			if reqData.Action != "" {
@@ -212,22 +233,22 @@ func (m *Master) HandlePatchInstance(w http.ResponseWriter, r *http.Request, id 
 					instance.udpRXBase = 0
 					instance.udpTXBase = 0
 					m.Instances.Store(id, instance)
-					go m.SaveState()
+					m.requestSaveLocked()
 					m.Logger.Info("Traffic stats reset: 0 [%v]", instance.ID)
 
-					m.SendSSEEvent("update", instance)
+					m.sendSSEEventLocked("update", instance)
 				} else {
-					m.ProcessInstanceAction(instance, reqData.Action)
+					m.queueActionLocked(instance, reqData.Action)
 				}
 			}
 
 			if reqData.Restart != nil && instance.Restart != *reqData.Restart {
 				instance.Restart = *reqData.Restart
 				m.Instances.Store(id, instance)
-				go m.SaveState()
+				m.requestSaveLocked()
 				m.Logger.Info("Restart policy updated: %v [%v]", *reqData.Restart, instance.ID)
 
-				m.SendSSEEvent("update", instance)
+				m.sendSSEEventLocked("update", instance)
 			}
 
 			if reqData.Meta != nil {
@@ -248,6 +269,10 @@ func (m *Master) HandlePatchInstance(w http.ResponseWriter, r *http.Request, id 
 				}
 
 				if reqData.Meta.Tags != nil {
+					if len(reqData.Meta.Tags) > 128 {
+						HTTPError(w, "Too many tags", 400)
+						return
+					}
 					seen := make(map[string]bool)
 					for key, value := range reqData.Meta.Tags {
 						if len(key) > MaxValueLen {
@@ -268,9 +293,9 @@ func (m *Master) HandlePatchInstance(w http.ResponseWriter, r *http.Request, id 
 				}
 
 				m.Instances.Store(id, instance)
-				go m.SaveState()
+				m.requestSaveLocked()
 				m.Logger.Info("Meta updated [%v]", instance.ID)
-				m.SendSSEEvent("update", instance)
+				m.sendSSEEventLocked("update", instance)
 			}
 
 		}
@@ -320,16 +345,27 @@ func (m *Master) HandlePutInstance(w http.ResponseWriter, r *http.Request, id st
 
 	enhancedURL := m.EnhanceURL(reqData.URL, instanceType)
 
+	proposed := cloneInstance(instance)
+	proposed.URL = enhancedURL
+	proposed.Type = instanceType
+	if err := validateInstance(proposed); err != nil {
+		HTTPError(w, err.Error(), 400)
+		return
+	}
 	if instance.URL == enhancedURL {
 		HTTPError(w, "Instance URL conflict", http.StatusConflict)
 		return
 	}
 
 	if instance.Status != "stopped" {
-		m.StopInstance(instance)
+		m.stopInstanceLocked(context.Background(), instance)
 		time.Sleep(BaseDuration)
 	}
 
+	if instance.deleted || m.managementStopped.Load() {
+		HTTPError(w, "Instance no longer mutable", http.StatusConflict)
+		return
+	}
 	instance.URL = enhancedURL
 	instance.Type = instanceType
 	instance.Config = m.GenerateConfigURL(instance)
@@ -337,12 +373,9 @@ func (m *Master) HandlePutInstance(w http.ResponseWriter, r *http.Request, id st
 	instance.Status = "stopped"
 	m.Instances.Store(id, instance)
 
-	go m.StartInstance(instance)
+	m.queueActionLocked(instance, "start")
 
-	go func() {
-		time.Sleep(BaseDuration)
-		m.SaveState()
-	}()
+	m.requestSaveLocked()
 	WriteJSON(w, http.StatusOK, instance)
 
 	m.Logger.Info("Instance URL updated: %v [%v]", instance.URL, instance.ID)
@@ -364,12 +397,12 @@ func (m *Master) HandleDeleteInstance(w http.ResponseWriter, id string, instance
 	m.Instances.Store(id, instance)
 
 	if instance.Status != "stopped" {
-		m.StopInstance(instance)
+		m.stopInstanceLocked(context.Background(), instance)
 	}
 	m.Instances.Delete(id)
-	go m.SaveState()
+	m.requestSaveLocked()
 	w.WriteHeader(http.StatusNoContent)
-	m.SendSSEEvent("delete", instance)
+	m.sendSSEEventLocked("delete", instance)
 }
 
 // HandleInfo handles REST API requests for retrieving and updating master information and alias.
@@ -384,7 +417,7 @@ func (m *Master) HandleDeleteInstance(w http.ResponseWriter, id string, instance
 func (m *Master) HandleInfo(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case http.MethodGet:
-		WriteJSON(w, http.StatusOK, m.GetMasterInfo())
+		WriteJSON(w, http.StatusOK, m.getMasterInfoLocked())
 
 	case http.MethodPost:
 		var reqData struct {
@@ -401,13 +434,13 @@ func (m *Master) HandleInfo(w http.ResponseWriter, r *http.Request) {
 		}
 		m.Alias = reqData.Alias
 
-		if apiKey, ok := m.FindInstance(APIKeyID); ok {
+		if apiKey, ok := m.findInstanceLocked(APIKeyID); ok {
 			apiKey.Alias = m.Alias
 			m.Instances.Store(APIKeyID, apiKey)
-			go m.SaveState()
+			m.requestSaveLocked()
 		}
 
-		WriteJSON(w, http.StatusOK, m.GetMasterInfo())
+		WriteJSON(w, http.StatusOK, m.getMasterInfoLocked())
 
 	default:
 		HTTPError(w, "Method not allowed", http.StatusMethodNotAllowed)
@@ -431,7 +464,7 @@ func (m *Master) HandleTCPing(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	result := m.PerformTCPingContext(r.Context(), target)
+	result := m.pingUnlocked(r.Context(), target)
 	WriteJSON(w, http.StatusOK, result)
 }
 

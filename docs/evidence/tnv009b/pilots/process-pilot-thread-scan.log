@@ -1,0 +1,146 @@
+2026-10-25 08:38:58.671  [34mDEBUG[0m  Init log level: DEBUG
+2026-10-25 08:38:58.671  [33mWARN[0m  TLS code-0: unencrypted
+2026-10-25 08:38:58.673  [32mINFO[0m  Master started: 127.0.0.1:41333/api/v1
+2026-10-25 08:38:58.674  [32mINFO[0m  API Key created; use tunveo api-key --state <state-file> for local retrieval
+2026-10-25 08:38:58.878  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-jnnw3nma/gob/tunveo.gob.backup
+2026-10-25 08:38:59.078  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-jnnw3nma/gob/tunveo.gob.backup
+2026-10-25 08:38:59.279  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-jnnw3nma/gob/tunveo.gob.backup
+2026-10-25 08:38:59.478  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-jnnw3nma/gob/tunveo.gob.backup
+2026-10-25 08:38:59.678  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-jnnw3nma/gob/tunveo.gob.backup
+2026-10-25 08:38:59.734  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:36839/127.0.0.1:1?REDACTED [0316cd27]
+2026-10-25 08:38:59.739  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:47933/127.0.0.1:1?REDACTED [907b8308]
+2026-10-25 08:38:59.747  [34mDEBUG[0m  Init log level: DEBUG [0316cd27]
+2026-10-25 08:38:59.747  [33mWARN[0m  TLS code-0: unencrypted [0316cd27]
+2026-10-25 08:38:59.749  [32mINFO[0m  Server started: [REDACTED-URL] [0316cd27]
+2026-10-25 08:38:59.753  [34mDEBUG[0m  Tunnel connection closed: 127.0.0.1:36839 [0316cd27]
+2026-10-25 08:38:59.756  [34mDEBUG[0m  Tunnel listener closed: 127.0.0.1:36839 [0316cd27]
+2026-10-25 08:38:59.757  [31mERROR[0m  Server error: Start: initTargetListener failed: InitTargetListener: listenTCP failed: listen tcp 127.0.0.1:1: bind: permission denied [0316cd27]
+2026-10-25 08:38:59.763  [34mDEBUG[0m  Init log level: DEBUG [907b8308]
+2026-10-25 08:38:59.763  [33mWARN[0m  TLS code-0: unencrypted [907b8308]
+2026-10-25 08:38:59.766  [32mINFO[0m  Server started: [REDACTED-URL] [907b8308]
+2026-10-25 08:38:59.773  [34mDEBUG[0m  Tunnel connection closed: 127.0.0.1:47933 [907b8308]
+2026-10-25 08:38:59.773  [34mDEBUG[0m  Tunnel listener closed: 127.0.0.1:47933 [907b8308]
+2026-10-25 08:38:59.773  [31mERROR[0m  Server error: Start: initTargetListener failed: InitTargetListener: listenTCP failed: listen tcp 127.0.0.1:1: bind: permission denied [907b8308]
+2026-10-25 08:38:59.878  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-jnnw3nma/gob/tunveo.gob.backup
+2026-10-25 08:38:59.879  [32mINFO[0m  Server shutdown complete [907b8308]
+2026-10-25 08:38:59.879  [32mINFO[0m  Server shutdown complete [0316cd27]
+2026-10-25 08:39:00.079  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-jnnw3nma/gob/tunveo.gob.backup
+2026-10-25 08:39:00.278  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-jnnw3nma/gob/tunveo.gob.backup
+2026-10-25 08:39:00.478  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-jnnw3nma/gob/tunveo.gob.backup
+2026-10-25 08:39:00.679  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-jnnw3nma/gob/tunveo.gob.backup
+2026-10-25 08:39:00.878  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-jnnw3nma/gob/tunveo.gob.backup
+2026-10-25 08:39:00.886  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:36839/127.0.0.1:1?REDACTED [0316cd27]
+2026-10-25 08:39:00.887  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:47933/127.0.0.1:1?REDACTED [907b8308]
+2026-10-25 08:39:00.887  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:36839/127.0.0.1:1?REDACTED [0316cd27]
+2026-10-25 08:39:00.889  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:47933/127.0.0.1:1?REDACTED [907b8308]
+2026-10-25 08:39:00.901  [34mDEBUG[0m  Init log level: DEBUG [0316cd27]
+2026-10-25 08:39:00.901  [33mWARN[0m  TLS code-0: unencrypted [0316cd27]
+2026-10-25 08:39:00.903  [32mINFO[0m  Server started: [REDACTED-URL] [0316cd27]
+2026-10-25 08:39:00.906  [34mDEBUG[0m  Init log level: DEBUG [907b8308]
+2026-10-25 08:39:00.906  [33mWARN[0m  TLS code-0: unencrypted [907b8308]
+2026-10-25 08:39:00.907  [34mDEBUG[0m  Tunnel connection closed: 127.0.0.1:36839 [0316cd27]
+2026-10-25 08:39:00.907  [34mDEBUG[0m  Tunnel listener closed: 127.0.0.1:36839 [0316cd27]
+2026-10-25 08:39:00.907  [31mERROR[0m  Server error: Start: initTargetListener failed: InitTargetListener: listenTCP failed: listen tcp 127.0.0.1:1: bind: permission denied [0316cd27]
+2026-10-25 08:39:00.910  [32mINFO[0m  Server started: [REDACTED-URL] [907b8308]
+2026-10-25 08:39:00.915  [34mDEBUG[0m  Tunnel connection closed: 127.0.0.1:47933 [907b8308]
+2026-10-25 08:39:00.915  [34mDEBUG[0m  Tunnel listener closed: 127.0.0.1:47933 [907b8308]
+2026-10-25 08:39:00.915  [31mERROR[0m  Server error: Start: initTargetListener failed: InitTargetListener: listenTCP failed: listen tcp 127.0.0.1:1: bind: permission denied [907b8308]
+2026-10-25 08:39:01.079  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-jnnw3nma/gob/tunveo.gob.backup
+2026-10-25 08:39:01.079  [32mINFO[0m  Server shutdown complete [907b8308]
+2026-10-25 08:39:01.079  [32mINFO[0m  Server shutdown complete [0316cd27]
+2026-10-25 08:39:01.278  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-jnnw3nma/gob/tunveo.gob.backup
+2026-10-25 08:39:01.479  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-jnnw3nma/gob/tunveo.gob.backup
+2026-10-25 08:39:01.679  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-jnnw3nma/gob/tunveo.gob.backup
+2026-10-25 08:39:01.879  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-jnnw3nma/gob/tunveo.gob.backup
+2026-10-25 08:39:02.079  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-jnnw3nma/gob/tunveo.gob.backup
+2026-10-25 08:39:02.082  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:36839/127.0.0.1:1?REDACTED [0316cd27]
+2026-10-25 08:39:02.083  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:36839/127.0.0.1:1?REDACTED [0316cd27]
+2026-10-25 08:39:02.086  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:47933/127.0.0.1:1?REDACTED [907b8308]
+2026-10-25 08:39:02.087  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:47933/127.0.0.1:1?REDACTED [907b8308]
+2026-10-25 08:39:02.097  [34mDEBUG[0m  Init log level: DEBUG [0316cd27]
+2026-10-25 08:39:02.097  [33mWARN[0m  TLS code-0: unencrypted [0316cd27]
+2026-10-25 08:39:02.098  [32mINFO[0m  Server started: [REDACTED-URL] [0316cd27]
+2026-10-25 08:39:02.102  [34mDEBUG[0m  Tunnel connection closed: 127.0.0.1:36839 [0316cd27]
+2026-10-25 08:39:02.102  [34mDEBUG[0m  Tunnel listener closed: 127.0.0.1:36839 [0316cd27]
+2026-10-25 08:39:02.102  [31mERROR[0m  Server error: Start: initTargetListener failed: InitTargetListener: listenTCP failed: listen tcp 127.0.0.1:1: bind: permission denied [0316cd27]
+2026-10-25 08:39:02.105  [34mDEBUG[0m  Init log level: DEBUG [907b8308]
+2026-10-25 08:39:02.105  [33mWARN[0m  TLS code-0: unencrypted [907b8308]
+2026-10-25 08:39:02.108  [32mINFO[0m  Server started: [REDACTED-URL] [907b8308]
+2026-10-25 08:39:02.112  [34mDEBUG[0m  Tunnel connection closed: 127.0.0.1:47933 [907b8308]
+2026-10-25 08:39:02.112  [34mDEBUG[0m  Tunnel listener closed: 127.0.0.1:47933 [907b8308]
+2026-10-25 08:39:02.112  [31mERROR[0m  Server error: Start: initTargetListener failed: InitTargetListener: listenTCP failed: listen tcp 127.0.0.1:1: bind: permission denied [907b8308]
+2026-10-25 08:39:02.278  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-jnnw3nma/gob/tunveo.gob.backup
+2026-10-25 08:39:02.279  [32mINFO[0m  Server shutdown complete [0316cd27]
+2026-10-25 08:39:02.280  [32mINFO[0m  Server shutdown complete [907b8308]
+2026-10-25 08:39:02.478  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-jnnw3nma/gob/tunveo.gob.backup
+2026-10-25 08:39:02.678  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-jnnw3nma/gob/tunveo.gob.backup
+2026-10-25 08:39:02.879  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-jnnw3nma/gob/tunveo.gob.backup
+2026-10-25 08:39:03.079  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-jnnw3nma/gob/tunveo.gob.backup
+2026-10-25 08:39:03.278  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-jnnw3nma/gob/tunveo.gob.backup
+2026-10-25 08:39:03.290  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:47933/127.0.0.1:1?REDACTED [907b8308]
+2026-10-25 08:39:03.295  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:47933/127.0.0.1:1?REDACTED [907b8308]
+2026-10-25 08:39:03.297  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:36839/127.0.0.1:1?REDACTED [0316cd27]
+2026-10-25 08:39:03.298  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:36839/127.0.0.1:1?REDACTED [0316cd27]
+2026-10-25 08:39:03.312  [34mDEBUG[0m  Init log level: DEBUG [907b8308]
+2026-10-25 08:39:03.313  [33mWARN[0m  TLS code-0: unencrypted [907b8308]
+2026-10-25 08:39:03.315  [32mINFO[0m  Server started: [REDACTED-URL] [907b8308]
+2026-10-25 08:39:03.319  [34mDEBUG[0m  Tunnel connection closed: 127.0.0.1:47933 [907b8308]
+2026-10-25 08:39:03.319  [34mDEBUG[0m  Tunnel listener closed: 127.0.0.1:47933 [907b8308]
+2026-10-25 08:39:03.319  [31mERROR[0m  Server error: Start: initTargetListener failed: InitTargetListener: listenTCP failed: listen tcp 127.0.0.1:1: bind: permission denied [907b8308]
+2026-10-25 08:39:03.319  [34mDEBUG[0m  Init log level: DEBUG [0316cd27]
+2026-10-25 08:39:03.319  [33mWARN[0m  TLS code-0: unencrypted [0316cd27]
+2026-10-25 08:39:03.322  [32mINFO[0m  Server started: [REDACTED-URL] [0316cd27]
+2026-10-25 08:39:03.332  [34mDEBUG[0m  Tunnel connection closed: 127.0.0.1:36839 [0316cd27]
+2026-10-25 08:39:03.332  [34mDEBUG[0m  Tunnel listener closed: 127.0.0.1:36839 [0316cd27]
+2026-10-25 08:39:03.332  [31mERROR[0m  Server error: Start: initTargetListener failed: InitTargetListener: listenTCP failed: listen tcp 127.0.0.1:1: bind: permission denied [0316cd27]
+2026-10-25 08:39:03.478  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-jnnw3nma/gob/tunveo.gob.backup
+2026-10-25 08:39:03.479  [32mINFO[0m  Server shutdown complete [907b8308]
+2026-10-25 08:39:03.479  [32mINFO[0m  Server shutdown complete [0316cd27]
+2026-10-25 08:39:03.678  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-jnnw3nma/gob/tunveo.gob.backup
+2026-10-25 08:39:03.879  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-jnnw3nma/gob/tunveo.gob.backup
+2026-10-25 08:39:04.078  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-jnnw3nma/gob/tunveo.gob.backup
+2026-10-25 08:39:04.279  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-jnnw3nma/gob/tunveo.gob.backup
+2026-10-25 08:39:04.478  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-jnnw3nma/gob/tunveo.gob.backup
+2026-10-25 08:39:04.484  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:47933/127.0.0.1:1?REDACTED [907b8308]
+2026-10-25 08:39:04.485  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:47933/127.0.0.1:1?REDACTED [907b8308]
+2026-10-25 08:39:04.496  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:36839/127.0.0.1:1?REDACTED [0316cd27]
+2026-10-25 08:39:04.500  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:36839/127.0.0.1:1?REDACTED [0316cd27]
+2026-10-25 08:39:04.504  [34mDEBUG[0m  Init log level: DEBUG [907b8308]
+2026-10-25 08:39:04.505  [33mWARN[0m  TLS code-0: unencrypted [907b8308]
+2026-10-25 08:39:04.508  [32mINFO[0m  Server started: [REDACTED-URL] [907b8308]
+2026-10-25 08:39:04.511  [34mDEBUG[0m  Tunnel connection closed: 127.0.0.1:47933 [907b8308]
+2026-10-25 08:39:04.512  [34mDEBUG[0m  Tunnel listener closed: 127.0.0.1:47933 [907b8308]
+2026-10-25 08:39:04.512  [31mERROR[0m  Server error: Start: initTargetListener failed: InitTargetListener: listenTCP failed: listen tcp 127.0.0.1:1: bind: permission denied [907b8308]
+2026-10-25 08:39:04.525  [34mDEBUG[0m  Init log level: DEBUG [0316cd27]
+2026-10-25 08:39:04.526  [33mWARN[0m  TLS code-0: unencrypted [0316cd27]
+2026-10-25 08:39:04.529  [32mINFO[0m  Server started: [REDACTED-URL] [0316cd27]
+2026-10-25 08:39:04.533  [34mDEBUG[0m  Tunnel connection closed: 127.0.0.1:36839 [0316cd27]
+2026-10-25 08:39:04.533  [34mDEBUG[0m  Tunnel listener closed: 127.0.0.1:36839 [0316cd27]
+2026-10-25 08:39:04.533  [31mERROR[0m  Server error: Start: initTargetListener failed: InitTargetListener: listenTCP failed: listen tcp 127.0.0.1:1: bind: permission denied [0316cd27]
+2026-10-25 08:39:04.678  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-jnnw3nma/gob/tunveo.gob.backup
+2026-10-25 08:39:04.679  [32mINFO[0m  Server shutdown complete [907b8308]
+2026-10-25 08:39:04.679  [32mINFO[0m  Server shutdown complete [0316cd27]
+2026-10-25 08:39:04.879  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-jnnw3nma/gob/tunveo.gob.backup
+2026-10-25 08:39:05.078  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-jnnw3nma/gob/tunveo.gob.backup
+2026-10-25 08:39:05.278  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-jnnw3nma/gob/tunveo.gob.backup
+2026-10-25 08:39:05.479  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-jnnw3nma/gob/tunveo.gob.backup
+2026-10-25 08:39:05.679  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-jnnw3nma/gob/tunveo.gob.backup
+2026-10-25 08:39:05.683  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:47933/127.0.0.1:1?REDACTED [907b8308]
+2026-10-25 08:39:05.685  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:47933/127.0.0.1:1?REDACTED [907b8308]
+2026-10-25 08:39:05.687  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:36839/127.0.0.1:1?REDACTED [0316cd27]
+2026-10-25 08:39:05.687  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:36839/127.0.0.1:1?REDACTED [0316cd27]
+2026-10-25 08:39:05.701  [34mDEBUG[0m  Init log level: DEBUG [0316cd27]
+2026-10-25 08:39:05.701  [33mWARN[0m  TLS code-0: unencrypted [0316cd27]
+2026-10-25 08:39:05.708  [32mINFO[0m  Server started: [REDACTED-URL] [0316cd27]
+2026-10-25 08:39:05.711  [34mDEBUG[0m  Init log level: DEBUG [907b8308]
+2026-10-25 08:39:05.712  [34mDEBUG[0m  Tunnel connection closed: 127.0.0.1:36839 [0316cd27]
+2026-10-25 08:39:05.712  [34mDEBUG[0m  Tunnel listener closed: 127.0.0.1:36839 [0316cd27]
+2026-10-25 08:39:05.712  [33mWARN[0m  TLS code-0: unencrypted [907b8308]
+2026-10-25 08:39:05.712  [31mERROR[0m  Server error: Start: initTargetListener failed: InitTargetListener: listenTCP failed: listen tcp 127.0.0.1:1: bind: permission denied [0316cd27]
+2026-10-25 08:39:05.714  [32mINFO[0m  Server started: [REDACTED-URL] [907b8308]
+2026-10-25 08:39:05.718  [34mDEBUG[0m  Tunnel connection closed: 127.0.0.1:47933 [907b8308]
+2026-10-25 08:39:05.719  [34mDEBUG[0m  Tunnel listener closed: 127.0.0.1:47933 [907b8308]
+2026-10-25 08:39:05.719  [31mERROR[0m  Server error: Start: initTargetListener failed: InitTargetListener: listenTCP failed: listen tcp 127.0.0.1:1: bind: permission denied [907b8308]
+2026-10-25 08:39:05.749  [32mINFO[0m  Server shutdown complete [907b8308]
+2026-10-25 08:39:05.749  [32mINFO[0m  Server shutdown complete [0316cd27]
+2026-10-25 08:39:06.754  [32mINFO[0m  Master shutdown complete

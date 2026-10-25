@@ -182,3 +182,22 @@ jobs:
           name: management-boundary-evidence
           path: artifacts/management*.json
           retention-days: 14
+
+  master-state-lifecycle-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6.0.2
+      - uses: actions/setup-go@v6.1.0
+        with:
+          go-version-file: go.mod
+      - run: python3 scripts/repro_master_state.py --ref HEAD --mode fixed --go go --output artifacts/master-state-native.json
+      - run: go build -race -trimpath -o bin/tunveo-race ./cmd/tunveo
+      - run: python3 scripts/verify_master_lifecycle.py --binary bin/tunveo-race --output artifacts/master-lifecycle.json
+      - name: Save master ownership and child lifecycle evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: master-state-lifecycle-evidence
+          path: artifacts/master*
+          retention-days: 14

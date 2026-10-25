@@ -1,0 +1,26 @@
+CI 40199253533, job 121186705812; excerpt of go test -race failure. Snapshot assertion passed; asynchronous fixture cleanup was not joined.
+--- FAIL: TestQueuedInstanceEventIsSnapshot (0.00s)
+2026-10-25T13:49:00.0613720Z     state_concurrency_test.go:93: PASSED-SNAPSHOT:
+2026-10-25T13:49:00.0615202Z     testing.go:1464: TempDir RemoveAll cleanup: unlinkat /tmp/TestQueuedInstanceEventIsSnapshot3592747845: directory not empty
+2026-10-25T13:49:00.0616265Z FAIL
+2026-10-25T13:49:00.0616745Z FAIL	github.com/VortexWang/Tunveo/internal/master	0.336s
+2026-10-25T13:49:01.1397516Z ok  	github.com/VortexWang/Tunveo/internal/server	1.313s
+2026-10-25T13:49:01.1398142Z ?   	github.com/VortexWang/Tunveo/internal/transport	[no test files]
+2026-10-25T13:49:01.4297246Z ok  	github.com/VortexWang/Tunveo/internal/tunnelpool/http2	1.603s
+2026-10-25T13:49:01.4298056Z ok  	github.com/VortexWang/Tunveo/internal/tunnelpool/idle	1.034s
+2026-10-25T13:49:01.4298531Z ok  	github.com/VortexWang/Tunveo/internal/tunnelpool/lifetime	1.009s
+2026-10-25T13:49:02.0507327Z ok  	github.com/VortexWang/Tunveo/internal/tunnelpool/quic	1.008s
+2026-10-25T13:49:02.0839883Z ok  	github.com/VortexWang/Tunveo/internal/tunnelpool/tcp	1.010s
+2026-10-25T13:49:02.0840836Z ?   	github.com/VortexWang/Tunveo/internal/tunnelpool/websocket	[no test files]
+2026-10-25T13:49:02.0841831Z ?   	github.com/VortexWang/Tunveo/scripts/repro_tls_verify	[no test files]
+2026-10-25T13:49:02.0842517Z FAIL
+2026-10-25T13:49:02.1593904Z ##[error]Process completed with exit code 1.
+2026-10-25T13:49:02.3147731Z Post job cleanup.
+2026-10-25T13:49:02.4132105Z [command]/usr/bin/git version
+2026-10-25T13:49:02.4183256Z git version 2.55.0
+2026-10-25T13:49:02.4231877Z Temporarily overriding HOME='/home/runner/work/_temp/b03c331b-27e5-483d-a65a-2e5f495ae6a6' before making global git config changes
+2026-10-25T13:49:02.4233664Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-25T13:49:02.4240493Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Tunveo/Tunveo
+2026-10-25T13:49:02.4279814Z Removing SSH command configuration
+2026-10-25T13:49:02.4289006Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-25T13:49:02.4332440Z [command]/usr/bin/git submodule foreach --recursive sh -c "gi

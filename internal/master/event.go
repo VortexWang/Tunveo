@@ -4,6 +4,7 @@ package master
 
 import (
 	"bufio"
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -61,74 +62,90 @@ func NewInstanceLogWriter(instanceID string, instance *Instance, target io.Write
 //
 // Returns the number of bytes processed (always len(p)) and any scanning errors.
 func (w *InstanceLogWriter) Write(p []byte) (n int, err error) {
-	s := string(p)
-	scanner := bufio.NewScanner(strings.NewReader(s))
+	var output bytes.Buffer
+	func() {
+		w.Master.dataMu.Lock()
+		defer w.Master.dataMu.Unlock()
+		if current, ok := w.Master.Instances.Load(w.InstanceID); ok {
+			w.Instance = current.(*Instance)
+		}
+		if w.Instance.deleted || (w.run != nil && w.Instance.run != w.run) {
+			return
+		}
+		s := string(p)
+		scanner := bufio.NewScanner(strings.NewReader(s))
 
-	for scanner.Scan() {
-		line := common.RedactLog(scanner.Text())
-		if matches := w.CheckPoint.FindStringSubmatch(line); len(matches) == 10 {
-			if mode, err := strconv.ParseInt(matches[1], 10, 32); err == nil {
-				w.Instance.Mode = int32(mode)
-			}
-			if ping, err := strconv.ParseInt(matches[2], 10, 32); err == nil {
-				w.Instance.Ping = int32(ping)
-			}
-			if pool, err := strconv.ParseInt(matches[3], 10, 32); err == nil {
-				w.Instance.Pool = int32(pool)
-			}
-			if tcps, err := strconv.ParseInt(matches[4], 10, 32); err == nil {
-				w.Instance.TCPS = int32(tcps)
-			}
-			if udps, err := strconv.ParseInt(matches[5], 10, 32); err == nil {
-				w.Instance.UDPS = int32(udps)
-			}
+		for scanner.Scan() {
+			line := common.RedactLog(scanner.Text())
+			if matches := w.CheckPoint.FindStringSubmatch(line); len(matches) == 10 {
+				if mode, err := strconv.ParseInt(matches[1], 10, 32); err == nil {
+					w.Instance.Mode = int32(mode)
+				}
+				if ping, err := strconv.ParseInt(matches[2], 10, 32); err == nil {
+					w.Instance.Ping = int32(ping)
+				}
+				if pool, err := strconv.ParseInt(matches[3], 10, 32); err == nil {
+					w.Instance.Pool = int32(pool)
+				}
+				if tcps, err := strconv.ParseInt(matches[4], 10, 32); err == nil {
+					w.Instance.TCPS = int32(tcps)
+				}
+				if udps, err := strconv.ParseInt(matches[5], 10, 32); err == nil {
+					w.Instance.UDPS = int32(udps)
+				}
 
-			stats := []*uint64{&w.Instance.TCPRX, &w.Instance.TCPTX, &w.Instance.UDPRX, &w.Instance.UDPTX}
-			bases := []uint64{w.Instance.tcpRXBase, w.Instance.tcpTXBase, w.Instance.udpRXBase, w.Instance.udpTXBase}
-			resets := []*uint64{&w.Instance.tcpRXReset, &w.Instance.tcpTXReset, &w.Instance.udpRXReset, &w.Instance.udpTXReset}
-			for i, stat := range stats {
-				if v, err := strconv.ParseUint(matches[i+6], 10, 64); err == nil {
-					if v >= *resets[i] {
-						*stat = bases[i] + v - *resets[i]
-					} else {
-						*stat = bases[i] + v
-						*resets[i] = 0
+				stats := []*uint64{&w.Instance.TCPRX, &w.Instance.TCPTX, &w.Instance.UDPRX, &w.Instance.UDPTX}
+				bases := []uint64{w.Instance.tcpRXBase, w.Instance.tcpTXBase, w.Instance.udpRXBase, w.Instance.udpTXBase}
+				resets := []*uint64{&w.Instance.tcpRXReset, &w.Instance.tcpTXReset, &w.Instance.udpRXReset, &w.Instance.udpTXReset}
+				for i, stat := range stats {
+					if v, err := strconv.ParseUint(matches[i+6], 10, 64); err == nil {
+						if v >= *resets[i] {
+							*stat = bases[i] + v - *resets[i]
+						} else {
+							*stat = bases[i] + v
+							*resets[i] = 0
+						}
 					}
 				}
+
+				w.Instance.lastCheckPoint = time.Now()
+
+				if w.Instance.Status == "error" {
+					w.Instance.Status = "running"
+				}
+
+				if !w.Instance.deleted {
+					w.Master.Instances.Store(w.InstanceID, w.Instance)
+					w.Master.sendSSEEventLocked("update", w.Instance)
+				}
+				continue
 			}
 
-			w.Instance.lastCheckPoint = time.Now()
-
-			if w.Instance.Status == "error" {
-				w.Instance.Status = "running"
+			if w.Instance.Status != "error" && !w.Instance.deleted &&
+				(strings.Contains(line, "Server error:") || strings.Contains(line, "Client error:")) {
+				w.Instance.Status = "error"
+				w.Instance.Ping = 0
+				w.Instance.Pool = 0
+				w.Instance.TCPS = 0
+				w.Instance.UDPS = 0
+				w.Master.Instances.Store(w.InstanceID, w.Instance)
 			}
+
+			fmt.Fprintf(&output, "%s [%s]\n", line, w.InstanceID)
 
 			if !w.Instance.deleted {
-				w.Master.Instances.Store(w.InstanceID, w.Instance)
-				w.Master.SendSSEEvent("update", w.Instance)
+				w.Master.sendSSEEventLocked("log", w.Instance, line)
 			}
-			continue
 		}
 
-		if w.Instance.Status != "error" && !w.Instance.deleted &&
-			(strings.Contains(line, "Server error:") || strings.Contains(line, "Client error:")) {
-			w.Instance.Status = "error"
-			w.Instance.Ping = 0
-			w.Instance.Pool = 0
-			w.Instance.TCPS = 0
-			w.Instance.UDPS = 0
-			w.Master.Instances.Store(w.InstanceID, w.Instance)
+		if err := scanner.Err(); err != nil {
+			fmt.Fprintf(&output, "%s [%s]", common.RedactLog(s), w.InstanceID)
 		}
-
-		fmt.Fprintf(w.Target, "%s [%s]\n", line, w.InstanceID)
-
-		if !w.Instance.deleted {
-			w.Master.SendSSEEvent("log", w.Instance, line)
+	}()
+	if output.Len() > 0 {
+		if _, err := w.Target.Write(output.Bytes()); err != nil {
+			return len(p), err
 		}
-	}
-
-	if err := scanner.Err(); err != nil {
-		fmt.Fprintf(w.Target, "%s [%s]", common.RedactLog(s), w.InstanceID)
 	}
 	return len(p), nil
 }
@@ -218,26 +235,23 @@ func (m *Master) HandleSSE(w http.ResponseWriter, r *http.Request) {
 		}
 		return write([]byte(fmt.Sprintf("event: instance\ndata: %s\n\n", data)))
 	}
-	initialOK := true
-	m.Instances.Range(func(_, value any) bool {
+	for _, id := range m.instanceIDs() {
 		select {
 		case <-r.Context().Done():
-			initialOK = false
-			return false
+			return
 		case <-sub.done:
-			initialOK = false
-			return false
+			return
 		default:
 		}
-		instance := value.(*Instance)
-		if instance.ID != APIKeyID {
-			initialOK = send(&InstanceEvent{Type: "initial", Time: time.Now(), Instance: instance})
+		instance, exists := m.FindInstance(id)
+		if !exists {
+			continue
 		}
-		return initialOK
-	})
-	if !initialOK {
-		return
+		if instance.ID != APIKeyID && !send(&InstanceEvent{Type: "initial", Time: time.Now(), Instance: instance}) {
+			return
+		}
 	}
+
 	ticker := time.NewTicker(ManagementHeartbeat)
 	defer ticker.Stop()
 	for {
@@ -258,18 +272,24 @@ func (m *Master) HandleSSE(w http.ResponseWriter, r *http.Request) {
 	}
 }
 func (m *Master) SendSSEEvent(eventType string, instance *Instance, logs ...string) {
+	m.dataMu.RLock()
+	defer m.dataMu.RUnlock()
+	m.sendSSEEventLocked(eventType, instance, logs...)
+}
+func (m *Master) sendSSEEventLocked(eventType string, instance *Instance, logs ...string) {
 	if instance != nil && instance.ID == APIKeyID {
 		return
 	}
-	event := &InstanceEvent{Type: eventType, Time: time.Now(), Instance: instance}
+	m.eventMu.RLock()
+	defer m.eventMu.RUnlock()
+	if m.eventsClosed || len(m.NotifyChannel) >= cap(m.NotifyChannel) {
+		return
+	}
+	event := &InstanceEvent{Type: eventType, Time: time.Now(), Instance: cloneInstance(instance)}
 	if len(logs) > 0 {
 		event.Logs = logs[0]
 	}
-	m.eventMu.RLock()
-	defer m.eventMu.RUnlock()
-	if m.eventsClosed {
-		return
-	}
+
 	select {
 	case m.NotifyChannel <- event:
 	default:

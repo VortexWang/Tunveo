@@ -1,0 +1,12 @@
+{
+  "binary_sha256": "90adade6418ed08b004a340e0eee8ba1fd3c871095705b8905d84a91c248a39a",
+  "runner_sha256": "89b21a262e37ef12364c4a9c460f05c2148d592347a76ba6e272c943c6d430c6",
+  "helper_sha256": "28ccd5ac23eeb4dcf160e5de55beebaa4ddbae510fe818e12bb568f8eceaaebb",
+  "started_at": "2026-10-25T13:41:09.545658+00:00",
+  "scope": "race master and actual managed children; synthetic credentials, isolated state, loopback listeners; no external targets contacted",
+  "results": [],
+  "process_log": "process-pilot-fixed-listeners.log",
+  "raw_key_log_observed": false,
+  "status": "failed",
+  "error_type": "AssertionError"
+}
