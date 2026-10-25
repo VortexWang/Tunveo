@@ -1,0 +1,25 @@
+2026-10-24 23:27:13.416  DEBUG  Init log level: DEBUG
+2026-10-24 23:27:13.417  WARN  TLS code-0: unencrypted
+2026-10-24 23:27:13.418  INFO  Client started: client://[REDACTED]@127.0.0.1:43725/127.0.0.1:55239?dns=5m0s&sni=none&lbs=0&min=64&mode=2&dial=auto&read=0s&rate=0&slot=65536&proxy=0&block=0&notcp=0&noudp=0
+2026-10-24 23:27:13.418  INFO  Pending tunnel handshake...
+2026-10-24 23:27:13.420  INFO  Loading tunnel config: FLOW=+|MAX=1024|TLS=1|TYPE=3|VERIFY=legacy
+2026-10-24 23:27:13.421  INFO  Getting tunnel pool ready...
+2026-10-24 23:27:13.522  INFO  Marking tunnel handshake as complete in 103ms
+2026-10-24 23:27:13.522  INFO  TLS code-1: RAM cert fingerprint verifying...
+2026-10-24 23:27:13.523  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=63|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-24 23:27:18.523  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=65|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-24 23:27:18.523  DEBUG  TLS verify signal: cid 9d7e83b1 <- 127.0.0.1:43725
+2026-10-24 23:27:18.523  INFO  TLS code-1: RAM cert verified with sha256 fingerprint: 59a37870c0a7b14720f3e3670d526941106fcd0953c970081eb8bbd202dbb6d7
+2026-10-24 23:27:18.523  DEBUG  TLS code-1: verify signal: cid 12a01362 -> 127.0.0.1:43725
+2026-10-24 23:27:23.523  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=64|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-24 23:27:28.523  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=64|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-24 23:27:28.606  ERROR  Client error: TunnelStart: tunnelControl failed: TunnelControl: context error: context canceled
+2026-10-24 23:27:28.607  DEBUG  Tunnel connection closed: pool active 64
+2026-10-24 23:27:28.607  DEBUG  Tunnel connection closed: pool active 64
+2026-10-24 23:27:28.607  DEBUG  Target connection closed: 127.0.0.1:55239
+2026-10-24 23:27:28.607  DEBUG  Target connection closed: 127.0.0.1:55239
+2026-10-24 23:27:28.607  DEBUG  Control connection closed: 127.0.0.1:60754
+2026-10-24 23:27:28.607  DEBUG  Control connection closed: 127.0.0.1:60754
+2026-10-24 23:27:28.607  DEBUG  Target listener closed: 127.0.0.1:55239
+2026-10-24 23:27:28.607  INFO  Client shutdown complete
+2026-10-24 23:27:28.607  DEBUG  Target listener closed: 127.0.0.1:55239

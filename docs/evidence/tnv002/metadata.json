@@ -1,0 +1,30 @@
+{
+  "runtime_source_commit": "42e6d9d892affc907b68db2cf61ee04b3fa9a6cd",
+  "driver_commit": "ee29f79a0a5e447720d054dd75a5ed4f061d61f1",
+  "upstream_commit": "114345043d9608e1e24e783a270cde75193e4f42",
+  "summary": {
+    "initial/tunveo-tunveo": {
+      "passed": 15,
+      "failed": 1
+    },
+    "initial/tunveo-upstream": {
+      "passed": 15,
+      "failed": 1
+    },
+    "initial/upstream-tunveo": {
+      "passed": 15,
+      "failed": 1
+    },
+    "final/tunveo-tunveo": {
+      "passed": 16
+    },
+    "final/tunveo-upstream": {
+      "passed": 16
+    },
+    "final/upstream-tunveo": {
+      "passed": 16
+    }
+  },
+  "normalization": "Log paths are relative to each report; executable paths use BUILD/. Log bytes and result outcomes unchanged.",
+  "scope": "Local loopback; tls=1; one sample per cell; initial collection had 3 indeterminate failures, final collection uses parent-owned pipe capture."
+}

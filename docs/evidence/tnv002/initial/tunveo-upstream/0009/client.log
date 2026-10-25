@@ -1,0 +1,27 @@
+2026-10-24 23:26:41.718  [34mDEBUG[0m  Init log level: DEBUG
+2026-10-24 23:26:41.719  [33mWARN[0m  TLS code-0: unencrypted
+2026-10-24 23:26:41.719  [32mINFO[0m  Client started: client://smoke-only@127.0.0.1:33579/127.0.0.1:59819?dns=5m0s&sni=none&lbs=0&min=2&mode=2&dial=auto&read=0s&rate=0&slot=65536&proxy=0&block=0&notcp=0&noudp=0
+2026-10-24 23:26:41.720  [32mINFO[0m  Pending tunnel handshake...
+2026-10-24 23:26:41.722  [32mINFO[0m  Loading tunnel config: FLOW=+|MAX=8|TLS=1|TYPE=0
+2026-10-24 23:26:41.722  [32mINFO[0m  Getting tunnel pool ready...
+2026-10-24 23:26:41.874  [32mINFO[0m  Marking tunnel handshake as complete in 153ms
+2026-10-24 23:26:41.874  [32mINFO[0m  TLS code-1: RAM cert fingerprint verifying...
+2026-10-24 23:26:41.874  [36mEVENT[0m  CHECK_POINT|MODE=2|PING=0ms|POOL=1|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-24 23:26:46.875  [34mDEBUG[0m  TLS code-1: verify signal: cid fcfdba0f -> 127.0.0.1:33579
+2026-10-24 23:26:46.875  [36mEVENT[0m  CHECK_POINT|MODE=2|PING=0ms|POOL=1|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-24 23:26:46.875  [34mDEBUG[0m  TLS verify signal: cid a26b0807 <- 127.0.0.1:33579
+2026-10-24 23:26:46.876  [32mINFO[0m  TLS code-1: RAM cert verified with sha256 fingerprint: 2c547765fb1e9160db8dd6aee7cf589efca812b569612e9fca44591ad4afbda1
+2026-10-24 23:26:46.889  [34mDEBUG[0m  Target connection: 127.0.0.1:59819 <-> 127.0.0.1:33090
+2026-10-24 23:26:47.435  [34mDEBUG[0m  Tunnel connection: get a251ce17 <- pool active 0
+2026-10-24 23:26:47.435  [34mDEBUG[0m  Tunnel connection: 127.0.0.1:55268 <-> 127.0.0.1:33579
+2026-10-24 23:26:47.435  [34mDEBUG[0m  TCP launch signal: cid a251ce17 -> 127.0.0.1:33579
+2026-10-24 23:26:47.435  [32mINFO[0m  Starting exchange: 127.0.0.1:33090 <-> 127.0.0.1:33579
+2026-10-24 23:26:47.436  [32mINFO[0m  Exchange complete: read tcp 127.0.0.1:55268->127.0.0.1:33579: use of closed network connection
+2026-10-24 23:26:47.436  [34mDEBUG[0m  Tunnel connection: closed a251ce17
+2026-10-24 23:26:47.439  [34mDEBUG[0m  Target connection: 127.0.0.1:59819 <-> 127.0.0.1:59186
+2026-10-24 23:26:47.439  [34mDEBUG[0m  Tunnel connection: get 2adf8941 <- pool active 0
+2026-10-24 23:26:47.439  [34mDEBUG[0m  Tunnel connection: 127.0.0.1:55276 <-> 127.0.0.1:33579
+2026-10-24 23:26:47.439  [34mDEBUG[0m  UDP launch signal: cid 2adf8941 -> 127.0.0.1:33579
+2026-10-24 23:26:47.439  [34mDEBUG[0m  Starting transfer: 127.0.0.1:55276 <-> 127.0.0.1:59819
+2026-10-24 23:26:47.439  [34mDEBUG[0m  Transfer complete: 127.0.0.1:55276 <-> 127.0.0.1:59819
+2026-10-24 23:26:47.439  [34mDEBUG[0m  Transfer complete: 127.0.0.1:55276 <-> 127.0.0.1:59819
