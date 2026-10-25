@@ -179,14 +179,15 @@ func (c *Common) GetRunMode() {
 
 // GetPoolType reads the "type" query parameter and selects the tunnel pool backend.
 // Tunveo keeps this query key for URL compatibility while exposing it as the
-// --pool CLI flag. QUIC requires TLS material, so tls=0 is upgraded to code-1.
+// --pool CLI flag. QUIC and HTTP/2 require TLS material, so tls=0 is upgraded
+// to code-1. HTTP/2 has no h2c backend; leaving a nil config would create no pool.
 func (c *Common) GetPoolType() {
 	if poolType := c.ParsedURL.Query().Get("type"); poolType != "" {
 		c.PoolType = poolType
 	} else {
 		c.PoolType = DefaultPoolType
 	}
-	if c.PoolType == "1" && c.TLSCode == "0" {
+	if (c.PoolType == "1" || c.PoolType == "3") && c.TLSCode == "0" {
 		c.TLSCode = "1"
 	}
 }

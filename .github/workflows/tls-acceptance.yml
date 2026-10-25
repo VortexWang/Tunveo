@@ -1,0 +1,52 @@
+name: TLS acceptance
+on:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  matrix:
+    # This is an acceptance measurement, including unmodified old servers.
+    # Failures stay red and are not rewritten into expected passes.
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        tls: [0, 1, 2]
+        pair: [tunveo-tunveo, tunveo-upstream, upstream-tunveo]
+    steps:
+      - uses: actions/checkout@v6.0.2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-go@v6.1.0
+        with:
+          go-version-file: go.mod
+      - id: build
+        run: |
+          go build -trimpath -o bin/tunveo ./cmd/tunveo
+          python3 scripts/build_matrix_oracle.py --go go --output bin/nodepass-original
+      - name: Ten rounds per positive cell
+        run: |
+          pair='${{ matrix.pair }}'
+          python3 scripts/verify_forwarding.py --binary bin/tunveo --upstream bin/nodepass-original --pair "${pair/-//}" --tls '${{ matrix.tls }}' --pool 2:8 --pool 64:1024 --repeat 10 --go go --artifacts artifacts/positive
+      - name: Ten rounds per untrusted CA cell
+        if: always() && steps.build.conclusion == 'success' && matrix.tls == 2
+        run: |
+          pair='${{ matrix.pair }}'
+          python3 scripts/verify_forwarding.py --binary bin/tunveo --upstream bin/nodepass-original --pair "${pair/-//}" --tls 2 --reject-tls untrusted-ca --pool 2:8 --pool 64:1024 --repeat 10 --go go --artifacts artifacts/untrusted-ca
+      - name: Ten rounds per wrong hostname cell
+        if: always() && steps.build.conclusion == 'success' && matrix.tls == 2
+        run: |
+          pair='${{ matrix.pair }}'
+          python3 scripts/verify_forwarding.py --binary bin/tunveo --upstream bin/nodepass-original --pair "${pair/-//}" --tls 2 --reject-tls wrong-hostname --pool 2:8 --pool 64:1024 --repeat 10 --go go --artifacts artifacts/wrong-hostname
+      - name: Print reports for durable review
+        if: always()
+        run: python3 scripts/summarize_tls_acceptance.py --artifacts artifacts --output artifacts/summary.json
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: tls-${{ matrix.tls }}-${{ matrix.pair }}
+          path: |
+            artifacts
+            bin/nodepass-original.provenance.json
+          retention-days: 14

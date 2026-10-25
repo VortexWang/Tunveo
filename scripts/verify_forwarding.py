@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Bounded loopback TCP/UDP diagnostics with persistent, per-phase evidence.
 
-TLS mode 1 only. Success means this diagnostic passed, not a security audit.
+TLS modes 0/1/2. Success means this diagnostic passed, not a security audit.
 Uses Python's standard library. Every application exchange is attempted once.
 """
 
@@ -282,12 +282,21 @@ def run_case(server_bin, client_bin, row, folder, args, checkpoint):
             front, tunnel = front_res.port, tunnel_res.port
             row["ports"] = {"echo": target, "front": front, "tunnel": tunnel}
             server_target, client_target = (front, target) if row["mode"] == 1 else (target, front)
+            cert_options = ""
+            if row["tls"] == 2:
+                cert_name = "wrong-hostname" if args.reject_tls == "wrong-hostname" else "trusted"
+                crt, key = args.certificates[cert_name]
+                cert_options = f"&crt={crt}&key={key}"
             urls = [
-                f"server://smoke-only@127.0.0.1:{tunnel}/127.0.0.1:{server_target}?mode={row['mode']}&type={row['transport']}&tls=1&max={row['pool']['max']}&log=debug",
-                f"client://smoke-only@127.0.0.1:{tunnel}/127.0.0.1:{client_target}?mode=2&min={row['pool']['min']}&log=debug",
+                f"server://smoke-only@127.0.0.1:{tunnel}/127.0.0.1:{server_target}?mode={row['mode']}&type={row['transport']}&tls={row['tls']}&max={row['pool']['max']}&log=debug{cert_options}",
+                f"client://smoke-only@127.0.0.1:{tunnel}/127.0.0.1:{client_target}?mode=2&min={row['pool']['min']}&log=debug&sni=127.0.0.1",
             ]
             row["commands"] = [[str(b), clean(u)] for b, u in zip((server_bin, client_bin), urls)]
             env = {k: v for k, v in os.environ.items() if not k.startswith(("NP_", "TUNVEO_"))}
+            if row["tls"] == 2:
+                trust_name = "untrusted" if args.reject_tls == "untrusted-ca" else cert_name
+                env.update(SSL_CERT_FILE=str(args.certificates[trust_name][0]),
+                           SSL_CERT_DIR=str(args.cert_root / "empty-roots"))
 
             def launch(index, binary):
                 if index == 0:
@@ -308,11 +317,42 @@ def run_case(server_bin, client_bin, row, folder, args, checkpoint):
                 launch(1, client_bin)
                 return wait_logs(processes, captures, lambda t: "Sending tunnel config" in t[0] and "Loading tunnel config" in t[1], args.phase_timeout)
             phase("tunnel_handshake", handshake)
-            phase("pool_ready", lambda: wait_logs(processes, captures, lambda t: all("Marking tunnel handshake as complete" in s for s in t), args.phase_timeout))
-            # These are observed log milestones, not independent security proofs.
-            phase("certificate_verification", lambda: wait_logs(processes, captures, lambda t: all("RAM cert verified with sha256 fingerprint" in s for s in t), args.phase_timeout))
-            phase("tcp_echo", lambda: exchange(front, timeout=args.io_timeout))
-            phase("udp_echo", lambda: exchange(front, udp=True, timeout=args.io_timeout))
+            negotiated = f"TLS={row['effective_tls']}|"
+            if not all(negotiated in capture.snapshot() for capture in captures):
+                raise RuntimeError("negotiated TLS mode does not match requested/effective mode")
+            if args.reject_tls:
+                # Initial HTTPS is intentionally unauthenticated by the inherited
+                # protocol. The strict check is in the subsequent data pool.
+                row["phases"]["pool_ready"] = {"status": "not_applicable", "reason": "strict data-pool rejection expected"}
+                def rejected():
+                    start = time.monotonic()
+                    failures = []
+                    while time.monotonic() - start < 2:
+                        if any(p.poll() is not None for p in processes):
+                            raise RuntimeError("endpoint exited instead of rejecting data TLS")
+                        if any("Marking tunnel handshake as complete" in c.snapshot() for c in captures):
+                            raise RuntimeError("untrusted data pool became ready")
+                        time.sleep(.025)
+                    for udp in (False, True):
+                        try:
+                            exchange(front, udp=udp, timeout=args.io_timeout)
+                        except (OSError, RuntimeError) as exc:
+                            failures.append(type(exc).__name__)
+                        else:
+                            raise RuntimeError("untrusted TLS forwarded application data")
+                    return {"negative": args.reject_tls, "observation_seconds": round(time.monotonic()-start, 3), "application_rejections": failures}
+                phase("certificate_verification", rejected)
+                for name in ("tcp_echo", "udp_echo"):
+                    row["phases"][name] = {"status": "not_applicable", "reason": "application forwarding must be rejected"}
+            else:
+                phase("pool_ready", lambda: wait_logs(processes, captures, lambda t: all("Marking tunnel handshake as complete" in s for s in t), args.phase_timeout))
+                # These are observed log milestones, not independent security proofs.
+                if row["effective_tls"] == 1:
+                    phase("certificate_verification", lambda: wait_logs(processes, captures, lambda t: all("RAM cert verified with sha256 fingerprint" in s for s in t), args.phase_timeout))
+                else:
+                    row["phases"]["certificate_verification"] = {"status": "not_applicable", "reason": "RAM fingerprint protocol applies only to effective TLS 1; TLS 2 trust tested by forwarding plus negative controls"}
+                phase("tcp_echo", lambda: exchange(front, timeout=args.io_timeout))
+                phase("udp_echo", lambda: exchange(front, udp=True, timeout=args.io_timeout))
         row["status"] = "passed"
     except KeyboardInterrupt:
         row.update(status="interrupted", failed_phase=active_phase)
@@ -375,6 +415,17 @@ def parse_pair(text, limits=None):
         raise argparse.ArgumentTypeError("expected transport:mode (0..3:1..2) or positive min:max")
 
 
+def certificate_fixture(folder, name, san="IP:127.0.0.1"):
+    crt, key = folder / (name + ".crt"), folder / (name + ".key")
+    subprocess.run(["openssl", "req", "-x509", "-newkey", "ec", "-pkeyopt",
+                    "ec_paramgen_curve:P-256", "-nodes", "-days", "1",
+                    "-subj", "/CN=matrix-fixture", "-addext", "subjectAltName=" + san,
+                    "-keyout", str(key), "-out", str(crt)],
+                   check=True, capture_output=True, timeout=10)
+    key.chmod(0o600)
+    return crt, key
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--binary", type=Path, required=True)
@@ -383,6 +434,8 @@ def main(argv=None):
     parser.add_argument("--case", type=lambda s: parse_pair(s, (range(4), (1, 2))), action="append", help="transport:server-mode; repeatable")
     parser.add_argument("--pool", type=parse_pair, action="append", help="min:max; repeatable; default 2:8")
     parser.add_argument("--repeat", type=int, default=1)
+    parser.add_argument("--tls", type=int, choices=(0, 1, 2), action="append", help="requested TLS mode; repeatable; default 1")
+    parser.add_argument("--reject-tls", choices=("untrusted-ca", "wrong-hostname"), help="TLS 2 negative: require no data forwarding during a bounded observation")
     parser.add_argument("--startup-timeout", type=float, default=5)
     parser.add_argument("--phase-timeout", type=float, default=15)
     parser.add_argument("--io-timeout", type=float, default=3)
@@ -391,6 +444,9 @@ def main(argv=None):
     parser.add_argument("--output", type=Path, help="report path; defaults to ARTIFACTS/report.json")
     parser.add_argument("--go", default="go", help="Go executable for binary provenance")
     args = parser.parse_args(argv)
+    modes = list(dict.fromkeys(args.tls or [1]))
+    if args.reject_tls and modes != [2]:
+        parser.error("--reject-tls requires exactly --tls 2")
     if args.repeat < 1 or any(not 0 < v < float("inf") for v in (args.startup_timeout, args.phase_timeout, args.io_timeout, args.cleanup_timeout)):
         parser.error("repeat and timeouts must be positive and finite")
     pairs = list(dict.fromkeys(args.pair or (PAIRS if args.upstream else PAIRS[:1])))
@@ -405,23 +461,33 @@ def main(argv=None):
     root = (args.artifacts or Path("artifacts/forwarding") / (datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ") + "-" + uuid.uuid4().hex[:8])).resolve()
     root.mkdir(parents=True, exist_ok=False)
     output = args.output.resolve() if args.output else root / "report.json"
-    report = {"runner_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(), "schema_version": 2, "status": "running", "started_at": datetime.now(timezone.utc).isoformat(), "environment": {"platform": platform.platform(), "machine": platform.machine(), "python": platform.python_version()}, "binaries": {k: binary_metadata(v, args.go) for k, v in binaries.items()}, "settings": {"tls": 1, "log_level": "debug", "application_attempts": 1, "readiness": "observed log milestones", "timeouts": {k: getattr(args, k) for k in ("startup_timeout", "phase_timeout", "io_timeout", "cleanup_timeout")}}, "results": []}
+    report = {"runner_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(), "schema_version": 3, "status": "running", "started_at": datetime.now(timezone.utc).isoformat(), "environment": {"platform": platform.platform(), "machine": platform.machine(), "python": platform.python_version()}, "binaries": {k: binary_metadata(v, args.go) for k, v in binaries.items()}, "settings": {"tls": modes, "negative": args.reject_tls, "log_level": "debug", "application_attempts": 1, "readiness": "observed log milestones", "timeouts": {k: getattr(args, k) for k in ("startup_timeout", "phase_timeout", "io_timeout", "cleanup_timeout")}}, "results": []}
     def checkpoint():
         atomic_json(output, report)
     checkpoint()
     def interrupted(signum, frame):
         raise KeyboardInterrupt
     old_term = signal.signal(signal.SIGTERM, interrupted)
+    certificates = tempfile.TemporaryDirectory(prefix="tunveo-matrix-certs-")
     try:
+        args.certificates = {}
+        if 2 in modes:
+            folder = Path(certificates.name)
+            args.certificates["trusted"] = certificate_fixture(folder, "trusted")
+            args.certificates["untrusted"] = certificate_fixture(folder, "other")
+            args.certificates["wrong-hostname"] = certificate_fixture(folder, "wrong", "IP:127.0.0.2")
+            (folder / "empty-roots").mkdir()
+        args.cert_root = Path(certificates.name)
         cases = list(dict.fromkeys(args.case or [(t, m) for m in (1, 2) for t in range(4)]))
         pools = list(dict.fromkeys(args.pool or [(2, 8)]))
-        for pair, (transport, mode), (minimum, maximum), iteration in itertools.product(pairs, cases, pools, range(1, args.repeat + 1)):
+        for pair, tls, (transport, mode), (minimum, maximum), iteration in itertools.product(pairs, modes, cases, pools, range(1, args.repeat + 1)):
             server, client = (binaries[k] for k in pair.split("/"))
-            row = {"id": f"{len(report['results']) + 1:04d}", "pair_server_client": pair, "transport": transport, "mode": mode, "tls": 1, "pool": {"min": minimum, "max": maximum}, "iteration": iteration}
+            effective = 1 if transport in (1, 3) and tls == 0 else tls
+            row = {"id": f"{len(report['results']) + 1:04d}", "pair_server_client": pair, "transport": transport, "mode": mode, "tls": tls, "effective_tls": effective, "negative": args.reject_tls, "pool": {"min": minimum, "max": maximum}, "iteration": iteration}
             report["results"].append(row)
             checkpoint()
             run_case(server, client, row, root / row["id"], args, checkpoint)
-            print(json.dumps({k: row[k] for k in ("id", "pair_server_client", "transport", "mode", "pool", "iteration", "status", "failed_phase") if k in row}), flush=True)
+            print(json.dumps({k: row[k] for k in ("id", "pair_server_client", "transport", "mode", "tls", "effective_tls", "negative", "pool", "iteration", "status", "failed_phase") if k in row}), flush=True)
         report["status"] = "failed" if any(row["status"] != "passed" for row in report["results"]) else "passed"
     except KeyboardInterrupt:
         report["status"] = "interrupted"
@@ -432,6 +498,7 @@ def main(argv=None):
         checkpoint()
         print(f"Evidence: {output}", flush=True)
         signal.signal(signal.SIGTERM, old_term)
+        certificates.cleanup()
     return {"passed": 0, "failed": 1, "runner_error": 2, "interrupted": 130}[report["status"]]
 
 

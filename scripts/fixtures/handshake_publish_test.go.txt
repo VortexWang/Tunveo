@@ -1,0 +1,52 @@
+package server
+
+import (
+ "crypto/tls"
+ "encoding/json"
+ "net"
+ "net/http"
+ "testing"
+ "time"
+
+ "MODULE/internal/common"
+)
+
+func TestHandshakeCloseBeforeHandlerReturn(t *testing.T) {
+ cfg, err := common.NewTLSConfig()
+ if err != nil { t.Fatal(err) }
+ listener, err := net.ListenTCP("tcp", &net.TCPAddr{IP:net.ParseIP("127.0.0.1")})
+ if err != nil { t.Fatal(err) }
+ base := common.NewCommon(common.NewLogger(common.None,false),cfg)
+ s := &Server{Common:COMMON_VALUE}
+ s.CoreType="server"; s.DataFlow="-"; s.TLSCode="1"; s.PoolType="0"; s.TunnelKey="fixture-only"; s.MaxPoolCapacity=8
+ s.TunnelListener=listener; s.TunnelTCPAddr=listener.Addr().(*net.TCPAddr); s.InitContext()
+ returned:=make(chan struct{}); released:=make(chan struct{})
+ // Hold the HTTP handler after it publishes done. Server.Close is allowed
+ // to run to completion before net/http can flush the handler's buffer.
+ handshakePublishHook=func(){ defer close(released); <-returned }
+ finished:=make(chan error,1)
+ go func(){ finished<-s.TunnelHandshake(); close(returned) }()
+ tr:=&http.Transport{TLSClientConfig:&tls.Config{InsecureSkipVerify:true}}
+ defer tr.CloseIdleConnections()
+ client:=&http.Client{Transport:tr,Timeout:2*time.Second}
+ req,_:=http.NewRequest("GET","https://"+listener.Addr().String()+"/",nil)
+ req.Header.Set("Authorization","Bearer "+s.GenerateAuthToken())
+ resp,requestErr:=client.Do(req)
+ var decodeErr error
+ var payload map[string]any
+ if resp!=nil { decodeErr=json.NewDecoder(resp.Body).Decode(&payload); resp.Body.Close() }
+ select {
+ case err:=<-finished: if err!=nil { t.Fatal(err) }
+ case <-time.After(3*time.Second): s.Cancel(); t.Fatal("handshake did not return")
+ }
+ <-released
+ s.Cancel(); s.TunnelListener.Close()
+ failed:=requestErr!=nil || decodeErr!=nil
+ if expectHandshakeEOF {
+  if !failed { t.Fatal("original unexpectedly delivered a complete response") }
+  t.Logf("REPRODUCED: request=%v decode=%v",requestErr,decodeErr)
+ } else {
+  if failed || payload["flow"]!="-" { t.Fatalf("response truncated: request=%v decode=%v payload=%v",requestErr,decodeErr,payload) }
+  t.Log("PASSED: complete JSON before server close")
+ }
+}

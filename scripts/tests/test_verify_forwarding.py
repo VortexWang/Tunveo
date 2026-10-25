@@ -18,7 +18,7 @@ from verify_forwarding import exchange
 RUNNER = Path(__file__).resolve().parents[1] / 'verify_forwarding.py'
 FIXTURE = '''#!/usr/bin/env python3
 import os,socket,sys,threading,time
-from urllib.parse import urlsplit
+from urllib.parse import urlsplit,parse_qs
 if sys.argv[1]=='version':
  print('fixture-dev');sys.exit(0)
 u=urlsplit(sys.argv[1])
@@ -41,8 +41,10 @@ if u.scheme=='server':
    b,a=udp.recvfrom(65536)
    if os.environ.get('FIXTURE_MODE')!='drop-udp':udp.sendto(b,a)
  threading.Thread(target=datagrams,daemon=True).start()
-print('Sending tunnel config',flush=True)
-print('Loading tunnel config',flush=True)
+tls=os.environ.get('FIXTURE_TLS',parse_qs(u.query).get('tls',['1'])[0])
+if parse_qs(u.query).get('type',['0'])[0]=='1' and tls=='0':tls='1'
+print('Sending tunnel config: TLS='+tls+'|',flush=True)
+print('Loading tunnel config: TLS='+tls+'|',flush=True)
 print('Marking tunnel handshake as complete',flush=True)
 if os.environ.get('FIXTURE_MODE')!='no-verify':print('RAM cert verified with sha256 fingerprint: fixture',flush=True)
 while True:time.sleep(.1)
@@ -83,6 +85,28 @@ class RunnerTests(unittest.TestCase):
                     self.assertLessEqual(observed, lengths[index])
             for role in ('server', 'client'):
                 self.assertIn('RAM cert verified', Path(row['logs'][role]).read_text())
+
+    def test_plain_mode_does_not_require_ram_fingerprint(self):
+        env = dict(os.environ, FIXTURE_MODE='no-verify', FIXTURE_TLS='0')
+        p = subprocess.run(self.command('--tls', '0'), env=env, capture_output=True, text=True, timeout=8)
+        self.assertEqual(p.returncode, 0, p.stderr + p.stdout)
+        row = self.report()['results'][0]
+        self.assertEqual(row['effective_tls'], 0)
+        self.assertEqual(row['phases']['certificate_verification']['status'], 'not_applicable')
+        self.assertEqual(row['phases']['tcp_echo']['status'], 'passed')
+
+    def test_negative_control_rejects_a_ready_untrusted_pool(self):
+        env = dict(os.environ, FIXTURE_TLS='2')
+        p = subprocess.run(self.command('--tls', '2', '--reject-tls', 'untrusted-ca'), env=env, capture_output=True, text=True, timeout=8)
+        self.assertEqual(p.returncode, 1, p.stderr + p.stdout)
+        self.assertIn('untrusted data pool became ready', self.report()['results'][0]['error'])
+
+    def test_negotiated_mode_mismatch_is_a_failure(self):
+        env = dict(os.environ, FIXTURE_TLS='0')
+        p = subprocess.run(self.command(), env=env, capture_output=True, text=True, timeout=8)
+        self.assertEqual(p.returncode, 1, p.stderr + p.stdout)
+        self.assertEqual(self.report()['results'][0]['status'], 'failed')
+        self.assertIn('negotiated TLS mode', self.report()['results'][0]['error'])
 
     def test_tcp_success_is_preserved_on_udp_timeout_and_logs_are_redacted(self):
         env = dict(os.environ, FIXTURE_MODE='drop-udp')
