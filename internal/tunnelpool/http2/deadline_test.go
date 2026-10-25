@@ -163,6 +163,19 @@ func TestH2WriteDeadlineIsolation(t *testing.T) {
 			done := make(chan result, 1)
 			// No peer reads: exceed HTTP/2 flow control and the adapter's bounded staging.
 			go func() { n, e := a.Write(bytes.Repeat([]byte("x"), 16<<20)); done <- result{n, e} }()
+			// Observe one real byte before starting the clock. This proves
+			// the writer entered upstream I/O, rather than timing allocation
+			// or goroutine startup under concurrent full-suite race load.
+			started := make(chan error, 1)
+			go func() { _, e := io.ReadFull(peer, make([]byte, 1)); started <- e }()
+			select {
+			case e := <-started:
+				if e != nil {
+					t.Fatal(e)
+				}
+			case <-time.After(3 * time.Second):
+				t.Fatal("writer never reached peer")
+			}
 			if e := a.SetWriteDeadline(time.Now().Add(100 * time.Millisecond)); e != nil {
 				t.Fatal(e)
 			}
@@ -208,7 +221,7 @@ func TestH2WriteDeadlineIsolation(t *testing.T) {
 				t.Fatal(e)
 			}
 			drained := make(chan error, 1)
-			go func() { _, e := io.CopyN(io.Discard, peer, int64(r.n)); drained <- e }()
+			go func() { _, e := io.CopyN(io.Discard, peer, int64(r.n-1)); drained <- e }()
 			select {
 			case e := <-drained:
 				if e != nil {
