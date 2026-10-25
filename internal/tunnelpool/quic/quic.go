@@ -12,6 +12,8 @@ import (
 	"sync/atomic"
 	"time"
 
+	idlequeue "github.com/VortexWang/Tunveo/internal/tunnelpool/idle"
+
 	quic "github.com/quic-go/quic-go"
 )
 
@@ -32,8 +34,7 @@ const (
 )
 
 type Pool struct {
-	streams      sync.Map
-	idChan       chan string
+	idle         *idlequeue.Queue[*quic.Stream]
 	tlsCode      string
 	hostname     string
 	clientIP     string
@@ -138,8 +139,7 @@ func NewClientPool(
 	}
 
 	pool := &Pool{
-		streams:      sync.Map{},
-		idChan:       make(chan string, maxCap),
+		idle:         idlequeue.New[*quic.Stream](maxCap),
 		tlsCode:      tlsCode,
 		hostname:     hostname,
 		addrResolver: addrResolver,
@@ -170,8 +170,7 @@ func NewServerPool(
 	}
 
 	pool := &Pool{
-		streams:    sync.Map{},
-		idChan:     make(chan string, maxCap),
+		idle:       idlequeue.New[*quic.Stream](maxCap),
 		clientIP:   clientIP,
 		tlsConfig:  tlsConfig,
 		listenAddr: listenAddr,
@@ -213,15 +212,11 @@ func (p *Pool) createStream() bool {
 	id = hex.EncodeToString(buf)
 	stream.SetReadDeadline(time.Time{})
 
-	p.streams.Store(id, stream)
-	select {
-	case p.idChan <- id:
-		return true
-	default:
-		p.streams.Delete(id)
+	if !p.idle.Publish(p.ctx, id, stream) {
 		stream.Close()
 		return false
 	}
+	return true
 }
 
 func (p *Pool) handleStream(stream *quic.Stream) {
@@ -246,7 +241,7 @@ func (p *Pool) handleStream(stream *quic.Stream) {
 		return
 	}
 
-	if _, exist := p.streams.Load(id); exist {
+	if p.idle.Contains(id) {
 		return
 	}
 
@@ -254,13 +249,10 @@ func (p *Pool) handleStream(stream *quic.Stream) {
 		return
 	}
 
-	select {
-	case p.idChan <- id:
-		p.streams.Store(id, stream)
-		streamClosed = true
-	default:
+	if !p.idle.Publish(p.ctx, id, stream) {
 		return
 	}
+	streamClosed = true
 }
 
 func (p *Pool) establishConnection() error {
@@ -320,7 +312,7 @@ func (p *Pool) ClientManager() {
 	for p.ctx.Err() == nil {
 		p.adjustInterval()
 		capacity := int(p.capacity.Load())
-		need := capacity - len(p.idChan)
+		need := capacity - p.idle.Len()
 		created := 0
 
 		if need > 0 {
@@ -409,70 +401,44 @@ func (p *Pool) ServerManager() {
 func (p *Pool) OutgoingGet(id string, timeout time.Duration) (net.Conn, error) {
 	ctx, cancel := context.WithTimeout(p.ctx, timeout)
 	defer cancel()
-
-	for {
-		if stream, ok := p.streams.LoadAndDelete(id); ok {
-			<-p.idChan
-			conn := p.quicConn.Load()
-			if conn == nil {
-				return nil, fmt.Errorf("OutgoingGet: connection not available")
-			}
-			return &StreamConn{
-				Stream:     stream.(*quic.Stream),
-				conn:       conn,
-				localAddr:  conn.LocalAddr(),
-				remoteAddr: conn.RemoteAddr(),
-			}, nil
-		}
-
-		select {
-		case <-time.After(idRetryInterval):
-		case <-ctx.Done():
-			return nil, fmt.Errorf("OutgoingGet: stream not found")
-		}
+	stream, err := p.idle.TakeID(ctx, id)
+	if err != nil {
+		return nil, fmt.Errorf("OutgoingGet: stream not found: %w", err)
 	}
+	conn := p.quicConn.Load()
+	if conn == nil {
+		stream.Close()
+		return nil, fmt.Errorf("OutgoingGet: connection not available")
+	}
+	return &StreamConn{Stream: stream, conn: conn, localAddr: conn.LocalAddr(), remoteAddr: conn.RemoteAddr()}, nil
 }
 
 func (p *Pool) IncomingGet(timeout time.Duration) (string, net.Conn, error) {
 	ctx, cancel := context.WithTimeout(p.ctx, timeout)
 	defer cancel()
-
-	for {
-		select {
-		case <-ctx.Done():
-			return "", nil, fmt.Errorf("IncomingGet: insufficient streams")
-		case id := <-p.idChan:
-			if stream, ok := p.streams.LoadAndDelete(id); ok {
-				conn := p.quicConn.Load()
-				if conn == nil {
-					continue
-				}
-				return id, &StreamConn{
-					Stream:     stream.(*quic.Stream),
-					conn:       conn,
-					localAddr:  conn.LocalAddr(),
-					remoteAddr: conn.RemoteAddr(),
-				}, nil
-			}
-			continue
-		}
+	id, stream, err := p.idle.Take(ctx)
+	if err != nil {
+		return "", nil, fmt.Errorf("IncomingGet: insufficient streams: %w", err)
 	}
+	conn := p.quicConn.Load()
+	if conn == nil {
+		stream.Close()
+		return "", nil, fmt.Errorf("IncomingGet: connection not available")
+	}
+	return id, &StreamConn{Stream: stream, conn: conn, localAddr: conn.LocalAddr(), remoteAddr: conn.RemoteAddr()}, nil
 }
 
 func (p *Pool) Flush() {
+	values := p.idle.Drain()
 	var wg sync.WaitGroup
-	p.streams.Range(func(key, value any) bool {
+	for _, value := range values {
 		wg.Go(func() {
-			if stream, ok := value.(*quic.Stream); ok {
-				stream.Close()
+			if value != nil {
+				value.Close()
 			}
 		})
-		return true
-	})
+	}
 	wg.Wait()
-
-	p.streams = sync.Map{}
-	p.idChan = make(chan string, p.maxCap)
 }
 
 func (p *Pool) Close() {
@@ -494,7 +460,7 @@ func (p *Pool) Ready() bool {
 }
 
 func (p *Pool) Active() int {
-	return len(p.idChan)
+	return p.idle.Len()
 }
 
 func (p *Pool) Capacity() int {
@@ -518,7 +484,7 @@ func (p *Pool) ResetError() {
 }
 
 func (p *Pool) adjustInterval() {
-	idle := len(p.idChan)
+	idle := p.idle.Len()
 	capacity := int(p.capacity.Load())
 	interval := time.Duration(p.interval.Load())
 
