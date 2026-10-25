@@ -1,0 +1,88 @@
+{
+  "source_commit": "290c3f871fb7d72f43577bf6688d9b4a4cc47ccd",
+  "go_version": "go1.26.10",
+  "scope": "compile only; not runtime/platform certification",
+  "results": [
+    {
+      "goos": "darwin",
+      "goarch": "amd64",
+      "cgo_enabled": 0,
+      "exit_code": 0,
+      "duration_seconds": 14.88,
+      "sha256": "d9389daf05a064ea135b94d2ae4b3dad452a4b36c62f26d120ae529cf6495183",
+      "error": null,
+      "vcs_modified": true
+    },
+    {
+      "goos": "darwin",
+      "goarch": "arm64",
+      "cgo_enabled": 0,
+      "exit_code": 0,
+      "duration_seconds": 15.03,
+      "sha256": "cf0154190453884d3c03f2ca44459e9dd6cfe39b62643ee7a789d9f91e0aa5af",
+      "error": null,
+      "vcs_modified": true
+    },
+    {
+      "goos": "freebsd",
+      "goarch": "amd64",
+      "cgo_enabled": 0,
+      "exit_code": 0,
+      "duration_seconds": 14.99,
+      "sha256": "5a6ea79c812f32013feaad0b8cf68a48a2afa74f50e58913afcde8b2762a74ac",
+      "error": null,
+      "vcs_modified": true
+    },
+    {
+      "goos": "freebsd",
+      "goarch": "arm64",
+      "cgo_enabled": 0,
+      "exit_code": 0,
+      "duration_seconds": 15.25,
+      "sha256": "23d702b2762bf38788a11bcd5dbb101ee89ce3a52b3bacc196bbfa0e1a93d624",
+      "error": null,
+      "vcs_modified": true
+    },
+    {
+      "goos": "linux",
+      "goarch": "amd64",
+      "cgo_enabled": 0,
+      "exit_code": 0,
+      "duration_seconds": 6.26,
+      "sha256": "7d8bf9add9aa5560fd4058f296b9f6c1a8d172a7b9b474d957457cf743e267ca",
+      "error": null,
+      "vcs_modified": true
+    },
+    {
+      "goos": "linux",
+      "goarch": "arm64",
+      "cgo_enabled": 0,
+      "exit_code": 0,
+      "duration_seconds": 15.52,
+      "sha256": "1cf9ed51eace64256a002fad5a921c2d5803e0ad1b5dd8dbae3e8a3987c47078",
+      "error": null,
+      "vcs_modified": true
+    },
+    {
+      "goos": "windows",
+      "goarch": "amd64",
+      "cgo_enabled": 0,
+      "exit_code": 0,
+      "duration_seconds": 15.55,
+      "sha256": "203a2269fd77ad2a7049ecc914adee72a3e231cb009345e4bdc563d3d5310a80",
+      "error": null,
+      "vcs_modified": true
+    },
+    {
+      "goos": "windows",
+      "goarch": "arm64",
+      "cgo_enabled": 0,
+      "exit_code": 0,
+      "duration_seconds": 14.48,
+      "sha256": "ff8b05c0e330673ee44158f23972a0fc2093e9d1c1452ab0551972cd3ec9eb29",
+      "error": null,
+      "vcs_modified": true
+    }
+  ],
+  "note": "Compile-only checks; documentation/evidence edits may set the VCS dirty bit. Production Go files and selected modules match source_commit."
+}

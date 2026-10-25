@@ -19,7 +19,7 @@ Master state now uses `gob/tunveo.gob` beside the executable; exported instance 
 ## Validation gates
 
 1. Verify upstream commits and original source/license hashes.
-2. Build upstream and Tunveo using Go 1.26.5; compare selected external dependency versions.
+2. For the original migration comparison, use the recorded Go 1.26.5 baseline. Current maintained Tunveo requires Go 1.26.10 or newer; security-upgrade reports compare exact recorded toolchains and modules rather than assuming identical builds.
 3. Confirm no module dependency remains on the four upstream wrapper modules.
 4. Run module verification, vet, unit tests and race-enabled tests.
 5. Exercise TCP/UDP business forwarding through all supported transport/TLS combinations.
@@ -52,3 +52,5 @@ Each pairing covers four pool transports, two flow modes and both TCP and UDP ec
 - API key values are removed from startup/load/rotation logs. Read an existing key with `tunveo api-key --state /path/to/gob/tunveo.gob`, or consume the authenticated rotation response. The explicit local command prints the key and must not be captured in routine logs.
 
 See [security fix record](tls-log-safety.md) for validation and remaining risks.
+
+Current build requirements and dependency changes: [Go/HTTP2 security update](security-dependencies.md). Rebuild binaries to obtain standard-library fixes; changing only external module versions does not update an existing executable.

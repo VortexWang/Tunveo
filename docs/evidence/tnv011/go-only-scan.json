@@ -1,0 +1,472 @@
+{
+  "source_commit": "978ba2ea2db2b79ec47f1b97aea416458d798614",
+  "target": "linux/amd64",
+  "config": {
+    "protocol_version": "v1.0.0",
+    "scanner_name": "govulncheck",
+    "scanner_version": "v1.9.0",
+    "db": "https://vuln.go.dev",
+    "db_last_modified": "2026-10-21T00:27:29Z",
+    "go_version": "go1.26.10",
+    "scan_level": "symbol",
+    "scan_mode": "source"
+  },
+  "command": "PATH=<recorded-go>/bin:$PATH GOTOOLCHAIN=local govulncheck -json ./...",
+  "json_exit_code": 0,
+  "counts": {
+    "module": 10,
+    "imported": 5,
+    "called": 5
+  },
+  "ids": {
+    "module": [
+      "GO-2026-5932",
+      "GO-2026-6303",
+      "GO-2026-6354",
+      "GO-2026-6355",
+      "GO-2026-6603",
+      "GO-2026-6610",
+      "GO-2026-6611",
+      "GO-2026-6612",
+      "GO-2026-6617",
+      "GO-2026-6629"
+    ],
+    "imported": [
+      "GO-2026-6603",
+      "GO-2026-6610",
+      "GO-2026-6611",
+      "GO-2026-6612",
+      "GO-2026-6617"
+    ],
+    "called": [
+      "GO-2026-6603",
+      "GO-2026-6610",
+      "GO-2026-6611",
+      "GO-2026-6612",
+      "GO-2026-6617"
+    ]
+  },
+  "called_module_advisory_pairs": 5,
+  "called": [
+    {
+      "id": "GO-2026-6603",
+      "affected_module": "golang.org/x/net",
+      "affected_version": "v0.56.0",
+      "fixed_version": "v0.60.0",
+      "summary": "HTTP/2 server memory exhaustion due to Trailer headers in net/http",
+      "advisory_url": "https://pkg.go.dev/vuln/GO-2026-6603",
+      "published": "2026-10-08T22:31:09Z",
+      "modified": "2026-10-08T22:31:09Z",
+      "example_trace": [
+        {
+          "module": "golang.org/x/net",
+          "version": "v0.56.0",
+          "package": "golang.org/x/net/http2",
+          "function": "Error",
+          "receiver": "GoAwayError",
+          "position": {
+            "filename": "http2/transport_common.go",
+            "offset": 14835,
+            "line": 423,
+            "column": 22
+          }
+        },
+        {
+          "module": "github.com/VortexWang/Tunveo",
+          "package": "github.com/VortexWang/Tunveo/internal/master",
+          "function": "PerformTCPing",
+          "receiver": "*Master",
+          "position": {
+            "filename": "internal/master/rest.go",
+            "offset": 15387,
+            "line": 467,
+            "column": 22
+          }
+        }
+      ],
+      "symbols": [
+        "golang.org/x/net/http2.*ClientConn.Ping",
+        "golang.org/x/net/http2.*ClientConn.RoundTrip",
+        "golang.org/x/net/http2.*Server.ServeConn",
+        "golang.org/x/net/http2.*Transport.NewClientConn",
+        "golang.org/x/net/http2.*bufferedWriterTimeoutWriter.Write",
+        "golang.org/x/net/http2.*gzipReader.Close",
+        "golang.org/x/net/http2.*gzipReader.Read",
+        "golang.org/x/net/http2.*requestBody.Close",
+        "golang.org/x/net/http2.*requestBody.Read",
+        "golang.org/x/net/http2.*responseWriter.Flush",
+        "golang.org/x/net/http2.*responseWriter.FlushError",
+        "golang.org/x/net/http2.*responseWriter.Write",
+        "golang.org/x/net/http2.*responseWriter.WriteHeader",
+        "golang.org/x/net/http2.*responseWriter.WriteString",
+        "golang.org/x/net/http2.*writeData.String",
+        "golang.org/x/net/http2..ConfigureServer",
+        "golang.org/x/net/http2.ConnectionError.Error",
+        "golang.org/x/net/http2.ErrCode.String",
+        "golang.org/x/net/http2.FrameHeader.String",
+        "golang.org/x/net/http2.FrameType.String",
+        "golang.org/x/net/http2.FrameWriteRequest.String",
+        "golang.org/x/net/http2.GoAwayError.Error",
+        "golang.org/x/net/http2.Setting.String",
+        "golang.org/x/net/http2.SettingID.String",
+        "golang.org/x/net/http2.StreamError.Error",
+        "golang.org/x/net/http2.chunkWriter.Write",
+        "golang.org/x/net/http2.connError.Error",
+        "golang.org/x/net/http2.duplicatePseudoHeaderError.Error",
+        "golang.org/x/net/http2.headerFieldNameError.Error",
+        "golang.org/x/net/http2.headerFieldValueError.Error",
+        "golang.org/x/net/http2.pseudoHeaderError.Error",
+        "golang.org/x/net/http2.stickyErrWriter.Write",
+        "golang.org/x/net/http2.transportResponseBody.Close",
+        "golang.org/x/net/http2.transportResponseBody.Read"
+      ]
+    },
+    {
+      "id": "GO-2026-6617",
+      "affected_module": "golang.org/x/net",
+      "affected_version": "v0.56.0",
+      "fixed_version": "v0.60.0",
+      "summary": "HTTP/2 server crash due to HPACK encoder race in net/http",
+      "advisory_url": "https://pkg.go.dev/vuln/GO-2026-6617",
+      "published": "2026-10-08T22:31:09Z",
+      "modified": "2026-10-08T22:31:09Z",
+      "example_trace": [
+        {
+          "module": "golang.org/x/net",
+          "version": "v0.56.0",
+          "package": "golang.org/x/net/http2",
+          "function": "Error",
+          "receiver": "headerFieldNameError",
+          "position": {
+            "filename": "http2/errors.go",
+            "offset": 4221,
+            "line": 132,
+            "column": 31
+          }
+        },
+        {
+          "module": "github.com/VortexWang/Tunveo",
+          "package": "github.com/VortexWang/Tunveo/internal/master",
+          "function": "PerformTCPing",
+          "receiver": "*Master",
+          "position": {
+            "filename": "internal/master/rest.go",
+            "offset": 15387,
+            "line": 467,
+            "column": 22
+          }
+        }
+      ],
+      "symbols": [
+        "golang.org/x/net/http2.*ClientConn.Ping",
+        "golang.org/x/net/http2.*ClientConn.RoundTrip",
+        "golang.org/x/net/http2.*Server.ServeConn",
+        "golang.org/x/net/http2.*Transport.NewClientConn",
+        "golang.org/x/net/http2.*bufferedWriterTimeoutWriter.Write",
+        "golang.org/x/net/http2.*gzipReader.Close",
+        "golang.org/x/net/http2.*gzipReader.Read",
+        "golang.org/x/net/http2.*requestBody.Close",
+        "golang.org/x/net/http2.*requestBody.Read",
+        "golang.org/x/net/http2.*responseWriter.Flush",
+        "golang.org/x/net/http2.*responseWriter.FlushError",
+        "golang.org/x/net/http2.*responseWriter.Write",
+        "golang.org/x/net/http2.*responseWriter.WriteHeader",
+        "golang.org/x/net/http2.*responseWriter.WriteString",
+        "golang.org/x/net/http2.*writeData.String",
+        "golang.org/x/net/http2..ConfigureServer",
+        "golang.org/x/net/http2.ConnectionError.Error",
+        "golang.org/x/net/http2.ErrCode.String",
+        "golang.org/x/net/http2.FrameHeader.String",
+        "golang.org/x/net/http2.FrameType.String",
+        "golang.org/x/net/http2.FrameWriteRequest.String",
+        "golang.org/x/net/http2.GoAwayError.Error",
+        "golang.org/x/net/http2.Setting.String",
+        "golang.org/x/net/http2.SettingID.String",
+        "golang.org/x/net/http2.StreamError.Error",
+        "golang.org/x/net/http2.chunkWriter.Write",
+        "golang.org/x/net/http2.connError.Error",
+        "golang.org/x/net/http2.duplicatePseudoHeaderError.Error",
+        "golang.org/x/net/http2.headerFieldNameError.Error",
+        "golang.org/x/net/http2.headerFieldValueError.Error",
+        "golang.org/x/net/http2.pseudoHeaderError.Error",
+        "golang.org/x/net/http2.stickyErrWriter.Write",
+        "golang.org/x/net/http2.transportResponseBody.Close",
+        "golang.org/x/net/http2.transportResponseBody.Read"
+      ]
+    },
+    {
+      "id": "GO-2026-6612",
+      "affected_module": "golang.org/x/net",
+      "affected_version": "v0.56.0",
+      "fixed_version": "v0.60.0",
+      "summary": "Double flow control refund on HTTP/2 server streams in net/http",
+      "advisory_url": "https://pkg.go.dev/vuln/GO-2026-6612",
+      "published": "2026-10-08T22:31:09Z",
+      "modified": "2026-10-08T22:31:09Z",
+      "example_trace": [
+        {
+          "module": "golang.org/x/net",
+          "version": "v0.56.0",
+          "package": "golang.org/x/net/http2",
+          "function": "Write",
+          "receiver": "stickyErrWriter",
+          "position": {
+            "filename": "http2/transport.go",
+            "offset": 13287,
+            "line": 393,
+            "column": 28
+          }
+        },
+        {
+          "module": "stdlib",
+          "version": "v1.26.10",
+          "package": "bufio",
+          "function": "Write",
+          "receiver": "*Writer",
+          "position": {
+            "filename": "src/bufio/bufio.go",
+            "offset": 19028,
+            "line": 682,
+            "column": 25
+          }
+        },
+        {
+          "module": "stdlib",
+          "version": "v1.26.10",
+          "package": "fmt",
+          "function": "Fprintf",
+          "position": {
+            "filename": "src/fmt/print.go",
+            "offset": 6683,
+            "line": 225,
+            "column": 18
+          }
+        },
+        {
+          "module": "github.com/VortexWang/Tunveo",
+          "package": "github.com/VortexWang/Tunveo/internal/master",
+          "function": "HandleSwaggerUI",
+          "receiver": "*Master",
+          "position": {
+            "filename": "internal/master/rest.go",
+            "offset": 16589,
+            "line": 497,
+            "column": 13
+          }
+        }
+      ],
+      "symbols": [
+        "golang.org/x/net/http2.*ClientConn.Ping",
+        "golang.org/x/net/http2.*ClientConn.RoundTrip",
+        "golang.org/x/net/http2.*Server.ServeConn",
+        "golang.org/x/net/http2.*Transport.NewClientConn",
+        "golang.org/x/net/http2.*bufferedWriterTimeoutWriter.Write",
+        "golang.org/x/net/http2.*gzipReader.Close",
+        "golang.org/x/net/http2.*gzipReader.Read",
+        "golang.org/x/net/http2.*requestBody.Close",
+        "golang.org/x/net/http2.*requestBody.Read",
+        "golang.org/x/net/http2.*responseWriter.Flush",
+        "golang.org/x/net/http2.*responseWriter.FlushError",
+        "golang.org/x/net/http2.*responseWriter.Write",
+        "golang.org/x/net/http2.*responseWriter.WriteHeader",
+        "golang.org/x/net/http2.*responseWriter.WriteString",
+        "golang.org/x/net/http2.*writeData.String",
+        "golang.org/x/net/http2..ConfigureServer",
+        "golang.org/x/net/http2.ConnectionError.Error",
+        "golang.org/x/net/http2.ErrCode.String",
+        "golang.org/x/net/http2.FrameHeader.String",
+        "golang.org/x/net/http2.FrameType.String",
+        "golang.org/x/net/http2.FrameWriteRequest.String",
+        "golang.org/x/net/http2.GoAwayError.Error",
+        "golang.org/x/net/http2.Setting.String",
+        "golang.org/x/net/http2.SettingID.String",
+        "golang.org/x/net/http2.StreamError.Error",
+        "golang.org/x/net/http2.chunkWriter.Write",
+        "golang.org/x/net/http2.connError.Error",
+        "golang.org/x/net/http2.duplicatePseudoHeaderError.Error",
+        "golang.org/x/net/http2.headerFieldNameError.Error",
+        "golang.org/x/net/http2.headerFieldValueError.Error",
+        "golang.org/x/net/http2.pseudoHeaderError.Error",
+        "golang.org/x/net/http2.stickyErrWriter.Write",
+        "golang.org/x/net/http2.transportResponseBody.Close",
+        "golang.org/x/net/http2.transportResponseBody.Read"
+      ]
+    },
+    {
+      "id": "GO-2026-6611",
+      "affected_module": "golang.org/x/net",
+      "affected_version": "v0.56.0",
+      "fixed_version": "v0.60.0",
+      "summary": "Excessive CPU consumption from repeated initial window changes in net/http",
+      "advisory_url": "https://pkg.go.dev/vuln/GO-2026-6611",
+      "published": "2026-10-08T22:31:09Z",
+      "modified": "2026-10-08T22:31:09Z",
+      "example_trace": [
+        {
+          "module": "golang.org/x/net",
+          "version": "v0.56.0",
+          "package": "golang.org/x/net/http2",
+          "function": "Close",
+          "receiver": "transportResponseBody",
+          "position": {
+            "filename": "http2/transport.go",
+            "offset": 65165,
+            "line": 2227,
+            "column": 32
+          }
+        },
+        {
+          "module": "github.com/VortexWang/Tunveo",
+          "package": "github.com/VortexWang/Tunveo/internal/tunnelpool/http2",
+          "function": "Close",
+          "receiver": "*http2Stream",
+          "position": {
+            "filename": "internal/tunnelpool/http2/nph2.go",
+            "offset": 5113,
+            "line": 227,
+            "column": 17
+          }
+        }
+      ],
+      "symbols": [
+        "golang.org/x/net/http2.*ClientConn.Ping",
+        "golang.org/x/net/http2.*ClientConn.RoundTrip",
+        "golang.org/x/net/http2.*Server.ServeConn",
+        "golang.org/x/net/http2.*Transport.NewClientConn",
+        "golang.org/x/net/http2.*bufferedWriterTimeoutWriter.Write",
+        "golang.org/x/net/http2.*gzipReader.Close",
+        "golang.org/x/net/http2.*gzipReader.Read",
+        "golang.org/x/net/http2.*requestBody.Close",
+        "golang.org/x/net/http2.*requestBody.Read",
+        "golang.org/x/net/http2.*responseWriter.Flush",
+        "golang.org/x/net/http2.*responseWriter.FlushError",
+        "golang.org/x/net/http2.*responseWriter.Write",
+        "golang.org/x/net/http2.*responseWriter.WriteHeader",
+        "golang.org/x/net/http2.*responseWriter.WriteString",
+        "golang.org/x/net/http2.*writeData.String",
+        "golang.org/x/net/http2..ConfigureServer",
+        "golang.org/x/net/http2.ConnectionError.Error",
+        "golang.org/x/net/http2.ErrCode.String",
+        "golang.org/x/net/http2.FrameHeader.String",
+        "golang.org/x/net/http2.FrameType.String",
+        "golang.org/x/net/http2.FrameWriteRequest.String",
+        "golang.org/x/net/http2.GoAwayError.Error",
+        "golang.org/x/net/http2.Setting.String",
+        "golang.org/x/net/http2.SettingID.String",
+        "golang.org/x/net/http2.StreamError.Error",
+        "golang.org/x/net/http2.chunkWriter.Write",
+        "golang.org/x/net/http2.connError.Error",
+        "golang.org/x/net/http2.duplicatePseudoHeaderError.Error",
+        "golang.org/x/net/http2.headerFieldNameError.Error",
+        "golang.org/x/net/http2.headerFieldValueError.Error",
+        "golang.org/x/net/http2.pseudoHeaderError.Error",
+        "golang.org/x/net/http2.stickyErrWriter.Write",
+        "golang.org/x/net/http2.transportResponseBody.Close",
+        "golang.org/x/net/http2.transportResponseBody.Read"
+      ]
+    },
+    {
+      "id": "GO-2026-6610",
+      "affected_module": "golang.org/x/net",
+      "affected_version": "v0.56.0",
+      "fixed_version": "v0.60.0",
+      "summary": "HTTP/2 transport accepts malformed framing-related headers in net/http",
+      "advisory_url": "https://pkg.go.dev/vuln/GO-2026-6610",
+      "published": "2026-10-08T22:31:09Z",
+      "modified": "2026-10-08T22:31:09Z",
+      "example_trace": [
+        {
+          "module": "golang.org/x/net",
+          "version": "v0.56.0",
+          "package": "golang.org/x/net/http2",
+          "function": "NewClientConn",
+          "receiver": "*Transport",
+          "position": {
+            "filename": "http2/transport_common.go",
+            "offset": 9278,
+            "line": 241,
+            "column": 21
+          }
+        },
+        {
+          "module": "github.com/VortexWang/Tunveo",
+          "package": "github.com/VortexWang/Tunveo/internal/tunnelpool/http2",
+          "function": "establishConnection",
+          "receiver": "*Pool",
+          "position": {
+            "filename": "internal/tunnelpool/http2/nph2.go",
+            "offset": 8495,
+            "line": 401,
+            "column": 42
+          }
+        },
+        {
+          "module": "github.com/VortexWang/Tunveo",
+          "package": "github.com/VortexWang/Tunveo/internal/tunnelpool/http2",
+          "function": "ClientManager",
+          "receiver": "*Pool",
+          "position": {
+            "filename": "internal/tunnelpool/http2/nph2.go",
+            "offset": 9634,
+            "line": 456,
+            "column": 35
+          }
+        }
+      ],
+      "symbols": [
+        "golang.org/x/net/http2.*Transport.NewClientConn"
+      ]
+    }
+  ],
+  "module_only": [
+    {
+      "id": "GO-2026-5932",
+      "summary": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
+      "url": "https://pkg.go.dev/vuln/GO-2026-5932",
+      "affected_packages": [
+        "golang.org/x/crypto/openpgp",
+        "golang.org/x/crypto/openpgp/packet",
+        "golang.org/x/crypto/openpgp/armor",
+        "golang.org/x/crypto/openpgp/clearsign",
+        "golang.org/x/crypto/openpgp/errors",
+        "golang.org/x/crypto/openpgp/elgamal",
+        "golang.org/x/crypto/openpgp/s2k"
+      ]
+    },
+    {
+      "id": "GO-2026-6303",
+      "summary": "Source-address critical option not enforced for non-public-key auth callbacks in golang.org/x/crypto/ssh",
+      "url": "https://pkg.go.dev/vuln/GO-2026-6303",
+      "affected_packages": [
+        "golang.org/x/crypto/ssh"
+      ]
+    },
+    {
+      "id": "GO-2026-6354",
+      "summary": "Prevent DoS on deadlocked undecided channel in golang.org/x/crypto/ssh",
+      "url": "https://pkg.go.dev/vuln/GO-2026-6354",
+      "affected_packages": [
+        "golang.org/x/crypto/ssh"
+      ]
+    },
+    {
+      "id": "GO-2026-6355",
+      "summary": "Prevent DoS on deadlocked established channel in golang.org/x/crypto/ssh",
+      "url": "https://pkg.go.dev/vuln/GO-2026-6355",
+      "affected_packages": [
+        "golang.org/x/crypto/ssh"
+      ]
+    },
+    {
+      "id": "GO-2026-6629",
+      "summary": "Panic parsing crafted input in x/text/secure/precis in golang.org/x/text",
+      "url": "https://pkg.go.dev/vuln/GO-2026-6629",
+      "affected_packages": [
+        "golang.org/x/text/secure/precis"
+      ]
+    }
+  ],
+  "raw_json_sha256": "4f212237b6d8ab28092544366f27d9f9b6eee2f44759240e6765481247e6a0d8",
+  "raw_json_bytes": 1029683,
+  "interpretation": "Symbol-level static calls are not exploit confirmation. JSON exit=0 is not a scan gate. Compact evidence retains findings/trace examples; full local scanner event stream hash is recorded, but unused OSV event bodies are omitted."
+}

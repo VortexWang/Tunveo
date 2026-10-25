@@ -1,0 +1,17 @@
+{
+  "version": "go1.26.10",
+  "stable": true,
+  "files": [
+    {
+      "filename": "go1.26.10.linux-amd64.tar.gz",
+      "os": "linux",
+      "arch": "amd64",
+      "version": "go1.26.10",
+      "sha256": "ccfe7ae822d2c2f41f4fe7c956199967a4dac22d0ee0d2b2bfdb440aab3b20c5",
+      "size": 66936659,
+      "kind": "archive"
+    }
+  ],
+  "metadata_url": "https://go.dev/dl/?mode=json&include=all",
+  "archive_sha256_verified": true
+}
