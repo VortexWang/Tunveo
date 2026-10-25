@@ -37,6 +37,18 @@ For server and master modes, Tunveo offers three TLS security levels for data ch
   - Requires providing certificate and key files
   - Suitable for production environments
 
+When `tls=2` is selected, both `crt` and `key` must identify a readable,
+matching PEM certificate/private-key pair. Missing parameters, unreadable or
+malformed files, and mismatched keys now stop startup with exit code 1 before
+creating the server, master, or client runtime. Earlier versions silently used
+an ephemeral mode-1 certificate on load failure; deployments relying on that
+fallback must repair their files or explicitly choose `tls=1`.
+
+This validates loading the key pair, not its expiry, hostname or trust chain.
+Existing hot reload still retains the last loaded certificate on reload failure;
+its concurrency and rotation behavior remain tracked in TNV-007. See the
+[TNV-006 fix record](tnv-006-fix.md).
+
 Example with TLS Mode 1 (self-signed):
 ```bash
 tunveo server://0.0.0.0:10101/0.0.0.0:8080?tls=1

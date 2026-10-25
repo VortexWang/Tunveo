@@ -9,7 +9,7 @@ Updated 2026-10-25. Status describes evidence, not a vulnerability severity cert
 | TNV-003 | Source risk awaiting isolation | Some ID notifications precede connection storage | Controlled publication-order test; do not equate this with TNV-002 |
 | TNV-004 | Source risk awaiting isolation | Flush/Close replace shared state while workers may still run | Lifecycle/race tests and explicit ownership model |
 | TNV-005 | Source risk awaiting isolation | HTTP/2 deadlines are forwarded to a shared physical connection | Multi-stream deadline/cancellation regression |
-| TNV-006 | Downgrade behavior confirmed; unfixed | Invalid strict-mode certificate paths log failure, fall back to TLS mode 1 and leave server running | Fail clearly on invalid initial strict configuration; document compatibility change |
+| TNV-006 | Implemented and locally verified; pending integration | Invalid initial tls=2 material now aborts before runtime construction with exit 1. Fifteen executable startup cases and valid TLS 1.3 certificate handshake passed | Review stacked fix; see [TNV-006 record](tnv-006-fix.md). Hot reload remains TNV-007 |
 | TNV-007 | Partially inspected, not reproduced | TLS generation failure fallback and hot-reload shared state remain separate concerns | Fault injection and concurrent certificate reload tests |
 | TNV-008 | Synthetic credential logging confirmed; unfixed in engine | Engine emits test URL credentials in startup logs; runner now masks its saved evidence only | Fix engine log construction and test all secret-bearing outputs |
 | TNV-009 | Audit pending | API/MCP/SSE authentication, limits and process management | Threat-oriented request and resource tests |
