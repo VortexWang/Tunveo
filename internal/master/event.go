@@ -4,7 +4,6 @@ package master
 
 import (
 	"bufio"
-	"context"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -134,166 +133,166 @@ func (w *InstanceLogWriter) Write(p []byte) (n int, err error) {
 	return len(p), nil
 }
 
-// HandleSSE handles Server-Sent Events connections for real-time instance updates.
-// It registers the client as a subscriber and sends initial state followed by continuous updates.
-//
-// Sets up SSE headers (text/event-stream, no-cache) and generates a unique subscriber ID.
-// Creates a buffered event channel that is registered in the Subscribers map. Sends
-// a retry hint (SSERetryTime ms) and all current instance states as "initial" events.
-// Then enters a loop listening for new events from the channel or context cancellation.
-// When the client disconnects or the context is cancelled, the channel is cleaned up.
-// All events are marshalled to JSON and formatted as SSE messages (event: instance).
-//
-// Only accepts GET requests; other methods receive a 405 Method Not Allowed response.
-// On connection loss, the goroutine that monitors the context notifies the channel close.
+// Subscriber data queues are never closed. Cancellation has a separate channel,
+// so concurrent publication and retirement cannot send on a closed channel.
+type eventSubscriber struct {
+	events chan *InstanceEvent
+	done   chan struct{}
+	once   sync.Once
+}
+
+func (s *eventSubscriber) stop() { s.once.Do(func() { close(s.done) }) }
+func (m *Master) removeSubscriber(id string, s *eventSubscriber) {
+	m.sseMu.Lock()
+	if m.Subscribers.CompareAndDelete(id, s) {
+		m.sseCount--
+	}
+	s.stop()
+	m.sseMu.Unlock()
+}
 func (m *Master) HandleSSE(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodGet {
 		HTTPError(w, "Method not allowed", http.StatusMethodNotAllowed)
 		return
 	}
-
+	if _, ok := w.(http.Flusher); !ok {
+		HTTPError(w, "Streaming unsupported", http.StatusInternalServerError)
+		return
+	}
+	// Revalidate under the same lock used for rotation and disconnect. An old-key
+	// request admitted just before rotation must not subscribe after it completes.
+	m.keyMu.RLock()
+	status := m.credentialStatus(r)
+	m.sseMu.Lock()
+	if status == 0 && m.managementStopped.Load() {
+		status = http.StatusServiceUnavailable
+	}
+	if status == 0 && m.sseCount >= ManagementSSELimit {
+		status = http.StatusTooManyRequests
+	}
+	if status != 0 {
+		m.sseMu.Unlock()
+		m.keyMu.RUnlock()
+		HTTPError(w, "SSE authentication or capacity unavailable", status)
+		return
+	}
+	id := GenerateID()
+	for {
+		if _, exists := m.Subscribers.Load(id); !exists {
+			break
+		}
+		id = GenerateID()
+	}
+	sub := &eventSubscriber{events: make(chan *InstanceEvent, 10), done: make(chan struct{})}
+	m.Subscribers.Store(id, sub)
+	m.sseCount++
+	m.sseMu.Unlock()
+	m.keyMu.RUnlock()
+	defer m.removeSubscriber(id, sub)
 	w.Header().Set("Content-Type", "text/event-stream")
 	w.Header().Set("Cache-Control", "no-cache")
 	w.Header().Set("Connection", "keep-alive")
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-
-	subscriberID := GenerateID()
-
-	events := make(chan *InstanceEvent, 10)
-
-	m.Subscribers.Store(subscriberID, events)
-	defer m.Subscribers.Delete(subscriberID)
-
-	fmt.Fprintf(w, "retry: %d\n\n", SSERetryTime)
-
-	m.Instances.Range(func(_, value any) bool {
-		instance := value.(*Instance)
-		event := &InstanceEvent{
-			Type:     "initial",
-			Time:     time.Now(),
-			Instance: instance,
+	controller := http.NewResponseController(w)
+	write := func(data []byte) bool {
+		controller.SetWriteDeadline(time.Now().Add(ManagementWriteTimeout))
+		if _, err := w.Write(data); err != nil {
+			return false
 		}
-
-		data, err := json.Marshal(event)
-		if err == nil {
-			fmt.Fprintf(w, "event: instance\ndata: %s\n\n", data)
-			w.(http.Flusher).Flush()
+		if err := controller.Flush(); err != nil {
+			return false
 		}
+		// A write budget bounds this frame, not the idle time until heartbeat.
+		controller.SetWriteDeadline(time.Time{})
 		return true
-	})
-
-	ctx, cancel := context.WithCancel(r.Context())
-	defer cancel()
-
-	connectionClosed := make(chan struct{})
-
-	go func() {
-		<-ctx.Done()
-		close(connectionClosed)
-		if ch, exists := m.Subscribers.LoadAndDelete(subscriberID); exists {
-			close(ch.(chan *InstanceEvent))
+	}
+	if !write([]byte(fmt.Sprintf("retry: %d\n\n", SSERetryTime))) {
+		return
+	}
+	send := func(event *InstanceEvent) bool {
+		if event.Instance != nil && event.Instance.ID == APIKeyID {
+			return true
 		}
-	}()
-
+		data, err := json.Marshal(event)
+		if err != nil {
+			return true
+		}
+		return write([]byte(fmt.Sprintf("event: instance\ndata: %s\n\n", data)))
+	}
+	initialOK := true
+	m.Instances.Range(func(_, value any) bool {
+		select {
+		case <-r.Context().Done():
+			initialOK = false
+			return false
+		case <-sub.done:
+			initialOK = false
+			return false
+		default:
+		}
+		instance := value.(*Instance)
+		if instance.ID != APIKeyID {
+			initialOK = send(&InstanceEvent{Type: "initial", Time: time.Now(), Instance: instance})
+		}
+		return initialOK
+	})
+	if !initialOK {
+		return
+	}
+	ticker := time.NewTicker(ManagementHeartbeat)
+	defer ticker.Stop()
 	for {
 		select {
-		case <-connectionClosed:
+		case <-r.Context().Done():
 			return
-		case event, ok := <-events:
-			if !ok {
+		case <-sub.done:
+			return
+		case <-ticker.C:
+			if !write([]byte(": heartbeat\n\n")) {
 				return
 			}
-
-			data, err := json.Marshal(event)
-			if err != nil {
-				m.Logger.Error("HandleSSE: event marshal error: %v", err)
-				continue
+		case event := <-sub.events:
+			if !send(event) {
+				return
 			}
-
-			fmt.Fprintf(w, "event: instance\ndata: %s\n\n", data)
-			w.(http.Flusher).Flush()
 		}
 	}
 }
-
-// SendSSEEvent sends an event to the notification channel for broadcasting to all SSE subscribers.
-// It includes the event type, instance state, and optional log messages.
-//
-// Constructs an InstanceEvent with the given type and timestamp. If a log message
-// is provided, it is included in the event (only the first log message is used).
-// The event is sent to the NotifyChannel in a non-blocking manner (drops events
-// if the channel buffer is full). This allows the event dispatcher to fan-out the
-// event to all connected SSE subscribers. Common event types are "create", "update",
-// "delete", "log", "initial", and "shutdown".
-//
-// Parameters:
-//   - eventType: Type of event (e.g., "create", "update", "delete", "log")
-//   - instance: The instance associated with the event
-//   - logs: Optional log message(s); only the first is used
 func (m *Master) SendSSEEvent(eventType string, instance *Instance, logs ...string) {
-	event := &InstanceEvent{
-		Type:     eventType,
-		Time:     time.Now(),
-		Instance: instance,
+	if instance != nil && instance.ID == APIKeyID {
+		return
 	}
-
+	event := &InstanceEvent{Type: eventType, Time: time.Now(), Instance: instance}
 	if len(logs) > 0 {
 		event.Logs = logs[0]
 	}
-
+	m.eventMu.RLock()
+	defer m.eventMu.RUnlock()
+	if m.eventsClosed {
+		return
+	}
 	select {
 	case m.NotifyChannel <- event:
 	default:
 	}
 }
 
-// ShutdownSSEConnections gracefully closes all active SSE subscriber connections
-// and notifies them of the master shutdown event.
-//
-// Iterates over all registered SSE subscribers and sends a "shutdown" event to each
-// in parallel (using WaitGroup). Each subscriber receives a final event before its
-// channel is closed. Attempts to send are non-blocking; if the channel buffer is full,
-// the shutdown notification is silently dropped. This ensures that even unresponsive
-// clients don't block the master shutdown process. The function waits for all
-// notifications to complete before returning.
+// Used both by rotation and shutdown. Do not close subscriber data queues.
 func (m *Master) ShutdownSSEConnections() {
-	var wg sync.WaitGroup
-
-	m.Subscribers.Range(func(key, value any) bool {
-		ch := value.(chan *InstanceEvent)
-		wg.Add(1)
-		go func(subscriberID any, eventChan chan *InstanceEvent) {
-			defer wg.Done()
-			select {
-			case eventChan <- &InstanceEvent{Type: "shutdown", Time: time.Now()}:
-			default:
-			}
-			if _, exists := m.Subscribers.LoadAndDelete(subscriberID); exists {
-				close(eventChan)
-			}
-		}(key, ch)
-		return true
-	})
-
-	wg.Wait()
+	m.sseMu.Lock()
+	defer m.sseMu.Unlock()
+	m.Subscribers.Range(func(id, value any) bool { m.Subscribers.Delete(id); value.(*eventSubscriber).stop(); return true })
+	m.sseCount = 0
 }
-
-// StartEventDispatcher starts the event dispatcher goroutine that broadcasts instance events
-// from the notification channel to all active SSE subscribers.
-//
-// Runs indefinitely (until NotifyChannel is closed), receiving events from the
-// notification channel and fanning them out to all subscribers. Each event is
-// sent to every subscriber's event channel using a non-blocking select (drops
-// events if a subscriber's channel is full, indicating a slow client). This
-// pattern decouples event senders from receivers and ensures fast event producers
-// are not blocked by slow subscribers. The dispatcher should be started as a
-// goroutine during master initialization.
 func (m *Master) StartEventDispatcher() {
 	for event := range m.NotifyChannel {
+		if event.Instance != nil && event.Instance.ID == APIKeyID {
+			continue
+		}
 		m.Subscribers.Range(func(_, value any) bool {
-			eventChan := value.(chan *InstanceEvent)
+			sub := value.(*eventSubscriber)
 			select {
-			case eventChan <- event:
+			case <-sub.done:
+			case sub.events <- event:
 			default:
 			}
 			return true

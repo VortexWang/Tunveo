@@ -190,74 +190,7 @@ func (m *Master) Run() {
 		m.Logger.Info("API Key loaded; use tunveo api-key --state <state-file> for local retrieval")
 	}
 
-	mux := http.NewServeMux()
-
-	protectedEndpoints := map[string]http.HandlerFunc{
-		fmt.Sprintf("%s/instances", m.Prefix):  m.HandleInstances,
-		fmt.Sprintf("%s/instances/", m.Prefix): m.HandleInstanceDetail,
-		fmt.Sprintf("%s/events", m.Prefix):     m.HandleSSE,
-		fmt.Sprintf("%s/info", m.Prefix):       m.HandleInfo,
-		fmt.Sprintf("%s/tcping", m.Prefix):     m.HandleTCPing,
-
-		strings.TrimSuffix(m.Prefix, "/"+OpenAPIVersion) + "/" + NextMCPVersion: m.HandleMCP,
-	}
-
-	publicEndpoints := map[string]http.HandlerFunc{
-		fmt.Sprintf("%s/openapi.json", m.Prefix): m.HandleOpenAPISpec,
-		fmt.Sprintf("%s/docs", m.Prefix):         m.HandleSwaggerUI,
-	}
-
-	apiKeyMiddleware := func(next http.HandlerFunc) http.HandlerFunc {
-		return func(w http.ResponseWriter, r *http.Request) {
-			SetCorsHeaders(w)
-			if r.Method == "OPTIONS" {
-				w.WriteHeader(http.StatusOK)
-				return
-			}
-
-			apiKeyInstance, keyExists := m.FindInstance(APIKeyID)
-			if keyExists && apiKeyInstance.URL != "" {
-				reqAPIKey := r.Header.Get("X-API-Key")
-				if reqAPIKey == "" {
-					HTTPError(w, "Unauthorized: API key required", http.StatusUnauthorized)
-					return
-				}
-
-				if reqAPIKey != apiKeyInstance.URL {
-					HTTPError(w, "Unauthorized: Invalid API key", http.StatusUnauthorized)
-					return
-				}
-			}
-
-			next(w, r)
-		}
-	}
-
-	corsMiddleware := func(next http.HandlerFunc) http.HandlerFunc {
-		return func(w http.ResponseWriter, r *http.Request) {
-			SetCorsHeaders(w)
-			if r.Method == "OPTIONS" {
-				w.WriteHeader(http.StatusOK)
-				return
-			}
-			next(w, r)
-		}
-	}
-
-	for path, handler := range protectedEndpoints {
-		mux.HandleFunc(path, apiKeyMiddleware(handler))
-	}
-
-	for path, handler := range publicEndpoints {
-		mux.HandleFunc(path, corsMiddleware(handler))
-	}
-
-	m.Server = &http.Server{
-		Addr:      m.TunnelTCPAddr.String(),
-		ErrorLog:  m.Logger.StdLogger(),
-		Handler:   mux,
-		TLSConfig: m.MTLSConfig,
-	}
+	m.Server = m.managementServer()
 
 	go func() {
 		var err error
@@ -303,6 +236,7 @@ func (m *Master) Run() {
 //
 // Returns an error from the underlying CommonShutdown if the shutdown fails.
 func (m *Master) MasterShutdown(ctx context.Context) error {
+	m.managementStopped.Store(true)
 	return m.CommonShutdown(ctx, func() {
 		m.ShutdownSSEConnections()
 
@@ -323,7 +257,10 @@ func (m *Master) MasterShutdown(ctx context.Context) error {
 
 		close(m.PeriodicDone)
 
+		m.eventMu.Lock()
+		m.eventsClosed = true
 		close(m.NotifyChannel)
+		m.eventMu.Unlock()
 
 		if err := m.SaveState(); err != nil {
 			m.Logger.Error("MasterShutdown: save gob failed: %v", err)

@@ -262,12 +262,20 @@ func (m *Master) ProcessInstanceAction(instance *Instance, action string) {
 //
 // Parameters:
 //   - instance: The API key instance (usually the special APIKeyID entry)
-func (m *Master) ReGenerateAPIKey(instance *Instance) {
-	instance.URL = GenerateAPIKey()
+func (m *Master) ReGenerateAPIKey(instance *Instance) *Instance {
+	m.keyMu.Lock()
+	if current, ok := m.FindInstance(APIKeyID); ok {
+		instance = current
+	}
+	next := *instance
+	next.URL = GenerateAPIKey()
+	instance = &next
 	m.Instances.Store(APIKeyID, instance)
+	m.ShutdownSSEConnections()
+	m.keyMu.Unlock()
 	m.Logger.Info("API Key regenerated; use tunveo api-key --state <state-file> for local retrieval")
 	go m.SaveState()
-	go m.ShutdownSSEConnections()
+	return instance
 }
 
 // EnhanceURL adds master configuration parameters to an instance URL.

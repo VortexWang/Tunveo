@@ -1601,3 +1601,6 @@ Examples:
 | `block` | Protocol blocking | `0`(disabled), `1`(SOCKS), `2`(HTTP), `3`(TLS) | `0` | Both |
 | `notcp` | TCP support control | `0`(enabled), `1`(disabled) | `0` | Both |
 | `noudp` | UDP support control | `0`(enabled), `1`(disabled) | `0` | Both |
+## Maintained management boundaries
+
+See [TNV-009A](management-boundaries.md) for fail-closed authentication, 1 MiB body / single JSON limits, 32-request and 32-SSE admission, HTTP time budgets, SSE heartbeat/rotation behavior and remaining audit scope. A missing credential entry is not an unauthenticated operating mode. Clients must handle 413/429 and reconnect SSE after key rotation; a final shutdown event is not guaranteed.

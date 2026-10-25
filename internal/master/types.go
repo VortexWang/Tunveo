@@ -12,6 +12,7 @@ import (
 	"os/exec"
 	"regexp"
 	"sync"
+	"sync/atomic"
 	"time"
 
 	"github.com/VortexWang/Tunveo/internal/common"
@@ -29,25 +30,33 @@ import (
 // to backup state, clean up duplicates, and restart failed instances.
 type Master struct {
 	common.Common
-	MID           string              // unique master instance identifier
-	Alias         string              // human-readable name
-	Prefix        string              // URL prefix for all API routes
-	Version       string              // build version string
-	Hostname      string              // public hostname used in generated configs
-	LogLevel      string              // current log level ("debug", "info", etc.)
-	CrtPath       string              // path to TLS certificate for mTLS
-	KeyPath       string              // path to TLS private key for mTLS
-	Instances     sync.Map            // id → *Instance for all managed tunnels
-	Server        *http.Server        // HTTP/HTTPS API server
-	MTLSConfig    *tls.Config         // mTLS config for the management interface
-	MasterURL     *url.URL            // URL advertised to clients for self-registration
-	StatePath     string              // filesystem path for persistent state file
-	StateMu       sync.Mutex          // guards state file I/O
-	Subscribers   sync.Map            // SSE subscribers: id → http.ResponseWriter
-	NotifyChannel chan *InstanceEvent // inbound instance status events
-	TCPingSem     chan struct{}       // semaphore limiting concurrent TCPing operations
-	StartTime     time.Time           // when this Master instance started
-	PeriodicDone  chan struct{}       // closed when background periodic tasks finish
+	keyMu             sync.RWMutex
+	admissionOnce     sync.Once
+	admission         chan struct{}
+	sseMu             sync.Mutex
+	sseCount          int
+	managementStopped atomic.Bool
+	eventMu           sync.RWMutex
+	eventsClosed      bool
+	MID               string              // unique master instance identifier
+	Alias             string              // human-readable name
+	Prefix            string              // URL prefix for all API routes
+	Version           string              // build version string
+	Hostname          string              // public hostname used in generated configs
+	LogLevel          string              // current log level ("debug", "info", etc.)
+	CrtPath           string              // path to TLS certificate for mTLS
+	KeyPath           string              // path to TLS private key for mTLS
+	Instances         sync.Map            // id → *Instance for all managed tunnels
+	Server            *http.Server        // HTTP/HTTPS API server
+	MTLSConfig        *tls.Config         // mTLS config for the management interface
+	MasterURL         *url.URL            // URL advertised to clients for self-registration
+	StatePath         string              // filesystem path for persistent state file
+	StateMu           sync.Mutex          // guards state file I/O
+	Subscribers       sync.Map            // SSE subscribers: id → *eventSubscriber
+	NotifyChannel     chan *InstanceEvent // inbound instance status events
+	TCPingSem         chan struct{}       // semaphore limiting concurrent TCPing operations
+	StartTime         time.Time           // when this Master instance started
+	PeriodicDone      chan struct{}       // closed when background periodic tasks finish
 }
 
 // Instance represents a single managed tunnel (client or server). It is

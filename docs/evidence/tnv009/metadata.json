@@ -1,0 +1,28 @@
+{
+  "source_commit": "998b778470a9db56ee18c9d813419854a6b7f079",
+  "before_source_commit": "34edb661d8385d42b8e7696ba1c4d6873c17f8b1",
+  "recorded_at": "2026-10-25T13:09:47.312930+00:00",
+  "scope": "TNV-009A only: entry authentication, request boundaries, SSE ownership/key exclusion, ping context. Local loopback, synthetic key held in memory, no child tunnel instances. Ordinary Instance field concurrency, import/process quotas and complete shutdown remain open.",
+  "native_adapter": "Old adapter copies the route registration/middleware block verbatim from Run at before_source_commit. Fixed adapter calls actual shared Handler. Each native report records adapter SHA, template SHA and runner SHA. No production source instrumentation.",
+  "binaries": {
+    "tunveo-tnv009": {
+      "sha256": "eb88089c3c79bbc6459db5214cf43d900f356be0c01cf890f1f08823fa0f535f",
+      "go_build_info": "BUILD/tunveo-tnv009: go1.26.10\n\tpath\tgithub.com/VortexWang/Tunveo/cmd/tunveo\n\tmod\tgithub.com/VortexWang/Tunveo\tv1.17.1-0.20261025130549-998b778470a9\t\n\tdep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\n\tdep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\n\tdep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\n\tdep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\n\tdep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\n\tdep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\n\tbuild\t-buildmode=exe\n\tbuild\t-compiler=gc\n\tbuild\t-trimpath=true\n\tbuild\tCGO_ENABLED=1\n\tbuild\tGOARCH=amd64\n\tbuild\tGOOS=linux\n\tbuild\tGOAMD64=v1\n\tbuild\tvcs=git\n\tbuild\tvcs.revision=998b778470a9db56ee18c9d813419854a6b7f079\n\tbuild\tvcs.time=2026-10-25T13:05:49Z\n\tbuild\tvcs.modified=false\n"
+    },
+    "tunveo-tnv009-race": {
+      "sha256": "3af645ac4f23f7ccb9a130c6f9ec2c5380752eba2680681d9d5ac732543323e8",
+      "go_build_info": "BUILD/tunveo-tnv009-race: go1.26.10\n\tpath\tgithub.com/VortexWang/Tunveo/cmd/tunveo\n\tmod\tgithub.com/VortexWang/Tunveo\tv1.17.1-0.20261025130549-998b778470a9\t\n\tdep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\n\tdep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\n\tdep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\n\tdep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\n\tdep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\n\tdep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\n\tbuild\t-buildmode=exe\n\tbuild\t-compiler=gc\n\tbuild\t-race=true\n\tbuild\t-trimpath=true\n\tbuild\tCGO_ENABLED=1\n\tbuild\tGOARCH=amd64\n\tbuild\tGOOS=linux\n\tbuild\tGOAMD64=v1\n\tbuild\tvcs=git\n\tbuild\tvcs.revision=998b778470a9db56ee18c9d813419854a6b7f079\n\tbuild\tvcs.time=2026-10-25T13:05:49Z\n\tbuild\tvcs.modified=false\n"
+    }
+  },
+  "source_ci": "https://github.com/VortexWang/Tunveo/actions/runs/40196076169",
+  "results": {
+    "native_before_reproduced": 70,
+    "native_after_passed": 70,
+    "management_race_process": 22,
+    "security_process": 20,
+    "reload_process": 24,
+    "master_race_repetitions": 10,
+    "full_race": "passed",
+    "vet": "passed"
+  }
+}

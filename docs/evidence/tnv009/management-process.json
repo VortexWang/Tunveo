@@ -1,0 +1,101 @@
+{
+  "binary_sha256": "3af645ac4f23f7ccb9a130c6f9ec2c5380752eba2680681d9d5ac732543323e8",
+  "runner_sha256": "6a270719b2c272b95c3ab48b920af26c9ee5477ae38c7cfe65a4c8ba95a80f2b",
+  "helper_sha256": "28ccd5ac23eeb4dcf160e5de55beebaa4ddbae510fe818e12bb568f8eceaaebb",
+  "started_at": "2026-10-25T13:06:33.383651+00:00",
+  "scope": "loopback, temporary master state; keys held only in memory; no child instances created",
+  "results": [
+    {
+      "case": "authentication//api/v1/instances/missing",
+      "status": 401
+    },
+    {
+      "case": "authentication//api/v1/instances/wrong",
+      "status": 401
+    },
+    {
+      "case": "authentication//api/v1/info/missing",
+      "status": 401
+    },
+    {
+      "case": "authentication//api/v1/info/wrong",
+      "status": 401
+    },
+    {
+      "case": "authentication//api/v1/tcping/missing",
+      "status": 401
+    },
+    {
+      "case": "authentication//api/v1/tcping/wrong",
+      "status": 401
+    },
+    {
+      "case": "authentication//api/v1/events/missing",
+      "status": 401
+    },
+    {
+      "case": "authentication//api/v1/events/wrong",
+      "status": 401
+    },
+    {
+      "case": "authentication//api/v2/missing",
+      "status": 401
+    },
+    {
+      "case": "authentication//api/v2/wrong",
+      "status": 401
+    },
+    {
+      "case": "public//api/v1/docs",
+      "status": 200
+    },
+    {
+      "case": "public//api/v1/openapi.json",
+      "status": 200
+    },
+    {
+      "case": "mcp/initialize",
+      "status": "passed"
+    },
+    {
+      "case": "mcp/trailing-value-rejected",
+      "status": "passed"
+    },
+    {
+      "case": "rest/trailing-value-rejected",
+      "status": "passed"
+    },
+    {
+      "case": "body/content-length",
+      "status": 413
+    },
+    {
+      "case": "body/chunked",
+      "status": 413
+    },
+    {
+      "case": "sse/capacity-32",
+      "status": 429
+    },
+    {
+      "case": "sse/rotation-disconnect-no-key",
+      "status": "passed"
+    },
+    {
+      "case": "rotation/old-key-rejected",
+      "status": "passed"
+    },
+    {
+      "case": "rotation/new-key-sse",
+      "status": "passed"
+    },
+    {
+      "case": "cleanup",
+      "status": "passed",
+      "exit_code": 0,
+      "forced_kill": false,
+      "raw_log_safe": true
+    }
+  ],
+  "status": "passed"
+}

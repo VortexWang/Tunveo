@@ -12,7 +12,7 @@ Updated 2026-10-25. Status describes evidence, not a vulnerability severity cert
 | TNV-006 | Implemented; scoped validation passed, pending integration | Missing/unreadable/malformed/mismatched strict pairs abort startup; 15 process cases across server/client/master include invalid mode values | Review security fix PR; complete transport-specific trust/expiry matrix separately |
 | TNV-007 | Startup downgrade and reload publication patched; broader audit open | Injected generator failure returns error; immutable certificate pointers and mutex protect reload; concurrent test and real HTTPS rotation/failed reload pass | Retain race test; audit remaining TLS lifecycle and trust boundaries |
 | TNV-008 | Known URL/API-key log paths patched; scoped validation passed, pending integration | Engine log sink masks URL userinfo/query/fragment; startup omits tunnel key; API-key lifecycle logs omit values; explicit local read command added | Review compatibility note; authenticated API/state/export contents and arbitrary text secrets remain separate audit scope |
-| TNV-009 | Audit pending | API/MCP/SSE authentication, limits and process management | Threat-oriented request and resource tests |
+| TNV-009 | Part A implemented and scoped validation passed; Part B open | Fail-closed authentication, bounded request bodies/admission, SSE key exclusion/lifetime and cancellable ping; native before 70/70 reproduced / after 70/70 passed, process 22/22 | Review A PR; next isolate mutable Instance snapshots, import/child-process quotas and shutdown; full audit remains open |
 | TNV-010 | Migration not verified | State/export names changed; GOB and import compatibility remain unverified | Offline sample, backup, import and rollback tests |
 | TNV-011 | Security upgrades implemented; scoped rescan passed, pending integration | Go 1.26.10 / x/net v0.60.0 reduce static called IDs 15 → 5 → 0; one module-only OpenPGP advisory remains, with no affected package imported | Review dependency PR; preserve scan gate and assess new database findings; not a blanket security clearance |
 | TNV-012 | New-server early-close path fixed; scoped validation passed | Full response is written and flushed before listener transition; capability tests exercise 30 real HTTPS handshakes | Old servers remain unchanged; other EOF causes must still be diagnosed separately |
@@ -31,3 +31,5 @@ Idle publication/ID claim changes and scoped evidence: [TNV-003](pool-publicatio
 Run/pool ownership, intermediate failures and compatibility limits: [TNV-004](run-lifecycle.md).
 
 HTTP/2 per-stream deadline and cancellation evidence: [TNV-005](h2-stream-deadlines.md).
+
+Management entry/SSE scope and remaining TNV-009B: [TNV-009A](management-boundaries.md).

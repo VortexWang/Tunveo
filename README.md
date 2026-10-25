@@ -70,3 +70,5 @@ Atomic idle resource publication and matching ID claims: [TNV-003](docs/pool-pub
 Run and pool lifecycle isolation: [TNV-004](docs/run-lifecycle.md).
 
 HTTP/2 per-stream deadlines and cancellation: [TNV-005](docs/h2-stream-deadlines.md).
+
+Management authentication and SSE boundaries: [TNV-009A](docs/management-boundaries.md).
