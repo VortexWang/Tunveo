@@ -9,6 +9,7 @@ import (
 	"strings"
 	"sync"
 	"testing"
+	"time"
 )
 
 var expectStateSnapshotFailure = false
@@ -17,6 +18,15 @@ func stateFixture(t *testing.T) *Master {
 	t.Helper()
 	m := boundaryMaster()
 	m.StatePath = filepath.Join(t.TempDir(), "state.gob")
+	t.Cleanup(func() {
+		if waiter, ok := any(m).(interface{ waitForStateWork() }); ok {
+			waiter.waitForStateWork()
+		} else {
+			time.Sleep(200 * time.Millisecond)
+			m.StateMu.Lock()
+			m.StateMu.Unlock()
+		}
+	})
 	m.Instances.Store(APIKeyID, &Instance{ID: APIKeyID, URL: "state-fixture-key"})
 	m.Instances.Store("fixture", &Instance{ID: "fixture", Alias: "before", Type: "server", URL: "server://127.0.0.1:1/127.0.0.1:2", Status: "stopped", Meta: Meta{Tags: map[string]string{}}})
 	return m

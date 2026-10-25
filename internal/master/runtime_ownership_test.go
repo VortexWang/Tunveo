@@ -173,3 +173,6 @@ func TestProcessStartRateRejectsBeforeExec(t *testing.T) {
 		t.Fatal("spawn rate admission failed")
 	}
 }
+
+// Fixture cleanup joins coalesced saves/actions before TempDir removal.
+func (m *Master) waitForStateWork() { m.background.Wait() }
