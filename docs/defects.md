@@ -37,3 +37,5 @@ Management entry/SSE scope and remaining TNV-009B: [TNV-009A](management-boundar
 State/child ownership and bounded import follow-up: [TNV-009B](master-state-lifecycle.md).
 
 Offline identity-preserving transfer and rollback: [TNV-010](state-migration.md).
+
+Cumulative integration, packaging evidence and remaining release blockers: [integration readiness](integration-readiness.md). No defect is closed merely by adding a release gate.

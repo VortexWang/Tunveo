@@ -16,9 +16,13 @@
 
 ## 证据与边界
 
-本地 Python 验证器单元测试 11/11 通过。源码 CI、实际归档与容器验证的最终结果在本轮完成后补录。本地没有 Docker，容器证据必须来自 CI 的真实构建/运行，不能以脚本静态检查替代。
+源码 d89896681d1b92eeb596a582d93ba893efc2d16b 的 [累计 CI](https://github.com/VortexWang/Tunveo/actions/runs/40209486144) 13/13 通过，含全仓 vet/test/race、各项缺陷回归、互通、迁移、漏洞扫描、实际八目标归档与真实容器。Python 验证器单元测试 11/11、归档 8/8、容器 7/7。容器由 CI 实际构建/运行，本地没有 Docker。
 
-历史累计混合互通矩阵曾为 47/48；旧服务端初始化 HTTPS EOF 未解释。单项 Linux 回环成功不等于全平台、公网、全 TLS 模式或长期稳定性验收。
+精确证据：[CI](evidence/integration/ci.json)、[归档与 SHA-256](evidence/integration/release-archives.json)、[容器](evidence/integration/container.json)、[祖先链](evidence/integration/ancestry.json)。扫描为零可达漏洞，仍有一项依赖模块级发现，不能称所有依赖无漏洞。
+
+本地试跑曾受继承标签中的斜杠影响，已固定独立快照版本模板；还出现过一次校验和不匹配，该轮不计通过，失败记录保留。独立重新构建后本地八份归档通过；最终打包证据以 CI 干净目录重建和校验结果为准。
+
+本轮补充 [TLS 1 互通诊断](evidence/integration/matrix-tls1-local.json) 48/48：四传输、两种服务流向、两种池容量、三种新旧配对，每格一轮。此处流向 mode=1/2 不是 TLS 模式。该本地二进制构建标记为 4f3c2aa+dirty，差异仅快照配置；只作为诊断，不替代 d898966 源码 CI 或发布构建认证。历史矩阵曾为 47/48，旧服务端初始化 HTTPS EOF 尚未解释，单轮重跑全绿不能关闭该问题。单项 Linux 回环成功不等于全平台、公网、全 TLS 模式或长期稳定性验收。
 
 ## 未完成的发布条件
 

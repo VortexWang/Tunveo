@@ -1,0 +1,14 @@
+{
+  "release_ready": false,
+  "input_sha256": "e7974f85ce0b6da17619fd9dd400a76ef72310fb3e25835312a9986b1cad0548",
+  "blockers": [
+    "regression",
+    "packaging",
+    "supported_matrix_10x",
+    "lifecycle_100",
+    "soak_24h",
+    "native_platforms",
+    "integration_review",
+    "input_fingerprint"
+  ]
+}

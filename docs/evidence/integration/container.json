@@ -1,0 +1,36 @@
+{
+  "scope": "Linux amd64 container smoke only, host-loopback API, writable private state mount, read-only root, no registry push",
+  "results": [
+    {
+      "case": "version-read-only-no-network",
+      "status": "passed"
+    },
+    {
+      "case": "master-starts-with-state-volume",
+      "status": "passed"
+    },
+    {
+      "case": "authentication-required",
+      "status": "passed"
+    },
+    {
+      "case": "authenticated-api",
+      "status": "passed"
+    },
+    {
+      "case": "offline-inspect-in-image",
+      "status": "passed"
+    },
+    {
+      "case": "all-six-license-files",
+      "status": "passed"
+    },
+    {
+      "case": "clean-stop-no-key-log",
+      "status": "passed"
+    }
+  ],
+  "image_id": "sha256:b85e949e297bdea33219c23a44ad80be8ec0136c356bc69708a1778bf62c4447",
+  "version": "tunveo-integration-1eb76f1feabcd8ab0d9fc0f5457ad0d8b3255613 linux/amd64",
+  "status": "passed"
+}

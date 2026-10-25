@@ -1,0 +1,18 @@
+{
+  "status": "failed_pilots_not_acceptance",
+  "cases": [
+    {
+      "case": "inherited_tag_snapshot_path",
+      "observed": "tunveo_upstream/nodepass-v1.17.0-SNAPSHOT-dc15430_*",
+      "resolution": "fixed independent snapshot version template"
+    },
+    {
+      "case": "local_archive_checksum_mismatch",
+      "archive": "tunveo_0.0.0-SNAPSHOT-4f3c2aa_darwin_amd64.tar.gz",
+      "expected": "e28a96008a039a08083b29ccc0bc4a14b431e6f3afd3051930d183b9c1ba95b6",
+      "observed": "80a0cedc99b83606d3b1413add5fba752aa61957b58dd3bcf8a13e7e0cba25b7",
+      "root_cause": "unconfirmed",
+      "disposition": "pilot not counted; clean independent CI rebuild verified all 8 archive hashes"
+    }
+  ]
+}
