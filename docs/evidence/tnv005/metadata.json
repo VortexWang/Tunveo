@@ -1,0 +1,29 @@
+{
+  "implementation_commit": "5c92fb87edf57dfb83820e9151db906d0e55a857",
+  "binary_source_commit": "d5899430e604c88018a6084cdae3fe9f4131cd68",
+  "final_fixture_commit": "8a7fdec5f5519df0a4b2af7b080b96f31d9a0a3a",
+  "fixture_note": "Final fixture only allocates payload before its writer goroutine. Production code unchanged from binary source. Both native reports use identical final fixture and driver hashes; only expected-defect test flag differs.",
+  "recorded_at": "2026-10-25T12:44:44.266703+00:00",
+  "scope": "Loopback tls=1; same physical TLS/H2 connection with two streams, repeated controlled deadlines. Matrix/reconnect exchanges one attempt each. No public network, duration or performance certification. Shared HTTP2 connection flow control remains.",
+  "normalization": "JSON log paths relative to each report; binaries BUILD/. Saved log bytes and outcome values unchanged.",
+  "pilot_note": "pilots contains failed exploratory baseline/adapter/fixture results, retained unchanged. Dirty intermediate implementation command outputs do not claim a precise saved source snapshot. Native pilot reports have their own template/runner hashes and are not the final canonical comparison.",
+  "binaries": {
+    "tunveo-tnv005": {
+      "sha256": "bb767d1ae481ee531c3c0d8a2619dda1f32e6d8917029831fe5994280dbc5b3d",
+      "go_build_info": "BUILD/tunveo-tnv005: go1.26.10\n\tpath\tgithub.com/VortexWang/Tunveo/cmd/tunveo\n\tmod\tgithub.com/VortexWang/Tunveo\tv1.17.1-0.20261025123955-d5899430e604\t\n\tdep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\n\tdep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\n\tdep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\n\tdep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\n\tdep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\n\tdep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\n\tbuild\t-buildmode=exe\n\tbuild\t-compiler=gc\n\tbuild\t-trimpath=true\n\tbuild\tCGO_ENABLED=1\n\tbuild\tGOARCH=amd64\n\tbuild\tGOOS=linux\n\tbuild\tGOAMD64=v1\n\tbuild\tvcs=git\n\tbuild\tvcs.revision=d5899430e604c88018a6084cdae3fe9f4131cd68\n\tbuild\tvcs.time=2026-10-25T12:39:55Z\n\tbuild\tvcs.modified=false\n"
+    },
+    "tunveo-tnv005-race": {
+      "sha256": "7c0172cbcb96d45cadd23af916d84bfd28bd447978c6380463cbb5f246300b40",
+      "go_build_info": "BUILD/tunveo-tnv005-race: go1.26.10\n\tpath\tgithub.com/VortexWang/Tunveo/cmd/tunveo\n\tmod\tgithub.com/VortexWang/Tunveo\tv1.17.1-0.20261025123955-d5899430e604\t\n\tdep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\n\tdep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\n\tdep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\n\tdep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\n\tdep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\n\tdep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\n\tbuild\t-buildmode=exe\n\tbuild\t-compiler=gc\n\tbuild\t-race=true\n\tbuild\t-trimpath=true\n\tbuild\tCGO_ENABLED=1\n\tbuild\tGOARCH=amd64\n\tbuild\tGOOS=linux\n\tbuild\tGOAMD64=v1\n\tbuild\tvcs=git\n\tbuild\tvcs.revision=d5899430e604c88018a6084cdae3fe9f4131cd68\n\tbuild\tvcs.time=2026-10-25T12:39:55Z\n\tbuild\tvcs.modified=false\n"
+    }
+  },
+  "source_ci": "https://github.com/VortexWang/Tunveo/actions/runs/40194261356",
+  "matrix": {
+    "passed": 47,
+    "total": 48,
+    "h2_passed": 12,
+    "h2_total": 12,
+    "failure": "upstream/tunveo type=2 (WebSocket), mode=2, 64:1024: initial HTTPS EOF before pool establishment. Same legacy-server early-close risk as prior records; root cause not conclusively proven from logs. Not changed to a pass."
+  },
+  "integrity": "All final matrix phase log byte observations within saved sizes; no paired initiated ID collision; all 96 matrix and 24 reconnect processes reaped with exit 0, no forced kill."
+}

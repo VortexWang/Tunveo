@@ -1,0 +1,33 @@
+2026-10-25 07:42:25.416  DEBUG  Init log level: DEBUG
+2026-10-25 07:42:25.417  WARN  TLS code-0: unencrypted
+2026-10-25 07:42:25.418  INFO  Client started: [REDACTED-URL]
+2026-10-25 07:42:25.419  INFO  Pending tunnel handshake...
+2026-10-25 07:42:25.422  INFO  Loading tunnel config: FLOW=+|MAX=8|TLS=1|TYPE=1|VERIFY=flow-v1
+2026-10-25 07:42:25.422  INFO  Getting tunnel pool ready...
+2026-10-25 07:42:25.674  INFO  Marking tunnel handshake as complete in 254ms
+2026-10-25 07:42:25.674  INFO  TLS code-1: RAM cert fingerprint verifying...
+2026-10-25 07:42:25.676  EVENT  CHECK_POINT|MODE=2|PING=2ms|POOL=1|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-25 07:42:30.676  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=3|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-25 07:42:30.678  DEBUG  TLS verify signal: cid 2df365e7 <- 127.0.0.1:48027
+2026-10-25 07:42:30.678  INFO  TLS code-1: RAM cert verified with sha256 fingerprint: 868f950cc70dba59e4fd643ecaf380050384f052aed1e9f2792753380d5d3a00
+2026-10-25 07:42:30.710  DEBUG  Target connection: 127.0.0.1:57965 <-> 127.0.0.1:55652
+2026-10-25 07:42:30.711  DEBUG  Tunnel connection: get 9ccf8c01 <- pool active 1
+2026-10-25 07:42:30.711  DEBUG  Tunnel connection: [::]:55907 <-> 127.0.0.1:48027
+2026-10-25 07:42:30.711  DEBUG  TCP launch signal: cid 9ccf8c01 -> 127.0.0.1:48027
+2026-10-25 07:42:30.711  INFO  Starting exchange: 127.0.0.1:55652 <-> 127.0.0.1:48027
+2026-10-25 07:42:30.716  INFO  Exchange complete: stream 8 canceled by local with error code 0
+2026-10-25 07:42:30.716  DEBUG  Tunnel connection: closed 9ccf8c01
+2026-10-25 07:42:30.725  DEBUG  Target connection: 127.0.0.1:57965 <-> 127.0.0.1:37771
+2026-10-25 07:42:30.725  DEBUG  Tunnel connection: get 44c6f1d4 <- pool active 0
+2026-10-25 07:42:30.725  DEBUG  Tunnel connection: [::]:55907 <-> 127.0.0.1:48027
+2026-10-25 07:42:30.725  DEBUG  UDP launch signal: cid 44c6f1d4 -> 127.0.0.1:48027
+2026-10-25 07:42:30.725  DEBUG  Starting transfer: [::]:55907 <-> 127.0.0.1:57965
+2026-10-25 07:42:30.725  DEBUG  Transfer complete: [::]:55907 <-> 127.0.0.1:57965
+2026-10-25 07:42:30.727  DEBUG  Transfer complete: [::]:55907 <-> 127.0.0.1:57965
+2026-10-25 07:42:30.827  ERROR  TunnelUDPLoop: read from tunnel failed: Application error 0x0 (local): pool closed
+2026-10-25 07:42:30.828  DEBUG  Tunnel connection: closed 44c6f1d4
+2026-10-25 07:42:30.827  DEBUG  Tunnel connection closed: pool active 0
+2026-10-25 07:42:30.828  DEBUG  Target connection closed: 127.0.0.1:57965
+2026-10-25 07:42:30.828  DEBUG  Control connection closed: [::]:55907
+2026-10-25 07:42:30.828  DEBUG  Target listener closed: 127.0.0.1:57965
+2026-10-25 07:42:30.828  INFO  Client shutdown complete

@@ -68,3 +68,5 @@ Reload interval startup validation and migration: [TNV-013](docs/reload-interval
 Atomic idle resource publication and matching ID claims: [TNV-003](docs/pool-publication.md).
 
 Run and pool lifecycle isolation: [TNV-004](docs/run-lifecycle.md).
+
+HTTP/2 per-stream deadlines and cancellation: [TNV-005](docs/h2-stream-deadlines.md).

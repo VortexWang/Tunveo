@@ -1,0 +1,94 @@
+2026-10-25 07:41:36.828  DEBUG  Init log level: DEBUG
+2026-10-25 07:41:36.828  WARN  TLS code-0: unencrypted
+2026-10-25 07:41:36.831  INFO  Client started: [REDACTED-URL]
+2026-10-25 07:41:36.832  INFO  Pending tunnel handshake...
+2026-10-25 07:41:36.836  ERROR  Client error: TunnelStart: tunnelHandshake failed: TunnelHandshake: Get "https://127.0.0.1:50511/%22: dial tcp 127.0.0.1:50511: connect: connection refused
+2026-10-25 07:41:36.937  INFO  Client restart
+2026-10-25 07:41:36.937  INFO  Pending tunnel handshake...
+2026-10-25 07:41:36.948  INFO  Loading tunnel config: FLOW=+|MAX=8|TLS=1|TYPE=2|VERIFY=flow-v1
+2026-10-25 07:41:36.948  INFO  Getting tunnel pool ready...
+2026-10-25 07:41:37.101  INFO  Marking tunnel handshake as complete in 163ms
+2026-10-25 07:41:37.101  INFO  TLS code-1: RAM cert fingerprint verifying...
+2026-10-25 07:41:37.103  EVENT  CHECK_POINT|MODE=2|PING=1ms|POOL=1|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-25 07:41:37.203  DEBUG  TLS verify signal: cid f8ecc4db <- websocket/unknown-addr
+2026-10-25 07:41:37.203  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=3|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-25 07:41:37.203  INFO  TLS code-1: RAM cert verified with sha256 fingerprint: b7e0259dce8210c6a593f91890f5d9c318685da5eb827c1c06167ed484193d3f
+2026-10-25 07:41:37.213  DEBUG  Target connection: 127.0.0.1:47391 <-> 127.0.0.1:54982
+2026-10-25 07:41:37.215  DEBUG  Tunnel connection: get dc8dee9c <- pool active 1
+2026-10-25 07:41:37.215  DEBUG  Tunnel connection: websocket/unknown-addr <-> websocket/unknown-addr
+2026-10-25 07:41:37.216  DEBUG  TCP launch signal: cid dc8dee9c -> websocket/unknown-addr
+2026-10-25 07:41:37.216  INFO  Starting exchange: 127.0.0.1:54982 <-> websocket/unknown-addr
+2026-10-25 07:41:37.220  DEBUG  Target connection: 127.0.0.1:47391 <-> 127.0.0.1:35511
+2026-10-25 07:41:37.221  DEBUG  Tunnel connection: get 3cc99d10 <- pool active 0
+2026-10-25 07:41:37.221  DEBUG  Tunnel connection: websocket/unknown-addr <-> websocket/unknown-addr
+2026-10-25 07:41:37.221  INFO  Exchange complete: failed to get reader: context canceled
+2026-10-25 07:41:37.221  DEBUG  Tunnel connection: closed dc8dee9c
+2026-10-25 07:41:37.221  DEBUG  UDP launch signal: cid 3cc99d10 -> websocket/unknown-addr
+2026-10-25 07:41:37.222  DEBUG  Starting transfer: websocket/unknown-addr <-> 127.0.0.1:47391
+2026-10-25 07:41:37.222  DEBUG  Transfer complete: websocket/unknown-addr <-> 127.0.0.1:47391
+2026-10-25 07:41:37.224  DEBUG  Transfer complete: websocket/unknown-addr <-> 127.0.0.1:47391
+2026-10-25 07:41:37.225  DEBUG  Tunnel connection: closed 3cc99d10
+2026-10-25 07:41:37.226  DEBUG  Tunnel connection closed: pool active 0
+2026-10-25 07:41:37.226  DEBUG  Target connection closed: 127.0.0.1:47391
+2026-10-25 07:41:37.226  DEBUG  Control connection closed: websocket/unknown-addr
+2026-10-25 07:41:37.226  DEBUG  Target listener closed: 127.0.0.1:47391
+2026-10-25 07:41:37.226  ERROR  Client error: TunnelStart: tunnelControl failed: TunnelControl: TunnelQueue: readBytes failed: failed to get reader: failed to read frame header: EOF
+2026-10-25 07:41:37.327  INFO  Client restart
+2026-10-25 07:41:37.332  INFO  Pending tunnel handshake...
+2026-10-25 07:41:37.333  ERROR  Client error: TunnelStart: tunnelHandshake failed: TunnelHandshake: Get "https://127.0.0.1:50511/%22: dial tcp 127.0.0.1:50511: connect: connection refused
+2026-10-25 07:41:37.434  INFO  Client restart
+2026-10-25 07:41:37.438  INFO  Pending tunnel handshake...
+2026-10-25 07:41:37.439  ERROR  Client error: TunnelStart: tunnelHandshake failed: TunnelHandshake: Get "https://127.0.0.1:50511/%22: dial tcp 127.0.0.1:50511: connect: connection refused
+2026-10-25 07:41:37.540  INFO  Client restart
+2026-10-25 07:41:37.545  INFO  Pending tunnel handshake...
+2026-10-25 07:41:37.546  ERROR  Client error: TunnelStart: tunnelHandshake failed: TunnelHandshake: Get "https://127.0.0.1:50511/%22: dial tcp 127.0.0.1:50511: connect: connection refused
+2026-10-25 07:41:37.646  INFO  Client restart
+2026-10-25 07:41:37.663  INFO  Pending tunnel handshake...
+2026-10-25 07:41:37.664  ERROR  Client error: TunnelStart: tunnelHandshake failed: TunnelHandshake: Get "https://127.0.0.1:50511/%22: dial tcp 127.0.0.1:50511: connect: connection refused
+2026-10-25 07:41:37.765  INFO  Client restart
+2026-10-25 07:41:37.767  INFO  Pending tunnel handshake...
+2026-10-25 07:41:37.768  ERROR  Client error: TunnelStart: tunnelHandshake failed: TunnelHandshake: Get "https://127.0.0.1:50511/%22: dial tcp 127.0.0.1:50511: connect: connection refused
+2026-10-25 07:41:37.869  INFO  Client restart
+2026-10-25 07:41:37.871  INFO  Pending tunnel handshake...
+2026-10-25 07:41:37.872  ERROR  Client error: TunnelStart: tunnelHandshake failed: TunnelHandshake: Get "https://127.0.0.1:50511/%22: dial tcp 127.0.0.1:50511: connect: connection refused
+2026-10-25 07:41:37.973  INFO  Client restart
+2026-10-25 07:41:37.982  INFO  Pending tunnel handshake...
+2026-10-25 07:41:37.983  ERROR  Client error: TunnelStart: tunnelHandshake failed: TunnelHandshake: Get "https://127.0.0.1:50511/%22: dial tcp 127.0.0.1:50511: connect: connection refused
+2026-10-25 07:41:38.084  INFO  Client restart
+2026-10-25 07:41:38.087  INFO  Pending tunnel handshake...
+2026-10-25 07:41:38.088  ERROR  Client error: TunnelStart: tunnelHandshake failed: TunnelHandshake: Get "https://127.0.0.1:50511/%22: dial tcp 127.0.0.1:50511: connect: connection refused
+2026-10-25 07:41:38.189  INFO  Client restart
+2026-10-25 07:41:38.191  INFO  Pending tunnel handshake...
+2026-10-25 07:41:38.192  ERROR  Client error: TunnelStart: tunnelHandshake failed: TunnelHandshake: Get "https://127.0.0.1:50511/%22: dial tcp 127.0.0.1:50511: connect: connection refused
+2026-10-25 07:41:38.292  INFO  Client restart
+2026-10-25 07:41:38.293  INFO  Pending tunnel handshake...
+2026-10-25 07:41:38.303  INFO  Loading tunnel config: FLOW=+|MAX=8|TLS=1|TYPE=2|VERIFY=flow-v1
+2026-10-25 07:41:38.303  INFO  Getting tunnel pool ready...
+2026-10-25 07:41:38.455  INFO  Marking tunnel handshake as complete in 161ms
+2026-10-25 07:41:38.455  INFO  TLS code-1: RAM cert fingerprint verifying...
+2026-10-25 07:41:38.456  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=1|TCPS=0|UDPS=0|TCPRX=32768|TCPTX=32768|UDPRX=512|UDPTX=512
+2026-10-25 07:41:38.562  DEBUG  TLS verify signal: cid e9c36c80 <- websocket/unknown-addr
+2026-10-25 07:41:38.563  INFO  TLS code-1: RAM cert verified with sha256 fingerprint: f9dfe2c32a7b12a22fc3933c0e367ba4302fd4245d5247d3351becade0743e1e
+2026-10-25 07:41:38.563  EVENT  CHECK_POINT|MODE=2|PING=1ms|POOL=0|TCPS=0|UDPS=0|TCPRX=32768|TCPTX=32768|UDPRX=512|UDPTX=512
+2026-10-25 07:41:38.579  DEBUG  Target connection: 127.0.0.1:47391 <-> 127.0.0.1:54990
+2026-10-25 07:41:38.579  DEBUG  Tunnel connection: get ade969ee <- pool active 1
+2026-10-25 07:41:38.579  DEBUG  Tunnel connection: websocket/unknown-addr <-> websocket/unknown-addr
+2026-10-25 07:41:38.579  DEBUG  TCP launch signal: cid ade969ee -> websocket/unknown-addr
+2026-10-25 07:41:38.580  INFO  Starting exchange: 127.0.0.1:54990 <-> websocket/unknown-addr
+2026-10-25 07:41:38.590  DEBUG  Target connection: 127.0.0.1:47391 <-> 127.0.0.1:53352
+2026-10-25 07:41:38.590  DEBUG  Tunnel connection: get 3732fb48 <- pool active 0
+2026-10-25 07:41:38.590  DEBUG  Tunnel connection: websocket/unknown-addr <-> websocket/unknown-addr
+2026-10-25 07:41:38.590  DEBUG  UDP launch signal: cid 3732fb48 -> websocket/unknown-addr
+2026-10-25 07:41:38.590  DEBUG  Starting transfer: websocket/unknown-addr <-> 127.0.0.1:47391
+2026-10-25 07:41:38.590  DEBUG  Transfer complete: websocket/unknown-addr <-> 127.0.0.1:47391
+2026-10-25 07:41:38.591  INFO  Exchange complete: failed to get reader: context canceled
+2026-10-25 07:41:38.591  DEBUG  Tunnel connection: closed ade969ee
+2026-10-25 07:41:38.594  DEBUG  Transfer complete: websocket/unknown-addr <-> 127.0.0.1:47391
+2026-10-25 07:41:38.657  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=0|TCPS=0|UDPS=1|TCPRX=65536|TCPTX=65536|UDPRX=1024|UDPTX=1024
+2026-10-25 07:41:38.695  ERROR  TunnelUDPLoop: read from tunnel failed: failed to get reader: context canceled
+2026-10-25 07:41:38.695  DEBUG  Tunnel connection: closed 3732fb48
+2026-10-25 07:41:38.695  DEBUG  Tunnel connection closed: pool active 3
+2026-10-25 07:41:38.695  DEBUG  Target connection closed: 127.0.0.1:47391
+2026-10-25 07:41:38.695  DEBUG  Control connection closed: websocket/unknown-addr
+2026-10-25 07:41:38.696  DEBUG  Target listener closed: 127.0.0.1:47391
+2026-10-25 07:41:38.696  INFO  Client shutdown complete

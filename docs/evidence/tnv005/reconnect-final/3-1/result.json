@@ -1,0 +1,69 @@
+{
+  "transport": 3,
+  "mode": 1,
+  "status": "passed",
+  "exchanges": [
+    {
+      "stage": "before",
+      "udp": false,
+      "sent_bytes": 32768,
+      "received_bytes": 32768,
+      "attempts": 1
+    },
+    {
+      "stage": "before",
+      "udp": true,
+      "sent_bytes": 512,
+      "received_bytes": 512,
+      "attempts": 1
+    },
+    {
+      "stage": "after",
+      "udp": false,
+      "sent_bytes": 32768,
+      "received_bytes": 32768,
+      "attempts": 1
+    },
+    {
+      "stage": "after",
+      "udp": true,
+      "sent_bytes": 512,
+      "received_bytes": 512,
+      "attempts": 1
+    }
+  ],
+  "cleanup": [
+    {
+      "pid": 271,
+      "returncode": 0,
+      "forced_kill": false,
+      "reaped": true
+    },
+    {
+      "pid": 273,
+      "returncode": 0,
+      "forced_kill": false,
+      "reaped": true
+    },
+    {
+      "pid": 328,
+      "returncode": 0,
+      "forced_kill": false,
+      "reaped": true
+    }
+  ],
+  "persistent_client_pid": 273,
+  "replaced_server_cleanup": [
+    {
+      "pid": 271,
+      "returncode": 0,
+      "forced_kill": false,
+      "reaped": true
+    }
+  ],
+  "logs": [
+    "server-first.log",
+    "client-persistent.log",
+    "server-replacement.log"
+  ]
+}

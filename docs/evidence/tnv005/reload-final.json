@@ -1,0 +1,187 @@
+{
+  "binary_sha256": "bb767d1ae481ee531c3c0d8a2619dda1f32e6d8917029831fe5994280dbc5b3d",
+  "runner_sha256": "7a549b15de791664dbe5b28cf667a70af56b4baf3bed40b1ec3e2f66d405fef2",
+  "helper_sha256": "28ccd5ac23eeb4dcf160e5de55beebaa4ddbae510fe818e12bb568f8eceaaebb",
+  "started_at": "2026-10-25T12:44:07.441893+00:00",
+  "scope": "local loopback, temporary master state, synthetic credentials",
+  "results": [
+    {
+      "case": "master/zero",
+      "status": "passed",
+      "exit_code": 1,
+      "panic": false,
+      "listening_after_exit": false,
+      "state_created": false
+    },
+    {
+      "case": "master/zero-unit",
+      "status": "passed",
+      "exit_code": 1,
+      "panic": false,
+      "listening_after_exit": false,
+      "state_created": false
+    },
+    {
+      "case": "master/negative",
+      "status": "passed",
+      "exit_code": 1,
+      "panic": false,
+      "listening_after_exit": false,
+      "state_created": false
+    },
+    {
+      "case": "master/empty",
+      "status": "passed",
+      "exit_code": 1,
+      "panic": false,
+      "listening_after_exit": false,
+      "state_created": false
+    },
+    {
+      "case": "master/malformed",
+      "status": "passed",
+      "exit_code": 1,
+      "panic": false,
+      "listening_after_exit": false,
+      "state_created": false
+    },
+    {
+      "case": "master/overflow",
+      "status": "passed",
+      "exit_code": 1,
+      "panic": false,
+      "listening_after_exit": false,
+      "state_created": false
+    },
+    {
+      "case": "server/zero",
+      "status": "passed",
+      "exit_code": 1,
+      "panic": false,
+      "listening_after_exit": false,
+      "state_created": false
+    },
+    {
+      "case": "server/zero-unit",
+      "status": "passed",
+      "exit_code": 1,
+      "panic": false,
+      "listening_after_exit": false,
+      "state_created": false
+    },
+    {
+      "case": "server/negative",
+      "status": "passed",
+      "exit_code": 1,
+      "panic": false,
+      "listening_after_exit": false,
+      "state_created": false
+    },
+    {
+      "case": "server/empty",
+      "status": "passed",
+      "exit_code": 1,
+      "panic": false,
+      "listening_after_exit": false,
+      "state_created": false
+    },
+    {
+      "case": "server/malformed",
+      "status": "passed",
+      "exit_code": 1,
+      "panic": false,
+      "listening_after_exit": false,
+      "state_created": false
+    },
+    {
+      "case": "server/overflow",
+      "status": "passed",
+      "exit_code": 1,
+      "panic": false,
+      "listening_after_exit": false,
+      "state_created": false
+    },
+    {
+      "case": "client/zero",
+      "status": "passed",
+      "exit_code": 1,
+      "panic": false,
+      "listening_after_exit": false,
+      "state_created": false
+    },
+    {
+      "case": "client/zero-unit",
+      "status": "passed",
+      "exit_code": 1,
+      "panic": false,
+      "listening_after_exit": false,
+      "state_created": false
+    },
+    {
+      "case": "client/negative",
+      "status": "passed",
+      "exit_code": 1,
+      "panic": false,
+      "listening_after_exit": false,
+      "state_created": false
+    },
+    {
+      "case": "client/empty",
+      "status": "passed",
+      "exit_code": 1,
+      "panic": false,
+      "listening_after_exit": false,
+      "state_created": false
+    },
+    {
+      "case": "client/malformed",
+      "status": "passed",
+      "exit_code": 1,
+      "panic": false,
+      "listening_after_exit": false,
+      "state_created": false
+    },
+    {
+      "case": "client/overflow",
+      "status": "passed",
+      "exit_code": 1,
+      "panic": false,
+      "listening_after_exit": false,
+      "state_created": false
+    },
+    {
+      "case": "master/unset-default",
+      "status": "passed",
+      "exit_code": 0,
+      "maintenance_backup_observed": false
+    },
+    {
+      "case": "master/positive-short",
+      "status": "passed",
+      "exit_code": 0,
+      "maintenance_backup_observed": true
+    },
+    {
+      "case": "master/positive-hour",
+      "status": "passed",
+      "exit_code": 0,
+      "maintenance_backup_observed": false
+    },
+    {
+      "case": "utility/help-with-invalid-env",
+      "status": "passed",
+      "exit_code": 0
+    },
+    {
+      "case": "utility/version-with-invalid-env",
+      "status": "passed",
+      "exit_code": 0
+    },
+    {
+      "case": "utility/api-key-with-invalid-env",
+      "status": "passed",
+      "exit_code": 0
+    }
+  ],
+  "status": "passed"
+}

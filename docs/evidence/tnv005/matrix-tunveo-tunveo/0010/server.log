@@ -1,0 +1,36 @@
+2026-10-25 07:42:20.122  DEBUG  Init log level: DEBUG
+2026-10-25 07:42:20.123  INFO  TLS code-1: RAM cert with TLS 1.3
+2026-10-25 07:42:20.125  INFO  Server started: [REDACTED-URL]
+2026-10-25 07:42:20.128  INFO  Pending tunnel handshake...
+2026-10-25 07:42:20.128  INFO  TLS code-1: RAM cert prepared with sha256 fingerprint: e093db95717715ef8bb75b9934b2ec0eef2d03785dbf4ef934bcead3030558e2
+2026-10-25 07:42:20.178  INFO  Sending tunnel config: FLOW=+|MAX=1024|TLS=1|TYPE=0|VERIFY=flow-v1
+2026-10-25 07:42:20.179  INFO  TLS code-1: RAM cert regenerated with TLS 1.3
+2026-10-25 07:42:20.179  INFO  Getting tunnel pool ready...
+2026-10-25 07:42:20.229  INFO  Marking tunnel handshake as complete in 101ms
+2026-10-25 07:42:20.229  INFO  TLS code-1: RAM cert fingerprint verifying...
+2026-10-25 07:42:20.236  EVENT  CHECK_POINT|MODE=2|PING=6ms|POOL=63|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-25 07:42:25.234  DEBUG  TLS code-1: verify signal: cid c5c29b9f -> 127.0.0.1:50704
+2026-10-25 07:42:25.234  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=64|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-25 07:42:25.234  INFO  TLS code-1: RAM cert verified with sha256 fingerprint: 74416ac4c5f0999c738b51264838347fd6cfb8b7749159223f912082059a43b7
+2026-10-25 07:42:25.248  DEBUG  TCP launch signal: cid 90d92130 <- 127.0.0.1:50704
+2026-10-25 07:42:25.248  DEBUG  Tunnel connection: get 90d92130 <- pool active 63
+2026-10-25 07:42:25.248  DEBUG  Tunnel connection: 127.0.0.1:41371 <-> 127.0.0.1:50718
+2026-10-25 07:42:25.248  DEBUG  Target connection: 127.0.0.1:42706 <-> 127.0.0.1:54375
+2026-10-25 07:42:25.248  INFO  Starting exchange: 127.0.0.1:50718 <-> 127.0.0.1:54375
+2026-10-25 07:42:25.250  INFO  Exchange complete: read tcp 127.0.0.1:42706->127.0.0.1:54375: use of closed network connection
+2026-10-25 07:42:25.250  DEBUG  Tunnel connection: closed 90d92130
+2026-10-25 07:42:25.255  DEBUG  UDP launch signal: cid d77e2dc2 <- 127.0.0.1:50704
+2026-10-25 07:42:25.256  DEBUG  Tunnel connection: get d77e2dc2 <- pool active 62
+2026-10-25 07:42:25.257  DEBUG  Tunnel connection: 127.0.0.1:41371 <-> 127.0.0.1:51128
+2026-10-25 07:42:25.257  DEBUG  Target connection: 127.0.0.1:40113 <-> 127.0.0.1:54375
+2026-10-25 07:42:25.257  DEBUG  Starting transfer: 127.0.0.1:41371 <-> 127.0.0.1:40113
+2026-10-25 07:42:25.258  DEBUG  Transfer complete: 127.0.0.1:41371 <-> 127.0.0.1:40113
+2026-10-25 07:42:25.258  DEBUG  Transfer complete: 127.0.0.1:40113 <-> 127.0.0.1:41371
+2026-10-25 07:42:25.358  ERROR  TunnelUDPOnce: read from target failed: read udp 127.0.0.1:40113->127.0.0.1:54375: use of closed network connection
+2026-10-25 07:42:25.359  ERROR  TunnelUDPOnce: read from tunnel failed: read tcp 127.0.0.1:41371->127.0.0.1:51128: use of closed network connection
+2026-10-25 07:42:25.359  DEBUG  Tunnel connection: closed d77e2dc2
+2026-10-25 07:42:25.359  DEBUG  Tunnel connection closed: pool active 62
+2026-10-25 07:42:25.359  DEBUG  Tunnel connection closed: 127.0.0.1:41371
+2026-10-25 07:42:25.359  DEBUG  Control connection closed: 127.0.0.1:41371
+2026-10-25 07:42:25.359  DEBUG  Tunnel listener closed: 127.0.0.1:41371
+2026-10-25 07:42:25.360  INFO  Server shutdown complete

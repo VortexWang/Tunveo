@@ -1,0 +1,36 @@
+2026-10-25 07:42:41.442  DEBUG  Init log level: DEBUG
+2026-10-25 07:42:41.442  INFO  TLS code-1: RAM cert with TLS 1.3
+2026-10-25 07:42:41.446  INFO  Server started: [REDACTED-URL]
+2026-10-25 07:42:41.450  INFO  Pending tunnel handshake...
+2026-10-25 07:42:41.450  INFO  TLS code-1: RAM cert prepared with sha256 fingerprint: 88a6b361db7dda611c27bef46e9e78938908a6f52db0ad8956be8ad82852afd4
+2026-10-25 07:42:41.488  INFO  Sending tunnel config: FLOW=+|MAX=1024|TLS=1|TYPE=2|VERIFY=flow-v1
+2026-10-25 07:42:41.488  INFO  TLS code-1: RAM cert regenerated with TLS 1.3
+2026-10-25 07:42:41.489  INFO  Getting tunnel pool ready...
+2026-10-25 07:42:41.539  INFO  Marking tunnel handshake as complete in 88ms
+2026-10-25 07:42:41.539  INFO  TLS code-1: RAM cert fingerprint verifying...
+2026-10-25 07:42:41.547  EVENT  CHECK_POINT|MODE=2|PING=7ms|POOL=57|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-25 07:42:46.542  DEBUG  TLS code-1: verify signal: cid 5c2d7117 -> 127.0.0.1:54320
+2026-10-25 07:42:46.543  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=64|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-25 07:42:46.543  INFO  TLS code-1: RAM cert verified with sha256 fingerprint: 1894bda663632c8234e5936f387c587b478911588aac3bb34a1c816eccc8f8ac
+2026-10-25 07:42:46.568  DEBUG  TCP launch signal: cid 2f82f8dc <- 127.0.0.1:54320
+2026-10-25 07:42:46.568  DEBUG  Tunnel connection: get 2f82f8dc <- pool active 63
+2026-10-25 07:42:46.568  DEBUG  Tunnel connection: 127.0.0.1:48597 <-> 127.0.0.1:54324
+2026-10-25 07:42:46.569  DEBUG  Target connection: 127.0.0.1:59530 <-> 127.0.0.1:56383
+2026-10-25 07:42:46.569  INFO  Starting exchange: 127.0.0.1:54324 <-> 127.0.0.1:56383
+2026-10-25 07:42:46.571  INFO  Exchange complete: read tcp 127.0.0.1:59530->127.0.0.1:56383: use of closed network connection
+2026-10-25 07:42:46.572  DEBUG  Tunnel connection: closed 2f82f8dc
+2026-10-25 07:42:46.595  DEBUG  UDP launch signal: cid ccdd529b <- 127.0.0.1:54320
+2026-10-25 07:42:46.595  DEBUG  Tunnel connection: get ccdd529b <- pool active 62
+2026-10-25 07:42:46.595  DEBUG  Tunnel connection: 127.0.0.1:48597 <-> 127.0.0.1:54306
+2026-10-25 07:42:46.595  DEBUG  Target connection: 127.0.0.1:45928 <-> 127.0.0.1:56383
+2026-10-25 07:42:46.595  DEBUG  Starting transfer: 127.0.0.1:48597 <-> 127.0.0.1:45928
+2026-10-25 07:42:46.596  DEBUG  Transfer complete: 127.0.0.1:48597 <-> 127.0.0.1:45928
+2026-10-25 07:42:46.597  DEBUG  Transfer complete: 127.0.0.1:45928 <-> 127.0.0.1:48597
+2026-10-25 07:42:46.698  ERROR  TunnelUDPOnce: read from target failed: read udp 127.0.0.1:45928->127.0.0.1:56383: use of closed network connection
+2026-10-25 07:42:46.698  ERROR  TunnelUDPOnce: read from tunnel failed: failed to get reader: failed to read frame header: EOF
+2026-10-25 07:42:46.699  DEBUG  Tunnel connection: closed ccdd529b
+2026-10-25 07:42:46.700  DEBUG  Tunnel connection closed: pool active 62
+2026-10-25 07:42:46.701  DEBUG  Tunnel connection closed: 127.0.0.1:48597
+2026-10-25 07:42:46.701  DEBUG  Control connection closed: 127.0.0.1:48597
+2026-10-25 07:42:46.701  DEBUG  Tunnel listener closed: 127.0.0.1:48597
+2026-10-25 07:42:46.701  INFO  Server shutdown complete
