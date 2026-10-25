@@ -170,14 +170,48 @@ def exchange(port, udp=False, timeout=3):
     return {"sent_bytes": len(payload), "received_bytes": len(received), "attempts": 1}
 
 
-def log_text(path):
-    return clean(path.read_text(errors="replace")) if path.exists() else ""
+class CapturedLog:
+    """One parent-owned reader preserves an append-only view of child output."""
+
+    def __init__(self, path):
+        self.path = path
+        self.parts = []
+        self.lock = threading.Lock()
+        self.thread = None
+        self.credential_observed = False
+
+    def start(self, stream):
+        def collect():
+            with stream, self.path.open("w") as out:
+                for line in stream:
+                    sanitized = clean(line)
+                    out.write(sanitized)
+                    out.flush()
+                    with self.lock:
+                        self.credential_observed |= bool(CREDENTIAL.search(line))
+                        self.parts.append(sanitized)
+        self.thread = threading.Thread(target=collect, daemon=True)
+        self.thread.start()
+
+    def snapshot(self):
+        with self.lock:
+            return "".join(self.parts)
+
+    def finish(self):
+        if self.thread:
+            self.thread.join(timeout=2)
+            if self.thread.is_alive():
+                raise RuntimeError("child log reader did not finish after process reaping")
 
 
-def wait_logs(processes, paths, predicate, timeout):
+def log_text(source):
+    return source.snapshot()
+
+
+def wait_logs(processes, captures, predicate, timeout):
     deadline = time.monotonic() + timeout
     while True:
-        texts = [log_text(path) for path in paths]
+        texts = [log_text(capture) for capture in captures]
         if any(p.poll() is not None for p in processes):
             raise RuntimeError("tunnel process exited before phase completion")
         for text in texts:
@@ -186,7 +220,7 @@ def wait_logs(processes, paths, predicate, timeout):
                 line = text[match.start():].splitlines()[0]
                 raise RuntimeError(f"engine failure before phase completion: {line}")
         if predicate(texts):
-            return
+            return {"observed_log_bytes": [len(text.encode()) for text in texts]}
         if time.monotonic() >= deadline:
             raise TimeoutError("phase log milestone not observed before deadline")
         time.sleep(min(0.025, max(0, deadline - time.monotonic())))
@@ -213,8 +247,9 @@ def stop_processes(processes, timeout):
 def run_case(server_bin, client_bin, row, folder, args, checkpoint):
     folder.mkdir()
     row.update(status="running", phases={name: {"status": "not_run"} for name in PHASES}, processes=[])
-    processes, handles = [], []
+    processes = []
     paths = [folder / "server.log", folder / "client.log"]
+    captures = [CapturedLog(path) for path in paths]
     row["logs"] = {"server": str(paths[0]), "client": str(paths[1])}
     reservations = []
     active_phase = None
@@ -259,24 +294,23 @@ def run_case(server_bin, client_bin, row, folder, args, checkpoint):
                     tunnel_res.close()
                 if index == (0 if row["mode"] == 1 else 1):
                     front_res.close()
-                handle = paths[index].open("w")
-                handles.append(handle)
-                p = subprocess.Popen([str(binary), urls[index]], stdout=handle, stderr=handle, cwd=folder, env=env)
+                p = subprocess.Popen([str(binary), urls[index]], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, errors="replace", bufsize=1, cwd=folder, env=env)
                 processes.append(p)
+                captures[index].start(p.stdout)
                 row["processes"].append({"role": "server" if index == 0 else "client", "pid": p.pid})
                 checkpoint()
 
             def startup():
                 launch(0, server_bin)
-                wait_logs(processes, paths[:1], lambda t: "Pending tunnel handshake" in t[0], args.startup_timeout)
+                return wait_logs(processes, captures[:1], lambda t: "Pending tunnel handshake" in t[0], args.startup_timeout)
             phase("server_startup", startup)
             def handshake():
                 launch(1, client_bin)
-                wait_logs(processes, paths, lambda t: "Sending tunnel config" in t[0] and "Loading tunnel config" in t[1], args.phase_timeout)
+                return wait_logs(processes, captures, lambda t: "Sending tunnel config" in t[0] and "Loading tunnel config" in t[1], args.phase_timeout)
             phase("tunnel_handshake", handshake)
-            phase("pool_ready", lambda: wait_logs(processes, paths, lambda t: all("Marking tunnel handshake as complete" in s for s in t), args.phase_timeout))
+            phase("pool_ready", lambda: wait_logs(processes, captures, lambda t: all("Marking tunnel handshake as complete" in s for s in t), args.phase_timeout))
             # These are observed log milestones, not independent security proofs.
-            phase("certificate_verification", lambda: wait_logs(processes, paths, lambda t: all("RAM cert verified with sha256 fingerprint" in s for s in t), args.phase_timeout))
+            phase("certificate_verification", lambda: wait_logs(processes, captures, lambda t: all("RAM cert verified with sha256 fingerprint" in s for s in t), args.phase_timeout))
             phase("tcp_echo", lambda: exchange(front, timeout=args.io_timeout))
             phase("udp_echo", lambda: exchange(front, udp=True, timeout=args.io_timeout))
         row["status"] = "passed"
@@ -290,6 +324,8 @@ def run_case(server_bin, client_bin, row, folder, args, checkpoint):
         try:
             stopped = stop_processes(processes, args.cleanup_timeout)
             row["cleanup"] = stopped
+            for capture in captures:
+                capture.finish()
             forced = any(p["forced_kill"] for p in stopped)
             row["phases"]["cleanup"] = {"status": "failed" if forced else "passed", "forced_kill": forced}
             if forced and row["status"] == "passed":
@@ -299,14 +335,12 @@ def run_case(server_bin, client_bin, row, folder, args, checkpoint):
             if row["status"] != "interrupted":
                 row.update(status="failed", failed_phase=row.get("failed_phase", "cleanup"), error=row.get("error", clean(str(exc))))
         finally:
-            for handle in handles:
-                handle.close()
             for reservation in reservations:
                 reservation.close()
-            for role, path in zip(("server", "client"), paths):
-                raw = path.read_text(errors="replace") if path.exists() else ""
+            for role, path, capture in zip(("server", "client"), paths, captures):
+                raw = capture.snapshot()
                 row.setdefault("observations", {})[role] = {
-                    "credential_url_observed": bool(CREDENTIAL.search(raw)),
+                    "credential_url_observed": capture.credential_observed,
                     "initiated_verification_ids": re.findall(r"verify signal: cid (\w+) ->", raw),
                     "received_verification_ids": re.findall(r"TLS verify signal: cid (\w+) <-", raw),
                     "verification_timeout": "OutgoingVerify: request timeout" in raw,
@@ -371,7 +405,7 @@ def main(argv=None):
     root = (args.artifacts or Path("artifacts/forwarding") / (datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ") + "-" + uuid.uuid4().hex[:8])).resolve()
     root.mkdir(parents=True, exist_ok=False)
     output = args.output.resolve() if args.output else root / "report.json"
-    report = {"schema_version": 2, "status": "running", "started_at": datetime.now(timezone.utc).isoformat(), "environment": {"platform": platform.platform(), "machine": platform.machine(), "python": platform.python_version()}, "binaries": {k: binary_metadata(v, args.go) for k, v in binaries.items()}, "settings": {"tls": 1, "log_level": "debug", "application_attempts": 1, "readiness": "observed log milestones", "timeouts": {k: getattr(args, k) for k in ("startup_timeout", "phase_timeout", "io_timeout", "cleanup_timeout")}}, "results": []}
+    report = {"runner_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(), "schema_version": 2, "status": "running", "started_at": datetime.now(timezone.utc).isoformat(), "environment": {"platform": platform.platform(), "machine": platform.machine(), "python": platform.python_version()}, "binaries": {k: binary_metadata(v, args.go) for k, v in binaries.items()}, "settings": {"tls": 1, "log_level": "debug", "application_attempts": 1, "readiness": "observed log milestones", "timeouts": {k: getattr(args, k) for k in ("startup_timeout", "phase_timeout", "io_timeout", "cleanup_timeout")}}, "results": []}
     def checkpoint():
         atomic_json(output, report)
     checkpoint()
