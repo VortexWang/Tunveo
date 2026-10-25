@@ -1,0 +1,10 @@
+{
+  "binary_sha256": "f30dd29b01b883fc79757851e6ad538fc37a6db5a2cf0bfa0d1a1f979892a279",
+  "runner_sha256": "1cc77ecbbae10a6e18d535051d963be319c993c6b948d54c2a6698f5fe377d71",
+  "helper_sha256": "28ccd5ac23eeb4dcf160e5de55beebaa4ddbae510fe818e12bb568f8eceaaebb",
+  "started_at": "2026-10-25T13:37:44.244632+00:00",
+  "scope": "race master and actual managed children; synthetic credentials, isolated state, loopback listeners; no external targets contacted",
+  "results": [],
+  "status": "failed",
+  "error_type": "AssertionError"
+}

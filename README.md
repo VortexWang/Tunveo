@@ -72,3 +72,5 @@ Run and pool lifecycle isolation: [TNV-004](docs/run-lifecycle.md).
 HTTP/2 per-stream deadlines and cancellation: [TNV-005](docs/h2-stream-deadlines.md).
 
 Management authentication and SSE boundaries: [TNV-009A](docs/management-boundaries.md).
+
+Instance snapshots, bounded imports and child ownership: [TNV-009B](docs/master-state-lifecycle.md).

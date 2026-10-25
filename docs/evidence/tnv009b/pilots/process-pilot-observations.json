@@ -1,0 +1,21 @@
+{
+  "binary_sha256": "bc6390af4d21bf6b6bc7ce31d1bc6c39987f35d92fe5755641243f33924e7750",
+  "runner_sha256": "0c162d000706c2acad226df8efef91c4ad2b7afaa9e3e332f7517d8c094c0ee6",
+  "helper_sha256": "28ccd5ac23eeb4dcf160e5de55beebaa4ddbae510fe818e12bb568f8eceaaebb",
+  "started_at": "2026-10-25T13:43:17.802997+00:00",
+  "scope": "race master and actual managed children; synthetic credentials, isolated state, loopback listeners; no external targets contacted",
+  "results": [],
+  "last_observation": {
+    "master_pid": 9,
+    "proc_exists": false,
+    "pids": [],
+    "states": [
+      "running",
+      "running"
+    ]
+  },
+  "process_log": "process-pilot-observations.log",
+  "raw_key_log_observed": false,
+  "status": "failed",
+  "error_type": "AssertionError"
+}

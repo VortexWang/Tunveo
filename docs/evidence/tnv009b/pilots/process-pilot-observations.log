@@ -1,0 +1,62 @@
+2026-10-25 08:43:17.824  [34mDEBUG[0m  Init log level: DEBUG
+2026-10-25 08:43:17.824  [33mWARN[0m  TLS code-0: unencrypted
+2026-10-25 08:43:17.826  [32mINFO[0m  Master started: 127.0.0.1:38059/api/v1
+2026-10-25 08:43:17.827  [32mINFO[0m  API Key created; use tunveo api-key --state <state-file> for local retrieval
+2026-10-25 08:43:18.031  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-q6izzfju/gob/tunveo.gob.backup
+2026-10-25 08:43:18.230  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-q6izzfju/gob/tunveo.gob.backup
+2026-10-25 08:43:18.431  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-q6izzfju/gob/tunveo.gob.backup
+2026-10-25 08:43:18.631  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-q6izzfju/gob/tunveo.gob.backup
+2026-10-25 08:43:18.831  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-q6izzfju/gob/tunveo.gob.backup
+2026-10-25 08:43:18.873  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:44073/127.0.0.1:38303?REDACTED [ffeb3c24]
+2026-10-25 08:43:18.875  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:44817/127.0.0.1:49657?REDACTED [1ea7a24f]
+2026-10-25 08:43:18.891  [34mDEBUG[0m  Init log level: DEBUG [ffeb3c24]
+2026-10-25 08:43:18.892  [33mWARN[0m  TLS code-0: unencrypted [ffeb3c24]
+2026-10-25 08:43:18.897  [34mDEBUG[0m  Init log level: DEBUG [1ea7a24f]
+2026-10-25 08:43:18.898  [33mWARN[0m  TLS code-0: unencrypted [1ea7a24f]
+2026-10-25 08:43:18.900  [32mINFO[0m  Server started: [REDACTED-URL] [ffeb3c24]
+2026-10-25 08:43:18.902  [32mINFO[0m  Server started: [REDACTED-URL] [1ea7a24f]
+2026-10-25 08:43:18.906  [32mINFO[0m  Pending tunnel handshake... [ffeb3c24]
+2026-10-25 08:43:18.907  [32mINFO[0m  Pending tunnel handshake... [1ea7a24f]
+2026-10-25 08:43:18.909  [32mINFO[0m  TLS code-1: RAM cert prepared with sha256 fingerprint: cada6696bfefec0eaf97974b8a3121eb87cc94b258b51692e260bcf4c0f3bd87 [ffeb3c24]
+2026-10-25 08:43:18.913  [32mINFO[0m  TLS code-1: RAM cert prepared with sha256 fingerprint: 088dd9b226799fa709f0c1911438e4523b172fcd94c4ef67878fd4e9a96b5b0f [1ea7a24f]
+2026-10-25 08:43:19.032  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-q6izzfju/gob/tunveo.gob.backup
+2026-10-25 08:43:19.231  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-q6izzfju/gob/tunveo.gob.backup
+2026-10-25 08:43:19.431  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-q6izzfju/gob/tunveo.gob.backup
+2026-10-25 08:43:19.632  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-q6izzfju/gob/tunveo.gob.backup
+2026-10-25 08:43:19.831  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-q6izzfju/gob/tunveo.gob.backup
+2026-10-25 08:43:20.031  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-q6izzfju/gob/tunveo.gob.backup
+2026-10-25 08:43:20.230  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-q6izzfju/gob/tunveo.gob.backup
+2026-10-25 08:43:20.431  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-q6izzfju/gob/tunveo.gob.backup
+2026-10-25 08:43:20.630  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-q6izzfju/gob/tunveo.gob.backup
+2026-10-25 08:43:20.831  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-q6izzfju/gob/tunveo.gob.backup
+2026-10-25 08:43:21.031  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-q6izzfju/gob/tunveo.gob.backup
+2026-10-25 08:43:21.230  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-q6izzfju/gob/tunveo.gob.backup
+2026-10-25 08:43:21.431  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-q6izzfju/gob/tunveo.gob.backup
+2026-10-25 08:43:21.631  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-q6izzfju/gob/tunveo.gob.backup
+2026-10-25 08:43:21.830  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-q6izzfju/gob/tunveo.gob.backup
+2026-10-25 08:43:22.031  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-q6izzfju/gob/tunveo.gob.backup
+2026-10-25 08:43:22.231  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-q6izzfju/gob/tunveo.gob.backup
+2026-10-25 08:43:22.430  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-q6izzfju/gob/tunveo.gob.backup
+2026-10-25 08:43:22.631  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-q6izzfju/gob/tunveo.gob.backup
+2026-10-25 08:43:22.831  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-q6izzfju/gob/tunveo.gob.backup
+2026-10-25 08:43:23.031  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-q6izzfju/gob/tunveo.gob.backup
+2026-10-25 08:43:23.231  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-q6izzfju/gob/tunveo.gob.backup
+2026-10-25 08:43:23.430  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-q6izzfju/gob/tunveo.gob.backup
+2026-10-25 08:43:23.631  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-q6izzfju/gob/tunveo.gob.backup
+2026-10-25 08:43:23.831  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-q6izzfju/gob/tunveo.gob.backup
+2026-10-25 08:43:24.035  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-q6izzfju/gob/tunveo.gob.backup
+2026-10-25 08:43:24.231  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-q6izzfju/gob/tunveo.gob.backup
+2026-10-25 08:43:24.431  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-q6izzfju/gob/tunveo.gob.backup
+2026-10-25 08:43:24.631  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-q6izzfju/gob/tunveo.gob.backup
+2026-10-25 08:43:24.889  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-q6izzfju/gob/tunveo.gob.backup
+2026-10-25 08:43:24.930  [34mDEBUG[0m  Target connection closed: 127.0.0.1:38303 [ffeb3c24]
+2026-10-25 08:43:24.930  [34mDEBUG[0m  Tunnel connection closed: 127.0.0.1:44073 [ffeb3c24]
+2026-10-25 08:43:24.930  [34mDEBUG[0m  Target listener closed: 127.0.0.1:38303 [ffeb3c24]
+2026-10-25 08:43:24.930  [34mDEBUG[0m  Tunnel listener closed: 127.0.0.1:44073 [ffeb3c24]
+2026-10-25 08:43:24.930  [32mINFO[0m  Server shutdown complete [ffeb3c24]
+2026-10-25 08:43:24.931  [34mDEBUG[0m  Target connection closed: 127.0.0.1:49657 [1ea7a24f]
+2026-10-25 08:43:24.931  [34mDEBUG[0m  Tunnel connection closed: 127.0.0.1:44817 [1ea7a24f]
+2026-10-25 08:43:24.931  [34mDEBUG[0m  Target listener closed: 127.0.0.1:49657 [1ea7a24f]
+2026-10-25 08:43:24.931  [34mDEBUG[0m  Tunnel listener closed: 127.0.0.1:44817 [1ea7a24f]
+2026-10-25 08:43:24.931  [32mINFO[0m  Server shutdown complete [1ea7a24f]
+2026-10-25 08:43:25.945  [32mINFO[0m  Master shutdown complete

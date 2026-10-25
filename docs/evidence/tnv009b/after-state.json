@@ -1,0 +1,12 @@
+{
+  "source_commit": "1aa2fefa6a3720f78d5f5d2a20211935c98278e6",
+  "mode": "fixed",
+  "status": "passed",
+  "runner_sha256": "040f95b1f05837edd0288c01d9663b3af378a829be56845d50fe83c5d87728d5",
+  "template_sha256": "327539cafa06facd94f53f8d88598462ed8a57b53d3179bacb35da90c73cb11c",
+  "scope": "native production log writer, REST PATCH/GET, GOB and queued event JSON; synthetic instance, no child process; test expectation flag only differs",
+  "test_exit_code": 0,
+  "race_observed": false,
+  "stdout": "=== RUN   TestInstanceLogAndManagementSerialization\n    state_concurrency_test.go:84: STATE-CONCURRENCY: finished production log, PATCH, GET, GOB, queued-event serialization\n--- PASS: TestInstanceLogAndManagementSerialization (0.10s)\n=== RUN   TestQueuedInstanceEventIsSnapshot\n    state_concurrency_test.go:103: PASSED-SNAPSHOT:\n--- PASS: TestQueuedInstanceEventIsSnapshot (0.01s)\nPASS\nok  \tgithub.com/VortexWang/Tunveo/internal/master\t1.139s\n",
+  "stderr": ""
+}

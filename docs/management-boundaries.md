@@ -61,3 +61,6 @@ python3 scripts/verify_management.py --binary bin/tunveo-race --output artifacts
 CORS 仍允许已有跨域管理方式，鉴权仍为单一完整管理员密钥；没有新增角色权限、Origin/Host 允许名单、来源速率限制或网络目标访问策略。TCPing/隧道访问网络是已认证管理员功能，本轮没有把允许探测内网的功能改为公共安全边界。
 
 测试是本地受控 HTTP/SSE 与状态轮换，不能代替真实网络慢读压力、长时间运行、公网部署、管理面完整审计或发布验收。下一项继续 TNV-009B，再进入 TNV-010 迁移验证。
+
+
+后续 [TNV-009B](master-state-lifecycle.md) 已实施上述实例字段、导入配额、进程所有权和关停的受控修复，取代本文 A 版本的相应待办；原证据与未完成的更广审计/发布边界保持有效。

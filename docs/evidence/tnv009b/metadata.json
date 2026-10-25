@@ -1,0 +1,32 @@
+{
+  "binary_source_commit": "388190ba040eff45e81cc4079714d3d57ece8d3d",
+  "final_fixture_commit": "1aa2fefa6a3720f78d5f5d2a20211935c98278e6",
+  "before_source_commit": "0e426ede46f23a3195f49ca898cf0be5005d7025",
+  "recorded_at": "2026-10-25T13:57:30.013040+00:00",
+  "fixture_note": "Final test-only change joins asynchronous saves/actions before fixture TempDir cleanup. Production source unchanged from binary source. The same canonical template/runner are used before and after; baseline lacks the new test helper and uses a short cleanup grace period. No production instrumentation.",
+  "scope": "Controlled native production log/REST/JSON/GOB/event race plus Linux loopback master and actual single-mode managed children. No tunnel data exchanges in child-lifecycle process runner. No public/long-run/performance certification.",
+  "pid_observation": "Parent startup and unique cmd.Wait completion records; /proc is unavailable in this execution environment. Native subprocess test separately verifies ProcessState.Success and accounting.",
+  "pilots": "Failed dirty intermediate binaries/fixtures are preserved by SHA. Exact intermediate source snapshots are not claimed. Earliest process-pilot.json predates stdout persistence; subsequent pilot logs retained. CI excerpt shows snapshot assertion passed and asynchronous fixture cleanup failed; no outcome overwritten.",
+  "binaries": {
+    "tunveo-tnv009b": {
+      "sha256": "ad5038804ad713fa39d2f78750e8ae0e703135a91dadebb2fced90ab48e4d0f0",
+      "go_build_info": "BUILD/tunveo-tnv009b: go1.26.10\n\tpath\tgithub.com/VortexWang/Tunveo/cmd/tunveo\n\tmod\tgithub.com/VortexWang/Tunveo\tv1.17.1-0.20261025135119-388190ba040e\t\n\tdep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\n\tdep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\n\tdep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\n\tdep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\n\tdep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\n\tdep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\n\tbuild\t-buildmode=exe\n\tbuild\t-compiler=gc\n\tbuild\t-trimpath=true\n\tbuild\tCGO_ENABLED=1\n\tbuild\tGOARCH=amd64\n\tbuild\tGOOS=linux\n\tbuild\tGOAMD64=v1\n\tbuild\tvcs=git\n\tbuild\tvcs.revision=388190ba040eff45e81cc4079714d3d57ece8d3d\n\tbuild\tvcs.time=2026-10-25T13:51:19Z\n\tbuild\tvcs.modified=false\n"
+    },
+    "tunveo-tnv009b-race": {
+      "sha256": "93b795390a60792528d0d03fa47a928682a8523cecfdc4dce0741a3a404944d5",
+      "go_build_info": "BUILD/tunveo-tnv009b-race: go1.26.10\n\tpath\tgithub.com/VortexWang/Tunveo/cmd/tunveo\n\tmod\tgithub.com/VortexWang/Tunveo\tv1.17.1-0.20261025135119-388190ba040e\t\n\tdep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\n\tdep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\n\tdep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\n\tdep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\n\tdep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\n\tdep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\n\tbuild\t-buildmode=exe\n\tbuild\t-compiler=gc\n\tbuild\t-race=true\n\tbuild\t-trimpath=true\n\tbuild\tCGO_ENABLED=1\n\tbuild\tGOARCH=amd64\n\tbuild\tGOOS=linux\n\tbuild\tGOAMD64=v1\n\tbuild\tvcs=git\n\tbuild\tvcs.revision=388190ba040eff45e81cc4079714d3d57ece8d3d\n\tbuild\tvcs.time=2026-10-25T13:51:19Z\n\tbuild\tvcs.modified=false\n"
+    }
+  },
+  "fixture_ci": "https://github.com/VortexWang/Tunveo/actions/runs/40199735348",
+  "results": {
+    "native_baseline": "DATA RACE and mutable-event snapshot reproduced",
+    "native_fixed": "no DATA RACE, frozen snapshot passed",
+    "master_race_repetitions": 10,
+    "actual_child_lifecycle": 8,
+    "management_compatibility": 22,
+    "security_process": 20,
+    "reload_process": 24,
+    "full_race": "passed",
+    "vet": "passed"
+  }
+}

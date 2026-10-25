@@ -1,0 +1,160 @@
+2026-10-25 08:41:09.591  [34mDEBUG[0m  Init log level: DEBUG
+2026-10-25 08:41:09.591  [33mWARN[0m  TLS code-0: unencrypted
+2026-10-25 08:41:09.595  [32mINFO[0m  Master started: 127.0.0.1:52713/api/v1
+2026-10-25 08:41:09.595  [32mINFO[0m  API Key created; use tunveo api-key --state <state-file> for local retrieval
+2026-10-25 08:41:09.803  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-77n0vd6n/gob/tunveo.gob.backup
+2026-10-25 08:41:10.016  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-77n0vd6n/gob/tunveo.gob.backup
+2026-10-25 08:41:10.208  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-77n0vd6n/gob/tunveo.gob.backup
+2026-10-25 08:41:10.492  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-77n0vd6n/gob/tunveo.gob.backup
+2026-10-25 08:41:10.699  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-77n0vd6n/gob/tunveo.gob.backup
+2026-10-25 08:41:10.708  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:46397/127.0.0.1:36555?REDACTED [dd7eee13]
+2026-10-25 08:41:10.710  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:53095/127.0.0.1:45603?REDACTED [3ee86dd3]
+2026-10-25 08:41:10.733  [34mDEBUG[0m  Init log level: DEBUG [dd7eee13]
+2026-10-25 08:41:10.734  [33mWARN[0m  TLS code-0: unencrypted [dd7eee13]
+2026-10-25 08:41:10.738  [32mINFO[0m  Server started: [REDACTED-URL] [dd7eee13]
+2026-10-25 08:41:10.920  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-77n0vd6n/gob/tunveo.gob.backup
+2026-10-25 08:41:10.941  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:53095/127.0.0.1:45603?REDACTED [3ee86dd3]
+2026-10-25 08:41:10.945  [32mINFO[0m  Pending tunnel handshake... [dd7eee13]
+2026-10-25 08:41:10.969  [32mINFO[0m  TLS code-1: RAM cert prepared with sha256 fingerprint: 04b0745b9d274626ae1f65dcb04e433e9cc40ee1d1fe4f920da2feda400d39ff [dd7eee13]
+2026-10-25 08:41:10.969  [34mDEBUG[0m  Target connection closed: 127.0.0.1:36555 [dd7eee13]
+2026-10-25 08:41:10.969  [34mDEBUG[0m  Tunnel connection closed: 127.0.0.1:46397 [dd7eee13]
+2026-10-25 08:41:10.969  [34mDEBUG[0m  Target listener closed: 127.0.0.1:36555 [dd7eee13]
+2026-10-25 08:41:10.969  [34mDEBUG[0m  Tunnel listener closed: 127.0.0.1:46397 [dd7eee13]
+2026-10-25 08:41:11.158  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-77n0vd6n/gob/tunveo.gob.backup
+2026-10-25 08:41:11.329  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-77n0vd6n/gob/tunveo.gob.backup
+2026-10-25 08:41:11.331  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:53095/127.0.0.1:45603?REDACTED [3ee86dd3]
+2026-10-25 08:41:10.970  [32mINFO[0m  Server shutdown complete [dd7eee13]
+2026-10-25 08:41:11.364  [34mDEBUG[0m  Init log level: DEBUG [3ee86dd3]
+2026-10-25 08:41:11.367  [33mWARN[0m  TLS code-0: unencrypted [3ee86dd3]
+2026-10-25 08:41:11.376  [32mINFO[0m  Server started: [REDACTED-URL] [3ee86dd3]
+2026-10-25 08:41:11.381  [32mINFO[0m  Pending tunnel handshake... [3ee86dd3]
+2026-10-25 08:41:11.385  [32mINFO[0m  TLS code-1: RAM cert prepared with sha256 fingerprint: 41201bc9017ac2f73d6f84c06d724724bcd2e52bc26a9fd16371a47faf83cb25 [3ee86dd3]
+2026-10-25 08:41:11.550  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-77n0vd6n/gob/tunveo.gob.backup
+2026-10-25 08:41:11.591  [34mDEBUG[0m  Target connection closed: 127.0.0.1:45603 [3ee86dd3]
+2026-10-25 08:41:11.591  [34mDEBUG[0m  Tunnel connection closed: 127.0.0.1:53095 [3ee86dd3]
+2026-10-25 08:41:11.591  [34mDEBUG[0m  Target listener closed: 127.0.0.1:45603 [3ee86dd3]
+2026-10-25 08:41:11.594  [34mDEBUG[0m  Tunnel listener closed: 127.0.0.1:53095 [3ee86dd3]
+2026-10-25 08:41:11.595  [32mINFO[0m  Server shutdown complete [3ee86dd3]
+2026-10-25 08:41:11.601  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-77n0vd6n/gob/tunveo.gob.backup
+2026-10-25 08:41:12.001  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-77n0vd6n/gob/tunveo.gob.backup
+2026-10-25 08:41:12.006  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-77n0vd6n/gob/tunveo.gob.backup
+2026-10-25 08:41:12.200  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-77n0vd6n/gob/tunveo.gob.backup
+2026-10-25 08:41:12.420  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-77n0vd6n/gob/tunveo.gob.backup
+2026-10-25 08:41:12.434  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:46397/127.0.0.1:36555?REDACTED [dd7eee13]
+2026-10-25 08:41:12.445  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:46397/127.0.0.1:36555?REDACTED [dd7eee13]
+2026-10-25 08:41:12.555  [34mDEBUG[0m  Init log level: DEBUG [dd7eee13]
+2026-10-25 08:41:12.555  [33mWARN[0m  TLS code-0: unencrypted [dd7eee13]
+2026-10-25 08:41:12.563  [32mINFO[0m  Server started: [REDACTED-URL] [dd7eee13]
+2026-10-25 08:41:12.578  [32mINFO[0m  Pending tunnel handshake... [dd7eee13]
+2026-10-25 08:41:12.626  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-77n0vd6n/gob/tunveo.gob.backup
+2026-10-25 08:41:12.633  [32mINFO[0m  TLS code-1: RAM cert prepared with sha256 fingerprint: 731228109791da22abb826a682ded340ed885d0b5f343318ef0662e49848be65 [dd7eee13]
+2026-10-25 08:41:12.634  [34mDEBUG[0m  Target connection closed: 127.0.0.1:36555 [dd7eee13]
+2026-10-25 08:41:12.634  [34mDEBUG[0m  Tunnel connection closed: 127.0.0.1:46397 [dd7eee13]
+2026-10-25 08:41:12.634  [34mDEBUG[0m  Target listener closed: 127.0.0.1:36555 [dd7eee13]
+2026-10-25 08:41:12.635  [34mDEBUG[0m  Tunnel listener closed: 127.0.0.1:46397 [dd7eee13]
+2026-10-25 08:41:12.635  [32mINFO[0m  Server shutdown complete [dd7eee13]
+2026-10-25 08:41:12.637  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:53095/127.0.0.1:45603?REDACTED [3ee86dd3]
+2026-10-25 08:41:12.638  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:53095/127.0.0.1:45603?REDACTED [3ee86dd3]
+2026-10-25 08:41:12.656  [34mDEBUG[0m  Init log level: DEBUG [3ee86dd3]
+2026-10-25 08:41:12.656  [33mWARN[0m  TLS code-0: unencrypted [3ee86dd3]
+2026-10-25 08:41:12.661  [32mINFO[0m  Server started: [REDACTED-URL] [3ee86dd3]
+2026-10-25 08:41:12.667  [32mINFO[0m  Pending tunnel handshake... [3ee86dd3]
+2026-10-25 08:41:12.668  [32mINFO[0m  TLS code-1: RAM cert prepared with sha256 fingerprint: 5a3fd6f0ca2e248659c0bc86c1b2dd31d1cd4c37f15e15a758a509b9ba85885b [3ee86dd3]
+2026-10-25 08:41:12.802  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-77n0vd6n/gob/tunveo.gob.backup
+2026-10-25 08:41:12.803  [34mDEBUG[0m  Target connection closed: 127.0.0.1:45603 [3ee86dd3]
+2026-10-25 08:41:12.803  [34mDEBUG[0m  Tunnel connection closed: 127.0.0.1:53095 [3ee86dd3]
+2026-10-25 08:41:12.803  [34mDEBUG[0m  Target listener closed: 127.0.0.1:45603 [3ee86dd3]
+2026-10-25 08:41:12.803  [34mDEBUG[0m  Tunnel listener closed: 127.0.0.1:53095 [3ee86dd3]
+2026-10-25 08:41:12.803  [32mINFO[0m  Server shutdown complete [3ee86dd3]
+2026-10-25 08:41:13.000  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-77n0vd6n/gob/tunveo.gob.backup
+2026-10-25 08:41:13.199  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-77n0vd6n/gob/tunveo.gob.backup
+2026-10-25 08:41:13.399  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-77n0vd6n/gob/tunveo.gob.backup
+2026-10-25 08:41:13.600  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-77n0vd6n/gob/tunveo.gob.backup
+2026-10-25 08:41:13.643  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:46397/127.0.0.1:36555?REDACTED [dd7eee13]
+2026-10-25 08:41:13.644  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:46397/127.0.0.1:36555?REDACTED [dd7eee13]
+2026-10-25 08:41:13.661  [34mDEBUG[0m  Init log level: DEBUG [dd7eee13]
+2026-10-25 08:41:13.661  [33mWARN[0m  TLS code-0: unencrypted [dd7eee13]
+2026-10-25 08:41:13.663  [32mINFO[0m  Server started: [REDACTED-URL] [dd7eee13]
+2026-10-25 08:41:13.671  [32mINFO[0m  Pending tunnel handshake... [dd7eee13]
+2026-10-25 08:41:13.673  [32mINFO[0m  TLS code-1: RAM cert prepared with sha256 fingerprint: f80aa4362354395f4ef28cd46911589d2863951559ff8dd35ab69d1c9eb1cc50 [dd7eee13]
+2026-10-25 08:41:13.799  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-77n0vd6n/gob/tunveo.gob.backup
+2026-10-25 08:41:13.800  [34mDEBUG[0m  Target connection closed: 127.0.0.1:36555 [dd7eee13]
+2026-10-25 08:41:13.800  [34mDEBUG[0m  Tunnel connection closed: 127.0.0.1:46397 [dd7eee13]
+2026-10-25 08:41:13.800  [34mDEBUG[0m  Target listener closed: 127.0.0.1:36555 [dd7eee13]
+2026-10-25 08:41:13.800  [34mDEBUG[0m  Tunnel listener closed: 127.0.0.1:46397 [dd7eee13]
+2026-10-25 08:41:13.800  [32mINFO[0m  Server shutdown complete [dd7eee13]
+2026-10-25 08:41:13.808  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:53095/127.0.0.1:45603?REDACTED [3ee86dd3]
+2026-10-25 08:41:13.809  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:53095/127.0.0.1:45603?REDACTED [3ee86dd3]
+2026-10-25 08:41:13.826  [34mDEBUG[0m  Init log level: DEBUG [3ee86dd3]
+2026-10-25 08:41:13.826  [33mWARN[0m  TLS code-0: unencrypted [3ee86dd3]
+2026-10-25 08:41:13.828  [32mINFO[0m  Server started: [REDACTED-URL] [3ee86dd3]
+2026-10-25 08:41:13.832  [32mINFO[0m  Pending tunnel handshake... [3ee86dd3]
+2026-10-25 08:41:13.835  [32mINFO[0m  TLS code-1: RAM cert prepared with sha256 fingerprint: eeba8494cd62e3609a8569dcc677d93fd47109d70e9ed66e964b4deaeec27635 [3ee86dd3]
+2026-10-25 08:41:13.999  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-77n0vd6n/gob/tunveo.gob.backup
+2026-10-25 08:41:14.000  [34mDEBUG[0m  Target connection closed: 127.0.0.1:45603 [3ee86dd3]
+2026-10-25 08:41:14.000  [34mDEBUG[0m  Tunnel connection closed: 127.0.0.1:53095 [3ee86dd3]
+2026-10-25 08:41:14.000  [34mDEBUG[0m  Target listener closed: 127.0.0.1:45603 [3ee86dd3]
+2026-10-25 08:41:14.000  [34mDEBUG[0m  Tunnel listener closed: 127.0.0.1:53095 [3ee86dd3]
+2026-10-25 08:41:14.000  [32mINFO[0m  Server shutdown complete [3ee86dd3]
+2026-10-25 08:41:14.199  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-77n0vd6n/gob/tunveo.gob.backup
+2026-10-25 08:41:14.400  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-77n0vd6n/gob/tunveo.gob.backup
+2026-10-25 08:41:14.601  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-77n0vd6n/gob/tunveo.gob.backup
+2026-10-25 08:41:14.836  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:46397/127.0.0.1:36555?REDACTED [dd7eee13]
+2026-10-25 08:41:14.836  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-77n0vd6n/gob/tunveo.gob.backup
+2026-10-25 08:41:14.852  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:46397/127.0.0.1:36555?REDACTED [dd7eee13]
+2026-10-25 08:41:14.876  [34mDEBUG[0m  Init log level: DEBUG [dd7eee13]
+2026-10-25 08:41:14.877  [33mWARN[0m  TLS code-0: unencrypted [dd7eee13]
+2026-10-25 08:41:14.880  [32mINFO[0m  Server started: [REDACTED-URL] [dd7eee13]
+2026-10-25 08:41:14.882  [32mINFO[0m  Pending tunnel handshake... [dd7eee13]
+2026-10-25 08:41:14.884  [32mINFO[0m  TLS code-1: RAM cert prepared with sha256 fingerprint: 5fb412ccc19be1077a42c6a35bc7fae738e323339564c5dd9eb473a1f0945b32 [dd7eee13]
+2026-10-25 08:41:15.007  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-77n0vd6n/gob/tunveo.gob.backup
+2026-10-25 08:41:15.014  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:53095/127.0.0.1:45603?REDACTED [3ee86dd3]
+2026-10-25 08:41:15.012  [34mDEBUG[0m  Target connection closed: 127.0.0.1:36555 [dd7eee13]
+2026-10-25 08:41:15.013  [34mDEBUG[0m  Tunnel connection closed: 127.0.0.1:46397 [dd7eee13]
+2026-10-25 08:41:15.013  [34mDEBUG[0m  Target listener closed: 127.0.0.1:36555 [dd7eee13]
+2026-10-25 08:41:15.013  [34mDEBUG[0m  Tunnel listener closed: 127.0.0.1:46397 [dd7eee13]
+2026-10-25 08:41:15.013  [32mINFO[0m  Server shutdown complete [dd7eee13]
+2026-10-25 08:41:15.016  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:53095/127.0.0.1:45603?REDACTED [3ee86dd3]
+2026-10-25 08:41:15.059  [34mDEBUG[0m  Init log level: DEBUG [3ee86dd3]
+2026-10-25 08:41:15.059  [33mWARN[0m  TLS code-0: unencrypted [3ee86dd3]
+2026-10-25 08:41:15.064  [32mINFO[0m  Server started: [REDACTED-URL] [3ee86dd3]
+2026-10-25 08:41:15.067  [32mINFO[0m  Pending tunnel handshake... [3ee86dd3]
+2026-10-25 08:41:15.070  [32mINFO[0m  TLS code-1: RAM cert prepared with sha256 fingerprint: 306201bdd2602f0195e1f6eb8b9b3255f0ac58e47b02e9806a67c00e13d7b143 [3ee86dd3]
+2026-10-25 08:41:15.200  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-77n0vd6n/gob/tunveo.gob.backup
+2026-10-25 08:41:15.200  [34mDEBUG[0m  Target connection closed: 127.0.0.1:45603 [3ee86dd3]
+2026-10-25 08:41:15.201  [34mDEBUG[0m  Tunnel connection closed: 127.0.0.1:53095 [3ee86dd3]
+2026-10-25 08:41:15.201  [34mDEBUG[0m  Target listener closed: 127.0.0.1:45603 [3ee86dd3]
+2026-10-25 08:41:15.201  [34mDEBUG[0m  Tunnel listener closed: 127.0.0.1:53095 [3ee86dd3]
+2026-10-25 08:41:15.201  [32mINFO[0m  Server shutdown complete [3ee86dd3]
+2026-10-25 08:41:15.401  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-77n0vd6n/gob/tunveo.gob.backup
+2026-10-25 08:41:15.607  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-77n0vd6n/gob/tunveo.gob.backup
+2026-10-25 08:41:15.942  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-77n0vd6n/gob/tunveo.gob.backup
+2026-10-25 08:41:16.001  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-77n0vd6n/gob/tunveo.gob.backup
+2026-10-25 08:41:16.043  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:46397/127.0.0.1:36555?REDACTED [dd7eee13]
+2026-10-25 08:41:16.050  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:46397/127.0.0.1:36555?REDACTED [dd7eee13]
+2026-10-25 08:41:16.072  [34mDEBUG[0m  Init log level: DEBUG [dd7eee13]
+2026-10-25 08:41:16.073  [33mWARN[0m  TLS code-0: unencrypted [dd7eee13]
+2026-10-25 08:41:16.074  [32mINFO[0m  Server started: [REDACTED-URL] [dd7eee13]
+2026-10-25 08:41:16.078  [32mINFO[0m  Pending tunnel handshake... [dd7eee13]
+2026-10-25 08:41:16.081  [32mINFO[0m  TLS code-1: RAM cert prepared with sha256 fingerprint: ff5ff2f8b05939b8f3df86d22577bf565694ac9c3536d5d2a4c8529ac158d1b5 [dd7eee13]
+2026-10-25 08:41:16.203  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-77n0vd6n/gob/tunveo.gob.backup
+2026-10-25 08:41:16.205  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:53095/127.0.0.1:45603?REDACTED [3ee86dd3]
+2026-10-25 08:41:16.204  [34mDEBUG[0m  Target connection closed: 127.0.0.1:36555 [dd7eee13]
+2026-10-25 08:41:16.204  [34mDEBUG[0m  Tunnel connection closed: 127.0.0.1:46397 [dd7eee13]
+2026-10-25 08:41:16.206  [32mINFO[0m  Instance starting: server://REDACTED@127.0.0.1:53095/127.0.0.1:45603?REDACTED [3ee86dd3]
+2026-10-25 08:41:16.204  [34mDEBUG[0m  Target listener closed: 127.0.0.1:36555 [dd7eee13]
+2026-10-25 08:41:16.204  [34mDEBUG[0m  Tunnel listener closed: 127.0.0.1:46397 [dd7eee13]
+2026-10-25 08:41:16.205  [32mINFO[0m  Server shutdown complete [dd7eee13]
+2026-10-25 08:41:16.227  [34mDEBUG[0m  Init log level: DEBUG [3ee86dd3]
+2026-10-25 08:41:16.227  [33mWARN[0m  TLS code-0: unencrypted [3ee86dd3]
+2026-10-25 08:41:16.236  [32mINFO[0m  Server started: [REDACTED-URL] [3ee86dd3]
+2026-10-25 08:41:16.242  [32mINFO[0m  Pending tunnel handshake... [3ee86dd3]
+2026-10-25 08:41:16.251  [32mINFO[0m  TLS code-1: RAM cert prepared with sha256 fingerprint: c82726f3850e8d10d1e655cda2f544a28b2f14e964cfaf646d80f778069a79f5 [3ee86dd3]
+2026-10-25 08:41:16.418  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-77n0vd6n/gob/tunveo.gob.backup
+2026-10-25 08:41:16.420  [34mDEBUG[0m  Target connection closed: 127.0.0.1:45603 [3ee86dd3]
+2026-10-25 08:41:16.420  [34mDEBUG[0m  Tunnel connection closed: 127.0.0.1:53095 [3ee86dd3]
+2026-10-25 08:41:16.420  [34mDEBUG[0m  Target listener closed: 127.0.0.1:45603 [3ee86dd3]
+2026-10-25 08:41:16.420  [34mDEBUG[0m  Tunnel listener closed: 127.0.0.1:53095 [3ee86dd3]
+2026-10-25 08:41:16.421  [32mINFO[0m  Server shutdown complete [3ee86dd3]
+2026-10-25 08:41:16.599  [32mINFO[0m  State backup saved: /tmp/tunveo-master-life-77n0vd6n/gob/tunveo.gob.backup
+2026-10-25 08:41:17.427  [32mINFO[0m  Master shutdown complete
