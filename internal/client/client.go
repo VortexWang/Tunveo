@@ -1,4 +1,4 @@
-// Package client implements the nodepass tunnel client. It connects outbound
+// Package client implements the tunveo tunnel client. It connects outbound
 // to a server endpoint, establishes a connection pool or single-mode tunnel,
 // and forwards traffic between the local target and the remote server.
 package client
@@ -14,7 +14,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/NodePassProject/nodepass/internal/common"
+	"github.com/VortexWang/Tunveo/internal/common"
 )
 
 // Client wraps common.Common, adding client-specific startup and run logic.

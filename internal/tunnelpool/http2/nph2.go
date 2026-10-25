@@ -1,4 +1,4 @@
-package nph2
+package http2
 
 import (
 	"context"

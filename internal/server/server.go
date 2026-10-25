@@ -1,4 +1,4 @@
-// Package server implements the nodepass tunnel server. It listens for
+// Package server implements the tunveo tunnel server. It listens for
 // inbound tunnel connections, manages a connection pool, and forwards traffic
 // between the tunnel side and the configured target address(es).
 package server
@@ -14,7 +14,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/NodePassProject/nodepass/internal/common"
+	"github.com/VortexWang/Tunveo/internal/common"
 )
 
 // Server wraps common.Common, adding server-specific startup and run logic.

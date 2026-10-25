@@ -9,10 +9,10 @@ import (
 	"os"
 	"runtime"
 
-	"github.com/NodePassProject/nodepass/internal/client"
-	"github.com/NodePassProject/nodepass/internal/common"
-	"github.com/NodePassProject/nodepass/internal/master"
-	"github.com/NodePassProject/nodepass/internal/server"
+	"github.com/VortexWang/Tunveo/internal/client"
+	"github.com/VortexWang/Tunveo/internal/common"
+	"github.com/VortexWang/Tunveo/internal/master"
+	"github.com/VortexWang/Tunveo/internal/server"
 )
 
 // run is the main execution function that orchestrates application startup.
@@ -56,7 +56,7 @@ func exit(err error) {
 		errMsg = err.Error()
 	}
 	fmt.Fprintf(os.Stderr,
-		"nodepass-%s %s/%s pid=%d error=%s\n\nrun 'nodepass --help' for usage\n",
+		"tunveo-%s %s/%s pid=%d error=%s\n\nrun 'tunveo --help' for usage\n",
 		version, runtime.GOOS, runtime.GOARCH, os.Getpid(), errMsg)
 
 	os.Exit(1)

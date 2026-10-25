@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/NodePassProject/nodepass/internal/common"
+	"github.com/VortexWang/Tunveo/internal/common"
 )
 
 // StartPeriodicTasks starts the periodic maintenance tasks loop for backup, cleanup, and restart operations.

@@ -9,7 +9,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/NodePassProject/nodepass/internal/transport"
+	"github.com/VortexWang/Tunveo/internal/transport"
 )
 
 // SingleEventLoop emits periodic CHECK_POINT metric events on ReportInterval ticker for the lifetime of the tunnel.

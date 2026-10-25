@@ -1,6 +1,6 @@
 # Troubleshooting Guide
 
-This guide helps you diagnose and resolve common issues you might encounter when using NodePass. For each problem, we provide possible causes and step-by-step solutions.
+This guide helps you diagnose and resolve common issues you might encounter when using Tunveo. For each problem, we provide possible causes and step-by-step solutions.
 
 ## Connection Issues
 
@@ -16,7 +16,7 @@ This guide helps you diagnose and resolve common issues you might encounter when
    - Ensure no firewall is blocking the tunnel port (typically 10101)
 
 2. **Server Not Running**
-   - Verify the NodePass server is running with `ps aux | grep nodepass` on Linux/macOS
+   - Verify the Tunveo server is running with `ps aux | grep tunveo` on Linux/macOS
    - Check server logs for any startup errors
    - Try restarting the server process
 
@@ -76,7 +76,7 @@ This guide helps you diagnose and resolve common issues you might encounter when
 4. **Overloaded Server**
    - Check server logs for signs of connection overload
    - Adjust `max` parameter and `NP_SEMAPHORE_LIMIT` to handle the load
-   - Consider scaling horizontally with multiple NodePass instances
+   - Consider scaling horizontally with multiple Tunveo instances
 
 ## Certificate Issues
 
@@ -93,7 +93,7 @@ This guide helps you diagnose and resolve common issues you might encounter when
 
 2. **Missing or Inaccessible Certificate Files**
    - Confirm file paths to certificates and keys are correct
-   - Verify file permissions allow the NodePass process to read them
+   - Verify file permissions allow the Tunveo process to read them
    - Check for file corruption by opening certificates in a text editor
 
 3. **Certificate Trust Issues**
@@ -112,7 +112,7 @@ This guide helps you diagnose and resolve common issues you might encounter when
 **Possible Causes and Solutions**:
 
 1. **New Certificate Not Loaded**
-   - Restart NodePass to force loading of new certificates
+   - Restart Tunveo to force loading of new certificates
    - Check if `RELOAD_INTERVAL` is set correctly to automatically detect changes
 
 2. **Certificate Chain Incomplete**
@@ -142,7 +142,7 @@ This guide helps you diagnose and resolve common issues you might encounter when
 
 2. **Network Path**
    - Check for network congestion or high-latency links
-   - Consider deploying NodePass closer to either the client or server
+   - Consider deploying Tunveo closer to either the client or server
    - Use a traceroute to identify potential bottlenecks
 
 3. **TLS Overhead**
@@ -156,7 +156,7 @@ This guide helps you diagnose and resolve common issues you might encounter when
 
 ### High CPU Usage
 
-**Symptoms**: NodePass process consuming excessive CPU resources.
+**Symptoms**: Tunveo process consuming excessive CPU resources.
 
 **Possible Causes and Solutions**:
 
@@ -175,12 +175,12 @@ This guide helps you diagnose and resolve common issues you might encounter when
 
 4. **Traffic Volume**
    - High throughput can cause CPU saturation
-   - Consider distributing traffic across multiple NodePass instances
+   - Consider distributing traffic across multiple Tunveo instances
    - Vertical scaling (more CPU cores) may be necessary for very high throughput
 
 ### Memory Leaks
 
-**Symptoms**: NodePass memory usage grows continuously over time.
+**Symptoms**: Tunveo memory usage grows continuously over time.
 
 **Possible Causes and Solutions**:
 
@@ -221,7 +221,7 @@ This guide helps you diagnose and resolve common issues you might encounter when
 
 4. **Protocol Expectations**
    - Some UDP applications expect specific behavior regarding packet order or timing
-   - NodePass provides best-effort forwarding but cannot guarantee UDP properties beyond what the network provides
+   - Tunveo provides best-effort forwarding but cannot guarantee UDP properties beyond what the network provides
 
 ### UDP Connection Tracking
 
@@ -247,7 +247,7 @@ This guide helps you diagnose and resolve common issues you might encounter when
 
 1. **Verify System DNS Configuration**
    - Verify resolution works: `nslookup example.com`
-   - Check system's DNS settings (NodePass uses system resolver)
+   - Check system's DNS settings (Tunveo uses system resolver)
    - Ensure network connectivity is working
 
 2. **Network Connectivity**
@@ -324,7 +324,7 @@ This guide helps you diagnose and resolve common issues you might encounter when
    - Check current instance state with GET before performing actions
 
 4. **Permission Issues**
-   - Ensure the NodePass master has sufficient permissions to create processes
+   - Ensure the Tunveo master has sufficient permissions to create processes
    - Check file system permissions for any referenced certificates or keys
 
 ## Data Recovery
@@ -336,38 +336,38 @@ This guide helps you diagnose and resolve common issues you might encounter when
 **Possible Causes and Solutions**:
 
 1. **Recovery using automatic backup file**
-   - NodePass automatically creates backup file `nodepass.gob.backup` every hour
-   - Stop the NodePass master service
-   - Copy backup file as main file: `cp nodepass.gob.backup nodepass.gob`
+   - Tunveo automatically creates backup file `tunveo.gob.backup` every hour
+   - Stop the Tunveo master service
+   - Copy backup file as main file: `cp tunveo.gob.backup tunveo.gob`
    - Restart the master service
 
 2. **Manual state file recovery**
    ```bash
-   # Stop NodePass service
-   pkill nodepass
+   # Stop Tunveo service
+   pkill tunveo
    
    # Backup corrupted file (optional)
-   mv nodepass.gob nodepass.gob.corrupted
+   mv tunveo.gob tunveo.gob.corrupted
    
    # Use backup file
-   cp nodepass.gob.backup nodepass.gob
+   cp tunveo.gob.backup tunveo.gob
    
    # Restart service
-   nodepass "master://0.0.0.0:9090?log=info"
+   tunveo "master://0.0.0.0:9090?log=info"
    ```
 
 3. **When backup file is also corrupted**
-   - Remove corrupted state files: `rm nodepass.gob*`
+   - Remove corrupted state files: `rm tunveo.gob*`
    - Restart master, which will create new state file
    - Need to reconfigure all instances and settings
 
 4. **Preventive backup recommendations**
-   - Regularly backup `nodepass.gob` to external storage
+   - Regularly backup `tunveo.gob` to external storage
    - Adjust backup frequency: set environment variable `export NP_RELOAD_INTERVAL=30m`
    - Monitor state file size, abnormal growth may indicate issues
 
 **Best Practices**:
-- In production environments, recommend regularly backing up `nodepass.gob` to different storage locations
+- In production environments, recommend regularly backing up `tunveo.gob` to different storage locations
 - Use configuration management tools to save text-form backups of instance configurations
 
 ## Connection Pool Type Issues
@@ -563,16 +563,16 @@ This guide helps you diagnose and resolve common issues you might encounter when
 **Comparison Testing**:
 ```bash
 # Test TCP pool performance
-nodepass "server://0.0.0.0:10101/backend:8080?type=0&mode=2&log=event"
-nodepass "client://server:10101/127.0.0.1:8080?mode=2&log=event"
+tunveo "server://0.0.0.0:10101/backend:8080?type=0&mode=2&log=event"
+tunveo "client://server:10101/127.0.0.1:8080?mode=2&log=event"
 
 # Test QUIC pool performance
-nodepass "server://0.0.0.0:10102/backend:8080?type=1&mode=2&log=event"
-nodepass "client://server:10102/127.0.0.1:8081?mode=2&log=event"
+tunveo "server://0.0.0.0:10102/backend:8080?type=1&mode=2&log=event"
+tunveo "client://server:10102/127.0.0.1:8081?mode=2&log=event"
 
 # Test WebSocket pool performance
-nodepass "server://0.0.0.0:10103/backend:8080?type=2&mode=2&log=event"
-nodepass "client://server:10103/127.0.0.1:8082?mode=2&log=event"
+tunveo "server://0.0.0.0:10103/backend:8080?type=2&mode=2&log=event"
+tunveo "client://server:10103/127.0.0.1:8082?mode=2&log=event"
 ```
 
 Monitor traffic statistics and choose based on observed performance.
@@ -581,7 +581,7 @@ Monitor traffic statistics and choose based on observed performance.
 
 If you encounter issues not covered in this guide:
 
-- Check the [project repository](https://github.com/NodePassProject/nodepass) for known issues
+- Check the [project repository](https://github.com/VortexWang/Tunveo) for known issues
 - Increase the log level to `debug` for more detailed information
-- Review the [How It Works](/docs/en/how-it-works.md) section to better understand internal mechanisms
+- Review the [How It Works](/docs/how-it-works.md) section to better understand internal mechanisms
 - Consider joining the community discussion for assistance from other users

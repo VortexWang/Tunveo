@@ -1,4 +1,4 @@
-// Package common provides shared core components and utilities used across the nodepass system.
+// Package common provides shared core components and utilities used across the tunveo system.
 // It includes configuration management, network address resolution, protocol detection,
 // encryption/authentication, and common data structures for servers, clients, and masters.
 package common
@@ -13,7 +13,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/NodePassProject/nodepass/internal/transport"
+	"github.com/VortexWang/Tunveo/internal/transport"
 )
 
 // Default configuration values used when URL query parameters are absent.

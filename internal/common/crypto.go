@@ -23,7 +23,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/NodePassProject/nodepass/internal/transport"
+	"github.com/VortexWang/Tunveo/internal/transport"
 )
 
 // NewTLSConfig generates an ephemeral ECDSA P-256 self-signed certificate in RAM and returns a tls.Config.

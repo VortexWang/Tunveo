@@ -1,4 +1,4 @@
-package pool
+package websocket
 
 import (
 	"context"
@@ -7,10 +7,14 @@ import (
 	"encoding/hex"
 	"fmt"
 	"io"
+	"log"
 	"net"
+	"net/http"
 	"sync"
 	"sync/atomic"
 	"time"
+
+	"github.com/coder/websocket"
 )
 
 const (
@@ -20,44 +24,49 @@ const (
 	defaultMaxIvl           = 1 * time.Second
 	idReadTimeout           = 1 * time.Minute
 	idRetryInterval         = 50 * time.Millisecond
-	acceptRetryInterval     = 50 * time.Millisecond
 	intervalAdjustStep      = 100 * time.Millisecond
 	capacityAdjustLowRatio  = 0.2
 	capacityAdjustHighRatio = 0.8
 	intervalLowThreshold    = 0.2
 	intervalHighThreshold   = 0.8
+	wsPath                  = "/"
 )
 
 type Pool struct {
-	conns     sync.Map
-	idChan    chan string
-	tlsCode   string
-	hostname  string
-	clientIP  string
-	tlsConfig *tls.Config
-	dialer    func() (net.Conn, error)
-	listener  net.Listener
-	first     atomic.Bool
-	errCount  atomic.Int32
-	capacity  atomic.Int32
-	minCap    int
-	maxCap    int
-	interval  atomic.Int64
-	minIvl    time.Duration
-	maxIvl    time.Duration
-	keepAlive time.Duration
-	ctx       context.Context
-	cancel    context.CancelFunc
+	conns      sync.Map
+	idChan     chan string
+	clientIP   string
+	serverName string
+	serverURL  string
+	tlsConfig  *tls.Config
+	server     *http.Server
+	listener   net.Listener
+	first      atomic.Bool
+	errCount   atomic.Int32
+	capacity   atomic.Int32
+	minCap     int
+	maxCap     int
+	interval   atomic.Int64
+	minIvl     time.Duration
+	maxIvl     time.Duration
+	keepAlive  time.Duration
+	ctx        context.Context
+	cancel     context.CancelFunc
 }
 
-func NewClientPool(
-	minCap, maxCap int,
-	minIvl, maxIvl time.Duration,
-	keepAlive time.Duration,
-	tlsCode string,
-	hostname string,
-	dialer func() (net.Conn, error),
-) *Pool {
+type tlsConn struct {
+	net.Conn
+	tlsState *tls.ConnectionState
+}
+
+func (tc *tlsConn) ConnectionState() tls.ConnectionState {
+	if tc.tlsState != nil {
+		return *tc.tlsState
+	}
+	return tls.ConnectionState{}
+}
+
+func NewClientPool(minCap, maxCap int, minIvl, maxIvl, keepAlive time.Duration, tlsCode, serverURL string) *Pool {
 	if minCap <= 0 {
 		minCap = defaultMinCap
 	}
@@ -78,17 +87,52 @@ func NewClientPool(
 		minIvl, maxIvl = maxIvl, minIvl
 	}
 
+	serverName, serverPort := serverURL, ""
+	if name, port, err := net.SplitHostPort(serverURL); err == nil {
+		serverName, serverPort = name, port
+	}
+
+	var tlsConfig *tls.Config
+	var wsScheme string
+	switch tlsCode {
+	case "1":
+		tlsConfig = &tls.Config{
+			InsecureSkipVerify: true,
+			ServerName:         serverName,
+			MinVersion:         tls.VersionTLS13,
+		}
+		wsScheme = "wss"
+	case "2":
+		tlsConfig = &tls.Config{
+			InsecureSkipVerify: false,
+			ServerName:         serverName,
+			MinVersion:         tls.VersionTLS13,
+		}
+		wsScheme = "wss"
+	default:
+		if serverPort == "443" {
+			tlsConfig = &tls.Config{
+				InsecureSkipVerify: false,
+				ServerName:         serverName,
+				MinVersion:         tls.VersionTLS13,
+			}
+			wsScheme = "wss"
+		} else {
+			wsScheme = "ws"
+		}
+	}
+
 	pool := &Pool{
-		conns:     sync.Map{},
-		idChan:    make(chan string, maxCap),
-		tlsCode:   tlsCode,
-		hostname:  hostname,
-		dialer:    dialer,
-		minCap:    minCap,
-		maxCap:    maxCap,
-		minIvl:    minIvl,
-		maxIvl:    maxIvl,
-		keepAlive: keepAlive,
+		conns:      sync.Map{},
+		idChan:     make(chan string, maxCap),
+		serverName: serverName,
+		serverURL:  wsScheme + "://" + serverURL + wsPath,
+		tlsConfig:  tlsConfig,
+		minCap:     minCap,
+		maxCap:     maxCap,
+		minIvl:     minIvl,
+		maxIvl:     maxIvl,
+		keepAlive:  keepAlive,
 	}
 	pool.capacity.Store(int32(minCap))
 	pool.interval.Store(int64(minIvl))
@@ -96,13 +140,7 @@ func NewClientPool(
 	return pool
 }
 
-func NewServerPool(
-	maxCap int,
-	clientIP string,
-	tlsConfig *tls.Config,
-	listener net.Listener,
-	keepAlive time.Duration,
-) *Pool {
+func NewServerPool(maxCap int, clientIP string, tlsConfig *tls.Config, listener net.Listener, keepAlive time.Duration) *Pool {
 	if maxCap <= 0 {
 		maxCap = defaultMaxCap
 	}
@@ -125,39 +163,34 @@ func NewServerPool(
 }
 
 func (p *Pool) createConnection() bool {
-	conn, err := p.dialer()
+	ctx, cancel := context.WithTimeout(p.ctx, 30*time.Second)
+	defer cancel()
+
+	var httpClient *http.Client
+	if p.tlsConfig != nil {
+		httpClient = &http.Client{Transport: &http.Transport{
+			TLSClientConfig: p.tlsConfig,
+		}}
+	} else {
+		httpClient = &http.Client{}
+	}
+
+	wsConn, resp, err := websocket.Dial(ctx, p.serverURL, &websocket.DialOptions{
+		HTTPClient:      httpClient,
+		CompressionMode: websocket.CompressionDisabled,
+		Host:            p.serverName,
+	})
 	if err != nil {
 		return false
 	}
+	wsConn.SetReadLimit(-1)
 
-	conn.(*net.TCPConn).SetKeepAlive(true)
-	conn.(*net.TCPConn).SetKeepAlivePeriod(p.keepAlive)
-
-	var id string
-	switch p.tlsCode {
-	case "0":
-	case "1":
-		tlsConn := tls.Client(conn, &tls.Config{
-			InsecureSkipVerify: true,
-			MinVersion:         tls.VersionTLS13,
-		})
-		if err := tlsConn.Handshake(); err != nil {
-			conn.Close()
-			return false
-		}
-		conn = tlsConn
-	case "2":
-		tlsConn := tls.Client(conn, &tls.Config{
-			InsecureSkipVerify: false,
-			MinVersion:         tls.VersionTLS13,
-			ServerName:         p.hostname,
-		})
-		if err := tlsConn.Handshake(); err != nil {
-			conn.Close()
-			return false
-		}
-		conn = tlsConn
+	var tlsState *tls.ConnectionState
+	if resp != nil && resp.TLS != nil {
+		tlsState = resp.TLS
 	}
+
+	conn := websocket.NetConn(p.ctx, wsConn, websocket.MessageBinary)
 
 	conn.SetReadDeadline(time.Now().Add(idReadTimeout))
 	buf := make([]byte, 4)
@@ -166,65 +199,74 @@ func (p *Pool) createConnection() bool {
 		conn.Close()
 		return false
 	}
-	id = hex.EncodeToString(buf)
+	id := hex.EncodeToString(buf)
 	conn.SetReadDeadline(time.Time{})
 
-	p.conns.Store(id, conn)
+	var wrappedConn net.Conn = conn
+	if tlsState != nil {
+		wrappedConn = &tlsConn{
+			Conn:     conn,
+			tlsState: tlsState,
+		}
+	}
+
+	p.conns.Store(id, wrappedConn)
 	select {
 	case p.idChan <- id:
 		return true
 	default:
 		p.conns.Delete(id)
-		conn.Close()
+		wrappedConn.Close()
 		return false
 	}
 }
 
-func (p *Pool) handleConnection(conn net.Conn) {
-	defer func() {
-		if conn != nil {
-			conn.Close()
-		}
-	}()
-
+func (p *Pool) handleConnection(w http.ResponseWriter, r *http.Request) {
 	if p.Active() >= p.maxCap {
+		http.Error(w, "pool full", http.StatusServiceUnavailable)
 		return
 	}
 
-	conn.(*net.TCPConn).SetKeepAlive(true)
-	conn.(*net.TCPConn).SetKeepAlivePeriod(p.keepAlive)
-
-	if p.clientIP != "" && conn.RemoteAddr().(*net.TCPAddr).IP.String() != p.clientIP {
+	clientIP := r.RemoteAddr
+	if host, _, err := net.SplitHostPort(r.RemoteAddr); err == nil {
+		clientIP = host
+	}
+	if p.clientIP != "" && clientIP != p.clientIP {
+		http.Error(w, "unauthorized", http.StatusForbidden)
 		return
 	}
 
-	if p.tlsConfig != nil {
-		tlsConn := tls.Server(conn, p.tlsConfig)
-		if err := tlsConn.Handshake(); err != nil {
-			return
-		}
-		conn = tlsConn
+	wsConn, err := websocket.Accept(w, r, &websocket.AcceptOptions{
+		CompressionMode:    websocket.CompressionDisabled,
+		InsecureSkipVerify: true,
+	})
+	if err != nil {
+		return
 	}
+	wsConn.SetReadLimit(-1)
 
 	rawID, id, err := p.generateID()
 	if err != nil {
+		wsConn.Close(websocket.StatusInternalError, "id generation failed")
 		return
 	}
 
 	if _, exist := p.conns.Load(id); exist {
+		wsConn.Close(websocket.StatusInternalError, "duplicate id")
 		return
 	}
 
+	conn := websocket.NetConn(p.ctx, wsConn, websocket.MessageBinary)
 	if _, err := conn.Write(rawID); err != nil {
+		conn.Close()
 		return
 	}
 
 	select {
 	case p.idChan <- id:
 		p.conns.Store(id, conn)
-		conn = nil
 	default:
-		return
+		conn.Close()
 	}
 }
 
@@ -273,37 +315,47 @@ func (p *Pool) ServerManager() {
 	}
 	p.ctx, p.cancel = context.WithCancel(context.Background())
 
-	for p.ctx.Err() == nil {
-		conn, err := p.listener.Accept()
-		if err != nil {
-			if p.ctx.Err() != nil || err == net.ErrClosed {
-				return
-			}
+	var listener net.Listener
+	if p.tlsConfig != nil {
+		listener = tls.NewListener(p.listener, p.tlsConfig)
+	} else {
+		listener = p.listener
+	}
 
-			select {
-			case <-p.ctx.Done():
-				return
-			case <-time.After(acceptRetryInterval):
-			}
-			continue
+	mux := http.NewServeMux()
+	mux.HandleFunc(wsPath, p.handleConnection)
+
+	p.server = &http.Server{
+		Handler:           mux,
+		ReadHeaderTimeout: 10 * time.Second,
+		IdleTimeout:       p.keepAlive,
+		ErrorLog:          log.New(io.Discard, "", 0),
+	}
+
+	if err := p.server.Serve(listener); err != nil && err != http.ErrServerClosed {
+		if p.ctx.Err() == nil {
+			p.errCount.Add(1)
 		}
-
-		go p.handleConnection(conn)
 	}
 }
 
 func (p *Pool) OutgoingGet(id string, timeout time.Duration) (net.Conn, error) {
 	ctx, cancel := context.WithTimeout(p.ctx, timeout)
 	defer cancel()
+
 	for {
 		if conn, ok := p.conns.LoadAndDelete(id); ok {
-			<-p.idChan
+			select {
+			case <-p.idChan:
+			default:
+			}
 			return conn.(net.Conn), nil
 		}
+
 		select {
 		case <-time.After(idRetryInterval):
 		case <-ctx.Done():
-			return nil, fmt.Errorf("OutgoingGet: pool connection not found")
+			return nil, fmt.Errorf("OutgoingGet: connection not found")
 		}
 	}
 }
@@ -311,15 +363,15 @@ func (p *Pool) OutgoingGet(id string, timeout time.Duration) (net.Conn, error) {
 func (p *Pool) IncomingGet(timeout time.Duration) (string, net.Conn, error) {
 	ctx, cancel := context.WithTimeout(p.ctx, timeout)
 	defer cancel()
+
 	for {
 		select {
 		case <-ctx.Done():
-			return "", nil, fmt.Errorf("IncomingGet: insufficient pool connections")
+			return "", nil, fmt.Errorf("IncomingGet: insufficient connections")
 		case id := <-p.idChan:
 			if conn, ok := p.conns.LoadAndDelete(id); ok {
 				return id, conn.(net.Conn), nil
 			}
-			continue
 		}
 	}
 }
@@ -343,6 +395,11 @@ func (p *Pool) Flush() {
 func (p *Pool) Close() {
 	if p.cancel != nil {
 		p.cancel()
+	}
+	if p.server != nil {
+		ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+		defer cancel()
+		p.server.Shutdown(ctx)
 	}
 	p.Flush()
 }

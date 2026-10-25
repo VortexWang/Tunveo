@@ -1,10 +1,10 @@
 # Configuration Options
 
-NodePass uses a minimalist approach to configuration, with all settings specified via command-line parameters and environment variables. This guide explains all available configuration options and provides recommendations for various deployment scenarios.
+Tunveo uses a minimalist approach to configuration, with all settings specified via command-line parameters and environment variables. This guide explains all available configuration options and provides recommendations for various deployment scenarios.
 
 ## Log Levels
 
-NodePass provides six log verbosity levels that control the amount of information displayed:
+Tunveo provides six log verbosity levels that control the amount of information displayed:
 
 - `none`: Disable logging - no log information displayed
 - `debug`: Verbose debugging information - shows all operations and connections
@@ -16,12 +16,12 @@ NodePass provides six log verbosity levels that control the amount of informatio
 You can set the log level in the command URL:
 
 ```bash
-nodepass server://0.0.0.0:10101/0.0.0.0:8080?log=debug
+tunveo server://0.0.0.0:10101/0.0.0.0:8080?log=debug
 ```
 
 ## TLS Encryption Modes
 
-For server and master modes, NodePass offers three TLS security levels for data channels:
+For server and master modes, Tunveo offers three TLS security levels for data channels:
 
 - **Mode 0**: No TLS encryption (plain TCP/UDP)
   - Fastest performance, no overhead
@@ -39,17 +39,17 @@ For server and master modes, NodePass offers three TLS security levels for data 
 
 Example with TLS Mode 1 (self-signed):
 ```bash
-nodepass server://0.0.0.0:10101/0.0.0.0:8080?tls=1
+tunveo server://0.0.0.0:10101/0.0.0.0:8080?tls=1
 ```
 
 Example with TLS Mode 2 (custom certificate):
 ```bash
-nodepass "server://0.0.0.0:10101/0.0.0.0:8080?tls=2&crt=/path/to/cert.pem&key=/path/to/key.pem"
+tunveo "server://0.0.0.0:10101/0.0.0.0:8080?tls=2&crt=/path/to/cert.pem&key=/path/to/key.pem"
 ```
 
 ## Run Mode Control
 
-NodePass supports configurable run modes via the `mode` query parameter to control the behavior of both client and server instances. This provides flexibility in deployment scenarios where automatic mode detection may not be suitable.
+Tunveo supports configurable run modes via the `mode` query parameter to control the behavior of both client and server instances. This provides flexibility in deployment scenarios where automatic mode detection may not be suitable.
 
 ### Client Mode Control
 
@@ -73,10 +73,10 @@ For client instances, the `mode` parameter controls the connection strategy:
 Example:
 ```bash
 # Force client to operate in single-end forwarding mode
-nodepass "client://127.0.0.1:1080/target.example.com:8080?mode=1"
+tunveo "client://127.0.0.1:1080/target.example.com:8080?mode=1"
 
 # Force client to operate in dual-end handshake mode
-nodepass "client://server.example.com:10101/127.0.0.1:8080?mode=2"
+tunveo "client://server.example.com:10101/127.0.0.1:8080?mode=2"
 ```
 
 ### Server Mode Control
@@ -101,15 +101,15 @@ For server instances, the `mode` parameter controls the data flow direction:
 Example:
 ```bash
 # Force server to operate in reverse mode
-nodepass "server://0.0.0.0:10101/0.0.0.0:8080?mode=1"
+tunveo "server://0.0.0.0:10101/0.0.0.0:8080?mode=1"
 
 # Force server to operate in forward mode
-nodepass "server://0.0.0.0:10101/remote.example.com:8080?mode=2"
+tunveo "server://0.0.0.0:10101/remote.example.com:8080?mode=2"
 ```
 
 ## DNS Resolution Configuration
 
-NodePass uses the system's built-in DNS resolver with intelligent caching for improved performance and reliability. The DNS cache reduces query overhead and prevents resolution delays.
+Tunveo uses the system's built-in DNS resolver with intelligent caching for improved performance and reliability. The DNS cache reduces query overhead and prevents resolution delays.
 
 - `dns`: DNS cache TTL duration (default: 5m)
   - Specifies how long resolved hostnames are cached before re-querying
@@ -130,19 +130,19 @@ NodePass uses the system's built-in DNS resolver with intelligent caching for im
 Example:
 ```bash
 # Use default 5-minute cache TTL
-nodepass "server://0.0.0.0:10101/example.com:8080"
+tunveo "server://0.0.0.0:10101/example.com:8080"
 
 # Set 1-hour cache TTL for stable domains
-nodepass "server://0.0.0.0:10101/internal.example.com:8080?dns=1h"
+tunveo "server://0.0.0.0:10101/internal.example.com:8080?dns=1h"
 
 # Set 30-second cache TTL for dynamic DNS
-nodepass "client://server.example.com:10101/database.local:3306?dns=30s"
+tunveo "client://server.example.com:10101/database.local:3306?dns=30s"
 
 # Disable DNS caching entirely (query on every connection)
-nodepass "server://0.0.0.0:10101/service.example.com:8080?dns=0"
+tunveo "server://0.0.0.0:10101/service.example.com:8080?dns=0"
 
 # Combined with other parameters
-nodepass "server://0.0.0.0:10101/backend.example.com:8080?dns=10m&log=info&tls=1&mode=2"
+tunveo "server://0.0.0.0:10101/backend.example.com:8080?dns=10m&log=info&tls=1&mode=2"
 ```
 
 **DNS Configuration Use Cases:**
@@ -155,7 +155,7 @@ nodepass "server://0.0.0.0:10101/backend.example.com:8080?dns=10m&log=info&tls=1
 **DNS Caching Behavior:**
 - Cache TTL is configurable via the `dns` query parameter (default: 5 minutes)
 - Expired entries are removed and fresh lookups performed on next access
-- Cache is per-instance and not shared between NodePass processes
+- Cache is per-instance and not shared between Tunveo processes
 - IP addresses are never cached (direct use, no DNS lookup needed)
 - System DNS resolver is used for all hostname lookups
 
@@ -169,7 +169,7 @@ nodepass "server://0.0.0.0:10101/backend.example.com:8080?dns=10m&log=info&tls=1
 
 ## Outbound Connection Source IP Control
 
-NodePass supports specifying the local IP address used for outbound connections to target addresses. This feature is useful for systems with multiple network interfaces where traffic routing needs to be controlled explicitly.
+Tunveo supports specifying the local IP address used for outbound connections to target addresses. This feature is useful for systems with multiple network interfaces where traffic routing needs to be controlled explicitly.
 
 - `dial`: Source IP address for outbound connections (default: auto)
   - Value `auto` or omitted: System automatically selects the source IP based on routing table
@@ -179,18 +179,18 @@ NodePass supports specifying the local IP address used for outbound connections 
   - Automatic fallback to system-selected IP if the specified address fails
   - Invalid IP addresses trigger an error log and fallback to auto mode
 
-The `dial` parameter provides precise control over which network interface NodePass uses for outbound connections, enabling advanced network configurations such as:
+The `dial` parameter provides precise control over which network interface Tunveo uses for outbound connections, enabling advanced network configurations such as:
 
 Example:
 ```bash
 # Server with specific source IP for outbound connections
-nodepass "server://0.0.0.0:10101/remote.example.com:8080?dial=10.1.0.100"
+tunveo "server://0.0.0.0:10101/remote.example.com:8080?dial=10.1.0.100"
 
 # Client with specific source IP for target connections
-nodepass "client://server.example.com:10101/127.0.0.1:8080?dial=192.168.1.50"
+tunveo "client://server.example.com:10101/127.0.0.1:8080?dial=192.168.1.50"
 
 # Combined with other parameters
-nodepass "server://0.0.0.0:10101/remote.example.com:8080?log=info&tls=1&dial=10.1.0.100&mode=2"
+tunveo "server://0.0.0.0:10101/remote.example.com:8080?log=info&tls=1&dial=10.1.0.100&mode=2"
 ```
 
 **Source IP Control Use Cases:**
@@ -202,7 +202,7 @@ nodepass "server://0.0.0.0:10101/remote.example.com:8080?log=info&tls=1&dial=10.
 - **Testing**: Simulate traffic from specific network locations or interfaces
 
 **Automatic Fallback Behavior:**
-- If the specified IP address cannot be bound (e.g., doesn't exist on the system), NodePass logs an error and automatically falls back to system-selected IP
+- If the specified IP address cannot be bound (e.g., doesn't exist on the system), Tunveo logs an error and automatically falls back to system-selected IP
 - The fallback only occurs once per instance - after fallback, all subsequent connections use auto mode
 - Fallback is logged at ERROR level for visibility: "dialWithRotation: fallback to system auto due to dialer failure"
 
@@ -215,7 +215,7 @@ nodepass "server://0.0.0.0:10101/remote.example.com:8080?log=info&tls=1&dial=10.
 
 ## Connection Pool Types
 
-NodePass supports three connection pool types for tunnel connection management in dual-end handshake mode. Each type provides different transport protocols and performance characteristics.
+Tunveo supports three connection pool types for tunnel connection management in dual-end handshake mode. Each type provides different transport protocols and performance characteristics.
 
 - `type`: Connection pool type (default: 0)
   - Value 0: Use TCP-based connection pool (traditional pool library)
@@ -314,25 +314,25 @@ Connection pool based on HTTP/2 protocol, providing multiplexed streams over a s
 **Requirements:**
 - TLS mode must be enabled (tls=1 or tls=2)
 - Only available in dual-end handshake mode (mode=2)
-- HTTP/2 protocol support required (built into NodePass)
+- HTTP/2 protocol support required (built into Tunveo)
 
 ### Configuration Examples
 
 ```bash
 # TCP pool (default)
-nodepass "server://0.0.0.0:10101/remote.example.com:8080?type=0&mode=2&tls=1"
+tunveo "server://0.0.0.0:10101/remote.example.com:8080?type=0&mode=2&tls=1"
 
 # QUIC pool (automatically enables TLS)
-nodepass "server://0.0.0.0:10101/remote.example.com:8080?type=1&mode=2"
+tunveo "server://0.0.0.0:10101/remote.example.com:8080?type=1&mode=2"
 
 # WebSocket pool (with custom TLS certificate)
-nodepass "server://0.0.0.0:10101/remote.example.com:8080?type=2&tls=2&crt=/path/to/cert.pem&key=/path/to/key.pem"
+tunveo "server://0.0.0.0:10101/remote.example.com:8080?type=2&tls=2&crt=/path/to/cert.pem&key=/path/to/key.pem"
 
 # HTTP/2 pool (multiplexed streams with TLS)
-nodepass "server://0.0.0.0:10101/remote.example.com:8080?type=3&mode=2&tls=1"
+tunveo "server://0.0.0.0:10101/remote.example.com:8080?type=3&mode=2&tls=1"
 
 # Client automatically adopts server's pool type configuration
-nodepass "client://server.example.com:10101/127.0.0.1:8080?mode=2"
+tunveo "client://server.example.com:10101/127.0.0.1:8080?mode=2"
 ```
 
 **Important Notes:**
@@ -363,10 +363,10 @@ Connection pool capacity parameters only apply to dual-end handshake mode and ar
 Example:
 ```bash
 # Client sets minimum pool to 32, maximum pool will be determined by server
-nodepass "client://server.example.com:10101/127.0.0.1:8080?min=32"
+tunveo "client://server.example.com:10101/127.0.0.1:8080?min=32"
 
 # Client with QUIC pool and custom pool capacity
-nodepass "client://server.example.com:10101/127.0.0.1:8080?type=1&min=128"
+tunveo "client://server.example.com:10101/127.0.0.1:8080?type=1&min=128"
 ```
 
 ## Data Read Timeout
@@ -384,16 +384,16 @@ The `read` parameter controls data read timeout behavior:
 Example:
 ```bash
 # Set data read timeout to 5 minutes
-nodepass "client://server.example.com:10101/127.0.0.1:8080?read=5m"
+tunveo "client://server.example.com:10101/127.0.0.1:8080?read=5m"
 
 # Set data read timeout to 30 seconds for fast-response applications
-nodepass "client://server.example.com:10101/127.0.0.1:8080?read=30s"
+tunveo "client://server.example.com:10101/127.0.0.1:8080?read=30s"
 
 # Set data read timeout to 1 hour for long-running transfers
-nodepass "client://server.example.com:10101/127.0.0.1:8080?read=1h"
+tunveo "client://server.example.com:10101/127.0.0.1:8080?read=1h"
 
 # Default behavior: no timeout (omit read parameter or set to 0)
-nodepass "client://server.example.com:10101/127.0.0.1:8080"
+tunveo "client://server.example.com:10101/127.0.0.1:8080"
 ```
 
 **Data Read Timeout Use Cases:**
@@ -402,7 +402,7 @@ nodepass "client://server.example.com:10101/127.0.0.1:8080"
 - **Network Reliability**: Handle network interruptions gracefully with automatic cleanup
 
 ## Rate Limiting
-NodePass supports bandwidth rate limiting for traffic control through the `rate` parameter. This feature helps prevent network congestion and ensures fair resource allocation across multiple connections.
+Tunveo supports bandwidth rate limiting for traffic control through the `rate` parameter. This feature helps prevent network congestion and ensures fair resource allocation across multiple connections.
 
 - `rate`: Maximum bandwidth limit in Mbps (Megabits per second)
   - Value 0 or omitted: No rate limiting (unlimited bandwidth)
@@ -413,17 +413,17 @@ NodePass supports bandwidth rate limiting for traffic control through the `rate`
 Example:
 ```bash
 # Limit bandwidth to 50 Mbps
-nodepass "server://0.0.0.0:10101/0.0.0.0:8080?rate=50"
+tunveo "server://0.0.0.0:10101/0.0.0.0:8080?rate=50"
 
 # Client with 100 Mbps rate limit
-nodepass "client://server.example.com:10101/127.0.0.1:8080?rate=100"
+tunveo "client://server.example.com:10101/127.0.0.1:8080?rate=100"
 
 # Combined with other parameters
-nodepass "server://0.0.0.0:10101/0.0.0.0:8080?log=error&tls=1&rate=50"
+tunveo "server://0.0.0.0:10101/0.0.0.0:8080?log=error&tls=1&rate=50"
 ```
 
 **Rate Limiting Use Cases:**
-- **Bandwidth Control**: Prevent NodePass from consuming all available bandwidth
+- **Bandwidth Control**: Prevent Tunveo from consuming all available bandwidth
 - **Fair Sharing**: Ensure multiple applications can share network resources
 - **Cost Management**: Control data usage in metered network environments
 - **QoS Compliance**: Meet service level agreements for bandwidth usage
@@ -431,7 +431,7 @@ nodepass "server://0.0.0.0:10101/0.0.0.0:8080?log=error&tls=1&rate=50"
 
 ## Connection Slot Limit
 
-NodePass provides connection slot limiting to control the maximum number of concurrent connections and prevent resource exhaustion. This feature helps maintain system stability and predictable performance under high load conditions.
+Tunveo provides connection slot limiting to control the maximum number of concurrent connections and prevent resource exhaustion. This feature helps maintain system stability and predictable performance under high load conditions.
 
 - `slot`: Maximum total connection limit (default: 65536)
   - Value 0 or omitted: No connection limit (unlimited concurrent connections)
@@ -440,18 +440,18 @@ NodePass provides connection slot limiting to control the maximum number of conc
   - Connections exceeding the limit will be rejected until slots become available
   - Separate tracking for TCP and UDP connections with combined limit enforcement
 
-The slot limit provides a circuit breaker mechanism that prevents NodePass from accepting more connections than the system can handle effectively. When the limit is reached, new connection attempts are rejected immediately rather than queuing, which helps maintain low latency for existing connections.
+The slot limit provides a circuit breaker mechanism that prevents Tunveo from accepting more connections than the system can handle effectively. When the limit is reached, new connection attempts are rejected immediately rather than queuing, which helps maintain low latency for existing connections.
 
 Example:
 ```bash
 # Limit total concurrent connections to 1000
-nodepass "server://0.0.0.0:10101/0.0.0.0:8080?slot=1000"
+tunveo "server://0.0.0.0:10101/0.0.0.0:8080?slot=1000"
 
 # Client with 500 connection limit
-nodepass "client://server.example.com:10101/127.0.0.1:8080?slot=500"
+tunveo "client://server.example.com:10101/127.0.0.1:8080?slot=500"
 
 # Combined with other parameters
-nodepass "server://0.0.0.0:10101/0.0.0.0:8080?log=info&tls=1&slot=2000&rate=100"
+tunveo "server://0.0.0.0:10101/0.0.0.0:8080?log=info&tls=1&slot=2000&rate=100"
 ```
 
 **Connection Slot Limit Use Cases:**
@@ -471,7 +471,7 @@ nodepass "server://0.0.0.0:10101/0.0.0.0:8080?log=info&tls=1&slot=2000&rate=100"
 
 ## PROXY Protocol Support
 
-NodePass supports PROXY protocol v1 for preserving client connection information when forwarding traffic through load balancers, reverse proxies, or other intermediary services.
+Tunveo supports PROXY protocol v1 for preserving client connection information when forwarding traffic through load balancers, reverse proxies, or other intermediary services.
 
 - `proxy`: PROXY protocol support (default: 0)
   - Value 0: Disabled - no PROXY protocol header is sent
@@ -479,18 +479,18 @@ NodePass supports PROXY protocol v1 for preserving client connection information
   - Works with both TCP4 and TCP6 connections
   - Compatible with HAProxy, Nginx, and other PROXY protocol aware services
 
-The PROXY protocol header includes original client IP, server IP, and port information, allowing downstream services to identify the real client connection details even when traffic passes through NodePass tunnels.
+The PROXY protocol header includes original client IP, server IP, and port information, allowing downstream services to identify the real client connection details even when traffic passes through Tunveo tunnels.
 
 Example:
 ```bash
 # Enable PROXY protocol v1 for server mode
-nodepass "server://0.0.0.0:10101/0.0.0.0:8080?proxy=1"
+tunveo "server://0.0.0.0:10101/0.0.0.0:8080?proxy=1"
 
 # Enable PROXY protocol v1 for client mode  
-nodepass "client://server.example.com:10101/127.0.0.1:8080?proxy=1"
+tunveo "client://server.example.com:10101/127.0.0.1:8080?proxy=1"
 
 # Combined with other parameters
-nodepass "server://0.0.0.0:10101/0.0.0.0:8080?log=info&tls=1&proxy=1&rate=100"
+tunveo "server://0.0.0.0:10101/0.0.0.0:8080?log=info&tls=1&proxy=1&rate=100"
 ```
 
 **PROXY Protocol Use Cases:**
@@ -508,7 +508,7 @@ nodepass "server://0.0.0.0:10101/0.0.0.0:8080?log=info&tls=1&proxy=1&rate=100"
 
 ## TCP Support Control
 
-NodePass supports TCP traffic tunneling by default. The `notcp` parameter allows you to disable TCP support when only UDP traffic needs to be handled, which can reduce resource usage and simplify configuration.
+Tunveo supports TCP traffic tunneling by default. The `notcp` parameter allows you to disable TCP support when only UDP traffic needs to be handled, which can reduce resource usage and simplify configuration.
 
 - `notcp`: TCP support control (default: 0)
   - Value 0: TCP support enabled - both TCP and UDP traffic will be tunneled
@@ -519,16 +519,16 @@ NodePass supports TCP traffic tunneling by default. The `notcp` parameter allows
 Example:
 ```bash
 # Enable TCP support (default behavior)
-nodepass "server://0.0.0.0:10101/0.0.0.0:8080?notcp=0"
+tunveo "server://0.0.0.0:10101/0.0.0.0:8080?notcp=0"
 
 # Disable TCP support for UDP-only scenarios
-nodepass "server://0.0.0.0:10101/0.0.0.0:8080?notcp=1"
+tunveo "server://0.0.0.0:10101/0.0.0.0:8080?notcp=1"
 
 # Client with TCP disabled
-nodepass "client://server.example.com:10101/127.0.0.1:8080?notcp=1"
+tunveo "client://server.example.com:10101/127.0.0.1:8080?notcp=1"
 
 # Combined with other parameters
-nodepass "server://0.0.0.0:10101/0.0.0.0:8080?log=info&tls=1&notcp=1"
+tunveo "server://0.0.0.0:10101/0.0.0.0:8080?log=info&tls=1&notcp=1"
 ```
 
 **TCP Support Control Use Cases:**
@@ -545,7 +545,7 @@ nodepass "server://0.0.0.0:10101/0.0.0.0:8080?log=info&tls=1&notcp=1"
 
 ## UDP Support Control
 
-NodePass supports UDP traffic tunneling in addition to TCP. The `noudp` parameter allows you to disable UDP support when only TCP traffic needs to be handled, which can reduce resource usage and simplify configuration.
+Tunveo supports UDP traffic tunneling in addition to TCP. The `noudp` parameter allows you to disable UDP support when only TCP traffic needs to be handled, which can reduce resource usage and simplify configuration.
 
 - `noudp`: UDP support control (default: 0)
   - Value 0: UDP support enabled - both TCP and UDP traffic will be tunneled
@@ -556,16 +556,16 @@ NodePass supports UDP traffic tunneling in addition to TCP. The `noudp` paramete
 Example:
 ```bash
 # Enable UDP support (default behavior)
-nodepass "server://0.0.0.0:10101/0.0.0.0:8080?noudp=0"
+tunveo "server://0.0.0.0:10101/0.0.0.0:8080?noudp=0"
 
 # Disable UDP support for TCP-only scenarios
-nodepass "server://0.0.0.0:10101/0.0.0.0:8080?noudp=1"
+tunveo "server://0.0.0.0:10101/0.0.0.0:8080?noudp=1"
 
 # Client with UDP disabled
-nodepass "client://server.example.com:10101/127.0.0.1:8080?noudp=1"
+tunveo "client://server.example.com:10101/127.0.0.1:8080?noudp=1"
 
 # Combined with other parameters
-nodepass "server://0.0.0.0:10101/0.0.0.0:8080?log=info&tls=1&noudp=1"
+tunveo "server://0.0.0.0:10101/0.0.0.0:8080?log=info&tls=1&noudp=1"
 ```
 
 **UDP Support Control Use Cases:**
@@ -582,7 +582,7 @@ nodepass "server://0.0.0.0:10101/0.0.0.0:8080?log=info&tls=1&noudp=1"
 
 ## Protocol Blocking
 
-NodePass provides fine-grained protocol blocking capabilities to prevent specific protocols from being tunneled. This is useful for security policies that require blocking certain protocols while allowing others.
+Tunveo provides fine-grained protocol blocking capabilities to prevent specific protocols from being tunneled. This is useful for security policies that require blocking certain protocols while allowing others.
 
 The `block` parameter uses a numeric string where each digit represents a protocol category:
 - `1`: Block SOCKS protocols (SOCKS4/4a/5)
@@ -603,35 +603,35 @@ Multiple protocols can be blocked by including the corresponding digits in any o
 
 Block SOCKS protocols only:
 ```bash
-nodepass "server://0.0.0.0:10101/0.0.0.0:8080?block=1"
+tunveo "server://0.0.0.0:10101/0.0.0.0:8080?block=1"
 ```
 
 Block HTTP protocols only:
 ```bash
-nodepass "server://0.0.0.0:10101/0.0.0.0:8080?block=2"
+tunveo "server://0.0.0.0:10101/0.0.0.0:8080?block=2"
 ```
 
 Block both SOCKS and HTTP:
 ```bash
-nodepass "server://0.0.0.0:10101/0.0.0.0:8080?block=12"
+tunveo "server://0.0.0.0:10101/0.0.0.0:8080?block=12"
 # OR
-nodepass "server://0.0.0.0:10101/0.0.0.0:8080?block=21"
+tunveo "server://0.0.0.0:10101/0.0.0.0:8080?block=21"
 ```
 
 Block all three protocol categories:
 ```bash
-nodepass "server://0.0.0.0:10101/0.0.0.0:8080?block=123"
+tunveo "server://0.0.0.0:10101/0.0.0.0:8080?block=123"
 # OR any combination like: 321, 213, 312, etc.
 ```
 
 Combined with other security settings:
 ```bash
-nodepass "server://0.0.0.0:10101/0.0.0.0:8080?log=info&tls=1&block=12&slot=1024"
+tunveo "server://0.0.0.0:10101/0.0.0.0:8080?log=info&tls=1&block=12&slot=1024"
 ```
 
 ### Detection Mechanism
 
-NodePass uses efficient protocol detection with minimal overhead:
+Tunveo uses efficient protocol detection with minimal overhead:
 
 - **SOCKS Detection**: Examines the first 2 bytes of incoming connections
   - SOCKS4/4a: Checks for version byte `0x04` and command byte `0x01`/`0x02`
@@ -651,19 +651,19 @@ NodePass uses efficient protocol detection with minimal overhead:
 **Block proxy protocols in tunnel services:**
 ```bash
 # Allow only application traffic, block proxy protocols
-nodepass "server://0.0.0.0:10101/app.backend.local:8080?block=12"
+tunveo "server://0.0.0.0:10101/app.backend.local:8080?block=12"
 ```
 
 **Enforce encryption policy:**
 ```bash
 # Allow only encrypted traffic, block plaintext protocols
-nodepass "server://0.0.0.0:10101/0.0.0.0:443?block=12&tls=2"
+tunveo "server://0.0.0.0:10101/0.0.0.0:443?block=12&tls=2"
 ```
 
 **Prevent TLS-in-TLS:**
 ```bash
 # Block nested TLS when outer layer already encrypts
-nodepass "server://0.0.0.0:10101/0.0.0.0:8080?tls=1&block=3"
+tunveo "server://0.0.0.0:10101/0.0.0.0:8080?tls=1&block=3"
 ```
 
 ### Important Notes
@@ -676,23 +676,23 @@ nodepass "server://0.0.0.0:10101/0.0.0.0:8080?tls=1&block=3"
 
 ## Target Address Groups and Load Balancing
 
-NodePass supports configuring multiple target addresses to achieve high availability and load balancing. Target address groups are only applicable to the egress side (the final destination of traffic) and should not be used on the ingress side.
+Tunveo supports configuring multiple target addresses to achieve high availability and load balancing. Target address groups are only applicable to the egress side (the final destination of traffic) and should not be used on the ingress side.
 
 ### Target Address Group Configuration
 
-Target address groups are configured by separating multiple addresses with commas. NodePass automatically performs round-robin and failover across these addresses:
+Target address groups are configured by separating multiple addresses with commas. Tunveo automatically performs round-robin and failover across these addresses:
 
 ```bash
 # Server with multiple backend targets (forward mode, mode=2)
-nodepass "server://0.0.0.0:10101/backend1.example.com:8080,backend2.example.com:8080,backend3.example.com:8080?mode=2&tls=1"
+tunveo "server://0.0.0.0:10101/backend1.example.com:8080,backend2.example.com:8080,backend3.example.com:8080?mode=2&tls=1"
 
 # Client with multiple local services (single-end forwarding mode, mode=1)
-nodepass "client://127.0.0.1:1080/app1.local:8080,app2.local:8080?mode=1"
+tunveo "client://127.0.0.1:1080/app1.local:8080,app2.local:8080?mode=1"
 ```
 
 ### Rotation Strategy
 
-NodePass provides three load balancing strategies controlled by the `lbs` parameter:
+Tunveo provides three load balancing strategies controlled by the `lbs` parameter:
 
 **Strategy 0 (Round-Robin):**
 - **Load Balancing**: After each successful connection establishment, automatically switches to the next target address for even traffic distribution
@@ -715,17 +715,17 @@ Example configurations:
 
 ```bash
 # Round-robin (lbs=0, cycles through targets on each connection)
-nodepass "server://0.0.0.0:10101/backend1:8080,backend2:8080,backend3:8080?lbs=0"
+tunveo "server://0.0.0.0:10101/backend1:8080,backend2:8080,backend3:8080?lbs=0"
 
 # Optimal-latency (lbs=1, automatically routes to fastest target)
-nodepass "server://0.0.0.0:10101/backend1:8080,backend2:8080,backend3:8080?lbs=1"
+tunveo "server://0.0.0.0:10101/backend1:8080,backend2:8080,backend3:8080?lbs=1"
 
 # Primary-backup (lbs=2, primary priority and scheduled fallback)
-nodepass "server://0.0.0.0:10101/primary:8080,backup1:8080,backup2:8080?lbs=2"
+tunveo "server://0.0.0.0:10101/primary:8080,backup1:8080,backup2:8080?lbs=2"
 
 # Custom fallback interval of 2 minutes
 export NP_FALLBACK_INTERVAL=2m
-nodepass "server://0.0.0.0:10101/main.com:443,spare1.com:443,spare2.com:443?lbs=2"
+tunveo "server://0.0.0.0:10101/main.com:443,spare1.com:443,spare2.com:443?lbs=2"
 ```
 
 Choose the appropriate strategy based on your needs:
@@ -757,18 +757,18 @@ Example configurations:
 
 ```bash
 # Correct example: Server with 3 backend web servers
-nodepass "server://0.0.0.0:10101/web1.internal:8080,web2.internal:8080,web3.internal:8080?mode=2&log=info"
+tunveo "server://0.0.0.0:10101/web1.internal:8080,web2.internal:8080,web3.internal:8080?mode=2&log=info"
 
 # Correct example: Client with 2 local database instances
-nodepass "client://127.0.0.1:3306/db-primary.local:3306,db-secondary.local:3306?mode=1&log=warn"
+tunveo "client://127.0.0.1:3306/db-primary.local:3306,db-secondary.local:3306?mode=1&log=warn"
 
 # Incorrect example: Do not use multi-address for tunnel addresses (will cause parsing errors)
-# nodepass "server://host1:10101,host2:10101/target:8080"  # ✗ Wrong usage
+# tunveo "server://host1:10101,host2:10101/target:8080"  # ✗ Wrong usage
 ```
 
 ## URL Query Parameter Scope and Applicability
 
-NodePass allows flexible configuration via URL query parameters. The following table shows which parameters are applicable in server, client, and master modes:
+Tunveo allows flexible configuration via URL query parameters. The following table shows which parameters are applicable in server, client, and master modes:
 
 | Parameter | Description | Default | Accepted Values | server | client | master |
 |-----------|-------------|---------|-----------------|:------:|:------:|:------:|
@@ -808,7 +808,7 @@ NodePass allows flexible configuration via URL query parameters. The following t
 
 ## Environment Variables
 
-NodePass behavior can be fine-tuned using environment variables. Below is the complete list of available variables with their descriptions, default values, and recommended settings for different scenarios.
+Tunveo behavior can be fine-tuned using environment variables. Below is the complete list of available variables with their descriptions, default values, and recommended settings for different scenarios.
 
 | Variable | Description | Default | Example |
 |----------|-------------|---------|---------|
@@ -932,10 +932,10 @@ For applications requiring maximum throughput (e.g., media streaming, file trans
 URL parameters:
 ```bash
 # High-throughput server with 1 Gbps rate limit and high connection capacity
-nodepass "server://0.0.0.0:10101/0.0.0.0:8080?max=8192&rate=1000&slot=10000"
+tunveo "server://0.0.0.0:10101/0.0.0.0:8080?max=8192&rate=1000&slot=10000"
 
 # High-throughput client with 500 Mbps rate limit and high connection capacity
-nodepass "client://server.example.com:10101/127.0.0.1:8080?min=128&rate=500&slot=5000"
+tunveo "client://server.example.com:10101/127.0.0.1:8080?min=128&rate=500&slot=5000"
 ```
 
 Environment variables:
@@ -956,10 +956,10 @@ For applications requiring minimal latency (e.g., gaming, financial trading):
 URL parameters:
 ```bash
 # Low-latency server with moderate rate limit and moderate connection limit
-nodepass "server://0.0.0.0:10101/0.0.0.0:8080?max=4096&rate=200&slot=3000"
+tunveo "server://0.0.0.0:10101/0.0.0.0:8080?max=4096&rate=200&slot=3000"
 
 # Low-latency client with moderate rate limit and moderate connection limit
-nodepass "client://server.example.com:10101/127.0.0.1:8080?min=256&rate=200&slot=2000"
+tunveo "client://server.example.com:10101/127.0.0.1:8080?min=256&rate=200&slot=2000"
 ```
 
 Environment variables:
@@ -980,10 +980,10 @@ For deployment on systems with limited resources (e.g., IoT devices, small VPS):
 URL parameters:
 ```bash
 # Resource-constrained server with conservative rate limit and low connection limit
-nodepass "server://0.0.0.0:10101/0.0.0.0:8080?max=512&rate=50&slot=500"
+tunveo "server://0.0.0.0:10101/0.0.0.0:8080?max=512&rate=50&slot=500"
 
 # Resource-constrained client with conservative rate limit and low connection limit
-nodepass "client://server.example.com:10101/127.0.0.1:8080?min=16&rate=50&slot=200"
+tunveo "client://server.example.com:10101/127.0.0.1:8080?min=16&rate=50&slot=200"
 ```
 
 Environment variables:
@@ -1000,7 +1000,7 @@ export NP_SHUTDOWN_TIMEOUT=3s
 
 ## Next Steps
 
-- See [usage instructions](/docs/en/usage.md) for basic operational commands
-- Explore [examples](/docs/en/examples.md) to understand deployment patterns
-- Learn about [how NodePass works](/docs/en/how-it-works.md) to optimize your configuration
-- Check the [troubleshooting guide](/docs/en/troubleshooting.md) if you encounter issues
+- See [usage instructions](/docs/usage.md) for basic operational commands
+- Explore [examples](/docs/examples.md) to understand deployment patterns
+- Learn about [how Tunveo works](/docs/how-it-works.md) to optimize your configuration
+- Check the [troubleshooting guide](/docs/troubleshooting.md) if you encounter issues

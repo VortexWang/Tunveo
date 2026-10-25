@@ -1,4 +1,4 @@
-// instance.go manages the lifecycle of nodepass child-process instances:
+// instance.go manages the lifecycle of tunveo child-process instances:
 // starting, stopping, monitoring, URL generation, and configuration updates.
 package master
 
@@ -14,7 +14,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/NodePassProject/nodepass/internal/common"
+	"github.com/VortexWang/Tunveo/internal/common"
 )
 
 // FindInstance retrieves an instance from the master's instance map by ID.
@@ -36,12 +36,12 @@ func (m *Master) FindInstance(id string) (*Instance, bool) {
 	return value.(*Instance), true
 }
 
-// StartInstance starts a nodepass instance as a subprocess, capturing its output and
+// StartInstance starts a tunveo instance as a subprocess, capturing its output and
 // managing its lifecycle. It validates the instance state and initializes metric tracking.
 //
 // Checks that the instance is in "stopped" status before starting. Saves the current
 // traffic counters as base values for delta calculations. Forks a child process running
-// the nodepass binary with the instance URL as the argument. The child's stdout and
+// the tunveo binary with the instance URL as the argument. The child's stdout and
 // stderr are attached to an InstanceLogWriter that parses metrics and forwards logs.
 // A context.WithCancel is used to allow graceful termination. On startup success, the
 // instance status is set to "running" and MonitorInstance is started in a goroutine.

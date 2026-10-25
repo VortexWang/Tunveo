@@ -1,162 +1,57 @@
-<div align="center">
-  <img src="https://nodepass.eu/assets/np-gopher.png" width="300">
+# Tunveo · 隧维
 
-[![Mentioned in Awesome Go](https://awesome.re/mentioned-badge.svg)](https://github.com/avelino/awesome-go#networking)
-[![GitHub release](https://img.shields.io/github/v/release/NodePassProject/nodepass)](https://github.com/NodePassProject/nodepass/releases)
-[![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
-[![Go Reference](https://pkg.go.dev/badge/github.com/NodePassProject/nodepass.svg)](https://pkg.go.dev/github.com/NodePassProject/nodepass)
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/NodePassProject/nodepass)
+Tunveo is an independently maintained TCP/UDP tunnel forwarding tool derived from NodePass v1.17.0. It retains server, client and master modes and brings the TCP, QUIC, WebSocket and HTTP/2 pool implementations into one repository.
 
-  <a href="https://apps.apple.com/us/app/nodepass/id6747930492"><img src="https://nodepass.eu/assets/appstore.png" width="120"></a>
-</div>
+本项目基于 NodePass v1.17.0 独立维护，首轮工作为品牌更名、四库内置和验证基线建立。当前为开发基线，不代表已完成安全审计或漏洞修复，也尚未发布正式版本。
 
-**NodePass** is an open-source, lightweight, enterprise-grade TCP/UDP network tunneling solution featuring an all-in-one architecture with separation of control and data channels, along with flexible and high-performance instance control. It supports zero-configuration deployment, intelligent connection pooling, tiered TLS encryption, and seamless protocol conversion. Designed for DevOps professionals and system administrators to effortlessly handle complex network scenarios.
+## Build
 
-## Key Features
+Use Go 1.26.5, matching the initial upstream baseline:
 
-- **Universal Functionality**
-  - Basic TCP/UDP tunneling and protocol conversion across diverse networks.
-  - Compatible with port mapping, NAT traversal, and traffic relay.
-  - Cross-platform, multi-architecture, single binary or container.
-
-- **Connection Pool**
-  - Supports TCP, QUIC, WebSocket, HTTP/2 pooling transport methods.
-  - Eliminates handshake delays, boosts performance with 0-RTT support.
-  - Auto-scaling with real-time capacity adjustment.
-
-- **Innovative Architecture**
-  - Integrated S/C/M architecture, flexible mode switching.
-  - Full decoupling of control/data channels.
-  - API-instance management, multi-instance collaboration.
-
-- **Multi-level Security**
-  - Three TLS modes: plaintext, self-signed, strict validation.
-  - Covers development to enterprise security needs.
-  - Hot-reload certificates with zero downtime.
-
-- **Minimal Configuration**
-  - No config files required, ready to use via CLI.
-  - Optimized for CI/CD and containers.
-  - Advanced parameters like timeouts and rate limits.
-
-- **Performance**
-  - Intelligent scheduling, auto-tuning, ultra-low resource usage.
-  - Stable under high concurrency and heavy load.
-  - Load balancing, health checks, self-healing and more.
-
-- **Visualization**
-  - Rich cross-platform visual frontends.
-  - One-click deployment scripts, easy management.
-  - Real-time monitoring, API-instance management, traffic stats.
-
-## Quick Start
-
-- **Start a server** with TCP connection pooling:
-```bash
-nodepass server \
-  --tunnel-port 10101 \
-  --target-addr 127.0.0.1 \
-  --target-port 3000
+```sh
+git clone https://github.com/VortexWang/Tunveo.git
+cd Tunveo
+go build -trimpath -o bin/tunveo ./cmd/tunveo
+./bin/tunveo version
+./bin/tunveo help
 ```
 
-- **Start a client** for minimal 0-RTT tunneling:
-```bash
-nodepass client \
-  --tunnel-addr server.address \
-  --tunnel-port 10101 \
-  --target-addr 127.0.0.1 \
-  --target-port 3000
+## Quick start
+
+Example: forward a local TCP service through a tunnel. Run a service on port 3000 at the server, then start:
+
+```sh
+# Server: require a certificate for authenticated production deployments.
+./bin/tunveo server --tunnel-port 10101 --target-addr 127.0.0.1 --target-port 3000
+# Client: connects to the server and exposes the forwarded service locally.
+./bin/tunveo client --tunnel-addr server.example.com --tunnel-port 10101 --target-addr 127.0.0.1 --target-port 3000
 ```
 
-- **Enable TLS security** with self-signed certificate:
-```bash
-nodepass server \
-  --tunnel-port 10101 \
-  --target-addr 127.0.0.1 \
-  --target-port 3000 \
-  --tls 1
+The example uses the inherited default plaintext mode. TLS mode 1 encrypts traffic without validating the peer certificate; use mode 2 with an appropriate certificate for certificate validation. See the configuration documentation for the behavior of each transport.
+
+## Validation status
+
+Local builds, module verification and vet pass. Initial loopback TCP/UDP checks also expose intermittent TLS-mode-1 verification timeouts; a timeout was reproduced with the unchanged upstream binary. The diagnostic matrix reports failures with a nonzero exit status. This baseline is not ready for a stable release. See [validation notes](docs/validation.md).
+
+## Development
+
+```sh
+go mod verify
+go vet ./...
+go test ./...
+go test -race ./...
 ```
 
-- **Launch a master** for multi-instance management:
-```bash
-nodepass master \
-  --tunnel-port 10101 \
-  --tls 2 \
-  --crt master.crt \
-  --key master.key
-```
+- [Installation](docs/installation.md)
+- [CLI](docs/cli.md), [configuration](docs/configuration.md), [API](docs/api.md), [MCP](docs/mcp.md)
+- [Migration and compatibility](docs/migration.md)
+- [Upstream provenance](docs/upstream/README.md) and [source records](docs/upstream/sources.json)
+- [Security policy](SECURITY.md)
 
-## Documentation
+The detailed usage documents were inherited from upstream and renamed. Their examples and claims are not a substitute for the compatibility checks tracked in the migration document.
 
-Explore the complete documentation to learn more about NodePass:
+## Origin and license
 
-- [Installation Guide](/docs/installation.md)
-- [Usage Instructions](/docs/usage.md)
-- [Configuration Options](/docs/configuration.md)
-- [CLI Reference](/docs/cli.md)
-- [API Reference](/docs/api.md)
-- [MCP Reference](/docs/mcp.md)
-- [Examples](/docs/examples.md)
-- [How It Works](/docs/how-it-works.md)
-- [Troubleshooting](/docs/troubleshooting.md)
+Based on [NodePass v1.17.0](https://github.com/NodePassProject/nodepass/tree/v1.17.0), with the `pool`, `quic`, `npws`, and `nph2` libraries at v1.1.1 incorporated as internal packages. Original copyright notices and BSD-3-Clause licenses are retained. See [LICENSE](LICENSE) and [NOTICE](NOTICE).
 
-See also [DeepWiki](https://deepwiki.com/NodePassProject/nodepass) for AI-powered documentation.
-
-## Ecosystem
-
-The [NodePassProject](https://github.com/NodePassProject) organization develops various frontend applications and auxiliary tools to enhance the NodePass experience:
-
-- **[NodePassDash](https://github.com/NodePassProject/NodePassDash)**: A modern NodePass management interface that provides master management, instance management, traffic statistics, history records, and more.
-
-- **[NodePass-ApplePlatforms](https://github.com/NodePassProject/NodePass-ApplePlatforms)**: A service-oriented iOS/macOS application that offers a native experience for Apple users.
-
-- **[NodePanel](https://github.com/NodePassProject/NodePanel)**: A lightweight frontend panel that provides visual tunnel management, deployable on Vercel or Cloudflare Pages.
-
-- **[npsh](https://github.com/NodePassProject/npsh)**: A collection of one-click scripts that provide simple deployment for API or Dashboard with flexible configuration and management.
-
-## Donation
-
-- EVM: `0x2ea4Ea9425BEe897ED74fC5512bd13ABC7100000`
-
-- TRX: `TCqbhDHoBFKRVwibe4tb7xNjtgnmkJXGR6`
-
-- SOL: `BwZuvh13BQWhYSh31dEZiy8avqZwMFfdSwfawTiMv7Bw`
-
-## Sponsorship
-
-<p align="center">
-  <a href="https://gatewaysentry.com/">
-    <img
-      src="https://nodepass.eu/assets/gatewaysentry.png"
-      alt="GatewaySentry"
-      width="720"
-    >
-  </a>
-</p>
-
-<p align="center">
-  <em>
-    A DDoS mitigation solution that works and doesn't over estimate capabilities,
-    since the product speaks for itself.
-  </em>
-</p>
-
-<p align="center">
-  <sub>
-    Visit <a href="https://gatewaysentry.com/">GatewaySentry</a> to learn more.
-  </sub>
-</p>
-
-## License
-
-- Project **NodePass** is licensed under the [BSD 3-Clause License](LICENSE), which applies to the source code only.
-
-- The **NodePass** name, logo, and official project identity are not covered by the code license and may not be used without explicit authorization.
-
-## Disclaimer
-
-This project is provided "as is" without any warranties. Users assume all risks and must comply with local laws for legal use only. Developers are not liable for any direct, indirect, incidental, or consequential damages. Secondary development requires commitment to legal use and self-responsibility for legal compliance. Developers reserve the right to modify software features and this disclaimer at any time. Final interpretation rights belong to developers.
-
----
-
-© 2026 NodePassProject. All rights reserved.
+Tunveo is independently maintained and is not an official NodePass release. Upstream names are used for attribution and compatibility documentation. No upstream logos, sponsorships, donations, community channels or distribution scripts are adopted as Tunveo branding.

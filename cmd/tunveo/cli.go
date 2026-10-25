@@ -53,10 +53,10 @@ func newCommandLine(args []string) *commandLine {
 
 // parse parses the command-line arguments and returns a *url.URL representing
 // the complete tunnel configuration. It supports two input formats:
-// 1. Command mode: nodepass <command> [--flag value ...]
+// 1. Command mode: tunveo <command> [--flag value ...]
 //   - Parses flags and constructs URL from components
 //
-// 2. URL mode: nodepass <url>
+// 2. URL mode: tunveo <url>
 //   - Directly parses and returns the URL
 //
 // Returns an error if parsing fails or the command is unrecognized.
@@ -66,7 +66,7 @@ func (c *commandLine) parse() (*url.URL, error) {
 	}
 
 	if len(c.args) < 2 {
-		return nil, fmt.Errorf("usage: nodepass <command> [options] or nodepass <url>")
+		return nil, fmt.Errorf("usage: tunveo <command> [options] or tunveo <url>")
 	}
 
 	command := c.args[1]
@@ -83,7 +83,7 @@ func (c *commandLine) parse() (*url.URL, error) {
 		c.printHelp()
 		os.Exit(0)
 	case "version", "-v", "--version":
-		fmt.Printf("nodepass-%s %s/%s\n", version, runtime.GOOS, runtime.GOARCH)
+		fmt.Printf("tunveo-%s %s/%s\n", version, runtime.GOOS, runtime.GOARCH)
 		os.Exit(0)
 	default:
 		fullArg := strings.Join(c.args[1:], " ")
@@ -308,7 +308,7 @@ func (c *commandLine) buildUserInfo() *url.Userinfo {
 	return nil
 }
 
-// parseServerCommand parses the "nodepass server" command flags and constructs a configuration URL.
+// parseServerCommand parses the "tunveo server" command flags and constructs a configuration URL.
 // It registers all server-specific flags, parses them from args, then builds a URL with:
 //   - Scheme: "server" to identify this as a server configuration
 //   - User: password (authentication secret)
@@ -322,7 +322,7 @@ func (c *commandLine) parseServerCommand(args []string) (*url.URL, error) {
 	c.addServerFlags(fs)
 
 	fs.Usage = func() {
-		fmt.Fprintf(os.Stdout, "Usage: nodepass server [options]\n\nOptions:\n")
+		fmt.Fprintf(os.Stdout, "Usage: tunveo server [options]\n\nOptions:\n")
 		fs.PrintDefaults()
 	}
 
@@ -339,7 +339,7 @@ func (c *commandLine) parseServerCommand(args []string) (*url.URL, error) {
 	}, nil
 }
 
-// parseClientCommand parses the "nodepass client" command flags and constructs a configuration URL.
+// parseClientCommand parses the "tunveo client" command flags and constructs a configuration URL.
 // It registers all client-specific flags, parses them from args, then builds a URL with:
 //   - Scheme: "client" to identify this as a client configuration
 //   - User: password (must match server)
@@ -353,7 +353,7 @@ func (c *commandLine) parseClientCommand(args []string) (*url.URL, error) {
 	c.addClientFlags(fs)
 
 	fs.Usage = func() {
-		fmt.Fprintf(os.Stdout, "Usage: nodepass client [options]\n\nOptions:\n")
+		fmt.Fprintf(os.Stdout, "Usage: tunveo client [options]\n\nOptions:\n")
 		fs.PrintDefaults()
 	}
 
@@ -370,7 +370,7 @@ func (c *commandLine) parseClientCommand(args []string) (*url.URL, error) {
 	}, nil
 }
 
-// parseMasterCommand parses the "nodepass master" command flags and constructs a configuration URL.
+// parseMasterCommand parses the "tunveo master" command flags and constructs a configuration URL.
 // It registers all master-specific flags, parses them from args, then builds a URL with:
 //   - Scheme: "master" to identify this as a control API server configuration
 //   - User: unused (no password for master API)
@@ -385,7 +385,7 @@ func (c *commandLine) parseMasterCommand(args []string) (*url.URL, error) {
 	c.addMasterFlags(fs)
 
 	fs.Usage = func() {
-		fmt.Fprintf(os.Stdout, "Usage: nodepass master [options]\n\nOptions:\n")
+		fmt.Fprintf(os.Stdout, "Usage: tunveo master [options]\n\nOptions:\n")
 		fs.PrintDefaults()
 	}
 
@@ -402,16 +402,16 @@ func (c *commandLine) parseMasterCommand(args []string) (*url.URL, error) {
 
 // printHelp prints the comprehensive help message showing usage, commands, and examples to stdout.
 func (c *commandLine) printHelp() {
-	fmt.Fprintf(os.Stdout, `NodePass
+	fmt.Fprintf(os.Stdout, `Tunveo
 
 Usage:
-  nodepass <command> [options]
-  nodepass <url>
+  tunveo <command> [options]
+  tunveo <url>
 
 Commands:
-  server    Start a NodePass server
-  client    Start a NodePass client
-  master    Start a NodePass master
+  server    Start a Tunveo server
+  client    Start a Tunveo client
+  master    Start a Tunveo master
   help      Show this helper message
   version   Show version information
 

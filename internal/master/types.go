@@ -14,7 +14,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/NodePassProject/nodepass/internal/common"
+	"github.com/VortexWang/Tunveo/internal/common"
 )
 
 // Master is the management-plane controller. It embeds common.Common for

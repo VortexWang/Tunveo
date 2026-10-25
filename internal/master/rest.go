@@ -11,7 +11,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/NodePassProject/nodepass/internal/common"
+	"github.com/VortexWang/Tunveo/internal/common"
 )
 
 // HandleInstances handles REST API requests for listing and creating instances.

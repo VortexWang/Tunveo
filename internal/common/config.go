@@ -178,7 +178,7 @@ func (c *Common) GetRunMode() {
 }
 
 // GetPoolType reads the "type" query parameter and selects the tunnel pool backend.
-// NodePass keeps this query key for URL compatibility while exposing it as the
+// Tunveo keeps this query key for URL compatibility while exposing it as the
 // --pool CLI flag. QUIC requires TLS material, so tls=0 is upgraded to code-1.
 func (c *Common) GetPoolType() {
 	if poolType := c.ParsedURL.Query().Get("type"); poolType != "" {

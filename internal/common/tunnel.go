@@ -12,7 +12,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/NodePassProject/nodepass/internal/transport"
+	"github.com/VortexWang/Tunveo/internal/transport"
 )
 
 // TunnelLoop blocks until the tunnel pool is ready, optionally waits for TLS fingerprint verification

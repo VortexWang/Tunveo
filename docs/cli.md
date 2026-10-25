@@ -1,15 +1,15 @@
 # CLI Reference
 
-NodePass provides two syntax formats for configuration: URL-based syntax and traditional flag-based command-line syntax. Both formats offer the same functionality, allowing you to choose the style that best fits your workflow.
+Tunveo provides two syntax formats for configuration: URL-based syntax and traditional flag-based command-line syntax. Both formats offer the same functionality, allowing you to choose the style that best fits your workflow.
 
 ## Syntax Overview
 
 ### URL-Based Syntax
 
-The URL-based syntax provides a compact and expressive way to configure NodePass:
+The URL-based syntax provides a compact and expressive way to configure Tunveo:
 
 ```bash
-nodepass "<mode>://<tunnel_addr>/<target_addr>?param1=value1&param2=value2"
+tunveo "<mode>://<tunnel_addr>/<target_addr>?param1=value1&param2=value2"
 ```
 
 This is the recommended syntax for most use cases, especially for scripting and automation.
@@ -19,7 +19,7 @@ This is the recommended syntax for most use cases, especially for scripting and 
 The traditional command-line flag syntax provides explicit parameter names:
 
 ```bash
-nodepass <mode> --tunnel-addr <addr> --tunnel-port <port> --target-addr <addr> --target-port <port> [options]
+tunveo <mode> --tunnel-addr <addr> --tunnel-port <port> --target-addr <addr> --target-port <port> [options]
 ```
 
 This syntax is ideal when you prefer explicit parameter names or are more familiar with traditional Unix-style command-line tools.
@@ -29,13 +29,13 @@ This syntax is ideal when you prefer explicit parameter names or are more famili
 These commands work regardless of syntax format:
 
 ```bash
-nodepass help              # Display help information
-nodepass --help            # Display help information
-nodepass -h                # Display help information
+tunveo help              # Display help information
+tunveo --help            # Display help information
+tunveo -h                # Display help information
 
-nodepass version           # Show version and platform information
-nodepass --version         # Show version and platform information
-nodepass -v                # Show version and platform information
+tunveo version           # Show version and platform information
+tunveo --version         # Show version and platform information
+tunveo -v                # Show version and platform information
 ```
 
 ## Server Mode
@@ -43,13 +43,13 @@ nodepass -v                # Show version and platform information
 ### URL-Based Syntax
 
 ```bash
-nodepass "server://[password@]<tunnel_addr>/<target_addr>?[options]"
+tunveo "server://[password@]<tunnel_addr>/<target_addr>?[options]"
 ```
 
 ### Flag-Based Syntax
 
 ```bash
-nodepass server [flags]
+tunveo server [flags]
 ```
 
 ### Available Flags
@@ -107,12 +107,12 @@ nodepass server [flags]
 - `--crt <path>`
   - Path to TLS certificate file (PEM format)
   - Required when `--tls 2`
-  - Example: `--crt /etc/nodepass/cert.pem`
+  - Example: `--crt /etc/tunveo/cert.pem`
 
 - `--key <path>`
   - Path to TLS private key file (PEM format)
   - Required when `--tls 2`
-  - Example: `--key /etc/nodepass/key.pem`
+  - Example: `--key /etc/tunveo/key.pem`
 
 #### Connection Pool Configuration
 
@@ -225,23 +225,23 @@ nodepass server [flags]
 
 ```bash
 # Basic server with automatic TLS
-nodepass "server://0.0.0.0:10101/127.0.0.1:8080?tls=1&log=debug"
+tunveo "server://0.0.0.0:10101/127.0.0.1:8080?tls=1&log=debug"
 
 # Server with custom certificate and forced forward mode
-nodepass "server://0.0.0.0:10101/backend.example.com:8080?tls=2&crt=/etc/ssl/cert.pem&key=/etc/ssl/key.pem&mode=2"
+tunveo "server://0.0.0.0:10101/backend.example.com:8080?tls=2&crt=/etc/ssl/cert.pem&key=/etc/ssl/key.pem&mode=2"
 
 # Server with multiple targets and load balancing
-nodepass "server://0.0.0.0:10101/10.1.0.1:8080,10.1.0.2:8080?lbs=0"
+tunveo "server://0.0.0.0:10101/10.1.0.1:8080,10.1.0.2:8080?lbs=0"
 
 # Server with rate limiting
-nodepass "server://0.0.0.0:10101/127.0.0.1:8080?tls=1&rate=100&slot=1000"
+tunveo "server://0.0.0.0:10101/127.0.0.1:8080?tls=1&rate=100&slot=1000"
 ```
 
 #### Flag-Based Examples
 
 ```bash
 # Basic server with automatic TLS
-nodepass server \
+tunveo server \
   --tunnel-addr 0.0.0.0 \
   --tunnel-port 10101 \
   --target-addr 127.0.0.1 \
@@ -250,7 +250,7 @@ nodepass server \
   --log debug
 
 # Server with custom certificate and forced forward mode
-nodepass server \
+tunveo server \
   --tunnel-addr 0.0.0.0 \
   --tunnel-port 10101 \
   --target-addr backend.example.com \
@@ -261,14 +261,14 @@ nodepass server \
   --mode 2
 
 # Server with multiple targets and load balancing
-nodepass server \
+tunveo server \
   --tunnel-addr 0.0.0.0 \
   --tunnel-port 10101 \
   --targets "10.1.0.1:8080,10.1.0.2:8080" \
   --lbs 0
 
 # Server with rate limiting
-nodepass server \
+tunveo server \
   --tunnel-addr 0.0.0.0 \
   --tunnel-port 10101 \
   --target-addr 127.0.0.1 \
@@ -283,13 +283,13 @@ nodepass server \
 ### URL-Based Syntax
 
 ```bash
-nodepass "client://[password@]<tunnel_addr>/<target_addr>?[options]"
+tunveo "client://[password@]<tunnel_addr>/<target_addr>?[options]"
 ```
 
 ### Flag-Based Syntax
 
 ```bash
-nodepass client [flags]
+tunveo client [flags]
 ```
 
 ### Available Flags
@@ -302,7 +302,7 @@ nodepass client [flags]
   - Example: `--password mySecretKey123`
 
 - `--tunnel-addr <ip_or_hostname>`
-  - Address of the NodePass server's tunnel endpoint
+  - Address of the Tunveo server's tunnel endpoint
   - Can be IP address or hostname
   - For local proxy mode: local binding address
   - For handshake mode: remote server address
@@ -466,29 +466,29 @@ nodepass client [flags]
 
 ```bash
 # Local proxy with high-performance connection pooling
-nodepass "client://127.0.0.1:1080/target.example.com:8080?mode=1&min=256"
+tunveo "client://127.0.0.1:1080/target.example.com:8080?mode=1&min=256"
 
 # TLS reverse proxy - HTTPS termination with self-signed certificate
-nodepass "client://0.0.0.0:443/127.0.0.1:8080?tls=1&mode=1"
+tunveo "client://0.0.0.0:443/127.0.0.1:8080?tls=1&mode=1"
 
 # TLS reverse proxy - HTTPS termination with custom domain certificate
-nodepass "client://0.0.0.0:443/127.0.0.1:8080?tls=2&mode=1&crt=/etc/ssl/certs/fullchain.pem&key=/etc/ssl/private/key.pem"
+tunveo "client://0.0.0.0:443/127.0.0.1:8080?tls=2&mode=1&crt=/etc/ssl/certs/fullchain.pem&key=/etc/ssl/private/key.pem"
 
 # Connect to remote server with custom DNS cache
-nodepass "client://server.example.com:10101/127.0.0.1:8080?mode=2&dns=30s"
+tunveo "client://server.example.com:10101/127.0.0.1:8080?mode=2&dns=30s"
 
 # Multiple targets with load balancing
-nodepass "client://127.0.0.1:1080/10.1.0.1:8080,10.1.0.2:8080?lbs=1&log=debug"
+tunveo "client://127.0.0.1:1080/10.1.0.1:8080,10.1.0.2:8080?lbs=1&log=debug"
 
 # Real-time application with timeout
-nodepass "client://server.example.com:10101/127.0.0.1:7777?mode=2&read=30s&rate=100"
+tunveo "client://server.example.com:10101/127.0.0.1:7777?mode=2&read=30s&rate=100"
 ```
 
 #### Flag-Based Examples
 
 ```bash
 # Local proxy with high-performance connection pooling
-nodepass client \
+tunveo client \
   --tunnel-addr 127.0.0.1 \
   --tunnel-port 1080 \
   --target-addr target.example.com \
@@ -497,7 +497,7 @@ nodepass client \
   --min 256
 
 # TLS reverse proxy with self-signed certificate (HTTPS termination on port 443)
-nodepass client \
+tunveo client \
   --tunnel-addr 0.0.0.0 \
   --tunnel-port 443 \
   --target-addr 127.0.0.1 \
@@ -506,7 +506,7 @@ nodepass client \
   --mode 1
 
 # TLS reverse proxy with custom domain certificate
-nodepass client \
+tunveo client \
   --tunnel-addr 0.0.0.0 \
   --tunnel-port 443 \
   --target-addr 127.0.0.1 \
@@ -517,7 +517,7 @@ nodepass client \
   --mode 1
 
 # Connect to remote server with custom DNS cache
-nodepass client \
+tunveo client \
   --tunnel-addr server.example.com \
   --tunnel-port 10101 \
   --target-addr 127.0.0.1 \
@@ -526,7 +526,7 @@ nodepass client \
   --dns 30s
 
 # Multiple targets with load balancing
-nodepass client \
+tunveo client \
   --tunnel-addr 127.0.0.1 \
   --tunnel-port 1080 \
   --targets "10.1.0.1:8080,10.1.0.2:8080" \
@@ -534,7 +534,7 @@ nodepass client \
   --log debug
 
 # Real-time application with timeout
-nodepass client \
+tunveo client \
   --tunnel-addr server.example.com \
   --tunnel-port 10101 \
   --target-addr 127.0.0.1 \
@@ -549,13 +549,13 @@ nodepass client \
 ### URL-Based Syntax
 
 ```bash
-nodepass "master://<api_addr>[/<prefix>]?[options]"
+tunveo "master://<api_addr>[/<prefix>]?[options]"
 ```
 
 ### Flag-Based Syntax
 
 ```bash
-nodepass master [flags]
+tunveo master [flags]
 ```
 
 ### Available Flags
@@ -585,12 +585,12 @@ nodepass master [flags]
 - `--crt <path>`
   - Path to TLS certificate file (PEM format)
   - Required when `--tls 2`
-  - Example: `--crt /etc/nodepass/cert.pem`
+  - Example: `--crt /etc/tunveo/cert.pem`
 
 - `--key <path>`
   - Path to TLS private key file (PEM format)
   - Required when `--tls 2`
-  - Example: `--key /etc/nodepass/key.pem`
+  - Example: `--key /etc/tunveo/key.pem`
 
 #### Logging
 
@@ -606,36 +606,36 @@ nodepass master [flags]
 
 ```bash
 # Basic HTTP API server
-nodepass "master://0.0.0.0:9090?log=info"
+tunveo "master://0.0.0.0:9090?log=info"
 
 # API server with custom prefix
-nodepass "master://0.0.0.0:9090/admin?log=info"
+tunveo "master://0.0.0.0:9090/admin?log=info"
 
 # HTTPS API server with self-signed certificate
-nodepass "master://0.0.0.0:9090?tls=1&log=debug"
+tunveo "master://0.0.0.0:9090?tls=1&log=debug"
 
 # HTTPS API server with custom certificate
-nodepass "master://0.0.0.0:9090/management?tls=2&crt=/etc/ssl/cert.pem&key=/etc/ssl/key.pem"
+tunveo "master://0.0.0.0:9090/management?tls=2&crt=/etc/ssl/cert.pem&key=/etc/ssl/key.pem"
 ```
 
 #### Flag-Based Examples
 
 ```bash
 # Basic HTTP API server
-nodepass master \
+tunveo master \
   --tunnel-addr 0.0.0.0 \
   --tunnel-port 9090 \
   --log info
 
 # HTTPS API server with self-signed certificate
-nodepass master \
+tunveo master \
   --tunnel-addr 0.0.0.0 \
   --tunnel-port 9090 \
   --tls 1 \
   --log debug
 
 # HTTPS API server with custom certificate
-nodepass master \
+tunveo master \
   --tunnel-addr 0.0.0.0 \
   --tunnel-port 9090 \
   --tls 2 \
@@ -696,10 +696,10 @@ You can actually mix both syntaxes if the URL is provided as the first positiona
 
 ```bash
 # This is valid: URL as first argument
-nodepass "server://0.0.0.0:10101/127.0.0.1:8080"
+tunveo "server://0.0.0.0:10101/127.0.0.1:8080"
 
 # This is valid: command with flags
-nodepass server --tunnel-addr 0.0.0.0 --tunnel-port 10101 --target-addr 127.0.0.1 --target-port 8080
+tunveo server --tunnel-addr 0.0.0.0 --tunnel-port 10101 --target-addr 127.0.0.1 --target-port 8080
 ```
 
 However, avoid mixing URL query parameters with command-line flags in the same invocation, as this may lead to unexpected behavior.

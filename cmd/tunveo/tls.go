@@ -10,7 +10,7 @@ import (
 	"net/url"
 	"time"
 
-	"github.com/NodePassProject/nodepass/internal/common"
+	"github.com/VortexWang/Tunveo/internal/common"
 )
 
 // getTLSProtocol extracts and configures TLS based on the "tls" query parameter:

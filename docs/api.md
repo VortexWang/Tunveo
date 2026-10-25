@@ -1,12 +1,12 @@
-# NodePass API Reference
+# Tunveo API Reference
 
 ## Overview
 
-NodePass provides RESTful API in Master Mode, supporting frontend integration and automation. This document covers all interfaces, data structures, and best practices.
+Tunveo provides RESTful API in Master Mode, supporting frontend integration and automation. This document covers all interfaces, data structures, and best practices.
 
 ## Master Mode API
 
-In Master Mode (`master://`), NodePass supports:
+In Master Mode (`master://`), Tunveo supports:
 
 1. Creating and managing server/client instances
 2. Real-time monitoring of status, traffic, and health checks
@@ -26,8 +26,8 @@ master://<api_addr>/<prefix>?<log>&<tls>
 ### Starting Master Mode
 
 ```bash
-nodepass "master://0.0.0.0:9090?log=info"
-nodepass "master://0.0.0.0:9090/admin?log=info&tls=1"
+tunveo "master://0.0.0.0:9090?log=info"
+tunveo "master://0.0.0.0:9090/admin?log=info&tls=1"
 ```
 
 ### Main Endpoints
@@ -49,7 +49,7 @@ nodepass "master://0.0.0.0:9090/admin?log=info&tls=1"
 
 ### API Authentication
 
-API Key authentication is enabled by default, automatically generated and saved in `nodepass.gob` on first startup.
+API Key authentication is enabled by default, automatically generated and saved in `tunveo.gob` on first startup.
 
 - Protected endpoints: `/instances`, `/instances/{id}`, `/events`, `/info`, `/tcping`
 - Public endpoints: `/openapi.json`, `/docs`
@@ -182,7 +182,7 @@ async function getMasterID() {
 
 ### Using SSE for Real-time Event Monitoring
 
-NodePass now supports Server-Sent Events (SSE) functionality for real-time monitoring of instance state changes. This enables frontend applications to receive immediate notifications of instance creation, updates, and deletions without the need for polling.
+Tunveo now supports Server-Sent Events (SSE) functionality for real-time monitoring of instance state changes. This enables frontend applications to receive immediate notifications of instance creation, updates, and deletions without the need for polling.
 
 #### Using the SSE Endpoint
 
@@ -383,11 +383,11 @@ When implementing SSE in frontend:
 
 ## Frontend Integration Guide
 
-When integrating NodePass with frontend applications, consider the following important aspects:
+When integrating Tunveo with frontend applications, consider the following important aspects:
 
 ### Instance Persistence
 
-NodePass Master Mode now supports instance persistence using gob serialization format. Instances and their states are saved to a `nodepass.gob` file in the same directory as the executable and automatically restored when the master restarts.
+Tunveo Master Mode now supports instance persistence using gob serialization format. Instances and their states are saved to a `tunveo.gob` file in the same directory as the executable and automatically restored when the master restarts.
 
 Key persistence features:
 - Instance configurations are automatically saved to disk
@@ -399,16 +399,16 @@ Key persistence features:
 
 #### Automatic Backup Feature
 
-NodePass Master Mode provides automatic backup functionality to periodically backup state files to prevent data loss:
+Tunveo Master Mode provides automatic backup functionality to periodically backup state files to prevent data loss:
 
-- **Backup File**: Automatically creates `nodepass.gob.backup` backup file
+- **Backup File**: Automatically creates `tunveo.gob.backup` backup file
 - **Backup Interval**: Automatically backs up every 1 hour (configurable via `NP_RELOAD_INTERVAL` environment variable)
 - **Backup Strategy**: Uses single backup file, new backups overwrite old backups
 - **Backup Content**: Includes all instance configurations, states, auto-restart policies, and statistics
 - **Disaster Recovery**: When the main file is corrupted, backup file can be manually used for recovery
 - **Auto Start**: Backup functionality starts automatically with master service, no additional configuration required
 
-Backup file location: `nodepass.gob.backup` in the same directory as the main state file `nodepass.gob`
+Backup file location: `tunveo.gob.backup` in the same directory as the main state file `tunveo.gob`
 
 **Note:** While instance configurations are now persistent and automatically backed up, frontend applications should still maintain their own instance configuration records as an additional backup strategy.
 
@@ -418,7 +418,7 @@ To properly manage lifecycles:
 
 1. **Creation**: Store instance configuration and URL
    ```javascript
-   async function createNodePassInstance(config) {
+   async function createTunveoInstance(config) {
      const response = await fetch(`${API_URL}/instances`, {
        method: 'POST',
        headers: { 
@@ -451,7 +451,7 @@ To properly manage lifecycles:
 
 2. **Status Monitoring**: Monitor instance state changes
    
-   NodePass provides two methods for monitoring instance status:
+   Tunveo provides two methods for monitoring instance status:
    
    A. **Using SSE (Recommended)**: Receive real-time events through persistent connection
    ```javascript
@@ -720,14 +720,14 @@ Here are comprehensive examples showing how to use metadata for instance organiz
 // Example 1: Establish peer-to-peer tunnel with metadata
 async function establishPeerTunnel(localConfig, remoteConfig) {
   // Create local server instance
-  const localInstance = await createNodePassInstance({
+  const localInstance = await createTunveoInstance({
     type: 'server',
     port: localConfig.port,
     target: localConfig.target
   });
   
   // Create remote client instance
-  const remoteInstance = await createNodePassInstance({
+  const remoteInstance = await createTunveoInstance({
     type: 'client',
     serverHost: localConfig.serverHost,
     port: remoteConfig.port,
@@ -919,7 +919,7 @@ async function setupServerCluster(serverConfigs) {
   for (const config of serverConfigs) {
     try {
       // Create server instance
-      const instance = await createNodePassInstance({
+      const instance = await createTunveoInstance({
         type: 'server',
         port: config.port,
         target: config.target,
@@ -992,7 +992,7 @@ async function enableBackupInstanceAutoStart(clusterInstances) {
 
 The Master API provides traffic statistics, but there are important considerations:
 
-1. **Basic Traffic Metrics**: NodePass periodically provides cumulative values for TCP and UDP traffic in both inbound and outbound directions. Frontend applications need to store and process these values to obtain meaningful statistics.
+1. **Basic Traffic Metrics**: Tunveo periodically provides cumulative values for TCP and UDP traffic in both inbound and outbound directions. Frontend applications need to store and process these values to obtain meaningful statistics.
    ```javascript
    function processTrafficStats(instanceId, currentStats) {
      // Store current timestamp
@@ -1063,7 +1063,7 @@ The Master API provides traffic statistics, but there are important consideratio
 
 ### Instance ID Persistence
 
-Since NodePass now uses gob format for persistent storage of instance state, instance IDs **no longer change** after master restart. This means:
+Since Tunveo now uses gob format for persistent storage of instance state, instance IDs **no longer change** after master restart. This means:
 
 1. Frontend applications can safely use instance IDs as unique identifiers
 2. Instance configurations, states, and statistics are automatically restored after restart
@@ -1073,7 +1073,7 @@ This greatly simplifies frontend integration, eliminating the previous complexit
 
 ### Auto-restart Policy Management
 
-NodePass now supports configuring auto-restart policies for instances, enabling automated instance management and improving reliability. The auto-restart policy feature has the following characteristics:
+Tunveo now supports configuring auto-restart policies for instances, enabling automated instance management and improving reliability. The auto-restart policy feature has the following characteristics:
 
 1. **Automatic Instance Recovery**: Instances with auto-restart enabled automatically start when the master service restarts
 2. **Selective Auto-start**: Configure which instances should auto-start based on their importance or role
@@ -1084,7 +1084,7 @@ NodePass now supports configuring auto-restart policies for instances, enabling 
 
 - **Policy Assignment**: Each instance has a `restart` boolean field that determines its auto-start behavior
 - **Master Startup**: When master starts, it automatically starts all instances with `restart: true`
-- **Policy Persistence**: Auto-restart policies are saved with other instance data in the `nodepass.gob` file
+- **Policy Persistence**: Auto-restart policies are saved with other instance data in the `tunveo.gob` file
 - **Runtime Management**: Auto-restart policies can be modified while instances are running
 
 #### Auto-restart Policy Best Practices
@@ -1159,7 +1159,7 @@ The instance object in API responses contains the following fields:
 
 ### Instance Configuration Field
 
-NodePass Master automatically maintains the `config` field for each instance:
+Tunveo Master automatically maintains the `config` field for each instance:
 
 - **Auto Generation**: Automatically generated when instances are created and updated, no manual maintenance required
 - **Complete Configuration**: Contains the instance's complete URL with all default parameters
@@ -1180,7 +1180,7 @@ This feature is particularly useful for:
 
 ## System Information Endpoint
 
-The `/info` endpoint provides system information about the NodePass master service. This endpoint is useful for monitoring, troubleshooting, and system status validation.
+The `/info` endpoint provides system information about the Tunveo master service. This endpoint is useful for monitoring, troubleshooting, and system status validation.
 
 ### Request
 
@@ -1209,7 +1209,7 @@ The response contains the following system information fields:
   "diskr": 4194304000,        // Disk read bytes (cumulative, Linux only)
   "diskw": 8388608000,        // Disk write bytes (cumulative, Linux only)
   "sysup": 86400,             // System uptime in seconds (Linux only)
-  "ver": "1.2.0",             // NodePass version
+  "ver": "1.2.0",             // Tunveo version
   "name": "example.com",      // Tunnel hostname
   "uptime": 11525,            // API uptime in seconds
   "log": "info",              // Log level
@@ -1317,7 +1317,7 @@ For example:
 http://localhost:9090/api/docs
 ```
 
-The Swagger UI provides a convenient way to explore and test the API directly in your browser. You can execute API calls against your running NodePass master instance and see actual responses.
+The Swagger UI provides a convenient way to explore and test the API directly in your browser. You can execute API calls against your running Tunveo master instance and see actual responses.
 
 ## Complete API Reference
 
@@ -1510,7 +1510,7 @@ const response = await fetch(`${API_URL}/info`, {
     'Content-Type': 'application/json',
     'X-API-Key': apiKey 
   },
-  body: JSON.stringify({ alias: 'My NodePass Server' })
+  body: JSON.stringify({ alias: 'My Tunveo Server' })
 });
 
 const data = await response.json();

@@ -1,13 +1,13 @@
 # Usage Instructions
 
-NodePass creates tunnels with an unencrypted TCP control channel and configurable TLS encryption options for data exchange. This guide covers the three operating modes and explains how to use each effectively.
+Tunveo creates tunnels with an unencrypted TCP control channel and configurable TLS encryption options for data exchange. This guide covers the three operating modes and explains how to use each effectively.
 
 ## Command Line Syntax
 
-The general syntax for NodePass commands is:
+The general syntax for Tunveo commands is:
 
 ```bash
-nodepass "<core>://<tunnel_addr>/<target_addr>?log=<level>&tls=<mode>&crt=<cert_file>&key=<key_file>&dns=<duration>&min=<min_pool>&max=<max_pool>&mode=<run_mode>&type=<pool_type>&dial=<source_ip>&read=<timeout>&rate=<mbps>&slot=<limit>&proxy=<mode>&notcp=<0|1>&noudp=<0|1>"
+tunveo "<core>://<tunnel_addr>/<target_addr>?log=<level>&tls=<mode>&crt=<cert_file>&key=<key_file>&dns=<duration>&min=<min_pool>&max=<max_pool>&mode=<run_mode>&type=<pool_type>&dial=<source_ip>&read=<timeout>&rate=<mbps>&slot=<limit>&proxy=<mode>&notcp=<0|1>&noudp=<0|1>"
 ```
 
 Where:
@@ -44,14 +44,14 @@ Connection pool type (server mode only):
 
 ## Operating Modes
 
-NodePass offers three complementary operating modes to suit various deployment scenarios.
+Tunveo offers three complementary operating modes to suit various deployment scenarios.
 
 ### Server Mode
 
 Server mode establishes tunnel control channels and supports bidirectional data flow forwarding.
 
 ```bash
-nodepass "server://<tunnel_addr>/<target_addr>?log=<level>&tls=<mode>&crt=<cert_file>&key=<key_file>&dns=<duration>&type=<pool_type>&max=<max_pool>&mode=<run_mode>&dial=<source_ip>&read=<timeout>&rate=<mbps>&slot=<limit>&proxy=<mode>&notcp=<0|1>&noudp=<0|1>"
+tunveo "server://<tunnel_addr>/<target_addr>?log=<level>&tls=<mode>&crt=<cert_file>&key=<key_file>&dns=<duration>&type=<pool_type>&max=<max_pool>&mode=<run_mode>&dial=<source_ip>&read=<timeout>&rate=<mbps>&slot=<limit>&proxy=<mode>&notcp=<0|1>&noudp=<0|1>"
 ```
 
 #### Parameters
@@ -109,35 +109,35 @@ Server mode supports automatic mode detection or forced mode selection through t
 
 ```bash
 # Automatic mode detection with no TLS encryption
-nodepass "server://10.1.0.1:10101/10.1.0.1:8080?log=debug&tls=0"
+tunveo "server://10.1.0.1:10101/10.1.0.1:8080?log=debug&tls=0"
 
 # Force reverse mode with self-signed certificate
-nodepass "server://10.1.0.1:10101/10.1.0.1:8080?log=debug&tls=1&mode=1"
+tunveo "server://10.1.0.1:10101/10.1.0.1:8080?log=debug&tls=1&mode=1"
 
 # Force forward mode with custom certificate
-nodepass "server://10.1.0.1:10101/192.168.1.100:8080?log=debug&tls=2&mode=2&crt=/path/to/cert.pem&key=/path/to/key.pem"
+tunveo "server://10.1.0.1:10101/192.168.1.100:8080?log=debug&tls=2&mode=2&crt=/path/to/cert.pem&key=/path/to/key.pem"
 
 # QUIC pool with automatic TLS
-nodepass "server://10.1.0.1:10101/192.168.1.100:8080?log=debug&type=1&mode=2"
+tunveo "server://10.1.0.1:10101/192.168.1.100:8080?log=debug&type=1&mode=2"
 
 # WebSocket pool with custom certificate
-nodepass "server://10.1.0.1:10101/192.168.1.100:8080?log=debug&type=2&tls=2&mode=2&crt=/path/to/cert.pem&key=/path/to/key.pem"
+tunveo "server://10.1.0.1:10101/192.168.1.100:8080?log=debug&type=2&tls=2&mode=2&crt=/path/to/cert.pem&key=/path/to/key.pem"
 
 # HTTP/2 pool with automatic TLS
-nodepass "server://10.1.0.1:10101/192.168.1.100:8080?log=debug&type=3&mode=2&tls=1"
+tunveo "server://10.1.0.1:10101/192.168.1.100:8080?log=debug&type=3&mode=2&tls=1"
 ```
 
 ### Client Mode
 
-Client mode connects to a NodePass server and supports bidirectional data flow forwarding.
+Client mode connects to a Tunveo server and supports bidirectional data flow forwarding.
 
 ```bash
-nodepass "client://<tunnel_addr>/<target_addr>?log=<level>&dns=<duration>&min=<min_pool>&mode=<run_mode>&dial=<source_ip>&read=<timeout>&rate=<mbps>&slot=<limit>&proxy=<mode>&notcp=<0|1>&noudp=<0|1>"
+tunveo "client://<tunnel_addr>/<target_addr>?log=<level>&dns=<duration>&min=<min_pool>&mode=<run_mode>&dial=<source_ip>&read=<timeout>&rate=<mbps>&slot=<limit>&proxy=<mode>&notcp=<0|1>&noudp=<0|1>"
 ```
 
 #### Parameters
 
-- `tunnel_addr`: Address of the NodePass server's tunnel endpoint to connect to (e.g., 10.1.0.1:10101)
+- `tunnel_addr`: Address of the Tunveo server's tunnel endpoint to connect to (e.g., 10.1.0.1:10101)
 - `target_addr`: The destination address for business data with bidirectional flow support (e.g., 127.0.0.1:8080)
 - `log`: Log level (debug, info, warn, error, event)
 - `dns`: DNS cache TTL duration (default: 5m, supports time units like `1h`, `30m`, `15s`, etc.)
@@ -188,36 +188,36 @@ Client mode supports automatic mode detection or forced mode selection through t
 
 ```bash
 # Automatic mode detection - Local proxy listening on port 1080, forwarding to target server
-nodepass "client://127.0.0.1:1080/target.example.com:8080?log=debug"
+tunveo "client://127.0.0.1:1080/target.example.com:8080?log=debug"
 
 # Force single-end forwarding mode - High performance local proxy
-nodepass "client://127.0.0.1:1080/target.example.com:8080?mode=1&log=debug"
+tunveo "client://127.0.0.1:1080/target.example.com:8080?mode=1&log=debug"
 
-# Force dual-end handshake mode - Connect to NodePass server and adopt its TLS security policy
-nodepass "client://server.example.com:10101/127.0.0.1:8080?mode=2"
+# Force dual-end handshake mode - Connect to Tunveo server and adopt its TLS security policy
+tunveo "client://server.example.com:10101/127.0.0.1:8080?mode=2"
 
 # Connect with debug logging and custom connection pool capacity
-nodepass "client://server.example.com:10101/192.168.1.100:8080?log=debug&min=128"
+tunveo "client://server.example.com:10101/192.168.1.100:8080?log=debug&min=128"
 
 # Resource-constrained configuration with forced mode
-nodepass "client://server.example.com:10101/127.0.0.1:8080?mode=2&min=16&log=info"
+tunveo "client://server.example.com:10101/127.0.0.1:8080?mode=2&min=16&log=info"
 
 # Resource-constrained configuration - Small connection pool
-nodepass "client://server.example.com:10101/127.0.0.1:8080?min=16&log=info"
+tunveo "client://server.example.com:10101/127.0.0.1:8080?min=16&log=info"
 
 # Client automatically receives pool type configuration from server (no type parameter needed)
-nodepass "client://server.example.com:10101/127.0.0.1:8080?mode=2&min=128&log=debug"
+tunveo "client://server.example.com:10101/127.0.0.1:8080?mode=2&min=128&log=debug"
 
 # Client for real-time applications (pool type config from server)
-nodepass "client://server.example.com:10101/127.0.0.1:7777?mode=2&min=64&read=30s"
+tunveo "client://server.example.com:10101/127.0.0.1:7777?mode=2&min=64&read=30s"
 ```
 
 ### Master Mode (API)
 
-Master mode runs a RESTful API server for centralized management of NodePass instances.
+Master mode runs a RESTful API server for centralized management of Tunveo instances.
 
 ```bash
-nodepass "master://<api_addr>[<prefix>]?log=<level>&tls=<mode>&crt=<cert_file>&key=<key_file>"
+tunveo "master://<api_addr>[<prefix>]?log=<level>&tls=<mode>&crt=<cert_file>&key=<key_file>"
 ```
 
 #### Parameters
@@ -234,8 +234,8 @@ nodepass "master://<api_addr>[<prefix>]?log=<level>&tls=<mode>&crt=<cert_file>&k
 
 #### How Master Mode Works
 
-In master mode, NodePass:
-1. Runs a RESTful API server that allows dynamic management of NodePass instances
+In master mode, Tunveo:
+1. Runs a RESTful API server that allows dynamic management of Tunveo instances
 2. Provides endpoints for creating, starting, stopping, and monitoring client and server instances
 3. Includes Swagger UI for easy API exploration at `{prefix}/v1/docs`
 4. Automatically inherits TLS and logging settings for instances created through the API
@@ -261,23 +261,23 @@ All endpoints are relative to the configured prefix (default: `/api`):
 
 ```bash
 # Start master with HTTP using default API prefix (/api)
-nodepass "master://0.0.0.0:9090?log=info"
+tunveo "master://0.0.0.0:9090?log=info"
 
 # Start master with custom API prefix (/management)
-nodepass "master://0.0.0.0:9090/management?log=info"
+tunveo "master://0.0.0.0:9090/management?log=info"
 
 # Start master with HTTPS (self-signed certificate)
-nodepass "master://0.0.0.0:9090/admin?log=info&tls=1"
+tunveo "master://0.0.0.0:9090/admin?log=info&tls=1"
 
 # Start master with HTTPS (custom certificate)
-nodepass "master://0.0.0.0:9090?log=info&tls=2&crt=/path/to/cert.pem&key=/path/to/key.pem"
+tunveo "master://0.0.0.0:9090?log=info&tls=2&crt=/path/to/cert.pem&key=/path/to/key.pem"
 ```
 
-## Managing NodePass Instances
+## Managing Tunveo Instances
 
 ### Creating and Managing via API
 
-NodePass master mode provides RESTful API for instance management, and all API requests require authentication using an API Key.
+Tunveo master mode provides RESTful API for instance management, and all API requests require authentication using an API Key.
 
 #### API Key Retrieval
 
@@ -285,7 +285,7 @@ When starting master mode, the system automatically generates an API Key and dis
 
 ```bash
 # Start master mode
-nodepass "master://0.0.0.0:9090?log=info"
+tunveo "master://0.0.0.0:9090?log=info"
 
 # The log output will show:
 # INFO: API Key created: abc123def456...
@@ -326,7 +326,7 @@ The following endpoints do not require API Key authentication:
 
 ## Bidirectional Data Flow Explanation
 
-NodePass supports flexible bidirectional data flow configuration:
+Tunveo supports flexible bidirectional data flow configuration:
 
 ### Client Single-End Forwarding Mode
 - **Client**: Listens on local tunnel address, uses connection pooling technology to directly forward to target address
@@ -351,22 +351,22 @@ The system automatically selects the appropriate operation mode based on tunnel 
 
 ## Tunnel Key
 
-NodePass uses tunnel keys to authenticate connections between clients and servers. The key can be specified in two ways:
+Tunveo uses tunnel keys to authenticate connections between clients and servers. The key can be specified in two ways:
 
 ### Key Derivation Rules
 
 1. **Explicit Key**: Specify the username part in the URL as the key
    ```bash
    # Use "mypassword" as the tunnel key
-   nodepass server://mypassword@10.1.0.1:10101/10.1.0.1:8080
-   nodepass client://mypassword@10.1.0.1:10101/127.0.0.1:8080
+   tunveo server://mypassword@10.1.0.1:10101/10.1.0.1:8080
+   tunveo client://mypassword@10.1.0.1:10101/127.0.0.1:8080
    ```
 
 2. **Port-Derived Key**: If no username is specified, the system uses the hexadecimal value of the port number as the key
    ```bash
    # Port 10101's hexadecimal value "2775" will be used as the tunnel key
-   nodepass server://10.1.0.1:10101/10.1.0.1:8080
-   nodepass client://10.1.0.1:10101/127.0.0.1:8080
+   tunveo server://10.1.0.1:10101/10.1.0.1:8080
+   tunveo client://10.1.0.1:10101/127.0.0.1:8080
    ```
 
 ### Handshake Process
@@ -386,7 +386,7 @@ This design ensures that only clients with the correct key can establish tunnel 
 
 ## Next Steps
 
-- Learn about [configuration options](/docs/en/configuration.md) to fine-tune NodePass
-- Explore [examples](/docs/en/examples.md) of common deployment scenarios
-- Understand [how NodePass works](/docs/en/how-it-works.md) under the hood
-- Check the [troubleshooting guide](/docs/en/troubleshooting.md) if you encounter issues
+- Learn about [configuration options](/docs/configuration.md) to fine-tune Tunveo
+- Explore [examples](/docs/examples.md) of common deployment scenarios
+- Understand [how Tunveo works](/docs/how-it-works.md) under the hood
+- Check the [troubleshooting guide](/docs/troubleshooting.md) if you encounter issues

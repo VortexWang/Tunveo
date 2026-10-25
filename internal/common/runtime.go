@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"net"
 
-	"github.com/NodePassProject/nodepass/internal/transport"
+	"github.com/VortexWang/Tunveo/internal/transport"
 )
 
 // InitRateLimiter creates a token-bucket RateLimiter if RateLimit > 0, limiting bandwidth.

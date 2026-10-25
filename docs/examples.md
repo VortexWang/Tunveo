@@ -1,6 +1,6 @@
 # Usage Examples
 
-This page provides practical examples of NodePass in various deployment scenarios. These examples cover common use cases and can be adapted to suit your specific requirements.
+This page provides practical examples of Tunveo in various deployment scenarios. These examples cover common use cases and can be adapted to suit your specific requirements.
 
 ## Basic Server Setup with TLS Options
 
@@ -9,10 +9,10 @@ This page provides practical examples of NodePass in various deployment scenario
 When speed is more important than security (e.g., in trusted networks):
 
 ```bash
-nodepass "server://0.0.0.0:10101/127.0.0.1:8080?log=debug&tls=0"
+tunveo "server://0.0.0.0:10101/127.0.0.1:8080?log=debug&tls=0"
 ```
 
-This starts a NodePass server that:
+This starts a Tunveo server that:
 - Listens for tunnel connections on all interfaces, port 10101
 - Forwards traffic to localhost:8080
 - Uses debug logging for detailed information
@@ -23,7 +23,7 @@ This starts a NodePass server that:
 For balanced security and ease of setup (recommended for most cases):
 
 ```bash
-nodepass "server://0.0.0.0:10101/127.0.0.1:8080?log=debug&tls=1"
+tunveo "server://0.0.0.0:10101/127.0.0.1:8080?log=debug&tls=1"
 ```
 
 This configuration:
@@ -37,7 +37,7 @@ This configuration:
 For production environments requiring verified certificates:
 
 ```bash
-nodepass "server://0.0.0.0:10101/127.0.0.1:8080?log=debug&tls=2&crt=/path/to/cert.pem&key=/path/to/key.pem"
+tunveo "server://0.0.0.0:10101/127.0.0.1:8080?log=debug&tls=2&crt=/path/to/cert.pem&key=/path/to/key.pem"
 ```
 
 This setup:
@@ -46,18 +46,18 @@ This setup:
 - Is ideal for production environments and public-facing services
 - Allows clients to verify the server's identity
 
-## Connecting to a NodePass Server
+## Connecting to a Tunveo Server
 
 ### Example 4: Basic Client Connection
 
-Connect to a NodePass server with default settings:
+Connect to a Tunveo server with default settings:
 
 ```bash
-nodepass client://server.example.com:10101/127.0.0.1:8080
+tunveo client://server.example.com:10101/127.0.0.1:8080
 ```
 
 This client:
-- Connects to the NodePass server at server.example.com:10101
+- Connects to the Tunveo server at server.example.com:10101
 - Forwards received traffic to localhost:8080
 - Automatically adopts the server's TLS security policy
 - Uses the default info log level
@@ -67,7 +67,7 @@ This client:
 For troubleshooting connection issues:
 
 ```bash
-nodepass client://server.example.com:10101/127.0.0.1:8080?log=debug
+tunveo client://server.example.com:10101/127.0.0.1:8080?log=debug
 ```
 
 This enables verbose output to help identify:
@@ -82,13 +82,13 @@ Control the operational behavior with explicit mode settings:
 
 ```bash
 # Force server to operate in reverse mode (server receives traffic)
-nodepass "server://0.0.0.0:10101/0.0.0.0:8080?mode=1&tls=1"
+tunveo "server://0.0.0.0:10101/0.0.0.0:8080?mode=1&tls=1"
 
 # Force client to operate in single-end forwarding mode (high performance local proxy)
-nodepass "client://127.0.0.1:1080/remote.example.com:8080?mode=1"
+tunveo "client://127.0.0.1:1080/remote.example.com:8080?mode=1"
 
 # Force client to operate in dual-end handshake mode (requires server coordination)
-nodepass "client://server.example.com:10101/127.0.0.1:8080?mode=2&log=debug"
+tunveo "client://server.example.com:10101/127.0.0.1:8080?mode=2&log=debug"
 ```
 
 These configurations:
@@ -105,10 +105,10 @@ Enable secure access to a database server behind a firewall:
 
 ```bash
 # Server side (outside secured network) with TLS encryption
-nodepass server://:10101/127.0.0.1:5432?tls=1
+tunveo server://:10101/127.0.0.1:5432?tls=1
 
 # Client side (inside the firewall)
-nodepass client://server.example.com:10101/127.0.0.1:5432
+tunveo client://server.example.com:10101/127.0.0.1:5432
 ```
 
 This configuration:
@@ -125,10 +125,10 @@ Enable secure communication between microservices:
 
 ```bash
 # Service A (consuming API) with custom certificate
-nodepass "server://0.0.0.0:10101/127.0.0.1:8081?log=warn&tls=2&crt=/path/to/service-a.crt&key=/path/to/service-a.key"
+tunveo "server://0.0.0.0:10101/127.0.0.1:8081?log=warn&tls=2&crt=/path/to/service-a.crt&key=/path/to/service-a.key"
 
 # Service B (providing API)
-nodepass client://service-a:10101/127.0.0.1:8082
+tunveo client://service-a:10101/127.0.0.1:8082
 ```
 
 This setup:
@@ -145,10 +145,10 @@ Prevent SOCKS and HTTP proxy usage through your tunnel:
 
 ```bash
 # Server that blocks both SOCKS and HTTP proxy protocols
-nodepass "server://0.0.0.0:10101/app.backend.com:8080?block=12&tls=1"
+tunveo "server://0.0.0.0:10101/app.backend.com:8080?block=12&tls=1"
 
 # Client connecting to the protected server
-nodepass "client://server.example.com:10101/127.0.0.1:8080"
+tunveo "client://server.example.com:10101/127.0.0.1:8080"
 ```
 
 This configuration:
@@ -163,10 +163,10 @@ Prevent nested TLS encryption when outer layer already provides security:
 
 ```bash
 # Server with TLS encryption that blocks inner TLS connections
-nodepass "server://0.0.0.0:10101/0.0.0.0:8080?tls=1&block=3"
+tunveo "server://0.0.0.0:10101/0.0.0.0:8080?tls=1&block=3"
 
 # Client automatically inherits TLS settings
-nodepass "client://server.example.com:10101/127.0.0.1:8080"
+tunveo "client://server.example.com:10101/127.0.0.1:8080"
 ```
 
 This setup:
@@ -181,10 +181,10 @@ Enforce strict security policy allowing only application traffic:
 
 ```bash
 # Production server with comprehensive protocol blocking
-nodepass "server://0.0.0.0:10101/secure-app.internal:443?tls=2&crt=/path/to/cert.pem&key=/path/to/key.pem&block=123&slot=500"
+tunveo "server://0.0.0.0:10101/secure-app.internal:443?tls=2&crt=/path/to/cert.pem&key=/path/to/key.pem&block=123&slot=500"
 
 # Client with enforced encryption
-nodepass "client://prod-server.example.com:10101/127.0.0.1:8443?log=warn"
+tunveo "client://prod-server.example.com:10101/127.0.0.1:8443?log=warn"
 ```
 
 This configuration:
@@ -201,10 +201,10 @@ Allow HTTP traffic while blocking proxies in development environment:
 
 ```bash
 # Development server that blocks only SOCKS protocols
-nodepass "server://127.0.0.1:10101/localhost:3000?block=1&log=debug"
+tunveo "server://127.0.0.1:10101/localhost:3000?block=1&log=debug"
 
 # Development client
-nodepass "client://127.0.0.1:10101/localhost:8080"
+tunveo "client://127.0.0.1:10101/localhost:8080"
 ```
 
 This setup:
@@ -221,10 +221,10 @@ Control bandwidth usage for file transfer services:
 
 ```bash
 # Server side: Limit bandwidth to 100 Mbps for file transfers
-nodepass "server://0.0.0.0:10101/127.0.0.1:8080?log=info&tls=1&rate=100"
+tunveo "server://0.0.0.0:10101/127.0.0.1:8080?log=info&tls=1&rate=100"
 
 # Client side: Connect with 50 Mbps rate limit
-nodepass "client://fileserver.example.com:10101/127.0.0.1:3000?log=info&rate=50"
+tunveo "client://fileserver.example.com:10101/127.0.0.1:3000?log=info&rate=50"
 ```
 
 This configuration:
@@ -239,10 +239,10 @@ For IoT devices with limited bandwidth or metered connections:
 
 ```bash
 # Server: Accept IoT data with 5 Mbps limit
-nodepass "server://0.0.0.0:10101/127.0.0.1:1883?log=warn&rate=5"
+tunveo "server://0.0.0.0:10101/127.0.0.1:1883?log=warn&rate=5"
 
 # IoT device client: Send sensor data with 2 Mbps limit  
-nodepass "client://iot-gateway.example.com:10101/127.0.0.1:1883?log=error&rate=2"
+tunveo "client://iot-gateway.example.com:10101/127.0.0.1:1883?log=error&rate=2"
 ```
 
 This setup:
@@ -257,10 +257,10 @@ Testing applications under bandwidth constraints:
 
 ```bash
 # Simulate slow network conditions for testing
-nodepass "client://api.example.com:443/127.0.0.1:8080?log=debug&rate=1"
+tunveo "client://api.example.com:443/127.0.0.1:8080?log=debug&rate=1"
 
 # High-speed development server with monitoring
-nodepass "server://0.0.0.0:10101/127.0.0.1:3000?log=debug&rate=500"
+tunveo "server://0.0.0.0:10101/127.0.0.1:3000?log=debug&rate=500"
 ```
 
 This configuration:
@@ -276,10 +276,10 @@ Create a central access point for IoT devices:
 
 ```bash
 # Central management server
-nodepass "server://0.0.0.0:10101/127.0.0.1:8888?log=info&tls=1"
+tunveo "server://0.0.0.0:10101/127.0.0.1:8888?log=info&tls=1"
 
 # IoT device
-nodepass client://mgmt.example.com:10101/127.0.0.1:80
+tunveo client://mgmt.example.com:10101/127.0.0.1:80
 ```
 
 This configuration:
@@ -297,10 +297,10 @@ Control which network interface is used for outbound connections on multi-homed 
 
 ```bash
 # Server using specific source IP for outbound connections (useful for policy routing)
-nodepass "server://0.0.0.0:10101/remote.backend.com:8080?dial=10.1.0.100&mode=2&tls=1"
+tunveo "server://0.0.0.0:10101/remote.backend.com:8080?dial=10.1.0.100&mode=2&tls=1"
 
 # Client using specific source IP for target connections (useful for firewall rules)
-nodepass "client://server.example.com:10101/127.0.0.1:8080?dial=192.168.1.50&mode=2"
+tunveo "client://server.example.com:10101/127.0.0.1:8080?dial=192.168.1.50&mode=2"
 ```
 
 This configuration:
@@ -316,13 +316,13 @@ Direct traffic through specific network segments or VLANs:
 
 ```bash
 # Server routing traffic through management network (10.0.0.0/8)
-nodepass "server://0.0.0.0:10101/mgmt.backend.local:8080?dial=10.200.1.10&mode=2&log=info"
+tunveo "server://0.0.0.0:10101/mgmt.backend.local:8080?dial=10.200.1.10&mode=2&log=info"
 
 # Server routing traffic through production network (172.16.0.0/12)
-nodepass "server://0.0.0.0:10102/prod.backend.local:8080?dial=172.16.50.20&mode=2&log=info"
+tunveo "server://0.0.0.0:10102/prod.backend.local:8080?dial=172.16.50.20&mode=2&log=info"
 
 # Client with automatic source IP selection (default behavior)
-nodepass "client://server.example.com:10101/127.0.0.1:8080?dial=auto"
+tunveo "client://server.example.com:10101/127.0.0.1:8080?dial=auto"
 ```
 
 This setup:
@@ -347,10 +347,10 @@ Use longer TTL for stable internal services:
 
 ```bash
 # Server side: 1-hour cache TTL for stable internal hostnames
-nodepass "server://0.0.0.0:10101/internal-api.corp.local:8080?dns=1h&mode=2&tls=1"
+tunveo "server://0.0.0.0:10101/internal-api.corp.local:8080?dns=1h&mode=2&tls=1"
 
 # Client side: Same TTL for consistent behavior
-nodepass "client://tunnel.corp.local:10101/127.0.0.1:8080?dns=1h"
+tunveo "client://tunnel.corp.local:10101/127.0.0.1:8080?dns=1h"
 ```
 
 This configuration:
@@ -365,10 +365,10 @@ Use shorter TTL for frequently changing DNS records:
 
 ```bash
 # Server side: 30-second cache TTL for dynamic DNS
-nodepass "server://0.0.0.0:10101/dynamic.example.com:8080?dns=30s&tls=1&log=info"
+tunveo "server://0.0.0.0:10101/dynamic.example.com:8080?dns=30s&tls=1&log=info"
 
 # Client side: Short TTL for load balancing scenarios
-nodepass "client://server.example.com:10101/127.0.0.1:8080?dns=30s"
+tunveo "client://server.example.com:10101/127.0.0.1:8080?dns=30s"
 ```
 
 This setup:
@@ -383,10 +383,10 @@ Disable caching for development environments:
 
 ```bash
 # Development server: No DNS caching for immediate updates
-nodepass "server://0.0.0.0:10101/dev.backend.local:8080?dns=0&tls=0&log=debug"
+tunveo "server://0.0.0.0:10101/dev.backend.local:8080?dns=0&tls=0&log=debug"
 
 # Testing client: No caching to see DNS changes immediately
-nodepass "client://dev-server.local:10101/127.0.0.1:8080?dns=0&log=debug"
+tunveo "client://dev-server.local:10101/127.0.0.1:8080?dns=0&log=debug"
 ```
 
 This configuration:
@@ -401,13 +401,13 @@ Balance performance and freshness with moderate TTL:
 
 ```bash
 # Production API: 10-minute cache for balanced performance
-nodepass "server://0.0.0.0:10101/api.example.com:8080?dns=10m&tls=1&mode=2"
+tunveo "server://0.0.0.0:10101/api.example.com:8080?dns=10m&tls=1&mode=2"
 
 # Staging environment: 2-minute cache for faster updates
-nodepass "server://0.0.0.0:10102/staging.example.com:8080?dns=2m&tls=1&mode=2"
+tunveo "server://0.0.0.0:10102/staging.example.com:8080?dns=2m&tls=1&mode=2"
 
 # Client: Default 5-minute cache
-nodepass "client://server.example.com:10101/127.0.0.1:8080"
+tunveo "client://server.example.com:10101/127.0.0.1:8080"
 ```
 
 This setup:
@@ -431,10 +431,10 @@ Use target address groups for even traffic distribution and automatic failover:
 
 ```bash
 # Server side: Configure 3 backend web servers
-nodepass "server://0.0.0.0:10101/web1.internal:8080,web2.internal:8080,web3.internal:8080?mode=2&tls=1&log=info"
+tunveo "server://0.0.0.0:10101/web1.internal:8080,web2.internal:8080,web3.internal:8080?mode=2&tls=1&log=info"
 
 # Client side: Connect to server
-nodepass "client://server.example.com:10101/127.0.0.1:8080?log=info"
+tunveo "client://server.example.com:10101/127.0.0.1:8080?log=info"
 ```
 
 This configuration:
@@ -449,7 +449,7 @@ Configure primary and replica database instances for high availability access:
 
 ```bash
 # Client side: Configure primary and replica database addresses (single-end forwarding mode)
-nodepass "client://127.0.0.1:3306/db-primary.local:3306,db-secondary.local:3306?mode=1&log=warn"
+tunveo "client://127.0.0.1:3306/db-primary.local:3306,db-secondary.local:3306?mode=1&log=warn"
 ```
 
 This setup:
@@ -464,10 +464,10 @@ Configure multiple backend service instances for an API gateway:
 
 ```bash
 # Server side: Configure 4 API service instances
-nodepass "server://0.0.0.0:10101/api1.backend:8080,api2.backend:8080,api3.backend:8080,api4.backend:8080?mode=2&tls=1&rate=200&slot=5000"
+tunveo "server://0.0.0.0:10101/api1.backend:8080,api2.backend:8080,api3.backend:8080,api4.backend:8080?mode=2&tls=1&rate=200&slot=5000"
 
 # Client side: Connect from API gateway
-nodepass "client://apigateway.example.com:10101/127.0.0.1:8080?rate=100&slot=2000"
+tunveo "client://apigateway.example.com:10101/127.0.0.1:8080?rate=100&slot=2000"
 ```
 
 This configuration:
@@ -482,7 +482,7 @@ Configure multi-region service nodes to optimize network latency:
 
 ```bash
 # Server side: Configure multi-region nodes
-nodepass "server://0.0.0.0:10101/us-west.service:8080,us-east.service:8080,eu-central.service:8080?mode=2&log=debug"
+tunveo "server://0.0.0.0:10101/us-west.service:8080,us-east.service:8080,eu-central.service:8080?mode=2&log=debug"
 ```
 
 This setup:
@@ -506,10 +506,10 @@ Enable PROXY protocol support for integration with load balancers and reverse pr
 
 ```bash
 # Server side: Enable PROXY protocol v1 for HAProxy/Nginx integration
-nodepass "server://0.0.0.0:10101/127.0.0.1:8080?log=info&tls=1&proxy=1"
+tunveo "server://0.0.0.0:10101/127.0.0.1:8080?log=info&tls=1&proxy=1"
 
 # Client side: Enable PROXY protocol to preserve client connection information
-nodepass "client://tunnel.example.com:10101/127.0.0.1:3000?log=info&proxy=1"
+tunveo "client://tunnel.example.com:10101/127.0.0.1:3000?log=info&proxy=1"
 ```
 
 This configuration:
@@ -521,11 +521,11 @@ This configuration:
 
 ### Example 28: Reverse Proxy Support for Web Applications
 
-Enable web applications behind NodePass to receive original client information:
+Enable web applications behind Tunveo to receive original client information:
 
 ```bash
-# NodePass server with PROXY protocol for web application
-nodepass "server://0.0.0.0:10101/127.0.0.1:8080?log=warn&tls=2&crt=/path/to/cert.pem&key=/path/to/key.pem&proxy=1"
+# Tunveo server with PROXY protocol for web application
+tunveo "server://0.0.0.0:10101/127.0.0.1:8080?log=warn&tls=2&crt=/path/to/cert.pem&key=/path/to/key.pem&proxy=1"
 
 # Backend web server (e.g., Nginx) configuration to handle PROXY protocol
 # In nginx.conf:
@@ -538,7 +538,7 @@ nodepass "server://0.0.0.0:10101/127.0.0.1:8080?log=warn&tls=2&crt=/path/to/cert
 ```
 
 This setup:
-- Web applications receive original client IP addresses instead of NodePass tunnel IP
+- Web applications receive original client IP addresses instead of Tunveo tunnel IP
 - Enables proper access logging, analytics, and security controls
 - Supports compliance requirements for connection auditing
 - Works with web servers that support PROXY protocol (Nginx, HAProxy, etc.)
@@ -549,10 +549,10 @@ Maintain client IP information for database access logging and security:
 
 ```bash
 # Database proxy server with PROXY protocol
-nodepass "server://0.0.0.0:10101/127.0.0.1:5432?log=error&proxy=1"
+tunveo "server://0.0.0.0:10101/127.0.0.1:5432?log=error&proxy=1"
 
 # Application client connecting through tunnel
-nodepass "client://dbproxy.example.com:10101/127.0.0.1:5432?proxy=1"
+tunveo "client://dbproxy.example.com:10101/127.0.0.1:5432?proxy=1"
 ```
 
 Benefits:
@@ -570,29 +570,29 @@ Benefits:
 
 ## Container Deployment
 
-### Example 30: Containerized NodePass
+### Example 30: Containerized Tunveo
 
-Deploy NodePass in a Docker environment:
+Deploy Tunveo in a Docker environment:
 
 ```bash
 # Create a network for the containers
-docker network create nodepass-net
+docker network create tunveo-net
 
-# Deploy NodePass server with self-signed certificate
-docker run -d --name nodepass-server \
-  --network nodepass-net \
+# Deploy Tunveo server with self-signed certificate
+docker run -d --name tunveo-server \
+  --network tunveo-net \
   -p 10101:10101 \
-  ghcr.io/NodePassProject/nodepass "server://0.0.0.0:10101/web-service:80?log=info&tls=1"
+  ghcr.io/vortexwang/tunveo "server://0.0.0.0:10101/web-service:80?log=info&tls=1"
 
 # Deploy a web service as target
 docker run -d --name web-service \
-  --network nodepass-net \
+  --network tunveo-net \
   nginx:alpine
 
-# Deploy NodePass client
-docker run -d --name nodepass-client \
+# Deploy Tunveo client
+docker run -d --name tunveo-client \
   -p 8080:8080 \
-  ghcr.io/NodePassProject/nodepass client://nodepass-server:10101/127.0.0.1:8080?log=info
+  ghcr.io/vortexwang/tunveo client://tunveo-server:10101/127.0.0.1:8080?log=info
 
 # Access the web service via http://localhost:8080
 ```
@@ -607,11 +607,11 @@ This configuration:
 
 ### Example 31: Centralized Management
 
-Set up a central controller for multiple NodePass instances:
+Set up a central controller for multiple Tunveo instances:
 
 ```bash
 # Start the master API service with self-signed certificate
-nodepass "master://0.0.0.0:9090?log=info&tls=1"
+tunveo "master://0.0.0.0:9090?log=info&tls=1"
 ```
 
 You can then manage instances via API calls:
@@ -637,7 +637,7 @@ curl -X PUT http://localhost:9090/api/v1/instances/{id} \
 ```
 
 This setup:
-- Provides a central management interface for all NodePass instances
+- Provides a central management interface for all Tunveo instances
 - Allows dynamic creation and control of tunnels
 - Offers a RESTful API for automation and integration
 - Includes a built-in Swagger UI at http://localhost:9090/api/v1/docs
@@ -648,7 +648,7 @@ Use a custom API prefix for the master mode:
 
 ```bash
 # Start with custom API prefix
-nodepass "master://0.0.0.0:9090/admin?log=info&tls=1"
+tunveo "master://0.0.0.0:9090/admin?log=info&tls=1"
 
 # Create an instance using the custom prefix
 curl -X POST http://localhost:9090/admin/v1/instances \
@@ -707,10 +707,10 @@ Use QUIC protocol for connection pooling with improved performance in high-laten
 
 ```bash
 # Server side: Enable QUIC pool
-nodepass "server://0.0.0.0:10101/remote.example.com:8080?type=1&mode=2&tls=1&log=debug"
+tunveo "server://0.0.0.0:10101/remote.example.com:8080?type=1&mode=2&tls=1&log=debug"
 
 # Client side: Automatically receives pool type configuration from server
-nodepass "client://server.example.com:10101/127.0.0.1:8080?mode=2&min=128&log=debug"
+tunveo "client://server.example.com:10101/127.0.0.1:8080?mode=2&min=128&log=debug"
 ```
 
 This configuration:
@@ -727,10 +727,10 @@ Deploy QUIC tunnel with verified certificates for production:
 
 ```bash
 # Server side: QUIC pool with custom certificate
-nodepass "server://0.0.0.0:10101/backend.internal:8080?type=1&mode=2&tls=2&crt=/etc/nodepass/cert.pem&key=/etc/nodepass/key.pem"
+tunveo "server://0.0.0.0:10101/backend.internal:8080?type=1&mode=2&tls=2&crt=/etc/tunveo/cert.pem&key=/etc/tunveo/key.pem"
 
 # Client side: Automatically receives pool type configuration with certificate verification
-nodepass "client://tunnel.example.com:10101/127.0.0.1:8080?mode=2&min=64&log=info"
+tunveo "client://tunnel.example.com:10101/127.0.0.1:8080?mode=2&min=64&log=info"
 ```
 
 This setup:
@@ -746,10 +746,10 @@ Use WebSocket pool behind enterprise firewalls:
 
 ```bash
 # Server side: Enable WebSocket pool (TLS required)
-nodepass "server://0.0.0.0:10101/internal.backend:8080?type=2&mode=2&tls=1&log=info"
+tunveo "server://0.0.0.0:10101/internal.backend:8080?type=2&mode=2&tls=1&log=info"
 
 # Client side: Automatically receives WebSocket configuration
-nodepass "client://wss.tunnel.com:10101/127.0.0.1:8080?mode=2&min=64"
+tunveo "client://wss.tunnel.com:10101/127.0.0.1:8080?mode=2&min=64"
 ```
 
 This configuration:
@@ -768,10 +768,10 @@ Use HTTP/2 pool for efficient multiplexed streams with protocol optimization:
 
 ```bash
 # Server side: Enable HTTP/2 pool (TLS required)
-nodepass "server://0.0.0.0:10101/backend.internal:8080?type=3&mode=2&tls=1&log=info"
+tunveo "server://0.0.0.0:10101/backend.internal:8080?type=3&mode=2&tls=1&log=info"
 
 # Client side: Automatically receives HTTP/2 configuration
-nodepass "client://h2.tunnel.com:10101/127.0.0.1:8080?mode=2&min=64"
+tunveo "client://h2.tunnel.com:10101/127.0.0.1:8080?mode=2&min=64"
 ```
 
 This configuration:
@@ -791,10 +791,10 @@ Optimize for mobile networks or satellite connections:
 
 ```bash
 # Server side: QUIC pool with adaptive pool sizing
-nodepass "server://0.0.0.0:10101/api.backend:443?type=1&mode=2&max=512&tls=1&log=info"
+tunveo "server://0.0.0.0:10101/api.backend:443?type=1&mode=2&max=512&tls=1&log=info"
 
 # Client side: Automatically receives pool type, configure larger minimum pool for mobile
-nodepass "client://mobile.tunnel.com:10101/127.0.0.1:8080?mode=2&min=256&log=warn"
+tunveo "client://mobile.tunnel.com:10101/127.0.0.1:8080?mode=2&min=256&log=warn"
 ```
 
 This configuration:
@@ -811,20 +811,20 @@ Side-by-side comparison of TCP, QUIC, WebSocket, and HTTP/2 pools:
 
 ```bash
 # Traditional TCP pool (default)
-nodepass "server://0.0.0.0:10101/backend.example.com:8080?type=0&mode=2&tls=1&log=event"
-nodepass "client://server.example.com:10101/127.0.0.1:8080?mode=2&min=128&log=event"
+tunveo "server://0.0.0.0:10101/backend.example.com:8080?type=0&mode=2&tls=1&log=event"
+tunveo "client://server.example.com:10101/127.0.0.1:8080?mode=2&min=128&log=event"
 
 # QUIC pool (modern approach)
-nodepass "server://0.0.0.0:10102/backend.example.com:8080?type=1&mode=2&tls=1&log=event"
-nodepass "client://server.example.com:10102/127.0.0.1:8081?mode=2&min=128&log=event"
+tunveo "server://0.0.0.0:10102/backend.example.com:8080?type=1&mode=2&tls=1&log=event"
+tunveo "client://server.example.com:10102/127.0.0.1:8081?mode=2&min=128&log=event"
 
 # WebSocket pool (proxy traversal)
-nodepass "server://0.0.0.0:10103/backend.example.com:8080?type=2&mode=2&tls=1&log=event"
-nodepass "client://server.example.com:10103/127.0.0.1:8082?mode=2&min=128&log=event"
+tunveo "server://0.0.0.0:10103/backend.example.com:8080?type=2&mode=2&tls=1&log=event"
+tunveo "client://server.example.com:10103/127.0.0.1:8082?mode=2&min=128&log=event"
 
 # HTTP/2 pool (multiplexed streams)
-nodepass "server://0.0.0.0:10104/backend.example.com:8080?type=3&mode=2&tls=1&log=event"
-nodepass "client://server.example.com:10104/127.0.0.1:8083?mode=2&min=128&log=event"
+tunveo "server://0.0.0.0:10104/backend.example.com:8080?type=3&mode=2&tls=1&log=event"
+tunveo "client://server.example.com:10104/127.0.0.1:8083?mode=2&min=128&log=event"
 ```
 
 **TCP Pool Advantages**:
@@ -859,10 +859,10 @@ Configure QUIC tunnel for gaming, VoIP, or video streaming:
 
 ```bash
 # Server side: QUIC pool with optimized settings for real-time traffic
-nodepass "server://0.0.0.0:10101/gameserver.local:7777?type=1&mode=2&tls=1&read=30s&slot=10000"
+tunveo "server://0.0.0.0:10101/gameserver.local:7777?type=1&mode=2&tls=1&read=30s&slot=10000"
 
 # Client side: Automatically receives pool type configuration from server
-nodepass "client://game.tunnel.com:10101/127.0.0.1:7777?mode=2&min=64&read=30s"
+tunveo "client://game.tunnel.com:10101/127.0.0.1:7777?mode=2&min=64&read=30s"
 ```
 
 This setup:
@@ -883,6 +883,6 @@ This setup:
 
 Now that you've seen various usage examples, you might want to:
 
-- Learn about [configuration options](/docs/en/configuration.md) for fine-tuning
-- Understand [how NodePass works](/docs/en/how-it-works.md) under the hood
-- Check the [troubleshooting guide](/docs/en/troubleshooting.md) for common issues
+- Learn about [configuration options](/docs/configuration.md) for fine-tuning
+- Understand [how Tunveo works](/docs/how-it-works.md) under the hood
+- Check the [troubleshooting guide](/docs/troubleshooting.md) for common issues

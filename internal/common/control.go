@@ -11,7 +11,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/NodePassProject/nodepass/internal/transport"
+	"github.com/VortexWang/Tunveo/internal/transport"
 )
 
 // SetControlConn waits for the tunnel pool to become ready, then claims the special control connection

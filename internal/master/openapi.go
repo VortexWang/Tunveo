@@ -12,7 +12,7 @@ import "fmt"
 const SwaggerUIHTML = `<!DOCTYPE html>
 <html>
 <head>
-  <title>NodePass API</title>
+  <title>Tunveo API</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swagger-ui-dist@5/swagger-ui.css">
 </head>
 <body>
@@ -43,8 +43,8 @@ func (m *Master) GenerateOpenAPISpec() string {
 	return fmt.Sprintf(`{
   "openapi": "3.1.1",
   "info": {
-	"title": "NodePass API",
-	"description": "API for managing NodePass server and client instances",
+	"title": "Tunveo API",
+	"description": "API for managing Tunveo server and client instances",
 	"version": "%s"
   },
   "servers": [{"url": "%s"}],

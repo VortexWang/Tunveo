@@ -1,4 +1,4 @@
-// Package master implements the nodepass management plane. It exposes a REST
+// Package master implements the tunveo management plane. It exposes a REST
 // API and an MCP (Model Context Protocol) JSON-RPC endpoint for creating,
 // configuring, starting, and monitoring tunnel instances. Each instance runs
 // as a child process with its own client or server configuration.
@@ -19,7 +19,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/NodePassProject/nodepass/internal/common"
+	"github.com/VortexWang/Tunveo/internal/common"
 )
 
 // Master API path, version, and operational constants.
@@ -45,12 +45,12 @@ const (
 	StateFilePath = "gob"
 
 	// StateFileName is the filename of the master's persisted instance registry
-	// using GOB serialization (nodepass.gob).
-	StateFileName = "nodepass.gob"
+	// using GOB serialization (tunveo.gob).
+	StateFileName = "tunveo.gob"
 
 	// ExportFileName is the filename for exported instance configurations in JSON format
-	// (nodepass.json), used by export_instances and import_instances MCP tools.
-	ExportFileName = "nodepass.json"
+	// (tunveo.json), used by export_instances and import_instances MCP tools.
+	ExportFileName = "tunveo.json"
 
 	// SSERetryTime is the retry interval in milliseconds (3000ms = 3s) sent to SSE clients
 	// in the "retry:" field, instructing them to reconnect if the connection is lost.

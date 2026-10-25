@@ -1,5 +1,5 @@
 // logger.go provides the levelled, colour-capable logger used throughout
-// nodepass. Logger is tightly coupled to Common (every tunnel endpoint
+// tunveo. Logger is tightly coupled to Common (every tunnel endpoint
 // carries a *Logger).
 package common
 
@@ -84,7 +84,7 @@ var LevelColors = map[LogLevel]string{
 	Event: AnsiCyan,
 }
 
-// Logger is the central logging object used throughout nodepass. All methods are safe for concurrent use
+// Logger is the central logging object used throughout tunveo. All methods are safe for concurrent use
 // because all modifications to Level and ColorEnabled are guarded by the Mu mutex. Each Common instance
 // carries its own Logger, allowing per-tunnel log level and color configuration.
 type Logger struct {

@@ -74,7 +74,7 @@ func GenerateID() string {
 //
 // Reads 8 random bytes from crypto/rand and encodes them as hexadecimal,
 // producing a 16-character alphanumeric string. The Master ID uniquely identifies
-// a nodepass master instance across the network and is persisted in the state file.
+// a tunveo master instance across the network and is persisted in the state file.
 func GenerateMID() string {
 	bytes := make([]byte, 8)
 	rand.Read(bytes)

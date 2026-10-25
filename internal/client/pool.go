@@ -8,11 +8,11 @@ import (
 	"fmt"
 	"net"
 
-	"github.com/NodePassProject/nodepass/internal/common"
-	"github.com/NodePassProject/nph2"
-	"github.com/NodePassProject/npws"
-	"github.com/NodePassProject/pool"
-	"github.com/NodePassProject/quic"
+	"github.com/VortexWang/Tunveo/internal/common"
+	nph2 "github.com/VortexWang/Tunveo/internal/tunnelpool/http2"
+	"github.com/VortexWang/Tunveo/internal/tunnelpool/quic"
+	pool "github.com/VortexWang/Tunveo/internal/tunnelpool/tcp"
+	npws "github.com/VortexWang/Tunveo/internal/tunnelpool/websocket"
 )
 
 // InitTunnelPool creates and initializes the client-side pool selected by PoolType.

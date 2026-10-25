@@ -452,7 +452,7 @@ func (m *Master) HandleMCPToolsList(w http.ResponseWriter, req MCPRequest) {
 		},
 		{
 			"name":        "export_instances",
-			"description": "Export all instances configuration to nodepass.json",
+			"description": "Export all instances configuration to tunveo.json",
 			"inputSchema": map[string]any{
 				"type":       "object",
 				"properties": map[string]any{},
@@ -460,7 +460,7 @@ func (m *Master) HandleMCPToolsList(w http.ResponseWriter, req MCPRequest) {
 		},
 		{
 			"name":        "import_instances",
-			"description": "Import instances configuration from nodepass.json",
+			"description": "Import instances configuration from tunveo.json",
 			"inputSchema": map[string]any{
 				"type":       "object",
 				"properties": map[string]any{},

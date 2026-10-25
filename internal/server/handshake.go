@@ -12,7 +12,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/NodePassProject/nodepass/internal/common"
+	"github.com/VortexWang/Tunveo/internal/common"
 )
 
 // TunnelHandshake starts a temporary HTTPS server on TunnelListener to perform

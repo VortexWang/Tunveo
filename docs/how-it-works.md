@@ -1,10 +1,10 @@
-# How NodePass Works
+# How Tunveo Works
 
-This page explains the internal architecture and data flow mechanisms of NodePass, providing insights into how the different components interact to create efficient and secure tunnels.
+This page explains the internal architecture and data flow mechanisms of Tunveo, providing insights into how the different components interact to create efficient and secure tunnels.
 
 ## Architecture Overview
 
-NodePass creates a network architecture with separate channels for control and data:
+Tunveo creates a network architecture with separate channels for control and data:
 
 1. **Control Channel (Tunnel)**:
    - Unencrypted TCP connection between client and server
@@ -49,7 +49,7 @@ NodePass creates a network architecture with separate channels for control and d
 
 ## Data Transmission Flow
 
-NodePass establishes a bidirectional data flow through its tunnel architecture, supporting both TCP and UDP protocols. The system supports three data flow modes:
+Tunveo establishes a bidirectional data flow through its tunnel architecture, supporting both TCP and UDP protocols. The system supports three data flow modes:
 
 ### Data Flow Mode Explanation
 - **Server Receives Mode**: Server listens on target address, client listens locally, data flows from target address to client local
@@ -163,7 +163,7 @@ The data flow mode is automatically determined based on tunnel address and targe
 
 ## Signal Communication Mechanism
 
-NodePass uses a JSON-based signaling protocol through the TCP tunnel:
+Tunveo uses a JSON-based signaling protocol through the TCP tunnel:
 
 ### Signal Types
 1. **Flush Signal**:
@@ -225,11 +225,11 @@ NodePass uses a JSON-based signaling protocol through the TCP tunnel:
 
 ## Connection Pool Architecture
 
-NodePass implements an efficient connection pooling system for managing network connections, which forms the core of its performance advantages. NodePass supports three transport protocols for connection pools: traditional TCP-based pools, modern QUIC-based UDP pools, and WebSocket-based pools.
+Tunveo implements an efficient connection pooling system for managing network connections, which forms the core of its performance advantages. Tunveo supports three transport protocols for connection pools: traditional TCP-based pools, modern QUIC-based UDP pools, and WebSocket-based pools.
 
 ### Transport Protocol Selection
 
-NodePass provides three connection pool transport options via the `type` parameter:
+Tunveo provides three connection pool transport options via the `type` parameter:
 
 1. **TCP-based Pool (type=0, default)**:
    - Traditional TCP connections managed by the `pool` library
@@ -251,7 +251,7 @@ NodePass provides three connection pool transport options via the `type` paramet
 
 ### QUIC Pool Architecture
 
-When `type=1` is enabled, NodePass uses QUIC protocol for connection pooling with the following characteristics:
+When `type=1` is enabled, Tunveo uses QUIC protocol for connection pooling with the following characteristics:
 
 **Stream Multiplexing**:
 - Single UDP connection carries multiple bidirectional streams
@@ -306,7 +306,7 @@ When `type=1` is enabled, NodePass uses QUIC protocol for connection pooling wit
 
 ### WebSocket Pool Architecture
 
-When `type=2` is enabled, NodePass uses WebSocket protocol for connection pooling with the following characteristics:
+When `type=2` is enabled, Tunveo uses WebSocket protocol for connection pooling with the following characteristics:
 
 **HTTP Upgrade Mechanism**:
 - WebSocket connections established via standard HTTP upgrade requests
@@ -439,7 +439,7 @@ All three pool types share this philosophy but implement it differently:
 
 ## Signal Communication and Coordination Mechanisms
 
-NodePass's signaling system embodies the essence of distributed system design:
+Tunveo's signaling system embodies the essence of distributed system design:
 
 ### Signal Design Principles
 1. **Event-Driven Architecture**:
@@ -504,7 +504,7 @@ NodePass's signaling system embodies the essence of distributed system design:
 
 ## Data Exchange Mechanisms
 
-NodePass's data exchange mechanisms embody modern network programming best practices:
+Tunveo's data exchange mechanisms embody modern network programming best practices:
 
 ### High-Performance Data Transfer
 1. **Zero-Copy Architecture**:
@@ -536,7 +536,7 @@ NodePass's data exchange mechanisms embody modern network programming best pract
 
 ## Master API Architecture
 
-In master mode, NodePass provides a RESTful API for centralized management, embodying cloud-native architectural design principles:
+In master mode, Tunveo provides a RESTful API for centralized management, embodying cloud-native architectural design principles:
 
 ### Architectural Design Philosophy
 Master mode adopts a "unified management, distributed execution" architecture pattern, separating the control plane from the data plane. This design gives the system enterprise-grade manageability and observability while maintaining high-performance data transmission.
@@ -577,7 +577,7 @@ Master mode adopts a "unified management, distributed execution" architecture pa
 ## System Architecture Advancement
 
 ### Layered Decoupling Design
-NodePass adopts layered design principles of modern software architecture:
+Tunveo adopts layered design principles of modern software architecture:
 
 1. **Transport Layer Separation**:
    - Complete separation of control and data channels, avoiding control information interference with data transmission
@@ -621,7 +621,7 @@ NodePass adopts layered design principles of modern software architecture:
    - Persistence of critical state, supporting failure recovery
    - Versioned configuration management, supporting rollback operations
 
-## NodePass Architecture Innovation Summary
+## Tunveo Architecture Innovation Summary
 
 ### Technical Innovation Points
 1. **Connection Pool Warm-up Technology**:
@@ -671,10 +671,10 @@ NodePass adopts layered design principles of modern software architecture:
    - Notable improvement in bandwidth utilization
    - Reliable guarantee of connection stability
 
-NodePass, through its innovative architectural design and technical implementation, provides a high-performance, high-reliability, high-security tunnel solution for modern network applications, representing the future direction of network tunnel technology.
+Tunveo, through its innovative architectural design and technical implementation, provides a high-performance, high-reliability, high-security tunnel solution for modern network applications, representing the future direction of network tunnel technology.
 
 ## Next Steps
 
-- For practical examples of deploying NodePass, see the [examples page](/docs/en/examples.md)
-- To fine-tune NodePass for your specific needs, explore the [configuration options](/docs/en/configuration.md)
-- If you encounter any issues, check the [troubleshooting guide](/docs/en/troubleshooting.md)
+- For practical examples of deploying Tunveo, see the [examples page](/docs/examples.md)
+- To fine-tune Tunveo for your specific needs, explore the [configuration options](/docs/configuration.md)
+- If you encounter any issues, check the [troubleshooting guide](/docs/troubleshooting.md)

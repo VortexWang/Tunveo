@@ -1,8 +1,8 @@
-# NodePass MCP Reference
+# Tunveo MCP Reference
 
 ## Overview
 
-NodePass Master Mode exposes a Model Context Protocol (MCP) compatible management endpoint over HTTP JSON-RPC 2.0. MCP clients can use this endpoint to discover tools and manage NodePass instances through the same master process that provides the REST API.
+Tunveo Master Mode exposes a Model Context Protocol (MCP) compatible management endpoint over HTTP JSON-RPC 2.0. MCP clients can use this endpoint to discover tools and manage Tunveo instances through the same master process that provides the REST API.
 
 The MCP implementation is intended for automation and AI-assisted operations. It can list and inspect instances, create new client or server instances, change instance configuration, control lifecycle state, export or import instance configuration, run TCP connectivity checks, and read or update master metadata.
 
@@ -11,7 +11,7 @@ The MCP implementation is intended for automation and AI-assisted operations. It
 MCP is available only in Master Mode.
 
 ```bash
-nodepass "master://0.0.0.0:9090?log=info"
+tunveo "master://0.0.0.0:9090?log=info"
 ```
 
 The MCP path is derived from the master API prefix:
@@ -41,7 +41,7 @@ The key is generated on first master startup, printed to stdout, and persisted i
 
 ## Transport And Request Format
 
-NodePass accepts HTTP `POST` requests with a JSON-RPC 2.0 body:
+Tunveo accepts HTTP `POST` requests with a JSON-RPC 2.0 body:
 
 ```json
 {
@@ -112,10 +112,10 @@ Response fields:
 
 | Field | Description |
 |-------|-------------|
-| `protocolVersion` | MCP protocol version advertised by NodePass. In this codebase the value is `2025-11-25`. |
+| `protocolVersion` | MCP protocol version advertised by Tunveo. In this codebase the value is `2025-11-25`. |
 | `capabilities.tools` | Tool capability declaration. |
 | `serverInfo.name` | Server name, currently `Master`. |
-| `serverInfo.version` | NodePass binary version. |
+| `serverInfo.version` | Tunveo binary version. |
 
 ### tools/list
 
@@ -174,15 +174,15 @@ Most tool responses include a `content` array with text for MCP clients, plus st
 | `set_instance_advanced` | Update arbitrary URL query parameters. |
 | `get_instance_config` | Return a parsed, structured version of an instance config URL. |
 | `delete_instance` | Stop and remove an instance. |
-| `export_instances` | Export instances to `nodepass.json`. |
-| `import_instances` | Import instances from `nodepass.json`. |
+| `export_instances` | Export instances to `tunveo.json`. |
+| `import_instances` | Import instances from `tunveo.json`. |
 | `tcping_target` | Test TCP connectivity to `host:port`. |
 | `get_master_info` | Return master and system information. |
 | `update_master_info` | Update the master alias. |
 
 ## Common Arguments
 
-Most instance configuration arguments are strings because they map directly to NodePass URL components or query parameters.
+Most instance configuration arguments are strings because they map directly to Tunveo URL components or query parameters.
 
 | Argument | Description |
 |----------|-------------|
@@ -504,10 +504,10 @@ The internal API key record ID `********` cannot be deleted.
 
 Arguments: none.
 
-Exports all non-internal instances to `nodepass.json` in the same directory as the master state file. The state file is normally stored under `gob/nodepass.gob` next to the NodePass binary, so the export file is normally:
+Exports all non-internal instances to `tunveo.json` in the same directory as the master state file. The state file is normally stored under `gob/tunveo.gob` next to the Tunveo binary, so the export file is normally:
 
 ```text
-<nodepass-binary-dir>/gob/nodepass.json
+<tunveo-binary-dir>/gob/tunveo.json
 ```
 
 The export includes:
@@ -524,7 +524,7 @@ The export includes:
 
 Arguments: none.
 
-Imports instances from `nodepass.json` in the same directory as the master state file.
+Imports instances from `tunveo.json` in the same directory as the master state file.
 
 Behavior:
 
@@ -577,7 +577,7 @@ Returns `info` with master metadata and system statistics:
 | `netrx`, `nettx` | Network receive/transmit byte counters. |
 | `diskr`, `diskw` | Disk read/write byte counters. |
 | `sysup` | System uptime in seconds, Linux only. |
-| `ver` | NodePass version. |
+| `ver` | Tunveo version. |
 | `name` | Master hostname. |
 | `uptime` | Master process uptime in seconds. |
 | `log` | Master log level. |
@@ -711,8 +711,8 @@ curl -sS -X POST "$MCP_URL" \
       "arguments": {
         "id": "a1b2c3d4",
         "tls": "2",
-        "crt": "/etc/nodepass/server.crt",
-        "key": "/etc/nodepass/server.key"
+        "crt": "/etc/tunveo/server.crt",
+        "key": "/etc/tunveo/server.key"
       }
     }
   }'
@@ -737,7 +737,7 @@ curl -sS -X POST "$MCP_URL" \
 
 ## Operational Notes
 
-- Configuration setters call the same URL update path. If the instance is running, NodePass stops it, waits briefly, writes the new URL, regenerates the complete config URL, and starts it again.
+- Configuration setters call the same URL update path. If the instance is running, Tunveo stops it, waits briefly, writes the new URL, regenerates the complete config URL, and starts it again.
 - `create_instance`, `control_instance`, setter tools, `delete_instance`, and `import_instances` perform some work asynchronously. A successful response means the request was accepted and state updates were scheduled; use `get_instance` or `list_instances` to observe the final runtime status.
 - The special internal ID `********` stores the API key and master ID. It is hidden from `list_instances` and protected from instance mutation tools.
 - `tags` in `update_instance` replace the whole tag map instead of merging with existing tags.
