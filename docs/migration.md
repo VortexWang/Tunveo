@@ -42,3 +42,13 @@ python3 scripts/verify_forwarding.py --binary bin/tunveo --upstream /path/to/nod
 ```
 
 Each pairing covers four pool transports, two flow modes and both TCP and UDP echo traffic, using TLS mode 1 and a small pool (min=2, max=8). These are smoke/edge diagnostics, not full protocol, load, security or TLS-mode coverage. Intermittent failures remain visible and fail the forwarding CI job; the compile/static check job is separate. Fixes must not be disguised as a relocation-only change.
+
+
+## TLS and log safety changes
+
+- Invalid `tls=2` files now stop startup with exit code 1; deployments that depended on an automatic self-signed fallback must fix certificate paths/pairs. `tls=1` generation failure also aborts, and unknown TLS mode values are rejected.
+- Reload errors retain the last successful certificate pair. Certificate validity/trust are still checked by TLS clients; loading a pair does not prove a trusted or unexpired chain.
+- URL userinfo, complete URL queries and fragments are masked in logs. APIs/state/config exports still contain operational credentials and require their existing access controls; this patch does not sanitize all management data.
+- API key values are removed from startup/load/rotation logs. Read an existing key with `tunveo api-key --state /path/to/gob/tunveo.gob`, or consume the authenticated rotation response. The explicit local command prints the key and must not be captured in routine logs.
+
+See [security fix record](tls-log-safety.md) for validation and remaining risks.

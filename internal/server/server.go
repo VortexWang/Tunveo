@@ -51,7 +51,7 @@ func NewServer(parsedURL *url.URL, tlsCode string, tlsConfig *tls.Config, logger
 func (s *Server) Run() {
 	logInfo := func(prefix string) {
 		s.Logger.Info("%v: server://%v@%v/%v?dns=%v&lbs=%v&max=%v&mode=%v&type=%v&dial=%v&read=%v&rate=%v&slot=%v&proxy=%v&block=%v&notcp=%v&noudp=%v",
-			prefix, s.TunnelKey, s.TunnelTCPAddr, s.GetTargetAddrsString(), s.DNSCacheTTL, s.LBStrategy, s.MaxPoolCapacity,
+			prefix, "[REDACTED]", s.TunnelTCPAddr, s.GetTargetAddrsString(), s.DNSCacheTTL, s.LBStrategy, s.MaxPoolCapacity,
 			s.RunMode, s.PoolType, s.DialerIP, s.ReadTimeout, s.RateLimit/125000, s.SlotLimit,
 			s.ProxyProtocol, s.BlockProtocol, s.DisableTCP, s.DisableUDP)
 	}

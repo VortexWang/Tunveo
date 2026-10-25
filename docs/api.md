@@ -49,7 +49,7 @@ tunveo "master://0.0.0.0:9090/admin?log=info&tls=1"
 
 ### API Authentication
 
-API Key authentication is enabled by default, automatically generated and saved in `tunveo.gob` on first startup.
+API Key authentication is enabled by default, automatically generated and saved in `gob/tunveo.gob` next to the executable on first startup. Key values are no longer printed on startup, reload or rotation. Read existing local state explicitly with `tunveo api-key --state /path/to/gob/tunveo.gob`; this command prints the key to stdout and requires filesystem read access. Authenticated rotation still returns the new key in its response.
 
 - Protected endpoints: `/instances`, `/instances/{id}`, `/events`, `/info`, `/tcping`
 - Public endpoints: `/openapi.json`, `/docs`

@@ -59,3 +59,21 @@ jobs:
           name: tls-verification-regression
           path: artifacts/tls-verification-regression.json
           retention-days: 14
+
+  security-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6.0.2
+      - uses: actions/setup-go@v6.1.0
+        with:
+          go-version-file: go.mod
+      - run: go build -trimpath -o bin/tunveo ./cmd/tunveo
+      - run: python3 scripts/verify_security.py --binary bin/tunveo --output artifacts/security.json
+      - name: Save security regression summary
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: security-evidence
+          path: artifacts/security.json
+          retention-days: 14

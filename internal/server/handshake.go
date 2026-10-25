@@ -110,7 +110,11 @@ func (s *Server) TunnelHandshake() error {
 
 	tlsConfig := s.TLSConfig
 	if tlsConfig == nil {
-		tlsConfig, _ = common.NewTLSConfig()
+		var err error
+		tlsConfig, err = common.NewTLSConfig()
+		if err != nil {
+			return fmt.Errorf("TunnelHandshake: generate certificate: %w", err)
+		}
 	}
 
 	if len(tlsConfig.Certificates) > 0 && len(tlsConfig.Certificates[0].Certificate) > 0 {

@@ -49,7 +49,7 @@ func NewClient(parsedURL *url.URL, tlsConfig *tls.Config, logger *common.Logger)
 func (c *Client) Run() {
 	logInfo := func(prefix string) {
 		c.Logger.Info("%v: client://%v@%v/%v?dns=%v&sni=%v&lbs=%v&min=%v&mode=%v&dial=%v&read=%v&rate=%v&slot=%v&proxy=%v&block=%v&notcp=%v&noudp=%v",
-			prefix, c.TunnelKey, c.TunnelTCPAddr, c.GetTargetAddrsString(), c.DNSCacheTTL, c.ServerName, c.LBStrategy, c.MinPoolCapacity,
+			prefix, "[REDACTED]", c.TunnelTCPAddr, c.GetTargetAddrsString(), c.DNSCacheTTL, c.ServerName, c.LBStrategy, c.MinPoolCapacity,
 			c.RunMode, c.DialerIP, c.ReadTimeout, c.RateLimit/125000, c.SlotLimit,
 			c.ProxyProtocol, c.BlockProtocol, c.DisableTCP, c.DisableUDP)
 	}

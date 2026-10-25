@@ -203,6 +203,7 @@ func (l *Logger) DoLog(logLevel LogLevel, format string, v ...any) {
 // Format without color: "TIMESTAMP  LEVEL  MESSAGE"
 // Must be called with the mutex held to prevent concurrent output corruption.
 func (l *Logger) WriteLog(level LogLevel, timestamp, levelStr, message string) {
+	message = RedactLog(message)
 	if l.ColorEnabled {
 		colorCode := LevelColors[level]
 		fmt.Printf("%s  %s%s%s  %s\n", timestamp, colorCode, levelStr, ResetColor, message)

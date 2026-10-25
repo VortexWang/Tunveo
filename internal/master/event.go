@@ -14,6 +14,8 @@ import (
 	"strings"
 	"sync"
 	"time"
+
+	"github.com/VortexWang/Tunveo/internal/common"
 )
 
 // NewInstanceLogWriter creates a new InstanceLogWriter that parses instance output logs
@@ -64,7 +66,7 @@ func (w *InstanceLogWriter) Write(p []byte) (n int, err error) {
 	scanner := bufio.NewScanner(strings.NewReader(s))
 
 	for scanner.Scan() {
-		line := scanner.Text()
+		line := common.RedactLog(scanner.Text())
 		if matches := w.CheckPoint.FindStringSubmatch(line); len(matches) == 10 {
 			if mode, err := strconv.ParseInt(matches[1], 10, 32); err == nil {
 				w.Instance.Mode = int32(mode)
@@ -127,7 +129,7 @@ func (w *InstanceLogWriter) Write(p []byte) (n int, err error) {
 	}
 
 	if err := scanner.Err(); err != nil {
-		fmt.Fprintf(w.Target, "%s [%s]", s, w.InstanceID)
+		fmt.Fprintf(w.Target, "%s [%s]", common.RedactLog(s), w.InstanceID)
 	}
 	return len(p), nil
 }
