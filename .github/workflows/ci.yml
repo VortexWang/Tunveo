@@ -77,3 +77,30 @@ jobs:
           name: security-evidence
           path: artifacts/security.json
           retention-days: 14
+
+  vulnerability-scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      GOTOOLCHAIN: local
+    steps:
+      - uses: actions/checkout@v6.0.2
+      - uses: actions/setup-go@v6.1.0
+        with:
+          go-version-file: go.mod
+      - run: go install golang.org/x/vuln/cmd/govulncheck@v1.9.0
+      # The text scan's nonzero exit is the gate. JSON alone exits zero even
+      # when it reports findings; pipefail preserves failures while tee saves text.
+      - name: Scan reachable vulnerabilities
+        shell: bash
+        run: |
+          mkdir -p artifacts
+          set -o pipefail
+          govulncheck ./... 2>&1 | tee artifacts/govulncheck.txt
+      - name: Save vulnerability scan evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: vulnerability-evidence
+          path: artifacts/govulncheck.txt
+          retention-days: 14

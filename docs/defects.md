@@ -14,10 +14,12 @@ Updated 2026-10-25. Status describes evidence, not a vulnerability severity cert
 | TNV-008 | Known URL/API-key log paths patched; scoped validation passed, pending integration | Engine log sink masks URL userinfo/query/fragment; startup omits tunnel key; API-key lifecycle logs omit values; explicit local read command added | Review compatibility note; authenticated API/state/export contents and arbitrary text secrets remain separate audit scope |
 | TNV-009 | Audit pending | API/MCP/SSE authentication, limits and process management | Threat-oriented request and resource tests |
 | TNV-010 | Migration not verified | State/export names changed; GOB and import compatibility remain unverified | Offline sample, backup, import and rollback tests |
-| TNV-011 | Static scan findings recorded; unfixed | 15 unique advisories have symbol-level call traces; 20 module/advisory pairs across stdlib and x/net. This does not establish exploitability | Fast-track assessed Go and HTTP/2 security updates as separate changes, then rescan |
+| TNV-011 | Security upgrades implemented; scoped rescan passed, pending integration | Go 1.26.10 / x/net v0.60.0 reduce static called IDs 15 → 5 → 0; one module-only OpenPGP advisory remains, with no affected package imported | Review dependency PR; preserve scan gate and assess new database findings; not a blanket security clearance |
 | TNV-012 | New-server early-close path fixed; scoped validation passed | Full response is written and flushed before listener transition; capability tests exercise 30 real HTTPS handshakes | Old servers remain unchanged; other EOF causes must still be diagnosed separately |
 | TNV-013 | Reproduced; unfixed | `NP_RELOAD_INTERVAL=0s` makes master panic in the inherited maintenance ticker; positive duration required | Validate positive maintenance intervals in a separate configuration patch |
 
 Evidence, exact baseline commits and scope limitations are in [M1 findings](m1-findings.md) and [TNV-002 fix](tnv-002-fix.md). Unfixed security observations must not be presented as resolved by redacting the diagnostic artifact or by adding a test.
 
 TLS/log changes and process evidence: [security fix record](tls-log-safety.md).
+
+Dependency changes and staged scan evidence: [TNV-011](security-dependencies.md).

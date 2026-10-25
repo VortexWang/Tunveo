@@ -1,0 +1,28 @@
+{
+  "source_commit": "290c3f871fb7d72f43577bf6688d9b4a4cc47ccd",
+  "go_only_commit": "978ba2ea2db2b79ec47f1b97aea416458d798614",
+  "before_commit": "e5aecef01544ca12da51947da22fe459e8a30141",
+  "recorded_at": "2026-10-25T07:19:24.855815+00:00",
+  "binary_sha256": "dc088f783ec7313197fa750602c44d2af3ffe7a7d2f97c2cbe397acff360ee1e",
+  "go_build_info": "BUILD/tunveo-tnv011: go1.26.10\n\tpath\tgithub.com/VortexWang/Tunveo/cmd/tunveo\n\tmod\tgithub.com/VortexWang/Tunveo\tv1.17.1-0.20261025071534-290c3f871fb7\t\n\tdep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\n\tdep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\n\tdep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\n\tdep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\n\tdep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\n\tdep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\n\tbuild\t-buildmode=exe\n\tbuild\t-compiler=gc\n\tbuild\t-trimpath=true\n\tbuild\tCGO_ENABLED=1\n\tbuild\tGOARCH=amd64\n\tbuild\tGOOS=linux\n\tbuild\tGOAMD64=v1\n\tbuild\tvcs=git\n\tbuild\tvcs.revision=290c3f871fb7d72f43577bf6688d9b4a4cc47ccd\n\tbuild\tvcs.time=2026-10-25T07:15:34Z\n\tbuild\tvcs.modified=false\n",
+  "govulncheck_version": "v1.9.0",
+  "scanner_binary_sha256": "5ab833d7b2af5e588d29b495adccb838b7624fca758d6a092806a6c601f54fcc",
+  "source_ci": "https://github.com/VortexWang/Tunveo/actions/runs/40172117542",
+  "normalization": "Log paths relative to each report; executable path prefixes BUILD/. Log bytes and result outcomes unchanged.",
+  "scope": "Local loopback, TLS mode 1 forwarding; one sample/cell, no application retries; synthetic credentials. Docker manifest inspected, Docker build not run.",
+  "forwarding": {
+    "passed": 48,
+    "total": 48,
+    "pool_capacities": [
+      "2:8",
+      "64:1024"
+    ],
+    "transports": 4,
+    "flows": 2,
+    "pairs": [
+      "tunveo/tunveo",
+      "tunveo/upstream",
+      "upstream/tunveo"
+    ]
+  }
+}

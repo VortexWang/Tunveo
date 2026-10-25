@@ -1,0 +1,2156 @@
+{
+  "runner_sha256": "5ee64eb1af2091fa6bf81fe2e4b9381c9eaaf6ac9851646e881bc9ce9644f82c",
+  "schema_version": 2,
+  "status": "passed",
+  "started_at": "2026-10-25T07:16:34.703254+00:00",
+  "environment": {
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+    "machine": "x86_64",
+    "python": "3.12.14"
+  },
+  "binaries": {
+    "tunveo": {
+      "path": "BUILD/tunveo-tnv011",
+      "sha256": "dc088f783ec7313197fa750602c44d2af3ffe7a7d2f97c2cbe397acff360ee1e",
+      "version": "tunveo-dev linux/amd64",
+      "version_exit_code": 0,
+      "go_build_info": "BUILD/tunveo-tnv011: go1.26.10\n\tpath\tgithub.com/VortexWang/Tunveo/cmd/tunveo\n\tmod\tgithub.com/VortexWang/Tunveo\tv1.17.1-0.20261025071534-290c3f871fb7\t\n\tdep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\n\tdep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\n\tdep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\n\tdep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\n\tdep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\n\tdep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\n\tbuild\t-buildmode=exe\n\tbuild\t-compiler=gc\n\tbuild\t-trimpath=true\n\tbuild\tCGO_ENABLED=1\n\tbuild\tGOARCH=amd64\n\tbuild\tGOOS=linux\n\tbuild\tGOAMD64=v1\n\tbuild\tvcs=git\n\tbuild\tvcs.revision=290c3f871fb7d72f43577bf6688d9b4a4cc47ccd\n\tbuild\tvcs.time=2026-10-25T07:15:34Z\n\tbuild\tvcs.modified=false",
+      "go_build_info_exit_code": 0
+    },
+    "upstream": {
+      "path": "BUILD/upstream-nodepass-m1",
+      "sha256": "5ee15c1c86da68fe0823f83f64a92d3d3d6dc18bf5f6d1e7065809f13afabfd4",
+      "version": "nodepass-dev linux/amd64",
+      "version_exit_code": 0,
+      "go_build_info": "BUILD/upstream-nodepass-m1: go1.26.5\n\tpath\tgithub.com/NodePassProject/nodepass/cmd/nodepass\n\tmod\tgithub.com/NodePassProject/nodepass\tv1.17.0\t\n\tdep\tgithub.com/NodePassProject/nph2\tv1.1.1\th1:Zci9/gLkq/SSeoapRlDoztfDNmoxoqhnSapsCg885G4=\n\tdep\tgithub.com/NodePassProject/npws\tv1.1.1\th1:sgFT5BoGVs7T22AYm5j6eNzsQVqIes6DfKAnV0m8OUo=\n\tdep\tgithub.com/NodePassProject/pool\tv1.1.1\th1:lB2VOugaRUcnBWPRw5bEGLSfS1KvmtXeB8RAoG265Ro=\n\tdep\tgithub.com/NodePassProject/quic\tv1.1.1\th1:fJhu2bwsEtAX6XekDVyViGSxh/6KZmtqbQEE8RhdQbk=\n\tdep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\n\tdep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\n\tdep\tgolang.org/x/crypto\tv0.53.0\th1:QZ4Muo8THX6CizN2vPPd5fBGHyogrdK9fG4wLPFUsto=\n\tdep\tgolang.org/x/net\tv0.56.0\th1:Rw8j/hFzGvJUZwNBXnAtf5sVDVt+65SK2C7IxCxZt5o=\n\tdep\tgolang.org/x/sys\tv0.46.0\th1:noSf2Fq6F8DBgS+LysIkx7rIExoNHJsxOAtPp4rthXw=\n\tdep\tgolang.org/x/text\tv0.39.0\th1:UbZz4pLOvn600D6Oh6GGEI6VAmndrEBLv8/6BEXzyus=\n\tbuild\t-buildmode=exe\n\tbuild\t-compiler=gc\n\tbuild\t-trimpath=true\n\tbuild\tCGO_ENABLED=1\n\tbuild\tGOARCH=amd64\n\tbuild\tGOOS=linux\n\tbuild\tGOAMD64=v1\n\tbuild\tvcs=git\n\tbuild\tvcs.revision=114345043d9608e1e24e783a270cde75193e4f42\n\tbuild\tvcs.time=2026-07-12T10:43:27Z\n\tbuild\tvcs.modified=false",
+      "go_build_info_exit_code": 0
+    }
+  },
+  "settings": {
+    "tls": 1,
+    "log_level": "debug",
+    "application_attempts": 1,
+    "readiness": "observed log milestones",
+    "timeouts": {
+      "startup_timeout": 5,
+      "phase_timeout": 15,
+      "io_timeout": 3,
+      "cleanup_timeout": 5
+    }
+  },
+  "results": [
+    {
+      "id": "0001",
+      "pair_server_client": "tunveo/tunveo",
+      "transport": 0,
+      "mode": 1,
+      "tls": 1,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 1,
+      "status": "passed",
+      "phases": {
+        "server_startup": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            391
+          ],
+          "duration_seconds": 0.0262
+        },
+        "tunnel_handshake": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            623,
+            385
+          ],
+          "duration_seconds": 0.0261
+        },
+        "pool_ready": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            890,
+            652
+          ],
+          "duration_seconds": 0.1508
+        },
+        "certificate_verification": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1237,
+            1007
+          ],
+          "duration_seconds": 4.9814
+        },
+        "tcp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 32768,
+          "received_bytes": 32768,
+          "duration_seconds": 0.0013
+        },
+        "udp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 512,
+          "received_bytes": 512,
+          "duration_seconds": 0.001
+        },
+        "cleanup": {
+          "status": "passed",
+          "forced_kill": false,
+          "duration_seconds": 0.0038
+        }
+      },
+      "processes": [
+        {
+          "role": "server",
+          "pid": 32
+        },
+        {
+          "role": "client",
+          "pid": 44
+        }
+      ],
+      "logs": {
+        "server": "0001/server.log",
+        "client": "0001/client.log"
+      },
+      "ports": {
+        "echo": 46557,
+        "front": 36231,
+        "tunnel": 34849
+      },
+      "commands": [
+        [
+          "BUILD/tunveo-tnv011",
+          "server://[REDACTED]@127.0.0.1:34849/127.0.0.1:36231?mode=1&type=0&tls=1&max=8&log=debug"
+        ],
+        [
+          "BUILD/tunveo-tnv011",
+          "client://[REDACTED]@127.0.0.1:34849/127.0.0.1:46557?mode=2&min=2&log=debug"
+        ]
+      ],
+      "cleanup": [
+        {
+          "pid": 32,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 44,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "observations": {
+        "server": {
+          "credential_url_observed": false,
+          "initiated_verification_ids": [],
+          "received_verification_ids": [
+            "6a07f3f2"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        },
+        "client": {
+          "credential_url_observed": false,
+          "initiated_verification_ids": [
+            "6a07f3f2"
+          ],
+          "received_verification_ids": [],
+          "verification_timeout": false,
+          "restart_count": 0
+        }
+      }
+    },
+    {
+      "id": "0002",
+      "pair_server_client": "tunveo/tunveo",
+      "transport": 0,
+      "mode": 1,
+      "tls": 1,
+      "pool": {
+        "min": 64,
+        "max": 1024
+      },
+      "iteration": 1,
+      "status": "passed",
+      "phases": {
+        "server_startup": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            391
+          ],
+          "duration_seconds": 0.0261
+        },
+        "tunnel_handshake": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            626,
+            388
+          ],
+          "duration_seconds": 0.0262
+        },
+        "pool_ready": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            893,
+            655
+          ],
+          "duration_seconds": 0.0503
+        },
+        "certificate_verification": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1241,
+            1011
+          ],
+          "duration_seconds": 4.9815
+        },
+        "tcp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 32768,
+          "received_bytes": 32768,
+          "duration_seconds": 0.0015
+        },
+        "udp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 512,
+          "received_bytes": 512,
+          "duration_seconds": 0.0006
+        },
+        "cleanup": {
+          "status": "passed",
+          "forced_kill": false,
+          "duration_seconds": 0.0158
+        }
+      },
+      "processes": [
+        {
+          "role": "server",
+          "pid": 57
+        },
+        {
+          "role": "client",
+          "pid": 68
+        }
+      ],
+      "logs": {
+        "server": "0002/server.log",
+        "client": "0002/client.log"
+      },
+      "ports": {
+        "echo": 59129,
+        "front": 56635,
+        "tunnel": 53819
+      },
+      "commands": [
+        [
+          "BUILD/tunveo-tnv011",
+          "server://[REDACTED]@127.0.0.1:53819/127.0.0.1:56635?mode=1&type=0&tls=1&max=1024&log=debug"
+        ],
+        [
+          "BUILD/tunveo-tnv011",
+          "client://[REDACTED]@127.0.0.1:53819/127.0.0.1:59129?mode=2&min=64&log=debug"
+        ]
+      ],
+      "cleanup": [
+        {
+          "pid": 57,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 68,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "observations": {
+        "server": {
+          "credential_url_observed": false,
+          "initiated_verification_ids": [],
+          "received_verification_ids": [
+            "54e12e91"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        },
+        "client": {
+          "credential_url_observed": false,
+          "initiated_verification_ids": [
+            "54e12e91"
+          ],
+          "received_verification_ids": [],
+          "verification_timeout": false,
+          "restart_count": 0
+        }
+      }
+    },
+    {
+      "id": "0003",
+      "pair_server_client": "tunveo/tunveo",
+      "transport": 1,
+      "mode": 1,
+      "tls": 1,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 1,
+      "status": "passed",
+      "phases": {
+        "server_startup": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            391
+          ],
+          "duration_seconds": 0.0273
+        },
+        "tunnel_handshake": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            623,
+            385
+          ],
+          "duration_seconds": 0.0266
+        },
+        "pool_ready": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            889,
+            651
+          ],
+          "duration_seconds": 0.0503
+        },
+        "certificate_verification": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1236,
+            1006
+          ],
+          "duration_seconds": 4.9823
+        },
+        "tcp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 32768,
+          "received_bytes": 32768,
+          "duration_seconds": 0.0017
+        },
+        "udp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 512,
+          "received_bytes": 512,
+          "duration_seconds": 0.0007
+        },
+        "cleanup": {
+          "status": "passed",
+          "forced_kill": false,
+          "duration_seconds": 0.0036
+        }
+      },
+      "processes": [
+        {
+          "role": "server",
+          "pid": 88
+        },
+        {
+          "role": "client",
+          "pid": 98
+        }
+      ],
+      "logs": {
+        "server": "0003/server.log",
+        "client": "0003/client.log"
+      },
+      "ports": {
+        "echo": 50939,
+        "front": 42785,
+        "tunnel": 38715
+      },
+      "commands": [
+        [
+          "BUILD/tunveo-tnv011",
+          "server://[REDACTED]@127.0.0.1:38715/127.0.0.1:42785?mode=1&type=1&tls=1&max=8&log=debug"
+        ],
+        [
+          "BUILD/tunveo-tnv011",
+          "client://[REDACTED]@127.0.0.1:38715/127.0.0.1:50939?mode=2&min=2&log=debug"
+        ]
+      ],
+      "cleanup": [
+        {
+          "pid": 88,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 98,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "observations": {
+        "server": {
+          "credential_url_observed": false,
+          "initiated_verification_ids": [],
+          "received_verification_ids": [
+            "81887816"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        },
+        "client": {
+          "credential_url_observed": false,
+          "initiated_verification_ids": [
+            "81887816"
+          ],
+          "received_verification_ids": [],
+          "verification_timeout": false,
+          "restart_count": 0
+        }
+      }
+    },
+    {
+      "id": "0004",
+      "pair_server_client": "tunveo/tunveo",
+      "transport": 1,
+      "mode": 1,
+      "tls": 1,
+      "pool": {
+        "min": 64,
+        "max": 1024
+      },
+      "iteration": 1,
+      "status": "passed",
+      "phases": {
+        "server_startup": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            391
+          ],
+          "duration_seconds": 0.0283
+        },
+        "tunnel_handshake": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            626,
+            388
+          ],
+          "duration_seconds": 0.0268
+        },
+        "pool_ready": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            893,
+            655
+          ],
+          "duration_seconds": 0.0503
+        },
+        "certificate_verification": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1241,
+            1011
+          ],
+          "duration_seconds": 4.9817
+        },
+        "tcp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 32768,
+          "received_bytes": 32768,
+          "duration_seconds": 0.0016
+        },
+        "udp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 512,
+          "received_bytes": 512,
+          "duration_seconds": 0.0008
+        },
+        "cleanup": {
+          "status": "passed",
+          "forced_kill": false,
+          "duration_seconds": 0.0035
+        }
+      },
+      "processes": [
+        {
+          "role": "server",
+          "pid": 112
+        },
+        {
+          "role": "client",
+          "pid": 123
+        }
+      ],
+      "logs": {
+        "server": "0004/server.log",
+        "client": "0004/client.log"
+      },
+      "ports": {
+        "echo": 58113,
+        "front": 60937,
+        "tunnel": 45595
+      },
+      "commands": [
+        [
+          "BUILD/tunveo-tnv011",
+          "server://[REDACTED]@127.0.0.1:45595/127.0.0.1:60937?mode=1&type=1&tls=1&max=1024&log=debug"
+        ],
+        [
+          "BUILD/tunveo-tnv011",
+          "client://[REDACTED]@127.0.0.1:45595/127.0.0.1:58113?mode=2&min=64&log=debug"
+        ]
+      ],
+      "cleanup": [
+        {
+          "pid": 112,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 123,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "observations": {
+        "server": {
+          "credential_url_observed": false,
+          "initiated_verification_ids": [],
+          "received_verification_ids": [
+            "94ce5de3"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        },
+        "client": {
+          "credential_url_observed": false,
+          "initiated_verification_ids": [
+            "94ce5de3"
+          ],
+          "received_verification_ids": [],
+          "verification_timeout": false,
+          "restart_count": 0
+        }
+      }
+    },
+    {
+      "id": "0005",
+      "pair_server_client": "tunveo/tunveo",
+      "transport": 2,
+      "mode": 1,
+      "tls": 1,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 1,
+      "status": "passed",
+      "phases": {
+        "server_startup": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            391
+          ],
+          "duration_seconds": 0.0267
+        },
+        "tunnel_handshake": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            623,
+            385
+          ],
+          "duration_seconds": 0.0272
+        },
+        "pool_ready": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            889,
+            651
+          ],
+          "duration_seconds": 0.0503
+        },
+        "certificate_verification": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1236,
+            1013
+          ],
+          "duration_seconds": 4.9899
+        },
+        "tcp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 32768,
+          "received_bytes": 32768,
+          "duration_seconds": 0.0016
+        },
+        "udp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 512,
+          "received_bytes": 512,
+          "duration_seconds": 0.0008
+        },
+        "cleanup": {
+          "status": "passed",
+          "forced_kill": false,
+          "duration_seconds": 0.0036
+        }
+      },
+      "processes": [
+        {
+          "role": "server",
+          "pid": 139
+        },
+        {
+          "role": "client",
+          "pid": 150
+        }
+      ],
+      "logs": {
+        "server": "0005/server.log",
+        "client": "0005/client.log"
+      },
+      "ports": {
+        "echo": 49747,
+        "front": 48511,
+        "tunnel": 50177
+      },
+      "commands": [
+        [
+          "BUILD/tunveo-tnv011",
+          "server://[REDACTED]@127.0.0.1:50177/127.0.0.1:48511?mode=1&type=2&tls=1&max=8&log=debug"
+        ],
+        [
+          "BUILD/tunveo-tnv011",
+          "client://[REDACTED]@127.0.0.1:50177/127.0.0.1:49747?mode=2&min=2&log=debug"
+        ]
+      ],
+      "cleanup": [
+        {
+          "pid": 139,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 150,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "observations": {
+        "server": {
+          "credential_url_observed": false,
+          "initiated_verification_ids": [],
+          "received_verification_ids": [
+            "a4aaf3f0"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        },
+        "client": {
+          "credential_url_observed": false,
+          "initiated_verification_ids": [
+            "a4aaf3f0"
+          ],
+          "received_verification_ids": [],
+          "verification_timeout": false,
+          "restart_count": 0
+        }
+      }
+    },
+    {
+      "id": "0006",
+      "pair_server_client": "tunveo/tunveo",
+      "transport": 2,
+      "mode": 1,
+      "tls": 1,
+      "pool": {
+        "min": 64,
+        "max": 1024
+      },
+      "iteration": 1,
+      "status": "passed",
+      "phases": {
+        "server_startup": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            391
+          ],
+          "duration_seconds": 0.0267
+        },
+        "tunnel_handshake": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            626,
+            388
+          ],
+          "duration_seconds": 0.0287
+        },
+        "pool_ready": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            893,
+            655
+          ],
+          "duration_seconds": 0.0504
+        },
+        "certificate_verification": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1241,
+            1018
+          ],
+          "duration_seconds": 4.9909
+        },
+        "tcp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 32768,
+          "received_bytes": 32768,
+          "duration_seconds": 0.0018
+        },
+        "udp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 512,
+          "received_bytes": 512,
+          "duration_seconds": 0.0007
+        },
+        "cleanup": {
+          "status": "passed",
+          "forced_kill": false,
+          "duration_seconds": 0.0055
+        }
+      },
+      "processes": [
+        {
+          "role": "server",
+          "pid": 163
+        },
+        {
+          "role": "client",
+          "pid": 173
+        }
+      ],
+      "logs": {
+        "server": "0006/server.log",
+        "client": "0006/client.log"
+      },
+      "ports": {
+        "echo": 33375,
+        "front": 45447,
+        "tunnel": 51273
+      },
+      "commands": [
+        [
+          "BUILD/tunveo-tnv011",
+          "server://[REDACTED]@127.0.0.1:51273/127.0.0.1:45447?mode=1&type=2&tls=1&max=1024&log=debug"
+        ],
+        [
+          "BUILD/tunveo-tnv011",
+          "client://[REDACTED]@127.0.0.1:51273/127.0.0.1:33375?mode=2&min=64&log=debug"
+        ]
+      ],
+      "cleanup": [
+        {
+          "pid": 163,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 173,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "observations": {
+        "server": {
+          "credential_url_observed": false,
+          "initiated_verification_ids": [],
+          "received_verification_ids": [
+            "30148f69"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        },
+        "client": {
+          "credential_url_observed": false,
+          "initiated_verification_ids": [
+            "30148f69"
+          ],
+          "received_verification_ids": [],
+          "verification_timeout": false,
+          "restart_count": 0
+        }
+      }
+    },
+    {
+      "id": "0007",
+      "pair_server_client": "tunveo/tunveo",
+      "transport": 3,
+      "mode": 1,
+      "tls": 1,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 1,
+      "status": "passed",
+      "phases": {
+        "server_startup": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            391
+          ],
+          "duration_seconds": 0.0267
+        },
+        "tunnel_handshake": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            623,
+            385
+          ],
+          "duration_seconds": 0.0269
+        },
+        "pool_ready": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            890,
+            652
+          ],
+          "duration_seconds": 0.1006
+        },
+        "certificate_verification": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1237,
+            1007
+          ],
+          "duration_seconds": 4.9973
+        },
+        "tcp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 32768,
+          "received_bytes": 32768,
+          "duration_seconds": 0.0054
+        },
+        "udp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 512,
+          "received_bytes": 512,
+          "duration_seconds": 0.5314
+        },
+        "cleanup": {
+          "status": "passed",
+          "forced_kill": false,
+          "duration_seconds": 0.0034
+        }
+      },
+      "processes": [
+        {
+          "role": "server",
+          "pid": 195
+        },
+        {
+          "role": "client",
+          "pid": 205
+        }
+      ],
+      "logs": {
+        "server": "0007/server.log",
+        "client": "0007/client.log"
+      },
+      "ports": {
+        "echo": 33393,
+        "front": 53195,
+        "tunnel": 40469
+      },
+      "commands": [
+        [
+          "BUILD/tunveo-tnv011",
+          "server://[REDACTED]@127.0.0.1:40469/127.0.0.1:53195?mode=1&type=3&tls=1&max=8&log=debug"
+        ],
+        [
+          "BUILD/tunveo-tnv011",
+          "client://[REDACTED]@127.0.0.1:40469/127.0.0.1:33393?mode=2&min=2&log=debug"
+        ]
+      ],
+      "cleanup": [
+        {
+          "pid": 195,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 205,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "observations": {
+        "server": {
+          "credential_url_observed": false,
+          "initiated_verification_ids": [],
+          "received_verification_ids": [
+            "1e25fe80"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        },
+        "client": {
+          "credential_url_observed": false,
+          "initiated_verification_ids": [
+            "1e25fe80"
+          ],
+          "received_verification_ids": [],
+          "verification_timeout": false,
+          "restart_count": 0
+        }
+      }
+    },
+    {
+      "id": "0008",
+      "pair_server_client": "tunveo/tunveo",
+      "transport": 3,
+      "mode": 1,
+      "tls": 1,
+      "pool": {
+        "min": 64,
+        "max": 1024
+      },
+      "iteration": 1,
+      "status": "passed",
+      "phases": {
+        "server_startup": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            391
+          ],
+          "duration_seconds": 0.0323
+        },
+        "tunnel_handshake": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            626,
+            388
+          ],
+          "duration_seconds": 0.0278
+        },
+        "pool_ready": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            894,
+            656
+          ],
+          "duration_seconds": 0.1008
+        },
+        "certificate_verification": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1242,
+            1012
+          ],
+          "duration_seconds": 4.9966
+        },
+        "tcp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 32768,
+          "received_bytes": 32768,
+          "duration_seconds": 0.0033
+        },
+        "udp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 512,
+          "received_bytes": 512,
+          "duration_seconds": 0.0007
+        },
+        "cleanup": {
+          "status": "passed",
+          "forced_kill": false,
+          "duration_seconds": 0.0079
+        }
+      },
+      "processes": [
+        {
+          "role": "server",
+          "pid": 221
+        },
+        {
+          "role": "client",
+          "pid": 231
+        }
+      ],
+      "logs": {
+        "server": "0008/server.log",
+        "client": "0008/client.log"
+      },
+      "ports": {
+        "echo": 58839,
+        "front": 60267,
+        "tunnel": 53865
+      },
+      "commands": [
+        [
+          "BUILD/tunveo-tnv011",
+          "server://[REDACTED]@127.0.0.1:53865/127.0.0.1:60267?mode=1&type=3&tls=1&max=1024&log=debug"
+        ],
+        [
+          "BUILD/tunveo-tnv011",
+          "client://[REDACTED]@127.0.0.1:53865/127.0.0.1:58839?mode=2&min=64&log=debug"
+        ]
+      ],
+      "cleanup": [
+        {
+          "pid": 221,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 231,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "observations": {
+        "server": {
+          "credential_url_observed": false,
+          "initiated_verification_ids": [],
+          "received_verification_ids": [
+            "f0902fb3"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        },
+        "client": {
+          "credential_url_observed": false,
+          "initiated_verification_ids": [
+            "f0902fb3"
+          ],
+          "received_verification_ids": [],
+          "verification_timeout": false,
+          "restart_count": 0
+        }
+      }
+    },
+    {
+      "id": "0009",
+      "pair_server_client": "tunveo/tunveo",
+      "transport": 0,
+      "mode": 2,
+      "tls": 1,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 1,
+      "status": "passed",
+      "phases": {
+        "server_startup": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            391
+          ],
+          "duration_seconds": 0.0316
+        },
+        "tunnel_handshake": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            789,
+            385
+          ],
+          "duration_seconds": 0.0275
+        },
+        "pool_ready": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1056,
+            652
+          ],
+          "duration_seconds": 0.1512
+        },
+        "certificate_verification": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1411,
+            999
+          ],
+          "duration_seconds": 5.0002
+        },
+        "tcp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 32768,
+          "received_bytes": 32768,
+          "duration_seconds": 0.0016
+        },
+        "udp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 512,
+          "received_bytes": 512,
+          "duration_seconds": 0.0008
+        },
+        "cleanup": {
+          "status": "passed",
+          "forced_kill": false,
+          "duration_seconds": 0.0044
+        }
+      },
+      "processes": [
+        {
+          "role": "server",
+          "pid": 249
+        },
+        {
+          "role": "client",
+          "pid": 259
+        }
+      ],
+      "logs": {
+        "server": "0009/server.log",
+        "client": "0009/client.log"
+      },
+      "ports": {
+        "echo": 40085,
+        "front": 36521,
+        "tunnel": 47855
+      },
+      "commands": [
+        [
+          "BUILD/tunveo-tnv011",
+          "server://[REDACTED]@127.0.0.1:47855/127.0.0.1:40085?mode=2&type=0&tls=1&max=8&log=debug"
+        ],
+        [
+          "BUILD/tunveo-tnv011",
+          "client://[REDACTED]@127.0.0.1:47855/127.0.0.1:36521?mode=2&min=2&log=debug"
+        ]
+      ],
+      "cleanup": [
+        {
+          "pid": 249,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 259,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "observations": {
+        "server": {
+          "credential_url_observed": false,
+          "initiated_verification_ids": [
+            "373662be"
+          ],
+          "received_verification_ids": [],
+          "verification_timeout": false,
+          "restart_count": 0
+        },
+        "client": {
+          "credential_url_observed": false,
+          "initiated_verification_ids": [],
+          "received_verification_ids": [
+            "373662be"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        }
+      }
+    },
+    {
+      "id": "0010",
+      "pair_server_client": "tunveo/tunveo",
+      "transport": 0,
+      "mode": 2,
+      "tls": 1,
+      "pool": {
+        "min": 64,
+        "max": 1024
+      },
+      "iteration": 1,
+      "status": "passed",
+      "phases": {
+        "server_startup": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            391
+          ],
+          "duration_seconds": 0.0275
+        },
+        "tunnel_handshake": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            626,
+            388
+          ],
+          "duration_seconds": 0.0299
+        },
+        "pool_ready": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            893,
+            655
+          ],
+          "duration_seconds": 0.0504
+        },
+        "certificate_verification": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1249,
+            1003
+          ],
+          "duration_seconds": 5.0039
+        },
+        "tcp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 32768,
+          "received_bytes": 32768,
+          "duration_seconds": 0.0014
+        },
+        "udp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 512,
+          "received_bytes": 512,
+          "duration_seconds": 0.0017
+        },
+        "cleanup": {
+          "status": "passed",
+          "forced_kill": false,
+          "duration_seconds": 0.0829
+        }
+      },
+      "processes": [
+        {
+          "role": "server",
+          "pid": 273
+        },
+        {
+          "role": "client",
+          "pid": 285
+        }
+      ],
+      "logs": {
+        "server": "0010/server.log",
+        "client": "0010/client.log"
+      },
+      "ports": {
+        "echo": 41293,
+        "front": 41101,
+        "tunnel": 36525
+      },
+      "commands": [
+        [
+          "BUILD/tunveo-tnv011",
+          "server://[REDACTED]@127.0.0.1:36525/127.0.0.1:41293?mode=2&type=0&tls=1&max=1024&log=debug"
+        ],
+        [
+          "BUILD/tunveo-tnv011",
+          "client://[REDACTED]@127.0.0.1:36525/127.0.0.1:41101?mode=2&min=64&log=debug"
+        ]
+      ],
+      "cleanup": [
+        {
+          "pid": 273,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 285,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "observations": {
+        "server": {
+          "credential_url_observed": false,
+          "initiated_verification_ids": [
+            "dfd4be90"
+          ],
+          "received_verification_ids": [],
+          "verification_timeout": false,
+          "restart_count": 0
+        },
+        "client": {
+          "credential_url_observed": false,
+          "initiated_verification_ids": [],
+          "received_verification_ids": [
+            "dfd4be90"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        }
+      }
+    },
+    {
+      "id": "0011",
+      "pair_server_client": "tunveo/tunveo",
+      "transport": 1,
+      "mode": 2,
+      "tls": 1,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 1,
+      "status": "passed",
+      "phases": {
+        "server_startup": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            391
+          ],
+          "duration_seconds": 0.0289
+        },
+        "tunnel_handshake": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            623,
+            385
+          ],
+          "duration_seconds": 0.0296
+        },
+        "pool_ready": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            889,
+            651
+          ],
+          "duration_seconds": 0.0503
+        },
+        "certificate_verification": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1244,
+            998
+          ],
+          "duration_seconds": 5.0032
+        },
+        "tcp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 32768,
+          "received_bytes": 32768,
+          "duration_seconds": 0.003
+        },
+        "udp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 512,
+          "received_bytes": 512,
+          "duration_seconds": 0.0029
+        },
+        "cleanup": {
+          "status": "passed",
+          "forced_kill": false,
+          "duration_seconds": 0.0099
+        }
+      },
+      "processes": [
+        {
+          "role": "server",
+          "pid": 304
+        },
+        {
+          "role": "client",
+          "pid": 315
+        }
+      ],
+      "logs": {
+        "server": "0011/server.log",
+        "client": "0011/client.log"
+      },
+      "ports": {
+        "echo": 57887,
+        "front": 44173,
+        "tunnel": 46127
+      },
+      "commands": [
+        [
+          "BUILD/tunveo-tnv011",
+          "server://[REDACTED]@127.0.0.1:46127/127.0.0.1:57887?mode=2&type=1&tls=1&max=8&log=debug"
+        ],
+        [
+          "BUILD/tunveo-tnv011",
+          "client://[REDACTED]@127.0.0.1:46127/127.0.0.1:44173?mode=2&min=2&log=debug"
+        ]
+      ],
+      "cleanup": [
+        {
+          "pid": 304,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 315,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "observations": {
+        "server": {
+          "credential_url_observed": false,
+          "initiated_verification_ids": [
+            "ef732956"
+          ],
+          "received_verification_ids": [],
+          "verification_timeout": false,
+          "restart_count": 0
+        },
+        "client": {
+          "credential_url_observed": false,
+          "initiated_verification_ids": [],
+          "received_verification_ids": [
+            "ef732956"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        }
+      }
+    },
+    {
+      "id": "0012",
+      "pair_server_client": "tunveo/tunveo",
+      "transport": 1,
+      "mode": 2,
+      "tls": 1,
+      "pool": {
+        "min": 64,
+        "max": 1024
+      },
+      "iteration": 1,
+      "status": "passed",
+      "phases": {
+        "server_startup": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            391
+          ],
+          "duration_seconds": 0.0276
+        },
+        "tunnel_handshake": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            626,
+            388
+          ],
+          "duration_seconds": 0.0099
+        },
+        "pool_ready": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            893,
+            655
+          ],
+          "duration_seconds": 0.052
+        },
+        "certificate_verification": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1249,
+            1003
+          ],
+          "duration_seconds": 5.0154
+        },
+        "tcp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 32768,
+          "received_bytes": 32768,
+          "duration_seconds": 0.0078
+        },
+        "udp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 512,
+          "received_bytes": 512,
+          "duration_seconds": 0.0014
+        },
+        "cleanup": {
+          "status": "passed",
+          "forced_kill": false,
+          "duration_seconds": 0.0036
+        }
+      },
+      "processes": [
+        {
+          "role": "server",
+          "pid": 327
+        },
+        {
+          "role": "client",
+          "pid": 339
+        }
+      ],
+      "logs": {
+        "server": "0012/server.log",
+        "client": "0012/client.log"
+      },
+      "ports": {
+        "echo": 54229,
+        "front": 52795,
+        "tunnel": 56575
+      },
+      "commands": [
+        [
+          "BUILD/tunveo-tnv011",
+          "server://[REDACTED]@127.0.0.1:56575/127.0.0.1:54229?mode=2&type=1&tls=1&max=1024&log=debug"
+        ],
+        [
+          "BUILD/tunveo-tnv011",
+          "client://[REDACTED]@127.0.0.1:56575/127.0.0.1:52795?mode=2&min=64&log=debug"
+        ]
+      ],
+      "cleanup": [
+        {
+          "pid": 327,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 339,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "observations": {
+        "server": {
+          "credential_url_observed": false,
+          "initiated_verification_ids": [
+            "1533f8ef"
+          ],
+          "received_verification_ids": [],
+          "verification_timeout": false,
+          "restart_count": 0
+        },
+        "client": {
+          "credential_url_observed": false,
+          "initiated_verification_ids": [],
+          "received_verification_ids": [
+            "1533f8ef"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        }
+      }
+    },
+    {
+      "id": "0013",
+      "pair_server_client": "tunveo/tunveo",
+      "transport": 2,
+      "mode": 2,
+      "tls": 1,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 1,
+      "status": "passed",
+      "phases": {
+        "server_startup": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            391
+          ],
+          "duration_seconds": 0.0309
+        },
+        "tunnel_handshake": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            623,
+            385
+          ],
+          "duration_seconds": 0.0281
+        },
+        "pool_ready": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            889,
+            651
+          ],
+          "duration_seconds": 0.0505
+        },
+        "certificate_verification": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1244,
+            1005
+          ],
+          "duration_seconds": 4.977
+        },
+        "tcp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 32768,
+          "received_bytes": 32768,
+          "duration_seconds": 0.0067
+        },
+        "udp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 512,
+          "received_bytes": 512,
+          "duration_seconds": 0.0058
+        },
+        "cleanup": {
+          "status": "passed",
+          "forced_kill": false,
+          "duration_seconds": 0.0079
+        }
+      },
+      "processes": [
+        {
+          "role": "server",
+          "pid": 355
+        },
+        {
+          "role": "client",
+          "pid": 364
+        }
+      ],
+      "logs": {
+        "server": "0013/server.log",
+        "client": "0013/client.log"
+      },
+      "ports": {
+        "echo": 40005,
+        "front": 45229,
+        "tunnel": 37375
+      },
+      "commands": [
+        [
+          "BUILD/tunveo-tnv011",
+          "server://[REDACTED]@127.0.0.1:37375/127.0.0.1:40005?mode=2&type=2&tls=1&max=8&log=debug"
+        ],
+        [
+          "BUILD/tunveo-tnv011",
+          "client://[REDACTED]@127.0.0.1:37375/127.0.0.1:45229?mode=2&min=2&log=debug"
+        ]
+      ],
+      "cleanup": [
+        {
+          "pid": 355,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 364,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "observations": {
+        "server": {
+          "credential_url_observed": false,
+          "initiated_verification_ids": [
+            "5d8b45d9"
+          ],
+          "received_verification_ids": [],
+          "verification_timeout": false,
+          "restart_count": 0
+        },
+        "client": {
+          "credential_url_observed": false,
+          "initiated_verification_ids": [],
+          "received_verification_ids": [
+            "5d8b45d9"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        }
+      }
+    },
+    {
+      "id": "0014",
+      "pair_server_client": "tunveo/tunveo",
+      "transport": 2,
+      "mode": 2,
+      "tls": 1,
+      "pool": {
+        "min": 64,
+        "max": 1024
+      },
+      "iteration": 1,
+      "status": "passed",
+      "phases": {
+        "server_startup": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            391
+          ],
+          "duration_seconds": 0.0296
+        },
+        "tunnel_handshake": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            626,
+            388
+          ],
+          "duration_seconds": 0.0301
+        },
+        "pool_ready": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            893,
+            655
+          ],
+          "duration_seconds": 0.0504
+        },
+        "certificate_verification": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1249,
+            1010
+          ],
+          "duration_seconds": 4.9808
+        },
+        "tcp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 32768,
+          "received_bytes": 32768,
+          "duration_seconds": 0.0063
+        },
+        "udp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 512,
+          "received_bytes": 512,
+          "duration_seconds": 0.009
+        },
+        "cleanup": {
+          "status": "passed",
+          "forced_kill": false,
+          "duration_seconds": 0.016
+        }
+      },
+      "processes": [
+        {
+          "role": "server",
+          "pid": 378
+        },
+        {
+          "role": "client",
+          "pid": 389
+        }
+      ],
+      "logs": {
+        "server": "0014/server.log",
+        "client": "0014/client.log"
+      },
+      "ports": {
+        "echo": 49993,
+        "front": 48853,
+        "tunnel": 34907
+      },
+      "commands": [
+        [
+          "BUILD/tunveo-tnv011",
+          "server://[REDACTED]@127.0.0.1:34907/127.0.0.1:49993?mode=2&type=2&tls=1&max=1024&log=debug"
+        ],
+        [
+          "BUILD/tunveo-tnv011",
+          "client://[REDACTED]@127.0.0.1:34907/127.0.0.1:48853?mode=2&min=64&log=debug"
+        ]
+      ],
+      "cleanup": [
+        {
+          "pid": 378,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 389,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "observations": {
+        "server": {
+          "credential_url_observed": false,
+          "initiated_verification_ids": [
+            "bfdffa2d"
+          ],
+          "received_verification_ids": [],
+          "verification_timeout": false,
+          "restart_count": 0
+        },
+        "client": {
+          "credential_url_observed": false,
+          "initiated_verification_ids": [],
+          "received_verification_ids": [
+            "bfdffa2d"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        }
+      }
+    },
+    {
+      "id": "0015",
+      "pair_server_client": "tunveo/tunveo",
+      "transport": 3,
+      "mode": 2,
+      "tls": 1,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 1,
+      "status": "passed",
+      "phases": {
+        "server_startup": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            391
+          ],
+          "duration_seconds": 0.0288
+        },
+        "tunnel_handshake": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            623,
+            385
+          ],
+          "duration_seconds": 0.029
+        },
+        "pool_ready": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            890,
+            652
+          ],
+          "duration_seconds": 0.1048
+        },
+        "certificate_verification": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1245,
+            999
+          ],
+          "duration_seconds": 4.9608
+        },
+        "tcp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 32768,
+          "received_bytes": 32768,
+          "duration_seconds": 0.003
+        },
+        "udp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 512,
+          "received_bytes": 512,
+          "duration_seconds": 0.0011
+        },
+        "cleanup": {
+          "status": "passed",
+          "forced_kill": false,
+          "duration_seconds": 0.0048
+        }
+      },
+      "processes": [
+        {
+          "role": "server",
+          "pid": 408
+        },
+        {
+          "role": "client",
+          "pid": 422
+        }
+      ],
+      "logs": {
+        "server": "0015/server.log",
+        "client": "0015/client.log"
+      },
+      "ports": {
+        "echo": 46931,
+        "front": 47049,
+        "tunnel": 44237
+      },
+      "commands": [
+        [
+          "BUILD/tunveo-tnv011",
+          "server://[REDACTED]@127.0.0.1:44237/127.0.0.1:46931?mode=2&type=3&tls=1&max=8&log=debug"
+        ],
+        [
+          "BUILD/tunveo-tnv011",
+          "client://[REDACTED]@127.0.0.1:44237/127.0.0.1:47049?mode=2&min=2&log=debug"
+        ]
+      ],
+      "cleanup": [
+        {
+          "pid": 408,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 422,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "observations": {
+        "server": {
+          "credential_url_observed": false,
+          "initiated_verification_ids": [
+            "86468910"
+          ],
+          "received_verification_ids": [],
+          "verification_timeout": false,
+          "restart_count": 0
+        },
+        "client": {
+          "credential_url_observed": false,
+          "initiated_verification_ids": [],
+          "received_verification_ids": [
+            "86468910"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        }
+      }
+    },
+    {
+      "id": "0016",
+      "pair_server_client": "tunveo/tunveo",
+      "transport": 3,
+      "mode": 2,
+      "tls": 1,
+      "pool": {
+        "min": 64,
+        "max": 1024
+      },
+      "iteration": 1,
+      "status": "passed",
+      "phases": {
+        "server_startup": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            391
+          ],
+          "duration_seconds": 0.0294
+        },
+        "tunnel_handshake": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            626,
+            388
+          ],
+          "duration_seconds": 0.029
+        },
+        "pool_ready": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            894,
+            656
+          ],
+          "duration_seconds": 0.077
+        },
+        "certificate_verification": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1250,
+            1004
+          ],
+          "duration_seconds": 5.0025
+        },
+        "tcp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 32768,
+          "received_bytes": 32768,
+          "duration_seconds": 0.0017
+        },
+        "udp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 512,
+          "received_bytes": 512,
+          "duration_seconds": 0.0031
+        },
+        "cleanup": {
+          "status": "passed",
+          "forced_kill": false,
+          "duration_seconds": 0.0078
+        }
+      },
+      "processes": [
+        {
+          "role": "server",
+          "pid": 435
+        },
+        {
+          "role": "client",
+          "pid": 444
+        }
+      ],
+      "logs": {
+        "server": "0016/server.log",
+        "client": "0016/client.log"
+      },
+      "ports": {
+        "echo": 35417,
+        "front": 35447,
+        "tunnel": 46933
+      },
+      "commands": [
+        [
+          "BUILD/tunveo-tnv011",
+          "server://[REDACTED]@127.0.0.1:46933/127.0.0.1:35417?mode=2&type=3&tls=1&max=1024&log=debug"
+        ],
+        [
+          "BUILD/tunveo-tnv011",
+          "client://[REDACTED]@127.0.0.1:46933/127.0.0.1:35447?mode=2&min=64&log=debug"
+        ]
+      ],
+      "cleanup": [
+        {
+          "pid": 435,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 444,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "observations": {
+        "server": {
+          "credential_url_observed": false,
+          "initiated_verification_ids": [
+            "913dc58f"
+          ],
+          "received_verification_ids": [],
+          "verification_timeout": false,
+          "restart_count": 0
+        },
+        "client": {
+          "credential_url_observed": false,
+          "initiated_verification_ids": [],
+          "received_verification_ids": [
+            "913dc58f"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        }
+      }
+    }
+  ],
+  "finished_at": "2026-10-25T07:17:59.583518+00:00"
+}

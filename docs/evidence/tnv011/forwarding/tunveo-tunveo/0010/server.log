@@ -1,0 +1,38 @@
+2026-10-25 00:17:22.600  DEBUG  Init log level: DEBUG
+2026-10-25 00:17:22.601  INFO  TLS code-1: RAM cert with TLS 1.3
+2026-10-25 00:17:22.602  INFO  Server started: [REDACTED-URL]
+2026-10-25 00:17:22.603  INFO  Pending tunnel handshake...
+2026-10-25 00:17:22.603  INFO  TLS code-1: RAM cert prepared with sha256 fingerprint: 3aa5b8a7b2e710e4b8d9a6a93fbb4884a9677f6142c396fe8f42d4f548294bfd
+2026-10-25 00:17:22.647  INFO  Sending tunnel config: FLOW=+|MAX=1024|TLS=1|TYPE=0|VERIFY=flow-v1
+2026-10-25 00:17:22.649  INFO  TLS code-1: RAM cert regenerated with TLS 1.3
+2026-10-25 00:17:22.649  INFO  Getting tunnel pool ready...
+2026-10-25 00:17:22.700  INFO  Marking tunnel handshake as complete in 96ms
+2026-10-25 00:17:22.700  INFO  TLS code-1: RAM cert fingerprint verifying...
+2026-10-25 00:17:22.701  EVENT  CHECK_POINT|MODE=2|PING=1ms|POOL=63|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-25 00:17:27.702  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=65|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-25 00:17:27.704  DEBUG  TLS code-1: verify signal: cid dfd4be90 -> 127.0.0.1:58834
+2026-10-25 00:17:27.705  INFO  TLS code-1: RAM cert verified with sha256 fingerprint: 561bf289ddc45781474cd6622210c01147f8012f10a801915010560d79583798
+2026-10-25 00:17:27.732  DEBUG  TCP launch signal: cid c3025d68 <- 127.0.0.1:58834
+2026-10-25 00:17:27.732  DEBUG  Tunnel connection: get c3025d68 <- pool active 63
+2026-10-25 00:17:27.732  DEBUG  Tunnel connection: 127.0.0.1:36525 <-> 127.0.0.1:58500
+2026-10-25 00:17:27.732  DEBUG  Target connection: 127.0.0.1:58390 <-> 127.0.0.1:41293
+2026-10-25 00:17:27.732  INFO  Starting exchange: 127.0.0.1:58500 <-> 127.0.0.1:41293
+2026-10-25 00:17:27.735  INFO  Exchange complete: read tcp 127.0.0.1:58390->127.0.0.1:41293: use of closed network connection
+2026-10-25 00:17:27.735  DEBUG  Tunnel connection: closed c3025d68
+2026-10-25 00:17:27.738  DEBUG  UDP launch signal: cid a3e69a57 <- 127.0.0.1:58834
+2026-10-25 00:17:27.738  DEBUG  Tunnel connection: get a3e69a57 <- pool active 62
+2026-10-25 00:17:27.738  DEBUG  Tunnel connection: 127.0.0.1:36525 <-> 127.0.0.1:58604
+2026-10-25 00:17:27.738  DEBUG  Target connection: 127.0.0.1:38213 <-> 127.0.0.1:41293
+2026-10-25 00:17:27.738  DEBUG  Starting transfer: 127.0.0.1:36525 <-> 127.0.0.1:38213
+2026-10-25 00:17:27.739  DEBUG  Transfer complete: 127.0.0.1:36525 <-> 127.0.0.1:38213
+2026-10-25 00:17:27.739  DEBUG  Transfer complete: 127.0.0.1:38213 <-> 127.0.0.1:36525
+2026-10-25 00:17:27.844  ERROR  Server error: Start: tunnelControl failed: TunnelControl: TunnelQueue: readBytes failed: EOF
+2026-10-25 00:17:27.848  DEBUG  Tunnel connection closed: pool active 62
+2026-10-25 00:17:27.848  DEBUG  Tunnel connection closed: 127.0.0.1:36525
+2026-10-25 00:17:27.848  DEBUG  Control connection closed: 127.0.0.1:36525
+2026-10-25 00:17:27.849  DEBUG  Tunnel listener closed: 127.0.0.1:36525
+2026-10-25 00:17:27.852  DEBUG  Tunnel connection closed: pool active 0
+2026-10-25 00:17:27.852  DEBUG  Tunnel connection closed: 127.0.0.1:36525
+2026-10-25 00:17:27.852  DEBUG  Control connection closed: 127.0.0.1:36525
+2026-10-25 00:17:27.852  DEBUG  Tunnel listener closed: 127.0.0.1:36525
+2026-10-25 00:17:27.852  INFO  Server shutdown complete

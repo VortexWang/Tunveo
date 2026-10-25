@@ -6,7 +6,7 @@ Tunveo is an independently maintained TCP/UDP tunnel forwarding tool derived fro
 
 ## Build
 
-Use Go 1.26.5, matching the initial upstream baseline:
+Use Go 1.26.10 or newer; the maintained security baseline is pinned in `go.mod`:
 
 ```sh
 git clone https://github.com/VortexWang/Tunveo.git
@@ -60,3 +60,5 @@ Based on [NodePass v1.17.0](https://github.com/NodePassProject/nodepass/tree/v1.
 Tunveo is independently maintained and is not an official NodePass release. Upstream names are used for attribution and compatibility documentation. No upstream logos, sponsorships, donations, community channels or distribution scripts are adopted as Tunveo branding.
 
 TLS startup failures and credential-safe logs: [security fix and migration notes](docs/tls-log-safety.md).
+
+Go/HTTP2 dependency security baseline and scan scope: [TNV-011](docs/security-dependencies.md).

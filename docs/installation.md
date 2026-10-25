@@ -4,7 +4,7 @@ Tunveo currently provides a source-development baseline. Published binaries and 
 
 ## From source
 
-Install Go 1.26.5, then:
+Install Go 1.26.10 or newer (see `go.mod`), then:
 
 ```sh
 git clone https://github.com/VortexWang/Tunveo.git

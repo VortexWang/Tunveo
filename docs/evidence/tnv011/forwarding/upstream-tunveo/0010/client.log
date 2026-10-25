@@ -1,0 +1,33 @@
+2026-10-25 00:17:25.962  DEBUG  Init log level: DEBUG
+2026-10-25 00:17:25.962  WARN  TLS code-0: unencrypted
+2026-10-25 00:17:25.963  INFO  Client started: [REDACTED-URL]
+2026-10-25 00:17:25.964  INFO  Pending tunnel handshake...
+2026-10-25 00:17:25.968  INFO  Loading tunnel config: FLOW=+|MAX=1024|TLS=1|TYPE=0|VERIFY=legacy
+2026-10-25 00:17:25.968  INFO  Getting tunnel pool ready...
+2026-10-25 00:17:26.019  INFO  Marking tunnel handshake as complete in 54ms
+2026-10-25 00:17:26.019  INFO  TLS code-1: RAM cert fingerprint verifying...
+2026-10-25 00:17:26.019  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=60|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-25 00:17:31.024  DEBUG  TLS verify signal: cid 9c32f34f <- 127.0.0.1:48463
+2026-10-25 00:17:31.024  INFO  TLS code-1: RAM cert verified with sha256 fingerprint: 11768c7b93d2ec63a9b40f62509795b771decf2c54354161b804ea519398971b
+2026-10-25 00:17:31.024  DEBUG  TLS code-1: verify signal: cid 87aa0a56 -> 127.0.0.1:48463
+2026-10-25 00:17:31.024  EVENT  CHECK_POINT|MODE=2|PING=4ms|POOL=63|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-25 00:17:31.047  DEBUG  Target connection: 127.0.0.1:42365 <-> 127.0.0.1:33806
+2026-10-25 00:17:31.047  DEBUG  Tunnel connection: get 9d7fb30a <- pool active 62
+2026-10-25 00:17:31.047  DEBUG  Tunnel connection: 127.0.0.1:59596 <-> 127.0.0.1:48463
+2026-10-25 00:17:31.047  DEBUG  TCP launch signal: cid 9d7fb30a -> 127.0.0.1:48463
+2026-10-25 00:17:31.047  INFO  Starting exchange: 127.0.0.1:33806 <-> 127.0.0.1:48463
+2026-10-25 00:17:31.056  INFO  Exchange complete: read tcp 127.0.0.1:59596->127.0.0.1:48463: use of closed network connection
+2026-10-25 00:17:31.056  DEBUG  Tunnel connection: closed 9d7fb30a
+2026-10-25 00:17:31.059  DEBUG  Target connection: 127.0.0.1:42365 <-> 127.0.0.1:33856
+2026-10-25 00:17:31.059  DEBUG  Tunnel connection: get f30d96d7 <- pool active 61
+2026-10-25 00:17:31.059  DEBUG  Tunnel connection: 127.0.0.1:59710 <-> 127.0.0.1:48463
+2026-10-25 00:17:31.059  DEBUG  UDP launch signal: cid f30d96d7 -> 127.0.0.1:48463
+2026-10-25 00:17:31.059  DEBUG  Starting transfer: 127.0.0.1:59710 <-> 127.0.0.1:42365
+2026-10-25 00:17:31.059  DEBUG  Transfer complete: 127.0.0.1:59710 <-> 127.0.0.1:42365
+2026-10-25 00:17:31.059  DEBUG  Transfer complete: 127.0.0.1:59710 <-> 127.0.0.1:42365
+2026-10-25 00:17:31.161  ERROR  Client error: TunnelStart: tunnelControl failed: TunnelControl: context error: context canceled
+2026-10-25 00:17:31.164  DEBUG  Tunnel connection closed: pool active 61
+2026-10-25 00:17:31.164  DEBUG  Target connection closed: 127.0.0.1:42365
+2026-10-25 00:17:31.164  DEBUG  Control connection closed: 127.0.0.1:59418
+2026-10-25 00:17:31.164  DEBUG  Target listener closed: 127.0.0.1:42365
+2026-10-25 00:17:31.164  INFO  Client shutdown complete

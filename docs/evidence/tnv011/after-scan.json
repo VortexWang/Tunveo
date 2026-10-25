@@ -1,0 +1,49 @@
+{
+  "source_commit": "290c3f871fb7d72f43577bf6688d9b4a4cc47ccd",
+  "target": "linux/amd64",
+  "config": {
+    "protocol_version": "v1.0.0",
+    "scanner_name": "govulncheck",
+    "scanner_version": "v1.9.0",
+    "db": "https://vuln.go.dev",
+    "db_last_modified": "2026-10-21T00:27:29Z",
+    "go_version": "go1.26.10",
+    "scan_level": "symbol",
+    "scan_mode": "source"
+  },
+  "command": "PATH=<recorded-go>/bin:$PATH GOTOOLCHAIN=local govulncheck -json ./...",
+  "json_exit_code": 0,
+  "counts": {
+    "module": 1,
+    "imported": 0,
+    "called": 0
+  },
+  "ids": {
+    "module": [
+      "GO-2026-5932"
+    ],
+    "imported": [],
+    "called": []
+  },
+  "called_module_advisory_pairs": 0,
+  "called": [],
+  "module_only": [
+    {
+      "id": "GO-2026-5932",
+      "summary": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
+      "url": "https://pkg.go.dev/vuln/GO-2026-5932",
+      "affected_packages": [
+        "golang.org/x/crypto/openpgp",
+        "golang.org/x/crypto/openpgp/packet",
+        "golang.org/x/crypto/openpgp/armor",
+        "golang.org/x/crypto/openpgp/clearsign",
+        "golang.org/x/crypto/openpgp/errors",
+        "golang.org/x/crypto/openpgp/elgamal",
+        "golang.org/x/crypto/openpgp/s2k"
+      ]
+    }
+  ],
+  "raw_json_sha256": "81a700c1b81254be7d77e4be625cf7d75180d7dd238213ec400e7a8c0b7f6123",
+  "raw_json_bytes": 852774,
+  "interpretation": "Symbol-level static calls are not exploit confirmation. JSON exit=0 is not a scan gate. Compact evidence retains findings/trace examples; full local scanner event stream hash is recorded, but unused OSV event bodies are omitted."
+}

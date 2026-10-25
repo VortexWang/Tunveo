@@ -1,6 +1,6 @@
 # Bootstrap validation — 2026-10-25
 
-Environment: Linux amd64, Go 1.26.5. This is an initial source migration, not a stable release or completed audit.
+Initial migration environment: Linux amd64, Go 1.26.5. This is an initial source migration, not a stable release or completed audit.
 
 ## Completed checks
 
@@ -34,3 +34,5 @@ TLS modes 0 and 2 across all supported combinations; internet/NAT conditions; lo
 | upstream/tunveo | 4 | 4 |
 
 This is one small-pool diagnostic run, not a pass rate estimate. Timeouts were observed in upstream/upstream as well as the migrated and mixed pairings. Not every failed row has been reduced to a shared root cause; migration equivalence and reliable interoperability remain unproven. The test script exits 1 for this run. No transport logic or third-party dependency version was changed to hide a failure.
+
+Subsequent security baseline: Go 1.26.10 / x/net v0.60.0, with staged scans and actual regression evidence in [TNV-011](security-dependencies.md). Initial records above are historical.
