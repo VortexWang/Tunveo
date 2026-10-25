@@ -13,7 +13,6 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
-	"time"
 )
 
 // HandleMCP is the single HTTP entry point for all MCP JSON-RPC 2.0 requests.
@@ -523,6 +522,8 @@ func (m *Master) HandleMCPToolsList(w http.ResponseWriter, req MCPRequest) {
 //   - Network testing: tcping_target
 //   - Master operations: get_master_info, update_master_info
 func (m *Master) HandleMCPToolsCall(w http.ResponseWriter, req MCPRequest) {
+	m.dataMu.Lock()
+	defer m.dataMu.Unlock()
 	m.handleMCPToolsCall(context.Background(), w, req)
 }
 func (m *Master) handleMCPToolsCall(ctx context.Context, w http.ResponseWriter, req MCPRequest) {
@@ -552,7 +553,7 @@ func (m *Master) handleMCPToolsCall(ctx context.Context, w http.ResponseWriter, 
 			m.WriteMCPError(w, req.ID, -32602, "Invalid params", "id is required")
 			return
 		}
-		instance, ok := m.FindInstance(id)
+		instance, ok := m.findInstanceLocked(id)
 		if !ok {
 			m.WriteMCPError(w, req.ID, -32602, "Invalid params", "instance not found")
 			return
@@ -633,15 +634,15 @@ func (m *Master) handleMCPToolsCall(ctx context.Context, w http.ResponseWriter, 
 			stopped: make(chan struct{}),
 		}
 		instance.Config = m.GenerateConfigURL(instance)
-		m.Instances.Store(id, instance)
+		if err := m.registerLocked(instance); err != nil {
+			m.WriteMCPError(w, req.ID, -32602, "Resource limit", err.Error())
+			return
+		}
 
-		go m.StartInstance(instance)
-		go func() {
-			time.Sleep(BaseDuration)
-			m.SaveState()
-		}()
+		m.queueActionLocked(instance, "start")
+		m.requestSaveLocked()
 
-		m.SendSSEEvent("create", instance)
+		m.sendSSEEventLocked("create", instance)
 		m.WriteMCPResponse(w, req.ID, map[string]any{
 			"content":  []map[string]any{{"type": "text", "text": fmt.Sprintf("Created instance %s", id)}},
 			"instance": instance,
@@ -657,12 +658,16 @@ func (m *Master) handleMCPToolsCall(ctx context.Context, w http.ResponseWriter, 
 			return
 		}
 
-		instance, ok := m.FindInstance(id)
+		instance, ok := m.findInstanceLocked(id)
 		if !ok {
 			m.WriteMCPError(w, req.ID, -32602, "Invalid params", "instance not found")
 			return
 		}
 
+		if err := validateMetadataArguments(params.Arguments); err != nil {
+			m.WriteMCPError(w, req.ID, -32602, "Invalid params", err.Error())
+			return
+		}
 		if alias, ok := params.Arguments["alias"].(string); ok && alias != "" && instance.Alias != alias {
 			if len(alias) > MaxValueLen {
 				m.WriteMCPError(w, req.ID, -32602, "Invalid params", fmt.Sprintf("alias exceeds max length %d", MaxValueLen))
@@ -670,15 +675,15 @@ func (m *Master) handleMCPToolsCall(ctx context.Context, w http.ResponseWriter, 
 			}
 			instance.Alias = alias
 			m.Instances.Store(id, instance)
-			go m.SaveState()
-			m.SendSSEEvent("update", instance)
+			m.requestSaveLocked()
+			m.sendSSEEventLocked("update", instance)
 		}
 
 		if restart, ok := params.Arguments["restart"].(bool); ok && instance.Restart != restart {
 			instance.Restart = restart
 			m.Instances.Store(id, instance)
-			go m.SaveState()
-			m.SendSSEEvent("update", instance)
+			m.requestSaveLocked()
+			m.sendSSEEventLocked("update", instance)
 		}
 
 		if peer, ok := params.Arguments["peer"].(map[string]any); ok {
@@ -704,11 +709,15 @@ func (m *Master) handleMCPToolsCall(ctx context.Context, w http.ResponseWriter, 
 				instance.Meta.Peer.Alias = peerAlias
 			}
 			m.Instances.Store(id, instance)
-			go m.SaveState()
-			m.SendSSEEvent("update", instance)
+			m.requestSaveLocked()
+			m.sendSSEEventLocked("update", instance)
 		}
 
 		if tags, ok := params.Arguments["tags"].(map[string]any); ok {
+			if len(tags) > 128 {
+				m.WriteMCPError(w, req.ID, -32602, "Invalid params", "too many tags")
+				return
+			}
 			tagsMap := make(map[string]string)
 			for k, v := range tags {
 				if len(k) > MaxValueLen {
@@ -724,8 +733,8 @@ func (m *Master) handleMCPToolsCall(ctx context.Context, w http.ResponseWriter, 
 			}
 			instance.Meta.Tags = tagsMap
 			m.Instances.Store(id, instance)
-			go m.SaveState()
-			m.SendSSEEvent("update", instance)
+			m.requestSaveLocked()
+			m.sendSSEEventLocked("update", instance)
 		}
 
 		m.WriteMCPResponse(w, req.ID, map[string]any{
@@ -744,7 +753,7 @@ func (m *Master) handleMCPToolsCall(ctx context.Context, w http.ResponseWriter, 
 			return
 		}
 
-		instance, ok := m.FindInstance(id)
+		instance, ok := m.findInstanceLocked(id)
 		if !ok {
 			m.WriteMCPError(w, req.ID, -32602, "Invalid params", "instance not found")
 			return
@@ -770,10 +779,10 @@ func (m *Master) handleMCPToolsCall(ctx context.Context, w http.ResponseWriter, 
 			instance.udpRXBase = 0
 			instance.udpTXBase = 0
 			m.Instances.Store(id, instance)
-			go m.SaveState()
-			m.SendSSEEvent("update", instance)
+			m.requestSaveLocked()
+			m.sendSSEEventLocked("update", instance)
 		} else {
-			m.ProcessInstanceAction(instance, action)
+			m.queueActionLocked(instance, action)
 		}
 
 		m.WriteMCPResponse(w, req.ID, map[string]any{
@@ -791,7 +800,7 @@ func (m *Master) handleMCPToolsCall(ctx context.Context, w http.ResponseWriter, 
 			return
 		}
 
-		instance, ok := m.FindInstance(id)
+		instance, ok := m.findInstanceLocked(id)
 		if !ok {
 			m.WriteMCPError(w, req.ID, -32602, "Invalid params", "instance not found")
 			return
@@ -825,7 +834,7 @@ func (m *Master) handleMCPToolsCall(ctx context.Context, w http.ResponseWriter, 
 			return
 		}
 
-		if err := m.SetInstanceURL(instance, updates); err != nil {
+		if err := m.setInstanceURLLocked(instance, updates); err != nil {
 			m.WriteMCPError(w, req.ID, -32602, "Invalid params", err.Error())
 			return
 		}
@@ -845,7 +854,7 @@ func (m *Master) handleMCPToolsCall(ctx context.Context, w http.ResponseWriter, 
 			return
 		}
 
-		instance, ok := m.FindInstance(id)
+		instance, ok := m.findInstanceLocked(id)
 		if !ok {
 			m.WriteMCPError(w, req.ID, -32602, "Invalid params", "instance not found")
 			return
@@ -873,7 +882,7 @@ func (m *Master) handleMCPToolsCall(ctx context.Context, w http.ResponseWriter, 
 			return
 		}
 
-		if err := m.SetInstanceURL(instance, updates); err != nil {
+		if err := m.setInstanceURLLocked(instance, updates); err != nil {
 			m.WriteMCPError(w, req.ID, -32602, "Invalid params", err.Error())
 			return
 		}
@@ -893,7 +902,7 @@ func (m *Master) handleMCPToolsCall(ctx context.Context, w http.ResponseWriter, 
 			return
 		}
 
-		instance, ok := m.FindInstance(id)
+		instance, ok := m.findInstanceLocked(id)
 		if !ok {
 			m.WriteMCPError(w, req.ID, -32602, "Invalid params", "instance not found")
 			return
@@ -918,7 +927,7 @@ func (m *Master) handleMCPToolsCall(ctx context.Context, w http.ResponseWriter, 
 			return
 		}
 
-		if err := m.SetInstanceURL(instance, updates); err != nil {
+		if err := m.setInstanceURLLocked(instance, updates); err != nil {
 			m.WriteMCPError(w, req.ID, -32602, "Invalid params", err.Error())
 			return
 		}
@@ -938,7 +947,7 @@ func (m *Master) handleMCPToolsCall(ctx context.Context, w http.ResponseWriter, 
 			return
 		}
 
-		instance, ok := m.FindInstance(id)
+		instance, ok := m.findInstanceLocked(id)
 		if !ok {
 			m.WriteMCPError(w, req.ID, -32602, "Invalid params", "instance not found")
 			return
@@ -966,7 +975,7 @@ func (m *Master) handleMCPToolsCall(ctx context.Context, w http.ResponseWriter, 
 			return
 		}
 
-		if err := m.SetInstanceURL(instance, updates); err != nil {
+		if err := m.setInstanceURLLocked(instance, updates); err != nil {
 			m.WriteMCPError(w, req.ID, -32602, "Invalid params", err.Error())
 			return
 		}
@@ -986,7 +995,7 @@ func (m *Master) handleMCPToolsCall(ctx context.Context, w http.ResponseWriter, 
 			return
 		}
 
-		instance, ok := m.FindInstance(id)
+		instance, ok := m.findInstanceLocked(id)
 		if !ok {
 			m.WriteMCPError(w, req.ID, -32602, "Invalid params", "instance not found")
 			return
@@ -1008,7 +1017,7 @@ func (m *Master) handleMCPToolsCall(ctx context.Context, w http.ResponseWriter, 
 			return
 		}
 
-		if err := m.SetInstanceURL(instance, updates); err != nil {
+		if err := m.setInstanceURLLocked(instance, updates); err != nil {
 			m.WriteMCPError(w, req.ID, -32602, "Invalid params", err.Error())
 			return
 		}
@@ -1028,7 +1037,7 @@ func (m *Master) handleMCPToolsCall(ctx context.Context, w http.ResponseWriter, 
 			return
 		}
 
-		instance, ok := m.FindInstance(id)
+		instance, ok := m.findInstanceLocked(id)
 		if !ok {
 			m.WriteMCPError(w, req.ID, -32602, "Invalid params", "instance not found")
 			return
@@ -1047,7 +1056,7 @@ func (m *Master) handleMCPToolsCall(ctx context.Context, w http.ResponseWriter, 
 			return
 		}
 
-		if err := m.SetInstanceURL(instance, updates); err != nil {
+		if err := m.setInstanceURLLocked(instance, updates); err != nil {
 			m.WriteMCPError(w, req.ID, -32602, "Invalid params", err.Error())
 			return
 		}
@@ -1067,7 +1076,7 @@ func (m *Master) handleMCPToolsCall(ctx context.Context, w http.ResponseWriter, 
 			return
 		}
 
-		instance, ok := m.FindInstance(id)
+		instance, ok := m.findInstanceLocked(id)
 		if !ok {
 			m.WriteMCPError(w, req.ID, -32602, "Invalid params", "instance not found")
 			return
@@ -1084,7 +1093,7 @@ func (m *Master) handleMCPToolsCall(ctx context.Context, w http.ResponseWriter, 
 			updates[key] = fmt.Sprintf("%v", value)
 		}
 
-		if err := m.SetInstanceURL(instance, updates); err != nil {
+		if err := m.setInstanceURLLocked(instance, updates); err != nil {
 			m.WriteMCPError(w, req.ID, -32602, "Invalid params", err.Error())
 			return
 		}
@@ -1100,7 +1109,7 @@ func (m *Master) handleMCPToolsCall(ctx context.Context, w http.ResponseWriter, 
 			return
 		}
 
-		instance, ok := m.FindInstance(id)
+		instance, ok := m.findInstanceLocked(id)
 		if !ok {
 			m.WriteMCPError(w, req.ID, -32602, "Invalid params", "instance not found")
 			return
@@ -1164,7 +1173,7 @@ func (m *Master) handleMCPToolsCall(ctx context.Context, w http.ResponseWriter, 
 			return
 		}
 
-		instance, ok := m.FindInstance(id)
+		instance, ok := m.findInstanceLocked(id)
 		if !ok {
 			m.WriteMCPError(w, req.ID, -32602, "Invalid params", "instance not found")
 			return
@@ -1174,11 +1183,11 @@ func (m *Master) handleMCPToolsCall(ctx context.Context, w http.ResponseWriter, 
 		m.Instances.Store(id, instance)
 
 		if instance.Status != "stopped" {
-			m.StopInstance(instance)
+			m.stopInstanceLocked(context.Background(), instance)
 		}
 		m.Instances.Delete(id)
-		go m.SaveState()
-		m.SendSSEEvent("delete", instance)
+		m.requestSaveLocked()
+		m.sendSSEEventLocked("delete", instance)
 
 		m.WriteMCPResponse(w, req.ID, map[string]any{
 			"content": []map[string]any{{"type": "text", "text": fmt.Sprintf("Deleted instance %s", id)}},
@@ -1218,87 +1227,12 @@ func (m *Master) handleMCPToolsCall(ctx context.Context, w http.ResponseWriter, 
 			"content": []map[string]any{{"type": "text", "text": fmt.Sprintf("Exported %d instances to %s", len(exports), exportPath)}},
 		})
 	case "import_instances":
-		importPath := filepath.Join(filepath.Dir(m.StatePath), ExportFileName)
-		data, err := os.ReadFile(importPath)
+		created, err := m.importLocked(ctx)
 		if err != nil {
-			m.WriteMCPError(w, req.ID, -32603, "Internal error", err.Error())
+			m.WriteMCPError(w, req.ID, -32602, "Import rejected", err.Error())
 			return
 		}
-
-		var imports []map[string]any
-		if err := json.Unmarshal(data, &imports); err != nil {
-			m.WriteMCPError(w, req.ID, -32602, "Invalid params", err.Error())
-			return
-		}
-
-		var created int
-		for _, imp := range imports {
-			instanceURL, _ := imp["url"].(string)
-			if instanceURL == "" {
-				continue
-			}
-
-			parsedURL, err := url.Parse(instanceURL)
-			if err != nil {
-				continue
-			}
-
-			instanceType := parsedURL.Scheme
-			if instanceType != "client" && instanceType != "server" {
-				continue
-			}
-
-			id := GenerateID()
-			instance := &Instance{
-				ID:      id,
-				Alias:   "",
-				Type:    instanceType,
-				URL:     m.EnhanceURL(instanceURL, instanceType),
-				Status:  "stopped",
-				Restart: true,
-				Meta:    Meta{Tags: make(map[string]string)},
-				stopped: make(chan struct{}),
-			}
-
-			if alias, ok := imp["alias"].(string); ok {
-				instance.Alias = alias
-			}
-			if restart, ok := imp["restart"].(bool); ok {
-				instance.Restart = restart
-			}
-			if meta, ok := imp["meta"].(map[string]any); ok {
-				if metaBytes, err := json.Marshal(meta); err == nil {
-					json.Unmarshal(metaBytes, &instance.Meta)
-				}
-			}
-			if tcprx, ok := imp["tcprx"].(float64); ok {
-				instance.TCPRX = uint64(tcprx)
-			}
-			if tcptx, ok := imp["tcptx"].(float64); ok {
-				instance.TCPTX = uint64(tcptx)
-			}
-			if udprx, ok := imp["udprx"].(float64); ok {
-				instance.UDPRX = uint64(udprx)
-			}
-			if udptx, ok := imp["udptx"].(float64); ok {
-				instance.UDPTX = uint64(udptx)
-			}
-
-			instance.Config = m.GenerateConfigURL(instance)
-			m.Instances.Store(id, instance)
-			if instance.Restart {
-				go m.StartInstance(instance)
-			}
-			created++
-		}
-		go func() {
-			time.Sleep(BaseDuration)
-			m.SaveState()
-		}()
-
-		m.WriteMCPResponse(w, req.ID, map[string]any{
-			"content": []map[string]any{{"type": "text", "text": fmt.Sprintf("Imported %d instances from %s", created, importPath)}},
-		})
+		m.WriteMCPResponse(w, req.ID, map[string]any{"content": []map[string]any{{"type": "text", "text": fmt.Sprintf("Imported %d instances", created)}}})
 	case "tcping_target":
 		target, _ := params.Arguments["target"].(string)
 		if target == "" {
@@ -1306,7 +1240,7 @@ func (m *Master) handleMCPToolsCall(ctx context.Context, w http.ResponseWriter, 
 			return
 		}
 
-		result := m.PerformTCPingContext(ctx, target)
+		result := m.pingUnlocked(ctx, target)
 		statusText := "failed"
 		if result.Connected {
 			statusText = fmt.Sprintf("connected in %dms", result.Latency)
@@ -1324,7 +1258,7 @@ func (m *Master) handleMCPToolsCall(ctx context.Context, w http.ResponseWriter, 
 				"type": "text",
 				"text": "Master information retrieved",
 			}},
-			"info": m.GetMasterInfo(),
+			"info": m.getMasterInfoLocked(),
 		})
 	case "update_master_info":
 		alias, _ := params.Arguments["alias"].(string)
@@ -1339,10 +1273,10 @@ func (m *Master) handleMCPToolsCall(ctx context.Context, w http.ResponseWriter, 
 		}
 
 		m.Alias = alias
-		if apiKey, ok := m.FindInstance(APIKeyID); ok {
+		if apiKey, ok := m.findInstanceLocked(APIKeyID); ok {
 			apiKey.Alias = m.Alias
 			m.Instances.Store(APIKeyID, apiKey)
-			go m.SaveState()
+			m.requestSaveLocked()
 		}
 
 		m.WriteMCPResponse(w, req.ID, map[string]any{
@@ -1350,7 +1284,7 @@ func (m *Master) handleMCPToolsCall(ctx context.Context, w http.ResponseWriter, 
 				"type": "text",
 				"text": fmt.Sprintf("Master alias updated to: %s", alias),
 			}},
-			"info": m.GetMasterInfo(),
+			"info": m.getMasterInfoLocked(),
 		})
 	default:
 		m.WriteMCPError(w, req.ID, -32602, "Invalid params", "unknown tool")

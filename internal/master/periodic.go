@@ -20,6 +20,14 @@ import (
 // Returns when the PeriodicDone channel is closed (signaling master shutdown).
 // This function should be started as a goroutine during master initialization.
 func (m *Master) StartPeriodicTasks() {
+	m.dataMu.Lock()
+	if m.managementStopped.Load() {
+		m.dataMu.Unlock()
+		return
+	}
+	m.background.Add(1)
+	m.dataMu.Unlock()
+	defer m.background.Done()
 	ticker := time.NewTicker(common.ReloadInterval)
 	defer ticker.Stop()
 
@@ -60,39 +68,8 @@ func (m *Master) PerformPeriodicBackup() {
 // "running" status and removes the others. Stopped duplicates are shut down gracefully
 // before removal. This ensures the instance registry remains consistent and prevents
 // stale entries from accumulating. Runs periodically to maintain registry health.
-func (m *Master) PerformPeriodicCleanup() {
-	idInstances := make(map[string][]*Instance)
-	m.Instances.Range(func(key, value any) bool {
-		if id := key.(string); id != APIKeyID {
-			idInstances[id] = append(idInstances[id], value.(*Instance))
-		}
-		return true
-	})
-
-	for _, instances := range idInstances {
-		if len(instances) <= 1 {
-			continue
-		}
-
-		keepIdx := 0
-		for i, inst := range instances {
-			if inst.Status == "running" && instances[keepIdx].Status != "running" {
-				keepIdx = i
-			}
-		}
-
-		for i, inst := range instances {
-			if i == keepIdx {
-				continue
-			}
-			inst.deleted = true
-			if inst.Status != "stopped" {
-				m.StopInstance(inst)
-			}
-			m.Instances.Delete(inst.ID)
-		}
-	}
-}
+// sync.Map has one value per ID; duplicate-ID cleanup has no work to do.
+func (m *Master) PerformPeriodicCleanup() {}
 
 // PerformPeriodicRestart automatically restarts instances that have encountered errors during operation.
 //
@@ -101,20 +78,16 @@ func (m *Master) PerformPeriodicCleanup() {
 // This self-healing mechanism helps instances recover from transient failures without
 // manual intervention. Runs periodically as part of the maintenance loop.
 func (m *Master) PerformPeriodicRestart() {
-	var errorInstances []*Instance
+	m.dataMu.Lock()
+	defer m.dataMu.Unlock()
+	if m.managementStopped.Load() {
+		return
+	}
 	m.Instances.Range(func(key, value any) bool {
-		if id := key.(string); id != APIKeyID {
-			instance := value.(*Instance)
-			if instance.Status == "error" && !instance.deleted {
-				errorInstances = append(errorInstances, instance)
-			}
+		i := value.(*Instance)
+		if key.(string) != APIKeyID && i.Status == "error" && !i.deleted && i.Restart {
+			m.queueActionLocked(i, "restart")
 		}
 		return true
 	})
-
-	for _, instance := range errorInstances {
-		m.StopInstance(instance)
-		time.Sleep(BaseDuration)
-		m.StartInstance(instance)
-	}
 }

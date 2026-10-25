@@ -17,239 +17,232 @@ import (
 	"github.com/VortexWang/Tunveo/internal/common"
 )
 
-// FindInstance retrieves an instance from the master's instance map by ID.
-// Returns the instance and a boolean indicating whether it was found.
-//
-// Performs a thread-safe lookup in the Instances sync.Map. The returned
-// instance pointer should not be modified directly; use the update methods
-// and re-store the instance in the map to ensure changes are persisted.
-//
-// Parameters:
-//   - id: The unique instance identifier
-//
-// Returns the instance pointer (if found) and a boolean (true if found, false otherwise).
+// FindInstance requires dataMu for mutable fields; IDs/credential URLs are
+// stable outside transactions. Registry membership remains a sync.Map.
 func (m *Master) FindInstance(id string) (*Instance, bool) {
+	m.dataMu.RLock()
+	defer m.dataMu.RUnlock()
+	i, ok := m.findInstanceLocked(id)
+	return cloneInstance(i), ok
+}
+func (m *Master) findInstanceLocked(id string) (*Instance, bool) {
 	value, exists := m.Instances.Load(id)
 	if !exists {
 		return nil, false
 	}
-	return value.(*Instance), true
+	i := value.(*Instance)
+	return i, !i.deleted
 }
 
-// StartInstance starts a tunveo instance as a subprocess, capturing its output and
-// managing its lifecycle. It validates the instance state and initializes metric tracking.
-//
-// Checks that the instance is in "stopped" status before starting. Saves the current
-// traffic counters as base values for delta calculations. Forks a child process running
-// the tunveo binary with the instance URL as the argument. The child's stdout and
-// stderr are attached to an InstanceLogWriter that parses metrics and forwards logs.
-// A context.WithCancel is used to allow graceful termination. On startup success, the
-// instance status is set to "running" and MonitorInstance is started in a goroutine.
-// On failure, the status is set to "error". The instance is stored back in the registry
-// and an SSE update event is sent to all subscribers.
-//
-// Parameters:
-//   - instance: The instance to start (must be in stopped status)
-func (m *Master) StartInstance(instance *Instance) {
-	if value, exists := m.Instances.Load(instance.ID); exists {
-		instance = value.(*Instance)
-		if instance.Status != "stopped" {
+type childRun struct {
+	cmd       *exec.Cmd
+	done      chan struct{}
+	finalized chan struct{}
+	stopping  bool // dataMu
+}
+
+func (m *Master) StartInstance(i *Instance) {
+	m.dataMu.Lock()
+	defer m.dataMu.Unlock()
+	m.startInstanceLocked(i)
+}
+func (m *Master) startInstanceLocked(i *Instance) {
+	current, ok := m.findInstanceLocked(i.ID)
+	if !ok || i.ID == APIKeyID || m.managementStopped.Load() {
+		return
+	}
+	i = current
+	if i.run != nil || i.Status != "stopped" {
+		return
+	}
+	if m.children >= MaxManagedChildren {
+		i.Status = "error"
+		m.sendSSEEventLocked("update", i)
+		return
+	}
+	exe, err := os.Executable()
+	if err != nil {
+		i.Status = "error"
+		return
+	}
+	cmd := exec.Command(exe, i.URL)
+	cmd.WaitDelay = GracefulTimeout
+	run := &childRun{cmd: cmd, done: make(chan struct{}), finalized: make(chan struct{})}
+	i.run = run
+	i.cmd = cmd
+	i.tcpRXBase = i.TCPRX
+	i.tcpTXBase = i.TCPTX
+	i.udpRXBase = i.UDPRX
+	i.udpTXBase = i.UDPTX
+	writer := NewInstanceLogWriter(i.ID, i, os.Stdout, m)
+	writer.run = run
+	cmd.Stdout = writer
+	cmd.Stderr = writer
+	if err = cmd.Start(); err != nil {
+		i.run = nil
+		i.cmd = nil
+		i.Status = "error"
+		m.sendSSEEventLocked("update", i)
+		return
+	}
+	m.children++
+	m.runs.Store(run, cmd.Process)
+	i.Status = "running"
+	i.lastCheckPoint = time.Time{}
+	m.Logger.Info("Instance starting: %v [%v] pid=%v", i.URL, i.ID, cmd.Process.Pid)
+	go m.MonitorInstance(i, cmd)
+	m.sendSSEEventLocked("update", i)
+}
+
+// Exactly one cmd.Wait owns process and pipe reaping for this generation.
+func (m *Master) MonitorInstance(i *Instance, cmd *exec.Cmd) {
+	m.dataMu.RLock()
+	run := i.run
+	m.dataMu.RUnlock()
+	if run == nil || run.cmd != cmd {
+		return
+	}
+	go func() {
+		err := cmd.Wait()
+		m.Logger.Info("Instance reaped [%v] pid=%v success=%v", i.ID, cmd.Process.Pid, err == nil)
+		close(run.done) // Stop must be able to wake before this goroutine takes dataMu.
+		m.dataMu.Lock()
+		defer m.dataMu.Unlock()
+		defer m.runs.Delete(run)
+		defer close(run.finalized)
+		m.children--
+		if i.run != run {
 			return
 		}
-	}
-
-	instance.tcpRXBase = instance.TCPRX
-	instance.tcpTXBase = instance.TCPTX
-	instance.udpRXBase = instance.UDPRX
-	instance.udpTXBase = instance.UDPTX
-
-	execPath, err := os.Executable()
-	if err != nil {
-		m.Logger.Error("StartInstance: get path failed: %v [%v]", err, instance.ID)
-		instance.Status = "error"
-		m.Instances.Store(instance.ID, instance)
-		m.SendSSEEvent("update", instance)
-		return
-	}
-
-	ctx, cancel := context.WithCancel(context.Background())
-	cmd := exec.CommandContext(ctx, execPath, instance.URL)
-	instance.cancelFunc = cancel
-
-	writer := NewInstanceLogWriter(instance.ID, instance, os.Stdout, m)
-	cmd.Stdout, cmd.Stderr = writer, writer
-
-	m.Logger.Info("Instance starting: %v [%v]", instance.URL, instance.ID)
-
-	if err := cmd.Start(); err != nil || cmd.Process == nil || cmd.Process.Pid <= 0 {
-		if err != nil {
-			m.Logger.Error("StartInstance: instance error: %v [%v]", err, instance.ID)
+		i.run = nil
+		i.cmd = nil
+		if run.stopping || err == nil {
+			i.Status = "stopped"
 		} else {
-			m.Logger.Error("StartInstance: instance start failed [%v]", instance.ID)
+			i.Status = "error"
 		}
-		instance.Status = "error"
-		m.Instances.Store(instance.ID, instance)
-		m.SendSSEEvent("update", instance)
-		cancel()
-		return
-	}
-
-	instance.cmd = cmd
-	instance.Status = "running"
-	go m.MonitorInstance(instance, cmd)
-
-	m.Instances.Store(instance.ID, instance)
-
-	m.SendSSEEvent("update", instance)
-}
-
-// MonitorInstance continuously monitors an instance process and updates its status.
-// It listens for process exit, context cancellation, and periodic checkpoints to detect unresponsive states.
-//
-// Waits for the process to exit via cmd.Wait(). If the process exits normally or with
-// error, the instance status is updated (to "stopped" on success or "error" on failure).
-// If the instance.stopped channel is closed (by StopInstance), this function returns.
-// Periodically checks if a CHECK_POINT event has been received; if not within 3 times
-// the report interval, marks the instance as "error" (indicating unresponsiveness).
-// Status changes are persisted via SendSSEEvent to notify subscribers.
-//
-// Parameters:
-//   - instance: The instance to monitor
-//   - cmd: The exec.Cmd for the child process
-func (m *Master) MonitorInstance(instance *Instance, cmd *exec.Cmd) {
-	done := make(chan error, 1)
-	go func() { done <- cmd.Wait() }()
-
+		i.Ping = 0
+		i.Pool = 0
+		i.TCPS = 0
+		i.UDPS = 0
+		if !i.deleted {
+			m.sendSSEEventLocked("update", i)
+		}
+	}()
+	ticker := time.NewTicker(common.ReportInterval)
+	defer ticker.Stop()
 	for {
 		select {
-		case <-instance.stopped:
+		case <-run.done:
 			return
-		case err := <-done:
-			if value, exists := m.Instances.Load(instance.ID); exists {
-				instance = value.(*Instance)
-				if instance.Status == "running" {
-					if err != nil {
-						m.Logger.Error("MonitorInstance: instance error: %v [%v]", err, instance.ID)
-						instance.Status = "error"
-					} else {
-						instance.Status = "stopped"
-					}
-					m.Instances.Store(instance.ID, instance)
-					m.SendSSEEvent("update", instance)
+		case <-ticker.C:
+			m.dataMu.Lock()
+			if i.run == run && !i.deleted && !run.stopping && !i.lastCheckPoint.IsZero() && time.Since(i.lastCheckPoint) > 3*common.ReportInterval {
+				i.Status = "error"
+				m.sendSSEEventLocked("update", i)
+			}
+			m.dataMu.Unlock()
+		}
+	}
+}
+func (m *Master) StopInstance(i *Instance) {
+	m.dataMu.Lock()
+	defer m.dataMu.Unlock()
+	if value, ok := m.Instances.Load(i.ID); ok {
+		m.stopInstanceLocked(context.Background(), value.(*Instance))
+	}
+}
+func (m *Master) stopInstanceLocked(ctx context.Context, i *Instance) {
+	run := i.run
+	if run == nil {
+		i.Status = "stopped"
+		return
+	}
+	first := !run.stopping
+	run.stopping = true
+	m.dataMu.Unlock()
+	if first {
+		if runtime.GOOS == "windows" {
+			run.cmd.Process.Signal(os.Interrupt)
+		} else {
+			run.cmd.Process.Signal(syscall.SIGTERM)
+		}
+	}
+	timer := time.NewTimer(GracefulTimeout)
+	select {
+	case <-run.done:
+	case <-ctx.Done():
+		run.cmd.Process.Kill()
+	case <-timer.C:
+		run.cmd.Process.Kill()
+	}
+	timer.Stop()
+	// A killed process remains tracked and charged until the sole Wait completes.
+	select {
+	case <-run.done:
+	case <-time.After(GracefulTimeout):
+	}
+	m.dataMu.Lock()
+	if i.run == run {
+		select {
+		case <-run.done:
+			i.run = nil
+			i.cmd = nil
+			i.Status = "stopped"
+			i.Ping = 0
+			i.Pool = 0
+			i.TCPS = 0
+			i.UDPS = 0
+		default:
+		}
+	}
+	if !i.deleted {
+		m.sendSSEEventLocked("update", i)
+	}
+}
+func (m *Master) ProcessInstanceAction(i *Instance, action string) {
+	m.dataMu.Lock()
+	defer m.dataMu.Unlock()
+	m.queueActionLocked(i, action)
+}
+
+// At most one action worker and one pending (latest) action per instance.
+func (m *Master) queueActionLocked(i *Instance, action string) {
+	current, ok := m.findInstanceLocked(i.ID)
+	if !ok || m.managementStopped.Load() {
+		return
+	}
+	i = current
+	i.pendingAction = action
+	if i.actionWorker {
+		return
+	}
+	i.actionWorker = true
+	m.background.Add(1)
+	go func() {
+		defer m.background.Done()
+		m.dataMu.Lock()
+		defer m.dataMu.Unlock()
+		for {
+			action := i.pendingAction
+			i.pendingAction = ""
+			if action == "" || i.deleted || m.managementStopped.Load() {
+				i.actionWorker = false
+				return
+			}
+			switch action {
+			case "start":
+				m.startInstanceLocked(i)
+			case "stop":
+				m.stopInstanceLocked(context.Background(), i)
+			case "restart":
+				m.stopInstanceLocked(context.Background(), i)
+				if !i.deleted && !m.managementStopped.Load() {
+					m.startInstanceLocked(i)
 				}
 			}
-			return
-		case <-time.After(common.ReportInterval):
-			if !instance.lastCheckPoint.IsZero() && time.Since(instance.lastCheckPoint) > 3*common.ReportInterval {
-				instance.Status = "error"
-				m.Instances.Store(instance.ID, instance)
-				m.SendSSEEvent("update", instance)
-			}
 		}
-	}
-}
-
-// StopInstance gracefully stops an instance process with force kill timeout.
-// It checks the instance status, sends termination signals, waits for process exit,
-// and updates the instance status accordingly.
-//
-// If already stopped, returns immediately. Closes the instance.stopped channel to signal
-// MonitorInstance to return. Sends SIGTERM (or SIGINT on Windows) to the process and
-// cancels the context to initiate graceful shutdown. Waits for the process to exit
-// within GracefulTimeout (5s); if timeout expires, sends SIGKILL. Resets all metric
-// counters (ping, pool, TCP/UDP connection counts) to 0. A new stopped channel is
-// allocated for potential future restarts. The instance state is persisted and an
-// SSE update event is sent to subscribers.
-//
-// Parameters:
-//   - instance: The instance to stop
-func (m *Master) StopInstance(instance *Instance) {
-	if instance.Status == "stopped" {
-		return
-	}
-
-	if instance.cmd == nil || instance.cmd.Process == nil {
-		instance.Status = "stopped"
-		m.Instances.Store(instance.ID, instance)
-		m.SendSSEEvent("update", instance)
-		return
-	}
-
-	select {
-	case <-instance.stopped:
-	default:
-		close(instance.stopped)
-	}
-
-	process := instance.cmd.Process
-	if runtime.GOOS == "windows" {
-		process.Signal(os.Interrupt)
-	} else {
-		process.Signal(syscall.SIGTERM)
-	}
-
-	if instance.cancelFunc != nil {
-		instance.cancelFunc()
-	}
-
-	done := make(chan struct{})
-	go func() {
-		process.Wait()
-		close(done)
 	}()
-
-	select {
-	case <-done:
-		m.Logger.Info("Instance stopped [%v]", instance.ID)
-	case <-time.After(GracefulTimeout):
-		process.Kill()
-		<-done
-		m.Logger.Warn("Instance force killed [%v]", instance.ID)
-	}
-
-	instance.Status = "stopped"
-	instance.stopped = make(chan struct{})
-	instance.cancelFunc = nil
-	instance.Ping = 0
-	instance.Pool = 0
-	instance.TCPS = 0
-	instance.UDPS = 0
-	m.Instances.Store(instance.ID, instance)
-
-	go m.SaveState()
-
-	m.SendSSEEvent("update", instance)
-}
-
-// ProcessInstanceAction executes the specified action (start/stop/restart) on an instance.
-// It validates the instance state and calls the corresponding method to perform the action.
-//
-// Routes actions to the appropriate handler methods in a non-blocking manner (using
-// goroutines for stop/start/restart operations). Validates that the instance can
-// perform the action (e.g., only starts if stopped, only stops if not stopped).
-// The restart action is asynchronous: stops the instance, waits BaseDuration,
-// then starts it again.
-//
-// Parameters:
-//   - instance: The instance to control
-//   - action: One of "start", "stop", or "restart"
-func (m *Master) ProcessInstanceAction(instance *Instance, action string) {
-	switch action {
-	case "start":
-		if instance.Status == "stopped" {
-			go m.StartInstance(instance)
-		}
-	case "stop":
-		if instance.Status != "stopped" {
-			go m.StopInstance(instance)
-		}
-	case "restart":
-		go func() {
-			m.StopInstance(instance)
-			time.Sleep(BaseDuration)
-			m.StartInstance(instance)
-		}()
-	}
 }
 
 // ReGenerateAPIKey generates a new API key and notifies all SSE clients.
@@ -263,8 +256,13 @@ func (m *Master) ProcessInstanceAction(instance *Instance, action string) {
 // Parameters:
 //   - instance: The API key instance (usually the special APIKeyID entry)
 func (m *Master) ReGenerateAPIKey(instance *Instance) *Instance {
+	m.dataMu.Lock()
+	defer m.dataMu.Unlock()
+	return cloneInstance(m.regenerateAPIKeyLocked(instance))
+}
+func (m *Master) regenerateAPIKeyLocked(instance *Instance) *Instance {
 	m.keyMu.Lock()
-	if current, ok := m.FindInstance(APIKeyID); ok {
+	if current, ok := m.findInstanceLocked(APIKeyID); ok {
 		instance = current
 	}
 	next := *instance
@@ -274,7 +272,7 @@ func (m *Master) ReGenerateAPIKey(instance *Instance) *Instance {
 	m.ShutdownSSEConnections()
 	m.keyMu.Unlock()
 	m.Logger.Info("API Key regenerated; use tunveo api-key --state <state-file> for local retrieval")
-	go m.SaveState()
+	m.requestSaveLocked()
 	return instance
 }
 
@@ -477,11 +475,21 @@ func (m *Master) GenerateConfigURL(instance *Instance) string {
 //
 // Returns an error if the URL is invalid, type is invalid, or no changes detected.
 func (m *Master) SetInstanceURL(instance *Instance, updates map[string]string) error {
+	m.dataMu.Lock()
+	defer m.dataMu.Unlock()
+	current, ok := m.findInstanceLocked(instance.ID)
+	if !ok {
+		return fmt.Errorf("instance not found")
+	}
+	return m.setInstanceURLLocked(current, updates)
+}
+func (m *Master) setInstanceURLLocked(instance *Instance, updates map[string]string) error {
 	parsedURL, err := url.Parse(instance.URL)
 	if err != nil {
 		return fmt.Errorf("SetInstanceURL: invalid URL format: %w", err)
 	}
 
+	newType := instance.Type
 	query := parsedURL.Query()
 
 	for key, value := range updates {
@@ -491,7 +499,7 @@ func (m *Master) SetInstanceURL(instance *Instance, updates map[string]string) e
 				return fmt.Errorf("SetInstanceURL: invalid type: must be 'client' or 'server'")
 			}
 			parsedURL.Scheme = value
-			instance.Type = value
+			newType = value
 		case "pool":
 			if value == "" {
 				query.Del("type")
@@ -532,25 +540,32 @@ func (m *Master) SetInstanceURL(instance *Instance, updates map[string]string) e
 	parsedURL.RawQuery = query.Encode()
 	newURL := parsedURL.String()
 
+	proposed := cloneInstance(instance)
+	proposed.URL = newURL
+	proposed.Type = newType
+	if err := validateInstance(proposed); err != nil {
+		return err
+	}
 	if newURL == instance.URL {
 		return fmt.Errorf("SetInstanceURL: no changes detected")
 	}
 
 	if instance.Status != "stopped" {
-		m.StopInstance(instance)
+		m.stopInstanceLocked(context.Background(), instance)
 		time.Sleep(BaseDuration)
 	}
 
+	if instance.deleted || m.managementStopped.Load() {
+		return fmt.Errorf("instance no longer mutable")
+	}
+	instance.Type = newType
 	instance.URL = newURL
 	instance.Config = m.GenerateConfigURL(instance)
 	instance.Status = "stopped"
 	m.Instances.Store(instance.ID, instance)
 
-	go m.StartInstance(instance)
-	go func() {
-		time.Sleep(BaseDuration)
-		m.SaveState()
-	}()
+	m.queueActionLocked(instance, "start")
+	m.requestSaveLocked()
 
 	return nil
 }

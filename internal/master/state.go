@@ -7,7 +7,6 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
-	"time"
 )
 
 // SaveState saves the current master state to disk using GOB serialization.
@@ -36,14 +35,16 @@ func (m *Master) SaveStateToPath(filePath string) error {
 	m.StateMu.Lock()
 	defer m.StateMu.Unlock()
 
+	m.dataMu.RLock()
 	persistentData := make(map[string]*Instance)
 
 	m.Instances.Range(func(key, value any) bool {
 		instance := value.(*Instance)
-		persistentData[key.(string)] = instance
+		persistentData[key.(string)] = cloneInstance(instance)
 		return true
 	})
 
+	m.dataMu.RUnlock()
 	if len(persistentData) == 0 {
 		if _, err := os.Stat(filePath); err == nil {
 			return os.Remove(filePath)
@@ -98,54 +99,54 @@ func (m *Master) SaveStateToPath(filePath string) error {
 // on current master settings. If an instance has the Restart flag set, it is automatically
 // started with a brief delay between starts. A summary log message reports how many
 // instances were loaded.
-func (m *Master) LoadState() {
-	if tmpFiles, _ := filepath.Glob(filepath.Join(filepath.Dir(m.StatePath), "np-*.tmp")); tmpFiles != nil {
-		for _, f := range tmpFiles {
-			os.Remove(f)
-		}
-	}
-
-	if _, err := os.Stat(m.StatePath); os.IsNotExist(err) {
-		return
-	}
-
+func (m *Master) LoadState() error {
 	file, err := os.Open(m.StatePath)
+	if os.IsNotExist(err) {
+		return nil
+	}
 	if err != nil {
-		m.Logger.Error("LoadState: open file failed: %v", err)
-		return
+		return err
 	}
 	defer file.Close()
-
-	var persistentData map[string]*Instance
-	decoder := gob.NewDecoder(file)
-	if err := decoder.Decode(&persistentData); err != nil {
-		m.Logger.Error("LoadState: decode file failed: %v", err)
-		return
+	var saved map[string]*Instance
+	if err = gob.NewDecoder(file).Decode(&saved); err != nil {
+		return fmt.Errorf("LoadState: decode failed: %w", err)
 	}
-
-	for id, instance := range persistentData {
-		instance.stopped = make(chan struct{})
-
-		if instance.ID != APIKeyID {
-			instance.Status = "stopped"
+	count := 0
+	for id, i := range saved {
+		if i == nil || id != i.ID {
+			return fmt.Errorf("LoadState: invalid instance identity")
 		}
-
-		if instance.Config == "" && instance.ID != APIKeyID {
-			instance.Config = m.GenerateConfigURL(instance)
-		}
-
-		if instance.Meta.Tags == nil {
-			instance.Meta.Tags = make(map[string]string)
-		}
-
-		m.Instances.Store(id, instance)
-
-		if instance.Restart {
-			m.Logger.Info("Auto-starting instance: %v [%v]", instance.URL, instance.ID)
-			m.StartInstance(instance)
-			time.Sleep(BaseDuration)
+		if id != APIKeyID {
+			count++
+			if err = validateInstance(i); err != nil {
+				return fmt.Errorf("LoadState: %w", err)
+			}
 		}
 	}
-
-	m.Logger.Info("Loaded %v instances from %v", len(persistentData), m.StatePath)
+	if count > MaxManagedInstances {
+		return fmt.Errorf("LoadState: managed instance limit reached")
+	}
+	m.dataMu.Lock()
+	defer m.dataMu.Unlock()
+	for id, i := range saved {
+		i.stopped = make(chan struct{})
+		if id != APIKeyID {
+			i.Status = "stopped"
+			if i.Config == "" {
+				i.Config = m.GenerateConfigURL(i)
+			}
+		}
+		if i.Meta.Tags == nil {
+			i.Meta.Tags = map[string]string{}
+		}
+		m.Instances.Store(id, i)
+	}
+	for id, i := range saved {
+		if id != APIKeyID && i.Restart {
+			m.autostart = append(m.autostart, i)
+		}
+	}
+	m.Logger.Info("Loaded %v instances from %v", len(saved), m.StatePath)
+	return nil
 }

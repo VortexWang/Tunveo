@@ -29,6 +29,18 @@ import (
 // using GOB serialization to allow recovery from crashes. Background tasks run periodically
 // to backup state, clean up duplicates, and restart failed instances.
 type Master struct {
+	dataMu                   sync.RWMutex
+	controlOnce              sync.Once
+	controlGate              chan struct{}
+	savePending, saveRunning bool
+	background               sync.WaitGroup
+	autostart                []*Instance
+	children                 int
+	runs                     sync.Map
+	shutdownOnce             sync.Once
+	shutdownDone             chan struct{}
+	shutdownErr              error
+
 	common.Common
 	keyMu             sync.RWMutex
 	admissionOnce     sync.Once
@@ -76,6 +88,10 @@ type Master struct {
 //   - cancelFunc: Function to cancel the process context
 //   - lastCheckPoint: Timestamp of last CHECK_POINT event (for heartbeat detection)
 type Instance struct {
+	run           *childRun
+	pendingAction string
+	actionWorker  bool
+
 	ID             string `json:"id"`
 	Alias          string `json:"alias"`
 	Type           string `json:"type"`
@@ -148,6 +164,7 @@ type InstanceLogWriter struct {
 	Target     io.Writer
 	Master     *Master
 	CheckPoint *regexp.Regexp
+	run        *childRun
 }
 
 // InstanceEvent is the payload sent over the SSE stream when an instance

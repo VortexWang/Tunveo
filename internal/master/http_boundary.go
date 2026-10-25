@@ -33,7 +33,11 @@ func (m *Master) Handler() http.Handler {
 		strings.TrimSuffix(m.Prefix, "/"+OpenAPIVersion) + "/" + NextMCPVersion: m.HandleMCP,
 	}
 	for path, h := range protected {
-		mux.Handle(path, m.protected(h, path == m.Prefix+"/events"))
+		sse := path == m.Prefix+"/events"
+		if !sse {
+			h = m.serialized(h)
+		}
+		mux.Handle(path, m.protected(h, sse))
 	}
 	for path, h := range map[string]http.HandlerFunc{m.Prefix + "/docs": m.HandleSwaggerUI, m.Prefix + "/openapi.json": m.HandleOpenAPISpec} {
 		mux.HandleFunc(path, func(w http.ResponseWriter, r *http.Request) {
@@ -48,7 +52,7 @@ func (m *Master) Handler() http.Handler {
 	return mux
 }
 func (m *Master) credentialStatus(r *http.Request) int {
-	key, ok := m.FindInstance(APIKeyID)
+	key, ok := m.findInstanceLocked(APIKeyID)
 	if !ok || key == nil || key.URL == "" {
 		return http.StatusServiceUnavailable
 	}

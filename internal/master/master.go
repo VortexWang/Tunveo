@@ -15,7 +15,6 @@ import (
 	"os/signal"
 	"path/filepath"
 	"strings"
-	"sync"
 	"syscall"
 	"time"
 
@@ -145,7 +144,9 @@ func NewMaster(parsedURL *url.URL, tlsCode string, tlsConfig *tls.Config, logger
 	master.TLSCode = tlsCode
 	master.TunnelTCPAddr = host
 
-	master.LoadState()
+	if err := master.LoadState(); err != nil {
+		return nil, err
+	}
 
 	go master.StartEventDispatcher()
 
@@ -165,7 +166,8 @@ func NewMaster(parsedURL *url.URL, tlsCode string, tlsConfig *tls.Config, logger
 // SIGINT or SIGTERM, then initiates graceful shutdown with a timeout.
 func (m *Master) Run() {
 	m.Logger.Info("Master started: %v%v", m.TunnelTCPAddr, m.Prefix)
-	apiKey, ok := m.FindInstance(APIKeyID)
+	m.dataMu.Lock()
+	apiKey, ok := m.findInstanceLocked(APIKeyID)
 	if !ok {
 		apiKey = &Instance{
 			ID:     APIKeyID,
@@ -174,7 +176,6 @@ func (m *Master) Run() {
 			Meta:   Meta{Tags: make(map[string]string)},
 		}
 		m.Instances.Store(APIKeyID, apiKey)
-		m.SaveState()
 		m.Logger.Info("API Key created; use tunveo api-key --state <state-file> for local retrieval")
 	} else {
 		m.Alias = apiKey.Alias
@@ -182,7 +183,6 @@ func (m *Master) Run() {
 		if apiKey.Config == "" {
 			apiKey.Config = GenerateMID()
 			m.Instances.Store(APIKeyID, apiKey)
-			m.SaveState()
 			m.Logger.Info("Master ID created: %v", apiKey.Config)
 		}
 		m.MID = apiKey.Config
@@ -190,25 +190,44 @@ func (m *Master) Run() {
 		m.Logger.Info("API Key loaded; use tunveo api-key --state <state-file> for local retrieval")
 	}
 
+	m.dataMu.Unlock()
+	if err := m.SaveState(); err != nil {
+		m.Logger.Error("Initial state save failed: %v", err)
+		return
+	}
 	m.Server = m.managementServer()
 
+	listener, err := net.Listen("tcp", m.Server.Addr)
+	if err != nil {
+		m.Logger.Error("Run: bind failed: %v", err)
+		return
+	}
+	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
+	defer stop()
+	served := make(chan error, 1)
 	go func() {
-		var err error
 		if m.MTLSConfig != nil {
-			err = m.Server.ListenAndServeTLS("", "")
+			served <- m.Server.ServeTLS(listener, "", "")
 		} else {
-			err = m.Server.ListenAndServe()
-		}
-		if err != nil && err != http.ErrServerClosed {
-			m.Logger.Error("Run: listen failed: %v", err)
+			served <- m.Server.Serve(listener)
 		}
 	}()
-
+	m.dataMu.Lock()
+	if ctx.Err() == nil {
+		for _, i := range m.autostart {
+			m.queueActionLocked(i, "start")
+		}
+	}
+	m.autostart = nil
+	m.dataMu.Unlock()
 	go m.StartPeriodicTasks()
-
-	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
-	<-ctx.Done()
-	stop()
+	select {
+	case <-ctx.Done():
+	case err := <-served:
+		if err != nil && err != http.ErrServerClosed {
+			m.Logger.Error("Run: serve failed: %v", err)
+		}
+	}
 
 	shutdownCtx, cancel := context.WithTimeout(context.Background(), common.ShutdownTimeout)
 	defer cancel()
@@ -235,41 +254,3 @@ func (m *Master) Run() {
 //   - ctx: Context with timeout controlling the maximum shutdown duration
 //
 // Returns an error from the underlying CommonShutdown if the shutdown fails.
-func (m *Master) MasterShutdown(ctx context.Context) error {
-	m.managementStopped.Store(true)
-	return m.CommonShutdown(ctx, func() {
-		m.ShutdownSSEConnections()
-
-		var wg sync.WaitGroup
-		m.Instances.Range(func(key, value any) bool {
-			instance := value.(*Instance)
-			if instance.Status != "stopped" && instance.cmd != nil && instance.cmd.Process != nil {
-				wg.Add(1)
-				go func(inst *Instance) {
-					defer wg.Done()
-					m.StopInstance(inst)
-				}(instance)
-			}
-			return true
-		})
-
-		wg.Wait()
-
-		close(m.PeriodicDone)
-
-		m.eventMu.Lock()
-		m.eventsClosed = true
-		close(m.NotifyChannel)
-		m.eventMu.Unlock()
-
-		if err := m.SaveState(); err != nil {
-			m.Logger.Error("MasterShutdown: save gob failed: %v", err)
-		} else {
-			m.Logger.Info("Instances saved: %v", m.StatePath)
-		}
-
-		if err := m.Server.Shutdown(ctx); err != nil {
-			m.Logger.Error("MasterShutdown: api shutdown error: %v", err)
-		}
-	})
-}

@@ -28,6 +28,11 @@ import (
 //
 // Returns a map[string]any suitable for JSON serialization.
 func (m *Master) GetMasterInfo() map[string]any {
+	m.dataMu.Lock()
+	defer m.dataMu.Unlock()
+	return m.getMasterInfoLocked()
+}
+func (m *Master) getMasterInfoLocked() map[string]any {
 	info := map[string]any{
 		"mid":        m.MID,
 		"alias":      m.Alias,
@@ -53,6 +58,8 @@ func (m *Master) GetMasterInfo() map[string]any {
 		"key":        m.KeyPath,
 	}
 
+	m.dataMu.Unlock()
+	defer m.dataMu.Lock()
 	if runtime.GOOS == "linux" {
 		sysInfo := GetLinuxSysInfo()
 		info["cpu"] = sysInfo.CPU
