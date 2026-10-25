@@ -3,7 +3,7 @@
 package master
 
 import (
-	"encoding/json"
+	"context"
 	"fmt"
 	"net"
 	"net/http"
@@ -44,7 +44,7 @@ func (m *Master) HandleInstances(w http.ResponseWriter, r *http.Request) {
 			Alias string `json:"alias"`
 			URL   string `json:"url"`
 		}
-		if err := json.NewDecoder(r.Body).Decode(&reqData); err != nil || reqData.URL == "" {
+		if err := decodeManagementJSON(r.Body, &reqData); err != nil || reqData.URL == "" {
 			HTTPError(w, "Invalid request body", http.StatusBadRequest)
 			return
 		}
@@ -155,7 +155,7 @@ func (m *Master) HandleGetInstance(w http.ResponseWriter, instance *Instance) {
 //   - Detects duplicate tag keys and rejects with 400
 //
 // Changes trigger state persistence and SSE "update" events.
-// Request body is JSON with optional fields; invalid JSON is silently ignored.
+// Request body must contain exactly one JSON value; malformed input is rejected.
 func (m *Master) HandlePatchInstance(w http.ResponseWriter, r *http.Request, id string, instance *Instance) {
 	var reqData struct {
 		Alias   string `json:"alias,omitempty"`
@@ -166,10 +166,10 @@ func (m *Master) HandlePatchInstance(w http.ResponseWriter, r *http.Request, id 
 			Tags map[string]string `json:"tags,omitempty"`
 		} `json:"meta,omitempty"`
 	}
-	if err := json.NewDecoder(r.Body).Decode(&reqData); err == nil {
+	if err := decodeManagementJSON(r.Body, &reqData); err == nil {
 		if id == APIKeyID {
 			if reqData.Action == "restart" {
-				m.ReGenerateAPIKey(instance)
+				instance = m.ReGenerateAPIKey(instance)
 				m.SendSSEEvent("update", instance)
 			}
 		} else {
@@ -274,6 +274,9 @@ func (m *Master) HandlePatchInstance(w http.ResponseWriter, r *http.Request, id 
 			}
 
 		}
+	} else {
+		HTTPError(w, "Invalid request body", http.StatusBadRequest)
+		return
 	}
 	WriteJSON(w, http.StatusOK, instance)
 }
@@ -298,7 +301,7 @@ func (m *Master) HandlePutInstance(w http.ResponseWriter, r *http.Request, id st
 	var reqData struct {
 		URL string `json:"url"`
 	}
-	if err := json.NewDecoder(r.Body).Decode(&reqData); err != nil || reqData.URL == "" {
+	if err := decodeManagementJSON(r.Body, &reqData); err != nil || reqData.URL == "" {
 		HTTPError(w, "Invalid request body", http.StatusBadRequest)
 		return
 	}
@@ -387,7 +390,7 @@ func (m *Master) HandleInfo(w http.ResponseWriter, r *http.Request) {
 		var reqData struct {
 			Alias string `json:"alias"`
 		}
-		if err := json.NewDecoder(r.Body).Decode(&reqData); err != nil {
+		if err := decodeManagementJSON(r.Body, &reqData); err != nil {
 			HTTPError(w, "Invalid request body", http.StatusBadRequest)
 			return
 		}
@@ -428,7 +431,7 @@ func (m *Master) HandleTCPing(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	result := m.PerformTCPing(target)
+	result := m.PerformTCPingContext(r.Context(), target)
 	WriteJSON(w, http.StatusOK, result)
 }
 
@@ -445,6 +448,9 @@ func (m *Master) HandleTCPing(w http.ResponseWriter, r *http.Request) {
 //
 // Returns a TCPingResult containing success status, latency (ms), and optional error.
 func (m *Master) PerformTCPing(target string) *TCPingResult {
+	return m.PerformTCPingContext(context.Background(), target)
+}
+func (m *Master) PerformTCPingContext(ctx context.Context, target string) *TCPingResult {
 	result := &TCPingResult{
 		Target:    target,
 		Connected: false,
@@ -452,7 +458,16 @@ func (m *Master) PerformTCPing(target string) *TCPingResult {
 		Error:     nil,
 	}
 
+	if err := ctx.Err(); err != nil {
+		message := err.Error()
+		result.Error = &message
+		return result
+	}
 	select {
+	case <-ctx.Done():
+		message := ctx.Err().Error()
+		result.Error = &message
+		return result
 	case m.TCPingSem <- struct{}{}:
 		defer func() { <-m.TCPingSem }()
 	case <-time.After(time.Second):
@@ -462,7 +477,7 @@ func (m *Master) PerformTCPing(target string) *TCPingResult {
 	}
 
 	start := time.Now()
-	conn, err := net.DialTimeout("tcp", target, common.ReportInterval)
+	conn, err := (&net.Dialer{Timeout: common.ReportInterval}).DialContext(ctx, "tcp", target)
 	if err != nil {
 		errMsg := err.Error()
 		result.Error = &errMsg

@@ -5,6 +5,7 @@
 package master
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"net/http"
@@ -33,7 +34,7 @@ func (m *Master) HandleMCP(w http.ResponseWriter, r *http.Request) {
 	}
 
 	var req MCPRequest
-	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+	if err := decodeManagementJSON(r.Body, &req); err != nil {
 		m.WriteMCPError(w, nil, -32700, "Parse error", err.Error())
 		return
 	}
@@ -49,7 +50,7 @@ func (m *Master) HandleMCP(w http.ResponseWriter, r *http.Request) {
 	case "tools/list":
 		m.HandleMCPToolsList(w, req)
 	case "tools/call":
-		m.HandleMCPToolsCall(w, req)
+		m.handleMCPToolsCall(r.Context(), w, req)
 	default:
 		m.WriteMCPError(w, req.ID, -32601, "Method not found", req.Method)
 	}
@@ -522,6 +523,9 @@ func (m *Master) HandleMCPToolsList(w http.ResponseWriter, req MCPRequest) {
 //   - Network testing: tcping_target
 //   - Master operations: get_master_info, update_master_info
 func (m *Master) HandleMCPToolsCall(w http.ResponseWriter, req MCPRequest) {
+	m.handleMCPToolsCall(context.Background(), w, req)
+}
+func (m *Master) handleMCPToolsCall(ctx context.Context, w http.ResponseWriter, req MCPRequest) {
 	var params MCPToolCallParams
 	if err := json.Unmarshal(req.Params, &params); err != nil {
 		m.WriteMCPError(w, req.ID, -32602, "Invalid params", err.Error())
@@ -1302,7 +1306,7 @@ func (m *Master) HandleMCPToolsCall(w http.ResponseWriter, req MCPRequest) {
 			return
 		}
 
-		result := m.PerformTCPing(target)
+		result := m.PerformTCPingContext(ctx, target)
 		statusText := "failed"
 		if result.Connected {
 			statusText = fmt.Sprintf("connected in %dms", result.Latency)
