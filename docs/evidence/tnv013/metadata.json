@@ -1,0 +1,14 @@
+{
+  "source_commit": "9763782843ad9710da0213afbbfc370a06de7baa",
+  "before_runtime_commit": "290c3f871fb7d72f43577bf6688d9b4a4cc47ccd",
+  "before_repository_head": "bb35fdc97118353f308362ec63fc461f51bb228a",
+  "recorded_at": "2026-10-25T07:29:32.810342+00:00",
+  "binary_sha256": "f33f65aa150abd9fccedb0dc06b902b180a77208f92e635553da0a141473294c",
+  "go_build_info": "BUILD/tunveo-tnv013: go1.26.10\n\tpath\tgithub.com/VortexWang/Tunveo/cmd/tunveo\n\tmod\tgithub.com/VortexWang/Tunveo\tv1.17.1-0.20261025072714-9763782843ad\t\n\tdep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\n\tdep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\n\tdep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\n\tdep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\n\tdep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\n\tdep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\n\tbuild\t-buildmode=exe\n\tbuild\t-compiler=gc\n\tbuild\t-trimpath=true\n\tbuild\tCGO_ENABLED=1\n\tbuild\tGOARCH=amd64\n\tbuild\tGOOS=linux\n\tbuild\tGOAMD64=v1\n\tbuild\tvcs=git\n\tbuild\tvcs.revision=9763782843ad9710da0213afbbfc370a06de7baa\n\tbuild\tvcs.time=2026-10-25T07:27:14Z\n\tbuild\tvcs.modified=false\n",
+  "before_go_build_info": "BUILD/tunveo-tnv011: go1.26.10\n\tpath\tgithub.com/VortexWang/Tunveo/cmd/tunveo\n\tmod\tgithub.com/VortexWang/Tunveo\tv1.17.1-0.20261025071534-290c3f871fb7\t\n\tdep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\n\tdep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\n\tdep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\n\tdep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\n\tdep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\n\tdep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\n\tbuild\t-buildmode=exe\n\tbuild\t-compiler=gc\n\tbuild\t-trimpath=true\n\tbuild\tCGO_ENABLED=1\n\tbuild\tGOARCH=amd64\n\tbuild\tGOOS=linux\n\tbuild\tGOAMD64=v1\n\tbuild\tvcs=git\n\tbuild\tvcs.revision=290c3f871fb7d72f43577bf6688d9b4a4cc47ccd\n\tbuild\tvcs.time=2026-10-25T07:15:34Z\n\tbuild\tvcs.modified=false\n",
+  "go_version": "go1.26.10",
+  "runner_sha256": "7a549b15de791664dbe5b28cf667a70af56b4baf3bed40b1ec3e2f66d405fef2",
+  "source_ci": "https://github.com/VortexWang/Tunveo/actions/runs/40172838846",
+  "scope": "Local loopback. Before report deliberately fails on the first master/zero case; final interval process 24/24, existing security 20/20, forwarding 8/8. No release/public/long-run certification.",
+  "normalization": "Forwarding log paths relative to report; executable path prefix BUILD/. Log bytes and outcomes unchanged."
+}

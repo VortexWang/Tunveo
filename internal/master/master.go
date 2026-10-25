@@ -101,6 +101,9 @@ const (
 //
 // Returns a new Master instance or an error if address resolution fails.
 func NewMaster(parsedURL *url.URL, tlsCode string, tlsConfig *tls.Config, logger *common.Logger, version string) (*Master, error) {
+	if err := common.ValidateReloadInterval(); err != nil {
+		return nil, err
+	}
 	host, err := net.ResolveTCPAddr("tcp", parsedURL.Host)
 	if err != nil {
 		return nil, fmt.Errorf("NewMaster: resolve host failed: %w", err)

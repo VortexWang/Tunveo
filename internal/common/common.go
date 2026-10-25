@@ -141,8 +141,9 @@ var (
 	ShutdownTimeout = GetEnvAsDuration("NP_SHUTDOWN_TIMEOUT", 5*time.Second)
 
 	// ReloadInterval is the frequency for checking if the tunnel configuration has changed and needs reloading.
-	// Used in daemon/continuous-run scenarios. Configurable via NP_RELOAD_INTERVAL.
-	ReloadInterval = GetEnvAsDuration("NP_RELOAD_INTERVAL", 1*time.Hour)
+	// Used for certificate reload and master maintenance. Invalid explicit values
+	// are retained as a startup error instead of silently accepting zero/falling back.
+	ReloadInterval, reloadIntervalErr = getPositiveDurationEnv("NP_RELOAD_INTERVAL", 1*time.Hour)
 )
 
 // Config holds all configuration fields parsed from the tunnel URL. It is embedded in Common

@@ -55,3 +55,5 @@ CI 新增 `vulnerability-scan`：安装固定扫描器，使用当前 `go.mod` �
 - [x/net v0.60.0](https://pkg.go.dev/golang.org/x/net@v0.60.0) 与 [模块约束](https://proxy.golang.org/golang.org/x/net/@v/v0.60.0.mod)。
 - [GO-2026-6809](https://pkg.go.dev/vuln/GO-2026-6809)、[GO-2026-6603](https://pkg.go.dev/vuln/GO-2026-6603)、[GO-2026-6617](https://pkg.go.dev/vuln/GO-2026-6617)。
 - [剩余 OpenPGP 模块公告 GO-2026-5932](https://pkg.go.dev/vuln/GO-2026-5932)。
+
+后续状态：依赖升级不改变的 TNV-013 已由后续 [重载周期启动校验](reload-interval.md) 单独处理，本页扫描与运行证据保持原样。

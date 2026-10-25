@@ -54,3 +54,10 @@ Each pairing covers four pool transports, two flow modes and both TCP and UDP ec
 See [security fix record](tls-log-safety.md) for validation and remaining risks.
 
 Current build requirements and dependency changes: [Go/HTTP2 security update](security-dependencies.md). Rebuild binaries to obtain standard-library fixes; changing only external module versions does not update an existing executable.
+
+
+## Reload interval validation
+
+`NP_RELOAD_INTERVAL` must be a strictly positive Go duration. Unset preserves the one-hour default. Explicit zero, negative, empty, malformed or overflowing values now stop server/client/master startup with exit code 1, before opening service listeners or creating master state. Earlier invalid values could silently use the default, while zero could crash the master after state creation. Remove the environment variable to use the default, or set a value such as `1h` and restart. Empty is not equivalent to unset.
+
+Other zero-valued timeouts retain their existing meanings. Help, version and explicit local API-key retrieval remain usable with an invalid reload setting. See [TNV-013](reload-interval.md) for scope and regression evidence.
