@@ -71,7 +71,10 @@ func ValidateReloadInterval() error {
 func Drain[T any](ch <-chan T) {
 	for {
 		select {
-		case <-ch:
+		case _, ok := <-ch:
+			if !ok {
+				return
+			}
 			// consumed a value; try again
 		default:
 			// channel is empty (or closed)

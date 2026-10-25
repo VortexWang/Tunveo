@@ -124,3 +124,24 @@ jobs:
           name: pool-publication-evidence
           path: artifacts/pool-publication.json
           retention-days: 14
+
+  lifecycle-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v6.0.2
+      - uses: actions/setup-go@v6.1.0
+        with:
+          go-version-file: go.mod
+      - run: python3 scripts/repro_pool_lifecycle.py --ref HEAD --mode fixed --go go --output artifacts/pool-lifecycle.json
+      - run: go build -race -trimpath -o bin/tunveo-race ./cmd/tunveo
+      - run: python3 scripts/verify_reconnect.py --binary bin/tunveo-race --artifacts artifacts/reconnect
+      - name: Save lifecycle and reconnect evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: lifecycle-evidence
+          path: |
+            artifacts/pool-lifecycle.json
+            artifacts/reconnect
+          retention-days: 14

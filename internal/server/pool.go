@@ -5,6 +5,7 @@
 package server
 
 import (
+	"context"
 	"fmt"
 
 	"github.com/VortexWang/Tunveo/internal/common"
@@ -32,6 +33,7 @@ func (s *Server) InitTunnelPool() error {
 			s.TLSConfig,
 			s.TunnelListener,
 			common.ReportInterval)
+		context.AfterFunc(s.Ctx, tcpPool.Close)
 		go tcpPool.ServerManager()
 		s.TunnelPool = tcpPool
 	case "1":
@@ -41,6 +43,7 @@ func (s *Server) InitTunnelPool() error {
 			s.TLSConfig,
 			s.TunnelUDPAddr.String(),
 			common.ReportInterval)
+		context.AfterFunc(s.Ctx, quicPool.Close)
 		go quicPool.ServerManager()
 		s.TunnelPool = quicPool
 	case "2":
@@ -50,6 +53,7 @@ func (s *Server) InitTunnelPool() error {
 			s.TLSConfig,
 			s.TunnelListener,
 			common.ReportInterval)
+		context.AfterFunc(s.Ctx, websocketPool.Close)
 		go websocketPool.ServerManager()
 		s.TunnelPool = websocketPool
 	case "3":
@@ -59,6 +63,7 @@ func (s *Server) InitTunnelPool() error {
 			s.TLSConfig,
 			s.TunnelListener,
 			common.ReportInterval)
+		context.AfterFunc(s.Ctx, http2Pool.Close)
 		go http2Pool.ServerManager()
 		s.TunnelPool = http2Pool
 	default:

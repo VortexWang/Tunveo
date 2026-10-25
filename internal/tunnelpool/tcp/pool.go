@@ -13,6 +13,7 @@ import (
 	"time"
 
 	idlequeue "github.com/VortexWang/Tunveo/internal/tunnelpool/idle"
+	"github.com/VortexWang/Tunveo/internal/tunnelpool/lifetime"
 )
 
 const (
@@ -31,6 +32,7 @@ const (
 )
 
 type Pool struct {
+	life      *lifetime.Group
 	idle      *idlequeue.Queue[net.Conn]
 	tlsCode   string
 	hostname  string
@@ -92,7 +94,8 @@ func NewClientPool(
 	}
 	pool.capacity.Store(int32(minCap))
 	pool.interval.Store(int64(minIvl))
-	pool.ctx, pool.cancel = context.WithCancel(context.Background())
+	pool.life = lifetime.New()
+	pool.ctx, pool.cancel = pool.life.Context(), pool.life.Close
 	return pool
 }
 
@@ -119,11 +122,18 @@ func NewServerPool(
 		maxCap:    maxCap,
 		keepAlive: keepAlive,
 	}
-	pool.ctx, pool.cancel = context.WithCancel(context.Background())
+	pool.life = lifetime.New()
+	pool.ctx, pool.cancel = pool.life.Context(), pool.life.Close
+	pool.life.Track(listener)
 	return pool
 }
 
 func (p *Pool) createConnection() bool {
+	attempt := p.idle.Begin(p.ctx)
+	defer attempt.End()
+	if attempt.Context.Err() != nil {
+		return false
+	}
 	conn, err := p.dialer()
 	if err != nil {
 		return false
@@ -131,6 +141,12 @@ func (p *Pool) createConnection() bool {
 
 	conn.(*net.TCPConn).SetKeepAlive(true)
 	conn.(*net.TCPConn).SetKeepAlivePeriod(p.keepAlive)
+	tracked, ok := p.life.Bind(conn, nil)
+	if !ok {
+		return false
+	}
+	conn = tracked
+	attempt.Watch(func() { tracked.Close() })
 
 	var id string
 	switch p.tlsCode {
@@ -140,7 +156,7 @@ func (p *Pool) createConnection() bool {
 			InsecureSkipVerify: true,
 			MinVersion:         tls.VersionTLS13,
 		})
-		if err := tlsConn.Handshake(); err != nil {
+		if err := tlsConn.HandshakeContext(attempt.Context); err != nil {
 			conn.Close()
 			return false
 		}
@@ -151,7 +167,7 @@ func (p *Pool) createConnection() bool {
 			MinVersion:         tls.VersionTLS13,
 			ServerName:         p.hostname,
 		})
-		if err := tlsConn.Handshake(); err != nil {
+		if err := tlsConn.HandshakeContext(attempt.Context); err != nil {
 			conn.Close()
 			return false
 		}
@@ -168,7 +184,7 @@ func (p *Pool) createConnection() bool {
 	id = hex.EncodeToString(buf)
 	conn.SetReadDeadline(time.Time{})
 
-	if !p.idle.Publish(p.ctx, id, conn) {
+	if !p.idle.Commit(attempt, id, conn) {
 		conn.Close()
 		return false
 	}
@@ -176,6 +192,8 @@ func (p *Pool) createConnection() bool {
 }
 
 func (p *Pool) handleConnection(conn net.Conn) {
+	attempt := p.idle.Begin(p.ctx)
+	defer attempt.End()
 	defer func() {
 		if conn != nil {
 			conn.Close()
@@ -193,9 +211,15 @@ func (p *Pool) handleConnection(conn net.Conn) {
 		return
 	}
 
+	tracked, ok := p.life.Bind(conn, nil)
+	if !ok {
+		return
+	}
+	conn = tracked
+	attempt.Watch(func() { tracked.Close() })
 	if p.tlsConfig != nil {
 		tlsConn := tls.Server(conn, p.tlsConfig)
-		if err := tlsConn.Handshake(); err != nil {
+		if err := tlsConn.HandshakeContext(attempt.Context); err != nil {
 			return
 		}
 		conn = tlsConn
@@ -214,17 +238,16 @@ func (p *Pool) handleConnection(conn net.Conn) {
 		return
 	}
 
-	if !p.idle.Publish(p.ctx, id, conn) {
+	if !p.idle.Commit(attempt, id, conn) {
 		return
 	}
 	conn = nil
 }
 
 func (p *Pool) ClientManager() {
-	if p.cancel != nil {
-		p.cancel()
+	if !p.life.Start() {
+		return
 	}
-	p.ctx, p.cancel = context.WithCancel(context.Background())
 
 	for p.ctx.Err() == nil {
 		p.adjustInterval()
@@ -260,10 +283,9 @@ func (p *Pool) ClientManager() {
 }
 
 func (p *Pool) ServerManager() {
-	if p.cancel != nil {
-		p.cancel()
+	if !p.life.Start() {
+		return
 	}
-	p.ctx, p.cancel = context.WithCancel(context.Background())
 
 	for p.ctx.Err() == nil {
 		conn, err := p.listener.Accept()
@@ -285,9 +307,11 @@ func (p *Pool) ServerManager() {
 }
 
 func (p *Pool) OutgoingGet(id string, timeout time.Duration) (net.Conn, error) {
-	ctx, cancel := context.WithTimeout(p.ctx, timeout)
+	attempt := p.idle.Begin(p.ctx)
+	defer attempt.End()
+	ctx, cancel := context.WithTimeout(attempt.Context, timeout)
 	defer cancel()
-	conn, err := p.idle.TakeID(ctx, id)
+	conn, err := p.idle.TakeIDAttempt(attempt, ctx, id)
 	if err != nil {
 		return nil, fmt.Errorf("OutgoingGet: connection not found: %w", err)
 	}
@@ -295,9 +319,11 @@ func (p *Pool) OutgoingGet(id string, timeout time.Duration) (net.Conn, error) {
 }
 
 func (p *Pool) IncomingGet(timeout time.Duration) (string, net.Conn, error) {
-	ctx, cancel := context.WithTimeout(p.ctx, timeout)
+	attempt := p.idle.Begin(p.ctx)
+	defer attempt.End()
+	ctx, cancel := context.WithTimeout(attempt.Context, timeout)
 	defer cancel()
-	id, conn, err := p.idle.Take(ctx)
+	id, conn, err := p.idle.TakeAttempt(attempt, ctx)
 	if err != nil {
 		return "", nil, fmt.Errorf("IncomingGet: insufficient connections: %w", err)
 	}
@@ -325,7 +351,7 @@ func (p *Pool) Close() {
 }
 
 func (p *Pool) Ready() bool {
-	return p.ctx != nil
+	return p.ctx != nil && p.ctx.Err() == nil
 }
 
 func (p *Pool) Active() int {

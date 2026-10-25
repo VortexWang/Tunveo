@@ -1,0 +1,26 @@
+2026-10-25 01:18:42.181  DEBUG  Init log level: DEBUG
+2026-10-25 01:18:42.181  WARN  TLS code-0: unencrypted
+2026-10-25 01:18:42.181  INFO  Client started: [REDACTED-URL]
+2026-10-25 01:18:42.182  INFO  Pending tunnel handshake...
+2026-10-25 01:18:42.184  INFO  Loading tunnel config: FLOW=+|MAX=1024|TLS=1|TYPE=2|VERIFY=flow-v1
+2026-10-25 01:18:42.184  INFO  Getting tunnel pool ready...
+2026-10-25 01:18:42.234  INFO  Marking tunnel handshake as complete in 52ms
+2026-10-25 01:18:42.235  INFO  TLS code-1: RAM cert fingerprint verifying...
+2026-10-25 01:18:42.249  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=57|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-25 01:18:47.240  DEBUG  TLS verify signal: cid 2dae9ec0 <- websocket/unknown-addr
+2026-10-25 01:18:47.240  INFO  TLS code-1: RAM cert verified with sha256 fingerprint: e2fd61ed85c7cea5cabe541ef2b5aa706f63ac6b0a7566f61bc680012a492999
+2026-10-25 01:18:47.249  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=64|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-25 01:18:47.261  DEBUG  Target connection: 127.0.0.1:39743 <-> 127.0.0.1:49248
+2026-10-25 01:18:47.261  DEBUG  Tunnel connection: get bf4877c0 <- pool active 63
+2026-10-25 01:18:47.262  DEBUG  Tunnel connection: websocket/unknown-addr <-> websocket/unknown-addr
+2026-10-25 01:18:47.262  DEBUG  TCP launch signal: cid bf4877c0 -> websocket/unknown-addr
+2026-10-25 01:18:47.262  INFO  Starting exchange: 127.0.0.1:49248 <-> websocket/unknown-addr
+2026-10-25 01:18:47.264  INFO  Exchange complete: failed to get reader: failed to handle control frame opClose: use of closed network connection
+2026-10-25 01:18:47.264  DEBUG  Tunnel connection: closed bf4877c0
+2026-10-25 01:18:47.269  DEBUG  Target connection: 127.0.0.1:39743 <-> 127.0.0.1:50528
+2026-10-25 01:18:47.269  DEBUG  Tunnel connection: get 1c65e89e <- pool active 62
+2026-10-25 01:18:47.269  DEBUG  Tunnel connection: websocket/unknown-addr <-> websocket/unknown-addr
+2026-10-25 01:18:47.269  DEBUG  UDP launch signal: cid 1c65e89e -> websocket/unknown-addr
+2026-10-25 01:18:47.269  DEBUG  Starting transfer: websocket/unknown-addr <-> 127.0.0.1:39743
+2026-10-25 01:18:47.269  DEBUG  Transfer complete: websocket/unknown-addr <-> 127.0.0.1:39743
+2026-10-25 01:18:47.270  DEBUG  Transfer complete: websocket/unknown-addr <-> 127.0.0.1:39743

@@ -74,7 +74,7 @@ func (c *Common) TunnelTCPLoop() {
 			continue
 		}
 
-		targetConn = transport.NewStatConn(targetConn, &c.TCPRX, &c.TCPTX, c.RateLimiter)
+		targetConn = transport.NewStatConn(c.bindRunConn(targetConn), &c.TCPRX, &c.TCPTX, c.RateLimiter)
 		c.Logger.Debug("Target connection: %v <-> %v", targetConn.LocalAddr(), targetConn.RemoteAddr())
 
 		go func(targetConn net.Conn) {
@@ -120,7 +120,7 @@ func (c *Common) TunnelTCPLoop() {
 					RemoteAddr: targetConn.RemoteAddr().String(),
 					PoolConnID: id,
 				})
-				c.WriteChan <- c.Encode(signalData)
+				c.queueWrite(c.Encode(signalData))
 			}
 
 			c.Logger.Debug("TCP launch signal: cid %v -> %v", id, c.ControlConn.RemoteAddr())
@@ -236,7 +236,7 @@ func (c *Common) TunnelUDPLoop() {
 					RemoteAddr: clientAddr.String(),
 					PoolConnID: id,
 				})
-				c.WriteChan <- c.Encode(signalData)
+				c.queueWrite(c.Encode(signalData))
 			}
 
 			c.Logger.Debug("UDP launch signal: cid %v -> %v", id, c.ControlConn.RemoteAddr())
@@ -311,11 +311,11 @@ func (c *Common) TunnelOnce() error {
 			case "ping":
 				if c.Ctx.Err() == nil && c.ControlConn != nil {
 					signalData, _ := json.Marshal(Signal{ActionType: "pong"})
-					c.WriteChan <- c.Encode(signalData)
+					c.queueWrite(c.Encode(signalData))
 				}
 			case "pong":
 				c.Logger.Event("CHECK_POINT|MODE=%v|PING=%vms|POOL=%v|TCPS=%v|UDPS=%v|TCPRX=%v|TCPTX=%v|UDPRX=%v|UDPTX=%v",
-					c.RunMode, time.Since(c.CheckPoint).Milliseconds(), c.TunnelPool.Active(),
+					c.RunMode, time.Since(time.Unix(0, c.checkPoint.Load())).Milliseconds(), c.TunnelPool.Active(),
 					atomic.LoadInt32(&c.TCPSlot), atomic.LoadInt32(&c.UDPSlot),
 					atomic.LoadUint64(&c.TCPRX), atomic.LoadUint64(&c.TCPTX),
 					atomic.LoadUint64(&c.UDPRX), atomic.LoadUint64(&c.UDPTX))
@@ -376,7 +376,7 @@ func (c *Common) TunnelTCPOnce(signal Signal) {
 		}
 	}()
 
-	targetConn = transport.NewStatConn(targetConn, &c.TCPRX, &c.TCPTX, c.RateLimiter)
+	targetConn = transport.NewStatConn(c.bindRunConn(targetConn), &c.TCPRX, &c.TCPTX, c.RateLimiter)
 	c.Logger.Debug("Target connection: %v <-> %v", targetConn.LocalAddr(), targetConn.RemoteAddr())
 
 	if err := c.SendProxyV1Header(signal.RemoteAddr, targetConn); err != nil {

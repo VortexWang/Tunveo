@@ -1,0 +1,105 @@
+{
+  "started_at": "2026-10-25T08:12:33.721919+00:00",
+  "binary_sha256": "89b1f1c9668d307f6ced8efe41a4ba4d1fe07759ab49b793ce9407e9e95db8d1",
+  "runner_sha256": "8c32e6328ee3bf643930c2786b36dab03d442c14b5b8912736c6ffcad8e83976",
+  "scope": "loopback TLS=1, one server replacement per case; client PID preserved; each echo exchange attempted once",
+  "results": [
+    {
+      "transport": 3,
+      "mode": 2,
+      "status": "passed",
+      "exchanges": [
+        {
+          "stage": "before",
+          "udp": false,
+          "sent_bytes": 32768,
+          "received_bytes": 32768,
+          "attempts": 1
+        },
+        {
+          "stage": "before",
+          "udp": true,
+          "sent_bytes": 512,
+          "received_bytes": 512,
+          "attempts": 1
+        },
+        {
+          "stage": "after",
+          "udp": false,
+          "sent_bytes": 32768,
+          "received_bytes": 32768,
+          "attempts": 1
+        },
+        {
+          "stage": "after",
+          "udp": true,
+          "sent_bytes": 512,
+          "received_bytes": 512,
+          "attempts": 1
+        }
+      ],
+      "cleanup": [
+        {
+          "pid": 314,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 319,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 365,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "persistent_client_pid": 319,
+      "replaced_server_cleanup": [
+        {
+          "pid": 314,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "logs": [
+        "3-2/server-first.log",
+        "3-2/client-persistent.log",
+        "3-2/server-replacement.log"
+      ]
+    },
+    {
+      "transport": 3,
+      "mode": 1,
+      "status": "failed",
+      "exchanges": [],
+      "cleanup": [
+        {
+          "pid": 315,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 318,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "persistent_client_pid": 318,
+      "failure_type": "TimeoutError",
+      "error": "reconnect verification deadline",
+      "logs": [
+        "3-1/server-first.log",
+        "3-1/client-persistent.log"
+      ]
+    }
+  ],
+  "status": "failed"
+}

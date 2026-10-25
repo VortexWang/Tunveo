@@ -1,0 +1,32 @@
+2026-10-25 01:22:15.317  DEBUG  Init log level: DEBUG
+2026-10-25 01:22:15.317  WARN  TLS code-0: unencrypted
+2026-10-25 01:22:15.318  INFO  Client started: [REDACTED-URL]
+2026-10-25 01:22:15.318  INFO  Pending tunnel handshake...
+2026-10-25 01:22:15.320  INFO  Loading tunnel config: FLOW=+|MAX=8|TLS=1|TYPE=0|VERIFY=legacy
+2026-10-25 01:22:15.320  INFO  Getting tunnel pool ready...
+2026-10-25 01:22:15.471  INFO  Marking tunnel handshake as complete in 152ms
+2026-10-25 01:22:15.471  INFO  TLS code-1: RAM cert fingerprint verifying...
+2026-10-25 01:22:15.472  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=1|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-25 01:22:20.472  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=3|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-25 01:22:20.473  DEBUG  TLS verify signal: cid 349821b0 <- 127.0.0.1:46293
+2026-10-25 01:22:20.473  INFO  TLS code-1: RAM cert verified with sha256 fingerprint: 9bc731bd7002bcb497c0450c0b2aa2027bf9ab780a41de2cf1bea0394bc3732c
+2026-10-25 01:22:20.473  DEBUG  TLS code-1: verify signal: cid 808dc56d -> 127.0.0.1:46293
+2026-10-25 01:22:20.486  DEBUG  Target connection: 127.0.0.1:50249 <-> 127.0.0.1:56056
+2026-10-25 01:22:20.486  DEBUG  Tunnel connection: get 720f30fb <- pool active 0
+2026-10-25 01:22:20.486  DEBUG  Tunnel connection: 127.0.0.1:53210 <-> 127.0.0.1:46293
+2026-10-25 01:22:20.486  DEBUG  TCP launch signal: cid 720f30fb -> 127.0.0.1:46293
+2026-10-25 01:22:20.486  INFO  Starting exchange: 127.0.0.1:56056 <-> 127.0.0.1:46293
+2026-10-25 01:22:20.487  INFO  Exchange complete: read tcp 127.0.0.1:53210->127.0.0.1:46293: use of closed network connection
+2026-10-25 01:22:20.487  DEBUG  Tunnel connection: closed 720f30fb
+2026-10-25 01:22:20.489  DEBUG  Target connection: 127.0.0.1:50249 <-> 127.0.0.1:48751
+2026-10-25 01:22:21.033  DEBUG  Tunnel connection: get ce0507df <- pool active 0
+2026-10-25 01:22:21.033  DEBUG  Tunnel connection: 127.0.0.1:53228 <-> 127.0.0.1:46293
+2026-10-25 01:22:21.034  DEBUG  UDP launch signal: cid ce0507df -> 127.0.0.1:46293
+2026-10-25 01:22:21.034  DEBUG  Starting transfer: 127.0.0.1:53228 <-> 127.0.0.1:50249
+2026-10-25 01:22:21.034  DEBUG  Transfer complete: 127.0.0.1:53228 <-> 127.0.0.1:50249
+2026-10-25 01:22:21.035  DEBUG  Transfer complete: 127.0.0.1:53228 <-> 127.0.0.1:50249
+2026-10-25 01:22:21.136  DEBUG  Tunnel connection closed: pool active 1
+2026-10-25 01:22:21.136  DEBUG  Target connection closed: 127.0.0.1:50249
+2026-10-25 01:22:21.136  DEBUG  Control connection closed: 127.0.0.1:53192
+2026-10-25 01:22:21.136  DEBUG  Target listener closed: 127.0.0.1:50249
+2026-10-25 01:22:21.136  INFO  Client shutdown complete

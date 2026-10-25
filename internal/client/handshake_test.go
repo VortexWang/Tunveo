@@ -27,7 +27,7 @@ func TestTLSVerificationCapabilityNegotiation(t *testing.T) {
 				json.NewEncoder(w).Encode(map[string]any{"flow": "-", "max": 8, "tls": "1", "type": "2", "verify": test.value})
 			}))
 			defer server.Close()
-			c := &Client{Common: common.NewCommon(common.NewLogger(common.None, false), nil)}
+			c := &Client{Common: common.NewCommonPtr(common.NewLogger(common.None, false), nil)}
 			c.TunnelAddr = strings.TrimPrefix(server.URL, "https://")
 			c.ServerName = "none"
 			c.TunnelKey = "fixture-only"

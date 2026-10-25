@@ -3,6 +3,7 @@
 package common
 
 import (
+	"context"
 	"fmt"
 	"net"
 	"strings"
@@ -193,16 +194,20 @@ func (c *Common) TcpPing(idx int) int {
 // (IPv4 vs IPv6) based on DialerIPv6. If the IP is invalid or mismatched, it falls back to default dialing.
 // The returned function signature is func(string) (net.Conn, error) suitable for net.Dialer.Dial.
 func (c *Common) GetDialFunc(network string, timeout time.Duration) func(string) (net.Conn, error) {
+	ctx := c.Ctx
+	if ctx == nil {
+		ctx = context.Background()
+	}
 	return func(addr string) (net.Conn, error) {
 		dialer := &net.Dialer{Timeout: timeout}
 
 		if c.DialerIP == DefaultDialerIP {
-			return dialer.Dial(network, addr)
+			return dialer.DialContext(ctx, network, addr)
 		}
 
 		parsedIP := net.ParseIP(c.DialerIP)
 		if parsedIP == nil {
-			return dialer.Dial(network, addr)
+			return dialer.DialContext(ctx, network, addr)
 		}
 
 		if c.DialerIPv6 != (parsedIP.To4() == nil) {
@@ -215,7 +220,7 @@ func (c *Common) GetDialFunc(network string, timeout time.Duration) func(string)
 			dialer.LocalAddr = &net.UDPAddr{IP: parsedIP}
 		}
 
-		conn, err := dialer.Dial(network, addr)
+		conn, err := dialer.DialContext(ctx, network, addr)
 		if err != nil {
 			return nil, fmt.Errorf("GetDialFunc: failed to dial with IP %s: %w", c.DialerIP, err)
 		}
@@ -250,7 +255,11 @@ func (c *Common) DialWithRotation(network string, timeout time.Duration) (net.Co
 
 	if addrCount == 1 {
 		if addr := getAddr(0); addr != "" {
-			return tryDial(addr)
+			conn, err := tryDial(addr)
+			if err != nil {
+				return nil, err
+			}
+			return c.bindRunConn(conn), nil
 		}
 		return nil, fmt.Errorf("DialWithRotation: invalid target address")
 	}
@@ -283,7 +292,7 @@ func (c *Common) DialWithRotation(network string, timeout time.Duration) (net.Co
 			if i > 0 && (c.LBStrategy == "1" || c.LBStrategy == "2") {
 				atomic.StoreUint64(&c.TargetIdx, uint64(targetIdx))
 			}
-			return conn, nil
+			return c.bindRunConn(conn), nil
 		}
 		lastErr = err
 	}

@@ -1,0 +1,25 @@
+2026-10-25 01:23:01.863  DEBUG  Init log level: DEBUG
+2026-10-25 01:23:01.863  INFO  TLS code-1: RAM cert with TLS 1.3
+2026-10-25 01:23:01.864  INFO  Server started: server://[REDACTED]@127.0.0.1:43499/127.0.0.1:58769?dns=5m0s&lbs=0&max=8&mode=2&type=0&dial=auto&read=0s&rate=0&slot=65536&proxy=0&block=0&notcp=0&noudp=0
+2026-10-25 01:23:01.865  INFO  Pending tunnel handshake...
+2026-10-25 01:23:01.865  INFO  TLS code-1: RAM cert prepared with sha256 fingerprint: dc7f5090e6f4bced697b7acc7c82f7130c9ee4206f6b6581e449025c65765ce6
+2026-10-25 01:23:01.899  INFO  Sending tunnel config: FLOW=+|MAX=8|TLS=1|TYPE=0
+2026-10-25 01:23:01.900  INFO  TLS code-1: RAM cert regenerated with TLS 1.3
+2026-10-25 01:23:01.900  INFO  Getting tunnel pool ready...
+2026-10-25 01:23:02.050  INFO  Marking tunnel handshake as complete in 185ms
+2026-10-25 01:23:02.051  INFO  TLS code-1: RAM cert fingerprint verifying...
+2026-10-25 01:23:02.051  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=1|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-25 01:23:07.051  DEBUG  TLS code-1: verify signal: cid feef2675 -> 127.0.0.1:54742
+2026-10-25 01:23:07.051  DEBUG  TLS verify signal: cid feef2675 <- 127.0.0.1:54742
+2026-10-25 01:23:07.051  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=2|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-25 01:23:12.052  ERROR  OutgoingVerify: request timeout: OutgoingGet: pool connection not found
+2026-10-25 01:23:12.052  ERROR  Server error: Start: tunnelControl failed: TunnelControl: context error: context canceled
+2026-10-25 01:23:12.052  DEBUG  Tunnel connection closed: pool active 2
+2026-10-25 01:23:12.052  DEBUG  Tunnel connection closed: 127.0.0.1:43499
+2026-10-25 01:23:12.052  DEBUG  Control connection closed: 127.0.0.1:43499
+2026-10-25 01:23:12.052  DEBUG  Tunnel listener closed: 127.0.0.1:43499
+2026-10-25 01:23:12.077  DEBUG  Tunnel connection closed: pool active 0
+2026-10-25 01:23:12.078  DEBUG  Tunnel connection closed: 127.0.0.1:43499
+2026-10-25 01:23:12.078  DEBUG  Control connection closed: 127.0.0.1:43499
+2026-10-25 01:23:12.078  DEBUG  Tunnel listener closed: 127.0.0.1:43499
+2026-10-25 01:23:12.078  INFO  Server shutdown complete

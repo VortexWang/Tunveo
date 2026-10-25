@@ -1,0 +1,2719 @@
+{
+  "runner_sha256": "5ee64eb1af2091fa6bf81fe2e4b9381c9eaaf6ac9851646e881bc9ce9644f82c",
+  "schema_version": 2,
+  "status": "failed",
+  "started_at": "2026-10-25T08:21:57.743779+00:00",
+  "environment": {
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+    "machine": "x86_64",
+    "python": "3.12.14"
+  },
+  "binaries": {
+    "tunveo": {
+      "path": "BUILD/tunveo-tnv003",
+      "sha256": "c1b3026908974f36146d376cbe0f179acf353ede14aa2c01e85d22a84e6eb8bc",
+      "version": "tunveo-dev linux/amd64",
+      "version_exit_code": 0,
+      "go_build_info": "BUILD/tunveo-tnv003: go1.26.10\n\tpath\tgithub.com/VortexWang/Tunveo/cmd/tunveo\n\tmod\tgithub.com/VortexWang/Tunveo\tv1.17.1-0.20261025074122-0e5b551d0e2e\t\n\tdep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\n\tdep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\n\tdep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\n\tdep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\n\tdep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\n\tdep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\n\tbuild\t-buildmode=exe\n\tbuild\t-compiler=gc\n\tbuild\t-trimpath=true\n\tbuild\tCGO_ENABLED=1\n\tbuild\tGOARCH=amd64\n\tbuild\tGOOS=linux\n\tbuild\tGOAMD64=v1\n\tbuild\tvcs=git\n\tbuild\tvcs.revision=0e5b551d0e2e7a0ea2f822512abde349bb57e7ed\n\tbuild\tvcs.time=2026-10-25T07:41:22Z\n\tbuild\tvcs.modified=false",
+      "go_build_info_exit_code": 0
+    },
+    "upstream": {
+      "path": "BUILD/upstream-nodepass-m1",
+      "sha256": "5ee15c1c86da68fe0823f83f64a92d3d3d6dc18bf5f6d1e7065809f13afabfd4",
+      "version": "nodepass-dev linux/amd64",
+      "version_exit_code": 0,
+      "go_build_info": "BUILD/upstream-nodepass-m1: go1.26.5\n\tpath\tgithub.com/NodePassProject/nodepass/cmd/nodepass\n\tmod\tgithub.com/NodePassProject/nodepass\tv1.17.0\t\n\tdep\tgithub.com/NodePassProject/nph2\tv1.1.1\th1:Zci9/gLkq/SSeoapRlDoztfDNmoxoqhnSapsCg885G4=\n\tdep\tgithub.com/NodePassProject/npws\tv1.1.1\th1:sgFT5BoGVs7T22AYm5j6eNzsQVqIes6DfKAnV0m8OUo=\n\tdep\tgithub.com/NodePassProject/pool\tv1.1.1\th1:lB2VOugaRUcnBWPRw5bEGLSfS1KvmtXeB8RAoG265Ro=\n\tdep\tgithub.com/NodePassProject/quic\tv1.1.1\th1:fJhu2bwsEtAX6XekDVyViGSxh/6KZmtqbQEE8RhdQbk=\n\tdep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\n\tdep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\n\tdep\tgolang.org/x/crypto\tv0.53.0\th1:QZ4Muo8THX6CizN2vPPd5fBGHyogrdK9fG4wLPFUsto=\n\tdep\tgolang.org/x/net\tv0.56.0\th1:Rw8j/hFzGvJUZwNBXnAtf5sVDVt+65SK2C7IxCxZt5o=\n\tdep\tgolang.org/x/sys\tv0.46.0\th1:noSf2Fq6F8DBgS+LysIkx7rIExoNHJsxOAtPp4rthXw=\n\tdep\tgolang.org/x/text\tv0.39.0\th1:UbZz4pLOvn600D6Oh6GGEI6VAmndrEBLv8/6BEXzyus=\n\tbuild\t-buildmode=exe\n\tbuild\t-compiler=gc\n\tbuild\t-trimpath=true\n\tbuild\tCGO_ENABLED=1\n\tbuild\tGOARCH=amd64\n\tbuild\tGOOS=linux\n\tbuild\tGOAMD64=v1\n\tbuild\tvcs=git\n\tbuild\tvcs.revision=114345043d9608e1e24e783a270cde75193e4f42\n\tbuild\tvcs.time=2026-07-12T10:43:27Z\n\tbuild\tvcs.modified=false",
+      "go_build_info_exit_code": 0
+    }
+  },
+  "settings": {
+    "tls": 1,
+    "log_level": "debug",
+    "application_attempts": 1,
+    "readiness": "observed log milestones",
+    "timeouts": {
+      "startup_timeout": 5,
+      "phase_timeout": 15,
+      "io_timeout": 3,
+      "cleanup_timeout": 5
+    }
+  },
+  "results": [
+    {
+      "id": "0001",
+      "pair_server_client": "upstream/tunveo",
+      "transport": 0,
+      "mode": 2,
+      "tls": 1,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 1,
+      "status": "passed",
+      "phases": {
+        "server_startup": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            531
+          ],
+          "duration_seconds": 0.0261
+        },
+        "tunnel_handshake": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            748,
+            384
+          ],
+          "duration_seconds": 0.0261
+        },
+        "pool_ready": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1014,
+            650
+          ],
+          "duration_seconds": 0.0503
+        },
+        "certificate_verification": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1452,
+            1088
+          ],
+          "duration_seconds": 4.9892
+        },
+        "tcp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 32768,
+          "received_bytes": 32768,
+          "duration_seconds": 0.0012
+        },
+        "udp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 512,
+          "received_bytes": 512,
+          "duration_seconds": 0.6521
+        },
+        "cleanup": {
+          "status": "passed",
+          "forced_kill": false,
+          "duration_seconds": 0.0039
+        }
+      },
+      "processes": [
+        {
+          "role": "server",
+          "pid": 30
+        },
+        {
+          "role": "client",
+          "pid": 41
+        }
+      ],
+      "logs": {
+        "server": "0001/server.log",
+        "client": "0001/client.log"
+      },
+      "ports": {
+        "echo": 47029,
+        "front": 53017,
+        "tunnel": 34833
+      },
+      "commands": [
+        [
+          "BUILD/upstream-nodepass-m1",
+          "server://[REDACTED]@127.0.0.1:34833/127.0.0.1:47029?mode=2&type=0&tls=1&max=8&log=debug"
+        ],
+        [
+          "BUILD/tunveo-tnv003",
+          "client://[REDACTED]@127.0.0.1:34833/127.0.0.1:53017?mode=2&min=2&log=debug"
+        ]
+      ],
+      "cleanup": [
+        {
+          "pid": 30,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 41,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "observations": {
+        "server": {
+          "credential_url_observed": true,
+          "initiated_verification_ids": [
+            "c0cbc2fa"
+          ],
+          "received_verification_ids": [
+            "1162702c"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        },
+        "client": {
+          "credential_url_observed": false,
+          "initiated_verification_ids": [
+            "1162702c"
+          ],
+          "received_verification_ids": [
+            "c0cbc2fa"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        }
+      }
+    },
+    {
+      "id": "0002",
+      "pair_server_client": "upstream/tunveo",
+      "transport": 0,
+      "mode": 2,
+      "tls": 1,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 2,
+      "status": "passed",
+      "phases": {
+        "server_startup": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            531
+          ],
+          "duration_seconds": 0.0263
+        },
+        "tunnel_handshake": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            748,
+            384
+          ],
+          "duration_seconds": 0.0262
+        },
+        "pool_ready": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1015,
+            651
+          ],
+          "duration_seconds": 0.151
+        },
+        "certificate_verification": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1453,
+            1089
+          ],
+          "duration_seconds": 4.9861
+        },
+        "tcp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 32768,
+          "received_bytes": 32768,
+          "duration_seconds": 0.0013
+        },
+        "udp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 512,
+          "received_bytes": 512,
+          "duration_seconds": 0.5513
+        },
+        "cleanup": {
+          "status": "passed",
+          "forced_kill": false,
+          "duration_seconds": 0.0035
+        }
+      },
+      "processes": [
+        {
+          "role": "server",
+          "pid": 55
+        },
+        {
+          "role": "client",
+          "pid": 67
+        }
+      ],
+      "logs": {
+        "server": "0002/server.log",
+        "client": "0002/client.log"
+      },
+      "ports": {
+        "echo": 43853,
+        "front": 47553,
+        "tunnel": 48687
+      },
+      "commands": [
+        [
+          "BUILD/upstream-nodepass-m1",
+          "server://[REDACTED]@127.0.0.1:48687/127.0.0.1:43853?mode=2&type=0&tls=1&max=8&log=debug"
+        ],
+        [
+          "BUILD/tunveo-tnv003",
+          "client://[REDACTED]@127.0.0.1:48687/127.0.0.1:47553?mode=2&min=2&log=debug"
+        ]
+      ],
+      "cleanup": [
+        {
+          "pid": 55,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 67,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "observations": {
+        "server": {
+          "credential_url_observed": true,
+          "initiated_verification_ids": [
+            "20abd082"
+          ],
+          "received_verification_ids": [
+            "0afae82d"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        },
+        "client": {
+          "credential_url_observed": false,
+          "initiated_verification_ids": [
+            "0afae82d"
+          ],
+          "received_verification_ids": [
+            "20abd082"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        }
+      }
+    },
+    {
+      "id": "0003",
+      "pair_server_client": "upstream/tunveo",
+      "transport": 0,
+      "mode": 2,
+      "tls": 1,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 3,
+      "status": "passed",
+      "phases": {
+        "server_startup": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            531
+          ],
+          "duration_seconds": 0.0261
+        },
+        "tunnel_handshake": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            748,
+            384
+          ],
+          "duration_seconds": 0.0266
+        },
+        "pool_ready": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1014,
+            650
+          ],
+          "duration_seconds": 0.0504
+        },
+        "certificate_verification": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1452,
+            1088
+          ],
+          "duration_seconds": 4.9863
+        },
+        "tcp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 32768,
+          "received_bytes": 32768,
+          "duration_seconds": 0.0013
+        },
+        "udp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 512,
+          "received_bytes": 512,
+          "duration_seconds": 0.5455
+        },
+        "cleanup": {
+          "status": "passed",
+          "forced_kill": false,
+          "duration_seconds": 0.0037
+        }
+      },
+      "processes": [
+        {
+          "role": "server",
+          "pid": 80
+        },
+        {
+          "role": "client",
+          "pid": 91
+        }
+      ],
+      "logs": {
+        "server": "0003/server.log",
+        "client": "0003/client.log"
+      },
+      "ports": {
+        "echo": 48117,
+        "front": 57939,
+        "tunnel": 33029
+      },
+      "commands": [
+        [
+          "BUILD/upstream-nodepass-m1",
+          "server://[REDACTED]@127.0.0.1:33029/127.0.0.1:48117?mode=2&type=0&tls=1&max=8&log=debug"
+        ],
+        [
+          "BUILD/tunveo-tnv003",
+          "client://[REDACTED]@127.0.0.1:33029/127.0.0.1:57939?mode=2&min=2&log=debug"
+        ]
+      ],
+      "cleanup": [
+        {
+          "pid": 80,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 91,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "observations": {
+        "server": {
+          "credential_url_observed": true,
+          "initiated_verification_ids": [
+            "7feccfff"
+          ],
+          "received_verification_ids": [
+            "f872eebc"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        },
+        "client": {
+          "credential_url_observed": false,
+          "initiated_verification_ids": [
+            "f872eebc"
+          ],
+          "received_verification_ids": [
+            "7feccfff"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        }
+      }
+    },
+    {
+      "id": "0004",
+      "pair_server_client": "upstream/tunveo",
+      "transport": 0,
+      "mode": 2,
+      "tls": 1,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 4,
+      "status": "passed",
+      "phases": {
+        "server_startup": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            531
+          ],
+          "duration_seconds": 0.0278
+        },
+        "tunnel_handshake": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            748,
+            384
+          ],
+          "duration_seconds": 0.0265
+        },
+        "pool_ready": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1015,
+            651
+          ],
+          "duration_seconds": 0.151
+        },
+        "certificate_verification": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1453,
+            1089
+          ],
+          "duration_seconds": 4.9889
+        },
+        "tcp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 32768,
+          "received_bytes": 32768,
+          "duration_seconds": 0.0012
+        },
+        "udp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 512,
+          "received_bytes": 512,
+          "duration_seconds": 0.5462
+        },
+        "cleanup": {
+          "status": "passed",
+          "forced_kill": false,
+          "duration_seconds": 0.0041
+        }
+      },
+      "processes": [
+        {
+          "role": "server",
+          "pid": 105
+        },
+        {
+          "role": "client",
+          "pid": 117
+        }
+      ],
+      "logs": {
+        "server": "0004/server.log",
+        "client": "0004/client.log"
+      },
+      "ports": {
+        "echo": 36983,
+        "front": 50249,
+        "tunnel": 46293
+      },
+      "commands": [
+        [
+          "BUILD/upstream-nodepass-m1",
+          "server://[REDACTED]@127.0.0.1:46293/127.0.0.1:36983?mode=2&type=0&tls=1&max=8&log=debug"
+        ],
+        [
+          "BUILD/tunveo-tnv003",
+          "client://[REDACTED]@127.0.0.1:46293/127.0.0.1:50249?mode=2&min=2&log=debug"
+        ]
+      ],
+      "cleanup": [
+        {
+          "pid": 105,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 117,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "observations": {
+        "server": {
+          "credential_url_observed": true,
+          "initiated_verification_ids": [
+            "349821b0"
+          ],
+          "received_verification_ids": [
+            "808dc56d"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        },
+        "client": {
+          "credential_url_observed": false,
+          "initiated_verification_ids": [
+            "808dc56d"
+          ],
+          "received_verification_ids": [
+            "349821b0"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        }
+      }
+    },
+    {
+      "id": "0005",
+      "pair_server_client": "upstream/tunveo",
+      "transport": 0,
+      "mode": 2,
+      "tls": 1,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 5,
+      "status": "passed",
+      "phases": {
+        "server_startup": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            531
+          ],
+          "duration_seconds": 0.0271
+        },
+        "tunnel_handshake": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            748,
+            384
+          ],
+          "duration_seconds": 0.0269
+        },
+        "pool_ready": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1015,
+            651
+          ],
+          "duration_seconds": 0.1512
+        },
+        "certificate_verification": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1453,
+            1089
+          ],
+          "duration_seconds": 4.9863
+        },
+        "tcp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 32768,
+          "received_bytes": 32768,
+          "duration_seconds": 0.0012
+        },
+        "udp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 512,
+          "received_bytes": 512,
+          "duration_seconds": 0.546
+        },
+        "cleanup": {
+          "status": "passed",
+          "forced_kill": false,
+          "duration_seconds": 0.0037
+        }
+      },
+      "processes": [
+        {
+          "role": "server",
+          "pid": 131
+        },
+        {
+          "role": "client",
+          "pid": 141
+        }
+      ],
+      "logs": {
+        "server": "0005/server.log",
+        "client": "0005/client.log"
+      },
+      "ports": {
+        "echo": 45789,
+        "front": 52199,
+        "tunnel": 41445
+      },
+      "commands": [
+        [
+          "BUILD/upstream-nodepass-m1",
+          "server://[REDACTED]@127.0.0.1:41445/127.0.0.1:45789?mode=2&type=0&tls=1&max=8&log=debug"
+        ],
+        [
+          "BUILD/tunveo-tnv003",
+          "client://[REDACTED]@127.0.0.1:41445/127.0.0.1:52199?mode=2&min=2&log=debug"
+        ]
+      ],
+      "cleanup": [
+        {
+          "pid": 131,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 141,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "observations": {
+        "server": {
+          "credential_url_observed": true,
+          "initiated_verification_ids": [
+            "84836e53"
+          ],
+          "received_verification_ids": [
+            "d116f56b"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        },
+        "client": {
+          "credential_url_observed": false,
+          "initiated_verification_ids": [
+            "d116f56b"
+          ],
+          "received_verification_ids": [
+            "84836e53"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        }
+      }
+    },
+    {
+      "id": "0006",
+      "pair_server_client": "upstream/tunveo",
+      "transport": 0,
+      "mode": 2,
+      "tls": 1,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 6,
+      "status": "passed",
+      "phases": {
+        "server_startup": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            531
+          ],
+          "duration_seconds": 0.0268
+        },
+        "tunnel_handshake": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            748,
+            384
+          ],
+          "duration_seconds": 0.0269
+        },
+        "pool_ready": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1015,
+            651
+          ],
+          "duration_seconds": 0.1511
+        },
+        "certificate_verification": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1453,
+            1089
+          ],
+          "duration_seconds": 4.9878
+        },
+        "tcp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 32768,
+          "received_bytes": 32768,
+          "duration_seconds": 0.0013
+        },
+        "udp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 512,
+          "received_bytes": 512,
+          "duration_seconds": 0.5457
+        },
+        "cleanup": {
+          "status": "passed",
+          "forced_kill": false,
+          "duration_seconds": 0.0036
+        }
+      },
+      "processes": [
+        {
+          "role": "server",
+          "pid": 156
+        },
+        {
+          "role": "client",
+          "pid": 167
+        }
+      ],
+      "logs": {
+        "server": "0006/server.log",
+        "client": "0006/client.log"
+      },
+      "ports": {
+        "echo": 52663,
+        "front": 42029,
+        "tunnel": 51283
+      },
+      "commands": [
+        [
+          "BUILD/upstream-nodepass-m1",
+          "server://[REDACTED]@127.0.0.1:51283/127.0.0.1:52663?mode=2&type=0&tls=1&max=8&log=debug"
+        ],
+        [
+          "BUILD/tunveo-tnv003",
+          "client://[REDACTED]@127.0.0.1:51283/127.0.0.1:42029?mode=2&min=2&log=debug"
+        ]
+      ],
+      "cleanup": [
+        {
+          "pid": 156,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 167,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "observations": {
+        "server": {
+          "credential_url_observed": true,
+          "initiated_verification_ids": [
+            "f7d5bf29"
+          ],
+          "received_verification_ids": [
+            "1db47a4b"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        },
+        "client": {
+          "credential_url_observed": false,
+          "initiated_verification_ids": [
+            "1db47a4b"
+          ],
+          "received_verification_ids": [
+            "f7d5bf29"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        }
+      }
+    },
+    {
+      "id": "0007",
+      "pair_server_client": "upstream/tunveo",
+      "transport": 0,
+      "mode": 2,
+      "tls": 1,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 7,
+      "status": "passed",
+      "phases": {
+        "server_startup": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            531
+          ],
+          "duration_seconds": 0.0275
+        },
+        "tunnel_handshake": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            748,
+            384
+          ],
+          "duration_seconds": 0.0271
+        },
+        "pool_ready": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1014,
+            650
+          ],
+          "duration_seconds": 0.0504
+        },
+        "certificate_verification": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1452,
+            1088
+          ],
+          "duration_seconds": 4.9869
+        },
+        "tcp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 32768,
+          "received_bytes": 32768,
+          "duration_seconds": 0.0012
+        },
+        "udp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 512,
+          "received_bytes": 512,
+          "duration_seconds": 0.5441
+        },
+        "cleanup": {
+          "status": "passed",
+          "forced_kill": false,
+          "duration_seconds": 0.003
+        }
+      },
+      "processes": [
+        {
+          "role": "server",
+          "pid": 181
+        },
+        {
+          "role": "client",
+          "pid": 193
+        }
+      ],
+      "logs": {
+        "server": "0007/server.log",
+        "client": "0007/client.log"
+      },
+      "ports": {
+        "echo": 53189,
+        "front": 50009,
+        "tunnel": 46019
+      },
+      "commands": [
+        [
+          "BUILD/upstream-nodepass-m1",
+          "server://[REDACTED]@127.0.0.1:46019/127.0.0.1:53189?mode=2&type=0&tls=1&max=8&log=debug"
+        ],
+        [
+          "BUILD/tunveo-tnv003",
+          "client://[REDACTED]@127.0.0.1:46019/127.0.0.1:50009?mode=2&min=2&log=debug"
+        ]
+      ],
+      "cleanup": [
+        {
+          "pid": 181,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 193,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "observations": {
+        "server": {
+          "credential_url_observed": true,
+          "initiated_verification_ids": [
+            "56fc4721"
+          ],
+          "received_verification_ids": [
+            "6e3c40bd"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        },
+        "client": {
+          "credential_url_observed": false,
+          "initiated_verification_ids": [
+            "6e3c40bd"
+          ],
+          "received_verification_ids": [
+            "56fc4721"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        }
+      }
+    },
+    {
+      "id": "0008",
+      "pair_server_client": "upstream/tunveo",
+      "transport": 0,
+      "mode": 2,
+      "tls": 1,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 8,
+      "status": "passed",
+      "phases": {
+        "server_startup": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            531
+          ],
+          "duration_seconds": 0.0271
+        },
+        "tunnel_handshake": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            748,
+            384
+          ],
+          "duration_seconds": 0.0272
+        },
+        "pool_ready": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1015,
+            651
+          ],
+          "duration_seconds": 0.1512
+        },
+        "certificate_verification": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1453,
+            1089
+          ],
+          "duration_seconds": 4.9883
+        },
+        "tcp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 32768,
+          "received_bytes": 32768,
+          "duration_seconds": 0.0014
+        },
+        "udp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 512,
+          "received_bytes": 512,
+          "duration_seconds": 0.5405
+        },
+        "cleanup": {
+          "status": "passed",
+          "forced_kill": false,
+          "duration_seconds": 0.0027
+        }
+      },
+      "processes": [
+        {
+          "role": "server",
+          "pid": 207
+        },
+        {
+          "role": "client",
+          "pid": 217
+        }
+      ],
+      "logs": {
+        "server": "0008/server.log",
+        "client": "0008/client.log"
+      },
+      "ports": {
+        "echo": 60503,
+        "front": 51689,
+        "tunnel": 47599
+      },
+      "commands": [
+        [
+          "BUILD/upstream-nodepass-m1",
+          "server://[REDACTED]@127.0.0.1:47599/127.0.0.1:60503?mode=2&type=0&tls=1&max=8&log=debug"
+        ],
+        [
+          "BUILD/tunveo-tnv003",
+          "client://[REDACTED]@127.0.0.1:47599/127.0.0.1:51689?mode=2&min=2&log=debug"
+        ]
+      ],
+      "cleanup": [
+        {
+          "pid": 207,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 217,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "observations": {
+        "server": {
+          "credential_url_observed": true,
+          "initiated_verification_ids": [
+            "ccca6920"
+          ],
+          "received_verification_ids": [
+            "3c210e97"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        },
+        "client": {
+          "credential_url_observed": false,
+          "initiated_verification_ids": [
+            "3c210e97"
+          ],
+          "received_verification_ids": [
+            "ccca6920"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        }
+      }
+    },
+    {
+      "id": "0009",
+      "pair_server_client": "upstream/tunveo",
+      "transport": 0,
+      "mode": 2,
+      "tls": 1,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 9,
+      "status": "passed",
+      "phases": {
+        "server_startup": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            531
+          ],
+          "duration_seconds": 0.0269
+        },
+        "tunnel_handshake": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            748,
+            384
+          ],
+          "duration_seconds": 0.0279
+        },
+        "pool_ready": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1015,
+            651
+          ],
+          "duration_seconds": 0.1512
+        },
+        "certificate_verification": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1453,
+            1089
+          ],
+          "duration_seconds": 4.9907
+        },
+        "tcp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 32768,
+          "received_bytes": 32768,
+          "duration_seconds": 0.002
+        },
+        "udp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 512,
+          "received_bytes": 512,
+          "duration_seconds": 0.5337
+        },
+        "cleanup": {
+          "status": "passed",
+          "forced_kill": false,
+          "duration_seconds": 0.0036
+        }
+      },
+      "processes": [
+        {
+          "role": "server",
+          "pid": 232
+        },
+        {
+          "role": "client",
+          "pid": 242
+        }
+      ],
+      "logs": {
+        "server": "0009/server.log",
+        "client": "0009/client.log"
+      },
+      "ports": {
+        "echo": 46089,
+        "front": 42229,
+        "tunnel": 51123
+      },
+      "commands": [
+        [
+          "BUILD/upstream-nodepass-m1",
+          "server://[REDACTED]@127.0.0.1:51123/127.0.0.1:46089?mode=2&type=0&tls=1&max=8&log=debug"
+        ],
+        [
+          "BUILD/tunveo-tnv003",
+          "client://[REDACTED]@127.0.0.1:51123/127.0.0.1:42229?mode=2&min=2&log=debug"
+        ]
+      ],
+      "cleanup": [
+        {
+          "pid": 232,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 242,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "observations": {
+        "server": {
+          "credential_url_observed": true,
+          "initiated_verification_ids": [
+            "aa7b51e1"
+          ],
+          "received_verification_ids": [
+            "9c4d17c5"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        },
+        "client": {
+          "credential_url_observed": false,
+          "initiated_verification_ids": [
+            "9c4d17c5"
+          ],
+          "received_verification_ids": [
+            "aa7b51e1"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        }
+      }
+    },
+    {
+      "id": "0010",
+      "pair_server_client": "upstream/tunveo",
+      "transport": 0,
+      "mode": 2,
+      "tls": 1,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 10,
+      "status": "passed",
+      "phases": {
+        "server_startup": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            531
+          ],
+          "duration_seconds": 0.0275
+        },
+        "tunnel_handshake": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            748,
+            384
+          ],
+          "duration_seconds": 0.0272
+        },
+        "pool_ready": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1014,
+            650
+          ],
+          "duration_seconds": 0.0504
+        },
+        "certificate_verification": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1452,
+            1088
+          ],
+          "duration_seconds": 4.9927
+        },
+        "tcp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 32768,
+          "received_bytes": 32768,
+          "duration_seconds": 0.0016
+        },
+        "udp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 512,
+          "received_bytes": 512,
+          "duration_seconds": 0.5322
+        },
+        "cleanup": {
+          "status": "passed",
+          "forced_kill": false,
+          "duration_seconds": 0.0036
+        }
+      },
+      "processes": [
+        {
+          "role": "server",
+          "pid": 256
+        },
+        {
+          "role": "client",
+          "pid": 267
+        }
+      ],
+      "logs": {
+        "server": "0010/server.log",
+        "client": "0010/client.log"
+      },
+      "ports": {
+        "echo": 34319,
+        "front": 39897,
+        "tunnel": 58205
+      },
+      "commands": [
+        [
+          "BUILD/upstream-nodepass-m1",
+          "server://[REDACTED]@127.0.0.1:58205/127.0.0.1:34319?mode=2&type=0&tls=1&max=8&log=debug"
+        ],
+        [
+          "BUILD/tunveo-tnv003",
+          "client://[REDACTED]@127.0.0.1:58205/127.0.0.1:39897?mode=2&min=2&log=debug"
+        ]
+      ],
+      "cleanup": [
+        {
+          "pid": 256,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 267,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "observations": {
+        "server": {
+          "credential_url_observed": true,
+          "initiated_verification_ids": [
+            "7ba22f65"
+          ],
+          "received_verification_ids": [
+            "18ff4771"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        },
+        "client": {
+          "credential_url_observed": false,
+          "initiated_verification_ids": [
+            "18ff4771"
+          ],
+          "received_verification_ids": [
+            "7ba22f65"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        }
+      }
+    },
+    {
+      "id": "0011",
+      "pair_server_client": "upstream/upstream",
+      "transport": 0,
+      "mode": 2,
+      "tls": 1,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 1,
+      "status": "passed",
+      "phases": {
+        "server_startup": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            531
+          ],
+          "duration_seconds": 0.0282
+        },
+        "tunnel_handshake": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            748,
+            512
+          ],
+          "duration_seconds": 0.0277
+        },
+        "pool_ready": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1014,
+            778
+          ],
+          "duration_seconds": 0.0505
+        },
+        "certificate_verification": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1452,
+            1216
+          ],
+          "duration_seconds": 4.9983
+        },
+        "tcp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 32768,
+          "received_bytes": 32768,
+          "duration_seconds": 0.0014
+        },
+        "udp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 512,
+          "received_bytes": 512,
+          "duration_seconds": 0.5265
+        },
+        "cleanup": {
+          "status": "passed",
+          "forced_kill": false,
+          "duration_seconds": 0.0036
+        }
+      },
+      "processes": [
+        {
+          "role": "server",
+          "pid": 281
+        },
+        {
+          "role": "client",
+          "pid": 294
+        }
+      ],
+      "logs": {
+        "server": "0011/server.log",
+        "client": "0011/client.log"
+      },
+      "ports": {
+        "echo": 38551,
+        "front": 41145,
+        "tunnel": 45507
+      },
+      "commands": [
+        [
+          "BUILD/upstream-nodepass-m1",
+          "server://[REDACTED]@127.0.0.1:45507/127.0.0.1:38551?mode=2&type=0&tls=1&max=8&log=debug"
+        ],
+        [
+          "BUILD/upstream-nodepass-m1",
+          "client://[REDACTED]@127.0.0.1:45507/127.0.0.1:41145?mode=2&min=2&log=debug"
+        ]
+      ],
+      "cleanup": [
+        {
+          "pid": 281,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 294,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "observations": {
+        "server": {
+          "credential_url_observed": true,
+          "initiated_verification_ids": [
+            "fe21089c"
+          ],
+          "received_verification_ids": [
+            "f138c695"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        },
+        "client": {
+          "credential_url_observed": true,
+          "initiated_verification_ids": [
+            "f138c695"
+          ],
+          "received_verification_ids": [
+            "fe21089c"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        }
+      }
+    },
+    {
+      "id": "0012",
+      "pair_server_client": "upstream/upstream",
+      "transport": 0,
+      "mode": 2,
+      "tls": 1,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 2,
+      "status": "failed",
+      "phases": {
+        "server_startup": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            531
+          ],
+          "duration_seconds": 0.0275
+        },
+        "tunnel_handshake": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            748,
+            512
+          ],
+          "duration_seconds": 0.0277
+        },
+        "pool_ready": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1015,
+            779
+          ],
+          "duration_seconds": 0.1511
+        },
+        "certificate_verification": {
+          "status": "failed",
+          "attempts": 1,
+          "error": "engine failure before phase completion: OutgoingVerify: request timeout: OutgoingGet: pool connection not found",
+          "duration_seconds": 9.9868
+        },
+        "tcp_echo": {
+          "status": "not_run"
+        },
+        "udp_echo": {
+          "status": "not_run"
+        },
+        "cleanup": {
+          "status": "passed",
+          "forced_kill": false,
+          "duration_seconds": 0.0036
+        }
+      },
+      "processes": [
+        {
+          "role": "server",
+          "pid": 308
+        },
+        {
+          "role": "client",
+          "pid": 318
+        }
+      ],
+      "logs": {
+        "server": "0012/server.log",
+        "client": "0012/client.log"
+      },
+      "ports": {
+        "echo": 58769,
+        "front": 39987,
+        "tunnel": 43499
+      },
+      "commands": [
+        [
+          "BUILD/upstream-nodepass-m1",
+          "server://[REDACTED]@127.0.0.1:43499/127.0.0.1:58769?mode=2&type=0&tls=1&max=8&log=debug"
+        ],
+        [
+          "BUILD/upstream-nodepass-m1",
+          "client://[REDACTED]@127.0.0.1:43499/127.0.0.1:39987?mode=2&min=2&log=debug"
+        ]
+      ],
+      "failed_phase": "certificate_verification",
+      "error": "engine failure before phase completion: OutgoingVerify: request timeout: OutgoingGet: pool connection not found",
+      "cleanup": [
+        {
+          "pid": 308,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 318,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "observations": {
+        "server": {
+          "credential_url_observed": true,
+          "initiated_verification_ids": [
+            "feef2675"
+          ],
+          "received_verification_ids": [
+            "feef2675"
+          ],
+          "verification_timeout": true,
+          "restart_count": 0
+        },
+        "client": {
+          "credential_url_observed": true,
+          "initiated_verification_ids": [
+            "feef2675"
+          ],
+          "received_verification_ids": [
+            "feef2675"
+          ],
+          "verification_timeout": true,
+          "restart_count": 0
+        }
+      }
+    },
+    {
+      "id": "0013",
+      "pair_server_client": "upstream/upstream",
+      "transport": 0,
+      "mode": 2,
+      "tls": 1,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 3,
+      "status": "passed",
+      "phases": {
+        "server_startup": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            531
+          ],
+          "duration_seconds": 0.0279
+        },
+        "tunnel_handshake": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            748,
+            512
+          ],
+          "duration_seconds": 0.0277
+        },
+        "pool_ready": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1015,
+            779
+          ],
+          "duration_seconds": 0.1513
+        },
+        "certificate_verification": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1453,
+            1217
+          ],
+          "duration_seconds": 4.9925
+        },
+        "tcp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 32768,
+          "received_bytes": 32768,
+          "duration_seconds": 0.0422
+        },
+        "udp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 512,
+          "received_bytes": 512,
+          "duration_seconds": 0.4881
+        },
+        "cleanup": {
+          "status": "passed",
+          "forced_kill": false,
+          "duration_seconds": 0.0057
+        }
+      },
+      "processes": [
+        {
+          "role": "server",
+          "pid": 330
+        },
+        {
+          "role": "client",
+          "pid": 340
+        }
+      ],
+      "logs": {
+        "server": "0013/server.log",
+        "client": "0013/client.log"
+      },
+      "ports": {
+        "echo": 52687,
+        "front": 48335,
+        "tunnel": 46641
+      },
+      "commands": [
+        [
+          "BUILD/upstream-nodepass-m1",
+          "server://[REDACTED]@127.0.0.1:46641/127.0.0.1:52687?mode=2&type=0&tls=1&max=8&log=debug"
+        ],
+        [
+          "BUILD/upstream-nodepass-m1",
+          "client://[REDACTED]@127.0.0.1:46641/127.0.0.1:48335?mode=2&min=2&log=debug"
+        ]
+      ],
+      "cleanup": [
+        {
+          "pid": 330,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 340,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "observations": {
+        "server": {
+          "credential_url_observed": true,
+          "initiated_verification_ids": [
+            "58d3c5dd"
+          ],
+          "received_verification_ids": [
+            "b2aef58f"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        },
+        "client": {
+          "credential_url_observed": true,
+          "initiated_verification_ids": [
+            "b2aef58f"
+          ],
+          "received_verification_ids": [
+            "58d3c5dd"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        }
+      }
+    },
+    {
+      "id": "0014",
+      "pair_server_client": "upstream/upstream",
+      "transport": 0,
+      "mode": 2,
+      "tls": 1,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 4,
+      "status": "passed",
+      "phases": {
+        "server_startup": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            531
+          ],
+          "duration_seconds": 0.0278
+        },
+        "tunnel_handshake": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            748,
+            512
+          ],
+          "duration_seconds": 0.0285
+        },
+        "pool_ready": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            901,
+            665
+          ],
+          "duration_seconds": 0.0252
+        },
+        "certificate_verification": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1452,
+            1216
+          ],
+          "duration_seconds": 5.0194
+        },
+        "tcp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 32768,
+          "received_bytes": 32768,
+          "duration_seconds": 0.0443
+        },
+        "udp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 512,
+          "received_bytes": 512,
+          "duration_seconds": 0.4828
+        },
+        "cleanup": {
+          "status": "passed",
+          "forced_kill": false,
+          "duration_seconds": 0.0039
+        }
+      },
+      "processes": [
+        {
+          "role": "server",
+          "pid": 356
+        },
+        {
+          "role": "client",
+          "pid": 366
+        }
+      ],
+      "logs": {
+        "server": "0014/server.log",
+        "client": "0014/client.log"
+      },
+      "ports": {
+        "echo": 54387,
+        "front": 35183,
+        "tunnel": 57013
+      },
+      "commands": [
+        [
+          "BUILD/upstream-nodepass-m1",
+          "server://[REDACTED]@127.0.0.1:57013/127.0.0.1:54387?mode=2&type=0&tls=1&max=8&log=debug"
+        ],
+        [
+          "BUILD/upstream-nodepass-m1",
+          "client://[REDACTED]@127.0.0.1:57013/127.0.0.1:35183?mode=2&min=2&log=debug"
+        ]
+      ],
+      "cleanup": [
+        {
+          "pid": 356,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 366,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "observations": {
+        "server": {
+          "credential_url_observed": true,
+          "initiated_verification_ids": [
+            "6371dad7"
+          ],
+          "received_verification_ids": [
+            "5980a14d"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        },
+        "client": {
+          "credential_url_observed": true,
+          "initiated_verification_ids": [
+            "5980a14d"
+          ],
+          "received_verification_ids": [
+            "6371dad7"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        }
+      }
+    },
+    {
+      "id": "0015",
+      "pair_server_client": "upstream/upstream",
+      "transport": 0,
+      "mode": 2,
+      "tls": 1,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 5,
+      "status": "failed",
+      "phases": {
+        "server_startup": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            531
+          ],
+          "duration_seconds": 0.029
+        },
+        "tunnel_handshake": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            748,
+            512
+          ],
+          "duration_seconds": 0.0285
+        },
+        "pool_ready": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            902,
+            666
+          ],
+          "duration_seconds": 0.1259
+        },
+        "certificate_verification": {
+          "status": "failed",
+          "attempts": 1,
+          "error": "engine failure before phase completion: OutgoingVerify: request timeout: OutgoingGet: pool connection not found",
+          "duration_seconds": 10.0124
+        },
+        "tcp_echo": {
+          "status": "not_run"
+        },
+        "udp_echo": {
+          "status": "not_run"
+        },
+        "cleanup": {
+          "status": "passed",
+          "forced_kill": false,
+          "duration_seconds": 0.0035
+        }
+      },
+      "processes": [
+        {
+          "role": "server",
+          "pid": 379
+        },
+        {
+          "role": "client",
+          "pid": 392
+        }
+      ],
+      "logs": {
+        "server": "0015/server.log",
+        "client": "0015/client.log"
+      },
+      "ports": {
+        "echo": 51617,
+        "front": 49785,
+        "tunnel": 43335
+      },
+      "commands": [
+        [
+          "BUILD/upstream-nodepass-m1",
+          "server://[REDACTED]@127.0.0.1:43335/127.0.0.1:51617?mode=2&type=0&tls=1&max=8&log=debug"
+        ],
+        [
+          "BUILD/upstream-nodepass-m1",
+          "client://[REDACTED]@127.0.0.1:43335/127.0.0.1:49785?mode=2&min=2&log=debug"
+        ]
+      ],
+      "failed_phase": "certificate_verification",
+      "error": "engine failure before phase completion: OutgoingVerify: request timeout: OutgoingGet: pool connection not found",
+      "cleanup": [
+        {
+          "pid": 379,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 392,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "observations": {
+        "server": {
+          "credential_url_observed": true,
+          "initiated_verification_ids": [
+            "a1e6a642"
+          ],
+          "received_verification_ids": [
+            "a1e6a642"
+          ],
+          "verification_timeout": true,
+          "restart_count": 0
+        },
+        "client": {
+          "credential_url_observed": true,
+          "initiated_verification_ids": [
+            "a1e6a642"
+          ],
+          "received_verification_ids": [
+            "a1e6a642"
+          ],
+          "verification_timeout": true,
+          "restart_count": 0
+        }
+      }
+    },
+    {
+      "id": "0016",
+      "pair_server_client": "upstream/upstream",
+      "transport": 0,
+      "mode": 2,
+      "tls": 1,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 6,
+      "status": "passed",
+      "phases": {
+        "server_startup": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            531
+          ],
+          "duration_seconds": 0.029
+        },
+        "tunnel_handshake": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            748,
+            512
+          ],
+          "duration_seconds": 0.0284
+        },
+        "pool_ready": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1015,
+            779
+          ],
+          "duration_seconds": 0.1259
+        },
+        "certificate_verification": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1453,
+            1217
+          ],
+          "duration_seconds": 4.9987
+        },
+        "tcp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 32768,
+          "received_bytes": 32768,
+          "duration_seconds": 0.0017
+        },
+        "udp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 512,
+          "received_bytes": 512,
+          "duration_seconds": 0.5423
+        },
+        "cleanup": {
+          "status": "passed",
+          "forced_kill": false,
+          "duration_seconds": 0.0163
+        }
+      },
+      "processes": [
+        {
+          "role": "server",
+          "pid": 405
+        },
+        {
+          "role": "client",
+          "pid": 417
+        }
+      ],
+      "logs": {
+        "server": "0016/server.log",
+        "client": "0016/client.log"
+      },
+      "ports": {
+        "echo": 33329,
+        "front": 38395,
+        "tunnel": 49551
+      },
+      "commands": [
+        [
+          "BUILD/upstream-nodepass-m1",
+          "server://[REDACTED]@127.0.0.1:49551/127.0.0.1:33329?mode=2&type=0&tls=1&max=8&log=debug"
+        ],
+        [
+          "BUILD/upstream-nodepass-m1",
+          "client://[REDACTED]@127.0.0.1:49551/127.0.0.1:38395?mode=2&min=2&log=debug"
+        ]
+      ],
+      "cleanup": [
+        {
+          "pid": 405,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 417,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "observations": {
+        "server": {
+          "credential_url_observed": true,
+          "initiated_verification_ids": [
+            "e46ad0e9"
+          ],
+          "received_verification_ids": [
+            "0f420c3d"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        },
+        "client": {
+          "credential_url_observed": true,
+          "initiated_verification_ids": [
+            "0f420c3d"
+          ],
+          "received_verification_ids": [
+            "e46ad0e9"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        }
+      }
+    },
+    {
+      "id": "0017",
+      "pair_server_client": "upstream/upstream",
+      "transport": 0,
+      "mode": 2,
+      "tls": 1,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 7,
+      "status": "failed",
+      "phases": {
+        "server_startup": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            531
+          ],
+          "duration_seconds": 0.0082
+        },
+        "tunnel_handshake": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            748,
+            512
+          ],
+          "duration_seconds": 0.0293
+        },
+        "pool_ready": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1015,
+            779
+          ],
+          "duration_seconds": 0.1261
+        },
+        "certificate_verification": {
+          "status": "failed",
+          "attempts": 1,
+          "error": "engine failure before phase completion: OutgoingVerify: request timeout: OutgoingGet: pool connection not found",
+          "duration_seconds": 9.9966
+        },
+        "tcp_echo": {
+          "status": "not_run"
+        },
+        "udp_echo": {
+          "status": "not_run"
+        },
+        "cleanup": {
+          "status": "passed",
+          "forced_kill": false,
+          "duration_seconds": 0.0036
+        }
+      },
+      "processes": [
+        {
+          "role": "server",
+          "pid": 431
+        },
+        {
+          "role": "client",
+          "pid": 441
+        }
+      ],
+      "logs": {
+        "server": "0017/server.log",
+        "client": "0017/client.log"
+      },
+      "ports": {
+        "echo": 59859,
+        "front": 55685,
+        "tunnel": 51797
+      },
+      "commands": [
+        [
+          "BUILD/upstream-nodepass-m1",
+          "server://[REDACTED]@127.0.0.1:51797/127.0.0.1:59859?mode=2&type=0&tls=1&max=8&log=debug"
+        ],
+        [
+          "BUILD/upstream-nodepass-m1",
+          "client://[REDACTED]@127.0.0.1:51797/127.0.0.1:55685?mode=2&min=2&log=debug"
+        ]
+      ],
+      "failed_phase": "certificate_verification",
+      "error": "engine failure before phase completion: OutgoingVerify: request timeout: OutgoingGet: pool connection not found",
+      "cleanup": [
+        {
+          "pid": 431,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 441,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "observations": {
+        "server": {
+          "credential_url_observed": true,
+          "initiated_verification_ids": [
+            "4af68c4b"
+          ],
+          "received_verification_ids": [
+            "4af68c4b"
+          ],
+          "verification_timeout": true,
+          "restart_count": 0
+        },
+        "client": {
+          "credential_url_observed": true,
+          "initiated_verification_ids": [
+            "4af68c4b"
+          ],
+          "received_verification_ids": [
+            "4af68c4b"
+          ],
+          "verification_timeout": true,
+          "restart_count": 0
+        }
+      }
+    },
+    {
+      "id": "0018",
+      "pair_server_client": "upstream/upstream",
+      "transport": 0,
+      "mode": 2,
+      "tls": 1,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 8,
+      "status": "passed",
+      "phases": {
+        "server_startup": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            531
+          ],
+          "duration_seconds": 0.0286
+        },
+        "tunnel_handshake": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            748,
+            512
+          ],
+          "duration_seconds": 0.0287
+        },
+        "pool_ready": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1015,
+            779
+          ],
+          "duration_seconds": 0.1259
+        },
+        "certificate_verification": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1453,
+            1217
+          ],
+          "duration_seconds": 5.0178
+        },
+        "tcp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 32768,
+          "received_bytes": 32768,
+          "duration_seconds": 0.0012
+        },
+        "udp_echo": {
+          "status": "passed",
+          "attempts": 1,
+          "sent_bytes": 512,
+          "received_bytes": 512,
+          "duration_seconds": 0.5221
+        },
+        "cleanup": {
+          "status": "passed",
+          "forced_kill": false,
+          "duration_seconds": 0.0026
+        }
+      },
+      "processes": [
+        {
+          "role": "server",
+          "pid": 453
+        },
+        {
+          "role": "client",
+          "pid": 463
+        }
+      ],
+      "logs": {
+        "server": "0018/server.log",
+        "client": "0018/client.log"
+      },
+      "ports": {
+        "echo": 47233,
+        "front": 52629,
+        "tunnel": 43623
+      },
+      "commands": [
+        [
+          "BUILD/upstream-nodepass-m1",
+          "server://[REDACTED]@127.0.0.1:43623/127.0.0.1:47233?mode=2&type=0&tls=1&max=8&log=debug"
+        ],
+        [
+          "BUILD/upstream-nodepass-m1",
+          "client://[REDACTED]@127.0.0.1:43623/127.0.0.1:52629?mode=2&min=2&log=debug"
+        ]
+      ],
+      "cleanup": [
+        {
+          "pid": 453,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 463,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "observations": {
+        "server": {
+          "credential_url_observed": true,
+          "initiated_verification_ids": [
+            "e6ec117a"
+          ],
+          "received_verification_ids": [
+            "9018fa05"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        },
+        "client": {
+          "credential_url_observed": true,
+          "initiated_verification_ids": [
+            "9018fa05"
+          ],
+          "received_verification_ids": [
+            "e6ec117a"
+          ],
+          "verification_timeout": false,
+          "restart_count": 0
+        }
+      }
+    },
+    {
+      "id": "0019",
+      "pair_server_client": "upstream/upstream",
+      "transport": 0,
+      "mode": 2,
+      "tls": 1,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 9,
+      "status": "failed",
+      "phases": {
+        "server_startup": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            531
+          ],
+          "duration_seconds": 0.0291
+        },
+        "tunnel_handshake": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            748,
+            512
+          ],
+          "duration_seconds": 0.0285
+        },
+        "pool_ready": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1015,
+            779
+          ],
+          "duration_seconds": 0.151
+        },
+        "certificate_verification": {
+          "status": "failed",
+          "attempts": 1,
+          "error": "engine failure before phase completion: OutgoingVerify: request timeout: OutgoingGet: pool connection not found",
+          "duration_seconds": 9.9826
+        },
+        "tcp_echo": {
+          "status": "not_run"
+        },
+        "udp_echo": {
+          "status": "not_run"
+        },
+        "cleanup": {
+          "status": "passed",
+          "forced_kill": false,
+          "duration_seconds": 0.0035
+        }
+      },
+      "processes": [
+        {
+          "role": "server",
+          "pid": 479
+        },
+        {
+          "role": "client",
+          "pid": 490
+        }
+      ],
+      "logs": {
+        "server": "0019/server.log",
+        "client": "0019/client.log"
+      },
+      "ports": {
+        "echo": 38977,
+        "front": 40965,
+        "tunnel": 49833
+      },
+      "commands": [
+        [
+          "BUILD/upstream-nodepass-m1",
+          "server://[REDACTED]@127.0.0.1:49833/127.0.0.1:38977?mode=2&type=0&tls=1&max=8&log=debug"
+        ],
+        [
+          "BUILD/upstream-nodepass-m1",
+          "client://[REDACTED]@127.0.0.1:49833/127.0.0.1:40965?mode=2&min=2&log=debug"
+        ]
+      ],
+      "failed_phase": "certificate_verification",
+      "error": "engine failure before phase completion: OutgoingVerify: request timeout: OutgoingGet: pool connection not found",
+      "cleanup": [
+        {
+          "pid": 479,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 490,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "observations": {
+        "server": {
+          "credential_url_observed": true,
+          "initiated_verification_ids": [
+            "62f8216a"
+          ],
+          "received_verification_ids": [
+            "62f8216a"
+          ],
+          "verification_timeout": true,
+          "restart_count": 0
+        },
+        "client": {
+          "credential_url_observed": true,
+          "initiated_verification_ids": [
+            "62f8216a"
+          ],
+          "received_verification_ids": [
+            "62f8216a"
+          ],
+          "verification_timeout": true,
+          "restart_count": 0
+        }
+      }
+    },
+    {
+      "id": "0020",
+      "pair_server_client": "upstream/upstream",
+      "transport": 0,
+      "mode": 2,
+      "tls": 1,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 10,
+      "status": "failed",
+      "phases": {
+        "server_startup": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            531
+          ],
+          "duration_seconds": 0.0286
+        },
+        "tunnel_handshake": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            748,
+            512
+          ],
+          "duration_seconds": 0.0293
+        },
+        "pool_ready": {
+          "status": "passed",
+          "attempts": 1,
+          "observed_log_bytes": [
+            1014,
+            778
+          ],
+          "duration_seconds": 0.0253
+        },
+        "certificate_verification": {
+          "status": "failed",
+          "attempts": 1,
+          "error": "engine failure before phase completion: OutgoingVerify: request timeout: OutgoingGet: pool connection not found",
+          "duration_seconds": 10.0134
+        },
+        "tcp_echo": {
+          "status": "not_run"
+        },
+        "udp_echo": {
+          "status": "not_run"
+        },
+        "cleanup": {
+          "status": "passed",
+          "forced_kill": false,
+          "duration_seconds": 0.0035
+        }
+      },
+      "processes": [
+        {
+          "role": "server",
+          "pid": 504
+        },
+        {
+          "role": "client",
+          "pid": 515
+        }
+      ],
+      "logs": {
+        "server": "0020/server.log",
+        "client": "0020/client.log"
+      },
+      "ports": {
+        "echo": 45745,
+        "front": 40057,
+        "tunnel": 57911
+      },
+      "commands": [
+        [
+          "BUILD/upstream-nodepass-m1",
+          "server://[REDACTED]@127.0.0.1:57911/127.0.0.1:45745?mode=2&type=0&tls=1&max=8&log=debug"
+        ],
+        [
+          "BUILD/upstream-nodepass-m1",
+          "client://[REDACTED]@127.0.0.1:57911/127.0.0.1:40057?mode=2&min=2&log=debug"
+        ]
+      ],
+      "failed_phase": "certificate_verification",
+      "error": "engine failure before phase completion: OutgoingVerify: request timeout: OutgoingGet: pool connection not found",
+      "cleanup": [
+        {
+          "pid": 504,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 515,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "observations": {
+        "server": {
+          "credential_url_observed": true,
+          "initiated_verification_ids": [
+            "cfd0286d"
+          ],
+          "received_verification_ids": [
+            "cfd0286d"
+          ],
+          "verification_timeout": true,
+          "restart_count": 0
+        },
+        "client": {
+          "credential_url_observed": true,
+          "initiated_verification_ids": [
+            "cfd0286d"
+          ],
+          "received_verification_ids": [
+            "cfd0286d"
+          ],
+          "verification_timeout": true,
+          "restart_count": 0
+        }
+      }
+    }
+  ],
+  "finished_at": "2026-10-25T08:24:16.395018+00:00"
+}

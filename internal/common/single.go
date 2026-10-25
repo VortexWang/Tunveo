@@ -60,7 +60,7 @@ func (c *Common) SingleTCPLoop() error {
 			continue
 		}
 
-		tunnelConn = transport.NewStatConn(tunnelConn, &c.TCPRX, &c.TCPTX, c.RateLimiter)
+		tunnelConn = transport.NewStatConn(c.bindRunConn(tunnelConn), &c.TCPRX, &c.TCPTX, c.RateLimiter)
 		c.Logger.Debug("Tunnel connection: %v <-> %v", tunnelConn.LocalAddr(), tunnelConn.RemoteAddr())
 
 		go func(tunnelConn net.Conn) {

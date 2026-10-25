@@ -1,0 +1,24 @@
+2026-10-25 01:24:06.206  DEBUG  Init log level: DEBUG
+2026-10-25 01:24:06.206  WARN  TLS code-0: unencrypted
+2026-10-25 01:24:06.207  INFO  Client started: client://[REDACTED]@127.0.0.1:57911/127.0.0.1:40057?dns=5m0s&sni=none&lbs=0&min=2&mode=2&dial=auto&read=0s&rate=0&slot=65536&proxy=0&block=0&notcp=0&noudp=0
+2026-10-25 01:24:06.208  INFO  Pending tunnel handshake...
+2026-10-25 01:24:06.210  INFO  Loading tunnel config: FLOW=+|MAX=8|TLS=1|TYPE=0
+2026-10-25 01:24:06.210  INFO  Getting tunnel pool ready...
+2026-10-25 01:24:06.261  INFO  Marking tunnel handshake as complete in 53ms
+2026-10-25 01:24:06.261  INFO  TLS code-1: RAM cert fingerprint verifying...
+2026-10-25 01:24:06.262  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=1|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-25 01:24:11.262  DEBUG  TLS verify signal: cid cfd0286d <- 127.0.0.1:57911
+2026-10-25 01:24:11.262  DEBUG  TLS code-1: verify signal: cid cfd0286d -> 127.0.0.1:57911
+2026-10-25 01:24:11.262  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=2|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-25 01:24:16.262  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=2|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-25 01:24:16.263  ERROR  OutgoingVerify: request timeout: OutgoingGet: pool connection not found
+2026-10-25 01:24:16.263  ERROR  Client error: TunnelStart: tunnelControl failed: TunnelControl: TunnelQueue: readBytes failed: EOF
+2026-10-25 01:24:16.263  DEBUG  Tunnel connection closed: pool active 2
+2026-10-25 01:24:16.263  DEBUG  Target connection closed: 127.0.0.1:40057
+2026-10-25 01:24:16.263  DEBUG  Control connection closed: 127.0.0.1:45208
+2026-10-25 01:24:16.263  DEBUG  Target listener closed: 127.0.0.1:40057
+2026-10-25 01:24:16.388  DEBUG  Tunnel connection closed: pool active 0
+2026-10-25 01:24:16.388  DEBUG  Target connection closed: 127.0.0.1:40057
+2026-10-25 01:24:16.388  DEBUG  Control connection closed: 127.0.0.1:45208
+2026-10-25 01:24:16.388  DEBUG  Target listener closed: 127.0.0.1:40057
+2026-10-25 01:24:16.388  INFO  Client shutdown complete

@@ -1,0 +1,28 @@
+2026-10-25 01:18:42.149  DEBUG  Init log level: DEBUG
+2026-10-25 01:18:42.150  INFO  TLS code-1: RAM cert with TLS 1.3
+2026-10-25 01:18:42.151  INFO  Server started: [REDACTED-URL]
+2026-10-25 01:18:42.152  INFO  Pending tunnel handshake...
+2026-10-25 01:18:42.153  INFO  TLS code-1: RAM cert prepared with sha256 fingerprint: 4afacf8a594643219bed598823820f482b2a9cf90ced80fc19844c31472ca70d
+2026-10-25 01:18:42.184  INFO  Sending tunnel config: FLOW=+|MAX=1024|TLS=1|TYPE=2|VERIFY=flow-v1
+2026-10-25 01:18:42.185  INFO  TLS code-1: RAM cert regenerated with TLS 1.3
+2026-10-25 01:18:42.185  INFO  Getting tunnel pool ready...
+2026-10-25 01:18:42.235  INFO  Marking tunnel handshake as complete in 82ms
+2026-10-25 01:18:42.235  INFO  TLS code-1: RAM cert fingerprint verifying...
+2026-10-25 01:18:42.249  EVENT  CHECK_POINT|MODE=2|PING=13ms|POOL=57|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-25 01:18:47.240  DEBUG  TLS code-1: verify signal: cid 2dae9ec0 -> 127.0.0.1:41394
+2026-10-25 01:18:47.240  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=64|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-25 01:18:47.240  INFO  TLS code-1: RAM cert verified with sha256 fingerprint: e2fd61ed85c7cea5cabe541ef2b5aa706f63ac6b0a7566f61bc680012a492999
+2026-10-25 01:18:47.262  DEBUG  TCP launch signal: cid bf4877c0 <- 127.0.0.1:41394
+2026-10-25 01:18:47.262  DEBUG  Tunnel connection: get bf4877c0 <- pool active 63
+2026-10-25 01:18:47.262  DEBUG  Tunnel connection: 127.0.0.1:41639 <-> 127.0.0.1:41626
+2026-10-25 01:18:47.262  DEBUG  Target connection: 127.0.0.1:60424 <-> 127.0.0.1:35609
+2026-10-25 01:18:47.262  INFO  Starting exchange: 127.0.0.1:41626 <-> 127.0.0.1:35609
+2026-10-25 01:18:47.263  INFO  Exchange complete: read tcp 127.0.0.1:60424->127.0.0.1:35609: use of closed network connection
+2026-10-25 01:18:47.263  DEBUG  Tunnel connection: closed bf4877c0
+2026-10-25 01:18:47.269  DEBUG  UDP launch signal: cid 1c65e89e <- 127.0.0.1:41394
+2026-10-25 01:18:47.269  DEBUG  Tunnel connection: get 1c65e89e <- pool active 62
+2026-10-25 01:18:47.269  DEBUG  Tunnel connection: 127.0.0.1:41639 <-> 127.0.0.1:41406
+2026-10-25 01:18:47.270  DEBUG  Target connection: 127.0.0.1:53954 <-> 127.0.0.1:35609
+2026-10-25 01:18:47.270  DEBUG  Starting transfer: 127.0.0.1:41639 <-> 127.0.0.1:53954
+2026-10-25 01:18:47.270  DEBUG  Transfer complete: 127.0.0.1:41639 <-> 127.0.0.1:53954
+2026-10-25 01:18:47.270  DEBUG  Transfer complete: 127.0.0.1:53954 <-> 127.0.0.1:41639

@@ -148,3 +148,43 @@ func TestDrainAndHandlerCleanupDoNotDeleteReplacement(t *testing.T) {
 		t.Fatal(err)
 	}
 }
+
+func TestFlushFencesPendingPublicationAndWaiters(t *testing.T) {
+	q := New[int](2)
+	ctx := context.Background()
+	old := q.Begin(ctx)
+	defer old.End()
+	q.Drain()
+	if q.Commit(old, "stale", 1) {
+		t.Fatal("old publication crossed Flush")
+	}
+	fresh := q.Begin(ctx)
+	defer fresh.End()
+	if !q.Commit(fresh, "fresh", 2) {
+		t.Fatal("new publication")
+	}
+	if _, err := q.TakeIDAttempt(old, ctx, "fresh"); !errors.Is(err, context.Canceled) {
+		t.Fatal("old getter consumed new generation", err)
+	}
+	if v, err := q.TakeIDAttempt(fresh, ctx, "fresh"); err != nil || v != 2 {
+		t.Fatal("new getter lost entry", err)
+	}
+}
+
+func TestCommitDetachesTemporarySetupCancellation(t *testing.T) {
+	q := New[int](1)
+	a := q.Begin(context.Background())
+	var aborted atomic.Bool
+	a.Watch(func() { aborted.Store(true) })
+	if !q.Commit(a, "one", 1) {
+		t.Fatal("commit")
+	}
+	a.End()
+	if aborted.Load() {
+		t.Fatal("published resource kept setup cancellation")
+	}
+	q.Drain()
+	if aborted.Load() {
+		t.Fatal("Flush canceled committed lease via setup callback")
+	}
+}

@@ -15,6 +15,7 @@ import (
 	"time"
 
 	idlequeue "github.com/VortexWang/Tunveo/internal/tunnelpool/idle"
+	"github.com/VortexWang/Tunveo/internal/tunnelpool/lifetime"
 
 	"golang.org/x/net/http2"
 )
@@ -35,7 +36,8 @@ const (
 )
 
 type Pool struct {
-	idle         *idlequeue.Queue[io.ReadWriteCloser]
+	life         *lifetime.Group
+	idle         *idlequeue.Queue[net.Conn]
 	tlsCode      string
 	hostname     string
 	clientIP     string
@@ -43,8 +45,7 @@ type Pool struct {
 	addrResolver func() (string, error)
 	listenAddr   string
 	baseListener net.Listener
-	h2Conn       atomic.Pointer[net.Conn]
-	h2Client     atomic.Pointer[*http2.ClientConn]
+	session      atomic.Pointer[h2Session]
 	h2Server     *http2.Server
 	listener     atomic.Pointer[net.Listener]
 	first        atomic.Bool
@@ -59,6 +60,12 @@ type Pool struct {
 	ctx          context.Context
 	cancel       context.CancelFunc
 }
+
+type h2Session struct {
+	conn   net.Conn
+	client *http2.ClientConn
+}
+type connectionKey struct{}
 
 type StreamConn struct {
 	io.ReadWriteCloser
@@ -150,7 +157,7 @@ func NewClientPool(
 	}
 
 	pool := &Pool{
-		idle:         idlequeue.New[io.ReadWriteCloser](maxCap),
+		idle:         idlequeue.New[net.Conn](maxCap),
 		tlsCode:      tlsCode,
 		hostname:     hostname,
 		addrResolver: addrResolver,
@@ -162,7 +169,8 @@ func NewClientPool(
 	}
 	pool.capacity.Store(int32(minCap))
 	pool.interval.Store(int64(minIvl))
-	pool.ctx, pool.cancel = context.WithCancel(context.Background())
+	pool.life = lifetime.New()
+	pool.ctx, pool.cancel = pool.life.Context(), pool.life.Close
 	return pool
 }
 
@@ -188,7 +196,7 @@ func NewServerPool(
 	tlsConfig.MinVersion = tls.VersionTLS13
 
 	pool := &Pool{
-		idle:         idlequeue.New[io.ReadWriteCloser](maxCap),
+		idle:         idlequeue.New[net.Conn](maxCap),
 		clientIP:     clientIP,
 		tlsConfig:    tlsConfig,
 		baseListener: baseListener,
@@ -200,14 +208,18 @@ func NewServerPool(
 			IdleTimeout:          keepAlive * 2,
 		},
 	}
-	pool.ctx, pool.cancel = context.WithCancel(context.Background())
+	pool.life = lifetime.New()
+	pool.ctx, pool.cancel = pool.life.Context(), pool.life.Close
+	pool.life.Track(baseListener)
 	return pool
 }
 
 type http2Stream struct {
-	reader io.ReadCloser
-	writer io.WriteCloser
-	closed atomic.Bool
+	reader    io.ReadCloser
+	writer    io.WriteCloser
+	closeOnce sync.Once
+	done      chan struct{}
+	cancel    context.CancelFunc
 }
 
 func (s *http2Stream) Read(p []byte) (n int, err error) {
@@ -219,91 +231,86 @@ func (s *http2Stream) Write(p []byte) (n int, err error) {
 }
 
 func (s *http2Stream) Close() error {
-	if !s.closed.CompareAndSwap(false, true) {
-		return nil
-	}
-	if s.reader != nil {
-		s.reader.Close()
-	}
-	if s.writer != nil {
-		s.writer.Close()
-	}
+	s.closeOnce.Do(func() {
+		if s.cancel != nil {
+			s.cancel()
+		}
+		if s.reader != nil {
+			s.reader.Close()
+		}
+		if s.writer != nil {
+			s.writer.Close()
+		}
+		if s.done != nil {
+			close(s.done)
+		}
+	})
 	return nil
 }
 
 func (p *Pool) createStream() bool {
-	client := p.h2Client.Load()
-	if client == nil || *client == nil {
+	attempt := p.idle.Begin(p.ctx)
+	defer attempt.End()
+	if attempt.Context.Err() != nil {
 		return false
 	}
-
+	session := p.session.Load()
+	if session == nil {
+		return false
+	}
 	reqReader, reqWriter := io.Pipe()
+	requestCtx, requestCancel := context.WithCancel(p.ctx)
+	setupCtx, setupCancel := context.WithTimeout(attempt.Context, idReadTimeout)
+	defer setupCancel()
+	attempt.WatchContext(setupCtx, func() { requestCancel(); reqReader.Close(); reqWriter.Close() })
+	committed := false
 	defer func() {
-		if reqWriter != nil {
+		if !committed {
+			requestCancel()
+			reqReader.Close()
 			reqWriter.Close()
 		}
-		if reqReader != nil {
-			reqReader.Close()
-		}
 	}()
-
-	req := &http.Request{
-		Method: "POST",
-		URL:    &url.URL{Scheme: "https", Host: p.hostname, Path: "/stream"},
-		Header: http.Header{},
-		Body:   reqReader,
-	}
-
-	ctx, cancel := context.WithTimeout(p.ctx, idReadTimeout)
-	defer cancel()
-
-	respChan := make(chan *http.Response, 1)
-	errChan := make(chan error, 1)
-
-	go func() {
-		resp, err := (*client).RoundTrip(req)
-		if err != nil {
-			errChan <- err
-			return
-		}
-		respChan <- resp
-	}()
-
-	if _, err := reqWriter.Write([]byte{0x00}); err != nil {
+	req := (&http.Request{Method: "POST", URL: &url.URL{Scheme: "https", Host: p.hostname, Path: "/stream"}, Header: http.Header{}, Body: reqReader}).WithContext(requestCtx)
+	written := make(chan error, 1)
+	go func() { _, err := reqWriter.Write([]byte{0}); written <- err }()
+	resp, err := session.client.RoundTrip(req)
+	if err != nil {
 		return false
 	}
-
-	var resp *http.Response
-	select {
-	case resp = <-respChan:
-	case <-errChan:
-		return false
-	case <-ctx.Done():
-		return false
-	}
-
-	buf := make([]byte, 4)
-	if _, err := io.ReadFull(resp.Body, buf); err != nil {
+	var raw [4]byte
+	if _, err := io.ReadFull(resp.Body, raw[:]); err != nil {
 		resp.Body.Close()
 		return false
 	}
-	id := hex.EncodeToString(buf)
-
-	stream := &http2Stream{
-		reader: resp.Body,
-		writer: reqWriter,
+	select {
+	case err := <-written:
+		if err != nil {
+			resp.Body.Close()
+			return false
+		}
+	case <-setupCtx.Done():
+		resp.Body.Close()
+		return false
 	}
-
-	if !p.idle.Publish(p.ctx, id, stream) {
+	stream := &http2Stream{reader: resp.Body, writer: reqWriter, cancel: requestCancel, done: make(chan struct{})}
+	conn := &StreamConn{ReadWriteCloser: stream, conn: session.conn, localAddr: session.conn.LocalAddr(), remoteAddr: session.conn.RemoteAddr()}
+	if !p.idle.Commit(attempt, hex.EncodeToString(raw[:]), conn) {
 		stream.Close()
 		return false
 	}
-	reqWriter = nil
-	reqReader = nil
+	committed = true
 	return true
 }
 
 func (p *Pool) handleStream(rw http.ResponseWriter, req *http.Request) {
+	attempt := p.idle.Begin(p.ctx)
+	defer attempt.End()
+	attempt.Watch(func() { req.Body.Close() })
+	physical, ok := req.Context().Value(connectionKey{}).(net.Conn)
+	if !ok {
+		return
+	}
 	if req.URL.Path != "/stream" || req.Method != "POST" || p.Active() >= p.maxCap {
 		http.Error(rw, "not found", http.StatusNotFound)
 		return
@@ -332,23 +339,40 @@ func (p *Pool) handleStream(rw http.ResponseWriter, req *http.Request) {
 	stream := &http2Stream{
 		reader: req.Body,
 		writer: &responseWriter{rw: rw},
+		done:   make(chan struct{}),
 	}
 
-	if !p.idle.Publish(p.ctx, id, stream) {
+	conn := &StreamConn{ReadWriteCloser: stream, conn: physical, localAddr: physical.LocalAddr(), remoteAddr: physical.RemoteAddr()}
+	if !p.idle.Commit(attempt, id, conn) {
 		stream.Close()
 		return
 	}
-	defer func() { p.idle.RemoveIfSame(id, stream); stream.Close() }()
+	defer func() {
+		// Peer cancellation can precede its control-plane claim of this ID (notably
+		// fingerprint verification). Preserve the idle identity until claim/Flush;
+		// its immutable transport metadata remains valid even after stream EOF.
+		if p.ctx.Err() != nil {
+			p.idle.RemoveIfSame(id, conn)
+		}
+		stream.Close()
+	}()
 
-	<-p.ctx.Done()
+	select {
+	case <-p.ctx.Done():
+	case <-req.Context().Done():
+	case <-stream.done:
+	}
 }
 
 type responseWriter struct {
+	mu     sync.Mutex
 	rw     http.ResponseWriter
 	closed atomic.Bool
 }
 
 func (w *responseWriter) Write(p []byte) (n int, err error) {
+	w.mu.Lock()
+	defer w.mu.Unlock()
 	if w.closed.Load() {
 		return 0, io.ErrClosedPipe
 	}
@@ -360,43 +384,47 @@ func (w *responseWriter) Write(p []byte) (n int, err error) {
 }
 
 func (w *responseWriter) Close() error {
+	// Abort only this HTTP/2 response stream before joining an outstanding write.
+	http.NewResponseController(w.rw).SetWriteDeadline(time.Now().Add(-time.Second))
+	w.mu.Lock()
+	defer w.mu.Unlock()
 	w.closed.Store(true)
 	return nil
 }
 
 func (p *Pool) establishConnection() error {
-	existingConn := p.h2Conn.Load()
-	client := p.h2Client.Load()
-	if existingConn != nil && client != nil && *client != nil {
-		if err := (*client).Ping(p.ctx); err == nil {
+	old := p.session.Load()
+	if old != nil {
+		if err := old.client.Ping(p.ctx); err == nil {
 			return nil
 		}
-		p.h2Conn.Store(nil)
-		p.h2Client.Store(nil)
+		p.session.CompareAndSwap(old, nil)
+		old.conn.Close()
 	}
-
-	targetAddr, err := p.addrResolver()
-	if err != nil {
-		return fmt.Errorf("establishConnection: address resolution failed: %w", err)
-	}
-
-	tlsConfig := buildTLSConfig(p.tlsCode, p.hostname)
-
-	tlsConn, err := tls.Dial("tcp", targetAddr, tlsConfig)
+	addr, err := p.addrResolver()
 	if err != nil {
 		return err
 	}
-
+	raw, err := (&net.Dialer{}).DialContext(p.ctx, "tcp", addr)
+	if err != nil {
+		return err
+	}
+	tracked, ok := p.life.Bind(raw, nil)
+	if !ok {
+		return context.Canceled
+	}
+	conn := tls.Client(tracked, buildTLSConfig(p.tlsCode, p.hostname))
+	if err := conn.HandshakeContext(p.ctx); err != nil {
+		conn.Close()
+		return err
+	}
 	transport := &http2.Transport{}
-	h2Client, err := transport.NewClientConn(tlsConn)
+	client, err := transport.NewClientConn(conn)
 	if err != nil {
-		tlsConn.Close()
+		conn.Close()
 		return err
 	}
-
-	netConn := net.Conn(tlsConn)
-	p.h2Conn.Store(&netConn)
-	p.h2Client.Store(&h2Client)
+	p.session.Store(&h2Session{conn: conn, client: client})
 	return nil
 }
 
@@ -414,10 +442,9 @@ func (p *Pool) startListener() error {
 }
 
 func (p *Pool) ClientManager() {
-	if p.cancel != nil {
-		p.cancel()
+	if !p.life.Start() {
+		return
 	}
-	p.ctx, p.cancel = context.WithCancel(context.Background())
 
 	if p.keepAlive > 0 {
 		go func() {
@@ -426,8 +453,8 @@ func (p *Pool) ClientManager() {
 			for {
 				select {
 				case <-ticker.C:
-					if client := p.h2Client.Load(); client != nil && *client != nil {
-						(*client).Ping(p.ctx)
+					if session := p.session.Load(); session != nil {
+						session.client.Ping(p.ctx)
 					}
 				case <-p.ctx.Done():
 					return
@@ -475,10 +502,9 @@ func (p *Pool) ClientManager() {
 }
 
 func (p *Pool) ServerManager() {
-	if p.cancel != nil {
-		p.cancel()
+	if !p.life.Start() {
+		return
 	}
-	p.ctx, p.cancel = context.WithCancel(context.Background())
 
 	if err := p.startListener(); err != nil {
 		return
@@ -513,8 +539,12 @@ func (p *Pool) ServerManager() {
 			continue
 		}
 
-		tlsConn := tls.Server(conn, p.tlsConfig)
-		if err := tlsConn.Handshake(); err != nil {
+		tracked, ok := p.life.Bind(conn, nil)
+		if !ok {
+			return
+		}
+		tlsConn := tls.Server(tracked, p.tlsConfig)
+		if err := tlsConn.HandshakeContext(p.ctx); err != nil {
 			conn.Close()
 			continue
 		}
@@ -524,13 +554,12 @@ func (p *Pool) ServerManager() {
 			continue
 		}
 
-		netConn := net.Conn(tlsConn)
-		p.h2Conn.Store(&netConn)
+		// Each request carries its accepted physical connection, not a mutable latest pointer.
 
 		go func(c net.Conn) {
 			defer c.Close()
 			p.h2Server.ServeConn(c, &http2.ServeConnOpts{
-				Context: p.ctx,
+				Context: context.WithValue(p.ctx, connectionKey{}, c),
 				Handler: handler,
 			})
 		}(tlsConn)
@@ -538,33 +567,26 @@ func (p *Pool) ServerManager() {
 }
 
 func (p *Pool) OutgoingGet(id string, timeout time.Duration) (net.Conn, error) {
-	ctx, cancel := context.WithTimeout(p.ctx, timeout)
+	attempt := p.idle.Begin(p.ctx)
+	defer attempt.End()
+	ctx, cancel := context.WithTimeout(attempt.Context, timeout)
 	defer cancel()
-	stream, err := p.idle.TakeID(ctx, id)
+	conn, err := p.idle.TakeIDAttempt(attempt, ctx, id)
 	if err != nil {
 		return nil, fmt.Errorf("OutgoingGet: stream not found: %w", err)
 	}
-	conn := p.h2Conn.Load()
-	if conn == nil {
-		stream.Close()
-		return nil, fmt.Errorf("OutgoingGet: connection not available")
-	}
-	return &StreamConn{ReadWriteCloser: stream, conn: *conn, localAddr: (*conn).LocalAddr(), remoteAddr: (*conn).RemoteAddr()}, nil
+	return conn, nil
 }
-
 func (p *Pool) IncomingGet(timeout time.Duration) (string, net.Conn, error) {
-	ctx, cancel := context.WithTimeout(p.ctx, timeout)
+	attempt := p.idle.Begin(p.ctx)
+	defer attempt.End()
+	ctx, cancel := context.WithTimeout(attempt.Context, timeout)
 	defer cancel()
-	id, stream, err := p.idle.Take(ctx)
+	id, conn, err := p.idle.TakeAttempt(attempt, ctx)
 	if err != nil {
 		return "", nil, fmt.Errorf("IncomingGet: insufficient streams: %w", err)
 	}
-	conn := p.h2Conn.Load()
-	if conn == nil {
-		stream.Close()
-		return "", nil, fmt.Errorf("IncomingGet: connection not available")
-	}
-	return id, &StreamConn{ReadWriteCloser: stream, conn: *conn, localAddr: (*conn).LocalAddr(), remoteAddr: (*conn).RemoteAddr()}, nil
+	return id, conn, nil
 }
 
 func (p *Pool) Flush() {
@@ -580,22 +602,10 @@ func (p *Pool) Flush() {
 	wg.Wait()
 }
 
-func (p *Pool) Close() {
-	if p.cancel != nil {
-		p.cancel()
-	}
-	p.Flush()
-
-	if conn := p.h2Conn.Swap(nil); conn != nil {
-		(*conn).Close()
-	}
-	if listener := p.listener.Swap(nil); listener != nil {
-		(*listener).Close()
-	}
-}
+func (p *Pool) Close() { p.cancel(); p.Flush() }
 
 func (p *Pool) Ready() bool {
-	return p.ctx != nil
+	return p.ctx != nil && p.ctx.Err() == nil
 }
 
 func (p *Pool) Active() int {

@@ -1,0 +1,6 @@
+2026-10-25 01:18:17.830  DEBUG  Init log level: DEBUG
+2026-10-25 01:18:17.831  WARN  TLS code-0: unencrypted
+2026-10-25 01:18:17.831  INFO  Client started: [REDACTED-URL]
+2026-10-25 01:18:17.832  INFO  Pending tunnel handshake...
+2026-10-25 01:18:17.835  ERROR  Client error: TunnelStart: tunnelHandshake failed: TunnelHandshake: Get "https://127.0.0.1:35547/%22: EOF
+2026-10-25 01:18:17.895  INFO  Client shutdown complete

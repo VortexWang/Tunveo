@@ -13,6 +13,7 @@ import (
 	"time"
 
 	idlequeue "github.com/VortexWang/Tunveo/internal/tunnelpool/idle"
+	"github.com/VortexWang/Tunveo/internal/tunnelpool/lifetime"
 
 	quic "github.com/quic-go/quic-go"
 )
@@ -34,7 +35,8 @@ const (
 )
 
 type Pool struct {
-	idle         *idlequeue.Queue[*quic.Stream]
+	life         *lifetime.Group
+	idle         *idlequeue.Queue[net.Conn]
 	tlsCode      string
 	hostname     string
 	clientIP     string
@@ -62,6 +64,8 @@ type StreamConn struct {
 	localAddr  net.Addr
 	remoteAddr net.Addr
 }
+
+func (s *StreamConn) Close() error { s.Stream.CancelRead(0); return s.Stream.Close() }
 
 func (s *StreamConn) LocalAddr() net.Addr {
 	return s.localAddr
@@ -139,7 +143,7 @@ func NewClientPool(
 	}
 
 	pool := &Pool{
-		idle:         idlequeue.New[*quic.Stream](maxCap),
+		idle:         idlequeue.New[net.Conn](maxCap),
 		tlsCode:      tlsCode,
 		hostname:     hostname,
 		addrResolver: addrResolver,
@@ -151,7 +155,8 @@ func NewClientPool(
 	}
 	pool.capacity.Store(int32(minCap))
 	pool.interval.Store(int64(minIvl))
-	pool.ctx, pool.cancel = context.WithCancel(context.Background())
+	pool.life = lifetime.New()
+	pool.ctx, pool.cancel = pool.life.Context(), pool.life.Close
 	return pool
 }
 
@@ -170,32 +175,39 @@ func NewServerPool(
 	}
 
 	pool := &Pool{
-		idle:       idlequeue.New[*quic.Stream](maxCap),
+		idle:       idlequeue.New[net.Conn](maxCap),
 		clientIP:   clientIP,
 		tlsConfig:  tlsConfig,
 		listenAddr: listenAddr,
 		maxCap:     maxCap,
 		keepAlive:  keepAlive,
 	}
-	pool.ctx, pool.cancel = context.WithCancel(context.Background())
+	pool.life = lifetime.New()
+	pool.ctx, pool.cancel = pool.life.Context(), pool.life.Close
 	return pool
 }
 
 func (p *Pool) createStream() bool {
+	attempt := p.idle.Begin(p.ctx)
+	defer attempt.End()
+	if attempt.Context.Err() != nil {
+		return false
+	}
 	conn := p.quicConn.Load()
 	if conn == nil {
 		return false
 	}
 
-	stream, err := conn.OpenStreamSync(p.ctx)
+	stream, err := conn.OpenStreamSync(attempt.Context)
 	if err != nil {
-		p.quicConn.Store(nil)
+		p.quicConn.CompareAndSwap(conn, nil)
 		return false
 	}
 
+	attempt.Watch(func() { stream.CancelRead(0); stream.CancelWrite(0) })
 	if _, err := stream.Write([]byte{0x00}); err != nil {
 		stream.Close()
-		p.quicConn.Store(nil)
+		p.quicConn.CompareAndSwap(conn, nil)
 		return false
 	}
 
@@ -206,20 +218,24 @@ func (p *Pool) createStream() bool {
 	n, err := io.ReadFull(stream, buf)
 	if err != nil || n != 4 {
 		stream.Close()
-		p.quicConn.Store(nil)
+		p.quicConn.CompareAndSwap(conn, nil)
 		return false
 	}
 	id = hex.EncodeToString(buf)
 	stream.SetReadDeadline(time.Time{})
 
-	if !p.idle.Publish(p.ctx, id, stream) {
+	owned := &StreamConn{Stream: stream, conn: conn, localAddr: conn.LocalAddr(), remoteAddr: conn.RemoteAddr()}
+	if !p.idle.Commit(attempt, id, owned) {
 		stream.Close()
 		return false
 	}
 	return true
 }
 
-func (p *Pool) handleStream(stream *quic.Stream) {
+func (p *Pool) handleStream(stream *quic.Stream, conn *quic.Conn) {
+	attempt := p.idle.Begin(p.ctx)
+	defer attempt.End()
+	attempt.Watch(func() { stream.CancelRead(0); stream.CancelWrite(0) })
 	var streamClosed bool
 	defer func() {
 		if !streamClosed {
@@ -249,7 +265,8 @@ func (p *Pool) handleStream(stream *quic.Stream) {
 		return
 	}
 
-	if !p.idle.Publish(p.ctx, id, stream) {
+	owned := &StreamConn{Stream: stream, conn: conn, localAddr: conn.LocalAddr(), remoteAddr: conn.RemoteAddr()}
+	if !p.idle.Commit(attempt, id, owned) {
 		return
 	}
 	streamClosed = true
@@ -261,7 +278,7 @@ func (p *Pool) establishConnection() error {
 		if conn.Context().Err() == nil {
 			return nil
 		}
-		p.quicConn.Store(nil)
+		p.quicConn.CompareAndSwap(conn, nil)
 	}
 
 	targetAddr, err := p.addrResolver()
@@ -277,6 +294,11 @@ func (p *Pool) establishConnection() error {
 		return err
 	}
 
+	handle, ok := p.life.Track(lifetime.CloserFunc(func() error { return newConn.CloseWithError(0, "pool closed") }))
+	if !ok {
+		return context.Canceled
+	}
+	context.AfterFunc(newConn.Context(), handle.Release)
 	p.quicConn.Store(newConn)
 	return nil
 }
@@ -299,15 +321,17 @@ func (p *Pool) startListener() error {
 		return fmt.Errorf("startListener: %w", err)
 	}
 
+	if _, ok := p.life.Track(newListener); !ok {
+		return context.Canceled
+	}
 	p.quicListener.Store(newListener)
 	return nil
 }
 
 func (p *Pool) ClientManager() {
-	if p.cancel != nil {
-		p.cancel()
+	if !p.life.Start() {
+		return
 	}
-	p.ctx, p.cancel = context.WithCancel(context.Background())
 
 	for p.ctx.Err() == nil {
 		p.adjustInterval()
@@ -348,10 +372,9 @@ func (p *Pool) ClientManager() {
 }
 
 func (p *Pool) ServerManager() {
-	if p.cancel != nil {
-		p.cancel()
+	if !p.life.Start() {
+		return
 	}
-	p.ctx, p.cancel = context.WithCancel(context.Background())
 
 	if err := p.startListener(); err != nil {
 		return
@@ -384,6 +407,11 @@ func (p *Pool) ServerManager() {
 			}
 		}
 
+		handle, ok := p.life.Track(lifetime.CloserFunc(func() error { return conn.CloseWithError(0, "pool closed") }))
+		if !ok {
+			return
+		}
+		context.AfterFunc(conn.Context(), handle.Release)
 		p.quicConn.Store(conn)
 
 		go func(c *quic.Conn) {
@@ -392,40 +420,33 @@ func (p *Pool) ServerManager() {
 				if err != nil {
 					return
 				}
-				go p.handleStream(stream)
+				go p.handleStream(stream, c)
 			}
 		}(conn)
 	}
 }
 
 func (p *Pool) OutgoingGet(id string, timeout time.Duration) (net.Conn, error) {
-	ctx, cancel := context.WithTimeout(p.ctx, timeout)
+	attempt := p.idle.Begin(p.ctx)
+	defer attempt.End()
+	ctx, cancel := context.WithTimeout(attempt.Context, timeout)
 	defer cancel()
-	stream, err := p.idle.TakeID(ctx, id)
+	conn, err := p.idle.TakeIDAttempt(attempt, ctx, id)
 	if err != nil {
 		return nil, fmt.Errorf("OutgoingGet: stream not found: %w", err)
 	}
-	conn := p.quicConn.Load()
-	if conn == nil {
-		stream.Close()
-		return nil, fmt.Errorf("OutgoingGet: connection not available")
-	}
-	return &StreamConn{Stream: stream, conn: conn, localAddr: conn.LocalAddr(), remoteAddr: conn.RemoteAddr()}, nil
+	return conn, nil
 }
-
 func (p *Pool) IncomingGet(timeout time.Duration) (string, net.Conn, error) {
-	ctx, cancel := context.WithTimeout(p.ctx, timeout)
+	attempt := p.idle.Begin(p.ctx)
+	defer attempt.End()
+	ctx, cancel := context.WithTimeout(attempt.Context, timeout)
 	defer cancel()
-	id, stream, err := p.idle.Take(ctx)
+	id, conn, err := p.idle.TakeAttempt(attempt, ctx)
 	if err != nil {
 		return "", nil, fmt.Errorf("IncomingGet: insufficient streams: %w", err)
 	}
-	conn := p.quicConn.Load()
-	if conn == nil {
-		stream.Close()
-		return "", nil, fmt.Errorf("IncomingGet: connection not available")
-	}
-	return id, &StreamConn{Stream: stream, conn: conn, localAddr: conn.LocalAddr(), remoteAddr: conn.RemoteAddr()}, nil
+	return id, conn, nil
 }
 
 func (p *Pool) Flush() {
@@ -441,22 +462,10 @@ func (p *Pool) Flush() {
 	wg.Wait()
 }
 
-func (p *Pool) Close() {
-	if p.cancel != nil {
-		p.cancel()
-	}
-	p.Flush()
-
-	if conn := p.quicConn.Swap(nil); conn != nil {
-		conn.CloseWithError(0, "pool closed")
-	}
-	if listener := p.quicListener.Swap(nil); listener != nil {
-		listener.Close()
-	}
-}
+func (p *Pool) Close() { p.cancel(); p.Flush() }
 
 func (p *Pool) Ready() bool {
-	return p.ctx != nil
+	return p.ctx != nil && p.ctx.Err() == nil
 }
 
 func (p *Pool) Active() int {

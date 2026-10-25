@@ -24,7 +24,7 @@ import (
 // ephemeral self-signed certificate during the handshake. This method must be
 // called before InitTunnelPool to obtain the necessary configuration.
 func (c *Client) TunnelHandshake() error {
-	req, _ := http.NewRequest(http.MethodGet, "https://"+c.TunnelAddr+"/", nil)
+	req, _ := http.NewRequestWithContext(c.Ctx, http.MethodGet, "https://"+c.TunnelAddr+"/", nil)
 	req.Host = c.ServerName
 	req.Header.Set("Authorization", "Bearer "+c.GenerateAuthToken())
 	req.Header.Set(common.TLSVerifyHeader, common.TLSVerifyFlowV1)
@@ -37,6 +37,7 @@ func (c *Client) TunnelHandshake() error {
 		},
 	}
 
+	defer client.CloseIdleConnections()
 	resp, err := client.Do(req)
 	if err != nil {
 		return fmt.Errorf("TunnelHandshake: %w", err)

@@ -4,10 +4,13 @@ package common
 
 import (
 	"context"
+	"crypto/tls"
 	"fmt"
+	"io"
 	"net"
 
 	"github.com/VortexWang/Tunveo/internal/transport"
+	"github.com/VortexWang/Tunveo/internal/tunnelpool/lifetime"
 )
 
 // InitRateLimiter creates a token-bucket RateLimiter if RateLimit > 0, limiting bandwidth.
@@ -28,7 +31,8 @@ func (c *Common) InitContext() {
 	if c.Cancel != nil {
 		c.Cancel() // cancel previous context if it exists
 	}
-	c.Ctx, c.Cancel = context.WithCancel(context.Background())
+	c.runResources = lifetime.New()
+	c.Ctx, c.Cancel = c.runResources.Context(), c.runResources.Close
 	c.VerifyChan = make(chan struct{}, 1)
 	c.verification = newTLSVerificationState(c.Ctx, c.Cancel, c.VerifyChan)
 }
@@ -103,9 +107,11 @@ func (c *Common) InitTargetListener() error {
 // 6. Draining buffered channels (SignalChan, WriteChan, VerifyChan) to release blocked goroutines
 // 7. Resetting the rate limiter
 // 8. Clearing the DNS cache
-// Safe to call multiple times; subsequent calls are no-ops. Does not wait for goroutines to exit;
+// Safe to call multiple times for this single run; subsequent calls are no-ops. Does not join arbitrary callbacks;
 // caller should wait if needed using context or other synchronization.
-func (c *Common) Stop() {
+func (c *Common) Stop() { c.stopOnce.Do(c.stop) }
+
+func (c *Common) stop() {
 	if c.Cancel != nil {
 		c.Cancel()
 	}
@@ -117,7 +123,7 @@ func (c *Common) Stop() {
 	}
 
 	c.TargetUDPSession.Range(func(key, value any) bool {
-		if conn, ok := value.(*net.UDPConn); ok {
+		if conn, ok := value.(io.Closer); ok {
 			conn.Close()
 		}
 		c.TargetUDPSession.Delete(key)
@@ -178,5 +184,51 @@ func (c *Common) CommonShutdown(ctx context.Context, stopFunc func()) error {
 	case <-done:
 		// stopFunc completed successfully
 		return nil
+	}
+}
+
+// NewCommonPtr gives endpoint controllers stable runtime identity; NewCommon's
+// value-returning API remains available for existing internal fixtures.
+func NewCommonPtr(logger *Logger, cfg *tls.Config) *Common {
+	c := NewCommon(logger, cfg)
+	c.InitContext()
+	return &c
+}
+
+// FreshRun copies only immutable configuration/address snapshots. Never copy
+// Common/Addrs mutexes, maps or live resources. Counters and buffer pools are
+// deliberately shared across runs; both are designed for concurrent use.
+func (c *Common) FreshRun() *Common {
+	cfg := c.TLSConfig
+	if cfg != nil {
+		cfg = cfg.Clone()
+	}
+	r := NewCommonPtr(c.Logger, cfg)
+	r.Config = c.Config
+	r.TunnelTCPAddr, r.TunnelUDPAddr = c.TunnelTCPAddr, c.TunnelUDPAddr
+	r.TargetTCPAddrs = append([]*net.TCPAddr(nil), c.TargetTCPAddrs...)
+	r.TargetUDPAddrs = append([]*net.UDPAddr(nil), c.TargetUDPAddrs...)
+	r.Stats, r.Buffers = c.Stats, c.Buffers
+	r.InitRateLimiter()
+	return r
+}
+
+func (c *Common) bindRunConn(conn net.Conn) net.Conn {
+	if c.runResources == nil {
+		return conn
+	}
+	tracked, ok := c.runResources.Bind(conn, nil)
+	if !ok {
+		return conn
+	}
+	return tracked
+}
+
+func (c *Common) queueWrite(data []byte) bool {
+	select {
+	case <-c.Ctx.Done():
+		return false
+	case c.WriteChan <- data:
+		return true
 	}
 }

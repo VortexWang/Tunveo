@@ -157,7 +157,7 @@ func (c *Common) HealthCheck() error {
 		if c.TunnelPool.ErrorCount() > c.TunnelPool.Active()/2 {
 			if c.Ctx.Err() == nil && c.ControlConn != nil {
 				signalData, _ := json.Marshal(Signal{ActionType: "flush"})
-				c.WriteChan <- c.Encode(signalData)
+				c.queueWrite(c.Encode(signalData))
 			}
 			c.TunnelPool.Flush()
 			c.TunnelPool.ResetError()
@@ -175,10 +175,10 @@ func (c *Common) HealthCheck() error {
 			c.ProbeBestTarget()
 		}
 
-		c.CheckPoint = time.Now()
+		c.checkPoint.Store(time.Now().UnixNano())
 		if c.Ctx.Err() == nil && c.ControlConn != nil {
 			signalData, _ := json.Marshal(Signal{ActionType: "ping"})
-			c.WriteChan <- c.Encode(signalData)
+			c.queueWrite(c.Encode(signalData))
 		}
 		select {
 		case <-c.Ctx.Done():
