@@ -6,3 +6,5 @@
 /tunveo.json
 __pycache__/
 *.pyc
+
+/artifacts/

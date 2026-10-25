@@ -1,0 +1,342 @@
+[
+  {
+    "client_canceled": true,
+    "client_verification_ids": [
+      "76846839"
+    ],
+    "error": "TLS verification must complete without cancelling either peer under delayed signal delivery",
+    "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+    "pool_get_timeout_ms": 100,
+    "server_canceled": true,
+    "server_verification_ids": [
+      "76846839"
+    ],
+    "verification_gates": 0,
+    "pair": "tunveo",
+    "iteration": 1,
+    "exit_code": 1
+  },
+  {
+    "client_canceled": true,
+    "client_verification_ids": [
+      "eb1af8d9"
+    ],
+    "error": "TLS verification must complete without cancelling either peer under delayed signal delivery",
+    "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+    "pool_get_timeout_ms": 100,
+    "server_canceled": true,
+    "server_verification_ids": [
+      "eb1af8d9"
+    ],
+    "verification_gates": 0,
+    "pair": "tunveo",
+    "iteration": 2,
+    "exit_code": 1
+  },
+  {
+    "client_canceled": true,
+    "client_verification_ids": [
+      "acd8df84"
+    ],
+    "error": "TLS verification must complete without cancelling either peer under delayed signal delivery",
+    "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+    "pool_get_timeout_ms": 100,
+    "server_canceled": true,
+    "server_verification_ids": [
+      "acd8df84"
+    ],
+    "verification_gates": 0,
+    "pair": "tunveo",
+    "iteration": 3,
+    "exit_code": 1
+  },
+  {
+    "client_canceled": true,
+    "client_verification_ids": [
+      "2f8a39d3"
+    ],
+    "error": "TLS verification must complete without cancelling either peer under delayed signal delivery",
+    "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+    "pool_get_timeout_ms": 100,
+    "server_canceled": true,
+    "server_verification_ids": [
+      "2f8a39d3"
+    ],
+    "verification_gates": 0,
+    "pair": "tunveo",
+    "iteration": 4,
+    "exit_code": 1
+  },
+  {
+    "client_canceled": true,
+    "client_verification_ids": [
+      "4dc576e3"
+    ],
+    "error": "TLS verification must complete without cancelling either peer under delayed signal delivery",
+    "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+    "pool_get_timeout_ms": 100,
+    "server_canceled": true,
+    "server_verification_ids": [
+      "4dc576e3"
+    ],
+    "verification_gates": 0,
+    "pair": "tunveo",
+    "iteration": 5,
+    "exit_code": 1
+  },
+  {
+    "client_canceled": true,
+    "client_verification_ids": [
+      "708120df"
+    ],
+    "error": "TLS verification must complete without cancelling either peer under delayed signal delivery",
+    "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+    "pool_get_timeout_ms": 100,
+    "server_canceled": true,
+    "server_verification_ids": [
+      "708120df"
+    ],
+    "verification_gates": 0,
+    "pair": "tunveo",
+    "iteration": 6,
+    "exit_code": 1
+  },
+  {
+    "client_canceled": true,
+    "client_verification_ids": [
+      "d261a9f9"
+    ],
+    "error": "TLS verification must complete without cancelling either peer under delayed signal delivery",
+    "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+    "pool_get_timeout_ms": 100,
+    "server_canceled": true,
+    "server_verification_ids": [
+      "d261a9f9"
+    ],
+    "verification_gates": 0,
+    "pair": "tunveo",
+    "iteration": 7,
+    "exit_code": 1
+  },
+  {
+    "client_canceled": true,
+    "client_verification_ids": [
+      "9d4eed3b"
+    ],
+    "error": "TLS verification must complete without cancelling either peer under delayed signal delivery",
+    "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+    "pool_get_timeout_ms": 100,
+    "server_canceled": true,
+    "server_verification_ids": [
+      "9d4eed3b"
+    ],
+    "verification_gates": 0,
+    "pair": "tunveo",
+    "iteration": 8,
+    "exit_code": 1
+  },
+  {
+    "client_canceled": true,
+    "client_verification_ids": [
+      "61f38b6a"
+    ],
+    "error": "TLS verification must complete without cancelling either peer under delayed signal delivery",
+    "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+    "pool_get_timeout_ms": 100,
+    "server_canceled": true,
+    "server_verification_ids": [
+      "61f38b6a"
+    ],
+    "verification_gates": 0,
+    "pair": "tunveo",
+    "iteration": 9,
+    "exit_code": 1
+  },
+  {
+    "client_canceled": true,
+    "client_verification_ids": [
+      "77bb3a81"
+    ],
+    "error": "TLS verification must complete without cancelling either peer under delayed signal delivery",
+    "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+    "pool_get_timeout_ms": 100,
+    "server_canceled": true,
+    "server_verification_ids": [
+      "77bb3a81"
+    ],
+    "verification_gates": 0,
+    "pair": "tunveo",
+    "iteration": 10,
+    "exit_code": 1
+  },
+  {
+    "client_canceled": true,
+    "client_verification_ids": [
+      "4e881467"
+    ],
+    "error": "TLS verification must complete without cancelling either peer under delayed signal delivery",
+    "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+    "pool_get_timeout_ms": 100,
+    "server_canceled": true,
+    "server_verification_ids": [
+      "4e881467"
+    ],
+    "verification_gates": 0,
+    "pair": "upstream",
+    "iteration": 1,
+    "exit_code": 1
+  },
+  {
+    "client_canceled": true,
+    "client_verification_ids": [
+      "bfd50f9e"
+    ],
+    "error": "TLS verification must complete without cancelling either peer under delayed signal delivery",
+    "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+    "pool_get_timeout_ms": 100,
+    "server_canceled": true,
+    "server_verification_ids": [
+      "bfd50f9e"
+    ],
+    "verification_gates": 0,
+    "pair": "upstream",
+    "iteration": 2,
+    "exit_code": 1
+  },
+  {
+    "client_canceled": true,
+    "client_verification_ids": [
+      "1713793b"
+    ],
+    "error": "TLS verification must complete without cancelling either peer under delayed signal delivery",
+    "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+    "pool_get_timeout_ms": 100,
+    "server_canceled": true,
+    "server_verification_ids": [
+      "1713793b"
+    ],
+    "verification_gates": 0,
+    "pair": "upstream",
+    "iteration": 3,
+    "exit_code": 1
+  },
+  {
+    "client_canceled": true,
+    "client_verification_ids": [
+      "2169f7b1"
+    ],
+    "error": "TLS verification must complete without cancelling either peer under delayed signal delivery",
+    "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+    "pool_get_timeout_ms": 100,
+    "server_canceled": true,
+    "server_verification_ids": [
+      "2169f7b1"
+    ],
+    "verification_gates": 0,
+    "pair": "upstream",
+    "iteration": 4,
+    "exit_code": 1
+  },
+  {
+    "client_canceled": true,
+    "client_verification_ids": [
+      "3644a19f"
+    ],
+    "error": "TLS verification must complete without cancelling either peer under delayed signal delivery",
+    "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+    "pool_get_timeout_ms": 100,
+    "server_canceled": true,
+    "server_verification_ids": [
+      "3644a19f"
+    ],
+    "verification_gates": 0,
+    "pair": "upstream",
+    "iteration": 5,
+    "exit_code": 1
+  },
+  {
+    "client_canceled": true,
+    "client_verification_ids": [
+      "96b66969"
+    ],
+    "error": "TLS verification must complete without cancelling either peer under delayed signal delivery",
+    "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+    "pool_get_timeout_ms": 100,
+    "server_canceled": true,
+    "server_verification_ids": [
+      "96b66969"
+    ],
+    "verification_gates": 0,
+    "pair": "upstream",
+    "iteration": 6,
+    "exit_code": 1
+  },
+  {
+    "client_canceled": true,
+    "client_verification_ids": [
+      "b4dc5f3f"
+    ],
+    "error": "TLS verification must complete without cancelling either peer under delayed signal delivery",
+    "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+    "pool_get_timeout_ms": 100,
+    "server_canceled": true,
+    "server_verification_ids": [
+      "b4dc5f3f"
+    ],
+    "verification_gates": 0,
+    "pair": "upstream",
+    "iteration": 7,
+    "exit_code": 1
+  },
+  {
+    "client_canceled": true,
+    "client_verification_ids": [
+      "202cd121"
+    ],
+    "error": "TLS verification must complete without cancelling either peer under delayed signal delivery",
+    "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+    "pool_get_timeout_ms": 100,
+    "server_canceled": true,
+    "server_verification_ids": [
+      "202cd121"
+    ],
+    "verification_gates": 0,
+    "pair": "upstream",
+    "iteration": 8,
+    "exit_code": 1
+  },
+  {
+    "client_canceled": true,
+    "client_verification_ids": [
+      "5b509468"
+    ],
+    "error": "TLS verification must complete without cancelling either peer under delayed signal delivery",
+    "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+    "pool_get_timeout_ms": 100,
+    "server_canceled": true,
+    "server_verification_ids": [
+      "5b509468"
+    ],
+    "verification_gates": 0,
+    "pair": "upstream",
+    "iteration": 9,
+    "exit_code": 1
+  },
+  {
+    "client_canceled": true,
+    "client_verification_ids": [
+      "81a3a945"
+    ],
+    "error": "TLS verification must complete without cancelling either peer under delayed signal delivery",
+    "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+    "pool_get_timeout_ms": 100,
+    "server_canceled": true,
+    "server_verification_ids": [
+      "81a3a945"
+    ],
+    "verification_gates": 0,
+    "pair": "upstream",
+    "iteration": 10,
+    "exit_code": 1
+  }
+]

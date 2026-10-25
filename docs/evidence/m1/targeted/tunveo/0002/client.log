@@ -1,0 +1,19 @@
+2026-10-24 22:54:54.640  DEBUG  Init log level: DEBUG
+2026-10-24 22:54:54.641  WARN  TLS code-0: unencrypted
+2026-10-24 22:54:54.642  INFO  Client started: client://[REDACTED]@127.0.0.1:35681/127.0.0.1:50483?dns=5m0s&sni=none&lbs=0&min=2&mode=2&dial=auto&read=0s&rate=0&slot=65536&proxy=0&block=0&notcp=0&noudp=0
+2026-10-24 22:54:54.642  INFO  Pending tunnel handshake...
+2026-10-24 22:54:54.645  INFO  Loading tunnel config: FLOW=-|MAX=8|TLS=1|TYPE=2
+2026-10-24 22:54:54.645  INFO  Getting tunnel pool ready...
+2026-10-24 22:54:54.797  INFO  Marking tunnel handshake as complete in 154ms
+2026-10-24 22:54:54.797  INFO  TLS code-1: RAM cert fingerprint verifying...
+2026-10-24 22:54:54.797  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=1|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-24 22:54:59.797  DEBUG  TLS code-1: verify signal: cid 3637adb4 -> websocket/unknown-addr
+2026-10-24 22:54:59.797  DEBUG  TLS verify signal: cid 3637adb4 <- websocket/unknown-addr
+2026-10-24 22:54:59.797  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=2|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-24 22:55:04.797  ERROR  OutgoingVerify: request timeout: OutgoingGet: connection not found
+2026-10-24 22:55:04.798  ERROR  Client error: TunnelStart: tunnelControl failed: TunnelControl: context error: context canceled
+2026-10-24 22:55:04.798  DEBUG  Tunnel connection closed: pool active 2
+2026-10-24 22:55:04.798  DEBUG  Control connection closed: websocket/unknown-addr
+2026-10-24 22:55:04.831  DEBUG  Tunnel connection closed: pool active 0
+2026-10-24 22:55:04.831  DEBUG  Control connection closed: websocket/unknown-addr
+2026-10-24 22:55:04.831  INFO  Client shutdown complete

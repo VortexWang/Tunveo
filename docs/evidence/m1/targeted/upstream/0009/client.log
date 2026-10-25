@@ -1,0 +1,24 @@
+2026-10-24 22:55:33.578  DEBUG  Init log level: DEBUG
+2026-10-24 22:55:33.578  WARN  TLS code-0: unencrypted
+2026-10-24 22:55:33.580  INFO  Client started: client://[REDACTED]@127.0.0.1:49831/127.0.0.1:39345?dns=5m0s&sni=none&lbs=0&min=2&mode=2&dial=auto&read=0s&rate=0&slot=65536&proxy=0&block=0&notcp=0&noudp=0
+2026-10-24 22:55:33.580  INFO  Pending tunnel handshake...
+2026-10-24 22:55:33.582  INFO  Loading tunnel config: FLOW=+|MAX=8|TLS=1|TYPE=1
+2026-10-24 22:55:33.582  INFO  Getting tunnel pool ready...
+2026-10-24 22:55:33.634  INFO  Marking tunnel handshake as complete in 53ms
+2026-10-24 22:55:33.634  INFO  TLS code-1: RAM cert fingerprint verifying...
+2026-10-24 22:55:33.635  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=1|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-24 22:55:38.634  DEBUG  TLS code-1: verify signal: cid 441b4cb2 -> 127.0.0.1:49831
+2026-10-24 22:55:38.636  DEBUG  TLS verify signal: cid 441b4cb2 <- 127.0.0.1:49831
+2026-10-24 22:55:38.636  EVENT  CHECK_POINT|MODE=2|PING=1ms|POOL=2|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-24 22:55:43.635  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=2|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-24 22:55:43.636  ERROR  OutgoingVerify: request timeout: OutgoingGet: stream not found
+2026-10-24 22:55:43.637  ERROR  Client error: TunnelStart: tunnelControl failed: TunnelControl: context error: context canceled
+2026-10-24 22:55:43.637  DEBUG  Tunnel connection closed: pool active 2
+2026-10-24 22:55:43.637  DEBUG  Target connection closed: 127.0.0.1:39345
+2026-10-24 22:55:43.637  DEBUG  Control connection closed: [::]:38643
+2026-10-24 22:55:43.637  DEBUG  Target listener closed: 127.0.0.1:39345
+2026-10-24 22:55:43.667  DEBUG  Tunnel connection closed: pool active 0
+2026-10-24 22:55:43.667  DEBUG  Target connection closed: 127.0.0.1:39345
+2026-10-24 22:55:43.668  DEBUG  Control connection closed: [::]:38643
+2026-10-24 22:55:43.668  DEBUG  Target listener closed: 127.0.0.1:39345
+2026-10-24 22:55:43.668  INFO  Client shutdown complete
