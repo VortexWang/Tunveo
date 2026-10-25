@@ -11,6 +11,7 @@ import (
 	"net/url"
 	"os"
 	"os/signal"
+	"sync"
 	"syscall"
 	"time"
 
@@ -21,7 +22,12 @@ import (
 // It manages the lifecycle of outbound tunnel connections, including initialization,
 // pool management, and graceful shutdown. Supports both single-connection and
 // pool-based tunnel modes.
-type Client struct{ common.Common }
+type Client struct {
+	*common.Common
+	guard sync.Mutex
+	mode  int
+	done  chan struct{}
+}
 
 // NewClient constructs a Client from a parsed URL, optional TLS configuration,
 // and a logger. It initializes the embedded Common struct, parses all URL parameters
@@ -29,7 +35,7 @@ type Client struct{ common.Common }
 // The returned client is ready to call Run() or Start().
 // Returns an error if configuration parsing fails.
 func NewClient(parsedURL *url.URL, tlsConfig *tls.Config, logger *common.Logger) (*Client, error) {
-	client := &Client{Common: common.NewCommon(logger, tlsConfig)}
+	client := &Client{Common: common.NewCommonPtr(logger, tlsConfig), done: make(chan struct{})}
 	client.ParsedURL = parsedURL
 
 	if err := client.InitConfig(); err != nil {
@@ -56,35 +62,12 @@ func (c *Client) Run() {
 	logInfo("Client started")
 
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
-
-	go func() {
-		for ctx.Err() == nil {
-			if err := c.Start(); err != nil && err != io.EOF {
-				c.Logger.Error("Client error: %v", err)
-				c.Stop()
-				select {
-				case <-ctx.Done():
-					return
-				case <-time.After(common.ServiceCooldown):
-				}
-				logInfo("Client restart")
-			}
-		}
-	}()
-
-	<-ctx.Done()
-	stop()
-
-	shutdownCtx, cancel := context.WithTimeout(context.Background(), common.ShutdownTimeout)
-	defer cancel()
-	if err := c.CommonShutdown(shutdownCtx, c.Stop); err != nil {
-		c.Logger.Error("Client shutdown error: %v", err)
-	} else {
-		c.Logger.Info("Client shutdown complete")
-	}
+	defer stop()
+	c.RunWithContext(ctx)
+	c.Logger.Info("Client shutdown complete")
 }
 
-// Start initializes a fresh context and selects the appropriate run mode based on
+// Start consumes this single-use runtime and selects the appropriate run mode based on
 // the configured RunMode:
 //   - mode "0" (auto): attempts single mode first; falls back to tunnel mode on failure
 //   - mode "1" (single): opens a local TLS listener and enters single-connection mode via SingleStart
@@ -93,7 +76,13 @@ func (c *Client) Run() {
 // For single mode, it wraps the listener with TLS if TLSConfig is configured.
 // Returns the first error encountered during initialization or control loop execution.
 func (c *Client) Start() error {
-	c.InitContext()
+	if !c.claim(1) {
+		return fmt.Errorf("Start: endpoint is single-use; construct a fresh endpoint")
+	}
+	defer func() { c.Common.Stop(); close(c.done) }()
+	if err := c.Ctx.Err(); err != nil {
+		return err
+	}
 
 	switch c.RunMode {
 	case "1":
@@ -166,4 +155,65 @@ func (c *Client) TunnelStart() error {
 	}
 
 	return nil
+}
+
+func (c *Client) claim(mode int) bool {
+	c.guard.Lock()
+	defer c.guard.Unlock()
+	if c.mode != 0 {
+		return false
+	}
+	if c.done == nil {
+		c.done = make(chan struct{})
+	}
+	c.mode = mode
+	return true
+}
+
+// RunWithContext keeps automatic retries but never reuses a runtime identity.
+// Old workers retain only their canceled run, not the next run's live fields.
+func (c *Client) RunWithContext(parent context.Context) {
+	if !c.claim(2) {
+		return
+	}
+	defer func() { c.Common.Stop(); close(c.done) }()
+	if c.Ctx.Err() != nil || parent.Err() != nil {
+		return
+	}
+	ctx, cancel := context.WithCancel(parent)
+	defer cancel()
+	stopParent := context.AfterFunc(c.Ctx, cancel)
+	defer stopParent()
+	for ctx.Err() == nil {
+		run := &Client{Common: c.Common.FreshRun(), done: make(chan struct{})}
+		stopRun := context.AfterFunc(ctx, run.Cancel)
+		err := run.Start()
+		stopRun()
+		if ctx.Err() != nil {
+			return
+		}
+		if err != nil && err != io.EOF {
+			c.Logger.Error("Client error: %v", err)
+		}
+		select {
+		case <-ctx.Done():
+			return
+		case <-time.After(common.ServiceCooldown):
+		}
+		c.Logger.Info("Client restart")
+	}
+}
+
+// Stop cancels first, then waits for Start/RunWithContext to finish their own
+// teardown. It never reads resources while setup is still assigning them.
+func (c *Client) Stop() {
+	c.Cancel()
+	c.guard.Lock()
+	mode := c.mode
+	c.guard.Unlock()
+	if mode == 0 {
+		c.Common.Stop()
+		return
+	}
+	<-c.done
 }

@@ -11,9 +11,11 @@ import (
 	"net"
 	"net/url"
 	"sync"
+	"sync/atomic"
 	"time"
 
 	"github.com/VortexWang/Tunveo/internal/transport"
+	"github.com/VortexWang/Tunveo/internal/tunnelpool/lifetime"
 )
 
 // Default configuration values used when URL query parameters are absent.
@@ -291,6 +293,8 @@ type Addrs struct {
 // into Client and Server structs. Each instance represents a single active tunnel with independent
 // configuration, connections, and runtime state. Common must be created via NewCommon.
 type Common struct {
+	stopOnce     sync.Once
+	runResources *lifetime.Group
 	// Config embeds all parsed URL configuration (inherited by composition).
 	Config
 
@@ -374,9 +378,9 @@ type Common struct {
 	// Logged when control connection is established to measure total tunnel setup time.
 	HandshakeStart time.Time
 
-	// CheckPoint records the timestamp of the last ping sent (for round-trip-time measurement).
+	// checkPoint records the atomic Unix timestamp of the last ping sent (for round-trip-time measurement).
 	// Updated by HealthCheck before sending "ping" signals; used to measure RTT via "pong" response.
-	CheckPoint time.Time
+	checkPoint atomic.Int64
 }
 
 // NewCommon creates a Common instance wired with the given logger, TLS config, and pre-allocated

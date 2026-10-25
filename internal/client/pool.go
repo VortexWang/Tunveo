@@ -5,6 +5,7 @@
 package client
 
 import (
+	"context"
 	"fmt"
 	"net"
 
@@ -42,6 +43,7 @@ func (c *Client) InitTunnelPool() error {
 				}
 				return net.DialTimeout("tcp", tcpAddr.String(), common.TCPDialTimeout)
 			})
+		context.AfterFunc(c.Ctx, tcpPool.Close)
 		go tcpPool.ClientManager()
 		c.TunnelPool = tcpPool
 	case "1":
@@ -60,6 +62,7 @@ func (c *Client) InitTunnelPool() error {
 				}
 				return udpAddr.String(), nil
 			})
+		context.AfterFunc(c.Ctx, quicPool.Close)
 		go quicPool.ClientManager()
 		c.TunnelPool = quicPool
 	case "2":
@@ -71,6 +74,7 @@ func (c *Client) InitTunnelPool() error {
 			common.ReportInterval,
 			c.TLSCode,
 			c.TunnelAddr)
+		context.AfterFunc(c.Ctx, websocketPool.Close)
 		go websocketPool.ClientManager()
 		c.TunnelPool = websocketPool
 	case "3":
@@ -89,6 +93,7 @@ func (c *Client) InitTunnelPool() error {
 				}
 				return tcpAddr.String(), nil
 			})
+		context.AfterFunc(c.Ctx, http2Pool.Close)
 		go http2Pool.ClientManager()
 		c.TunnelPool = http2Pool
 	default:

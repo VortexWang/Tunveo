@@ -23,7 +23,7 @@ func TestTLSVerificationReplyIsFlushedAndNegotiated(t *testing.T) {
 				if err != nil {
 					t.Fatal(err)
 				}
-				s := &Server{Common: common.NewCommon(common.NewLogger(common.None, false), cfg)}
+				s := &Server{Common: common.NewCommonPtr(common.NewLogger(common.None, false), cfg)}
 				s.CoreType = "server"
 				s.DataFlow = "-"
 				s.TLSCode = "1"

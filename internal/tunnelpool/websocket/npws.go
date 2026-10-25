@@ -15,6 +15,7 @@ import (
 	"time"
 
 	idlequeue "github.com/VortexWang/Tunveo/internal/tunnelpool/idle"
+	"github.com/VortexWang/Tunveo/internal/tunnelpool/lifetime"
 
 	"github.com/coder/websocket"
 )
@@ -35,6 +36,7 @@ const (
 )
 
 type Pool struct {
+	life       *lifetime.Group
 	idle       *idlequeue.Queue[net.Conn]
 	clientIP   string
 	serverName string
@@ -136,7 +138,8 @@ func NewClientPool(minCap, maxCap int, minIvl, maxIvl, keepAlive time.Duration, 
 	}
 	pool.capacity.Store(int32(minCap))
 	pool.interval.Store(int64(minIvl))
-	pool.ctx, pool.cancel = context.WithCancel(context.Background())
+	pool.life = lifetime.New()
+	pool.ctx, pool.cancel = pool.life.Context(), pool.life.Close
 	return pool
 }
 
@@ -157,12 +160,19 @@ func NewServerPool(maxCap int, clientIP string, tlsConfig *tls.Config, listener 
 		maxCap:    maxCap,
 		keepAlive: keepAlive,
 	}
-	pool.ctx, pool.cancel = context.WithCancel(context.Background())
+	pool.life = lifetime.New()
+	pool.ctx, pool.cancel = pool.life.Context(), pool.life.Close
+	pool.life.Track(listener)
 	return pool
 }
 
 func (p *Pool) createConnection() bool {
-	ctx, cancel := context.WithTimeout(p.ctx, 30*time.Second)
+	attempt := p.idle.Begin(p.ctx)
+	defer attempt.End()
+	if attempt.Context.Err() != nil {
+		return false
+	}
+	ctx, cancel := context.WithTimeout(attempt.Context, 30*time.Second)
 	defer cancel()
 
 	var httpClient *http.Client
@@ -189,7 +199,11 @@ func (p *Pool) createConnection() bool {
 		tlsState = resp.TLS
 	}
 
-	conn := websocket.NetConn(p.ctx, wsConn, websocket.MessageBinary)
+	conn, ok := p.life.Bind(websocket.NetConn(p.ctx, wsConn, websocket.MessageBinary), wsConn.CloseNow)
+	if !ok {
+		return false
+	}
+	attempt.Watch(func() { wsConn.CloseNow() })
 
 	conn.SetReadDeadline(time.Now().Add(idReadTimeout))
 	buf := make([]byte, 4)
@@ -209,7 +223,7 @@ func (p *Pool) createConnection() bool {
 		}
 	}
 
-	if !p.idle.Publish(p.ctx, id, wrappedConn) {
+	if !p.idle.Commit(attempt, id, wrappedConn) {
 		wrappedConn.Close()
 		return false
 	}
@@ -217,6 +231,8 @@ func (p *Pool) createConnection() bool {
 }
 
 func (p *Pool) handleConnection(w http.ResponseWriter, r *http.Request) {
+	attempt := p.idle.Begin(p.ctx)
+	defer attempt.End()
 	if p.Active() >= p.maxCap {
 		http.Error(w, "pool full", http.StatusServiceUnavailable)
 		return
@@ -251,22 +267,25 @@ func (p *Pool) handleConnection(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	conn := websocket.NetConn(p.ctx, wsConn, websocket.MessageBinary)
+	conn, ok := p.life.Bind(websocket.NetConn(p.ctx, wsConn, websocket.MessageBinary), wsConn.CloseNow)
+	if !ok {
+		return
+	}
+	attempt.Watch(func() { wsConn.CloseNow() })
 	if _, err := conn.Write(rawID); err != nil {
 		conn.Close()
 		return
 	}
 
-	if !p.idle.Publish(p.ctx, id, conn) {
+	if !p.idle.Commit(attempt, id, conn) {
 		conn.Close()
 	}
 }
 
 func (p *Pool) ClientManager() {
-	if p.cancel != nil {
-		p.cancel()
+	if !p.life.Start() {
+		return
 	}
-	p.ctx, p.cancel = context.WithCancel(context.Background())
 
 	for p.ctx.Err() == nil {
 		p.adjustInterval()
@@ -302,10 +321,9 @@ func (p *Pool) ClientManager() {
 }
 
 func (p *Pool) ServerManager() {
-	if p.cancel != nil {
-		p.cancel()
+	if !p.life.Start() {
+		return
 	}
-	p.ctx, p.cancel = context.WithCancel(context.Background())
 
 	var listener net.Listener
 	if p.tlsConfig != nil {
@@ -324,6 +342,9 @@ func (p *Pool) ServerManager() {
 		ErrorLog:          log.New(io.Discard, "", 0),
 	}
 
+	if _, ok := p.life.Track(p.server); !ok {
+		return
+	}
 	if err := p.server.Serve(listener); err != nil && err != http.ErrServerClosed {
 		if p.ctx.Err() == nil {
 			p.errCount.Add(1)
@@ -332,9 +353,11 @@ func (p *Pool) ServerManager() {
 }
 
 func (p *Pool) OutgoingGet(id string, timeout time.Duration) (net.Conn, error) {
-	ctx, cancel := context.WithTimeout(p.ctx, timeout)
+	attempt := p.idle.Begin(p.ctx)
+	defer attempt.End()
+	ctx, cancel := context.WithTimeout(attempt.Context, timeout)
 	defer cancel()
-	conn, err := p.idle.TakeID(ctx, id)
+	conn, err := p.idle.TakeIDAttempt(attempt, ctx, id)
 	if err != nil {
 		return nil, fmt.Errorf("OutgoingGet: connection not found: %w", err)
 	}
@@ -342,9 +365,11 @@ func (p *Pool) OutgoingGet(id string, timeout time.Duration) (net.Conn, error) {
 }
 
 func (p *Pool) IncomingGet(timeout time.Duration) (string, net.Conn, error) {
-	ctx, cancel := context.WithTimeout(p.ctx, timeout)
+	attempt := p.idle.Begin(p.ctx)
+	defer attempt.End()
+	ctx, cancel := context.WithTimeout(attempt.Context, timeout)
 	defer cancel()
-	id, conn, err := p.idle.Take(ctx)
+	id, conn, err := p.idle.TakeAttempt(attempt, ctx)
 	if err != nil {
 		return "", nil, fmt.Errorf("IncomingGet: insufficient connections: %w", err)
 	}
@@ -364,20 +389,10 @@ func (p *Pool) Flush() {
 	wg.Wait()
 }
 
-func (p *Pool) Close() {
-	if p.cancel != nil {
-		p.cancel()
-	}
-	if p.server != nil {
-		ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-		defer cancel()
-		p.server.Shutdown(ctx)
-	}
-	p.Flush()
-}
+func (p *Pool) Close() { p.cancel(); p.Flush() }
 
 func (p *Pool) Ready() bool {
-	return p.ctx != nil
+	return p.ctx != nil && p.ctx.Err() == nil
 }
 
 func (p *Pool) Active() int {
