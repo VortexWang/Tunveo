@@ -292,9 +292,13 @@ func (c *Common) GetUDPStrategy() {
 
 // InitConfig orchestrates all configuration parsers in the correct dependency order.
 // Must be called once after creating a Common instance with a parsed URL (NewCommon + URL assignment).
-// GetAddress must run first (sets TunnelAddr, TargetAddrs, ServerName, ServerPort as side effects).
+// Validate startup intervals before address work. GetAddress then sets TunnelAddr,
+// TargetAddrs, ServerName and ServerPort as side effects.
 // All other getters run afterward in any order. Returns an error if address parsing, resolution, or validation fails.
 func (c *Common) InitConfig() error {
+	if err := ValidateReloadInterval(); err != nil {
+		return err
+	}
 	if err := c.GetAddress(); err != nil {
 		return err
 	}

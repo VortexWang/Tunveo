@@ -93,6 +93,9 @@ func initLogger(level string) *common.Logger {
 // passes the TLS configuration and logger. Returns the core instance or an error
 // if the scheme is unrecognized. The returned instance implements Run() for startup.
 func createCore(parsedURL *url.URL, logger *common.Logger) (interface{ Run() }, error) {
+	if err := common.ValidateReloadInterval(); err != nil {
+		return nil, err
+	}
 	tlsCode, tlsConfig, err := getTLSProtocol(parsedURL, logger)
 	if err != nil {
 		return nil, err

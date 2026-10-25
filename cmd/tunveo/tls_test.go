@@ -183,3 +183,13 @@ func TestCertificateReloadConcurrentAndRetainsLastGood(t *testing.T) {
 		t.Fatal(err)
 	}
 }
+
+func TestCoreRejectsNonpositiveReloadBeforeTLS(t *testing.T) {
+	old := common.ReloadInterval
+	common.ReloadInterval = 0
+	defer func() { common.ReloadInterval = old }()
+	core, err := createCore(nil, common.NewLogger(common.None, false))
+	if err == nil || core != nil {
+		t.Fatal("core initialization accepted invalid reload interval")
+	}
+}
