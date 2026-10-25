@@ -42,6 +42,7 @@ go test ./...
 go test -race ./...
 ```
 
+- [开发与维护计划](docs/development-plan.md)
 - [Installation](docs/installation.md)
 - [CLI](docs/cli.md), [configuration](docs/configuration.md), [API](docs/api.md), [MCP](docs/mcp.md)
 - [Migration and compatibility](docs/migration.md)
