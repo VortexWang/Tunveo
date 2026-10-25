@@ -1,0 +1,29 @@
+2026-10-25 00:27:59.146  DEBUG  Init log level: DEBUG
+2026-10-25 00:27:59.146  WARN  TLS code-0: unencrypted
+2026-10-25 00:27:59.147  INFO  Client started: [REDACTED-URL]
+2026-10-25 00:27:59.148  INFO  Pending tunnel handshake...
+2026-10-25 00:27:59.150  INFO  Loading tunnel config: FLOW=-|MAX=8|TLS=1|TYPE=2|VERIFY=flow-v1
+2026-10-25 00:27:59.150  INFO  Getting tunnel pool ready...
+2026-10-25 00:27:59.201  INFO  Marking tunnel handshake as complete in 53ms
+2026-10-25 00:27:59.201  INFO  TLS code-1: RAM cert fingerprint verifying...
+2026-10-25 00:27:59.201  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=1|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-25 00:28:04.203  DEBUG  TLS code-1: verify signal: cid 8b6394e1 -> websocket/unknown-addr
+2026-10-25 00:28:04.203  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=2|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-25 00:28:04.203  INFO  TLS code-1: RAM cert verified with sha256 fingerprint: 13a41c30d6d24df0521efc0786a037ee68d7464931b782ead61af5236c84d7c6
+2026-10-25 00:28:04.210  DEBUG  TCP launch signal: cid 93eda525 <- websocket/unknown-addr
+2026-10-25 00:28:04.210  DEBUG  Tunnel connection: get 93eda525 <- pool active 1
+2026-10-25 00:28:04.210  DEBUG  Tunnel connection: websocket/unknown-addr <-> websocket/unknown-addr
+2026-10-25 00:28:04.210  DEBUG  Target connection: 127.0.0.1:37262 <-> 127.0.0.1:32965
+2026-10-25 00:28:04.211  INFO  Starting exchange: websocket/unknown-addr <-> 127.0.0.1:32965
+2026-10-25 00:28:04.211  INFO  Exchange complete: read tcp 127.0.0.1:37262->127.0.0.1:32965: use of closed network connection
+2026-10-25 00:28:04.211  DEBUG  Tunnel connection: closed 93eda525
+2026-10-25 00:28:04.213  DEBUG  UDP launch signal: cid 2dd35403 <- websocket/unknown-addr
+2026-10-25 00:28:04.213  DEBUG  Tunnel connection: get 2dd35403 <- pool active 0
+2026-10-25 00:28:04.213  DEBUG  Tunnel connection: websocket/unknown-addr <-> websocket/unknown-addr
+2026-10-25 00:28:04.213  DEBUG  Target connection: 127.0.0.1:38035 <-> 127.0.0.1:32965
+2026-10-25 00:28:04.213  DEBUG  Starting transfer: websocket/unknown-addr <-> 127.0.0.1:38035
+2026-10-25 00:28:04.213  DEBUG  Transfer complete: websocket/unknown-addr <-> 127.0.0.1:38035
+2026-10-25 00:28:04.214  DEBUG  Transfer complete: 127.0.0.1:38035 <-> websocket/unknown-addr
+2026-10-25 00:28:04.316  DEBUG  Tunnel connection closed: pool active 0
+2026-10-25 00:28:04.317  DEBUG  Control connection closed: websocket/unknown-addr
+2026-10-25 00:28:04.317  INFO  Client shutdown complete

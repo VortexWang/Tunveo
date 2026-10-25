@@ -912,7 +912,7 @@ For optimizing TCP connections:
   - Higher values reduce log output but provide less immediate visibility
 
 - `NP_RELOAD_INTERVAL`: Controls how frequently TLS certificates are checked for changes and state backups are performed
-  - Use a strictly positive duration; zero/negative values can panic the inherited master maintenance ticker (TNV-013, still open).
+  - Use a strictly positive Go duration. Zero, negative, explicitly empty, malformed or overflowing values now abort service startup with exit code 1 (TNV-013); no silent fallback. Unset keeps the 1h default. Configuration is read once per process.
   - Lower values provide faster certificate change detection and more frequent backups but increase file system operations
   - Higher values reduce overhead but delay certificate updates and backup frequency
 
@@ -1007,3 +1007,4 @@ export NP_SHUTDOWN_TIMEOUT=3s
 - Explore [examples](/docs/examples.md) to understand deployment patterns
 - Learn about [how Tunveo works](/docs/how-it-works.md) to optimize your configuration
 - Check the [troubleshooting guide](/docs/troubleshooting.md) if you encounter issues
+Reload interval validation and compatibility: [TNV-013](reload-interval.md).

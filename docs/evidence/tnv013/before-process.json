@@ -1,0 +1,19 @@
+{
+  "binary_sha256": "dc088f783ec7313197fa750602c44d2af3ffe7a7d2f97c2cbe397acff360ee1e",
+  "runner_sha256": "7a549b15de791664dbe5b28cf667a70af56b4baf3bed40b1ec3e2f66d405fef2",
+  "helper_sha256": "28ccd5ac23eeb4dcf160e5de55beebaa4ddbae510fe818e12bb568f8eceaaebb",
+  "started_at": "2026-10-25T07:25:44.410554+00:00",
+  "scope": "local loopback, temporary master state, synthetic credentials",
+  "results": [
+    {
+      "case": "master/zero",
+      "status": "failed",
+      "exit_code": 2,
+      "panic": true,
+      "listening_after_exit": false,
+      "state_created": true
+    }
+  ],
+  "status": "failed",
+  "failure_type": "AssertionError"
+}

@@ -16,10 +16,12 @@ Updated 2026-10-25. Status describes evidence, not a vulnerability severity cert
 | TNV-010 | Migration not verified | State/export names changed; GOB and import compatibility remain unverified | Offline sample, backup, import and rollback tests |
 | TNV-011 | Security upgrades implemented; scoped rescan passed, pending integration | Go 1.26.10 / x/net v0.60.0 reduce static called IDs 15 → 5 → 0; one module-only OpenPGP advisory remains, with no affected package imported | Review dependency PR; preserve scan gate and assess new database findings; not a blanket security clearance |
 | TNV-012 | New-server early-close path fixed; scoped validation passed | Full response is written and flushed before listener transition; capability tests exercise 30 real HTTPS handshakes | Old servers remain unchanged; other EOF causes must still be diagnosed separately |
-| TNV-013 | Reproduced; unfixed | `NP_RELOAD_INTERVAL=0s` makes master panic in the inherited maintenance ticker; positive duration required | Validate positive maintenance intervals in a separate configuration patch |
+| TNV-013 | Startup validation implemented; scoped regression passed, pending integration | Zero/negative/empty/malformed/overflowing reload values reject service startup before state/listeners; 24 process cases pass and prior panic remains recorded | Review fix PR and migration note; other interval parameters/full maintenance lifecycle remain separate audit scope |
 
 Evidence, exact baseline commits and scope limitations are in [M1 findings](m1-findings.md) and [TNV-002 fix](tnv-002-fix.md). Unfixed security observations must not be presented as resolved by redacting the diagnostic artifact or by adding a test.
 
 TLS/log changes and process evidence: [security fix record](tls-log-safety.md).
 
 Dependency changes and staged scan evidence: [TNV-011](security-dependencies.md).
+
+Reload-period validation and before/after evidence: [TNV-013](reload-interval.md).
