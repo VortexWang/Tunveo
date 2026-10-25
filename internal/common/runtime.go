@@ -29,6 +29,8 @@ func (c *Common) InitContext() {
 		c.Cancel() // cancel previous context if it exists
 	}
 	c.Ctx, c.Cancel = context.WithCancel(context.Background())
+	c.VerifyChan = make(chan struct{}, 1)
+	c.verification = newTLSVerificationState(c.Ctx, c.Cancel, c.VerifyChan)
 }
 
 // InitTunnelListener opens the TCP and/or UDP listeners bound to the tunnel address.

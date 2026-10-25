@@ -27,7 +27,7 @@ ANSI = re.compile(r"\x1b\[[0-9;]*m")
 CREDENTIAL = re.compile(r"((?:server|client)://)[^@\s]+@")
 PAIRS = ("tunveo/tunveo", "upstream/upstream", "tunveo/upstream", "upstream/tunveo")
 PHASES = ("server_startup", "tunnel_handshake", "pool_ready", "certificate_verification", "tcp_echo", "udp_echo", "cleanup")
-FATAL = re.compile(r"(?:OutgoingVerify: (?:request timeout|no |certificate)|IncomingVerify: incomingGet failed|(?:Server|Client) (?:error|restart):|panic:|fatal error:)")
+FATAL = re.compile(r"(?:TLS verification failed:|OutgoingVerify: (?:request timeout|no |certificate)|IncomingVerify: incomingGet failed|(?:Server|Client) (?:error|restart):|panic:|fatal error:)")
 
 
 def clean(text):

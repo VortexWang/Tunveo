@@ -1,11 +1,11 @@
 // Command repro_tls_verify is a bounded regression for TLS-mode-1 verification.
 // It uses real TLS/TCP pools. Control messages are delivered only after the two
 // initiators finish, a valid network schedule that must not cancel a tunnel.
-// The unmodified baseline exits 1; this is deliberately not an expected pass.
+// Both negotiated flow directions must finish, with one initiating side and
+// one correlated acknowledgement, without consuming the same connection twice.
 package main
 
 import (
-	"context"
 	"encoding/json"
 	"fmt"
 	"net"
@@ -18,7 +18,7 @@ import (
 	tcp "github.com/VortexWang/Tunveo/internal/tunnelpool/tcp"
 )
 
-func run() (map[string]any, error) {
+func run(flow string) (map[string]any, error) {
 	// Only the fixture's timeout changes; engine source and binaries are untouched.
 	common.PoolGetTimeout = 100 * time.Millisecond
 	cfg, err := common.NewTLSConfig()
@@ -80,17 +80,16 @@ func run() (map[string]any, error) {
 	server := common.NewCommon(logger, cfg)
 	client := common.NewCommon(logger, nil)
 	server.CoreType, client.CoreType = "server", "client"
+	server.DataFlow, client.DataFlow = flow, flow
+	server.TLSVerifyMode, client.TLSVerifyMode = common.TLSVerifyFlowV1, common.TLSVerifyFlowV1
 	server.TLSCode, client.TLSCode = "1", "1"
 	server.TunnelKey, client.TunnelKey = "fixture-only", "fixture-only"
 	server.ControlConn, client.ControlConn = sc, cc
 	server.TunnelPool, client.TunnelPool = serverPool, clientPool
-	server.Ctx, server.Cancel = context.WithCancel(context.Background())
+	server.InitContext()
+	client.InitContext()
 	defer server.Cancel()
-	client.Ctx, client.Cancel = context.WithCancel(context.Background())
 	defer client.Cancel()
-	// Buffered gates stand in for the data-loop consumers; they do not affect
-	// connection ownership or control-message contents.
-	server.VerifyChan, client.VerifyChan = make(chan struct{}, 2), make(chan struct{}, 2)
 	server.IncomingVerify()
 	client.IncomingVerify()
 	drain := func(endpoint *common.Common) ([]common.Signal, error) {
@@ -120,16 +119,35 @@ func run() (map[string]any, error) {
 	if err != nil {
 		return nil, err
 	}
-	var wg sync.WaitGroup
-	for _, signal := range fromServer {
-		wg.Add(1)
-		go func(s common.Signal) { defer wg.Done(); client.OutgoingVerify(s) }(signal)
+	// Deliver the initial requests, then the correlated acknowledgements. No
+	// control message is delivered before both initiation attempts return.
+	serverMessages, clientMessages := fromServer, fromClient
+	ackCount := 0
+	for range 4 {
+		for _, signal := range serverMessages {
+			if signal.VerifyAck {
+				ackCount++
+			}
+			client.OutgoingVerify(signal)
+		}
+		for _, signal := range clientMessages {
+			if signal.VerifyAck {
+				ackCount++
+			}
+			server.OutgoingVerify(signal)
+		}
+		serverMessages, err = drain(&server)
+		if err != nil {
+			return nil, err
+		}
+		clientMessages, err = drain(&client)
+		if err != nil {
+			return nil, err
+		}
+		if len(serverMessages)+len(clientMessages) == 0 {
+			break
+		}
 	}
-	for _, signal := range fromClient {
-		wg.Add(1)
-		go func(s common.Signal) { defer wg.Done(); server.OutgoingVerify(s) }(signal)
-	}
-	wg.Wait()
 	ids := func(signals []common.Signal) []string {
 		var out []string
 		for _, s := range signals {
@@ -137,8 +155,8 @@ func run() (map[string]any, error) {
 		}
 		return out
 	}
-	report := map[string]any{"fixture": "real TLS/TCP pools; two connections: control plus one verification slot", "pool_get_timeout_ms": 100, "server_verification_ids": ids(fromServer), "client_verification_ids": ids(fromClient), "server_canceled": server.Ctx.Err() != nil, "client_canceled": client.Ctx.Err() != nil, "verification_gates": len(server.VerifyChan) + len(client.VerifyChan)}
-	if server.Ctx.Err() != nil || client.Ctx.Err() != nil || len(server.VerifyChan)+len(client.VerifyChan) == 0 {
+	report := map[string]any{"fixture": "real TLS/TCP pools; two connections: control plus one verification slot", "flow": flow, "acknowledgements": ackCount, "pool_get_timeout_ms": 100, "server_verification_ids": ids(fromServer), "client_verification_ids": ids(fromClient), "server_canceled": server.Ctx.Err() != nil, "client_canceled": client.Ctx.Err() != nil, "verification_gates": len(server.VerifyChan) + len(client.VerifyChan)}
+	if server.Ctx.Err() != nil || client.Ctx.Err() != nil || len(server.VerifyChan) != 1 || len(client.VerifyChan) != 1 || ackCount != 1 {
 		return report, fmt.Errorf("TLS verification must complete without cancelling either peer under delayed signal delivery")
 	}
 	return report, nil
@@ -149,15 +167,21 @@ func main() {
 	// blocking operations. A watchdog exit is a fixture error, not a reproduction.
 	timer := time.AfterFunc(10*time.Second, func() { fmt.Fprintln(os.Stderr, "fixture watchdog expired"); os.Exit(2) })
 	defer timer.Stop()
-	report, err := run()
-	if report == nil {
-		report = map[string]any{"fixture_error": fmt.Sprint(err)}
+	var reports []map[string]any
+	failed := false
+	for _, flow := range []string{"-", "+"} {
+		report, err := run(flow)
+		if report == nil {
+			report = map[string]any{"fixture_error": fmt.Sprint(err)}
+		}
+		if err != nil {
+			report["error"] = err.Error()
+			failed = true
+		}
+		reports = append(reports, report)
 	}
-	if err != nil {
-		report["error"] = err.Error()
-	}
-	json.NewEncoder(os.Stdout).Encode(report)
-	if err != nil {
+	json.NewEncoder(os.Stdout).Encode(map[string]any{"flows": reports, "passed": !failed})
+	if failed {
 		os.Exit(1)
 	}
 }

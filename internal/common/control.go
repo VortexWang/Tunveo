@@ -140,11 +140,15 @@ func (c *Common) HealthCheck() error {
 	defer ticker.Stop()
 
 	if c.TLSCode == "1" {
+		state := c.verificationState()
+		if state == nil {
+			return fmt.Errorf("HealthCheck: verification context is missing")
+		}
 		go func() {
 			select {
-			case <-c.Ctx.Done():
+			case <-state.ctx.Done():
 			case <-time.After(ReportInterval):
-				c.IncomingVerify()
+				c.incomingVerify(state)
 			}
 		}()
 	}

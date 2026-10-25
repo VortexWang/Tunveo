@@ -48,16 +48,21 @@ func (s *Server) TunnelHandshake() error {
 				clientIP = host
 			}
 
+			s.TLSVerifyMode = common.TLSVerifyLegacy
+			if r.Header.Get(common.TLSVerifyHeader) == common.TLSVerifyFlowV1 {
+				s.TLSVerifyMode = common.TLSVerifyFlowV1
+			}
 			w.Header().Set("Content-Type", "application/json")
 			json.NewEncoder(w).Encode(map[string]any{
-				"flow": s.DataFlow,
-				"max":  s.MaxPoolCapacity,
-				"tls":  s.TLSCode,
-				"type": s.PoolType,
+				"flow":   s.DataFlow,
+				"max":    s.MaxPoolCapacity,
+				"tls":    s.TLSCode,
+				"type":   s.PoolType,
+				"verify": s.TLSVerifyMode,
 			})
 
-			s.Logger.Info("Sending tunnel config: FLOW=%v|MAX=%v|TLS=%v|TYPE=%v",
-				s.DataFlow, s.MaxPoolCapacity, s.TLSCode, s.PoolType)
+			s.Logger.Info("Sending tunnel config: FLOW=%v|MAX=%v|TLS=%v|TYPE=%v|VERIFY=%v",
+				s.DataFlow, s.MaxPoolCapacity, s.TLSCode, s.PoolType, s.TLSVerifyMode)
 
 			close(done)
 		case http.MethodConnect:

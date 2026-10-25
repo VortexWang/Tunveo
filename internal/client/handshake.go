@@ -8,6 +8,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+
+	"github.com/VortexWang/Tunveo/internal/common"
 )
 
 // TunnelHandshake performs the initial HTTP-based handshake with the tunnel server.
@@ -25,6 +27,7 @@ func (c *Client) TunnelHandshake() error {
 	req, _ := http.NewRequest(http.MethodGet, "https://"+c.TunnelAddr+"/", nil)
 	req.Host = c.ServerName
 	req.Header.Set("Authorization", "Bearer "+c.GenerateAuthToken())
+	req.Header.Set(common.TLSVerifyHeader, common.TLSVerifyFlowV1)
 
 	client := &http.Client{
 		Transport: &http.Transport{
@@ -45,10 +48,11 @@ func (c *Client) TunnelHandshake() error {
 	}
 
 	var config struct {
-		Flow string `json:"flow"`
-		Max  int    `json:"max"`
-		TLS  string `json:"tls"`
-		Type string `json:"type"`
+		Flow         string `json:"flow"`
+		Max          int    `json:"max"`
+		TLS          string `json:"tls"`
+		Type         string `json:"type"`
+		Verification string `json:"verify"`
 	}
 	if err := json.NewDecoder(resp.Body).Decode(&config); err != nil {
 		return fmt.Errorf("TunnelHandshake: %w", err)
@@ -58,8 +62,16 @@ func (c *Client) TunnelHandshake() error {
 	c.MaxPoolCapacity = config.Max
 	c.TLSCode = config.TLS
 	c.PoolType = config.Type
+	c.TLSVerifyMode = common.TLSVerifyLegacy
+	switch config.Verification {
+	case common.TLSVerifyFlowV1:
+		c.TLSVerifyMode = common.TLSVerifyFlowV1
+	case "", common.TLSVerifyLegacy:
+	default:
+		return fmt.Errorf("TunnelHandshake: unsupported verification capability %q", config.Verification)
+	}
 
-	c.Logger.Info("Loading tunnel config: FLOW=%v|MAX=%v|TLS=%v|TYPE=%v",
-		c.DataFlow, c.MaxPoolCapacity, c.TLSCode, c.PoolType)
+	c.Logger.Info("Loading tunnel config: FLOW=%v|MAX=%v|TLS=%v|TYPE=%v|VERIFY=%v",
+		c.DataFlow, c.MaxPoolCapacity, c.TLSCode, c.PoolType, c.TLSVerifyMode)
 	return nil
 }
