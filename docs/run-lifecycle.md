@@ -51,3 +51,6 @@ python3 scripts/verify_reconnect.py --binary bin/tunveo-race --artifacts artifac
 这些是本地回环、tls=1、受控时序与一次正常服务端替换，不能证明所有网络故障、长时间运行、性能或生产稳定性。Close 不承诺任意外部回调或所有 goroutine 均已 join：旧式 `func() (net.Conn, error)` dialer 不接受 context，返回前无法强制中断；迟到返回资源会被关闭并拒绝发布。自定义阻塞 Close、外部 DNS/回调仍需调用方遵守自身期限。
 
 TNV-004 的已复现范围已实施修复，待集成；旧服务端提前关闭响应、TNV-005、管理面审计、状态迁移和发布前长期验收仍独立跟进。
+
+
+后续 [TNV-005](h2-stream-deadlines.md) 已将公开 HTTP/2 deadline 移至单流适配层，取代本文记录的 TNV-004 版本限制；本文证据和历史范围不变。

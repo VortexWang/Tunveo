@@ -71,3 +71,8 @@ Other zero-valued timeouts retain their existing meanings. Help, version and exp
 ## Run and pool lifetime
 
 [TNV-004](run-lifecycle.md) makes Client/Server.Start and pool managers single-use. Construct a fresh endpoint/pool after Stop/Close. Run/RunWithContext retain automatic retry by creating a fresh runtime for each attempt. Client/Server now embed *common.Common; internal callers using struct literals must supply a pointer. Runtime channels, cache, address snapshots and resources reset per attempt; cumulative statistics and thread-safe buffers remain shared. Flush fences pending setup and old waiters, while Close also terminates leased resources. No wire, state, configuration or dependency migration is required. Public HTTP/2 deadline forwarding remains TNV-005.
+
+
+## HTTP/2 stream deadlines
+
+[TNV-005](h2-stream-deadlines.md) supersedes the H2 deadline limitation noted above: deadlines now affect only the logical stream, can be reset after expiry, and do not set the physical TLS connection deadline. Timeouts expose os.ErrDeadlineExceeded through errors.Is. A timed-out Write can accept partial data; continue after clearing the deadline using its returned byte count. Close cancels pending work for that stream. No configuration, wire or state migration is needed. Shared HTTP/2 connection flow control still causes ordinary backpressure. Extra bounded buffering/workers require later performance validation.

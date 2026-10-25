@@ -1,0 +1,21 @@
+2026-10-25 07:42:32.120  DEBUG  Init log level: DEBUG
+2026-10-25 07:42:32.120  WARN  TLS code-0: unencrypted
+2026-10-25 07:42:32.122  INFO  Client started: [REDACTED-URL]
+2026-10-25 07:42:32.123  INFO  Pending tunnel handshake...
+2026-10-25 07:42:32.127  INFO  Loading tunnel config: FLOW=+|MAX=8|TLS=1|TYPE=1|VERIFY=legacy
+2026-10-25 07:42:32.128  INFO  Getting tunnel pool ready...
+2026-10-25 07:42:32.178  INFO  Marking tunnel handshake as complete in 53ms
+2026-10-25 07:42:32.178  INFO  TLS code-1: RAM cert fingerprint verifying...
+2026-10-25 07:42:32.179  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=1|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-25 07:42:37.181  EVENT  CHECK_POINT|MODE=2|PING=1ms|POOL=3|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-25 07:42:37.181  DEBUG  TLS verify signal: cid ea8db5b5 <- 127.0.0.1:40171
+2026-10-25 07:42:37.181  INFO  TLS code-1: RAM cert verified with sha256 fingerprint: 5a896b19896253ba232e5b7915a8def46c3c130fe3f31fd4d07be2ab07af7107
+2026-10-25 07:42:37.181  DEBUG  TLS code-1: verify signal: cid a5cc38be -> 127.0.0.1:40171
+2026-10-25 07:42:37.208  DEBUG  Target connection: 127.0.0.1:37243 <-> 127.0.0.1:37058
+2026-10-25 07:42:37.208  DEBUG  Tunnel connection: get ab502efc <- pool active 0
+2026-10-25 07:42:37.208  DEBUG  Tunnel connection: [::]:39983 <-> 127.0.0.1:40171
+2026-10-25 07:42:37.208  DEBUG  TCP launch signal: cid ab502efc -> 127.0.0.1:40171
+2026-10-25 07:42:37.208  INFO  Starting exchange: 127.0.0.1:37058 <-> 127.0.0.1:40171
+2026-10-25 07:42:37.211  INFO  Exchange complete: stream 12 canceled by local with error code 0
+2026-10-25 07:42:37.211  DEBUG  Tunnel connection: closed ab502efc
+2026-10-25 07:42:37.225  DEBUG  Target connection: 127.0.0.1:37243 <-> 127.0.0.1:55815

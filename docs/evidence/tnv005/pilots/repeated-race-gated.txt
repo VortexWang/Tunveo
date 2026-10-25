@@ -1,0 +1,6 @@
+--- FAIL: TestH2WriteDeadlineIsolation (4.88s)
+    --- FAIL: TestH2WriteDeadlineIsolation/server (3.67s)
+        deadline_test.go:177: writer never reached peer
+FAIL
+FAIL	github.com/VortexWang/Tunveo/internal/tunnelpool/http2	47.078s
+FAIL

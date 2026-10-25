@@ -1,0 +1,32 @@
+2026-10-25 07:41:32.525  DEBUG  Init log level: DEBUG
+2026-10-25 07:41:32.525  WARN  TLS code-0: unencrypted
+2026-10-25 07:41:32.528  INFO  Client started: [REDACTED-URL]
+2026-10-25 07:41:32.532  INFO  Pending tunnel handshake...
+2026-10-25 07:41:32.558  INFO  Loading tunnel config: FLOW=-|MAX=8|TLS=1|TYPE=0|VERIFY=flow-v1
+2026-10-25 07:41:32.559  INFO  Getting tunnel pool ready...
+2026-10-25 07:41:32.609  INFO  Marking tunnel handshake as complete in 76ms
+2026-10-25 07:41:32.609  INFO  TLS code-1: RAM cert fingerprint verifying...
+2026-10-25 07:41:32.610  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=1|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-25 07:41:37.610  DEBUG  TLS code-1: verify signal: cid f3ed64f3 -> 127.0.0.1:33265
+2026-10-25 07:41:37.610  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=2|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-25 07:41:37.610  INFO  TLS code-1: RAM cert verified with sha256 fingerprint: c66905ed026dd5ec14003f1a950a41f02a26dbb14e118b476b94c643d589077e
+2026-10-25 07:41:37.628  DEBUG  TCP launch signal: cid 0d0e2380 <- 127.0.0.1:33265
+2026-10-25 07:41:37.628  DEBUG  Tunnel connection: get 0d0e2380 <- pool active 1
+2026-10-25 07:41:37.628  DEBUG  Tunnel connection: 127.0.0.1:55652 <-> 127.0.0.1:33265
+2026-10-25 07:41:37.629  DEBUG  Target connection: 127.0.0.1:38224 <-> 127.0.0.1:42489
+2026-10-25 07:41:37.629  INFO  Starting exchange: 127.0.0.1:33265 <-> 127.0.0.1:42489
+2026-10-25 07:41:37.676  INFO  Exchange complete: read tcp 127.0.0.1:38224->127.0.0.1:42489: use of closed network connection
+2026-10-25 07:41:37.676  DEBUG  Tunnel connection: closed 0d0e2380
+2026-10-25 07:41:37.679  DEBUG  UDP launch signal: cid b8e561f8 <- 127.0.0.1:33265
+2026-10-25 07:41:37.679  DEBUG  Tunnel connection: get b8e561f8 <- pool active 0
+2026-10-25 07:41:37.679  DEBUG  Tunnel connection: 127.0.0.1:55658 <-> 127.0.0.1:33265
+2026-10-25 07:41:37.679  DEBUG  Target connection: 127.0.0.1:60038 <-> 127.0.0.1:42489
+2026-10-25 07:41:37.679  DEBUG  Starting transfer: 127.0.0.1:55658 <-> 127.0.0.1:60038
+2026-10-25 07:41:37.679  DEBUG  Transfer complete: 127.0.0.1:55658 <-> 127.0.0.1:60038
+2026-10-25 07:41:37.679  DEBUG  Transfer complete: 127.0.0.1:60038 <-> 127.0.0.1:55658
+2026-10-25 07:41:37.780  ERROR  TunnelUDPOnce: read from tunnel failed: read tcp 127.0.0.1:55658->127.0.0.1:33265: use of closed network connection
+2026-10-25 07:41:37.781  DEBUG  Tunnel connection: closed b8e561f8
+2026-10-25 07:41:37.781  DEBUG  Tunnel connection closed: pool active 0
+2026-10-25 07:41:37.781  DEBUG  Control connection closed: 127.0.0.1:55634
+2026-10-25 07:41:37.782  INFO  Client shutdown complete
+2026-10-25 07:41:37.780  ERROR  TunnelUDPOnce: read from target failed: read udp 127.0.0.1:60038->127.0.0.1:42489: use of closed network connection

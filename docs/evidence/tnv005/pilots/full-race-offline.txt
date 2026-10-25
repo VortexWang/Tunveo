@@ -1,0 +1,18 @@
+ok  	github.com/VortexWang/Tunveo/cmd/tunveo	1.076s
+ok  	github.com/VortexWang/Tunveo/internal/client	1.224s
+ok  	github.com/VortexWang/Tunveo/internal/common	1.429s
+ok  	github.com/VortexWang/Tunveo/internal/master	1.045s
+ok  	github.com/VortexWang/Tunveo/internal/server	2.008s
+?   	github.com/VortexWang/Tunveo/internal/transport	[no test files]
+--- FAIL: TestH2WriteDeadlineIsolation (0.29s)
+    --- FAIL: TestH2WriteDeadlineIsolation/client (0.16s)
+        deadline_test.go:202: write timeout/count: 0 write pipe: i/o timeout
+FAIL
+FAIL	github.com/VortexWang/Tunveo/internal/tunnelpool/http2	0.699s
+ok  	github.com/VortexWang/Tunveo/internal/tunnelpool/idle	1.068s
+ok  	github.com/VortexWang/Tunveo/internal/tunnelpool/lifetime	1.020s
+ok  	github.com/VortexWang/Tunveo/internal/tunnelpool/quic	1.069s
+ok  	github.com/VortexWang/Tunveo/internal/tunnelpool/tcp	1.023s
+?   	github.com/VortexWang/Tunveo/internal/tunnelpool/websocket	[no test files]
+?   	github.com/VortexWang/Tunveo/scripts/repro_tls_verify	[no test files]
+FAIL
