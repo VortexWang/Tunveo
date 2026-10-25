@@ -1,0 +1,8 @@
+.DS_Store
+/bin/
+/dist/
+/coverage.out
+/gob/
+/tunveo.json
+__pycache__/
+*.pyc

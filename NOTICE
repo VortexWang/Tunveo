@@ -1,0 +1,21 @@
+Tunveo
+Repository: https://github.com/VortexWang/Tunveo
+
+This project is derived from NodePass v1.17.0:
+https://github.com/NodePassProject/nodepass
+Copyright (c) 2026, NodePassProject
+License: BSD-3-Clause; see LICENSE.
+
+Bundled upstream libraries, each at v1.1.1:
+- NodePassProject/pool: internal/tunnelpool/tcp/LICENSE
+- NodePassProject/quic: internal/tunnelpool/quic/LICENSE
+- NodePassProject/npws: internal/tunnelpool/websocket/LICENSE
+- NodePassProject/nph2: internal/tunnelpool/http2/LICENSE
+Copyright (c) 2025, NodePassProject
+License: BSD-3-Clause.
+
+Commit identities, original SHA-256 hashes and local modifications are recorded
+in docs/upstream/sources.json. The original upstream Git history is retained.
+
+Tunveo is an independently maintained derivative. No endorsement by the
+upstream copyright holders or contributors is claimed.
