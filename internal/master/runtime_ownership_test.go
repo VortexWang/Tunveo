@@ -160,3 +160,16 @@ func TestShutdownIsSingleFlightAndRejectsActions(t *testing.T) {
 		t.Fatal("post-shutdown action admitted")
 	}
 }
+
+func TestProcessStartRateRejectsBeforeExec(t *testing.T) {
+	m := stateFixture(t)
+	m.dataMu.Lock()
+	defer m.dataMu.Unlock()
+	i, _ := m.findInstanceLocked("fixture")
+	m.startWindow = time.Now()
+	m.startAttempts = MaxChildStartsPerMinute
+	m.startInstanceLocked(i)
+	if i.Status != "error" || i.run != nil || m.children != 0 || m.startAttempts != MaxChildStartsPerMinute {
+		t.Fatal("spawn rate admission failed")
+	}
+}

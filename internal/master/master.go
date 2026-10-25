@@ -136,7 +136,7 @@ func NewMaster(parsedURL *url.URL, tlsCode string, tlsConfig *tls.Config, logger
 		MTLSConfig:    tlsConfig,
 		MasterURL:     parsedURL,
 		StatePath:     filepath.Join(baseDir, StateFilePath, StateFileName),
-		NotifyChannel: make(chan *InstanceEvent, common.SemaphoreLimit),
+		NotifyChannel: make(chan *InstanceEvent, ManagementEventBuffer),
 		TCPingSem:     make(chan struct{}, PingSemLimit),
 		StartTime:     time.Now(),
 		PeriodicDone:  make(chan struct{}),

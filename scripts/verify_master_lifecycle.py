@@ -22,7 +22,7 @@ def main():
      with observations_lock:
       started=re.search(r'Instance starting:.*\[([0-9a-f]+)\] pid=(\d+)',line)
       ended=re.search(r'Instance reaped \[([0-9a-f]+)\] pid=(\d+) success=(true|false)',line)
-      if started:active[int(started[2])]=started[1]
+      if started:active[int(started[2])]=started[1];history.add(int(started[2]))
       if ended:active.pop(int(ended[2]),None);reaped.add(int(ended[2]))
    reader=threading.Thread(target=capture);reader.start()
    key=None;children=[];child_ports=[];history=set()

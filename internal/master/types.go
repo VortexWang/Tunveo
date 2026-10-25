@@ -35,6 +35,8 @@ type Master struct {
 	savePending, saveRunning bool
 	background               sync.WaitGroup
 	autostart                []*Instance
+	startWindow              time.Time
+	startAttempts            int
 	children                 int
 	runs                     sync.Map
 	shutdownOnce             sync.Once

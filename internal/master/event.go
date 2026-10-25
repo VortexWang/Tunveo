@@ -235,13 +235,17 @@ func (m *Master) HandleSSE(w http.ResponseWriter, r *http.Request) {
 		}
 		return write([]byte(fmt.Sprintf("event: instance\ndata: %s\n\n", data)))
 	}
-	for _, instance := range m.snapshots() {
+	for _, id := range m.instanceIDs() {
 		select {
 		case <-r.Context().Done():
 			return
 		case <-sub.done:
 			return
 		default:
+		}
+		instance, exists := m.FindInstance(id)
+		if !exists {
+			continue
 		}
 		if instance.ID != APIKeyID && !send(&InstanceEvent{Type: "initial", Time: time.Now(), Instance: instance}) {
 			return
@@ -276,15 +280,16 @@ func (m *Master) sendSSEEventLocked(eventType string, instance *Instance, logs .
 	if instance != nil && instance.ID == APIKeyID {
 		return
 	}
+	m.eventMu.RLock()
+	defer m.eventMu.RUnlock()
+	if m.eventsClosed || len(m.NotifyChannel) >= cap(m.NotifyChannel) {
+		return
+	}
 	event := &InstanceEvent{Type: eventType, Time: time.Now(), Instance: cloneInstance(instance)}
 	if len(logs) > 0 {
 		event.Logs = logs[0]
 	}
-	m.eventMu.RLock()
-	defer m.eventMu.RUnlock()
-	if m.eventsClosed {
-		return
-	}
+
 	select {
 	case m.NotifyChannel <- event:
 	default:

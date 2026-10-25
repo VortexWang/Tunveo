@@ -8,11 +8,13 @@ import (
 )
 
 const (
-	MaxManagedInstances   = 1024
-	MaxManagedChildren    = 64
-	MaxImportBytes        = 8 << 20
-	MaxImportInstances    = 256
-	maxManagementResponse = 16 << 20
+	MaxManagedInstances     = 1024
+	MaxManagedChildren      = 64
+	MaxChildStartsPerMinute = 128
+	ManagementEventBuffer   = 256
+	MaxImportBytes          = 8 << 20
+	MaxImportInstances      = 256
+	maxManagementResponse   = 16 << 20
 )
 
 // Instance fields belong to dataMu. Control handlers execute a transaction into
@@ -23,18 +25,24 @@ func cloneInstance(i *Instance) *Instance {
 		return nil
 	}
 	c := *i
+	c.run = nil
+	c.cmd = nil
+	c.stopped = nil
+	c.cancelFunc = nil
+	c.pendingAction = ""
+	c.actionWorker = false
 	c.Meta.Tags = make(map[string]string, len(i.Meta.Tags))
 	for k, v := range i.Meta.Tags {
 		c.Meta.Tags[k] = v
 	}
 	return &c
 }
-func (m *Master) snapshots() []*Instance {
+func (m *Master) instanceIDs() []string {
 	m.dataMu.RLock()
 	defer m.dataMu.RUnlock()
-	var out []*Instance
-	m.Instances.Range(func(_, v any) bool { out = append(out, cloneInstance(v.(*Instance))); return true })
-	return out
+	var ids []string
+	m.Instances.Range(func(k, v any) bool { ids = append(ids, k.(string)); return true })
+	return ids
 }
 
 type controlResponse struct {

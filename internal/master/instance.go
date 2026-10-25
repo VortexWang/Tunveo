@@ -60,6 +60,17 @@ func (m *Master) startInstanceLocked(i *Instance) {
 		m.sendSSEEventLocked("update", i)
 		return
 	}
+	now := time.Now()
+	if m.startWindow.IsZero() || now.Sub(m.startWindow) >= time.Minute {
+		m.startWindow = now
+		m.startAttempts = 0
+	}
+	if m.startAttempts >= MaxChildStartsPerMinute {
+		i.Status = "error"
+		m.sendSSEEventLocked("update", i)
+		return
+	}
+	m.startAttempts++
 	exe, err := os.Executable()
 	if err != nil {
 		i.Status = "error"
