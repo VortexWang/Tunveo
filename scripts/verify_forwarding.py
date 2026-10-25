@@ -143,10 +143,36 @@ def echo_service():
             thread.join(timeout=1)
 
 
+class ProbeSetupError(Exception):
+    """A broken diagnostic setup must never count as TLS rejection."""
+
+
+def probe_socket(port, udp):
+    # An unbound loopback socket can be auto-assigned its destination port.
+    # Linux can then echo UDP (and even TCP) back to the same socket without
+    # any listener. Choose a distinct source BEFORE connect/send; these are
+    # local allocations, not application retries.
+    for _ in range(100):
+        conn = None
+        try:
+            conn = socket.socket(type=socket.SOCK_DGRAM if udp else socket.SOCK_STREAM)
+            conn.bind(("127.0.0.1", 0))
+            if conn.getsockname()[1] != port:
+                return conn
+        except OSError as exc:
+            if conn is not None:
+                conn.close()
+            raise ProbeSetupError("cannot allocate a diagnostic source socket") from exc
+        conn.close()
+    raise ProbeSetupError("cannot allocate a source port distinct from the destination")
+
+
 def exchange(port, udp=False, timeout=3):
     payload = bytes(range(256)) * (2 if udp else 128)
     deadline = time.monotonic() + timeout
-    with socket.socket(type=socket.SOCK_DGRAM if udp else socket.SOCK_STREAM) as conn:
+    with probe_socket(port, udp) as conn:
+        if time.monotonic() >= deadline:
+            raise ProbeSetupError("diagnostic source allocation exhausted the exchange budget")
         def budget():
             remaining = deadline - time.monotonic()
             if remaining <= 0:
@@ -154,6 +180,9 @@ def exchange(port, udp=False, timeout=3):
             conn.settimeout(remaining)
         budget()
         conn.connect(("127.0.0.1", port))
+        local, peer = conn.getsockname(), conn.getpeername()
+        if local == peer:
+            raise ProbeSetupError("diagnostic self-connection detected")
         budget()
         conn.sendall(payload)
         received = bytearray()
@@ -167,7 +196,8 @@ def exchange(port, udp=False, timeout=3):
                 break  # a truncated datagram must not be assembled from later packets
         if received != payload:
             raise RuntimeError(f"payload mismatch: sent={len(payload)} received={len(received)}")
-    return {"sent_bytes": len(payload), "received_bytes": len(received), "attempts": 1}
+    return {"sent_bytes": len(payload), "received_bytes": len(received), "attempts": 1,
+            "local_endpoint": local, "peer_endpoint": peer, "protocol": "udp" if udp else "tcp"}
 
 
 class CapturedLog:
@@ -336,11 +366,11 @@ def run_case(server_bin, client_bin, row, folder, args, checkpoint):
                         time.sleep(.025)
                     for udp in (False, True):
                         try:
-                            exchange(front, udp=udp, timeout=args.io_timeout)
+                            details = exchange(front, udp=udp, timeout=args.io_timeout)
                         except (OSError, RuntimeError) as exc:
                             failures.append(type(exc).__name__)
                         else:
-                            raise RuntimeError("untrusted TLS forwarded application data")
+                            raise RuntimeError("unexpected application echo during TLS rejection probe: " + json.dumps(details))
                     return {"negative": args.reject_tls, "observation_seconds": round(time.monotonic()-start, 3), "application_rejections": failures}
                 phase("certificate_verification", rejected)
                 for name in ("tcp_echo", "udp_echo"):

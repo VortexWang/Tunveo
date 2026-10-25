@@ -11,9 +11,11 @@ import tempfile
 import threading
 import time
 import unittest
+from unittest import mock
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from verify_forwarding import exchange
+from verify_forwarding import exchange, ProbeSetupError
+from probe_selfecho_fixture import ForcedSourceCollision
 
 RUNNER = Path(__file__).resolve().parents[1] / 'verify_forwarding.py'
 FIXTURE = '''#!/usr/bin/env python3
@@ -45,7 +47,7 @@ tls=os.environ.get('FIXTURE_TLS',parse_qs(u.query).get('tls',['1'])[0])
 if parse_qs(u.query).get('type',['0'])[0]=='1' and tls=='0':tls='1'
 print('Sending tunnel config: TLS='+tls+'|',flush=True)
 print('Loading tunnel config: TLS='+tls+'|',flush=True)
-print('Marking tunnel handshake as complete',flush=True)
+if os.environ.get('FIXTURE_MODE')!='no-pool':print('Marking tunnel handshake as complete',flush=True)
 if os.environ.get('FIXTURE_MODE')!='no-verify':print('RAM cert verified with sha256 fingerprint: fixture',flush=True)
 while True:time.sleep(.1)
 '''
@@ -100,6 +102,15 @@ class RunnerTests(unittest.TestCase):
         p = subprocess.run(self.command('--tls', '2', '--reject-tls', 'untrusted-ca'), env=env, capture_output=True, text=True, timeout=8)
         self.assertEqual(p.returncode, 1, p.stderr + p.stdout)
         self.assertIn('untrusted data pool became ready', self.report()['results'][0]['error'])
+
+    def test_negative_control_rejects_echo_even_without_ready_log(self):
+        env = dict(os.environ, FIXTURE_TLS='2', FIXTURE_MODE='no-pool')
+        p = subprocess.run(self.command('--tls', '2', '--reject-tls', 'untrusted-ca'), env=env, capture_output=True, text=True, timeout=8)
+        self.assertEqual(p.returncode, 1, p.stderr + p.stdout)
+        row = self.report()['results'][0]
+        self.assertIn('unexpected application echo', row['error'])
+        self.assertIn('local_endpoint', row['error'])
+        self.assertEqual(row['failed_phase'], 'certificate_verification')
 
     def test_negotiated_mode_mismatch_is_a_failure(self):
         env = dict(os.environ, FIXTURE_TLS='0')
@@ -160,6 +171,27 @@ class RunnerTests(unittest.TestCase):
 
 
 class ExchangeTests(unittest.TestCase):
+    def assert_self_connection_avoided(self, udp):
+        fixture = ForcedSourceCollision(udp)
+        with mock.patch('verify_forwarding.socket.socket', fixture.socket):
+            with self.assertRaises(OSError):
+                exchange(fixture.target[1], udp=udp, timeout=.2)
+        self.assertGreaterEqual(len(fixture.sockets), 2)
+        self.assertEqual(fixture.sockets[0].sends, 0)
+        self.assertLessEqual(sum(s.sends for s in fixture.sockets), 1)
+        self.assertTrue(all(s.closed for s in fixture.sockets))
+
+    def test_tcp_source_cannot_be_the_destination(self):
+        self.assert_self_connection_avoided(False)
+
+    def test_udp_source_cannot_be_the_destination(self):
+        self.assert_self_connection_avoided(True)
+
+    def test_socket_allocation_failure_is_not_tls_rejection(self):
+        with mock.patch('verify_forwarding.socket.socket', side_effect=OSError('fixture allocation failure')):
+            with self.assertRaises(ProbeSetupError):
+                exchange(1, udp=True, timeout=.2)
+
     def test_tcp_dribble_cannot_reset_total_deadline(self):
         with socket.socket() as listener:
             listener.bind(('127.0.0.1', 0))
