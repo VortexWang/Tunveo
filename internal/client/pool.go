@@ -66,14 +66,15 @@ func (c *Client) InitTunnelPool() error {
 		go quicPool.ClientManager()
 		c.TunnelPool = quicPool
 	case "2":
-		websocketPool := npws.NewClientPool(
+		websocketPool := npws.NewClientPoolWithServerName(
 			c.MinPoolCapacity,
 			c.MaxPoolCapacity,
 			common.MinPoolInterval,
 			common.MaxPoolInterval,
 			common.ReportInterval,
 			c.TLSCode,
-			c.TunnelAddr)
+			c.TunnelAddr,
+			c.ServerName)
 		context.AfterFunc(c.Ctx, websocketPool.Close)
 		go websocketPool.ClientManager()
 		c.TunnelPool = websocketPool

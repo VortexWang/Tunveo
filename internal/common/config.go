@@ -122,16 +122,21 @@ func (c *Common) GetDNSTTL() {
 	}
 }
 
-// GetServerName sets the TLS Server Name Indication (SNI) hostname for the tunnel endpoint.
-// The "sni" query parameter takes precedence. If absent, the tunnel hostname is used when it is a DNS name.
-// IP addresses and empty hostnames fall back to DefaultServerName ("none") to indicate IP-based or no-SNI connection.
+// GetServerName selects the certificate identity for the tunnel endpoint.
+// An explicit "sni" takes precedence; otherwise retain the dial host, including
+// IP literals. Go verifies IP SANs while omitting the SNI extension for IPs.
 func (c *Common) GetServerName() {
 	if serverName := c.ParsedURL.Query().Get("sni"); serverName != "" {
 		c.ServerName = serverName
 		return
 	}
-	if c.ServerName == "" || net.ParseIP(c.ServerName) != nil {
+	if c.ServerName == "" {
 		c.ServerName = DefaultServerName
+		return
+	}
+	// IPv6 interface zones select a local route, not a certificate identity.
+	if host, _, ok := strings.Cut(c.ServerName, "%"); ok && net.ParseIP(host) != nil {
+		c.ServerName = host
 	}
 }
 
