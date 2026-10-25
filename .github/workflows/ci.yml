@@ -273,3 +273,26 @@ jobs:
           name: container-evidence
           path: artifacts/container.json
           retention-days: 14
+
+  tls-modes-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v6.0.2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-go@v6.1.0
+        with:
+          go-version-file: go.mod
+      - run: go build -race -trimpath -o bin/tunveo-race ./cmd/tunveo
+      - run: python3 scripts/verify_forwarding.py --binary bin/tunveo-race --tls 0 --tls 2 --artifacts artifacts/tls-positive
+      - run: python3 scripts/verify_forwarding.py --binary bin/tunveo-race --tls 2 --reject-tls untrusted-ca --artifacts artifacts/tls-reject-ca
+      - run: python3 scripts/verify_forwarding.py --binary bin/tunveo-race --tls 2 --reject-tls wrong-hostname --artifacts artifacts/tls-reject-name
+      - run: python3 scripts/repro_handshake_eof.py --ref 114345043d9608e1e24e783a270cde75193e4f42 --mode original --go go --output artifacts/eof-original.json
+      - run: python3 scripts/repro_handshake_eof.py --ref HEAD --mode fixed --go go --output artifacts/eof-fixed.json
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: tls-mode-regression
+          path: artifacts
+          retention-days: 14

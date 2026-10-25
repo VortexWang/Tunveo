@@ -63,6 +63,9 @@ func (s *Server) InitTunnelPool() error {
 			s.TLSConfig,
 			s.TunnelListener,
 			common.ReportInterval)
+		if http2Pool == nil {
+			return fmt.Errorf("InitTunnelPool: HTTP/2 requires a listener and TLS configuration")
+		}
 		context.AfterFunc(s.Ctx, http2Pool.Close)
 		go http2Pool.ServerManager()
 		s.TunnelPool = http2Pool

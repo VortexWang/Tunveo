@@ -1,0 +1,10 @@
+{
+  "acceptance-evidence.zip": {
+    "bytes": 4251162,
+    "sha256": "f0327324e3da446eb7881de3b5e6c80ae5e29084f35c7cb58286d7bd22d37086"
+  },
+  "regression-evidence.zip": {
+    "bytes": 93534,
+    "sha256": "f6691e25efe6efc91dff54c78123959015ba7d0b1f834c81566a33543f0c58aa"
+  }
+}

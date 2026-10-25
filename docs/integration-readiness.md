@@ -51,3 +51,5 @@ python3 scripts/check_release_readiness.py
 ```
 
 工具来源：[GoReleaser v2.19.0](https://github.com/goreleaser/goreleaser/releases/tag/v2.19.0)。本地 Linux x86_64 安装包 SHA-256：ebc3194ad1d1b1787614405285a0039665cd4c5bd3305215a1b201600f90630b（与官方 checksums.txt 核对）。
+
+2026-10-26 后续 TLS 0/2 扩展、TNV-014 修复和十轮矩阵结果以 [TLS 验收](tls-support-matrix.md) 为准；本页前述 13 项 CI 是当时提交的历史结果。

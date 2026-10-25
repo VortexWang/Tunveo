@@ -78,3 +78,5 @@ Instance snapshots, bounded imports and child ownership: [TNV-009B](docs/master-
 Offline state migration, backup recovery and rollback: [TNV-010](docs/state-migration.md).
 
 Integrated acceptance, packaging checks and remaining release gates: [current status](docs/integration-readiness.md).
+
+TLS modes, certificate rejection controls and HTTP/2 mode-0 behavior: [TNV-014 and acceptance matrix](docs/tls-support-matrix.md).
