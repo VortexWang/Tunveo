@@ -10,7 +10,9 @@ import (
 	"fmt"
 	"net"
 	"net/http"
+	"strconv"
 	"strings"
+	"sync/atomic"
 
 	"github.com/VortexWang/Tunveo/internal/common"
 )
@@ -27,6 +29,7 @@ import (
 func (s *Server) TunnelHandshake() error {
 	var clientIP string
 	done := make(chan struct{})
+	var claimed atomic.Bool
 
 	handler := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.Method {
@@ -43,21 +46,53 @@ func (s *Server) TunnelHandshake() error {
 				return
 			}
 
+			if !claimed.CompareAndSwap(false, true) {
+				http.Error(w, "handshake already accepted", http.StatusConflict)
+				return
+			}
+			committed := false
+			defer func() {
+				if !committed {
+					claimed.Store(false)
+				}
+			}()
+
 			clientIP = r.RemoteAddr
 			if host, _, err := net.SplitHostPort(clientIP); err == nil {
 				clientIP = host
 			}
 
-			w.Header().Set("Content-Type", "application/json")
-			json.NewEncoder(w).Encode(map[string]any{
-				"flow": s.DataFlow,
-				"max":  s.MaxPoolCapacity,
-				"tls":  s.TLSCode,
-				"type": s.PoolType,
+			s.TLSVerifyMode = common.TLSVerifyLegacy
+			if r.Header.Get(common.TLSVerifyHeader) == common.TLSVerifyFlowV1 {
+				s.TLSVerifyMode = common.TLSVerifyFlowV1
+			}
+			payload, err := json.Marshal(map[string]any{
+				"flow":   s.DataFlow,
+				"max":    s.MaxPoolCapacity,
+				"tls":    s.TLSCode,
+				"type":   s.PoolType,
+				"verify": s.TLSVerifyMode,
 			})
 
-			s.Logger.Info("Sending tunnel config: FLOW=%v|MAX=%v|TLS=%v|TYPE=%v",
-				s.DataFlow, s.MaxPoolCapacity, s.TLSCode, s.PoolType)
+			if err != nil {
+				http.Error(w, "configuration encoding failed", http.StatusInternalServerError)
+				return
+			}
+			w.Header().Set("Content-Type", "application/json")
+			w.Header().Set("Content-Length", strconv.Itoa(len(payload)))
+			if _, err := w.Write(payload); err != nil {
+				return
+			}
+			// Publish completion only after the full response reaches the transport.
+			// Closing the HTTPS server before this flush can truncate the capability
+			// reply and make the client see EOF instead of the negotiated settings.
+			if err := http.NewResponseController(w).Flush(); err != nil {
+				return
+			}
+			committed = true
+
+			s.Logger.Info("Sending tunnel config: FLOW=%v|MAX=%v|TLS=%v|TYPE=%v|VERIFY=%v",
+				s.DataFlow, s.MaxPoolCapacity, s.TLSCode, s.PoolType, s.TLSVerifyMode)
 
 			close(done)
 		case http.MethodConnect:

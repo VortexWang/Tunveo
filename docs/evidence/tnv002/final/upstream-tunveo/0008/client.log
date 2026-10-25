@@ -1,0 +1,36 @@
+2026-10-24 23:34:59.824  DEBUG  Init log level: DEBUG
+2026-10-24 23:34:59.824  WARN  TLS code-0: unencrypted
+2026-10-24 23:34:59.825  INFO  Client started: client://[REDACTED]@127.0.0.1:45109/127.0.0.1:48253?dns=5m0s&sni=none&lbs=0&min=64&mode=2&dial=auto&read=0s&rate=0&slot=65536&proxy=0&block=0&notcp=0&noudp=0
+2026-10-24 23:34:59.826  INFO  Pending tunnel handshake...
+2026-10-24 23:34:59.827  INFO  Loading tunnel config: FLOW=-|MAX=1024|TLS=1|TYPE=3|VERIFY=legacy
+2026-10-24 23:34:59.827  INFO  Getting tunnel pool ready...
+2026-10-24 23:34:59.928  INFO  Marking tunnel handshake as complete in 102ms
+2026-10-24 23:34:59.928  INFO  TLS code-1: RAM cert fingerprint verifying...
+2026-10-24 23:34:59.929  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=63|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-24 23:35:04.929  DEBUG  TLS verify signal: cid b738ce26 <- 127.0.0.1:45109
+2026-10-24 23:35:04.929  INFO  TLS code-1: RAM cert verified with sha256 fingerprint: 4c48fe6f17823db06fdb8afe49c62f42fc0320a2f2a85232f8039d5b292505b8
+2026-10-24 23:35:04.929  DEBUG  TLS code-1: verify signal: cid bb661b50 -> 127.0.0.1:45109
+2026-10-24 23:35:04.929  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=63|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-24 23:35:04.944  DEBUG  TCP launch signal: cid 6651117f <- 127.0.0.1:45109
+2026-10-24 23:35:04.944  DEBUG  Tunnel connection: get 6651117f <- pool active 62
+2026-10-24 23:35:04.944  DEBUG  Tunnel connection: 127.0.0.1:49004 <-> 127.0.0.1:45109
+2026-10-24 23:35:04.944  DEBUG  Target connection: 127.0.0.1:57264 <-> 127.0.0.1:48253
+2026-10-24 23:35:04.944  INFO  Starting exchange: 127.0.0.1:45109 <-> 127.0.0.1:48253
+2026-10-24 23:35:04.947  DEBUG  UDP launch signal: cid 20caaa5d <- 127.0.0.1:45109
+2026-10-24 23:35:04.947  DEBUG  Tunnel connection: get 20caaa5d <- pool active 61
+2026-10-24 23:35:04.947  DEBUG  Tunnel connection: 127.0.0.1:49004 <-> 127.0.0.1:45109
+2026-10-24 23:35:04.947  DEBUG  Target connection: 127.0.0.1:38637 <-> 127.0.0.1:48253
+2026-10-24 23:35:04.947  DEBUG  Starting transfer: 127.0.0.1:49004 <-> 127.0.0.1:38637
+2026-10-24 23:35:04.948  DEBUG  Transfer complete: 127.0.0.1:49004 <-> 127.0.0.1:38637
+2026-10-24 23:35:04.948  DEBUG  Transfer complete: 127.0.0.1:38637 <-> 127.0.0.1:49004
+2026-10-24 23:35:05.045  INFO  Exchange complete: http2: response body closed
+2026-10-24 23:35:05.045  DEBUG  Tunnel connection: closed 6651117f
+2026-10-24 23:35:05.048  ERROR  Client error: TunnelStart: tunnelControl failed: TunnelControl: context error: context canceled
+2026-10-24 23:35:05.048  ERROR  TunnelUDPOnce: read from tunnel failed: http2: client connection force closed via ClientConn.Close
+2026-10-24 23:35:05.048  ERROR  TunnelUDPOnce: read from target failed: read udp 127.0.0.1:38637->127.0.0.1:48253: use of closed network connection
+2026-10-24 23:35:05.048  DEBUG  Tunnel connection: closed 20caaa5d
+2026-10-24 23:35:05.049  DEBUG  Tunnel connection closed: pool active 61
+2026-10-24 23:35:05.049  DEBUG  Control connection closed: 127.0.0.1:49004
+2026-10-24 23:35:05.049  DEBUG  Tunnel connection closed: pool active 61
+2026-10-24 23:35:05.049  DEBUG  Control connection closed: 127.0.0.1:49004
+2026-10-24 23:35:05.049  INFO  Client shutdown complete

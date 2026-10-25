@@ -353,9 +353,13 @@ type Common struct {
 	// Buffered channel with capacity SemaphoreLimit. Drained on Stop().
 	WriteChan chan []byte
 
-	// VerifyChan is closed/sent when TLS fingerprint verification succeeds (TLS code-1 feature).
-	// Blocks TunnelLoop until verification completes or context is cancelled. Drained on Stop().
+	// VerifyChan receives one buffered completion per run. It gates incoming business
+	// traffic without blocking a verifier on the non-listening side. Drained on Stop().
 	VerifyChan chan struct{}
+
+	// TLSVerifyMode is negotiated before starting the pool/control workers.
+	TLSVerifyMode string
+	verification  *tlsVerificationState
 
 	// Ctx is the cancellation context for this tunnel run. Cancelled by calling Cancel() to initiate shutdown.
 	// All goroutines poll Ctx.Done() to detect shutdown signals.
@@ -386,7 +390,7 @@ func NewCommon(logger *Logger, tlsConfig *tls.Config) Common {
 		TLSConfig:  tlsConfig,                                            // attach TLS config
 		SignalChan: make(chan Signal, SemaphoreLimit),                    // buffered signal queue
 		WriteChan:  make(chan []byte, SemaphoreLimit),                    // buffered write queue
-		VerifyChan: make(chan struct{}),                                  // unbuffered verification gate
+		VerifyChan: make(chan struct{}, 1),                               // buffered verification gate
 	}
 }
 
@@ -499,4 +503,7 @@ type Signal struct {
 	// Fingerprint is the SHA-256 certificate fingerprint (as hex string) for TLS code-1 verification.
 	// Included only in "verify" signals. Compared by the remote side to ensure mutual certificate match.
 	Fingerprint string `json:"fp,omitempty"`
+
+	// VerifyAck is emitted only after both peers negotiate flow-v1 verification.
+	VerifyAck bool `json:"ack,omitempty"`
 }

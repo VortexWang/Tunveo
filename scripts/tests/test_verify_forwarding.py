@@ -77,6 +77,12 @@ class RunnerTests(unittest.TestCase):
             self.assertEqual(row['phases']['tcp_echo']['received_bytes'], 32768)
             self.assertEqual(row['phases']['udp_echo']['received_bytes'], 512)
             self.assertTrue(all(p['reaped'] and not p['forced_kill'] for p in row['cleanup']))
+            lengths = [len(Path(row['logs'][role]).read_bytes()) for role in ('server', 'client')]
+            for phase in row['phases'].values():
+                for index, observed in enumerate(phase.get('observed_log_bytes', [])):
+                    self.assertLessEqual(observed, lengths[index])
+            for role in ('server', 'client'):
+                self.assertIn('RAM cert verified', Path(row['logs'][role]).read_text())
 
     def test_tcp_success_is_preserved_on_udp_timeout_and_logs_are_redacted(self):
         env = dict(os.environ, FIXTURE_MODE='drop-udp')
@@ -104,6 +110,7 @@ class RunnerTests(unittest.TestCase):
                 time.sleep(.02)
             else:
                 self.fail('runner did not persist in-progress phase')
+            self.assertIn('Marking tunnel handshake', (self.artifacts / '0001/server.log').read_text())
             p.send_signal(stop_signal)
             out, err = p.communicate(timeout=5)
             self.assertEqual(p.returncode, 130, out + err)

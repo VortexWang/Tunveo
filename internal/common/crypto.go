@@ -1,6 +1,6 @@
 // crypto.go provides cryptographic helpers: ephemeral TLS certificate
 // generation, XOR-based signal obfuscation, HMAC-based authentication tokens,
-// HTTPS handshake pre-auth handling, and mutual TLS fingerprint verification
+// HTTPS handshake pre-auth handling, and optional TLS fingerprint comparison
 // used by the optional TLS code-1 handshake.
 package common
 
@@ -15,7 +15,6 @@ import (
 	"crypto/x509"
 	"encoding/base64"
 	"encoding/hex"
-	"encoding/json"
 	"encoding/pem"
 	"fmt"
 	"math/big"
@@ -156,138 +155,4 @@ func (c *Common) Decode(data []byte) ([]byte, error) {
 		return nil, fmt.Errorf("Decode: base64 decode failed: %w", err)
 	}
 	return c.Xor(decoded), nil
-}
-
-// IncomingVerify initiates TLS code-1 certificate fingerprint verification (client-side in pooled mode).
-// Waits for the pool to be ready, retrieves a test connection, extracts the certificate fingerprint,
-// and sends a "verify" signal to the remote side for comparison. Cancels the tunnel on errors.
-// Called as a background goroutine during HealthCheck when TLSCode == "1".
-func (c *Common) IncomingVerify() {
-	for c.Ctx.Err() == nil {
-		if c.TunnelPool.Ready() && c.TunnelPool.Active() > 0 {
-			break
-		}
-		select {
-		case <-c.Ctx.Done():
-			continue
-		case <-time.After(ContextCheckInterval):
-		}
-	}
-
-	id, testConn, err := c.TunnelPool.IncomingGet(PoolGetTimeout)
-	if err != nil {
-		c.Logger.Error("IncomingVerify: incomingGet failed: %v", err)
-		c.Cancel()
-		return
-	}
-	defer testConn.Close()
-
-	var fingerprint string
-	switch c.CoreType {
-	case "server":
-		if c.TLSConfig != nil && len(c.TLSConfig.Certificates) > 0 {
-			cert := c.TLSConfig.Certificates[0]
-			if len(cert.Certificate) > 0 {
-				fingerprint = c.FormatCertFingerprint(cert.Certificate[0])
-			}
-		}
-	case "client":
-		if conn, ok := testConn.(interface{ ConnectionState() tls.ConnectionState }); ok {
-			state := conn.ConnectionState()
-			if len(state.PeerCertificates) > 0 {
-				fingerprint = c.FormatCertFingerprint(state.PeerCertificates[0].Raw)
-			}
-		}
-	}
-
-	if c.Ctx.Err() == nil && c.ControlConn != nil {
-		signalData, _ := json.Marshal(Signal{
-			ActionType:  "verify",
-			PoolConnID:  id,
-			Fingerprint: fingerprint,
-		})
-		c.WriteChan <- c.Encode(signalData)
-	}
-
-	c.Logger.Debug("TLS code-1: verify signal: cid %v -> %v", id, c.ControlConn.RemoteAddr())
-}
-
-// OutgoingVerify handles incoming "verify" signals from TLS code-1 verification (server-side in pooled mode).
-// Waits for the pool to be ready, retrieves the designated pool connection, extracts its certificate fingerprint,
-// and compares it against the fingerprint received in the signal. On mismatch, cancels the context (aborting the tunnel).
-// On match, signals VerifyChan to unblock TunnelLoop. Called as a background goroutine from TunnelOnce.
-func (c *Common) OutgoingVerify(signal Signal) {
-	for c.Ctx.Err() == nil {
-		if c.TunnelPool.Ready() {
-			break
-		}
-		select {
-		case <-c.Ctx.Done():
-			continue
-		case <-time.After(ContextCheckInterval):
-		}
-	}
-
-	fingerPrint := signal.Fingerprint
-	if fingerPrint == "" {
-		c.Logger.Error("OutgoingVerify: no fingerprint in signal")
-		c.Cancel()
-		return
-	}
-
-	id := signal.PoolConnID
-	c.Logger.Debug("TLS verify signal: cid %v <- %v", id, c.ControlConn.RemoteAddr())
-
-	testConn, err := c.TunnelPool.OutgoingGet(id, PoolGetTimeout)
-	if err != nil {
-		c.Logger.Error("OutgoingVerify: request timeout: %v", err)
-		c.Cancel()
-		return
-	}
-	defer testConn.Close()
-
-	var serverFingerprint, clientFingerprint string
-	switch c.CoreType {
-	case "server":
-		if c.TLSConfig == nil || len(c.TLSConfig.Certificates) == 0 {
-			c.Logger.Error("OutgoingVerify: no local certificate")
-			c.Cancel()
-			return
-		}
-
-		cert := c.TLSConfig.Certificates[0]
-		if len(cert.Certificate) == 0 {
-			c.Logger.Error("OutgoingVerify: empty local certificate")
-			c.Cancel()
-			return
-		}
-
-		serverFingerprint = c.FormatCertFingerprint(cert.Certificate[0])
-		clientFingerprint = fingerPrint
-	case "client":
-		conn, ok := testConn.(interface{ ConnectionState() tls.ConnectionState })
-		if !ok {
-			return
-		}
-		state := conn.ConnectionState()
-
-		if len(state.PeerCertificates) == 0 {
-			c.Logger.Error("OutgoingVerify: no peer certificates found")
-			c.Cancel()
-			return
-		}
-
-		clientFingerprint = c.FormatCertFingerprint(state.PeerCertificates[0].Raw)
-		serverFingerprint = fingerPrint
-	}
-
-	if serverFingerprint != clientFingerprint {
-		c.Logger.Error("OutgoingVerify: certificate fingerprint mismatch: server: %v - client: %v", serverFingerprint, clientFingerprint)
-		c.Cancel()
-		return
-	}
-
-	c.Logger.Info("TLS code-1: RAM cert verified with sha256 fingerprint: %v", fingerPrint)
-
-	c.VerifyChan <- struct{}{}
 }

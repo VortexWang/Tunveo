@@ -50,7 +50,7 @@ jobs:
         with:
           go-version-file: go.mod
       - run: go build -o bin/repro-tls-verify ./scripts/repro_tls_verify
-      # Baseline must fail visibly until the actual handshake ownership bug is fixed.
+      # This regression must stay green after the ownership fix; M1 records the red baseline.
       - run: mkdir -p artifacts && ./bin/repro-tls-verify > artifacts/tls-verification-regression.json
       - name: Save deterministic regression evidence
         if: always()

@@ -1,0 +1,25 @@
+2026-10-24 23:26:30.647  [34mDEBUG[0m  Init log level: DEBUG
+2026-10-24 23:26:30.648  [33mWARN[0m  TLS code-0: unencrypted
+2026-10-24 23:26:30.649  [32mINFO[0m  Client started: client://smoke-only@127.0.0.1:52651/127.0.0.1:58591?dns=5m0s&sni=none&lbs=0&min=2&mode=2&dial=auto&read=0s&rate=0&slot=65536&proxy=0&block=0&notcp=0&noudp=0
+2026-10-24 23:26:30.649  [32mINFO[0m  Pending tunnel handshake...
+2026-10-24 23:26:30.651  [32mINFO[0m  Loading tunnel config: FLOW=-|MAX=8|TLS=1|TYPE=3
+2026-10-24 23:26:30.651  [32mINFO[0m  Getting tunnel pool ready...
+2026-10-24 23:26:30.752  [32mINFO[0m  Marking tunnel handshake as complete in 102ms
+2026-10-24 23:26:30.752  [32mINFO[0m  TLS code-1: RAM cert fingerprint verifying...
+2026-10-24 23:26:30.753  [36mEVENT[0m  CHECK_POINT|MODE=2|PING=0ms|POOL=1|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-24 23:26:35.753  [34mDEBUG[0m  TLS code-1: verify signal: cid 039307f2 -> 127.0.0.1:52651
+2026-10-24 23:26:35.753  [36mEVENT[0m  CHECK_POINT|MODE=2|PING=0ms|POOL=1|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-24 23:26:35.753  [34mDEBUG[0m  TLS verify signal: cid 08f36cc4 <- 127.0.0.1:52651
+2026-10-24 23:26:35.753  [32mINFO[0m  TLS code-1: RAM cert verified with sha256 fingerprint: d41d1f8bc4f9caff1936709791142d08aef6204227152bbcc24d491e48935074
+2026-10-24 23:26:36.312  [34mDEBUG[0m  TCP launch signal: cid 9b09cdfb <- 127.0.0.1:52651
+2026-10-24 23:26:36.312  [34mDEBUG[0m  Tunnel connection: get 9b09cdfb <- pool active 1
+2026-10-24 23:26:36.312  [34mDEBUG[0m  Tunnel connection: 127.0.0.1:37242 <-> 127.0.0.1:52651
+2026-10-24 23:26:36.312  [34mDEBUG[0m  Target connection: 127.0.0.1:41976 <-> 127.0.0.1:58591
+2026-10-24 23:26:36.312  [32mINFO[0m  Starting exchange: 127.0.0.1:52651 <-> 127.0.0.1:58591
+2026-10-24 23:26:36.316  [34mDEBUG[0m  UDP launch signal: cid 82685ef1 <- 127.0.0.1:52651
+2026-10-24 23:26:36.316  [34mDEBUG[0m  Tunnel connection: get 82685ef1 <- pool active 0
+2026-10-24 23:26:36.316  [34mDEBUG[0m  Tunnel connection: 127.0.0.1:37242 <-> 127.0.0.1:52651
+2026-10-24 23:26:36.316  [34mDEBUG[0m  Target connection: 127.0.0.1:56817 <-> 127.0.0.1:58591
+2026-10-24 23:26:36.316  [34mDEBUG[0m  Starting transfer: 127.0.0.1:37242 <-> 127.0.0.1:56817
+2026-10-24 23:26:36.316  [34mDEBUG[0m  Transfer complete: 127.0.0.1:37242 <-> 127.0.0.1:56817
+2026-10-24 23:26:36.316  [34mDEBUG[0m  Transfer complete: 127.0.0.1:56817 <-> 127.0.0.1:37242

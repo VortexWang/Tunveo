@@ -44,6 +44,7 @@ go test -race ./...
 
 - [开发与维护计划](docs/development-plan.md)
 - [诊断工具](docs/diagnostics.md)、[M1 定位结果](docs/m1-findings.md)、[缺陷台账](docs/defects.md)
+- [TNV-002 修复记录](docs/tnv-002-fix.md)、[校验协议](docs/tls-verification.md)
 - [Installation](docs/installation.md)
 - [CLI](docs/cli.md), [configuration](docs/configuration.md), [API](docs/api.md), [MCP](docs/mcp.md)
 - [Migration and compatibility](docs/migration.md)

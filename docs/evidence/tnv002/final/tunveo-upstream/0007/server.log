@@ -1,0 +1,16 @@
+2026-10-24 23:34:52.882  DEBUG  Init log level: DEBUG
+2026-10-24 23:34:52.883  INFO  TLS code-1: RAM cert with TLS 1.3
+2026-10-24 23:34:52.884  INFO  Server started: server://[REDACTED]@127.0.0.1:35961/127.0.0.1:58177?dns=5m0s&lbs=0&max=8&mode=1&type=3&dial=auto&read=0s&rate=0&slot=65536&proxy=0&block=0&notcp=0&noudp=0
+2026-10-24 23:34:52.884  INFO  Pending tunnel handshake...
+2026-10-24 23:34:52.884  INFO  TLS code-1: RAM cert prepared with sha256 fingerprint: 06a1fc8dd3b20ee35d1b900012cc434e901eb4584d6f0989f903a9845228b440
+2026-10-24 23:34:52.915  INFO  Sending tunnel config: FLOW=-|MAX=8|TLS=1|TYPE=3|VERIFY=legacy
+2026-10-24 23:34:52.916  INFO  TLS code-1: RAM cert regenerated with TLS 1.3
+2026-10-24 23:34:52.916  INFO  Getting tunnel pool ready...
+2026-10-24 23:34:53.016  INFO  Marking tunnel handshake as complete in 132ms
+2026-10-24 23:34:53.017  INFO  TLS code-1: RAM cert fingerprint verifying...
+2026-10-24 23:34:53.017  EVENT  CHECK_POINT|MODE=1|PING=0ms|POOL=1|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-24 23:34:58.018  DEBUG  TLS verify signal: cid 377941c9 <- 127.0.0.1:57112
+2026-10-24 23:34:58.018  INFO  TLS code-1: RAM cert verified with sha256 fingerprint: a8e0044ca3128491de0a81ae1ff54fcda131be8de3fd4cf4eeda437e7e07dc87
+2026-10-24 23:34:58.018  DEBUG  TLS code-1: verify signal: cid ae589370 -> 127.0.0.1:57112
+2026-10-24 23:34:58.018  EVENT  CHECK_POINT|MODE=1|PING=1ms|POOL=1|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-24 23:34:58.035  DEBUG  Target connection: 127.0.0.1:58177 <-> 127.0.0.1:43936

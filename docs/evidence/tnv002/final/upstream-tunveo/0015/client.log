@@ -1,0 +1,21 @@
+2026-10-24 23:35:38.172  DEBUG  Init log level: DEBUG
+2026-10-24 23:35:38.173  WARN  TLS code-0: unencrypted
+2026-10-24 23:35:38.173  INFO  Client started: client://[REDACTED]@127.0.0.1:50673/127.0.0.1:49243?dns=5m0s&sni=none&lbs=0&min=2&mode=2&dial=auto&read=0s&rate=0&slot=65536&proxy=0&block=0&notcp=0&noudp=0
+2026-10-24 23:35:38.174  INFO  Pending tunnel handshake...
+2026-10-24 23:35:38.176  INFO  Loading tunnel config: FLOW=+|MAX=8|TLS=1|TYPE=3|VERIFY=legacy
+2026-10-24 23:35:38.176  INFO  Getting tunnel pool ready...
+2026-10-24 23:35:38.278  INFO  Marking tunnel handshake as complete in 103ms
+2026-10-24 23:35:38.278  INFO  TLS code-1: RAM cert fingerprint verifying...
+2026-10-24 23:35:38.278  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=1|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-24 23:35:43.278  DEBUG  TLS verify signal: cid 7120024b <- 127.0.0.1:50673
+2026-10-24 23:35:43.278  INFO  TLS code-1: RAM cert verified with sha256 fingerprint: 048335d1e1e9e45b10e03636aea61bc810884061941ae2909e185a31ebdff98a
+2026-10-24 23:35:43.278  DEBUG  TLS code-1: verify signal: cid a22847ba -> 127.0.0.1:50673
+2026-10-24 23:35:43.278  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=1|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-24 23:35:43.306  DEBUG  Target connection: 127.0.0.1:49243 <-> 127.0.0.1:49950
+2026-10-24 23:35:43.307  DEBUG  Tunnel connection: get 68b9bb44 <- pool active 0
+2026-10-24 23:35:43.307  DEBUG  Tunnel connection: 127.0.0.1:32808 <-> 127.0.0.1:50673
+2026-10-24 23:35:43.307  DEBUG  TCP launch signal: cid 68b9bb44 -> 127.0.0.1:50673
+2026-10-24 23:35:43.307  INFO  Starting exchange: 127.0.0.1:49950 <-> 127.0.0.1:50673
+2026-10-24 23:35:43.308  INFO  Exchange complete: http2: response body closed
+2026-10-24 23:35:43.308  DEBUG  Tunnel connection: closed 68b9bb44
+2026-10-24 23:35:43.313  DEBUG  Target connection: 127.0.0.1:49243 <-> 127.0.0.1:53377

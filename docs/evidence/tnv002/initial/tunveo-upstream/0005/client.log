@@ -1,0 +1,21 @@
+2026-10-24 23:26:10.194  DEBUG  Init log level: DEBUG
+2026-10-24 23:26:10.194  WARN  TLS code-0: unencrypted
+2026-10-24 23:26:10.195  INFO  Client started: client://[REDACTED]@127.0.0.1:49743/127.0.0.1:41815?dns=5m0s&sni=none&lbs=0&min=2&mode=2&dial=auto&read=0s&rate=0&slot=65536&proxy=0&block=0&notcp=0&noudp=0
+2026-10-24 23:26:10.195  INFO  Pending tunnel handshake...
+2026-10-24 23:26:10.197  INFO  Loading tunnel config: FLOW=-|MAX=8|TLS=1|TYPE=2
+2026-10-24 23:26:10.197  INFO  Getting tunnel pool ready...
+2026-10-24 23:26:10.348  INFO  Marking tunnel handshake as complete in 153ms
+2026-10-24 23:26:10.348  INFO  TLS code-1: RAM cert fingerprint verifying...
+2026-10-24 23:26:10.348  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=1|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-24 23:26:15.348  DEBUG  TLS code-1: verify signal: cid dedd1a8b -> websocket/unknown-addr
+2026-10-24 23:26:15.349  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=2|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-24 23:26:15.349  DEBUG  TLS verify signal: cid 485319fa <- websocket/unknown-addr
+2026-10-24 23:26:15.349  INFO  TLS code-1: RAM cert verified with sha256 fingerprint: c929a17381d4d87d8526843ea93491ffece5bf7d0b7e80c9ae471afb462e816e
+2026-10-24 23:26:20.349  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=2|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-24 23:26:25.349  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=2|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-24 23:26:25.391  ERROR  Client error: TunnelStart: tunnelControl failed: TunnelControl: context error: context canceled
+2026-10-24 23:26:25.391  DEBUG  Tunnel connection closed: pool active 2
+2026-10-24 23:26:25.391  DEBUG  Tunnel connection closed: pool active 2
+2026-10-24 23:26:25.391  DEBUG  Control connection closed: websocket/unknown-addr
+2026-10-24 23:26:25.391  DEBUG  Control connection closed: websocket/unknown-addr
+2026-10-24 23:26:25.391  INFO  Client shutdown complete

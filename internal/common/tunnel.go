@@ -29,6 +29,9 @@ func (c *Common) TunnelLoop() {
 				}
 			}
 
+			if c.Ctx.Err() != nil {
+				return
+			}
 			if c.TargetListener != nil || c.DisableTCP != "1" {
 				go c.TunnelTCPLoop()
 			}
@@ -264,6 +267,7 @@ func (c *Common) TunnelUDPLoop() {
 //   - "ping": reply with "pong" signal (health check response)
 //   - "pong": log CHECK_POINT event with metrics (latency, pool active count, slot/byte counters)
 func (c *Common) TunnelOnce() error {
+	verification := c.verification
 	for c.Ctx.Err() == nil {
 		if !c.TunnelPool.Ready() {
 			select {
@@ -281,7 +285,7 @@ func (c *Common) TunnelOnce() error {
 			switch signal.ActionType {
 			case "verify":
 				if c.TLSCode == "1" {
-					go c.OutgoingVerify(signal)
+					go c.outgoingVerify(verification, signal)
 				}
 			case "tcp":
 				if c.DisableTCP != "1" {

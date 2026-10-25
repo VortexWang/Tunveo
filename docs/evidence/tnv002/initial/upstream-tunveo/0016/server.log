@@ -1,0 +1,6 @@
+2026-10-24 23:27:13.384  DEBUG  Init log level: DEBUG
+2026-10-24 23:27:13.385  INFO  TLS code-1: RAM cert with TLS 1.3
+2026-10-24 23:27:13.385  INFO  Server started: server://[REDACTED]@127.0.0.1:43725/127.0.0.1:55699?dns=5m0s&lbs=0&max=1024&mode=2&type=3&dial=auto&read=0s&rate=0&slot=65536&proxy=0&block=0&notcp=0&noudp=0
+2026-10-24 23:27:13.386  INFO  Pending tunnel handshake...
+2026-10-24 23:27:13.386  INFO  TLS code-1: RAM cert prepared with sha256 fingerprint: 245542336b16bf76ffc5d04759d54352f6c56340810470edc4891372b1f5d03e
+2026-10-24 23:27:13.420  INFO  Sending tunnel config: FLOW=+|MAX=1024|TLS=1|TYPE=3

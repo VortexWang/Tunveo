@@ -1,0 +1,662 @@
+[
+  {
+    "iteration": 1,
+    "exit_code": 0,
+    "flows": [
+      {
+        "acknowledgements": 1,
+        "client_canceled": false,
+        "client_verification_ids": [
+          "c0f5fd05"
+        ],
+        "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+        "flow": "-",
+        "pool_get_timeout_ms": 100,
+        "server_canceled": false,
+        "server_verification_ids": null,
+        "verification_gates": 2
+      },
+      {
+        "acknowledgements": 1,
+        "client_canceled": false,
+        "client_verification_ids": null,
+        "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+        "flow": "+",
+        "pool_get_timeout_ms": 100,
+        "server_canceled": false,
+        "server_verification_ids": [
+          "997a280a"
+        ],
+        "verification_gates": 2
+      }
+    ],
+    "passed": true
+  },
+  {
+    "iteration": 2,
+    "exit_code": 0,
+    "flows": [
+      {
+        "acknowledgements": 1,
+        "client_canceled": false,
+        "client_verification_ids": [
+          "c0668b23"
+        ],
+        "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+        "flow": "-",
+        "pool_get_timeout_ms": 100,
+        "server_canceled": false,
+        "server_verification_ids": null,
+        "verification_gates": 2
+      },
+      {
+        "acknowledgements": 1,
+        "client_canceled": false,
+        "client_verification_ids": null,
+        "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+        "flow": "+",
+        "pool_get_timeout_ms": 100,
+        "server_canceled": false,
+        "server_verification_ids": [
+          "67d5135b"
+        ],
+        "verification_gates": 2
+      }
+    ],
+    "passed": true
+  },
+  {
+    "iteration": 3,
+    "exit_code": 0,
+    "flows": [
+      {
+        "acknowledgements": 1,
+        "client_canceled": false,
+        "client_verification_ids": [
+          "28beb277"
+        ],
+        "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+        "flow": "-",
+        "pool_get_timeout_ms": 100,
+        "server_canceled": false,
+        "server_verification_ids": null,
+        "verification_gates": 2
+      },
+      {
+        "acknowledgements": 1,
+        "client_canceled": false,
+        "client_verification_ids": null,
+        "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+        "flow": "+",
+        "pool_get_timeout_ms": 100,
+        "server_canceled": false,
+        "server_verification_ids": [
+          "50bd1f4c"
+        ],
+        "verification_gates": 2
+      }
+    ],
+    "passed": true
+  },
+  {
+    "iteration": 4,
+    "exit_code": 0,
+    "flows": [
+      {
+        "acknowledgements": 1,
+        "client_canceled": false,
+        "client_verification_ids": [
+          "9f6c6997"
+        ],
+        "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+        "flow": "-",
+        "pool_get_timeout_ms": 100,
+        "server_canceled": false,
+        "server_verification_ids": null,
+        "verification_gates": 2
+      },
+      {
+        "acknowledgements": 1,
+        "client_canceled": false,
+        "client_verification_ids": null,
+        "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+        "flow": "+",
+        "pool_get_timeout_ms": 100,
+        "server_canceled": false,
+        "server_verification_ids": [
+          "fe51f0f5"
+        ],
+        "verification_gates": 2
+      }
+    ],
+    "passed": true
+  },
+  {
+    "iteration": 5,
+    "exit_code": 0,
+    "flows": [
+      {
+        "acknowledgements": 1,
+        "client_canceled": false,
+        "client_verification_ids": [
+          "01848736"
+        ],
+        "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+        "flow": "-",
+        "pool_get_timeout_ms": 100,
+        "server_canceled": false,
+        "server_verification_ids": null,
+        "verification_gates": 2
+      },
+      {
+        "acknowledgements": 1,
+        "client_canceled": false,
+        "client_verification_ids": null,
+        "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+        "flow": "+",
+        "pool_get_timeout_ms": 100,
+        "server_canceled": false,
+        "server_verification_ids": [
+          "65779681"
+        ],
+        "verification_gates": 2
+      }
+    ],
+    "passed": true
+  },
+  {
+    "iteration": 6,
+    "exit_code": 0,
+    "flows": [
+      {
+        "acknowledgements": 1,
+        "client_canceled": false,
+        "client_verification_ids": [
+          "5a876632"
+        ],
+        "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+        "flow": "-",
+        "pool_get_timeout_ms": 100,
+        "server_canceled": false,
+        "server_verification_ids": null,
+        "verification_gates": 2
+      },
+      {
+        "acknowledgements": 1,
+        "client_canceled": false,
+        "client_verification_ids": null,
+        "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+        "flow": "+",
+        "pool_get_timeout_ms": 100,
+        "server_canceled": false,
+        "server_verification_ids": [
+          "9663fb95"
+        ],
+        "verification_gates": 2
+      }
+    ],
+    "passed": true
+  },
+  {
+    "iteration": 7,
+    "exit_code": 0,
+    "flows": [
+      {
+        "acknowledgements": 1,
+        "client_canceled": false,
+        "client_verification_ids": [
+          "207744bf"
+        ],
+        "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+        "flow": "-",
+        "pool_get_timeout_ms": 100,
+        "server_canceled": false,
+        "server_verification_ids": null,
+        "verification_gates": 2
+      },
+      {
+        "acknowledgements": 1,
+        "client_canceled": false,
+        "client_verification_ids": null,
+        "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+        "flow": "+",
+        "pool_get_timeout_ms": 100,
+        "server_canceled": false,
+        "server_verification_ids": [
+          "10ae2cfc"
+        ],
+        "verification_gates": 2
+      }
+    ],
+    "passed": true
+  },
+  {
+    "iteration": 8,
+    "exit_code": 0,
+    "flows": [
+      {
+        "acknowledgements": 1,
+        "client_canceled": false,
+        "client_verification_ids": [
+          "d5ccbace"
+        ],
+        "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+        "flow": "-",
+        "pool_get_timeout_ms": 100,
+        "server_canceled": false,
+        "server_verification_ids": null,
+        "verification_gates": 2
+      },
+      {
+        "acknowledgements": 1,
+        "client_canceled": false,
+        "client_verification_ids": null,
+        "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+        "flow": "+",
+        "pool_get_timeout_ms": 100,
+        "server_canceled": false,
+        "server_verification_ids": [
+          "15704a9b"
+        ],
+        "verification_gates": 2
+      }
+    ],
+    "passed": true
+  },
+  {
+    "iteration": 9,
+    "exit_code": 0,
+    "flows": [
+      {
+        "acknowledgements": 1,
+        "client_canceled": false,
+        "client_verification_ids": [
+          "09bf06ad"
+        ],
+        "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+        "flow": "-",
+        "pool_get_timeout_ms": 100,
+        "server_canceled": false,
+        "server_verification_ids": null,
+        "verification_gates": 2
+      },
+      {
+        "acknowledgements": 1,
+        "client_canceled": false,
+        "client_verification_ids": null,
+        "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+        "flow": "+",
+        "pool_get_timeout_ms": 100,
+        "server_canceled": false,
+        "server_verification_ids": [
+          "ed58fb31"
+        ],
+        "verification_gates": 2
+      }
+    ],
+    "passed": true
+  },
+  {
+    "iteration": 10,
+    "exit_code": 0,
+    "flows": [
+      {
+        "acknowledgements": 1,
+        "client_canceled": false,
+        "client_verification_ids": [
+          "193392b9"
+        ],
+        "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+        "flow": "-",
+        "pool_get_timeout_ms": 100,
+        "server_canceled": false,
+        "server_verification_ids": null,
+        "verification_gates": 2
+      },
+      {
+        "acknowledgements": 1,
+        "client_canceled": false,
+        "client_verification_ids": null,
+        "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+        "flow": "+",
+        "pool_get_timeout_ms": 100,
+        "server_canceled": false,
+        "server_verification_ids": [
+          "b4378c7a"
+        ],
+        "verification_gates": 2
+      }
+    ],
+    "passed": true
+  },
+  {
+    "iteration": 11,
+    "exit_code": 0,
+    "flows": [
+      {
+        "acknowledgements": 1,
+        "client_canceled": false,
+        "client_verification_ids": [
+          "ef3780d5"
+        ],
+        "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+        "flow": "-",
+        "pool_get_timeout_ms": 100,
+        "server_canceled": false,
+        "server_verification_ids": null,
+        "verification_gates": 2
+      },
+      {
+        "acknowledgements": 1,
+        "client_canceled": false,
+        "client_verification_ids": null,
+        "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+        "flow": "+",
+        "pool_get_timeout_ms": 100,
+        "server_canceled": false,
+        "server_verification_ids": [
+          "2a55dd4d"
+        ],
+        "verification_gates": 2
+      }
+    ],
+    "passed": true
+  },
+  {
+    "iteration": 12,
+    "exit_code": 0,
+    "flows": [
+      {
+        "acknowledgements": 1,
+        "client_canceled": false,
+        "client_verification_ids": [
+          "b63de681"
+        ],
+        "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+        "flow": "-",
+        "pool_get_timeout_ms": 100,
+        "server_canceled": false,
+        "server_verification_ids": null,
+        "verification_gates": 2
+      },
+      {
+        "acknowledgements": 1,
+        "client_canceled": false,
+        "client_verification_ids": null,
+        "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+        "flow": "+",
+        "pool_get_timeout_ms": 100,
+        "server_canceled": false,
+        "server_verification_ids": [
+          "0d280357"
+        ],
+        "verification_gates": 2
+      }
+    ],
+    "passed": true
+  },
+  {
+    "iteration": 13,
+    "exit_code": 0,
+    "flows": [
+      {
+        "acknowledgements": 1,
+        "client_canceled": false,
+        "client_verification_ids": [
+          "3ffa4f51"
+        ],
+        "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+        "flow": "-",
+        "pool_get_timeout_ms": 100,
+        "server_canceled": false,
+        "server_verification_ids": null,
+        "verification_gates": 2
+      },
+      {
+        "acknowledgements": 1,
+        "client_canceled": false,
+        "client_verification_ids": null,
+        "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+        "flow": "+",
+        "pool_get_timeout_ms": 100,
+        "server_canceled": false,
+        "server_verification_ids": [
+          "66218698"
+        ],
+        "verification_gates": 2
+      }
+    ],
+    "passed": true
+  },
+  {
+    "iteration": 14,
+    "exit_code": 0,
+    "flows": [
+      {
+        "acknowledgements": 1,
+        "client_canceled": false,
+        "client_verification_ids": [
+          "b645f5ee"
+        ],
+        "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+        "flow": "-",
+        "pool_get_timeout_ms": 100,
+        "server_canceled": false,
+        "server_verification_ids": null,
+        "verification_gates": 2
+      },
+      {
+        "acknowledgements": 1,
+        "client_canceled": false,
+        "client_verification_ids": null,
+        "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+        "flow": "+",
+        "pool_get_timeout_ms": 100,
+        "server_canceled": false,
+        "server_verification_ids": [
+          "b1f52227"
+        ],
+        "verification_gates": 2
+      }
+    ],
+    "passed": true
+  },
+  {
+    "iteration": 15,
+    "exit_code": 0,
+    "flows": [
+      {
+        "acknowledgements": 1,
+        "client_canceled": false,
+        "client_verification_ids": [
+          "41f6a0f6"
+        ],
+        "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+        "flow": "-",
+        "pool_get_timeout_ms": 100,
+        "server_canceled": false,
+        "server_verification_ids": null,
+        "verification_gates": 2
+      },
+      {
+        "acknowledgements": 1,
+        "client_canceled": false,
+        "client_verification_ids": null,
+        "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+        "flow": "+",
+        "pool_get_timeout_ms": 100,
+        "server_canceled": false,
+        "server_verification_ids": [
+          "075a1a65"
+        ],
+        "verification_gates": 2
+      }
+    ],
+    "passed": true
+  },
+  {
+    "iteration": 16,
+    "exit_code": 0,
+    "flows": [
+      {
+        "acknowledgements": 1,
+        "client_canceled": false,
+        "client_verification_ids": [
+          "3187452f"
+        ],
+        "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+        "flow": "-",
+        "pool_get_timeout_ms": 100,
+        "server_canceled": false,
+        "server_verification_ids": null,
+        "verification_gates": 2
+      },
+      {
+        "acknowledgements": 1,
+        "client_canceled": false,
+        "client_verification_ids": null,
+        "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+        "flow": "+",
+        "pool_get_timeout_ms": 100,
+        "server_canceled": false,
+        "server_verification_ids": [
+          "fd2012af"
+        ],
+        "verification_gates": 2
+      }
+    ],
+    "passed": true
+  },
+  {
+    "iteration": 17,
+    "exit_code": 0,
+    "flows": [
+      {
+        "acknowledgements": 1,
+        "client_canceled": false,
+        "client_verification_ids": [
+          "58e38f3c"
+        ],
+        "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+        "flow": "-",
+        "pool_get_timeout_ms": 100,
+        "server_canceled": false,
+        "server_verification_ids": null,
+        "verification_gates": 2
+      },
+      {
+        "acknowledgements": 1,
+        "client_canceled": false,
+        "client_verification_ids": null,
+        "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+        "flow": "+",
+        "pool_get_timeout_ms": 100,
+        "server_canceled": false,
+        "server_verification_ids": [
+          "55b6b57b"
+        ],
+        "verification_gates": 2
+      }
+    ],
+    "passed": true
+  },
+  {
+    "iteration": 18,
+    "exit_code": 0,
+    "flows": [
+      {
+        "acknowledgements": 1,
+        "client_canceled": false,
+        "client_verification_ids": [
+          "c1baac58"
+        ],
+        "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+        "flow": "-",
+        "pool_get_timeout_ms": 100,
+        "server_canceled": false,
+        "server_verification_ids": null,
+        "verification_gates": 2
+      },
+      {
+        "acknowledgements": 1,
+        "client_canceled": false,
+        "client_verification_ids": null,
+        "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+        "flow": "+",
+        "pool_get_timeout_ms": 100,
+        "server_canceled": false,
+        "server_verification_ids": [
+          "448ae0bd"
+        ],
+        "verification_gates": 2
+      }
+    ],
+    "passed": true
+  },
+  {
+    "iteration": 19,
+    "exit_code": 0,
+    "flows": [
+      {
+        "acknowledgements": 1,
+        "client_canceled": false,
+        "client_verification_ids": [
+          "a883eddd"
+        ],
+        "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+        "flow": "-",
+        "pool_get_timeout_ms": 100,
+        "server_canceled": false,
+        "server_verification_ids": null,
+        "verification_gates": 2
+      },
+      {
+        "acknowledgements": 1,
+        "client_canceled": false,
+        "client_verification_ids": null,
+        "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+        "flow": "+",
+        "pool_get_timeout_ms": 100,
+        "server_canceled": false,
+        "server_verification_ids": [
+          "4917a33e"
+        ],
+        "verification_gates": 2
+      }
+    ],
+    "passed": true
+  },
+  {
+    "iteration": 20,
+    "exit_code": 0,
+    "flows": [
+      {
+        "acknowledgements": 1,
+        "client_canceled": false,
+        "client_verification_ids": [
+          "3acaa1e3"
+        ],
+        "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+        "flow": "-",
+        "pool_get_timeout_ms": 100,
+        "server_canceled": false,
+        "server_verification_ids": null,
+        "verification_gates": 2
+      },
+      {
+        "acknowledgements": 1,
+        "client_canceled": false,
+        "client_verification_ids": null,
+        "fixture": "real TLS/TCP pools; two connections: control plus one verification slot",
+        "flow": "+",
+        "pool_get_timeout_ms": 100,
+        "server_canceled": false,
+        "server_verification_ids": [
+          "8a2c7500"
+        ],
+        "verification_gates": 2
+      }
+    ],
+    "passed": true
+  }
+]

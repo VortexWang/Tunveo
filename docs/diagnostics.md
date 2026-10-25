@@ -38,6 +38,8 @@ The runner atomically saves the report at each phase transition, after process l
 6. UDP echo: exact 512-byte equality in a single datagram.
 7. Cleanup: bounded simultaneous termination and reaping; forced kills are reported as cleanup failures.
 
+Child output is now read through one parent-owned pipe reader per process. The reader writes sanitized logs before exposing its append-only snapshot to readiness checks. Per-phase observed byte counts allow a consistency check against the final logs; reports also record the driver source SHA-256.
+
 Reports record binary SHA-256, binary version and Go build provenance when Go is available (`--go` selects its path), platform, selected parameters, first failure stage, application attempt counts, log paths and verification IDs. Engine output and command URLs are stripped of ANSI escapes and URL credentials before final persistence. Actual test credentials are synthetic; do not extend this runner to real secrets without a separate redaction review.
 
 TCP/UDP ports are reserved for both protocols until the process that owns that listener is launched. There remains an unavoidable handoff race between releasing a reservation and an external executable binding its port; bind errors are preserved rather than silently retried.
@@ -60,8 +62,8 @@ Controlled child executables and real sockets cover selection, payload checks, T
 go run ./scripts/repro_tls_verify
 ```
 
-The executable uses real TLS/TCP pools with two connections: control plus one idle verification connection. It calls both real verification initiators before delivering either queued control signal, modelling bounded control-message delay. It checks that verification completes without cancelling either endpoint. The pool-get timeout is reduced to 100 ms **inside this fixture only**, with an independent 10-second watchdog. Current engine code exits 1; that failure is deliberate evidence of an unresolved defect, not an expected successful test. CI runs it in its own failing job.
+The executable uses real TLS/TCP pools with two connections: control plus one idle verification connection. It exercises both negotiated flow directions, calling both real initiation methods before delivering queued requests and acknowledgements. Each flow must finish with one initiator, one matching acknowledgement, two completion gates and no cancellation. The pool-get timeout is reduced to 100 ms inside this fixture only, with a 10-second watchdog. The fixed version must return 0; it is run in CI without suppressing failure.
 
-For comparison, place the same command inside an upstream v1.17.0 checkout and change only the imports from `github.com/VortexWang/Tunveo/internal/common` to `github.com/NodePassProject/nodepass/internal/common`, and the TCP pool import to `github.com/NodePassProject/pool`. No upstream runtime implementation changes are required.
+The original M1 fixture returned 1 on both unmodified versions. Its historical records remain in `docs/evidence/m1/tls-verify-reproductions.json`. The current fixture uses the new negotiated state and acknowledgement, so it cannot be copied unchanged into the old tree. No old failure record is overwritten or treated as a pass.
 
-See [M1 findings](m1-findings.md), [defect ledger](defects.md) and the [evidence manifest](evidence/m1/manifest.json).
+See [M1 findings](m1-findings.md), [the ownership fix](tnv-002-fix.md), [verification protocol](tls-verification.md) and [defect ledger](defects.md).
