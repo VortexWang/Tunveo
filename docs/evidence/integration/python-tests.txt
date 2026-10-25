@@ -1,0 +1,16 @@
+test_cannot_remove_gate (test_release_readiness.ReleaseReadinessTests.test_cannot_remove_gate) ... ok
+test_complete_matching_policy_passes (test_release_readiness.ReleaseReadinessTests.test_complete_matching_policy_passes) ... ok
+test_pass_without_evidence_rejected (test_release_readiness.ReleaseReadinessTests.test_pass_without_evidence_rejected) ... ok
+test_pending_gate_blocks (test_release_readiness.ReleaseReadinessTests.test_pending_gate_blocks) ... ok
+test_stale_fingerprint_blocks (test_release_readiness.ReleaseReadinessTests.test_stale_fingerprint_blocks) ... ok
+test_short_udp_datagram_is_rejected (test_verify_forwarding.ExchangeTests.test_short_udp_datagram_is_rejected) ... ok
+test_tcp_dribble_cannot_reset_total_deadline (test_verify_forwarding.ExchangeTests.test_tcp_dribble_cannot_reset_total_deadline) ... ok
+test_interrupt_persists_partial_report_and_reaps_children (test_verify_forwarding.RunnerTests.test_interrupt_persists_partial_report_and_reaps_children) ... ok
+test_selected_cases_and_payloads (test_verify_forwarding.RunnerTests.test_selected_cases_and_payloads) ... ok
+test_tcp_success_is_preserved_on_udp_timeout_and_logs_are_redacted (test_verify_forwarding.RunnerTests.test_tcp_success_is_preserved_on_udp_timeout_and_logs_are_redacted) ... ok
+test_terminate_persists_partial_report_and_reaps_children (test_verify_forwarding.RunnerTests.test_terminate_persists_partial_report_and_reaps_children) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 1.967s
+
+OK

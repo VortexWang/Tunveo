@@ -1,0 +1,6 @@
+{
+  "scope": "snapshot packaging only; Linux amd64 native smoke, other targets header/build verification",
+  "results": [],
+  "status": "failed",
+  "error_type": "AssertionError"
+}

@@ -3,3 +3,10 @@ bin
 dist
 gob
 tunveo.json
+artifacts
+__pycache__
+**/__pycache__
+*.gob
+*.gob.*
+.env
+.env.*

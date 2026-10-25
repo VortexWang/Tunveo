@@ -76,3 +76,5 @@ Management authentication and SSE boundaries: [TNV-009A](docs/management-boundar
 Instance snapshots, bounded imports and child ownership: [TNV-009B](docs/master-state-lifecycle.md).
 
 Offline state migration, backup recovery and rollback: [TNV-010](docs/state-migration.md).
+
+Integrated acceptance, packaging checks and remaining release gates: [current status](docs/integration-readiness.md).

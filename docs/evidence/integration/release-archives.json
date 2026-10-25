@@ -1,0 +1,71 @@
+{
+  "scope": "snapshot packaging only; Linux amd64 native smoke, other targets header/build verification",
+  "results": [
+    {
+      "platform": "darwin/amd64",
+      "archive": "tunveo_0.0.0-SNAPSHOT-1eb76f1_darwin_amd64.tar.gz",
+      "sha256": "cc4308ffa372a1cc3ed676e7132e5639987af987b7b41da63979e61269b25cf9",
+      "status": "passed",
+      "licenses": 6,
+      "native_executed": false
+    },
+    {
+      "platform": "darwin/arm64",
+      "archive": "tunveo_0.0.0-SNAPSHOT-1eb76f1_darwin_arm64.tar.gz",
+      "sha256": "86945b243ba719c1193b601f1104c88991668006e24398b8f389aeb068d05f13",
+      "status": "passed",
+      "licenses": 6,
+      "native_executed": false
+    },
+    {
+      "platform": "freebsd/amd64",
+      "archive": "tunveo_0.0.0-SNAPSHOT-1eb76f1_freebsd_amd64.tar.gz",
+      "sha256": "26d5535c6f3ecc071ea3fb15ba61607afc4e7d541701d499a0c637e1332ad90c",
+      "status": "passed",
+      "licenses": 6,
+      "native_executed": false
+    },
+    {
+      "platform": "freebsd/arm64",
+      "archive": "tunveo_0.0.0-SNAPSHOT-1eb76f1_freebsd_arm64.tar.gz",
+      "sha256": "0fd8b14e3fa69748ee07e47579c1e568714f6e7e6df88bf348b3b95ba3256153",
+      "status": "passed",
+      "licenses": 6,
+      "native_executed": false
+    },
+    {
+      "platform": "linux/amd64",
+      "archive": "tunveo_0.0.0-SNAPSHOT-1eb76f1_linux_amd64.tar.gz",
+      "sha256": "3785d87a700c2e9b32b1af0c903349133b41afa4472edeeecd7fa798faab7a7e",
+      "status": "passed",
+      "licenses": 6,
+      "native_executed": true,
+      "version": "tunveo-0.0.0-SNAPSHOT-1eb76f1 linux/amd64"
+    },
+    {
+      "platform": "linux/arm64",
+      "archive": "tunveo_0.0.0-SNAPSHOT-1eb76f1_linux_arm64.tar.gz",
+      "sha256": "29333a7764b48ab9e3b06090ba2fd9a3359e6a22e3db93c6ac239da24598603e",
+      "status": "passed",
+      "licenses": 6,
+      "native_executed": false
+    },
+    {
+      "platform": "windows/amd64",
+      "archive": "tunveo_0.0.0-SNAPSHOT-1eb76f1_windows_amd64.zip",
+      "sha256": "3e9a4c3a2ee17771a4e02652b126dc6c4d8f77d2634d79af32d01e44b5b8aac2",
+      "status": "passed",
+      "licenses": 6,
+      "native_executed": false
+    },
+    {
+      "platform": "windows/arm64",
+      "archive": "tunveo_0.0.0-SNAPSHOT-1eb76f1_windows_arm64.zip",
+      "sha256": "f83b87d1e49fd86b2fe09cf69b8cf9fac443b0d2cc2b15d547b22cebc50d8860",
+      "status": "passed",
+      "licenses": 6,
+      "native_executed": false
+    }
+  ],
+  "status": "passed"
+}

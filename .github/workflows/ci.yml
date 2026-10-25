@@ -3,6 +3,7 @@ on:
   push:
     branches: [main]
   pull_request:
+  workflow_call:
 permissions:
   contents: read
 jobs:
@@ -222,4 +223,53 @@ jobs:
         with:
           name: state-migration-evidence
           path: artifacts/state-migration.json
+          retention-days: 14
+
+  release-snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6.0.2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-go@v6.1.0
+        with:
+          go-version-file: go.mod
+      - uses: goreleaser/goreleaser-action@v6.4.0
+        with:
+          distribution: goreleaser
+          version: v2.19.0
+          args: check
+      - uses: goreleaser/goreleaser-action@v6.4.0
+        with:
+          distribution: goreleaser
+          version: v2.19.0
+          args: release --snapshot --clean --skip=publish
+      - run: python3 scripts/verify_release_archives.py --dist dist --output artifacts/release-archives.json
+      - run: python3 scripts/check_release_readiness.py --report > artifacts/release-readiness.json
+      - run: cat artifacts/release-archives.json artifacts/release-readiness.json
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: release-snapshot-evidence
+          path: |
+            artifacts/release-archives.json
+            artifacts/release-readiness.json
+            dist/checksums.txt
+            dist/metadata.json
+          retention-days: 14
+
+  container-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6.0.2
+      - run: docker build --build-arg VERSION=integration-${{ github.sha }} -t tunveo-integration .
+      - run: python3 scripts/verify_container.py --image tunveo-integration --output artifacts/container.json
+      - run: cat artifacts/container.json
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: container-evidence
+          path: artifacts/container.json
           retention-days: 14

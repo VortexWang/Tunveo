@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "verified_input_sha256": null,
+  "gates": [
+    {
+      "id": "regression",
+      "status": "passed",
+      "evidence": [
+        "docs/evidence/integration/ci.json",
+        "https://github.com/VortexWang/Tunveo/actions/runs/40209486144"
+      ],
+      "reason": "Cumulative scoped regression only; does not satisfy the full support matrix or long-load gates."
+    },
+    {
+      "id": "packaging",
+      "status": "passed",
+      "evidence": [
+        "docs/evidence/integration/release-archives.json",
+        "docs/evidence/integration/container.json"
+      ],
+      "reason": "Eight snapshot archive checks and Linux amd64 container smoke; other native platforms remain pending."
+    },
+    {
+      "id": "supported_matrix_10x",
+      "status": "pending",
+      "evidence": [],
+      "reason": "TLS modes, capacities and legacy mixed directions not fully accepted; legacy EOF remains unexplained."
+    },
+    {
+      "id": "lifecycle_100",
+      "status": "pending",
+      "evidence": [],
+      "reason": "100 cycles per transport plus FD/goroutine/memory return not completed."
+    },
+    {
+      "id": "soak_24h",
+      "status": "pending",
+      "evidence": [],
+      "reason": "24-hour declared-load validation not completed."
+    },
+    {
+      "id": "native_platforms",
+      "status": "pending",
+      "evidence": [],
+      "reason": "Cross compilation is not native runtime support validation."
+    },
+    {
+      "id": "integration_review",
+      "status": "pending",
+      "evidence": [],
+      "reason": "Stacked PRs remain unmerged; PR 3 is superseded by PR 4."
+    }
+  ]
+}

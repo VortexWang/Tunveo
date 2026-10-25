@@ -1,5 +1,7 @@
 # Bootstrap validation — 2026-10-25
 
+This file records the historical bootstrap only. For cumulative CI, packaging and remaining release gates, see [integration readiness](integration-readiness.md).
+
 Initial migration environment: Linux amd64, Go 1.26.5. This is an initial source migration, not a stable release or completed audit.
 
 ## Completed checks
