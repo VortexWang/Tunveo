@@ -1,0 +1,96 @@
+{
+  "binary_sha256": "01b50b07eb84ab2ef6dc128986e6297041a18bb861577635eb5b213ea9a970ba",
+  "scope": "local loopback; synthetic credentials; no production state",
+  "results": [
+    {
+      "case": "server/missing-options",
+      "status": "passed",
+      "exit_code": 1
+    },
+    {
+      "case": "server/missing-file",
+      "status": "passed",
+      "exit_code": 1
+    },
+    {
+      "case": "server/malformed-pem",
+      "status": "passed",
+      "exit_code": 1
+    },
+    {
+      "case": "server/mismatched-key",
+      "status": "passed",
+      "exit_code": 1
+    },
+    {
+      "case": "server/invalid-mode",
+      "status": "passed",
+      "exit_code": 1
+    },
+    {
+      "case": "client/missing-options",
+      "status": "passed",
+      "exit_code": 1
+    },
+    {
+      "case": "client/missing-file",
+      "status": "passed",
+      "exit_code": 1
+    },
+    {
+      "case": "client/malformed-pem",
+      "status": "passed",
+      "exit_code": 1
+    },
+    {
+      "case": "client/mismatched-key",
+      "status": "passed",
+      "exit_code": 1
+    },
+    {
+      "case": "client/invalid-mode",
+      "status": "passed",
+      "exit_code": 1
+    },
+    {
+      "case": "master/missing-options",
+      "status": "passed",
+      "exit_code": 1
+    },
+    {
+      "case": "master/missing-file",
+      "status": "passed",
+      "exit_code": 1
+    },
+    {
+      "case": "master/malformed-pem",
+      "status": "passed",
+      "exit_code": 1
+    },
+    {
+      "case": "master/mismatched-key",
+      "status": "passed",
+      "exit_code": 1
+    },
+    {
+      "case": "master/invalid-mode",
+      "status": "passed",
+      "exit_code": 1
+    },
+    {
+      "case": "malformed-url-errors",
+      "status": "passed",
+      "inputs": 2
+    },
+    {
+      "case": "server/raw-startup-log",
+      "status": "passed"
+    },
+    {
+      "case": "client/raw-startup-log",
+      "status": "passed"
+    }
+  ],
+  "status": "failed",
+  "failure_type": "AssertionError"
+}

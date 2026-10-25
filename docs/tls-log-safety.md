@@ -23,7 +23,7 @@ Go 测试覆盖模式选择、初始错误、注入随机源失败、构造核�
 - TLS mode 1 四种传输、两种流向、小池 2:8 转发回归 8/8 通过。
 - 安全进程检查新增到 GitHub CI，失败不被忽略。
 
-最终构建来源、报告与逐文件校验值见 [evidence/tls-log-safety](evidence/tls-log-safety)。M1 和 TNV-002 历史证据保持原样。
+最终二进制由干净源码提交 `a41f346a071aac2e479dd96b7b7605d8b53eba45` 构建（Go 1.26.5）；最终进程检查 20/20、转发 8/8。定向重载/初始化 race 测试另重复十轮通过。最终构建来源、报告与逐文件校验值见 [evidence/tls-log-safety](evidence/tls-log-safety)。M1 和 TNV-002 历史证据保持原样。
 
 ## 首轮失败与剩余范围
 
