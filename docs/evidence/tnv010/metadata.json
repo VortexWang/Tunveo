@@ -1,0 +1,31 @@
+{
+  "source_commit": "6258767fcac0ef5ee1cdea946f9792cbefea6d92",
+  "original_commit": "114345043d9608e1e24e783a270cde75193e4f42",
+  "recorded_at": "2026-10-25T14:25:10.128442+00:00",
+  "scope": "Synthetic operator-owned GOB files, stdlib helper using exact original type definitions and production save method, actual original/current loopback masters with Restart=false, no production migration or external targets. Current lifecycle/management regressions additionally use isolated synthetic children/state.",
+  "binaries": {
+    "tunveo-tnv010": {
+      "sha256": "8e7c535b9c7ed28317917b26db8928d88dd3938112fa807948e040fa52021bcb",
+      "go_build_info": "BUILD/tunveo-tnv010: go1.26.10\n\tpath\tgithub.com/VortexWang/Tunveo/cmd/tunveo\n\tmod\tgithub.com/VortexWang/Tunveo\tv1.17.1-0.20261025142040-6258767fcac0\t\n\tdep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\n\tdep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\n\tdep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\n\tdep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\n\tdep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\n\tdep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\n\tbuild\t-buildmode=exe\n\tbuild\t-compiler=gc\n\tbuild\t-trimpath=true\n\tbuild\tCGO_ENABLED=1\n\tbuild\tGOARCH=amd64\n\tbuild\tGOOS=linux\n\tbuild\tGOAMD64=v1\n\tbuild\tvcs=git\n\tbuild\tvcs.revision=6258767fcac0ef5ee1cdea946f9792cbefea6d92\n\tbuild\tvcs.time=2026-10-25T14:20:40Z\n\tbuild\tvcs.modified=false\n"
+    },
+    "tunveo-tnv010-race": {
+      "sha256": "8f75324c2a7bbcf391a079967629d05e6021eba81738a1969cf2d075350cc016",
+      "go_build_info": "BUILD/tunveo-tnv010-race: go1.26.10\n\tpath\tgithub.com/VortexWang/Tunveo/cmd/tunveo\n\tmod\tgithub.com/VortexWang/Tunveo\tv1.17.1-0.20261025142040-6258767fcac0\t\n\tdep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\n\tdep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\n\tdep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\n\tdep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\n\tdep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\n\tdep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\n\tbuild\t-buildmode=exe\n\tbuild\t-compiler=gc\n\tbuild\t-race=true\n\tbuild\t-trimpath=true\n\tbuild\tCGO_ENABLED=1\n\tbuild\tGOARCH=amd64\n\tbuild\tGOOS=linux\n\tbuild\tGOAMD64=v1\n\tbuild\tvcs=git\n\tbuild\tvcs.revision=6258767fcac0ef5ee1cdea946f9792cbefea6d92\n\tbuild\tvcs.time=2026-10-25T14:20:40Z\n\tbuild\tvcs.modified=false\n"
+    }
+  },
+  "source_ci": "https://github.com/VortexWang/Tunveo/actions/runs/40201792531",
+  "windows_check": "GOOS=windows GOARCH=amd64 CGO_ENABLED=0 go build ./cmd/tunveo succeeded against the same Go sources before publication; compile-only, no Windows runtime or directory durability certification.",
+  "fault_test": "Native test injects target publisher failure after a real backup succeeds; no power-loss or real device fault is claimed.",
+  "normalization": "Build binary paths use BUILD/. Process log references remain relative basenames. No outcome or raw process log rewriting beyond runner synthetic-key masking disclosed by the lifecycle report.",
+  "legacy_binary_sha256": "5ee15c1c86da68fe0823f83f64a92d3d3d6dc18bf5f6d1e7065809f13afabfd4",
+  "results": {
+    "cross_version_checks": 22,
+    "child_lifecycle": 8,
+    "management": 22,
+    "security": 20,
+    "reload": 24,
+    "full_race": "passed",
+    "vet": "passed",
+    "related_package_race_repeats": 5
+  }
+}
