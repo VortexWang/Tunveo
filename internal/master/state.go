@@ -4,6 +4,7 @@ package master
 
 import (
 	"encoding/gob"
+	"errors"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -75,6 +76,11 @@ func (m *Master) SaveStateToPath(filePath string) error {
 		return fmt.Errorf("SaveStateToPath: encode failed: %w", err)
 	}
 
+	if err := tempFile.Sync(); err != nil {
+		tempFile.Close()
+		removeTemp()
+		return fmt.Errorf("SaveStateToPath: sync failed: %w", err)
+	}
 	if err := tempFile.Close(); err != nil {
 		removeTemp()
 		return fmt.Errorf("SaveStateToPath: close temp file failed: %w", err)
@@ -85,47 +91,25 @@ func (m *Master) SaveStateToPath(filePath string) error {
 		return fmt.Errorf("SaveStateToPath: rename temp file failed: %w", err)
 	}
 
+	if err := syncStateDirectory(filepath.Dir(filePath)); err != nil {
+		return fmt.Errorf("SaveStateToPath: published but directory sync failed: %w", err)
+	}
 	return nil
 }
 
-// LoadState loads the master state from disk, initializes instances, and optionally auto-starts them.
-// It cleans up any temporary files and handles state file deserialization.
-//
-// First cleans up any leftover temporary files (*.tmp) from previous failed saves. If the
-// state file does not exist, returns silently (no instances to restore). Otherwise, opens
-// the state file and decodes instances using GOB format. For each loaded instance, the
-// "stopped" channel is re-initialized (since channels cannot be serialized). Non-API-key
-// instances are set to "stopped" status. Missing configuration URLs are regenerated based
-// on current master settings. If an instance has the Restart flag set, it is automatically
-// started with a brief delay between starts. A summary log message reports how many
-// instances were loaded.
+// LoadState strictly validates the complete file before publication. It schedules
+// auto-start only after Run binds the API listener; it never repairs bad input.
 func (m *Master) LoadState() error {
-	file, err := os.Open(m.StatePath)
-	if os.IsNotExist(err) {
+	data, err := readStateBytes(m.StatePath)
+	if errors.Is(err, os.ErrNotExist) {
 		return nil
 	}
 	if err != nil {
 		return err
 	}
-	defer file.Close()
-	var saved map[string]*Instance
-	if err = gob.NewDecoder(file).Decode(&saved); err != nil {
-		return fmt.Errorf("LoadState: decode failed: %w", err)
-	}
-	count := 0
-	for id, i := range saved {
-		if i == nil || id != i.ID {
-			return fmt.Errorf("LoadState: invalid instance identity")
-		}
-		if id != APIKeyID {
-			count++
-			if err = validateInstance(i); err != nil {
-				return fmt.Errorf("LoadState: %w", err)
-			}
-		}
-	}
-	if count > MaxManagedInstances {
-		return fmt.Errorf("LoadState: managed instance limit reached")
+	saved, _, err := decodeState(data, false)
+	if err != nil {
+		return fmt.Errorf("LoadState: %w", err)
 	}
 	m.dataMu.Lock()
 	defer m.dataMu.Unlock()

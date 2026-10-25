@@ -1,0 +1,2 @@
+ok  	github.com/VortexWang/Tunveo/internal/master	4.090s
+ok  	github.com/VortexWang/Tunveo/cmd/tunveo	1.224s

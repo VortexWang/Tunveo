@@ -1,0 +1,109 @@
+{
+  "binary_sha256": "8e7c535b9c7ed28317917b26db8928d88dd3938112fa807948e040fa52021bcb",
+  "runner_sha256": "1c78433c3dabf89420dc7289fe686c35ffd58b0099810adff56bbfe876ae93d4",
+  "support_sha256": "28ccd5ac23eeb4dcf160e5de55beebaa4ddbae510fe818e12bb568f8eceaaebb",
+  "started_at": "2026-10-25T14:21:15.810339+00:00",
+  "scope": "operator-owned synthetic GOB, isolated files, loopback original/current masters, Restart=false runtime oracles, no child processes",
+  "results": [
+    {
+      "case": "legacy-inspect",
+      "status": "passed"
+    },
+    {
+      "case": "offline-ack-required",
+      "status": "passed"
+    },
+    {
+      "case": "migration-byte-identical",
+      "status": "passed",
+      "sha256": "a987057e61d35cc69cfb2fc173979d1194d47f509ea5efe907c109a7f82477c3"
+    },
+    {
+      "case": "private-copy-permissions",
+      "status": "passed"
+    },
+    {
+      "case": "original-decoder-reads-migrated-state",
+      "status": "passed"
+    },
+    {
+      "case": "reject/no-key",
+      "status": "passed"
+    },
+    {
+      "case": "reject/invalid-id",
+      "status": "passed"
+    },
+    {
+      "case": "reject/invalid-url",
+      "status": "passed"
+    },
+    {
+      "case": "reject/quota",
+      "status": "passed"
+    },
+    {
+      "case": "inspect-restart-without-autostart",
+      "status": "passed"
+    },
+    {
+      "case": "reject/truncated",
+      "status": "passed"
+    },
+    {
+      "case": "reject/trailing",
+      "status": "passed"
+    },
+    {
+      "case": "existing-target-untouched",
+      "status": "passed"
+    },
+    {
+      "case": "rollback-byte-identical",
+      "status": "passed"
+    },
+    {
+      "case": "current-runtime-load-and-save",
+      "status": "passed"
+    },
+    {
+      "case": "original-decoder-reads-current-save",
+      "status": "passed"
+    },
+    {
+      "case": "original-runtime-loads-current-save",
+      "status": "passed"
+    },
+    {
+      "case": "original-runtime-rolls-back-backup",
+      "status": "passed"
+    },
+    {
+      "case": "periodic-backup-restore-exact",
+      "status": "passed"
+    },
+    {
+      "case": "original-runtime-restores-periodic-backup",
+      "status": "passed"
+    },
+    {
+      "case": "reject/oversized-before-decode",
+      "status": "passed"
+    },
+    {
+      "case": "source-backup-rollback-still-unchanged",
+      "status": "passed"
+    }
+  ],
+  "fixture": {
+    "original_commit": "114345043d9608e1e24e783a270cde75193e4f42",
+    "types_file_sha256": "9d5c67c2623722431bbc50928d4aabec4adcfd8ed978c77c6f0e32cde9a655d9",
+    "save_file_sha256": "5b6c62bca9d0979ff1a80780036fe8d5658fe31815b68e48e3df46816bc1faf4",
+    "helper_source_sha256": "e45e0e65ab3c36680a3d5fc92e1df21df810fa47d7b03ca69ea85f4ce1125a32"
+  },
+  "upstream_sha256": "5ee15c1c86da68fe0823f83f64a92d3d3d6dc18bf5f6d1e7065809f13afabfd4",
+  "upstream_build_info": "BUILD/nodepass-original: go1.26.5\n\tpath\tgithub.com/NodePassProject/nodepass/cmd/nodepass\n\tmod\tgithub.com/NodePassProject/nodepass\tv1.17.0\t\n\tdep\tgithub.com/NodePassProject/nph2\tv1.1.1\th1:Zci9/gLkq/SSeoapRlDoztfDNmoxoqhnSapsCg885G4=\n\tdep\tgithub.com/NodePassProject/npws\tv1.1.1\th1:sgFT5BoGVs7T22AYm5j6eNzsQVqIes6DfKAnV0m8OUo=\n\tdep\tgithub.com/NodePassProject/pool\tv1.1.1\th1:lB2VOugaRUcnBWPRw5bEGLSfS1KvmtXeB8RAoG265Ro=\n\tdep\tgithub.com/NodePassProject/quic\tv1.1.1\th1:fJhu2bwsEtAX6XekDVyViGSxh/6KZmtqbQEE8RhdQbk=\n\tdep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\n\tdep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\n\tdep\tgolang.org/x/crypto\tv0.53.0\th1:QZ4Muo8THX6CizN2vPPd5fBGHyogrdK9fG4wLPFUsto=\n\tdep\tgolang.org/x/net\tv0.56.0\th1:Rw8j/hFzGvJUZwNBXnAtf5sVDVt+65SK2C7IxCxZt5o=\n\tdep\tgolang.org/x/sys\tv0.46.0\th1:noSf2Fq6F8DBgS+LysIkx7rIExoNHJsxOAtPp4rthXw=\n\tdep\tgolang.org/x/text\tv0.39.0\th1:UbZz4pLOvn600D6Oh6GGEI6VAmndrEBLv8/6BEXzyus=\n\tbuild\t-buildmode=exe\n\tbuild\t-compiler=gc\n\tbuild\t-trimpath=true\n\tbuild\tCGO_ENABLED=1\n\tbuild\tGOARCH=amd64\n\tbuild\tGOOS=linux\n\tbuild\tGOAMD64=v1\n\tbuild\tvcs=git\n\tbuild\tvcs.revision=114345043d9608e1e24e783a270cde75193e4f42\n\tbuild\tvcs.time=2026-07-12T10:43:27Z\n\tbuild\tvcs.modified=false\n",
+  "upstream_source_commit": "114345043d9608e1e24e783a270cde75193e4f42",
+  "upstream_built_from_archive": false,
+  "status": "passed"
+}

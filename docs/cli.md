@@ -722,3 +722,8 @@ tunveo api-key --state /path/to/gob/tunveo.gob
 The command prints only the key to stdout, exits, and does not start a service or modify state. It requires local read access to the existing GOB file. The default master state is `gob/tunveo.gob` next to the executable. Do not send this explicit command's output to application logs. Authenticated API key rotation continues to return the new key in its response. URL credentials and complete query/fragment values are masked in ordinary logs.
 
 TLS startup errors are fatal: `tls=2` requires a loadable matching `crt`/`key` pair. Correct the files or explicitly select another mode before retrying. A runtime reload failure retains the prior pair; it cannot silently select a weaker TLS mode.
+
+
+## Offline state utilities
+
+Use `tunveo state inspect --state FILE` for credential-safe validation. Migration/restore require `--offline`, explicit source/new target, and migration also requires a new backup path. No existing file is overwritten. See the [complete migration and rollback runbook](state-migration.md) for commands, naming, limits and failure semantics.

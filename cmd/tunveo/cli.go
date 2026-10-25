@@ -75,6 +75,11 @@ func (c *commandLine) parse() (*url.URL, error) {
 	cmdArgs := c.args[2:]
 
 	switch command {
+	case "state":
+		if err := runStateCommand(cmdArgs, os.Stdout); err != nil {
+			return nil, err
+		}
+		os.Exit(0)
 	case "api-key":
 		fs := flag.NewFlagSet("api-key", flag.ContinueOnError)
 		state := fs.String("state", "", "Existing master state file")
@@ -431,6 +436,7 @@ Commands:
   master    Start a Tunveo master
   help      Show this helper message
   version   Show version information
+  state     Offline inspect/migrate/restore; see docs/state-migration.md
   api-key   Read a key explicitly: tunveo api-key --state <state-file>
 
 `)
