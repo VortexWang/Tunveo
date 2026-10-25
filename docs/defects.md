@@ -7,7 +7,7 @@ Updated 2026-10-25. Status describes evidence, not a vulnerability severity cert
 | TNV-001 | Diagnostic change verified | Six runner tests pass; staged results, targeted selection, durable reports, cleanup and redaction implemented | Review PR; retain schema and lifecycle tests |
 | TNV-002 | Implemented and scoped validation passed; pending integration | Negotiated single initiation with correlated acknowledgement; legacy peer-first sequencing. Forty real-pool flow cases and final 48-cell matrix passed | Review stacked fix PR and retain regression; full release/long-run gates remain |
 | TNV-003 | Implemented; native TCP mechanism/compatibility regression passed, pending integration | Unified idle FIFO/ID ownership across four transports; prior native TCP tests reproduce publication loss and mismatched notification 20/20, fixed 20/20; forwarding 48/48 | Review pool publication PR; retain scheduling/ID tests; full lifecycle remains TNV-004 |
-| TNV-004 | Broader lifecycle risk awaiting isolation | Idle map/channel replacement removed by TNV-003; in-flight workers, manager contexts and physical connection replacement still lack complete generation isolation | Controlled restart/Flush/Close overlap tests and explicit run ownership |
+| TNV-004 | Implemented for reproduced scope; pending integration | Fresh runtime per retry, permanent pool lifetime, Flush generation fence, bound physical metadata; native before 30/30 reproduced / after 30/30 passed; race reconnect 8/8; forwarding 47/48 with legacy-server initial EOF retained | Review lifecycle PR; retain cancellation tests; legacy EOF and long-run/release gates remain |
 | TNV-005 | Source risk awaiting isolation | HTTP/2 deadlines are forwarded to a shared physical connection | Multi-stream deadline/cancellation regression |
 | TNV-006 | Implemented; scoped validation passed, pending integration | Missing/unreadable/malformed/mismatched strict pairs abort startup; 15 process cases across server/client/master include invalid mode values | Review security fix PR; complete transport-specific trust/expiry matrix separately |
 | TNV-007 | Startup downgrade and reload publication patched; broader audit open | Injected generator failure returns error; immutable certificate pointers and mutex protect reload; concurrent test and real HTTPS rotation/failed reload pass | Retain race test; audit remaining TLS lifecycle and trust boundaries |
@@ -27,3 +27,5 @@ Dependency changes and staged scan evidence: [TNV-011](security-dependencies.md)
 Reload-period validation and before/after evidence: [TNV-013](reload-interval.md).
 
 Idle publication/ID claim changes and scoped evidence: [TNV-003](pool-publication.md).
+
+Run/pool ownership, intermediate failures and compatibility limits: [TNV-004](run-lifecycle.md).

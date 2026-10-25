@@ -1,0 +1,14 @@
+2026-10-25 01:18:06.981  DEBUG  Init log level: DEBUG
+2026-10-25 01:18:06.983  WARN  TLS code-0: unencrypted
+2026-10-25 01:18:06.985  INFO  Client started: client://[REDACTED]@127.0.0.1:54583/127.0.0.1:50431?dns=5m0s&sni=none&lbs=0&min=2&mode=2&dial=auto&read=0s&rate=0&slot=65536&proxy=0&block=0&notcp=0&noudp=0
+2026-10-25 01:18:06.986  INFO  Pending tunnel handshake...
+2026-10-25 01:18:06.988  INFO  Loading tunnel config: FLOW=-|MAX=8|TLS=1|TYPE=3
+2026-10-25 01:18:06.988  INFO  Getting tunnel pool ready...
+2026-10-25 01:18:07.089  INFO  Marking tunnel handshake as complete in 103ms
+2026-10-25 01:18:07.089  INFO  TLS code-1: RAM cert fingerprint verifying...
+2026-10-25 01:18:07.090  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=1|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-25 01:18:12.090  DEBUG  TLS code-1: verify signal: cid 1667e70b -> 127.0.0.1:54583
+2026-10-25 01:18:12.091  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=1|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-25 01:18:12.091  DEBUG  TLS verify signal: cid e26c8ef5 <- 127.0.0.1:54583
+2026-10-25 01:18:12.091  INFO  TLS code-1: RAM cert verified with sha256 fingerprint: d269d0e233843ae70a60cc96ccabd0babe8b2c63003cca11778c95c749a56aaf
+2026-10-25 01:18:12.104  DEBUG  TCP launch signal: cid 44fe342b <- 127.0.0.1:54583

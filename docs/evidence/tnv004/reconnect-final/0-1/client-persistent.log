@@ -1,0 +1,95 @@
+2026-10-25 01:17:33.480  DEBUG  Init log level: DEBUG
+2026-10-25 01:17:33.480  WARN  TLS code-0: unencrypted
+2026-10-25 01:17:33.483  INFO  Client started: [REDACTED-URL]
+2026-10-25 01:17:33.485  INFO  Pending tunnel handshake...
+2026-10-25 01:17:33.486  ERROR  Client error: TunnelStart: tunnelHandshake failed: TunnelHandshake: Get "https://127.0.0.1:37953/%22: dial tcp 127.0.0.1:37953: connect: connection refused
+2026-10-25 01:17:33.587  INFO  Client restart
+2026-10-25 01:17:33.587  INFO  Pending tunnel handshake...
+2026-10-25 01:17:33.597  INFO  Loading tunnel config: FLOW=-|MAX=8|TLS=1|TYPE=0|VERIFY=flow-v1
+2026-10-25 01:17:33.597  INFO  Getting tunnel pool ready...
+2026-10-25 01:17:33.749  INFO  Marking tunnel handshake as complete in 161ms
+2026-10-25 01:17:33.749  INFO  TLS code-1: RAM cert fingerprint verifying...
+2026-10-25 01:17:33.752  EVENT  CHECK_POINT|MODE=2|PING=2ms|POOL=1|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-25 01:17:33.850  DEBUG  TLS code-1: verify signal: cid 5729dc70 -> 127.0.0.1:37953
+2026-10-25 01:17:33.851  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=2|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-25 01:17:33.851  INFO  TLS code-1: RAM cert verified with sha256 fingerprint: 969f4bd0c6c245af3b425764f6f4bf23a753c94136fb4e39aff006361ccdbf0a
+2026-10-25 01:17:33.874  DEBUG  TCP launch signal: cid 8e1d1ac3 <- 127.0.0.1:37953
+2026-10-25 01:17:33.874  DEBUG  Tunnel connection: get 8e1d1ac3 <- pool active 1
+2026-10-25 01:17:33.874  DEBUG  Tunnel connection: 127.0.0.1:56536 <-> 127.0.0.1:37953
+2026-10-25 01:17:33.875  DEBUG  Target connection: 127.0.0.1:41650 <-> 127.0.0.1:45787
+2026-10-25 01:17:33.875  INFO  Starting exchange: 127.0.0.1:37953 <-> 127.0.0.1:45787
+2026-10-25 01:17:33.877  INFO  Exchange complete: read tcp 127.0.0.1:41650->127.0.0.1:45787: use of closed network connection
+2026-10-25 01:17:33.877  DEBUG  Tunnel connection: closed 8e1d1ac3
+2026-10-25 01:17:33.877  DEBUG  UDP launch signal: cid d4e43172 <- 127.0.0.1:37953
+2026-10-25 01:17:33.877  DEBUG  Tunnel connection: get d4e43172 <- pool active 0
+2026-10-25 01:17:33.878  DEBUG  Tunnel connection: 127.0.0.1:56534 <-> 127.0.0.1:37953
+2026-10-25 01:17:33.878  DEBUG  Target connection: 127.0.0.1:47810 <-> 127.0.0.1:45787
+2026-10-25 01:17:33.878  DEBUG  Starting transfer: 127.0.0.1:56534 <-> 127.0.0.1:47810
+2026-10-25 01:17:33.878  DEBUG  Transfer complete: 127.0.0.1:56534 <-> 127.0.0.1:47810
+2026-10-25 01:17:33.878  DEBUG  Transfer complete: 127.0.0.1:47810 <-> 127.0.0.1:56534
+2026-10-25 01:17:33.879  ERROR  TunnelUDPOnce: read from target failed: read udp 127.0.0.1:47810->127.0.0.1:45787: use of closed network connection
+2026-10-25 01:17:33.880  DEBUG  Tunnel connection: closed d4e43172
+2026-10-25 01:17:33.880  DEBUG  Tunnel connection closed: pool active 0
+2026-10-25 01:17:33.881  DEBUG  Control connection closed: 127.0.0.1:56512
+2026-10-25 01:17:33.881  ERROR  Client error: TunnelStart: tunnelControl failed: TunnelControl: TunnelQueue: readBytes failed: EOF
+2026-10-25 01:17:33.981  INFO  Client restart
+2026-10-25 01:17:33.983  INFO  Pending tunnel handshake...
+2026-10-25 01:17:33.984  ERROR  Client error: TunnelStart: tunnelHandshake failed: TunnelHandshake: Get "https://127.0.0.1:37953/%22: dial tcp 127.0.0.1:37953: connect: connection refused
+2026-10-25 01:17:34.084  INFO  Client restart
+2026-10-25 01:17:34.087  INFO  Pending tunnel handshake...
+2026-10-25 01:17:34.087  ERROR  Client error: TunnelStart: tunnelHandshake failed: TunnelHandshake: Get "https://127.0.0.1:37953/%22: dial tcp 127.0.0.1:37953: connect: connection refused
+2026-10-25 01:17:34.188  INFO  Client restart
+2026-10-25 01:17:34.192  INFO  Pending tunnel handshake...
+2026-10-25 01:17:34.192  ERROR  Client error: TunnelStart: tunnelHandshake failed: TunnelHandshake: Get "https://127.0.0.1:37953/%22: dial tcp 127.0.0.1:37953: connect: connection refused
+2026-10-25 01:17:34.293  INFO  Client restart
+2026-10-25 01:17:34.293  INFO  Pending tunnel handshake...
+2026-10-25 01:17:34.293  ERROR  Client error: TunnelStart: tunnelHandshake failed: TunnelHandshake: Get "https://127.0.0.1:37953/%22: dial tcp 127.0.0.1:37953: connect: connection refused
+2026-10-25 01:17:34.394  INFO  Client restart
+2026-10-25 01:17:34.399  INFO  Pending tunnel handshake...
+2026-10-25 01:17:34.400  ERROR  Client error: TunnelStart: tunnelHandshake failed: TunnelHandshake: Get "https://127.0.0.1:37953/%22: dial tcp 127.0.0.1:37953: connect: connection refused
+2026-10-25 01:17:34.500  INFO  Client restart
+2026-10-25 01:17:34.501  INFO  Pending tunnel handshake...
+2026-10-25 01:17:34.501  ERROR  Client error: TunnelStart: tunnelHandshake failed: TunnelHandshake: Get "https://127.0.0.1:37953/%22: dial tcp 127.0.0.1:37953: connect: connection refused
+2026-10-25 01:17:34.602  INFO  Client restart
+2026-10-25 01:17:34.604  INFO  Pending tunnel handshake...
+2026-10-25 01:17:34.605  ERROR  Client error: TunnelStart: tunnelHandshake failed: TunnelHandshake: Get "https://127.0.0.1:37953/%22: dial tcp 127.0.0.1:37953: connect: connection refused
+2026-10-25 01:17:34.705  INFO  Client restart
+2026-10-25 01:17:34.706  INFO  Pending tunnel handshake...
+2026-10-25 01:17:34.706  ERROR  Client error: TunnelStart: tunnelHandshake failed: TunnelHandshake: Get "https://127.0.0.1:37953/%22: dial tcp 127.0.0.1:37953: connect: connection refused
+2026-10-25 01:17:34.807  INFO  Client restart
+2026-10-25 01:17:34.807  INFO  Pending tunnel handshake...
+2026-10-25 01:17:34.807  ERROR  Client error: TunnelStart: tunnelHandshake failed: TunnelHandshake: Get "https://127.0.0.1:37953/%22: dial tcp 127.0.0.1:37953: connect: connection refused
+2026-10-25 01:17:34.908  INFO  Client restart
+2026-10-25 01:17:34.910  INFO  Pending tunnel handshake...
+2026-10-25 01:17:34.910  ERROR  Client error: TunnelStart: tunnelHandshake failed: TunnelHandshake: Get "https://127.0.0.1:37953/%22: dial tcp 127.0.0.1:37953: connect: connection refused
+2026-10-25 01:17:35.011  INFO  Client restart
+2026-10-25 01:17:35.011  INFO  Pending tunnel handshake...
+2026-10-25 01:17:35.017  INFO  Loading tunnel config: FLOW=-|MAX=8|TLS=1|TYPE=0|VERIFY=flow-v1
+2026-10-25 01:17:35.017  INFO  Getting tunnel pool ready...
+2026-10-25 01:17:35.168  INFO  Marking tunnel handshake as complete in 157ms
+2026-10-25 01:17:35.169  INFO  TLS code-1: RAM cert fingerprint verifying...
+2026-10-25 01:17:35.170  EVENT  CHECK_POINT|MODE=2|PING=1ms|POOL=1|TCPS=0|UDPS=0|TCPRX=32768|TCPTX=32768|UDPRX=512|UDPTX=512
+2026-10-25 01:17:35.269  DEBUG  TLS code-1: verify signal: cid 0c34b10e -> 127.0.0.1:37953
+2026-10-25 01:17:35.270  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=2|TCPS=0|UDPS=0|TCPRX=32768|TCPTX=32768|UDPRX=512|UDPTX=512
+2026-10-25 01:17:35.270  INFO  TLS code-1: RAM cert verified with sha256 fingerprint: 2b5cba66f40fa86113f2db1c050fd18fd1f939055e3c54d4d4105305499b5f5a
+2026-10-25 01:17:35.276  DEBUG  TCP launch signal: cid 0f92ae75 <- 127.0.0.1:37953
+2026-10-25 01:17:35.276  DEBUG  Tunnel connection: get 0f92ae75 <- pool active 1
+2026-10-25 01:17:35.276  DEBUG  Tunnel connection: 127.0.0.1:56686 <-> 127.0.0.1:37953
+2026-10-25 01:17:35.277  DEBUG  Target connection: 127.0.0.1:41660 <-> 127.0.0.1:45787
+2026-10-25 01:17:35.277  INFO  Starting exchange: 127.0.0.1:37953 <-> 127.0.0.1:45787
+2026-10-25 01:17:35.282  INFO  Exchange complete: read tcp 127.0.0.1:41660->127.0.0.1:45787: use of closed network connection
+2026-10-25 01:17:35.283  DEBUG  Tunnel connection: closed 0f92ae75
+2026-10-25 01:17:35.283  DEBUG  UDP launch signal: cid cf0e9d97 <- 127.0.0.1:37953
+2026-10-25 01:17:35.283  DEBUG  Tunnel connection: get cf0e9d97 <- pool active 0
+2026-10-25 01:17:35.283  DEBUG  Tunnel connection: 127.0.0.1:56680 <-> 127.0.0.1:37953
+2026-10-25 01:17:35.284  DEBUG  Target connection: 127.0.0.1:39033 <-> 127.0.0.1:45787
+2026-10-25 01:17:35.284  DEBUG  Starting transfer: 127.0.0.1:56680 <-> 127.0.0.1:39033
+2026-10-25 01:17:35.284  DEBUG  Transfer complete: 127.0.0.1:56680 <-> 127.0.0.1:39033
+2026-10-25 01:17:35.284  DEBUG  Transfer complete: 127.0.0.1:39033 <-> 127.0.0.1:56680
+2026-10-25 01:17:35.370  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=3|TCPS=0|UDPS=1|TCPRX=65536|TCPTX=65536|UDPRX=1024|UDPTX=1024
+2026-10-25 01:17:35.384  ERROR  TunnelUDPOnce: read from target failed: read udp 127.0.0.1:39033->127.0.0.1:45787: use of closed network connection
+2026-10-25 01:17:35.385  ERROR  TunnelUDPOnce: read from tunnel failed: read tcp 127.0.0.1:56680->127.0.0.1:37953: use of closed network connection
+2026-10-25 01:17:35.385  DEBUG  Tunnel connection closed: pool active 0
+2026-10-25 01:17:35.385  DEBUG  Control connection closed: 127.0.0.1:56664
+2026-10-25 01:17:35.385  DEBUG  Tunnel connection: closed cf0e9d97
+2026-10-25 01:17:35.385  INFO  Client shutdown complete

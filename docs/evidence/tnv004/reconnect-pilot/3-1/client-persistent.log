@@ -1,0 +1,65 @@
+2026-10-25 01:08:00.431  DEBUG  Init log level: DEBUG
+2026-10-25 01:08:00.432  WARN  TLS code-0: unencrypted
+2026-10-25 01:08:00.433  INFO  Client started: [REDACTED-URL]
+2026-10-25 01:08:00.435  INFO  Pending tunnel handshake...
+2026-10-25 01:08:00.436  ERROR  Client error: TunnelStart: tunnelHandshake failed: TunnelHandshake: Get "https://127.0.0.1:55517/%22: dial tcp 127.0.0.1:55517: connect: connection refused
+2026-10-25 01:08:00.538  INFO  Client restart
+2026-10-25 01:08:00.538  INFO  Pending tunnel handshake...
+2026-10-25 01:08:00.548  INFO  Loading tunnel config: FLOW=-|MAX=8|TLS=1|TYPE=3|VERIFY=flow-v1
+2026-10-25 01:08:00.548  INFO  Getting tunnel pool ready...
+2026-10-25 01:08:00.649  INFO  Marking tunnel handshake as complete in 110ms
+2026-10-25 01:08:00.649  INFO  TLS code-1: RAM cert fingerprint verifying...
+2026-10-25 01:08:00.658  EVENT  CHECK_POINT|MODE=2|PING=8ms|POOL=1|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-25 01:08:00.750  DEBUG  TLS code-1: verify signal: cid 267d4e42 -> 127.0.0.1:55517
+2026-10-25 01:08:00.750  EVENT  CHECK_POINT|MODE=2|PING=0ms|POOL=2|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-25 01:08:00.751  INFO  TLS code-1: RAM cert verified with sha256 fingerprint: 90526c6bbd9320690e4be6c4a501dd215a66775c2678368d84e470213ba1c4aa
+2026-10-25 01:08:00.775  DEBUG  TCP launch signal: cid be01048c <- 127.0.0.1:55517
+2026-10-25 01:08:00.776  DEBUG  Tunnel connection: get be01048c <- pool active 1
+2026-10-25 01:08:00.776  DEBUG  Tunnel connection: 127.0.0.1:46166 <-> 127.0.0.1:55517
+2026-10-25 01:08:00.776  DEBUG  Target connection: 127.0.0.1:57422 <-> 127.0.0.1:37939
+2026-10-25 01:08:00.776  INFO  Starting exchange: 127.0.0.1:55517 <-> 127.0.0.1:37939
+2026-10-25 01:08:00.779  DEBUG  UDP launch signal: cid 4cdb560f <- 127.0.0.1:55517
+2026-10-25 01:08:00.780  DEBUG  Tunnel connection: get 4cdb560f <- pool active 0
+2026-10-25 01:08:00.780  DEBUG  Tunnel connection: 127.0.0.1:46166 <-> 127.0.0.1:55517
+2026-10-25 01:08:00.780  DEBUG  Target connection: 127.0.0.1:50752 <-> 127.0.0.1:37939
+2026-10-25 01:08:00.780  DEBUG  Starting transfer: 127.0.0.1:46166 <-> 127.0.0.1:50752
+2026-10-25 01:08:00.780  DEBUG  Transfer complete: 127.0.0.1:46166 <-> 127.0.0.1:50752
+2026-10-25 01:08:00.781  DEBUG  Transfer complete: 127.0.0.1:50752 <-> 127.0.0.1:46166
+2026-10-25 01:08:00.784  ERROR  TunnelUDPOnce: read from target failed: read udp 127.0.0.1:50752->127.0.0.1:37939: use of closed network connection
+2026-10-25 01:08:00.784  DEBUG  Tunnel connection: closed 4cdb560f
+2026-10-25 01:08:00.784  DEBUG  Tunnel connection closed: pool active 0
+2026-10-25 01:08:00.784  INFO  Exchange complete: unexpected EOF
+2026-10-25 01:08:00.785  DEBUG  Tunnel connection: closed be01048c
+2026-10-25 01:08:00.785  DEBUG  Control connection closed: 127.0.0.1:46166
+2026-10-25 01:08:00.785  ERROR  Client error: TunnelStart: tunnelControl failed: TunnelControl: TunnelQueue: readBytes failed: unexpected EOF
+2026-10-25 01:08:00.886  INFO  Client restart
+2026-10-25 01:08:00.889  INFO  Pending tunnel handshake...
+2026-10-25 01:08:00.890  ERROR  Client error: TunnelStart: tunnelHandshake failed: TunnelHandshake: Get "https://127.0.0.1:55517/%22: dial tcp 127.0.0.1:55517: connect: connection refused
+2026-10-25 01:08:00.992  INFO  Client restart
+2026-10-25 01:08:00.995  INFO  Pending tunnel handshake...
+2026-10-25 01:08:00.996  ERROR  Client error: TunnelStart: tunnelHandshake failed: TunnelHandshake: Get "https://127.0.0.1:55517/%22: dial tcp 127.0.0.1:55517: connect: connection refused
+2026-10-25 01:08:01.096  INFO  Client restart
+2026-10-25 01:08:01.097  INFO  Pending tunnel handshake...
+2026-10-25 01:08:01.097  ERROR  Client error: TunnelStart: tunnelHandshake failed: TunnelHandshake: Get "https://127.0.0.1:55517/%22: dial tcp 127.0.0.1:55517: connect: connection refused
+2026-10-25 01:08:01.197  INFO  Client restart
+2026-10-25 01:08:01.205  INFO  Pending tunnel handshake...
+2026-10-25 01:08:01.206  ERROR  Client error: TunnelStart: tunnelHandshake failed: TunnelHandshake: Get "https://127.0.0.1:55517/%22: dial tcp 127.0.0.1:55517: connect: connection refused
+2026-10-25 01:08:01.306  INFO  Client restart
+2026-10-25 01:08:01.307  INFO  Pending tunnel handshake...
+2026-10-25 01:08:01.307  ERROR  Client error: TunnelStart: tunnelHandshake failed: TunnelHandshake: Get "https://127.0.0.1:55517/%22: dial tcp 127.0.0.1:55517: connect: connection refused
+2026-10-25 01:08:01.408  INFO  Client restart
+2026-10-25 01:08:01.411  INFO  Pending tunnel handshake...
+2026-10-25 01:08:01.411  ERROR  Client error: TunnelStart: tunnelHandshake failed: TunnelHandshake: Get "https://127.0.0.1:55517/%22: dial tcp 127.0.0.1:55517: connect: connection refused
+2026-10-25 01:08:01.511  INFO  Client restart
+2026-10-25 01:08:01.513  INFO  Pending tunnel handshake...
+2026-10-25 01:08:01.513  ERROR  Client error: TunnelStart: tunnelHandshake failed: TunnelHandshake: Get "https://127.0.0.1:55517/%22: dial tcp 127.0.0.1:55517: connect: connection refused
+2026-10-25 01:08:01.614  INFO  Client restart
+2026-10-25 01:08:01.616  INFO  Pending tunnel handshake...
+2026-10-25 01:08:01.616  ERROR  Client error: TunnelStart: tunnelHandshake failed: TunnelHandshake: Get "https://127.0.0.1:55517/%22: dial tcp 127.0.0.1:55517: connect: connection refused
+2026-10-25 01:08:01.717  INFO  Client restart
+2026-10-25 01:08:01.719  INFO  Pending tunnel handshake...
+2026-10-25 01:08:01.719  ERROR  Client error: TunnelStart: tunnelHandshake failed: TunnelHandshake: Get "https://127.0.0.1:55517/%22: dial tcp 127.0.0.1:55517: connect: connection refused
+2026-10-25 01:08:01.820  INFO  Client restart
+2026-10-25 01:08:01.820  INFO  Pending tunnel handshake...
+2026-10-25 01:08:01.821  ERROR  Client error: TunnelStart: tunnelHandshake failed: TunnelHandshake: Get "https://127.0.0.1:55517/%22: dial tcp 127.0.0.1:55517: connect: connection refused
+2026-10-25 01:08:01.883  INFO  Client shutdown complete

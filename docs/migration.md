@@ -66,3 +66,8 @@ Other zero-valued timeouts retain their existing meanings. Help, version and exp
 ## Idle pool ownership
 
 [TNV-003](pool-publication.md) changes private idle bookkeeping for all four backends. Wire IDs/control frames and pool method signatures are unchanged; no configuration or state migration is required. Getting a specific ID now preserves other FIFO entries, and cancellation/deadline errors wrap their context cause. Treat errors as errors rather than parsing exact strings. This does not add full restart-generation fencing or change HTTP/2 physical-connection deadline behavior.
+
+
+## Run and pool lifetime
+
+[TNV-004](run-lifecycle.md) makes Client/Server.Start and pool managers single-use. Construct a fresh endpoint/pool after Stop/Close. Run/RunWithContext retain automatic retry by creating a fresh runtime for each attempt. Client/Server now embed *common.Common; internal callers using struct literals must supply a pointer. Runtime channels, cache, address snapshots and resources reset per attempt; cumulative statistics and thread-safe buffers remain shared. Flush fences pending setup and old waiters, while Close also terminates leased resources. No wire, state, configuration or dependency migration is required. Public HTTP/2 deadline forwarding remains TNV-005.

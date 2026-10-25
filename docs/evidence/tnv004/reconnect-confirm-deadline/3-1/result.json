@@ -1,0 +1,27 @@
+{
+  "transport": 3,
+  "mode": 1,
+  "status": "failed",
+  "exchanges": [],
+  "cleanup": [
+    {
+      "pid": 315,
+      "returncode": 0,
+      "forced_kill": false,
+      "reaped": true
+    },
+    {
+      "pid": 318,
+      "returncode": 0,
+      "forced_kill": false,
+      "reaped": true
+    }
+  ],
+  "persistent_client_pid": 318,
+  "failure_type": "TimeoutError",
+  "error": "reconnect verification deadline",
+  "logs": [
+    "server-first.log",
+    "client-persistent.log"
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "runtime_source_commit": "665e751c2f4442c8f412429711d830000d16fc2a",
+  "before_native_source_commit": "11232377ec3f537647a34ceb95ece633b1a7527f",
+  "recorded_at": "2026-10-25T08:24:23.195947+00:00",
+  "normalization": "JSON paths are portable relative to each report, binaries use BUILD/. Log bytes and outcomes unchanged. Original transient binaries not redistributed.",
+  "scope": "Loopback tls=1, synthetic credentials; native race fixtures controlled, each black-box echo single attempt. Not public-network, full-fault, duration or performance certification.",
+  "pilots": "reconnect-pilot records a real H2 handler return/Flush race; reconnect-confirm-deadline records premature idle-ID deletion. Both are dirty intermediate implementations, not baseline reproductions. Their binary hashes and failed outcomes are retained.",
+  "binaries": {
+    "tunveo-tnv004": {
+      "sha256": "1cdd3cf32c4d16a4d8a13cb46e2c0b32b762d3472866a5d0db06236b968d97d7",
+      "go_build_info": "BUILD/tunveo-tnv004: go1.26.10\n\tpath\tgithub.com/VortexWang/Tunveo/cmd/tunveo\n\tmod\tgithub.com/VortexWang/Tunveo\tv1.17.1-0.20261025081651-665e751c2f44\t\n\tdep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\n\tdep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\n\tdep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\n\tdep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\n\tdep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\n\tdep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\n\tbuild\t-buildmode=exe\n\tbuild\t-compiler=gc\n\tbuild\t-trimpath=true\n\tbuild\tCGO_ENABLED=1\n\tbuild\tGOARCH=amd64\n\tbuild\tGOOS=linux\n\tbuild\tGOAMD64=v1\n\tbuild\tvcs=git\n\tbuild\tvcs.revision=665e751c2f4442c8f412429711d830000d16fc2a\n\tbuild\tvcs.time=2026-10-25T08:16:51Z\n\tbuild\tvcs.modified=false\n"
+    },
+    "tunveo-tnv004-race": {
+      "sha256": "faab8e849f6ae157f3bc51393e6fd18c68b0bd31da56aac98d0f86a713f02c87",
+      "go_build_info": "BUILD/tunveo-tnv004-race: go1.26.10\n\tpath\tgithub.com/VortexWang/Tunveo/cmd/tunveo\n\tmod\tgithub.com/VortexWang/Tunveo\tv1.17.1-0.20261025081651-665e751c2f44\t\n\tdep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\n\tdep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\n\tdep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\n\tdep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\n\tdep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\n\tdep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\n\tbuild\t-buildmode=exe\n\tbuild\t-compiler=gc\n\tbuild\t-race=true\n\tbuild\t-trimpath=true\n\tbuild\tCGO_ENABLED=1\n\tbuild\tGOARCH=amd64\n\tbuild\tGOOS=linux\n\tbuild\tGOAMD64=v1\n\tbuild\tvcs=git\n\tbuild\tvcs.revision=665e751c2f4442c8f412429711d830000d16fc2a\n\tbuild\tvcs.time=2026-10-25T08:16:51Z\n\tbuild\tvcs.modified=false\n"
+    }
+  },
+  "source_ci": "https://github.com/VortexWang/Tunveo/actions/runs/40176011532",
+  "reconnect-final": {
+    "status": "passed",
+    "counts": {
+      "passed": 8
+    },
+    "total": 8
+  },
+  "reconnect-pilot": {
+    "status": "failed",
+    "counts": {
+      "failed": 2,
+      "passed": 2
+    },
+    "total": 4
+  },
+  "reconnect-confirm-deadline": {
+    "status": "failed",
+    "counts": {
+      "failed": 1,
+      "passed": 1
+    },
+    "total": 2
+  },
+  "matrix-tunveo-tunveo": {
+    "status": "passed",
+    "counts": {
+      "passed": 16
+    },
+    "total": 16
+  },
+  "matrix-tunveo-upstream": {
+    "status": "passed",
+    "counts": {
+      "passed": 16
+    },
+    "total": 16
+  },
+  "matrix-upstream-tunveo": {
+    "status": "failed",
+    "counts": {
+      "failed": 1,
+      "passed": 15
+    },
+    "total": 16
+  },
+  "handshake-investigation": {
+    "status": "passed",
+    "counts": {
+      "passed": 10
+    },
+    "total": 10
+  },
+  "handshake-baseline": {
+    "status": "failed",
+    "counts": {
+      "failed": 5,
+      "passed": 15
+    },
+    "total": 20
+  },
+  "forwarding": {
+    "passed": 47,
+    "total": 48,
+    "failure": "upstream/tunveo TCP mode=2 small pool: initial HTTPS EOF before pool establishment; unchanged legacy server sent configuration then switched listener. Compatible with TNV-012 early-close risk; logs alone cannot conclusively attribute every EOF."
+  },
+  "log_integrity": "All final matrix phase-observed log byte counts are within saved log sizes; no paired initiated verification ID collision; all 96 processes reaped normally without forced kill.",
+  "handshake_comparison": "Final source client 10/10 and previous TNV-003 client 10/10 targeted legacy-server runs passed. Original/original 5/10 passed; five failed legacy certificate verification. No further initial EOF observed; root cause not conclusively proved."
+}

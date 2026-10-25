@@ -66,3 +66,5 @@ Go/HTTP2 dependency security baseline and scan scope: [TNV-011](docs/security-de
 Reload interval startup validation and migration: [TNV-013](docs/reload-interval.md).
 
 Atomic idle resource publication and matching ID claims: [TNV-003](docs/pool-publication.md).
+
+Run and pool lifecycle isolation: [TNV-004](docs/run-lifecycle.md).

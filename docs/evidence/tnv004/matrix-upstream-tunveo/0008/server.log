@@ -1,0 +1,29 @@
+2026-10-25 01:18:12.583  DEBUG  Init log level: DEBUG
+2026-10-25 01:18:12.583  INFO  TLS code-1: RAM cert with TLS 1.3
+2026-10-25 01:18:12.584  INFO  Server started: server://[REDACTED]@127.0.0.1:33965/127.0.0.1:42985?dns=5m0s&lbs=0&max=1024&mode=1&type=3&dial=auto&read=0s&rate=0&slot=65536&proxy=0&block=0&notcp=0&noudp=0
+2026-10-25 01:18:12.585  INFO  Pending tunnel handshake...
+2026-10-25 01:18:12.585  INFO  TLS code-1: RAM cert prepared with sha256 fingerprint: 93fe085d86a474ff1d49bfb338a97a41ea72f5ed744f909ba9760c49fe05a6c2
+2026-10-25 01:18:12.618  INFO  Sending tunnel config: FLOW=-|MAX=1024|TLS=1|TYPE=3
+2026-10-25 01:18:12.619  INFO  TLS code-1: RAM cert regenerated with TLS 1.3
+2026-10-25 01:18:12.619  INFO  Getting tunnel pool ready...
+2026-10-25 01:18:12.669  INFO  Marking tunnel handshake as complete in 84ms
+2026-10-25 01:18:12.669  INFO  TLS code-1: RAM cert fingerprint verifying...
+2026-10-25 01:18:12.670  EVENT  CHECK_POINT|MODE=1|PING=0ms|POOL=63|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-25 01:18:17.670  DEBUG  TLS code-1: verify signal: cid a8400100 -> 127.0.0.1:58526
+2026-10-25 01:18:17.670  EVENT  CHECK_POINT|MODE=1|PING=0ms|POOL=64|TCPS=0|UDPS=0|TCPRX=0|TCPTX=0|UDPRX=0|UDPTX=0
+2026-10-25 01:18:17.670  DEBUG  TLS verify signal: cid 171a04e6 <- 127.0.0.1:58526
+2026-10-25 01:18:17.670  INFO  TLS code-1: RAM cert verified with sha256 fingerprint: 854351aeb286fffe266388178478d3ea5c7655763a27e1ce6d410604c3824766
+2026-10-25 01:18:17.683  DEBUG  Target connection: 127.0.0.1:42985 <-> 127.0.0.1:48794
+2026-10-25 01:18:17.683  DEBUG  Tunnel connection: get 2b9840f2 <- pool active 62
+2026-10-25 01:18:17.683  DEBUG  Tunnel connection: 127.0.0.1:33965 <-> 127.0.0.1:58526
+2026-10-25 01:18:17.683  DEBUG  TCP launch signal: cid 2b9840f2 -> 127.0.0.1:58526
+2026-10-25 01:18:17.683  INFO  Starting exchange: 127.0.0.1:48794 <-> 127.0.0.1:58526
+2026-10-25 01:18:17.684  INFO  Exchange complete: body closed by handler
+2026-10-25 01:18:17.684  DEBUG  Tunnel connection: closed 2b9840f2
+2026-10-25 01:18:17.687  DEBUG  Target connection: 127.0.0.1:42985 <-> 127.0.0.1:36099
+2026-10-25 01:18:17.687  DEBUG  Tunnel connection: get 1f9f2c7f <- pool active 60
+2026-10-25 01:18:17.687  DEBUG  Tunnel connection: 127.0.0.1:33965 <-> 127.0.0.1:58526
+2026-10-25 01:18:17.687  DEBUG  UDP launch signal: cid 1f9f2c7f -> 127.0.0.1:58526
+2026-10-25 01:18:17.687  DEBUG  Starting transfer: 127.0.0.1:33965 <-> 127.0.0.1:42985
+2026-10-25 01:18:17.687  DEBUG  Transfer complete: 127.0.0.1:33965 <-> 127.0.0.1:42985
+2026-10-25 01:18:17.687  DEBUG  Transfer complete: 127.0.0.1:33965 <-> 127.0.0.1:42985
