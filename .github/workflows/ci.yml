@@ -145,3 +145,21 @@ jobs:
             artifacts/pool-lifecycle.json
             artifacts/reconnect
           retention-days: 14
+
+  h2-deadline-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6.0.2
+      - uses: actions/setup-go@v6.1.0
+        with:
+          go-version-file: go.mod
+      - run: python3 scripts/repro_h2_deadlines.py --ref HEAD --mode fixed --go go --output artifacts/h2-deadlines.json
+      - run: go test -race -count=10 -run '^Test(DeadlineIO|H2CloseAndCancel)' ./internal/tunnelpool/http2
+      - name: Save native stream deadline evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: h2-deadline-evidence
+          path: artifacts/h2-deadlines.json
+          retention-days: 14

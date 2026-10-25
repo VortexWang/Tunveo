@@ -83,24 +83,22 @@ func (s *StreamConn) RemoteAddr() net.Addr {
 }
 
 func (s *StreamConn) SetDeadline(t time.Time) error {
-	if tc, ok := s.conn.(interface{ SetDeadline(time.Time) error }); ok {
-		return tc.SetDeadline(t)
+	if d, ok := s.ReadWriteCloser.(interface{ SetDeadline(time.Time) error }); ok {
+		return d.SetDeadline(t)
 	}
-	return nil
+	return fmt.Errorf("stream deadlines unavailable")
 }
-
 func (s *StreamConn) SetReadDeadline(t time.Time) error {
-	if tc, ok := s.conn.(interface{ SetReadDeadline(time.Time) error }); ok {
-		return tc.SetReadDeadline(t)
+	if d, ok := s.ReadWriteCloser.(interface{ SetReadDeadline(time.Time) error }); ok {
+		return d.SetReadDeadline(t)
 	}
-	return nil
+	return fmt.Errorf("stream deadlines unavailable")
 }
-
 func (s *StreamConn) SetWriteDeadline(t time.Time) error {
-	if tc, ok := s.conn.(interface{ SetWriteDeadline(time.Time) error }); ok {
-		return tc.SetWriteDeadline(t)
+	if d, ok := s.ReadWriteCloser.(interface{ SetWriteDeadline(time.Time) error }); ok {
+		return d.SetWriteDeadline(t)
 	}
-	return nil
+	return fmt.Errorf("stream deadlines unavailable")
 }
 
 func (s *StreamConn) ConnectionState() tls.ConnectionState {
@@ -294,9 +292,12 @@ func (p *Pool) createStream() bool {
 		return false
 	}
 	stream := &http2Stream{reader: resp.Body, writer: reqWriter, cancel: requestCancel, done: make(chan struct{})}
-	conn := &StreamConn{ReadWriteCloser: stream, conn: session.conn, localAddr: session.conn.LocalAddr(), remoteAddr: session.conn.RemoteAddr()}
+	conn := &StreamConn{ReadWriteCloser: newDeadlineIO(stream), conn: session.conn, localAddr: session.conn.LocalAddr(), remoteAddr: session.conn.RemoteAddr()}
+	// Request cancellation must release local adapters and a body writer blocked
+	// after RoundTrip has already returned its response headers.
+	context.AfterFunc(requestCtx, func() { conn.Close() })
 	if !p.idle.Commit(attempt, hex.EncodeToString(raw[:]), conn) {
-		stream.Close()
+		conn.Close()
 		return false
 	}
 	committed = true
@@ -342,9 +343,9 @@ func (p *Pool) handleStream(rw http.ResponseWriter, req *http.Request) {
 		done:   make(chan struct{}),
 	}
 
-	conn := &StreamConn{ReadWriteCloser: stream, conn: physical, localAddr: physical.LocalAddr(), remoteAddr: physical.RemoteAddr()}
+	conn := &StreamConn{ReadWriteCloser: newDeadlineIO(stream), conn: physical, localAddr: physical.LocalAddr(), remoteAddr: physical.RemoteAddr()}
 	if !p.idle.Commit(attempt, id, conn) {
-		stream.Close()
+		conn.Close()
 		return
 	}
 	defer func() {
@@ -354,7 +355,7 @@ func (p *Pool) handleStream(rw http.ResponseWriter, req *http.Request) {
 		if p.ctx.Err() != nil {
 			p.idle.RemoveIfSame(id, conn)
 		}
-		stream.Close()
+		conn.Close()
 	}()
 
 	select {
@@ -377,8 +378,8 @@ func (w *responseWriter) Write(p []byte) (n int, err error) {
 		return 0, io.ErrClosedPipe
 	}
 	n, err = w.rw.Write(p)
-	if flusher, ok := w.rw.(http.Flusher); ok {
-		flusher.Flush()
+	if err == nil {
+		err = http.NewResponseController(w.rw).Flush()
 	}
 	return
 }
