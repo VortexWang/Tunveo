@@ -6,17 +6,17 @@
       "id": "regression",
       "status": "passed",
       "evidence": [
-        "docs/evidence/tls-identity/ci.json",
-        "https://github.com/VortexWang/Tunveo/actions/runs/40246652146"
+        "docs/evidence/lifecycle-100/ci.json",
+        "https://github.com/VortexWang/Tunveo/actions/runs/40266322087"
       ],
-      "reason": "15 scoped CI jobs passed on adccb517; identity and probe corrections validated, broader initial-control/reload/fault audit remains open."
+      "reason": "19 scoped CI jobs passed on e611f0e0 (matching merge tree); includes hundred-cycle race transport jobs and 22 Python verifier tests. Broader fault/trust/reload audit remains open."
     },
     {
       "id": "packaging",
       "status": "passed",
       "evidence": [
-        "docs/evidence/tls-identity/ci.json",
-        "docs/evidence/tls-identity/regression-evidence.zip"
+        "docs/evidence/lifecycle-100/ci.json",
+        "docs/evidence/lifecycle-100/race-evidence.zip"
       ],
       "reason": "Eight snapshot archive checks and Linux amd64 container smoke; other native platforms remain pending."
     },
@@ -24,17 +24,22 @@
       "id": "supported_matrix_10x",
       "status": "failed",
       "evidence": [
-        "docs/evidence/tls-identity/coverage.json",
-        "docs/evidence/tls-identity/compatibility-evidence.zip",
-        "docs/evidence/tls-identity/identity-evidence.zip"
+        "docs/evidence/lifecycle-100/matrix-coverage.json",
+        "docs/evidence/lifecycle-100/compatibility-evidence.zip",
+        "docs/evidence/lifecycle-100/identity-evidence.zip"
       ],
-      "reason": "Corrected 4160-cell measurement complete: 41 old-server failures (40 H2 TLS0, 1 initial EOF). Maintained pairs passed all observed cells. Earlier failures and the uninstrumented first-run echo anomaly remain preserved, not rewritten."
+      "reason": "Canonical e611f0e0 complete4160-cell measurement: 1720/1760 positive and2398/2400 negative passed. All42 failures involved old servers:40 H2 requestedTLS0 panic and2 initial HTTPS EOF. Maintained-server3200 cells passed. All8320 children reaped, no forced kill; earlier failures retained independently."
     },
     {
       "id": "lifecycle_100",
-      "status": "pending",
-      "evidence": [],
-      "reason": "100 cycles per transport plus FD/goroutine/memory return not completed."
+      "status": "passed",
+      "evidence": [
+        "docs/evidence/lifecycle-100/race-coverage.json",
+        "docs/evidence/lifecycle-100/native-coverage.json",
+        "docs/evidence/lifecycle-100/race-evidence.zip",
+        "docs/evidence/lifecycle-100/native-evidence.zip"
+      ],
+      "reason": "Linux amd64 loopback TLS1 min2:max8, both flows and two scenarios; 1600 race plus 1600 ordinary cycles passed. Fixed return budgets: goroutines baseline+4, FD+2, GC HeapAlloc+8MiB within5s; RSS recorded, not a return assertion. Does not close 24h or other native platforms."
     },
     {
       "id": "soak_24h",
@@ -52,7 +57,7 @@
       "id": "integration_review",
       "status": "pending",
       "evidence": [],
-      "reason": "Stacked PRs through PR15 remain unmerged; PR3 superseded by PR4. Review TNV015/TNV016 and old-server compatibility failures before integration."
+      "reason": "Stacked PRs through PR16 remain unmerged; PR3 superseded by PR4. Review TNV017 socket ownership, lifecycle budgets and legacy-server compatibility failures before integration."
     }
   ]
 }

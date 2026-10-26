@@ -1,0 +1,536 @@
+{
+  "source_head": "e611f0e018dbb1733e1a8316f3e9b55097ebce5a",
+  "source_tree": "835a788ccbce4e057a34d125c9ce0b5709f0fa80",
+  "kind": "native supplementary immutable archive build; canonical CI race evidence recorded separately",
+  "cycles": 1600,
+  "exchanges": 3200,
+  "resource_scenarios": 16,
+  "status": "passed",
+  "provenance": {
+    "source_commit": "e611f0e018dbb1733e1a8316f3e9b55097ebce5a",
+    "archive_sha256": "30aa018ecaaeb6b3a7a1f0315246ca376fe0f9278390f916325259ca003fc990",
+    "binary_sha256": "11c6a32834738d9be353081494ea1db0047cf982d09e6373bd91220afc541daa",
+    "production_source_modified": false,
+    "build_info": "/workspace/scratch/0db146b59a43/Tunveo/bin/lifecycle100-final-native: go1.26.10\n\tpath\tgithub.com/VortexWang/Tunveo/scripts/lifecycle100\n\tmod\tgithub.com/VortexWang/Tunveo\t(devel)\t\n\tdep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\n\tdep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\n\tdep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\n\tdep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\n\tdep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\n\tdep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\n\tbuild\t-buildmode=exe\n\tbuild\t-compiler=gc\n\tbuild\t-trimpath=true\n\tbuild\tCGO_ENABLED=1\n\tbuild\tGOARCH=amd64\n\tbuild\tGOOS=linux\n\tbuild\tGOAMD64=v1\n"
+  },
+  "rows": [
+    {
+      "transport": 0,
+      "kind": "fresh-pair",
+      "mode": 1,
+      "cycles": 100,
+      "baseline": {
+        "cycle": 0,
+        "goroutines": 4,
+        "fd": 14,
+        "heap_alloc": 813952,
+        "heap_inuse": 1916928,
+        "sys": 43628808,
+        "rss": 33726464
+      },
+      "final": {
+        "cycle": 100,
+        "goroutines": 4,
+        "fd": 12,
+        "heap_alloc": 590992,
+        "heap_inuse": 1531904,
+        "sys": 52058376,
+        "rss": 22130688
+      },
+      "max_stop_seconds": 0.000333797,
+      "max_cycle_seconds": 0.274714563,
+      "active_peak": {
+        "goroutines": 4,
+        "fd": 14,
+        "heap_alloc": 999608,
+        "rss": 41742336
+      }
+    },
+    {
+      "transport": 0,
+      "kind": "fresh-pair",
+      "mode": 2,
+      "cycles": 100,
+      "baseline": {
+        "cycle": 0,
+        "goroutines": 4,
+        "fd": 14,
+        "heap_alloc": 1036272,
+        "heap_inuse": 2277376,
+        "sys": 52058376,
+        "rss": 42233856
+      },
+      "final": {
+        "cycle": 100,
+        "goroutines": 4,
+        "fd": 12,
+        "heap_alloc": 689904,
+        "heap_inuse": 1622016,
+        "sys": 52058376,
+        "rss": 26636288
+      },
+      "max_stop_seconds": 0.000298525,
+      "max_cycle_seconds": 0.288470157,
+      "active_peak": {
+        "goroutines": 4,
+        "fd": 14,
+        "heap_alloc": 1094024,
+        "rss": 42831872
+      }
+    },
+    {
+      "transport": 0,
+      "kind": "replace-server",
+      "mode": 1,
+      "cycles": 100,
+      "baseline": {
+        "cycle": 0,
+        "goroutines": 4,
+        "fd": 14,
+        "heap_alloc": 1095936,
+        "heap_inuse": 2310144,
+        "sys": 52058376,
+        "rss": 37003264
+      },
+      "final": {
+        "cycle": 100,
+        "goroutines": 4,
+        "fd": 12,
+        "heap_alloc": 960904,
+        "heap_inuse": 2007040,
+        "sys": 69167384,
+        "rss": 34996224
+      },
+      "max_stop_seconds": 0.010892994,
+      "max_cycle_seconds": 0.375824189,
+      "active_peak": {
+        "goroutines": 22,
+        "fd": 28,
+        "heap_alloc": 20342744,
+        "rss": 57630720
+      }
+    },
+    {
+      "transport": 0,
+      "kind": "replace-server",
+      "mode": 2,
+      "cycles": 100,
+      "baseline": {
+        "cycle": 0,
+        "goroutines": 4,
+        "fd": 14,
+        "heap_alloc": 1189544,
+        "heap_inuse": 2465792,
+        "sys": 69167384,
+        "rss": 37617664
+      },
+      "final": {
+        "cycle": 100,
+        "goroutines": 4,
+        "fd": 12,
+        "heap_alloc": 983216,
+        "heap_inuse": 2105344,
+        "sys": 77555992,
+        "rss": 52387840
+      },
+      "max_stop_seconds": 0.001309435,
+      "max_cycle_seconds": 0.379886834,
+      "active_peak": {
+        "goroutines": 22,
+        "fd": 24,
+        "heap_alloc": 20450384,
+        "rss": 59707392
+      }
+    },
+    {
+      "transport": 1,
+      "kind": "fresh-pair",
+      "mode": 1,
+      "cycles": 100,
+      "baseline": {
+        "cycle": 0,
+        "goroutines": 4,
+        "fd": 14,
+        "heap_alloc": 1118432,
+        "heap_inuse": 2588672,
+        "sys": 56568088,
+        "rss": 29597696
+      },
+      "final": {
+        "cycle": 100,
+        "goroutines": 4,
+        "fd": 12,
+        "heap_alloc": 685488,
+        "heap_inuse": 1957888,
+        "sys": 56584472,
+        "rss": 30351360
+      },
+      "max_stop_seconds": 0.000870674,
+      "max_cycle_seconds": 0.371693973,
+      "active_peak": {
+        "goroutines": 4,
+        "fd": 14,
+        "heap_alloc": 1329376,
+        "rss": 44908544
+      }
+    },
+    {
+      "transport": 1,
+      "kind": "fresh-pair",
+      "mode": 2,
+      "cycles": 100,
+      "baseline": {
+        "cycle": 0,
+        "goroutines": 4,
+        "fd": 14,
+        "heap_alloc": 1456024,
+        "heap_inuse": 3104768,
+        "sys": 56584472,
+        "rss": 44638208
+      },
+      "final": {
+        "cycle": 100,
+        "goroutines": 4,
+        "fd": 12,
+        "heap_alloc": 770960,
+        "heap_inuse": 2015232,
+        "sys": 56584472,
+        "rss": 38297600
+      },
+      "max_stop_seconds": 0.000769468,
+      "max_cycle_seconds": 0.371633604,
+      "active_peak": {
+        "goroutines": 4,
+        "fd": 14,
+        "heap_alloc": 1456024,
+        "rss": 45158400
+      }
+    },
+    {
+      "transport": 1,
+      "kind": "replace-server",
+      "mode": 1,
+      "cycles": 100,
+      "baseline": {
+        "cycle": 0,
+        "goroutines": 4,
+        "fd": 14,
+        "heap_alloc": 1454560,
+        "heap_inuse": 2973696,
+        "sys": 56584472,
+        "rss": 37974016
+      },
+      "final": {
+        "cycle": 100,
+        "goroutines": 4,
+        "fd": 12,
+        "heap_alloc": 1103360,
+        "heap_inuse": 2613248,
+        "sys": 81750296,
+        "rss": 52350976
+      },
+      "max_stop_seconds": 0.000594204,
+      "max_cycle_seconds": 0.560741322,
+      "active_peak": {
+        "goroutines": 33,
+        "fd": 22,
+        "heap_alloc": 21103248,
+        "rss": 65282048
+      }
+    },
+    {
+      "transport": 1,
+      "kind": "replace-server",
+      "mode": 2,
+      "cycles": 100,
+      "baseline": {
+        "cycle": 0,
+        "goroutines": 4,
+        "fd": 14,
+        "heap_alloc": 1538656,
+        "heap_inuse": 3121152,
+        "sys": 81750296,
+        "rss": 39677952
+      },
+      "final": {
+        "cycle": 100,
+        "goroutines": 4,
+        "fd": 12,
+        "heap_alloc": 1128360,
+        "heap_inuse": 2588672,
+        "sys": 81750296,
+        "rss": 49721344
+      },
+      "max_stop_seconds": 0.000731891,
+      "max_cycle_seconds": 0.707840218,
+      "active_peak": {
+        "goroutines": 33,
+        "fd": 22,
+        "heap_alloc": 21032104,
+        "rss": 61734912
+      }
+    },
+    {
+      "transport": 2,
+      "kind": "fresh-pair",
+      "mode": 1,
+      "cycles": 100,
+      "baseline": {
+        "cycle": 0,
+        "goroutines": 4,
+        "fd": 14,
+        "heap_alloc": 907888,
+        "heap_inuse": 2400256,
+        "sys": 39975176,
+        "rss": 34304000
+      },
+      "final": {
+        "cycle": 100,
+        "goroutines": 4,
+        "fd": 12,
+        "heap_alloc": 618704,
+        "heap_inuse": 1662976,
+        "sys": 56776968,
+        "rss": 31997952
+      },
+      "max_stop_seconds": 0.000524729,
+      "max_cycle_seconds": 0.273667445,
+      "active_peak": {
+        "goroutines": 4,
+        "fd": 14,
+        "heap_alloc": 7336832,
+        "rss": 42442752
+      }
+    },
+    {
+      "transport": 2,
+      "kind": "fresh-pair",
+      "mode": 2,
+      "cycles": 100,
+      "baseline": {
+        "cycle": 0,
+        "goroutines": 4,
+        "fd": 14,
+        "heap_alloc": 1141152,
+        "heap_inuse": 2801664,
+        "sys": 56776968,
+        "rss": 36364288
+      },
+      "final": {
+        "cycle": 100,
+        "goroutines": 4,
+        "fd": 12,
+        "heap_alloc": 688432,
+        "heap_inuse": 1884160,
+        "sys": 56776968,
+        "rss": 28344320
+      },
+      "max_stop_seconds": 0.000515927,
+      "max_cycle_seconds": 0.276102293,
+      "active_peak": {
+        "goroutines": 4,
+        "fd": 14,
+        "heap_alloc": 1298944,
+        "rss": 45662208
+      }
+    },
+    {
+      "transport": 2,
+      "kind": "replace-server",
+      "mode": 1,
+      "cycles": 100,
+      "baseline": {
+        "cycle": 0,
+        "goroutines": 4,
+        "fd": 14,
+        "heap_alloc": 1234408,
+        "heap_inuse": 3063808,
+        "sys": 56776968,
+        "rss": 40161280
+      },
+      "final": {
+        "cycle": 100,
+        "goroutines": 4,
+        "fd": 12,
+        "heap_alloc": 764720,
+        "heap_inuse": 2121728,
+        "sys": 69359880,
+        "rss": 38211584
+      },
+      "max_stop_seconds": 0.002543446,
+      "max_cycle_seconds": 0.368346926,
+      "active_peak": {
+        "goroutines": 22,
+        "fd": 24,
+        "heap_alloc": 20452304,
+        "rss": 64352256
+      }
+    },
+    {
+      "transport": 2,
+      "kind": "replace-server",
+      "mode": 2,
+      "cycles": 100,
+      "baseline": {
+        "cycle": 0,
+        "goroutines": 4,
+        "fd": 14,
+        "heap_alloc": 1300392,
+        "heap_inuse": 3112960,
+        "sys": 69359880,
+        "rss": 38481920
+      },
+      "final": {
+        "cycle": 100,
+        "goroutines": 4,
+        "fd": 12,
+        "heap_alloc": 1088880,
+        "heap_inuse": 2695168,
+        "sys": 69359880,
+        "rss": 50446336
+      },
+      "max_stop_seconds": 0.000989068,
+      "max_cycle_seconds": 0.369084215,
+      "active_peak": {
+        "goroutines": 23,
+        "fd": 26,
+        "heap_alloc": 20624952,
+        "rss": 65613824
+      }
+    },
+    {
+      "transport": 3,
+      "kind": "fresh-pair",
+      "mode": 1,
+      "cycles": 100,
+      "baseline": {
+        "cycle": 0,
+        "goroutines": 4,
+        "fd": 14,
+        "heap_alloc": 2135440,
+        "heap_inuse": 3637248,
+        "sys": 48109832,
+        "rss": 26247168
+      },
+      "final": {
+        "cycle": 100,
+        "goroutines": 4,
+        "fd": 12,
+        "heap_alloc": 1150000,
+        "heap_inuse": 2842624,
+        "sys": 56514824,
+        "rss": 25423872
+      },
+      "max_stop_seconds": 0.000280902,
+      "max_cycle_seconds": 0.225416281,
+      "active_peak": {
+        "goroutines": 4,
+        "fd": 14,
+        "heap_alloc": 3378856,
+        "rss": 46600192
+      }
+    },
+    {
+      "transport": 3,
+      "kind": "fresh-pair",
+      "mode": 2,
+      "cycles": 100,
+      "baseline": {
+        "cycle": 0,
+        "goroutines": 4,
+        "fd": 14,
+        "heap_alloc": 2794192,
+        "heap_inuse": 4472832,
+        "sys": 56514824,
+        "rss": 44482560
+      },
+      "final": {
+        "cycle": 100,
+        "goroutines": 4,
+        "fd": 12,
+        "heap_alloc": 1272736,
+        "heap_inuse": 2793472,
+        "sys": 56776968,
+        "rss": 38453248
+      },
+      "max_stop_seconds": 0.000516258,
+      "max_cycle_seconds": 1.183865849,
+      "active_peak": {
+        "goroutines": 4,
+        "fd": 14,
+        "heap_alloc": 3349656,
+        "rss": 47685632
+      }
+    },
+    {
+      "transport": 3,
+      "kind": "replace-server",
+      "mode": 1,
+      "cycles": 100,
+      "baseline": {
+        "cycle": 0,
+        "goroutines": 4,
+        "fd": 14,
+        "heap_alloc": 3017144,
+        "heap_inuse": 4808704,
+        "sys": 56776968,
+        "rss": 46313472
+      },
+      "final": {
+        "cycle": 100,
+        "goroutines": 4,
+        "fd": 12,
+        "heap_alloc": 1883880,
+        "heap_inuse": 3629056,
+        "sys": 82012440,
+        "rss": 53305344
+      },
+      "max_stop_seconds": 0.00208051,
+      "max_cycle_seconds": 0.319202426,
+      "active_peak": {
+        "goroutines": 38,
+        "fd": 22,
+        "heap_alloc": 22843264,
+        "rss": 61521920
+      }
+    },
+    {
+      "transport": 3,
+      "kind": "replace-server",
+      "mode": 2,
+      "cycles": 100,
+      "baseline": {
+        "cycle": 0,
+        "goroutines": 4,
+        "fd": 14,
+        "heap_alloc": 2822928,
+        "heap_inuse": 4595712,
+        "sys": 82012440,
+        "rss": 36012032
+      },
+      "final": {
+        "cycle": 100,
+        "goroutines": 4,
+        "fd": 12,
+        "heap_alloc": 1977288,
+        "heap_inuse": 3645440,
+        "sys": 82012440,
+        "rss": 52998144
+      },
+      "max_stop_seconds": 0.001317692,
+      "max_cycle_seconds": 0.32362598,
+      "active_peak": {
+        "goroutines": 38,
+        "fd": 22,
+        "heap_alloc": 23736072,
+        "rss": 69144576
+      }
+    }
+  ],
+  "report_sha256": {
+    "final-native-1/native/report.json": "2d0d94c1c9322e4e8a36f3230549853535e9f3f76b1bccba91740a648773aee5",
+    "final-native-3/native/report.json": "33a1a0a964a00444126781ee1b4106491fb0a8d3e83cfa7fb25fdbd5f0c1c97b",
+    "final-native-0/native/report.json": "7f5c116e54574649431c317355bc7fcbf1d9e0cbc76b63de26ef97ce1bd67d4d",
+    "final-native-2/native/report.json": "cf417fae58a9d3701c1453de837dd5e0ac5c8ed7a3ea1beddd90643a3a622b10"
+  }
+}

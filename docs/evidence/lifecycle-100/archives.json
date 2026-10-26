@@ -1,0 +1,38 @@
+[
+  {
+    "file": "compatibility-evidence.zip",
+    "bytes": 5187357,
+    "sha256": "f38d1899c8362ae6a15f3fd9cf54e8c89cc897660d6be50c4b50eda3369980f4",
+    "entries": 5797
+  },
+  {
+    "file": "identity-evidence.zip",
+    "bytes": 1852564,
+    "sha256": "afd04619c0c93d2009c48032ba2e55301d0a14560bddce0c3cbb9d2ad69a5cc5",
+    "entries": 2573
+  },
+  {
+    "file": "intermediate-evidence.zip",
+    "bytes": 879662,
+    "sha256": "a128f7c51f7b857fab1337efb5a946d79ecced44f3b2d34571bd600b29417504",
+    "entries": 89
+  },
+  {
+    "file": "native-evidence.zip",
+    "bytes": 443180,
+    "sha256": "7add7ba08f6349a60ff571d54b7a46f0c8bfaf47f1dac0128787fe9585586844",
+    "entries": 25
+  },
+  {
+    "file": "prior-matrix-evidence.zip",
+    "bytes": 583101,
+    "sha256": "a80abbd260267a0b7eaec3b305560396887d04e6b6eef7e696a3ca4d2316723c",
+    "entries": 135
+  },
+  {
+    "file": "race-evidence.zip",
+    "bytes": 700077,
+    "sha256": "a79bf7543dae4057c75b6b5645ba23c653e0d305d59c46ebb6cf9b4c530a16b1",
+    "entries": 274
+  }
+]

@@ -1,0 +1,1333 @@
+{
+  "source_head": "e611f0e018dbb1733e1a8316f3e9b55097ebce5a",
+  "source_tree": "835a788ccbce4e057a34d125c9ce0b5709f0fa80",
+  "tested_checkout": "bde88b04854551e88bcbf8edd35f2debb79f05c2",
+  "run_id": 40266322078,
+  "url": "https://github.com/VortexWang/Tunveo/actions/runs/40266322078",
+  "status": "completed",
+  "conclusion": "failure",
+  "jobs": [
+    {
+      "id": 121389433377,
+      "name": "matrix (0, tunveo-tunveo, explicit-ip)",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-10-26T03:54:45Z",
+      "completed_at": "2026-10-26T04:03:03Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-26T03:54:46Z",
+          "completed_at": "2026-10-26T03:54:48Z"
+        },
+        {
+          "name": "Run actions/checkout@v6.0.2",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-26T03:54:48Z",
+          "completed_at": "2026-10-26T03:54:51Z"
+        },
+        {
+          "name": "Run actions/setup-go@v6.1.0",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-26T03:54:51Z",
+          "completed_at": "2026-10-26T03:55:00Z"
+        },
+        {
+          "name": "Run go build -trimpath -o bin/tunveo ./cmd/tunveo",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-26T03:55:00Z",
+          "completed_at": "2026-10-26T03:55:17Z"
+        },
+        {
+          "name": "Ten rounds per positive cell",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-26T03:55:17Z",
+          "completed_at": "2026-10-26T04:02:57Z"
+        },
+        {
+          "name": "Ten rounds per untrusted CA cell",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 6,
+          "started_at": "2026-10-26T04:02:57Z",
+          "completed_at": "2026-10-26T04:02:57Z"
+        },
+        {
+          "name": "Ten rounds per wrong hostname cell",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 7,
+          "started_at": "2026-10-26T04:02:57Z",
+          "completed_at": "2026-10-26T04:02:57Z"
+        },
+        {
+          "name": "Ten rounds per expired certificate cell",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 8,
+          "started_at": "2026-10-26T04:02:57Z",
+          "completed_at": "2026-10-26T04:02:57Z"
+        },
+        {
+          "name": "Print reports for durable review",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-26T04:02:57Z",
+          "completed_at": "2026-10-26T04:02:57Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-26T04:02:57Z",
+          "completed_at": "2026-10-26T04:02:59Z"
+        },
+        {
+          "name": "Post Run actions/setup-go@v6.1.0",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-26T04:02:59Z",
+          "completed_at": "2026-10-26T04:02:59Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v6.0.2",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-10-26T04:02:59Z",
+          "completed_at": "2026-10-26T04:02:59Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-10-26T04:03:00Z",
+          "completed_at": "2026-10-26T04:03:00Z"
+        }
+      ]
+    },
+    {
+      "id": 121389433427,
+      "name": "matrix (1, tunveo-upstream, explicit-ip)",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-10-26T03:54:11Z",
+      "completed_at": "2026-10-26T04:09:50Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-26T03:54:12Z",
+          "completed_at": "2026-10-26T03:54:13Z"
+        },
+        {
+          "name": "Run actions/checkout@v6.0.2",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-26T03:54:13Z",
+          "completed_at": "2026-10-26T03:54:14Z"
+        },
+        {
+          "name": "Run actions/setup-go@v6.1.0",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-26T03:54:14Z",
+          "completed_at": "2026-10-26T03:54:23Z"
+        },
+        {
+          "name": "Run go build -trimpath -o bin/tunveo ./cmd/tunveo",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-26T03:54:23Z",
+          "completed_at": "2026-10-26T03:54:44Z"
+        },
+        {
+          "name": "Ten rounds per positive cell",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-26T03:54:44Z",
+          "completed_at": "2026-10-26T04:09:46Z"
+        },
+        {
+          "name": "Ten rounds per untrusted CA cell",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 6,
+          "started_at": "2026-10-26T04:09:46Z",
+          "completed_at": "2026-10-26T04:09:46Z"
+        },
+        {
+          "name": "Ten rounds per wrong hostname cell",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 7,
+          "started_at": "2026-10-26T04:09:46Z",
+          "completed_at": "2026-10-26T04:09:46Z"
+        },
+        {
+          "name": "Ten rounds per expired certificate cell",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 8,
+          "started_at": "2026-10-26T04:09:46Z",
+          "completed_at": "2026-10-26T04:09:46Z"
+        },
+        {
+          "name": "Print reports for durable review",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-26T04:09:46Z",
+          "completed_at": "2026-10-26T04:09:46Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-26T04:09:46Z",
+          "completed_at": "2026-10-26T04:09:48Z"
+        },
+        {
+          "name": "Post Run actions/setup-go@v6.1.0",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-26T04:09:48Z",
+          "completed_at": "2026-10-26T04:09:48Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v6.0.2",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-10-26T04:09:48Z",
+          "completed_at": "2026-10-26T04:09:48Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-10-26T04:09:48Z",
+          "completed_at": "2026-10-26T04:09:48Z"
+        }
+      ]
+    },
+    {
+      "id": 121389433487,
+      "name": "matrix (2, tunveo-tunveo, explicit-dns)",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-10-26T03:54:21Z",
+      "completed_at": "2026-10-26T04:16:50Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-26T03:54:22Z",
+          "completed_at": "2026-10-26T03:54:24Z"
+        },
+        {
+          "name": "Run actions/checkout@v6.0.2",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-26T03:54:24Z",
+          "completed_at": "2026-10-26T03:54:25Z"
+        },
+        {
+          "name": "Run actions/setup-go@v6.1.0",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-26T03:54:25Z",
+          "completed_at": "2026-10-26T03:54:38Z"
+        },
+        {
+          "name": "Run go build -trimpath -o bin/tunveo ./cmd/tunveo",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-26T03:54:38Z",
+          "completed_at": "2026-10-26T03:54:51Z"
+        },
+        {
+          "name": "Ten rounds per positive cell",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-26T03:54:51Z",
+          "completed_at": "2026-10-26T03:55:37Z"
+        },
+        {
+          "name": "Ten rounds per untrusted CA cell",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-26T03:55:37Z",
+          "completed_at": "2026-10-26T04:02:40Z"
+        },
+        {
+          "name": "Ten rounds per wrong hostname cell",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-26T04:02:40Z",
+          "completed_at": "2026-10-26T04:09:42Z"
+        },
+        {
+          "name": "Ten rounds per expired certificate cell",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-26T04:09:42Z",
+          "completed_at": "2026-10-26T04:16:45Z"
+        },
+        {
+          "name": "Print reports for durable review",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-26T04:16:45Z",
+          "completed_at": "2026-10-26T04:16:45Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-26T04:16:45Z",
+          "completed_at": "2026-10-26T04:16:47Z"
+        },
+        {
+          "name": "Post Run actions/setup-go@v6.1.0",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-26T04:16:47Z",
+          "completed_at": "2026-10-26T04:16:47Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v6.0.2",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-10-26T04:16:47Z",
+          "completed_at": "2026-10-26T04:16:47Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-10-26T04:16:47Z",
+          "completed_at": "2026-10-26T04:16:47Z"
+        }
+      ]
+    },
+    {
+      "id": 121389433528,
+      "name": "matrix (2, tunveo-upstream, explicit-ip)",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-10-26T03:55:05Z",
+      "completed_at": "2026-10-26T04:18:27Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-26T03:55:05Z",
+          "completed_at": "2026-10-26T03:55:06Z"
+        },
+        {
+          "name": "Run actions/checkout@v6.0.2",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-26T03:55:06Z",
+          "completed_at": "2026-10-26T03:55:07Z"
+        },
+        {
+          "name": "Run actions/setup-go@v6.1.0",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-26T03:55:07Z",
+          "completed_at": "2026-10-26T03:55:17Z"
+        },
+        {
+          "name": "Run go build -trimpath -o bin/tunveo ./cmd/tunveo",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-26T03:55:17Z",
+          "completed_at": "2026-10-26T03:55:39Z"
+        },
+        {
+          "name": "Ten rounds per positive cell",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-26T03:55:39Z",
+          "completed_at": "2026-10-26T03:56:36Z"
+        },
+        {
+          "name": "Ten rounds per untrusted CA cell",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-26T03:56:36Z",
+          "completed_at": "2026-10-26T04:03:51Z"
+        },
+        {
+          "name": "Ten rounds per wrong hostname cell",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-26T04:03:51Z",
+          "completed_at": "2026-10-26T04:11:06Z"
+        },
+        {
+          "name": "Ten rounds per expired certificate cell",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-26T04:11:06Z",
+          "completed_at": "2026-10-26T04:18:22Z"
+        },
+        {
+          "name": "Print reports for durable review",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-26T04:18:22Z",
+          "completed_at": "2026-10-26T04:18:22Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-26T04:18:22Z",
+          "completed_at": "2026-10-26T04:18:24Z"
+        },
+        {
+          "name": "Post Run actions/setup-go@v6.1.0",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-26T04:18:24Z",
+          "completed_at": "2026-10-26T04:18:24Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v6.0.2",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-10-26T04:18:24Z",
+          "completed_at": "2026-10-26T04:18:24Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-10-26T04:18:24Z",
+          "completed_at": "2026-10-26T04:18:25Z"
+        }
+      ]
+    },
+    {
+      "id": 121389433533,
+      "name": "matrix (2, upstream-tunveo, explicit-ip)",
+      "status": "completed",
+      "conclusion": "failure",
+      "started_at": "2026-10-26T04:00:20Z",
+      "completed_at": "2026-10-26T04:23:41Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-26T04:00:21Z",
+          "completed_at": "2026-10-26T04:00:22Z"
+        },
+        {
+          "name": "Run actions/checkout@v6.0.2",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-26T04:00:22Z",
+          "completed_at": "2026-10-26T04:00:23Z"
+        },
+        {
+          "name": "Run actions/setup-go@v6.1.0",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-26T04:00:23Z",
+          "completed_at": "2026-10-26T04:00:34Z"
+        },
+        {
+          "name": "Run go build -trimpath -o bin/tunveo ./cmd/tunveo",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-26T04:00:34Z",
+          "completed_at": "2026-10-26T04:00:55Z"
+        },
+        {
+          "name": "Ten rounds per positive cell",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-26T04:00:55Z",
+          "completed_at": "2026-10-26T04:01:53Z"
+        },
+        {
+          "name": "Ten rounds per untrusted CA cell",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 6,
+          "started_at": "2026-10-26T04:01:53Z",
+          "completed_at": "2026-10-26T04:09:05Z"
+        },
+        {
+          "name": "Ten rounds per wrong hostname cell",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 7,
+          "started_at": "2026-10-26T04:09:05Z",
+          "completed_at": "2026-10-26T04:16:18Z"
+        },
+        {
+          "name": "Ten rounds per expired certificate cell",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-26T04:16:18Z",
+          "completed_at": "2026-10-26T04:23:34Z"
+        },
+        {
+          "name": "Print reports for durable review",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-26T04:23:34Z",
+          "completed_at": "2026-10-26T04:23:34Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-26T04:23:34Z",
+          "completed_at": "2026-10-26T04:23:37Z"
+        },
+        {
+          "name": "Post Run actions/setup-go@v6.1.0",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 19,
+          "started_at": "2026-10-26T04:23:37Z",
+          "completed_at": "2026-10-26T04:23:37Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v6.0.2",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-10-26T04:23:37Z",
+          "completed_at": "2026-10-26T04:23:37Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-10-26T04:23:37Z",
+          "completed_at": "2026-10-26T04:23:37Z"
+        }
+      ]
+    },
+    {
+      "id": 121389433541,
+      "name": "matrix (2, tunveo-tunveo, default-ip)",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-10-26T03:54:54Z",
+      "completed_at": "2026-10-26T04:18:17Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-26T03:54:55Z",
+          "completed_at": "2026-10-26T03:54:56Z"
+        },
+        {
+          "name": "Run actions/checkout@v6.0.2",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-26T03:54:56Z",
+          "completed_at": "2026-10-26T03:54:57Z"
+        },
+        {
+          "name": "Run actions/setup-go@v6.1.0",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-26T03:54:57Z",
+          "completed_at": "2026-10-26T03:55:08Z"
+        },
+        {
+          "name": "Run go build -trimpath -o bin/tunveo ./cmd/tunveo",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-26T03:55:08Z",
+          "completed_at": "2026-10-26T03:55:29Z"
+        },
+        {
+          "name": "Ten rounds per positive cell",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-26T03:55:29Z",
+          "completed_at": "2026-10-26T03:56:26Z"
+        },
+        {
+          "name": "Ten rounds per untrusted CA cell",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-26T03:56:26Z",
+          "completed_at": "2026-10-26T04:03:41Z"
+        },
+        {
+          "name": "Ten rounds per wrong hostname cell",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-26T04:03:41Z",
+          "completed_at": "2026-10-26T04:10:56Z"
+        },
+        {
+          "name": "Ten rounds per expired certificate cell",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-26T04:10:56Z",
+          "completed_at": "2026-10-26T04:18:12Z"
+        },
+        {
+          "name": "Print reports for durable review",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-26T04:18:12Z",
+          "completed_at": "2026-10-26T04:18:12Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-26T04:18:12Z",
+          "completed_at": "2026-10-26T04:18:14Z"
+        },
+        {
+          "name": "Post Run actions/setup-go@v6.1.0",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-26T04:18:14Z",
+          "completed_at": "2026-10-26T04:18:14Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v6.0.2",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-10-26T04:18:14Z",
+          "completed_at": "2026-10-26T04:18:15Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-10-26T04:18:15Z",
+          "completed_at": "2026-10-26T04:18:15Z"
+        }
+      ]
+    },
+    {
+      "id": 121389433545,
+      "name": "matrix (1, tunveo-tunveo, explicit-ip)",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-10-26T03:55:28Z",
+      "completed_at": "2026-10-26T04:10:29Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-26T03:55:29Z",
+          "completed_at": "2026-10-26T03:55:30Z"
+        },
+        {
+          "name": "Run actions/checkout@v6.0.2",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-26T03:55:30Z",
+          "completed_at": "2026-10-26T03:55:31Z"
+        },
+        {
+          "name": "Run actions/setup-go@v6.1.0",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-26T03:55:31Z",
+          "completed_at": "2026-10-26T03:55:40Z"
+        },
+        {
+          "name": "Run go build -trimpath -o bin/tunveo ./cmd/tunveo",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-26T03:55:40Z",
+          "completed_at": "2026-10-26T03:56:01Z"
+        },
+        {
+          "name": "Ten rounds per positive cell",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-26T03:56:01Z",
+          "completed_at": "2026-10-26T04:10:25Z"
+        },
+        {
+          "name": "Ten rounds per untrusted CA cell",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 6,
+          "started_at": "2026-10-26T04:10:25Z",
+          "completed_at": "2026-10-26T04:10:25Z"
+        },
+        {
+          "name": "Ten rounds per wrong hostname cell",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 7,
+          "started_at": "2026-10-26T04:10:25Z",
+          "completed_at": "2026-10-26T04:10:25Z"
+        },
+        {
+          "name": "Ten rounds per expired certificate cell",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 8,
+          "started_at": "2026-10-26T04:10:25Z",
+          "completed_at": "2026-10-26T04:10:25Z"
+        },
+        {
+          "name": "Print reports for durable review",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-26T04:10:25Z",
+          "completed_at": "2026-10-26T04:10:25Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-26T04:10:25Z",
+          "completed_at": "2026-10-26T04:10:26Z"
+        },
+        {
+          "name": "Post Run actions/setup-go@v6.1.0",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-26T04:10:26Z",
+          "completed_at": "2026-10-26T04:10:26Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v6.0.2",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-10-26T04:10:26Z",
+          "completed_at": "2026-10-26T04:10:27Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-10-26T04:10:27Z",
+          "completed_at": "2026-10-26T04:10:27Z"
+        }
+      ]
+    },
+    {
+      "id": 121389433562,
+      "name": "matrix (1, upstream-tunveo, explicit-ip)",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-10-26T03:56:31Z",
+      "completed_at": "2026-10-26T04:12:00Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-26T03:56:31Z",
+          "completed_at": "2026-10-26T03:56:33Z"
+        },
+        {
+          "name": "Run actions/checkout@v6.0.2",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-26T03:56:33Z",
+          "completed_at": "2026-10-26T03:56:34Z"
+        },
+        {
+          "name": "Run actions/setup-go@v6.1.0",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-26T03:56:34Z",
+          "completed_at": "2026-10-26T03:56:42Z"
+        },
+        {
+          "name": "Run go build -trimpath -o bin/tunveo ./cmd/tunveo",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-26T03:56:42Z",
+          "completed_at": "2026-10-26T03:56:57Z"
+        },
+        {
+          "name": "Ten rounds per positive cell",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-26T03:56:57Z",
+          "completed_at": "2026-10-26T04:11:56Z"
+        },
+        {
+          "name": "Ten rounds per untrusted CA cell",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 6,
+          "started_at": "2026-10-26T04:11:56Z",
+          "completed_at": "2026-10-26T04:11:56Z"
+        },
+        {
+          "name": "Ten rounds per wrong hostname cell",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 7,
+          "started_at": "2026-10-26T04:11:56Z",
+          "completed_at": "2026-10-26T04:11:56Z"
+        },
+        {
+          "name": "Ten rounds per expired certificate cell",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 8,
+          "started_at": "2026-10-26T04:11:56Z",
+          "completed_at": "2026-10-26T04:11:56Z"
+        },
+        {
+          "name": "Print reports for durable review",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-26T04:11:56Z",
+          "completed_at": "2026-10-26T04:11:56Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-26T04:11:56Z",
+          "completed_at": "2026-10-26T04:11:57Z"
+        },
+        {
+          "name": "Post Run actions/setup-go@v6.1.0",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-26T04:11:57Z",
+          "completed_at": "2026-10-26T04:11:57Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v6.0.2",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-10-26T04:11:57Z",
+          "completed_at": "2026-10-26T04:11:57Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-10-26T04:11:57Z",
+          "completed_at": "2026-10-26T04:11:57Z"
+        }
+      ]
+    },
+    {
+      "id": 121389433564,
+      "name": "matrix (2, tunveo-tunveo, explicit-ip)",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-10-26T03:56:07Z",
+      "completed_at": "2026-10-26T04:19:31Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-26T03:56:08Z",
+          "completed_at": "2026-10-26T03:56:09Z"
+        },
+        {
+          "name": "Run actions/checkout@v6.0.2",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-26T03:56:09Z",
+          "completed_at": "2026-10-26T03:56:10Z"
+        },
+        {
+          "name": "Run actions/setup-go@v6.1.0",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-26T03:56:10Z",
+          "completed_at": "2026-10-26T03:56:19Z"
+        },
+        {
+          "name": "Run go build -trimpath -o bin/tunveo ./cmd/tunveo",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-26T03:56:19Z",
+          "completed_at": "2026-10-26T03:56:40Z"
+        },
+        {
+          "name": "Ten rounds per positive cell",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-26T03:56:40Z",
+          "completed_at": "2026-10-26T03:57:38Z"
+        },
+        {
+          "name": "Ten rounds per untrusted CA cell",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-26T03:57:38Z",
+          "completed_at": "2026-10-26T04:04:54Z"
+        },
+        {
+          "name": "Ten rounds per wrong hostname cell",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-26T04:04:54Z",
+          "completed_at": "2026-10-26T04:12:11Z"
+        },
+        {
+          "name": "Ten rounds per expired certificate cell",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-26T04:12:11Z",
+          "completed_at": "2026-10-26T04:19:27Z"
+        },
+        {
+          "name": "Print reports for durable review",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-26T04:19:27Z",
+          "completed_at": "2026-10-26T04:19:27Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-26T04:19:27Z",
+          "completed_at": "2026-10-26T04:19:29Z"
+        },
+        {
+          "name": "Post Run actions/setup-go@v6.1.0",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-26T04:19:29Z",
+          "completed_at": "2026-10-26T04:19:29Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v6.0.2",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-10-26T04:19:29Z",
+          "completed_at": "2026-10-26T04:19:29Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-10-26T04:19:29Z",
+          "completed_at": "2026-10-26T04:19:29Z"
+        }
+      ]
+    },
+    {
+      "id": 121389433584,
+      "name": "matrix (0, tunveo-upstream, explicit-ip)",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-10-26T04:00:46Z",
+      "completed_at": "2026-10-26T04:09:11Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-26T04:00:47Z",
+          "completed_at": "2026-10-26T04:00:48Z"
+        },
+        {
+          "name": "Run actions/checkout@v6.0.2",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-26T04:00:48Z",
+          "completed_at": "2026-10-26T04:00:50Z"
+        },
+        {
+          "name": "Run actions/setup-go@v6.1.0",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-26T04:00:50Z",
+          "completed_at": "2026-10-26T04:00:57Z"
+        },
+        {
+          "name": "Run go build -trimpath -o bin/tunveo ./cmd/tunveo",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-26T04:00:57Z",
+          "completed_at": "2026-10-26T04:01:15Z"
+        },
+        {
+          "name": "Ten rounds per positive cell",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-26T04:01:15Z",
+          "completed_at": "2026-10-26T04:09:06Z"
+        },
+        {
+          "name": "Ten rounds per untrusted CA cell",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 6,
+          "started_at": "2026-10-26T04:09:06Z",
+          "completed_at": "2026-10-26T04:09:06Z"
+        },
+        {
+          "name": "Ten rounds per wrong hostname cell",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 7,
+          "started_at": "2026-10-26T04:09:06Z",
+          "completed_at": "2026-10-26T04:09:06Z"
+        },
+        {
+          "name": "Ten rounds per expired certificate cell",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 8,
+          "started_at": "2026-10-26T04:09:06Z",
+          "completed_at": "2026-10-26T04:09:06Z"
+        },
+        {
+          "name": "Print reports for durable review",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-26T04:09:06Z",
+          "completed_at": "2026-10-26T04:09:06Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-26T04:09:06Z",
+          "completed_at": "2026-10-26T04:09:08Z"
+        },
+        {
+          "name": "Post Run actions/setup-go@v6.1.0",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-26T04:09:08Z",
+          "completed_at": "2026-10-26T04:09:08Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v6.0.2",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-10-26T04:09:08Z",
+          "completed_at": "2026-10-26T04:09:08Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-10-26T04:09:08Z",
+          "completed_at": "2026-10-26T04:09:08Z"
+        }
+      ]
+    },
+    {
+      "id": 121389433619,
+      "name": "matrix (0, upstream-tunveo, explicit-ip)",
+      "status": "completed",
+      "conclusion": "failure",
+      "started_at": "2026-10-26T03:56:37Z",
+      "completed_at": "2026-10-26T04:01:42Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-26T03:56:38Z",
+          "completed_at": "2026-10-26T03:56:39Z"
+        },
+        {
+          "name": "Run actions/checkout@v6.0.2",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-26T03:56:39Z",
+          "completed_at": "2026-10-26T03:56:40Z"
+        },
+        {
+          "name": "Run actions/setup-go@v6.1.0",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-26T03:56:40Z",
+          "completed_at": "2026-10-26T03:56:51Z"
+        },
+        {
+          "name": "Run go build -trimpath -o bin/tunveo ./cmd/tunveo",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-26T03:56:51Z",
+          "completed_at": "2026-10-26T03:57:13Z"
+        },
+        {
+          "name": "Ten rounds per positive cell",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 5,
+          "started_at": "2026-10-26T03:57:13Z",
+          "completed_at": "2026-10-26T04:01:36Z"
+        },
+        {
+          "name": "Ten rounds per untrusted CA cell",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 6,
+          "started_at": "2026-10-26T04:01:36Z",
+          "completed_at": "2026-10-26T04:01:36Z"
+        },
+        {
+          "name": "Ten rounds per wrong hostname cell",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 7,
+          "started_at": "2026-10-26T04:01:36Z",
+          "completed_at": "2026-10-26T04:01:36Z"
+        },
+        {
+          "name": "Ten rounds per expired certificate cell",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 8,
+          "started_at": "2026-10-26T04:01:36Z",
+          "completed_at": "2026-10-26T04:01:36Z"
+        },
+        {
+          "name": "Print reports for durable review",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-26T04:01:36Z",
+          "completed_at": "2026-10-26T04:01:36Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-26T04:01:36Z",
+          "completed_at": "2026-10-26T04:01:38Z"
+        },
+        {
+          "name": "Post Run actions/setup-go@v6.1.0",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 19,
+          "started_at": "2026-10-26T04:01:38Z",
+          "completed_at": "2026-10-26T04:01:38Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v6.0.2",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-10-26T04:01:38Z",
+          "completed_at": "2026-10-26T04:01:39Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-10-26T04:01:39Z",
+          "completed_at": "2026-10-26T04:01:39Z"
+        }
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "id": 12627790424,
+      "name": "tls-2-tunveo-upstream-explicit-ip",
+      "digest": "sha256:26f838108a8ac6a86cbb429f4b131724cbb5623efd6e98a51ba222828bfb287e",
+      "size_in_bytes": 883345
+    },
+    {
+      "id": 12627637391,
+      "name": "tls-2-upstream-tunveo-explicit-ip",
+      "digest": "sha256:083582324cc3f34b17ef1fc779ea09eee2efe3fb15f060ecfedeb317542a39fa",
+      "size_in_bytes": 892143
+    },
+    {
+      "id": 12627306441,
+      "name": "tls-1-upstream-tunveo-explicit-ip",
+      "digest": "sha256:7d7a7b727056a50b685fa5093552889768b26069d594926aa21130364d99bc40",
+      "size_in_bytes": 372375
+    },
+    {
+      "id": 12627271164,
+      "name": "tls-1-tunveo-tunveo-explicit-ip",
+      "digest": "sha256:b62f4b48fded5810b3d8f9e76fd8232c57dcd95223e1ebdc3511c32898ca0612",
+      "size_in_bytes": 351270
+    },
+    {
+      "id": 12627052486,
+      "name": "tls-2-tunveo-tunveo-explicit-ip",
+      "digest": "sha256:a92b99b3c72c99393fc4b1ada22adc3f19ca22078314797ff036d2e69b42ee2b",
+      "size_in_bytes": 819586
+    },
+    {
+      "id": 12627052366,
+      "name": "tls-2-tunveo-tunveo-default-ip",
+      "digest": "sha256:78cd174f824419e3e426cb496aac0351592091e729e73d296a79b5d9848caf83",
+      "size_in_bytes": 818432
+    },
+    {
+      "id": 12626982521,
+      "name": "tls-2-tunveo-tunveo-explicit-dns",
+      "digest": "sha256:2e2aac2658dd3562855b961dfa6f25078ffb38b4b5ae0bdbaf1fd6d2bf303fff",
+      "size_in_bytes": 816559
+    },
+    {
+      "id": 12626896029,
+      "name": "tls-0-upstream-tunveo-explicit-ip",
+      "digest": "sha256:1d9a2dac795d7ae40c1ed8a9aaae56cdc5d2c93570520379a486e86cb35565a2",
+      "size_in_bytes": 318304
+    },
+    {
+      "id": 12626886830,
+      "name": "tls-0-tunveo-upstream-explicit-ip",
+      "digest": "sha256:c132f8d297c25b6ae04860dd9339c230b645a5090c0925eb41712e2209c2f73a",
+      "size_in_bytes": 350686
+    },
+    {
+      "id": 12626717301,
+      "name": "tls-1-tunveo-upstream-explicit-ip",
+      "digest": "sha256:02cee8b6998d3b602a2508b2a1725aa893fc2bc158ed17eca77571ed7d171b6a",
+      "size_in_bytes": 374011
+    },
+    {
+      "id": 12626144946,
+      "name": "tls-0-tunveo-tunveo-explicit-ip",
+      "digest": "sha256:39c62acd1fd2b1ef3dcd8a98070ca893a6428970aa36ff5e0d162e53440c4842",
+      "size_in_bytes": 331033
+    }
+  ]
+}

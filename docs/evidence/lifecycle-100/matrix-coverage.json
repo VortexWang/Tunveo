@@ -1,0 +1,1818 @@
+{
+  "source_head": "e611f0e018dbb1733e1a8316f3e9b55097ebce5a",
+  "source_tree": "835a788ccbce4e057a34d125c9ce0b5709f0fa80",
+  "tested_checkout": "bde88b04854551e88bcbf8edd35f2debb79f05c2",
+  "scope": "Linux amd64; explicit-IP compatibility baseline plus maintained default-IP/explicit-DNS; bounded CA/name/expiry rejection; 10 process cases per cell",
+  "planned": {
+    "positive": 1760,
+    "negative": 2400,
+    "total": 4160
+  },
+  "observed": 4160,
+  "missing": 0,
+  "duplicates": 0,
+  "complete": true,
+  "all_passed": false,
+  "groups": [
+    {
+      "pair": "tunveo/tunveo",
+      "identity": "default-ip",
+      "kind": "negative",
+      "counts": {
+        "passed": 480
+      }
+    },
+    {
+      "pair": "tunveo/tunveo",
+      "identity": "default-ip",
+      "kind": "positive",
+      "counts": {
+        "passed": 160
+      }
+    },
+    {
+      "pair": "tunveo/tunveo",
+      "identity": "explicit-dns",
+      "kind": "negative",
+      "counts": {
+        "passed": 480
+      }
+    },
+    {
+      "pair": "tunveo/tunveo",
+      "identity": "explicit-dns",
+      "kind": "positive",
+      "counts": {
+        "passed": 160
+      }
+    },
+    {
+      "pair": "tunveo/tunveo",
+      "identity": "explicit-ip",
+      "kind": "negative",
+      "counts": {
+        "passed": 480
+      }
+    },
+    {
+      "pair": "tunveo/tunveo",
+      "identity": "explicit-ip",
+      "kind": "positive",
+      "counts": {
+        "passed": 480
+      }
+    },
+    {
+      "pair": "tunveo/upstream",
+      "identity": "explicit-ip",
+      "kind": "negative",
+      "counts": {
+        "passed": 480
+      }
+    },
+    {
+      "pair": "tunveo/upstream",
+      "identity": "explicit-ip",
+      "kind": "positive",
+      "counts": {
+        "passed": 480
+      }
+    },
+    {
+      "pair": "upstream/tunveo",
+      "identity": "explicit-ip",
+      "kind": "negative",
+      "counts": {
+        "passed": 478,
+        "failed": 2
+      }
+    },
+    {
+      "pair": "upstream/tunveo",
+      "identity": "explicit-ip",
+      "kind": "positive",
+      "counts": {
+        "passed": 440,
+        "failed": 40
+      }
+    }
+  ],
+  "cleanup": {
+    "reaped": 8320,
+    "graceful_or_already_exited": 8320
+  },
+  "binary_sha256": {
+    "tunveo": [
+      "d6e2064c9a0fcb573ad4bef014e09cc40fb31571019a98fe9466295e78adde60"
+    ],
+    "upstream": [
+      "eee9cc28a4217c1ee33a00502b929d21e537e268d71fcf4d61e7cba5d546114b"
+    ]
+  },
+  "report_sha256": {
+    "tls-0-tunveo-tunveo-explicit-ip/artifacts/positive/report.json": "b1edb3052eaeee983450acfcd72d7beaeee0b16053500224f08c858a32fa8485",
+    "tls-0-tunveo-upstream-explicit-ip/artifacts/positive/report.json": "77f279103239fd2bfaa892e63b27f495df6883f66d4a25c19c4e1c2246639e95",
+    "tls-0-upstream-tunveo-explicit-ip/artifacts/positive/report.json": "8abbf6dba27385685e0ed1d44d108d77f6daa6cfabbc62b744d3bbde6f469690",
+    "tls-1-tunveo-tunveo-explicit-ip/artifacts/positive/report.json": "ed48449d0f6024090d271e82cb5d6a0b8ac1113a0652b4a839e573f7072ab68b",
+    "tls-1-tunveo-upstream-explicit-ip/artifacts/positive/report.json": "e3640ca29dc5dd02aa84c33eaf64b8eb69671b5844f479b93202f56c6fa6c0c4",
+    "tls-1-upstream-tunveo-explicit-ip/artifacts/positive/report.json": "b7d9d0b5c3bbef812f5e19ce4535db8f2ccd5312d3894a5deadd02cfe40462d8",
+    "tls-2-tunveo-tunveo-default-ip/artifacts/expired/report.json": "aba8c29c4091dbf36b02b80eb6744caf5cc9da9638f8481d913d85ba27967ce7",
+    "tls-2-tunveo-tunveo-default-ip/artifacts/positive/report.json": "59a0a5538d1ba985f9b102b9cc8c1d19c62cebacb289825ac0740201cdf55d9c",
+    "tls-2-tunveo-tunveo-default-ip/artifacts/untrusted-ca/report.json": "faed929ede1b5a9d7a58b95b0f9c292b9a33da5263ffbf055ca7b1e4fb13676b",
+    "tls-2-tunveo-tunveo-default-ip/artifacts/wrong-hostname/report.json": "187dfd1ffeff896677fe79a46747cf89bcf970aa1c47a68af238e7bff4fc130b",
+    "tls-2-tunveo-tunveo-explicit-dns/artifacts/expired/report.json": "75b1eca4228a8c66e040d5f003b44bacf4ad4547d00931df0bd0f85b09ab626f",
+    "tls-2-tunveo-tunveo-explicit-dns/artifacts/positive/report.json": "f8cd2e4d16fe82d6c79899321a2490a820acb8bc87eb95293c9d61a73bdd50be",
+    "tls-2-tunveo-tunveo-explicit-dns/artifacts/untrusted-ca/report.json": "fdd1d1722798e064120f4131065afa04ed6e45e4e9c3f6b7afa6c1c5b2915d0c",
+    "tls-2-tunveo-tunveo-explicit-dns/artifacts/wrong-hostname/report.json": "b2044d437cc83ecac67b848f2b410416db5dbd9c73f2b013ea39373d9a0fb792",
+    "tls-2-tunveo-tunveo-explicit-ip/artifacts/expired/report.json": "50592bc68e55cf7342e473a482c680c13b41bb9a3c632725aedaa39d3078b0c2",
+    "tls-2-tunveo-tunveo-explicit-ip/artifacts/positive/report.json": "9c1953165fdde81ab56a61588ad7aab188ec0405773316a5b1490c9f0482b125",
+    "tls-2-tunveo-tunveo-explicit-ip/artifacts/untrusted-ca/report.json": "4cab8d9fd6cb1a0f9662b198e20ed5c7665a4b6759dbb607356fa28cdb7de22f",
+    "tls-2-tunveo-tunveo-explicit-ip/artifacts/wrong-hostname/report.json": "4ed92f189f177d5fcd0792d1571c1ac70b3e366bfdda32a6448ed1415eee715c",
+    "tls-2-tunveo-upstream-explicit-ip/artifacts/expired/report.json": "8fac8a9b7a0f9c74dd44b91b6da6a248b8420ba17a52df6788a66733582ea95f",
+    "tls-2-tunveo-upstream-explicit-ip/artifacts/positive/report.json": "34fe9036ca50e0fe0eedd659ad52bbef2107bebd2256e4d3873c6c0c65d832f1",
+    "tls-2-tunveo-upstream-explicit-ip/artifacts/untrusted-ca/report.json": "fa6318c826bc5de17cb503c89b9f0dd33cd9e6713687aecffff0ced4711de04b",
+    "tls-2-tunveo-upstream-explicit-ip/artifacts/wrong-hostname/report.json": "ed01cd717ee7a1bf413d68152a7e84b9e97c6ad0bf71795ebe8a8388f006d0f7",
+    "tls-2-upstream-tunveo-explicit-ip/artifacts/expired/report.json": "1158deebf603298c0acb596436abc679d3c1b9ff0b0b4525fc0fe3064e488a5d",
+    "tls-2-upstream-tunveo-explicit-ip/artifacts/positive/report.json": "082ea0c89daf671a265122cc088f53e8d2dc4f76e4630ef0f19b44dbf573f61a",
+    "tls-2-upstream-tunveo-explicit-ip/artifacts/untrusted-ca/report.json": "5fa4e922e83efe366c167da297dc00fb62de85d08a68517287bf499917019faf",
+    "tls-2-upstream-tunveo-explicit-ip/artifacts/wrong-hostname/report.json": "5feb36227f9be040cef90a9e6e8de835999cadb6066a746852d7a551627cb6d2"
+  },
+  "failures": [
+    {
+      "id": "0061",
+      "pair_server_client": "upstream/tunveo",
+      "tls": 0,
+      "effective_tls": 1,
+      "identity": "explicit-ip",
+      "negative": null,
+      "transport": 3,
+      "mode": 1,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 1,
+      "failed_phase": "tunnel_handshake",
+      "error": "tunnel process exited before phase completion",
+      "report": "tls-0-upstream-tunveo-explicit-ip/artifacts/positive/report.json",
+      "cleanup": [
+        {
+          "pid": 6285,
+          "returncode": 2,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 6295,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "negotiated_tls_logs": {
+        "server": [
+          "0"
+        ],
+        "client": [
+          "0"
+        ]
+      }
+    },
+    {
+      "id": "0062",
+      "pair_server_client": "upstream/tunveo",
+      "tls": 0,
+      "effective_tls": 1,
+      "identity": "explicit-ip",
+      "negative": null,
+      "transport": 3,
+      "mode": 1,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 2,
+      "failed_phase": "tunnel_handshake",
+      "error": "engine failure before phase completion: panic: runtime error: invalid memory address or nil pointer dereference",
+      "report": "tls-0-upstream-tunveo-explicit-ip/artifacts/positive/report.json",
+      "cleanup": [
+        {
+          "pid": 6307,
+          "returncode": 2,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 6317,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "negotiated_tls_logs": {
+        "server": [
+          "0"
+        ],
+        "client": [
+          "0"
+        ]
+      }
+    },
+    {
+      "id": "0063",
+      "pair_server_client": "upstream/tunveo",
+      "tls": 0,
+      "effective_tls": 1,
+      "identity": "explicit-ip",
+      "negative": null,
+      "transport": 3,
+      "mode": 1,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 3,
+      "failed_phase": "tunnel_handshake",
+      "error": "engine failure before phase completion: panic: runtime error: invalid memory address or nil pointer dereference",
+      "report": "tls-0-upstream-tunveo-explicit-ip/artifacts/positive/report.json",
+      "cleanup": [
+        {
+          "pid": 6329,
+          "returncode": 2,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 6338,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "negotiated_tls_logs": {
+        "server": [
+          "0"
+        ],
+        "client": [
+          "0"
+        ]
+      }
+    },
+    {
+      "id": "0064",
+      "pair_server_client": "upstream/tunveo",
+      "tls": 0,
+      "effective_tls": 1,
+      "identity": "explicit-ip",
+      "negative": null,
+      "transport": 3,
+      "mode": 1,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 4,
+      "failed_phase": "tunnel_handshake",
+      "error": "tunnel process exited before phase completion",
+      "report": "tls-0-upstream-tunveo-explicit-ip/artifacts/positive/report.json",
+      "cleanup": [
+        {
+          "pid": 6350,
+          "returncode": 2,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 6359,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "negotiated_tls_logs": {
+        "server": [
+          "0"
+        ],
+        "client": [
+          "0"
+        ]
+      }
+    },
+    {
+      "id": "0065",
+      "pair_server_client": "upstream/tunveo",
+      "tls": 0,
+      "effective_tls": 1,
+      "identity": "explicit-ip",
+      "negative": null,
+      "transport": 3,
+      "mode": 1,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 5,
+      "failed_phase": "tunnel_handshake",
+      "error": "engine failure before phase completion: panic: runtime error: invalid memory address or nil pointer dereference",
+      "report": "tls-0-upstream-tunveo-explicit-ip/artifacts/positive/report.json",
+      "cleanup": [
+        {
+          "pid": 6371,
+          "returncode": 2,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 6381,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "negotiated_tls_logs": {
+        "server": [
+          "0"
+        ],
+        "client": [
+          "0"
+        ]
+      }
+    },
+    {
+      "id": "0066",
+      "pair_server_client": "upstream/tunveo",
+      "tls": 0,
+      "effective_tls": 1,
+      "identity": "explicit-ip",
+      "negative": null,
+      "transport": 3,
+      "mode": 1,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 6,
+      "failed_phase": "tunnel_handshake",
+      "error": "engine failure before phase completion: panic: runtime error: invalid memory address or nil pointer dereference",
+      "report": "tls-0-upstream-tunveo-explicit-ip/artifacts/positive/report.json",
+      "cleanup": [
+        {
+          "pid": 6393,
+          "returncode": 2,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 6402,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "negotiated_tls_logs": {
+        "server": [
+          "0"
+        ],
+        "client": [
+          "0"
+        ]
+      }
+    },
+    {
+      "id": "0067",
+      "pair_server_client": "upstream/tunveo",
+      "tls": 0,
+      "effective_tls": 1,
+      "identity": "explicit-ip",
+      "negative": null,
+      "transport": 3,
+      "mode": 1,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 7,
+      "failed_phase": "tunnel_handshake",
+      "error": "engine failure before phase completion: panic: runtime error: invalid memory address or nil pointer dereference",
+      "report": "tls-0-upstream-tunveo-explicit-ip/artifacts/positive/report.json",
+      "cleanup": [
+        {
+          "pid": 6415,
+          "returncode": 2,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 6424,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "negotiated_tls_logs": {
+        "server": [
+          "0"
+        ],
+        "client": [
+          "0"
+        ]
+      }
+    },
+    {
+      "id": "0068",
+      "pair_server_client": "upstream/tunveo",
+      "tls": 0,
+      "effective_tls": 1,
+      "identity": "explicit-ip",
+      "negative": null,
+      "transport": 3,
+      "mode": 1,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 8,
+      "failed_phase": "tunnel_handshake",
+      "error": "tunnel process exited before phase completion",
+      "report": "tls-0-upstream-tunveo-explicit-ip/artifacts/positive/report.json",
+      "cleanup": [
+        {
+          "pid": 6436,
+          "returncode": 2,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 6446,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "negotiated_tls_logs": {
+        "server": [
+          "0"
+        ],
+        "client": [
+          "0"
+        ]
+      }
+    },
+    {
+      "id": "0069",
+      "pair_server_client": "upstream/tunveo",
+      "tls": 0,
+      "effective_tls": 1,
+      "identity": "explicit-ip",
+      "negative": null,
+      "transport": 3,
+      "mode": 1,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 9,
+      "failed_phase": "tunnel_handshake",
+      "error": "engine failure before phase completion: panic: runtime error: invalid memory address or nil pointer dereference",
+      "report": "tls-0-upstream-tunveo-explicit-ip/artifacts/positive/report.json",
+      "cleanup": [
+        {
+          "pid": 6458,
+          "returncode": 2,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 6468,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "negotiated_tls_logs": {
+        "server": [
+          "0"
+        ],
+        "client": [
+          "0"
+        ]
+      }
+    },
+    {
+      "id": "0070",
+      "pair_server_client": "upstream/tunveo",
+      "tls": 0,
+      "effective_tls": 1,
+      "identity": "explicit-ip",
+      "negative": null,
+      "transport": 3,
+      "mode": 1,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 10,
+      "failed_phase": "tunnel_handshake",
+      "error": "tunnel process exited before phase completion",
+      "report": "tls-0-upstream-tunveo-explicit-ip/artifacts/positive/report.json",
+      "cleanup": [
+        {
+          "pid": 6479,
+          "returncode": 2,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 6488,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "negotiated_tls_logs": {
+        "server": [
+          "0"
+        ],
+        "client": [
+          "0"
+        ]
+      }
+    },
+    {
+      "id": "0071",
+      "pair_server_client": "upstream/tunveo",
+      "tls": 0,
+      "effective_tls": 1,
+      "identity": "explicit-ip",
+      "negative": null,
+      "transport": 3,
+      "mode": 1,
+      "pool": {
+        "min": 64,
+        "max": 1024
+      },
+      "iteration": 1,
+      "failed_phase": "tunnel_handshake",
+      "error": "tunnel process exited before phase completion",
+      "report": "tls-0-upstream-tunveo-explicit-ip/artifacts/positive/report.json",
+      "cleanup": [
+        {
+          "pid": 6500,
+          "returncode": 2,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 6510,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "negotiated_tls_logs": {
+        "server": [
+          "0"
+        ],
+        "client": [
+          "0"
+        ]
+      }
+    },
+    {
+      "id": "0072",
+      "pair_server_client": "upstream/tunveo",
+      "tls": 0,
+      "effective_tls": 1,
+      "identity": "explicit-ip",
+      "negative": null,
+      "transport": 3,
+      "mode": 1,
+      "pool": {
+        "min": 64,
+        "max": 1024
+      },
+      "iteration": 2,
+      "failed_phase": "tunnel_handshake",
+      "error": "tunnel process exited before phase completion",
+      "report": "tls-0-upstream-tunveo-explicit-ip/artifacts/positive/report.json",
+      "cleanup": [
+        {
+          "pid": 6522,
+          "returncode": 2,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 6532,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "negotiated_tls_logs": {
+        "server": [
+          "0"
+        ],
+        "client": [
+          "0"
+        ]
+      }
+    },
+    {
+      "id": "0073",
+      "pair_server_client": "upstream/tunveo",
+      "tls": 0,
+      "effective_tls": 1,
+      "identity": "explicit-ip",
+      "negative": null,
+      "transport": 3,
+      "mode": 1,
+      "pool": {
+        "min": 64,
+        "max": 1024
+      },
+      "iteration": 3,
+      "failed_phase": "tunnel_handshake",
+      "error": "engine failure before phase completion: panic: runtime error: invalid memory address or nil pointer dereference",
+      "report": "tls-0-upstream-tunveo-explicit-ip/artifacts/positive/report.json",
+      "cleanup": [
+        {
+          "pid": 6544,
+          "returncode": 2,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 6553,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "negotiated_tls_logs": {
+        "server": [
+          "0"
+        ],
+        "client": [
+          "0"
+        ]
+      }
+    },
+    {
+      "id": "0074",
+      "pair_server_client": "upstream/tunveo",
+      "tls": 0,
+      "effective_tls": 1,
+      "identity": "explicit-ip",
+      "negative": null,
+      "transport": 3,
+      "mode": 1,
+      "pool": {
+        "min": 64,
+        "max": 1024
+      },
+      "iteration": 4,
+      "failed_phase": "tunnel_handshake",
+      "error": "engine failure before phase completion: panic: runtime error: invalid memory address or nil pointer dereference",
+      "report": "tls-0-upstream-tunveo-explicit-ip/artifacts/positive/report.json",
+      "cleanup": [
+        {
+          "pid": 6565,
+          "returncode": 2,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 6575,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "negotiated_tls_logs": {
+        "server": [
+          "0"
+        ],
+        "client": [
+          "0"
+        ]
+      }
+    },
+    {
+      "id": "0075",
+      "pair_server_client": "upstream/tunveo",
+      "tls": 0,
+      "effective_tls": 1,
+      "identity": "explicit-ip",
+      "negative": null,
+      "transport": 3,
+      "mode": 1,
+      "pool": {
+        "min": 64,
+        "max": 1024
+      },
+      "iteration": 5,
+      "failed_phase": "tunnel_handshake",
+      "error": "tunnel process exited before phase completion",
+      "report": "tls-0-upstream-tunveo-explicit-ip/artifacts/positive/report.json",
+      "cleanup": [
+        {
+          "pid": 6586,
+          "returncode": 2,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 6596,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "negotiated_tls_logs": {
+        "server": [
+          "0"
+        ],
+        "client": [
+          "0"
+        ]
+      }
+    },
+    {
+      "id": "0076",
+      "pair_server_client": "upstream/tunveo",
+      "tls": 0,
+      "effective_tls": 1,
+      "identity": "explicit-ip",
+      "negative": null,
+      "transport": 3,
+      "mode": 1,
+      "pool": {
+        "min": 64,
+        "max": 1024
+      },
+      "iteration": 6,
+      "failed_phase": "tunnel_handshake",
+      "error": "engine failure before phase completion: panic: runtime error: invalid memory address or nil pointer dereference",
+      "report": "tls-0-upstream-tunveo-explicit-ip/artifacts/positive/report.json",
+      "cleanup": [
+        {
+          "pid": 6608,
+          "returncode": 2,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 6618,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "negotiated_tls_logs": {
+        "server": [
+          "0"
+        ],
+        "client": [
+          "0"
+        ]
+      }
+    },
+    {
+      "id": "0077",
+      "pair_server_client": "upstream/tunveo",
+      "tls": 0,
+      "effective_tls": 1,
+      "identity": "explicit-ip",
+      "negative": null,
+      "transport": 3,
+      "mode": 1,
+      "pool": {
+        "min": 64,
+        "max": 1024
+      },
+      "iteration": 7,
+      "failed_phase": "tunnel_handshake",
+      "error": "tunnel process exited before phase completion",
+      "report": "tls-0-upstream-tunveo-explicit-ip/artifacts/positive/report.json",
+      "cleanup": [
+        {
+          "pid": 6630,
+          "returncode": 2,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 6639,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "negotiated_tls_logs": {
+        "server": [
+          "0"
+        ],
+        "client": [
+          "0"
+        ]
+      }
+    },
+    {
+      "id": "0078",
+      "pair_server_client": "upstream/tunveo",
+      "tls": 0,
+      "effective_tls": 1,
+      "identity": "explicit-ip",
+      "negative": null,
+      "transport": 3,
+      "mode": 1,
+      "pool": {
+        "min": 64,
+        "max": 1024
+      },
+      "iteration": 8,
+      "failed_phase": "tunnel_handshake",
+      "error": "tunnel process exited before phase completion",
+      "report": "tls-0-upstream-tunveo-explicit-ip/artifacts/positive/report.json",
+      "cleanup": [
+        {
+          "pid": 6651,
+          "returncode": 2,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 6661,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "negotiated_tls_logs": {
+        "server": [
+          "0"
+        ],
+        "client": [
+          "0"
+        ]
+      }
+    },
+    {
+      "id": "0079",
+      "pair_server_client": "upstream/tunveo",
+      "tls": 0,
+      "effective_tls": 1,
+      "identity": "explicit-ip",
+      "negative": null,
+      "transport": 3,
+      "mode": 1,
+      "pool": {
+        "min": 64,
+        "max": 1024
+      },
+      "iteration": 9,
+      "failed_phase": "tunnel_handshake",
+      "error": "tunnel process exited before phase completion",
+      "report": "tls-0-upstream-tunveo-explicit-ip/artifacts/positive/report.json",
+      "cleanup": [
+        {
+          "pid": 6673,
+          "returncode": 2,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 6683,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "negotiated_tls_logs": {
+        "server": [
+          "0"
+        ],
+        "client": [
+          "0"
+        ]
+      }
+    },
+    {
+      "id": "0080",
+      "pair_server_client": "upstream/tunveo",
+      "tls": 0,
+      "effective_tls": 1,
+      "identity": "explicit-ip",
+      "negative": null,
+      "transport": 3,
+      "mode": 1,
+      "pool": {
+        "min": 64,
+        "max": 1024
+      },
+      "iteration": 10,
+      "failed_phase": "tunnel_handshake",
+      "error": "engine failure before phase completion: panic: runtime error: invalid memory address or nil pointer dereference",
+      "report": "tls-0-upstream-tunveo-explicit-ip/artifacts/positive/report.json",
+      "cleanup": [
+        {
+          "pid": 6695,
+          "returncode": 2,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 6704,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "negotiated_tls_logs": {
+        "server": [
+          "0"
+        ],
+        "client": [
+          "0"
+        ]
+      }
+    },
+    {
+      "id": "0141",
+      "pair_server_client": "upstream/tunveo",
+      "tls": 0,
+      "effective_tls": 1,
+      "identity": "explicit-ip",
+      "negative": null,
+      "transport": 3,
+      "mode": 2,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 1,
+      "failed_phase": "tunnel_handshake",
+      "error": "tunnel process exited before phase completion",
+      "report": "tls-0-upstream-tunveo-explicit-ip/artifacts/positive/report.json",
+      "cleanup": [
+        {
+          "pid": 8170,
+          "returncode": 2,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 8179,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "negotiated_tls_logs": {
+        "server": [
+          "0"
+        ],
+        "client": [
+          "0"
+        ]
+      }
+    },
+    {
+      "id": "0142",
+      "pair_server_client": "upstream/tunveo",
+      "tls": 0,
+      "effective_tls": 1,
+      "identity": "explicit-ip",
+      "negative": null,
+      "transport": 3,
+      "mode": 2,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 2,
+      "failed_phase": "tunnel_handshake",
+      "error": "tunnel process exited before phase completion",
+      "report": "tls-0-upstream-tunveo-explicit-ip/artifacts/positive/report.json",
+      "cleanup": [
+        {
+          "pid": 8192,
+          "returncode": 2,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 8202,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "negotiated_tls_logs": {
+        "server": [
+          "0"
+        ],
+        "client": [
+          "0"
+        ]
+      }
+    },
+    {
+      "id": "0143",
+      "pair_server_client": "upstream/tunveo",
+      "tls": 0,
+      "effective_tls": 1,
+      "identity": "explicit-ip",
+      "negative": null,
+      "transport": 3,
+      "mode": 2,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 3,
+      "failed_phase": "tunnel_handshake",
+      "error": "tunnel process exited before phase completion",
+      "report": "tls-0-upstream-tunveo-explicit-ip/artifacts/positive/report.json",
+      "cleanup": [
+        {
+          "pid": 8214,
+          "returncode": 2,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 8224,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "negotiated_tls_logs": {
+        "server": [
+          "0"
+        ],
+        "client": [
+          "0"
+        ]
+      }
+    },
+    {
+      "id": "0144",
+      "pair_server_client": "upstream/tunveo",
+      "tls": 0,
+      "effective_tls": 1,
+      "identity": "explicit-ip",
+      "negative": null,
+      "transport": 3,
+      "mode": 2,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 4,
+      "failed_phase": "tunnel_handshake",
+      "error": "tunnel process exited before phase completion",
+      "report": "tls-0-upstream-tunveo-explicit-ip/artifacts/positive/report.json",
+      "cleanup": [
+        {
+          "pid": 8236,
+          "returncode": 2,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 8246,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "negotiated_tls_logs": {
+        "server": [
+          "0"
+        ],
+        "client": [
+          "0"
+        ]
+      }
+    },
+    {
+      "id": "0145",
+      "pair_server_client": "upstream/tunveo",
+      "tls": 0,
+      "effective_tls": 1,
+      "identity": "explicit-ip",
+      "negative": null,
+      "transport": 3,
+      "mode": 2,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 5,
+      "failed_phase": "tunnel_handshake",
+      "error": "tunnel process exited before phase completion",
+      "report": "tls-0-upstream-tunveo-explicit-ip/artifacts/positive/report.json",
+      "cleanup": [
+        {
+          "pid": 8258,
+          "returncode": 2,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 8268,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "negotiated_tls_logs": {
+        "server": [
+          "0"
+        ],
+        "client": [
+          "0"
+        ]
+      }
+    },
+    {
+      "id": "0146",
+      "pair_server_client": "upstream/tunveo",
+      "tls": 0,
+      "effective_tls": 1,
+      "identity": "explicit-ip",
+      "negative": null,
+      "transport": 3,
+      "mode": 2,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 6,
+      "failed_phase": "tunnel_handshake",
+      "error": "tunnel process exited before phase completion",
+      "report": "tls-0-upstream-tunveo-explicit-ip/artifacts/positive/report.json",
+      "cleanup": [
+        {
+          "pid": 8280,
+          "returncode": 2,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 8290,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "negotiated_tls_logs": {
+        "server": [
+          "0"
+        ],
+        "client": [
+          "0"
+        ]
+      }
+    },
+    {
+      "id": "0147",
+      "pair_server_client": "upstream/tunveo",
+      "tls": 0,
+      "effective_tls": 1,
+      "identity": "explicit-ip",
+      "negative": null,
+      "transport": 3,
+      "mode": 2,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 7,
+      "failed_phase": "tunnel_handshake",
+      "error": "tunnel process exited before phase completion",
+      "report": "tls-0-upstream-tunveo-explicit-ip/artifacts/positive/report.json",
+      "cleanup": [
+        {
+          "pid": 8303,
+          "returncode": 2,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 8313,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "negotiated_tls_logs": {
+        "server": [
+          "0"
+        ],
+        "client": [
+          "0"
+        ]
+      }
+    },
+    {
+      "id": "0148",
+      "pair_server_client": "upstream/tunveo",
+      "tls": 0,
+      "effective_tls": 1,
+      "identity": "explicit-ip",
+      "negative": null,
+      "transport": 3,
+      "mode": 2,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 8,
+      "failed_phase": "tunnel_handshake",
+      "error": "tunnel process exited before phase completion",
+      "report": "tls-0-upstream-tunveo-explicit-ip/artifacts/positive/report.json",
+      "cleanup": [
+        {
+          "pid": 8325,
+          "returncode": 2,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 8334,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "negotiated_tls_logs": {
+        "server": [
+          "0"
+        ],
+        "client": [
+          "0"
+        ]
+      }
+    },
+    {
+      "id": "0149",
+      "pair_server_client": "upstream/tunveo",
+      "tls": 0,
+      "effective_tls": 1,
+      "identity": "explicit-ip",
+      "negative": null,
+      "transport": 3,
+      "mode": 2,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 9,
+      "failed_phase": "tunnel_handshake",
+      "error": "tunnel process exited before phase completion",
+      "report": "tls-0-upstream-tunveo-explicit-ip/artifacts/positive/report.json",
+      "cleanup": [
+        {
+          "pid": 8346,
+          "returncode": 2,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 8356,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "negotiated_tls_logs": {
+        "server": [
+          "0"
+        ],
+        "client": [
+          "0"
+        ]
+      }
+    },
+    {
+      "id": "0150",
+      "pair_server_client": "upstream/tunveo",
+      "tls": 0,
+      "effective_tls": 1,
+      "identity": "explicit-ip",
+      "negative": null,
+      "transport": 3,
+      "mode": 2,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 10,
+      "failed_phase": "tunnel_handshake",
+      "error": "tunnel process exited before phase completion",
+      "report": "tls-0-upstream-tunveo-explicit-ip/artifacts/positive/report.json",
+      "cleanup": [
+        {
+          "pid": 8368,
+          "returncode": 2,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 8377,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "negotiated_tls_logs": {
+        "server": [
+          "0"
+        ],
+        "client": [
+          "0"
+        ]
+      }
+    },
+    {
+      "id": "0151",
+      "pair_server_client": "upstream/tunveo",
+      "tls": 0,
+      "effective_tls": 1,
+      "identity": "explicit-ip",
+      "negative": null,
+      "transport": 3,
+      "mode": 2,
+      "pool": {
+        "min": 64,
+        "max": 1024
+      },
+      "iteration": 1,
+      "failed_phase": "tunnel_handshake",
+      "error": "tunnel process exited before phase completion",
+      "report": "tls-0-upstream-tunveo-explicit-ip/artifacts/positive/report.json",
+      "cleanup": [
+        {
+          "pid": 8390,
+          "returncode": 2,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 8399,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "negotiated_tls_logs": {
+        "server": [
+          "0"
+        ],
+        "client": [
+          "0"
+        ]
+      }
+    },
+    {
+      "id": "0152",
+      "pair_server_client": "upstream/tunveo",
+      "tls": 0,
+      "effective_tls": 1,
+      "identity": "explicit-ip",
+      "negative": null,
+      "transport": 3,
+      "mode": 2,
+      "pool": {
+        "min": 64,
+        "max": 1024
+      },
+      "iteration": 2,
+      "failed_phase": "tunnel_handshake",
+      "error": "tunnel process exited before phase completion",
+      "report": "tls-0-upstream-tunveo-explicit-ip/artifacts/positive/report.json",
+      "cleanup": [
+        {
+          "pid": 8411,
+          "returncode": 2,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 8420,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "negotiated_tls_logs": {
+        "server": [
+          "0"
+        ],
+        "client": [
+          "0"
+        ]
+      }
+    },
+    {
+      "id": "0153",
+      "pair_server_client": "upstream/tunveo",
+      "tls": 0,
+      "effective_tls": 1,
+      "identity": "explicit-ip",
+      "negative": null,
+      "transport": 3,
+      "mode": 2,
+      "pool": {
+        "min": 64,
+        "max": 1024
+      },
+      "iteration": 3,
+      "failed_phase": "tunnel_handshake",
+      "error": "tunnel process exited before phase completion",
+      "report": "tls-0-upstream-tunveo-explicit-ip/artifacts/positive/report.json",
+      "cleanup": [
+        {
+          "pid": 8432,
+          "returncode": 2,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 8441,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "negotiated_tls_logs": {
+        "server": [
+          "0"
+        ],
+        "client": [
+          "0"
+        ]
+      }
+    },
+    {
+      "id": "0154",
+      "pair_server_client": "upstream/tunveo",
+      "tls": 0,
+      "effective_tls": 1,
+      "identity": "explicit-ip",
+      "negative": null,
+      "transport": 3,
+      "mode": 2,
+      "pool": {
+        "min": 64,
+        "max": 1024
+      },
+      "iteration": 4,
+      "failed_phase": "tunnel_handshake",
+      "error": "tunnel process exited before phase completion",
+      "report": "tls-0-upstream-tunveo-explicit-ip/artifacts/positive/report.json",
+      "cleanup": [
+        {
+          "pid": 8452,
+          "returncode": 2,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 8460,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "negotiated_tls_logs": {
+        "server": [
+          "0"
+        ],
+        "client": [
+          "0"
+        ]
+      }
+    },
+    {
+      "id": "0155",
+      "pair_server_client": "upstream/tunveo",
+      "tls": 0,
+      "effective_tls": 1,
+      "identity": "explicit-ip",
+      "negative": null,
+      "transport": 3,
+      "mode": 2,
+      "pool": {
+        "min": 64,
+        "max": 1024
+      },
+      "iteration": 5,
+      "failed_phase": "tunnel_handshake",
+      "error": "tunnel process exited before phase completion",
+      "report": "tls-0-upstream-tunveo-explicit-ip/artifacts/positive/report.json",
+      "cleanup": [
+        {
+          "pid": 8473,
+          "returncode": 2,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 8483,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "negotiated_tls_logs": {
+        "server": [
+          "0"
+        ],
+        "client": [
+          "0"
+        ]
+      }
+    },
+    {
+      "id": "0156",
+      "pair_server_client": "upstream/tunveo",
+      "tls": 0,
+      "effective_tls": 1,
+      "identity": "explicit-ip",
+      "negative": null,
+      "transport": 3,
+      "mode": 2,
+      "pool": {
+        "min": 64,
+        "max": 1024
+      },
+      "iteration": 6,
+      "failed_phase": "tunnel_handshake",
+      "error": "tunnel process exited before phase completion",
+      "report": "tls-0-upstream-tunveo-explicit-ip/artifacts/positive/report.json",
+      "cleanup": [
+        {
+          "pid": 8495,
+          "returncode": 2,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 8504,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "negotiated_tls_logs": {
+        "server": [
+          "0"
+        ],
+        "client": [
+          "0"
+        ]
+      }
+    },
+    {
+      "id": "0157",
+      "pair_server_client": "upstream/tunveo",
+      "tls": 0,
+      "effective_tls": 1,
+      "identity": "explicit-ip",
+      "negative": null,
+      "transport": 3,
+      "mode": 2,
+      "pool": {
+        "min": 64,
+        "max": 1024
+      },
+      "iteration": 7,
+      "failed_phase": "tunnel_handshake",
+      "error": "tunnel process exited before phase completion",
+      "report": "tls-0-upstream-tunveo-explicit-ip/artifacts/positive/report.json",
+      "cleanup": [
+        {
+          "pid": 8516,
+          "returncode": 2,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 8526,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "negotiated_tls_logs": {
+        "server": [
+          "0"
+        ],
+        "client": [
+          "0"
+        ]
+      }
+    },
+    {
+      "id": "0158",
+      "pair_server_client": "upstream/tunveo",
+      "tls": 0,
+      "effective_tls": 1,
+      "identity": "explicit-ip",
+      "negative": null,
+      "transport": 3,
+      "mode": 2,
+      "pool": {
+        "min": 64,
+        "max": 1024
+      },
+      "iteration": 8,
+      "failed_phase": "tunnel_handshake",
+      "error": "tunnel process exited before phase completion",
+      "report": "tls-0-upstream-tunveo-explicit-ip/artifacts/positive/report.json",
+      "cleanup": [
+        {
+          "pid": 8538,
+          "returncode": 2,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 8548,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "negotiated_tls_logs": {
+        "server": [
+          "0"
+        ],
+        "client": [
+          "0"
+        ]
+      }
+    },
+    {
+      "id": "0159",
+      "pair_server_client": "upstream/tunveo",
+      "tls": 0,
+      "effective_tls": 1,
+      "identity": "explicit-ip",
+      "negative": null,
+      "transport": 3,
+      "mode": 2,
+      "pool": {
+        "min": 64,
+        "max": 1024
+      },
+      "iteration": 9,
+      "failed_phase": "tunnel_handshake",
+      "error": "tunnel process exited before phase completion",
+      "report": "tls-0-upstream-tunveo-explicit-ip/artifacts/positive/report.json",
+      "cleanup": [
+        {
+          "pid": 8561,
+          "returncode": 2,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 8571,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "negotiated_tls_logs": {
+        "server": [
+          "0"
+        ],
+        "client": [
+          "0"
+        ]
+      }
+    },
+    {
+      "id": "0160",
+      "pair_server_client": "upstream/tunveo",
+      "tls": 0,
+      "effective_tls": 1,
+      "identity": "explicit-ip",
+      "negative": null,
+      "transport": 3,
+      "mode": 2,
+      "pool": {
+        "min": 64,
+        "max": 1024
+      },
+      "iteration": 10,
+      "failed_phase": "tunnel_handshake",
+      "error": "tunnel process exited before phase completion",
+      "report": "tls-0-upstream-tunveo-explicit-ip/artifacts/positive/report.json",
+      "cleanup": [
+        {
+          "pid": 8583,
+          "returncode": 2,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 8592,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "negotiated_tls_logs": {
+        "server": [
+          "0"
+        ],
+        "client": [
+          "0"
+        ]
+      }
+    },
+    {
+      "id": "0080",
+      "pair_server_client": "upstream/tunveo",
+      "tls": 2,
+      "effective_tls": 2,
+      "identity": "explicit-ip",
+      "negative": "untrusted-ca",
+      "transport": 3,
+      "mode": 1,
+      "pool": {
+        "min": 64,
+        "max": 1024
+      },
+      "iteration": 10,
+      "failed_phase": "tunnel_handshake",
+      "error": "engine failure before phase completion: Client error: TunnelStart: tunnelHandshake failed: TunnelHandshake: Get \"https://127.0.0.1:48851/%22: EOF",
+      "report": "tls-2-upstream-tunveo-explicit-ip/artifacts/untrusted-ca/report.json",
+      "cleanup": [
+        {
+          "pid": 10275,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 10285,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "negotiated_tls_logs": {
+        "server": [
+          "2"
+        ],
+        "client": []
+      }
+    },
+    {
+      "id": "0062",
+      "pair_server_client": "upstream/tunveo",
+      "tls": 2,
+      "effective_tls": 2,
+      "identity": "explicit-ip",
+      "negative": "wrong-hostname",
+      "transport": 3,
+      "mode": 1,
+      "pool": {
+        "min": 2,
+        "max": 8
+      },
+      "iteration": 2,
+      "failed_phase": "tunnel_handshake",
+      "error": "engine failure before phase completion: Client error: TunnelStart: tunnelHandshake failed: TunnelHandshake: Get \"https://127.0.0.1:45389/%22: EOF",
+      "report": "tls-2-upstream-tunveo-explicit-ip/artifacts/wrong-hostname/report.json",
+      "cleanup": [
+        {
+          "pid": 13638,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        },
+        {
+          "pid": 13648,
+          "returncode": 0,
+          "forced_kill": false,
+          "reaped": true
+        }
+      ],
+      "negotiated_tls_logs": {
+        "server": [
+          "2"
+        ],
+        "client": []
+      }
+    }
+  ]
+}
