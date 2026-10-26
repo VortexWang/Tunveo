@@ -1,0 +1,9 @@
+first ordinary traced pilot_passed RSS 6.32031 early-lateRSS 0.08984 events 719
+ allocation deltasMiB {'[anon: Go: allspans array]': 0.003906, '[anon: Go: heap]': 6.0, '[anon: Go: immortal metadata]': 0.238281, '[anon: Go: profiler hash buckets]': 0.078125}
+first ordinary untraced-180 pilot_passed RSS 8.60547 early-lateRSS 0.32812 events 1919
+fixed ordinary traced pilot_passed RSS 6.35156 early-lateRSS 0.08789 events 719
+ allocation deltasMiB {'[anon: Go: allspans array]': 0.003906, '[anon: Go: heap]': 6.0, '[anon: Go: immortal metadata]': 0.242188, '[anon: Go: profiler hash buckets]': 0.105469}
+fixed ordinary untraced-180 pilot_passed RSS 8.62891 early-lateRSS 2.39062 events 1919
+fixed race traced pilot_passed RSS 59.41797 early-lateRSS 19.97656 events 719
+ allocation deltasMiB {'[anon: Go: allspans array]': 0.003906, '[anon: Go: heap]': 13.605469, '[anon: Go: immortal metadata]': 0.265625, '[anon: Go: profiler hash buckets]': 0.125, 'race_metadata': 0.972656, 'race_runtime_other': 20.382812, 'race_shadow': 23.378906}
+fixed race untraced-180 failed RSS 80.0625 early-lateRSS 26.6875 events 1919

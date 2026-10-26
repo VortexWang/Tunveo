@@ -106,7 +106,7 @@ def capture(a):
     evidence = dict(binary_sha256=hashlib.sha256(binary.read_bytes()).hexdigest(),
                     description=info, race=race, llvm_revision=LLVM, samples=[], errors=[])
     cmd = [sys.executable, str(Path(__file__).with_name('verify_soak.py')), '--binary', str(binary),
-           '--transport', '3', '--mode', '1', '--pilot', '--duration-seconds', '60',
+           '--transport', '3', '--mode', '1', '--pilot', '--duration-seconds', str(a.duration_seconds),
            '--warmup-seconds', '12', '--sample-seconds', '5', '--pool-min', '16',
            '--pool-max', '64', '--workers', '2', '--qps', '10', '--artifacts', str(a.artifacts/'pilot')]
     seen = set()
@@ -145,7 +145,7 @@ def capture(a):
                     evidence['errors'].append(str(e))
                     break
                 time.sleep(.01)
-            code = proc.wait(timeout=210)
+            code = proc.wait(timeout=a.duration_seconds+150)
         finally:
             if proc.poll() is None:
                 proc.terminate()
@@ -238,7 +238,7 @@ def control(a):
         finally:
             if p.poll() is None:p.kill();p.wait()
     delta=rows[1]['snapshot']['groups'].get('race_shadow',{}).get('Rss',0)-rows[0]['snapshot']['groups'].get('race_shadow',{}).get('Rss',0)
-    result=dict(exit_code=code,race=race,rows=rows,shadow_rss_delta=delta,
+    result=dict(exit_code=code,race=race,rows=rows,native_pid=p.pid,shadow_rss_delta=delta,
                 expected_shadow_address=rows[1]['stage']['address']*2+RANGES['race_shadow'][0])
     (a.artifacts/'control.json').write_text(json.dumps(result,indent=2)+'\n')
     touched=parse_smaps(gzip.open(a.artifacts/rows[1]['snapshot']['file'], 'rt').read(), race)
@@ -255,6 +255,7 @@ def main():
     subs=p.add_subparsers(dest='command',required=True)
     for name in ('capture','control'):
         s=subs.add_parser(name);s.add_argument('--binary',type=Path,required=True);s.add_argument('--artifacts',type=Path,required=True)
+        if name=='capture':s.add_argument('--duration-seconds',type=int,default=60,choices=range(1,3601))
     s=subs.add_parser('audit');s.add_argument('artifacts',type=Path)
     a=p.parse_args()
     if a.command=='audit':
