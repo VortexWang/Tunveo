@@ -90,3 +90,5 @@ Continuous-load probe and separate short-pilot/24-hour admission: [soak tooling]
 WebSocket dial admission and resource spike diagnostics: [bounded local stacks and controlled comparisons](docs/ws-goroutine-diagnosis.md).
 
 Ordinary-build eight-profile pilot and raw-log suite validation: [preflight evidence](docs/ordinary-soak-preflight.md).
+
+Sampling/checkpoint timing and H2 ordinary/race RSS comparison: [controlled diagnosis](docs/soak-runtime-diagnostics.md).

@@ -60,10 +60,23 @@ func (c *counters) snapshot() counts {
 }
 
 type point struct {
-	At        float64 `json:"at_seconds"`
-	Phase     string  `json:"phase"`
-	Resources sample  `json:"resources"`
-	Counts    counts  `json:"counts"`
+	At                float64 `json:"at_seconds"`
+	Phase             string  `json:"phase"`
+	Resources         sample  `json:"resources"`
+	Counts            counts  `json:"counts"`
+	MeasureSeconds    float64 `json:"measure_seconds"`
+	CheckpointSeconds float64 `json:"checkpoint_seconds"`
+	SnapshotSeconds   float64 `json:"snapshot_seconds"`
+}
+type schedulerTiming struct {
+	MaxTickLag    float64 `json:"max_tick_lag_seconds"`
+	MaxMeasure    float64 `json:"max_measure_seconds"`
+	MaxCheckpoint float64 `json:"max_checkpoint_seconds"`
+	MaxSnapshot   float64 `json:"max_snapshot_seconds"`
+	MissedAt      float64 `json:"missed_at_seconds"`
+	ExpectedSlot  uint64  `json:"expected_slot"`
+	ObservedSlot  uint64  `json:"observed_slot"`
+	MissedSlots   uint64  `json:"missed_slots"`
 }
 type result struct {
 	Schema      int               `json:"schema_version"`
@@ -84,6 +97,7 @@ type result struct {
 	Points      []point           `json:"points"`
 	StopSeconds float64           `json:"stop_seconds"`
 	Error       string            `json:"error,omitempty"`
+	Scheduler   schedulerTiming   `json:"scheduler_timing"`
 }
 type audit struct {
 	mu      sync.Mutex
@@ -269,11 +283,15 @@ func runLoad(r *result, front, workers, qps int, warmup, duration, interval time
 	var slots uint64
 	var failure error
 	snapshot := func(phase string) error {
+		start := time.Now()
 		s, e := measure(0)
+		elapsed := time.Since(start).Seconds()
+		r.Scheduler.MaxMeasure = max(r.Scheduler.MaxMeasure, elapsed)
 		if e != nil {
 			return e
 		}
-		p := point{time.Since(started).Seconds(), phase, s, measured.snapshot()}
+		p := point{At: time.Since(started).Seconds(), Phase: phase, Resources: s,
+			Counts: measured.snapshot(), MeasureSeconds: elapsed}
 		r.Points = append(r.Points, p)
 		if diagnostics != nil {
 			if e := diagnostics.observe(p, warmup.Seconds()); e != nil {
@@ -281,7 +299,14 @@ func runLoad(r *result, front, workers, qps int, warmup, duration, interval time
 			}
 		}
 		r.Counts = measured.snapshot()
-		return checkpoint()
+		checkpointStart := time.Now()
+		err := checkpoint()
+		elapsed = time.Since(checkpointStart).Seconds()
+		r.Points[len(r.Points)-1].CheckpointSeconds = elapsed
+		r.Points[len(r.Points)-1].SnapshotSeconds = time.Since(start).Seconds()
+		r.Scheduler.MaxCheckpoint = max(r.Scheduler.MaxCheckpoint, elapsed)
+		r.Scheduler.MaxSnapshot = max(r.Scheduler.MaxSnapshot, r.Points[len(r.Points)-1].SnapshotSeconds)
+		return err
 	}
 	if e := snapshot("warmup"); e != nil {
 		failure = e
@@ -295,13 +320,18 @@ loop:
 			failure = fmt.Errorf("interrupted; partial duration is not accepted")
 		case e := <-errs:
 			failure = e
-		case <-tick.C:
+		case fired := <-tick.C:
 			now := time.Now()
+			r.Scheduler.MaxTickLag = max(r.Scheduler.MaxTickLag, now.Sub(fired).Seconds())
 			if !now.Before(deadline) {
 				break loop
 			}
 			due := uint64(now.Sub(started) / (time.Second / time.Duration(qps)))
 			if due > slots+1 {
+				r.Scheduler.MissedAt = now.Sub(started).Seconds()
+				r.Scheduler.ExpectedSlot = slots + 1
+				r.Scheduler.ObservedSlot = due
+				r.Scheduler.MissedSlots = due - slots - 1
 				if now.Before(measuring) {
 					warmed.dropped.Add(due - slots - 1)
 				} else {

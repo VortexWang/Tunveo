@@ -1,0 +1,90 @@
+{
+  "source": "fe4e9b2f1383f1ac6038b256111d1d1d9833186b",
+  "source_go_version": "go1.26.10",
+  "toolchain_tar_sha256": "ccfe7ae822d2c2f41f4fe7c956199967a4dac22d0ee0d2b2bfdb440aab3b20c5",
+  "source_sha256": {
+    "scripts/soak24h/main.go": "24e1ad749801627e969f5c937d65b579f7503f27ca4e5fd997587c2b33a2d752",
+    "scripts/soak24h/fixture.go": "d86a97868d6cc58db00c3054d378ccfea994d5cca16b832c2dda64dc5df8e723",
+    "scripts/soak24h/scheduler_control_test.go": "9df33d008abdbbb7a81285699d8f45adecb7486fbd6881bcc0c777833791273e",
+    "scripts/soak24h/timing_test.go": "b2fa19054c109b2712eedf334ec877d3f3e862ba7b37f14d6f4ce5b7258dee6d",
+    "scripts/repro_soak_checkpoint.py": "4e1591c44699fe19dd5845cc64cacd1baa88f1825172104640f330f675ee2967"
+  },
+  "local_execution": {
+    "source": "fe4e9b2f1383f1ac6038b256111d1d1d9833186b",
+    "pilot": true,
+    "qualifies_24h": false,
+    "concurrent_profiles": 2,
+    "aggregate_qps": 20,
+    "cgroup_cpu": "800000 100000",
+    "cgroup_memory": "8589934592",
+    "started_at": "2026-10-26T12:31:43.668334+00:00",
+    "binaries": {
+      "ordinary": {
+        "sha256": "5176804235cd946c2eff9c5aa966e1b92dcf8169178210a42a0a4fd1089e458c",
+        "description": {
+          "build_info": "go\tgo1.26.10\npath\tgithub.com/VortexWang/Tunveo/scripts/soak24h\nmod\tgithub.com/VortexWang/Tunveo\tv0.0.0-20261026122816-fe4e9b2f1383\t\ndep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\ndep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\ndep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\ndep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\ndep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\ndep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\nbuild\t-buildmode=exe\nbuild\t-compiler=gc\nbuild\t-trimpath=true\nbuild\tCGO_ENABLED=1\nbuild\tGOARCH=amd64\nbuild\tGOOS=linux\nbuild\tGOAMD64=v1\nbuild\tvcs=git\nbuild\tvcs.revision=fe4e9b2f1383f1ac6038b256111d1d1d9833186b\nbuild\tvcs.time=2026-10-26T12:28:16Z\nbuild\tvcs.modified=false\n",
+          "go_version": "go1.26.10",
+          "goarch": "amd64",
+          "goos": "linux"
+        }
+      },
+      "race": {
+        "sha256": "4d83cdc4979420e5e3bf2d33273671c70b00cc4228f7476fad9e3205c2c86e61",
+        "description": {
+          "build_info": "go\tgo1.26.10\npath\tgithub.com/VortexWang/Tunveo/scripts/soak24h\nmod\tgithub.com/VortexWang/Tunveo\tv0.0.0-20261026122816-fe4e9b2f1383\t\ndep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\ndep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\ndep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\ndep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\ndep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\ndep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\nbuild\t-buildmode=exe\nbuild\t-compiler=gc\nbuild\t-race=true\nbuild\t-trimpath=true\nbuild\tCGO_ENABLED=1\nbuild\tGOARCH=amd64\nbuild\tGOOS=linux\nbuild\tGOAMD64=v1\nbuild\tvcs=git\nbuild\tvcs.revision=fe4e9b2f1383f1ac6038b256111d1d1d9833186b\nbuild\tvcs.time=2026-10-26T12:28:16Z\nbuild\tvcs.modified=false\n",
+          "go_version": "go1.26.10",
+          "goarch": "amd64",
+          "goos": "linux"
+        }
+      }
+    },
+    "results": [
+      {
+        "build": "ordinary",
+        "trial": 1,
+        "exit_code": 0,
+        "status": "pilot_passed",
+        "error": null
+      },
+      {
+        "build": "race",
+        "trial": 1,
+        "exit_code": 0,
+        "status": "pilot_passed",
+        "error": null
+      },
+      {
+        "build": "ordinary",
+        "trial": 2,
+        "exit_code": 0,
+        "status": "pilot_passed",
+        "error": null
+      },
+      {
+        "build": "race",
+        "trial": 2,
+        "exit_code": 1,
+        "status": "failed",
+        "error": "ValueError: active resource bound: rss"
+      },
+      {
+        "build": "ordinary",
+        "trial": 3,
+        "exit_code": 0,
+        "status": "pilot_passed",
+        "error": null
+      },
+      {
+        "build": "race",
+        "trial": 3,
+        "exit_code": 0,
+        "status": "pilot_passed",
+        "error": null
+      }
+    ],
+    "last_completed_trial": 3,
+    "finished_at": "2026-10-26T12:35:39.792830+00:00",
+    "all_passed": false
+  },
+  "scope": "data-plane production Go and dependencies unchanged; additional measurement overhead and co-located artifact downloads disclosed; no24h qualification; local race trial2 remains failed"
+}

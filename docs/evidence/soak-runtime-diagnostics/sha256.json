@@ -1,0 +1,66 @@
+{
+  "prior-ci-audit.json": {
+    "sha256": "54110cfa273e1228fbae36b86f8b6b41968be550f5da7eb097d5b2f8f8935f41",
+    "bytes": 3693
+  },
+  "prior-ci-pilots.zip": {
+    "sha256": "6cbe2e2efd3e37bcb9b461e281af58356c0e15079facb1298ffd3f0af76bc756",
+    "bytes": 491692
+  },
+  "local-rss-evidence.zip": {
+    "sha256": "1645732b26f1b38202442085929e6dc0faa6760520397d91d212c17bbb70c7be",
+    "bytes": 375014
+  },
+  "metadata.json": {
+    "sha256": "da159fa298875a428895791ad4b5d4bba4d0f912787634d1a0453ac902d6fa34",
+    "bytes": 4744
+  },
+  "prior-ci-status.json": {
+    "sha256": "c7f18701e45f3456c8ef1c4d60ff1973fdc6685a71f82c6fb1c181d55fb6c5ba",
+    "bytes": 6634
+  },
+  "diagnostic-ci-audit.json": {
+    "sha256": "423201a958ee818a845bb8199b698a2dd46d79ce636fca5dbf608c7705864575",
+    "bytes": 4734
+  },
+  "checkpoint-audit.json": {
+    "sha256": "934b7a7299b51f6b349d2c84e2ff5447578306da0dd8c6708a3ceb0f3b20a9be",
+    "bytes": 326
+  },
+  "prior-ci-metadata.json": {
+    "sha256": "c8ee392311ff193543b4caeaa301bb65b720c96d2320887073759f0bbdf6cca5",
+    "bytes": 54812
+  },
+  "checkpoint-parent.json": {
+    "sha256": "a870a660f0998ba2c01149c6ace16506088b1abe09da612f30d248b5720cbc67",
+    "bytes": 32085
+  },
+  "python-tests.log": {
+    "sha256": "f5d0708ceab77e41fe127f609eda9a9aeab797fdecf9539a04693c88068b93cb",
+    "bytes": 4708
+  },
+  "initial-go-tests.log": {
+    "sha256": "03aa9b9ceaf5ad1d37fc56b6677454ce3e467d3c2ef056efa15d1b57b19fb51b",
+    "bytes": 327
+  },
+  "new-ci-metadata.json": {
+    "sha256": "e87e16cecf3afbdc855d468ddf00da7f43c53566b2f738baa9c680576f000492",
+    "bytes": 2326
+  },
+  "diagnostic-ci.zip": {
+    "sha256": "4fbe1c409d563b66852a59ea8120c98dd2b14bce0b7cec17c440e6db2e4f7c40",
+    "bytes": 377050
+  },
+  "current-ci-status.json": {
+    "sha256": "6c702dd745754ac9195f6b94471cf1a3bc5ef4e8497a8cb890e3ae1bd1627b8f",
+    "bytes": 3868
+  },
+  "checkpoint-current.json": {
+    "sha256": "d06c9096794b2147787b1cabddd1f99a7c94c3c2907b3317e3608cd749fa4baf",
+    "bytes": 64440
+  },
+  "local-comparison.json": {
+    "sha256": "e84672699a9dd2706243f4b9d57c4c1674f31832315ec803127e3d02ad17c587",
+    "bytes": 4901
+  }
+}

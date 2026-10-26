@@ -1,0 +1,8 @@
+{
+  "template_sha256": "9df33d008abdbbb7a81285699d8f45adecb7486fbd6881bcc0c777833791273e",
+  "count_each": 10,
+  "parent_source": "8c45fe55738a302d0b6e3274ee7ef8ed9e0c3221",
+  "current_source": "fe4e9b2f1383f1ac6038b256111d1d1d9833186b",
+  "minimum_checkpoint_seconds": 0.25014397,
+  "minimum_tick_lag_seconds": 0.156802457
+}

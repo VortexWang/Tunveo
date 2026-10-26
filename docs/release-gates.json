@@ -46,9 +46,10 @@
       "status": "pending",
       "evidence": [
         "docs/soak-24h.md",
-        "docs/ordinary-soak-preflight.md"
+        "docs/ordinary-soak-preflight.md",
+        "docs/soak-runtime-diagnostics.md"
       ],
-      "reason": "Ordinary clean2cb2a0e eight-profile60s pilot passed (4800 exchanges/5752 events), no24h qualification. TNV020 raw-log suite fix verified locally. PR18 race pilots6/8: TCP mode2 warmup missed one offered-load tick, H2 mode1 RSS rose64.90234375MiB over its64MiB budget; root causes unconfirmed, original failures retained. Eight actual24h profiles and long-run review remain incomplete."
+      "reason": "Short pilots remain ineligible. New timing/memory diagnostic sourcefe4e9b2: dedicatedCI3/3, regularCI19/19, smoke9/9 passed, but local same-source H2 race trial2 reproduced RSS+66.23046875MiB over64MiB budget (liveGoHeap+0.8557MiB at same samples). Injected250ms checkpoint proves possible scheduling coupling; historical natural tick-miss cause remains unconfirmed. All failures retained, no threshold increase. Eight actual24h profiles and long-run review remain incomplete."
     },
     {
       "id": "native_platforms",

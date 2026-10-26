@@ -1,0 +1,162 @@
+{
+  "rows": [
+    {
+      "build": "ordinary",
+      "trial": 1,
+      "status": "pilot_passed",
+      "rss_warm_upper": 32325632,
+      "rss_peak": 47144960,
+      "rss_increase_mib": 14.1328125,
+      "heap_alloc_increase_mib_at_rss_peak": 2.1986618041992188,
+      "source": "fe4e9b2f1383f1ac6038b256111d1d1d9833186b",
+      "scheduler_timing": {
+        "max_tick_lag_seconds": 0.007732409,
+        "max_measure_seconds": 0.006682841,
+        "max_checkpoint_seconds": 0.000674375,
+        "max_snapshot_seconds": 0.006939611,
+        "missed_at_seconds": 0,
+        "expected_slot": 0,
+        "observed_slot": 0,
+        "missed_slots": 0
+      },
+      "exchanges": 600,
+      "audited_events": 719,
+      "cleanup": {
+        "reaped": true,
+        "forced_kill": false
+      }
+    },
+    {
+      "build": "ordinary",
+      "trial": 2,
+      "status": "pilot_passed",
+      "rss_warm_upper": 31072256,
+      "rss_peak": 48001024,
+      "rss_increase_mib": 16.14453125,
+      "heap_alloc_increase_mib_at_rss_peak": 1.3713760375976562,
+      "source": "fe4e9b2f1383f1ac6038b256111d1d1d9833186b",
+      "scheduler_timing": {
+        "max_tick_lag_seconds": 0.002897703,
+        "max_measure_seconds": 0.002712391,
+        "max_checkpoint_seconds": 0.000563203,
+        "max_snapshot_seconds": 0.002985565,
+        "missed_at_seconds": 0,
+        "expected_slot": 0,
+        "observed_slot": 0,
+        "missed_slots": 0
+      },
+      "exchanges": 600,
+      "audited_events": 719,
+      "cleanup": {
+        "reaped": true,
+        "forced_kill": false
+      }
+    },
+    {
+      "build": "ordinary",
+      "trial": 3,
+      "status": "pilot_passed",
+      "rss_warm_upper": 30547968,
+      "rss_peak": 47022080,
+      "rss_increase_mib": 15.7109375,
+      "heap_alloc_increase_mib_at_rss_peak": 1.312408447265625,
+      "source": "fe4e9b2f1383f1ac6038b256111d1d1d9833186b",
+      "scheduler_timing": {
+        "max_tick_lag_seconds": 0.004203738,
+        "max_measure_seconds": 0.004098542,
+        "max_checkpoint_seconds": 0.000737727,
+        "max_snapshot_seconds": 0.004421331,
+        "missed_at_seconds": 0,
+        "expected_slot": 0,
+        "observed_slot": 0,
+        "missed_slots": 0
+      },
+      "exchanges": 600,
+      "audited_events": 719,
+      "cleanup": {
+        "reaped": true,
+        "forced_kill": false
+      }
+    },
+    {
+      "build": "race",
+      "trial": 1,
+      "status": "pilot_passed",
+      "rss_warm_upper": 113614848,
+      "rss_peak": 173023232,
+      "rss_increase_mib": 56.65625,
+      "heap_alloc_increase_mib_at_rss_peak": -0.4863433837890625,
+      "source": "fe4e9b2f1383f1ac6038b256111d1d1d9833186b",
+      "scheduler_timing": {
+        "max_tick_lag_seconds": 0.011142473,
+        "max_measure_seconds": 0.010118127,
+        "max_checkpoint_seconds": 0.001906235,
+        "max_snapshot_seconds": 0.011065971,
+        "missed_at_seconds": 0,
+        "expected_slot": 0,
+        "observed_slot": 0,
+        "missed_slots": 0
+      },
+      "exchanges": 600,
+      "audited_events": 719,
+      "cleanup": {
+        "reaped": true,
+        "forced_kill": false
+      }
+    },
+    {
+      "build": "race",
+      "trial": 2,
+      "status": "failed",
+      "rss_warm_upper": 110342144,
+      "rss_peak": 179789824,
+      "rss_increase_mib": 66.23046875,
+      "heap_alloc_increase_mib_at_rss_peak": 0.855682373046875,
+      "source": "fe4e9b2f1383f1ac6038b256111d1d1d9833186b",
+      "scheduler_timing": {
+        "max_tick_lag_seconds": 0.005604452,
+        "max_measure_seconds": 0.005912087,
+        "max_checkpoint_seconds": 0.001909346,
+        "max_snapshot_seconds": 0.007833076,
+        "missed_at_seconds": 0,
+        "expected_slot": 0,
+        "observed_slot": 0,
+        "missed_slots": 0
+      },
+      "exchanges": 600,
+      "audited_events": 719,
+      "cleanup": {
+        "reaped": true,
+        "forced_kill": false
+      }
+    },
+    {
+      "build": "race",
+      "trial": 3,
+      "status": "pilot_passed",
+      "rss_warm_upper": 111013888,
+      "rss_peak": 174985216,
+      "rss_increase_mib": 61.0078125,
+      "heap_alloc_increase_mib_at_rss_peak": 0.6067962646484375,
+      "source": "fe4e9b2f1383f1ac6038b256111d1d1d9833186b",
+      "scheduler_timing": {
+        "max_tick_lag_seconds": 0.004841741,
+        "max_measure_seconds": 0.005918205,
+        "max_checkpoint_seconds": 0.002156068,
+        "max_snapshot_seconds": 0.007205629,
+        "missed_at_seconds": 0,
+        "expected_slot": 0,
+        "observed_slot": 0,
+        "missed_slots": 0
+      },
+      "exchanges": 600,
+      "audited_events": 719,
+      "cleanup": {
+        "reaped": true,
+        "forced_kill": false
+      }
+    }
+  ],
+  "scope": "same host ordinary/race pair; two concurrent profiles20QPS; artifact downloads and read-only review also occurred; all raw files and failures retained",
+  "all_events_and_file_hashes_revalidated": true
+}
