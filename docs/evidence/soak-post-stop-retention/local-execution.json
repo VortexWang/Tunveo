@@ -1,0 +1,99 @@
+{
+  "source": "0d2b8eb2e7542e7f4406f72687afc8403b466db2",
+  "source_tree": "f3ff7bb5dd7108c277c57ac01944d7fa9d3052de",
+  "scope": "same-host concurrent ordinary/race total20QPS,180s measured then120s post-stop GC-sampled observation and explicit Go-scavenge; no strace or external proc reads; background metadata review during run",
+  "builds": {
+    "ordinary": {
+      "description": {
+        "build_info": "go\tgo1.26.10\npath\tgithub.com/VortexWang/Tunveo/scripts/soak24h\nmod\tgithub.com/VortexWang/Tunveo\tv0.0.0-20261026210806-0d2b8eb2e754\t\ndep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\ndep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\ndep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\ndep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\ndep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\ndep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\nbuild\t-buildmode=exe\nbuild\t-compiler=gc\nbuild\t-trimpath=true\nbuild\tCGO_ENABLED=1\nbuild\tGOARCH=amd64\nbuild\tGOOS=linux\nbuild\tGOAMD64=v1\nbuild\tvcs=git\nbuild\tvcs.revision=0d2b8eb2e7542e7f4406f72687afc8403b466db2\nbuild\tvcs.time=2026-10-26T21:08:06Z\nbuild\tvcs.modified=false\n",
+        "go_version": "go1.26.10",
+        "goarch": "amd64",
+        "goos": "linux"
+      },
+      "sha256": "835389022aaa532af1ff4c1db1af7e28131900e3be5d5cc6292cfe3e04e2ba6c"
+    },
+    "race": {
+      "description": {
+        "build_info": "go\tgo1.26.10\npath\tgithub.com/VortexWang/Tunveo/scripts/soak24h\nmod\tgithub.com/VortexWang/Tunveo\tv0.0.0-20261026210806-0d2b8eb2e754\t\ndep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\ndep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\ndep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\ndep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\ndep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\ndep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\nbuild\t-buildmode=exe\nbuild\t-compiler=gc\nbuild\t-race=true\nbuild\t-trimpath=true\nbuild\tCGO_ENABLED=1\nbuild\tGOARCH=amd64\nbuild\tGOOS=linux\nbuild\tGOAMD64=v1\nbuild\tvcs=git\nbuild\tvcs.revision=0d2b8eb2e7542e7f4406f72687afc8403b466db2\nbuild\tvcs.time=2026-10-26T21:08:06Z\nbuild\tvcs.modified=false\n",
+        "go_version": "go1.26.10",
+        "goarch": "amd64",
+        "goos": "linux"
+      },
+      "sha256": "ed1915823989d2c5a43a5821d4c7e20de3f58da8d461cc9a74cd387950aa2307"
+    }
+  },
+  "runs": [
+    {
+      "build": "ordinary",
+      "command": [
+        "python3",
+        "scripts/verify_soak.py",
+        "--binary",
+        "bin/retention-ordinary",
+        "--transport",
+        "3",
+        "--mode",
+        "1",
+        "--pilot",
+        "--duration-seconds",
+        "180",
+        "--warmup-seconds",
+        "12",
+        "--sample-seconds",
+        "5",
+        "--workers",
+        "2",
+        "--qps",
+        "10",
+        "--pool-min",
+        "16",
+        "--pool-max",
+        "64",
+        "--post-stop-observe-seconds",
+        "120",
+        "--diagnostic-go-scavenge",
+        "--artifacts",
+        "artifacts/post-stop-retention/local-ordinary"
+      ],
+      "started_at": "2026-10-26T21:11:06.598509+00:00",
+      "finished_at": "2026-10-26T21:16:28.893756+00:00",
+      "exit_code": 0
+    },
+    {
+      "build": "race",
+      "command": [
+        "python3",
+        "scripts/verify_soak.py",
+        "--binary",
+        "bin/retention-race",
+        "--transport",
+        "3",
+        "--mode",
+        "1",
+        "--pilot",
+        "--duration-seconds",
+        "180",
+        "--warmup-seconds",
+        "12",
+        "--sample-seconds",
+        "5",
+        "--workers",
+        "2",
+        "--qps",
+        "10",
+        "--pool-min",
+        "16",
+        "--pool-max",
+        "64",
+        "--post-stop-observe-seconds",
+        "120",
+        "--diagnostic-go-scavenge",
+        "--artifacts",
+        "artifacts/post-stop-retention/local-race"
+      ],
+      "started_at": "2026-10-26T21:11:06.598830+00:00",
+      "finished_at": "2026-10-26T21:16:29.949981+00:00",
+      "exit_code": 1
+    }
+  ]
+}

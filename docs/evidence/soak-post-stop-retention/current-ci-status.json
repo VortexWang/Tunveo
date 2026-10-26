@@ -1,0 +1,2386 @@
+{
+  "source": "a4bb807e47376bb67368c279f96350543f237735",
+  "observed_at": "2026-10-26T21:53:32.523Z",
+  "workflows": {
+    "workflow_runs": [
+      {
+        "id": 40404147290,
+        "name": "Soak mapping ownership",
+        "status": "completed",
+        "conclusion": "success",
+        "run_number": 5,
+        "jobs_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/runs/40404147290/jobs",
+        "logs_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/runs/40404147290/logs",
+        "workflow_id": 397111466
+      },
+      {
+        "id": 40404147273,
+        "name": "TLS acceptance",
+        "status": "in_progress",
+        "conclusion": null,
+        "run_number": 18,
+        "jobs_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/runs/40404147273/jobs",
+        "logs_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/runs/40404147273/logs",
+        "workflow_id": 396433780
+      },
+      {
+        "id": 40404147666,
+        "name": "Soak timing and RSS diagnosis",
+        "status": "completed",
+        "conclusion": "success",
+        "run_number": 4,
+        "jobs_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/runs/40404147666/jobs",
+        "logs_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/runs/40404147666/logs",
+        "workflow_id": 397029040
+      },
+      {
+        "id": 40404147565,
+        "name": "WebSocket resource diagnosis",
+        "status": "completed",
+        "conclusion": "success",
+        "run_number": 8,
+        "jobs_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/runs/40404147565/jobs",
+        "logs_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/runs/40404147565/logs",
+        "workflow_id": 396937189
+      },
+      {
+        "id": 40404147487,
+        "name": "Soak post-stop retention",
+        "status": "completed",
+        "conclusion": "success",
+        "run_number": 2,
+        "jobs_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/runs/40404147487/jobs",
+        "logs_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/runs/40404147487/logs",
+        "workflow_id": 397556017
+      },
+      {
+        "id": 40404147693,
+        "name": "Soak allocator provenance",
+        "status": "completed",
+        "conclusion": "failure",
+        "run_number": 4,
+        "jobs_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/runs/40404147693/jobs",
+        "logs_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/runs/40404147693/logs",
+        "workflow_id": 397142914
+      },
+      {
+        "id": 40404147279,
+        "name": "Soak smoke",
+        "status": "completed",
+        "conclusion": "success",
+        "run_number": 10,
+        "jobs_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/runs/40404147279/jobs",
+        "logs_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/runs/40404147279/logs",
+        "workflow_id": 396778155
+      },
+      {
+        "id": 40404147412,
+        "name": "CI",
+        "status": "completed",
+        "conclusion": "success",
+        "run_number": 49,
+        "jobs_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/runs/40404147412/jobs",
+        "logs_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/runs/40404147412/logs",
+        "workflow_id": 395672756
+      }
+    ]
+  },
+  "regular_jobs": {
+    "jobs": [
+      {
+        "id": 121857442114,
+        "name": "check",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40404147412,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run python3 -m unittest discover -s scripts/tests -v",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run go mod download",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Run go mod verify",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Run go mod tidy -diff",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Run go vet ./...",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Run go test ./...",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9
+          },
+          {
+            "name": "Run go test -race ./...",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10
+          },
+          {
+            "name": "Run go build -trimpath -o bin/tunveo ./cmd/tunveo",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11
+          },
+          {
+            "name": "Run ./bin/tunveo version",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12
+          },
+          {
+            "name": "Run ./bin/tunveo help",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          },
+          {
+            "name": "Post Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 25
+          },
+          {
+            "name": "Post Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 26
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 27
+          }
+        ]
+      },
+      {
+        "id": 121857442295,
+        "name": "verification-regression",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40404147412,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run go build -o bin/repro-tls-verify ./scripts/repro_tls_verify",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run mkdir -p artifacts && ./bin/repro-tls-verify > artifacts/tls-verification-regression.json",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Save deterministic regression evidence",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Post Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11
+          },
+          {
+            "name": "Post Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          }
+        ]
+      },
+      {
+        "id": 121857442370,
+        "name": "pool-publication-regression",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40404147412,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run python3 scripts/repro_pool_publication.py --ref HEAD --mode fixed --go go --output artifacts/pool-publication.json",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Save publication schedule evidence",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Post Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9
+          },
+          {
+            "name": "Post Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11
+          }
+        ]
+      },
+      {
+        "id": 121857442430,
+        "name": "tls-identity-regression",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40404147412,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run go test -race -count=10 -run '^TestTLSIdentityAndClientHello$' ./internal/common",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run go build -race -trimpath -o bin/tunveo-race ./cmd/tunveo",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Run python3 scripts/verify_tls_identity.py --binary bin/tunveo-race --go go --artifacts artifacts/identity",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Run python3 scripts/repro_probe_selfecho.py --ref d555c8b969c6ff9c60279a1a74f8d1d0c21e15fb --mode original --output artifacts/identity/selfecho-before.json",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Run python3 scripts/repro_probe_selfecho.py --ref HEAD --mode fixed --output artifacts/identity/selfecho-fixed.json",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9
+          },
+          {
+            "name": "Post Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 17
+          },
+          {
+            "name": "Post Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 18
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 19
+          }
+        ]
+      },
+      {
+        "id": 121857442487,
+        "name": "h2-deadline-regression",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40404147412,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run python3 scripts/repro_h2_deadlines.py --ref HEAD --mode fixed --go go --output artifacts/h2-deadlines.json",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run go test -race -count=10 -run '^Test(DeadlineIO|H2CloseAndCancel)' ./internal/tunnelpool/http2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Save native stream deadline evidence",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Post Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11
+          },
+          {
+            "name": "Post Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          }
+        ]
+      },
+      {
+        "id": 121857442499,
+        "name": "forwarding",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40404147412,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run go build -trimpath -o bin/tunveo ./cmd/tunveo",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run python3 scripts/verify_forwarding.py --binary bin/tunveo --artifacts artifacts/forwarding",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Save forwarding evidence even on failure",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Post Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11
+          },
+          {
+            "name": "Post Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          }
+        ]
+      },
+      {
+        "id": 121857442500,
+        "name": "state-migration-regression",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40404147412,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run go build -trimpath -o bin/tunveo ./cmd/tunveo",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run python3 scripts/verify_state_migration.py --binary bin/tunveo --go go --output artifacts/state-migration.json",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Save state migration evidence",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Post Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11
+          },
+          {
+            "name": "Post Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          }
+        ]
+      },
+      {
+        "id": 121857442525,
+        "name": "tls-modes-regression",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40404147412,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run go build -race -trimpath -o bin/tunveo-race ./cmd/tunveo",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run python3 scripts/verify_forwarding.py --binary bin/tunveo-race --tls 0 --tls 2 --artifacts artifacts/tls-positive",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Run python3 scripts/verify_forwarding.py --binary bin/tunveo-race --tls 2 --reject-tls untrusted-ca --artifacts artifacts/tls-reject-ca",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Run python3 scripts/verify_forwarding.py --binary bin/tunveo-race --tls 2 --reject-tls wrong-hostname --artifacts artifacts/tls-reject-name",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Run python3 scripts/repro_handshake_eof.py --ref 114345043d9608e1e24e783a270cde75193e4f42 --mode original --go go --output artifacts/eof-original.json",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Run python3 scripts/repro_handshake_eof.py --ref HEAD --mode fixed --go go --output artifacts/eof-fixed.json",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9
+          },
+          {
+            "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10
+          },
+          {
+            "name": "Post Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 19
+          },
+          {
+            "name": "Post Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 20
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 21
+          }
+        ]
+      },
+      {
+        "id": 121857442597,
+        "name": "management-boundary-regression",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40404147412,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run python3 scripts/repro_management_boundaries.py --ref HEAD --mode fixed --go go --output artifacts/management-native.json",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run go build -race -trimpath -o bin/tunveo-race ./cmd/tunveo",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Run python3 scripts/verify_management.py --binary bin/tunveo-race --output artifacts/management-process.json",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Save management regression evidence",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Post Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          },
+          {
+            "name": "Post Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 14
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15
+          }
+        ]
+      },
+      {
+        "id": 121857442633,
+        "name": "master-state-lifecycle-regression",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40404147412,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run python3 scripts/repro_master_state.py --ref HEAD --mode fixed --go go --output artifacts/master-state-native.json",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run go build -race -trimpath -o bin/tunveo-race ./cmd/tunveo",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Run python3 scripts/verify_master_lifecycle.py --binary bin/tunveo-race --output artifacts/master-lifecycle.json",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Save master ownership and child lifecycle evidence",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Post Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          },
+          {
+            "name": "Post Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 14
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15
+          }
+        ]
+      },
+      {
+        "id": 121857442643,
+        "name": "vulnerability-scan",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40404147412,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run go install golang.org/x/vuln/cmd/govulncheck@v1.9.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Scan reachable vulnerabilities",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Save vulnerability scan evidence",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Post Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11
+          },
+          {
+            "name": "Post Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          }
+        ]
+      },
+      {
+        "id": 121857442658,
+        "name": "lifecycle-regression",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40404147412,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run python3 scripts/repro_pool_lifecycle.py --ref HEAD --mode fixed --go go --output artifacts/pool-lifecycle.json",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run go build -race -trimpath -o bin/tunveo-race ./cmd/tunveo",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Run python3 scripts/verify_reconnect.py --binary bin/tunveo-race --artifacts artifacts/reconnect",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Save lifecycle and reconnect evidence",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Post Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          },
+          {
+            "name": "Post Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 14
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15
+          }
+        ]
+      },
+      {
+        "id": 121857442763,
+        "name": "lifecycle-100 (2)",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40404147412,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run go build -race -trimpath -o bin/lifecycle100-race ./scripts/lifecycle100",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run python3 scripts/verify_lifecycle100.py --binary bin/lifecycle100-race --transport 2 --artifacts artifacts/lifecycle-100",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Run python3 scripts/repro_quic_close.py --ref 89292ba58eeb8ffd356a2b37edb689666d1ab237 --mode original --go go --repeat 10 --output artifacts/quic-close-before.json",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 6
+          },
+          {
+            "name": "Run python3 scripts/repro_quic_close.py --ref HEAD --mode fixed --go go --repeat 100 --output artifacts/quic-close-fixed.json",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 7
+          },
+          {
+            "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Post Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15
+          },
+          {
+            "name": "Post Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 16
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 17
+          }
+        ]
+      },
+      {
+        "id": 121857442797,
+        "name": "security-regression",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40404147412,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run go build -trimpath -o bin/tunveo ./cmd/tunveo",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run python3 scripts/verify_security.py --binary bin/tunveo --output artifacts/security.json",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Run python3 scripts/verify_reload_interval.py --binary bin/tunveo --output artifacts/reload-interval.json",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Save security regression summary",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Post Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          },
+          {
+            "name": "Post Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 14
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15
+          }
+        ]
+      },
+      {
+        "id": 121857442815,
+        "name": "container-smoke",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40404147412,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run docker build --build-arg VERSION=integration-4eca0f8baeddbfa3aa26253053072eb1007fcfeb -t tunveo-integration .",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run python3 scripts/verify_container.py --image tunveo-integration --output artifacts/container.json",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run cat artifacts/container.json",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Post Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          }
+        ]
+      },
+      {
+        "id": 121857442886,
+        "name": "lifecycle-100 (1)",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40404147412,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run go build -race -trimpath -o bin/lifecycle100-race ./scripts/lifecycle100",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run python3 scripts/verify_lifecycle100.py --binary bin/lifecycle100-race --transport 1 --artifacts artifacts/lifecycle-100",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Run python3 scripts/repro_quic_close.py --ref 89292ba58eeb8ffd356a2b37edb689666d1ab237 --mode original --go go --repeat 10 --output artifacts/quic-close-before.json",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Run python3 scripts/repro_quic_close.py --ref HEAD --mode fixed --go go --repeat 100 --output artifacts/quic-close-fixed.json",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Post Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15
+          },
+          {
+            "name": "Post Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 16
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 17
+          }
+        ]
+      },
+      {
+        "id": 121857442939,
+        "name": "release-snapshot",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40404147412,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run goreleaser/goreleaser-action@v6.4.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run goreleaser/goreleaser-action@v6.4.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Run python3 scripts/verify_release_archives.py --dist dist --output artifacts/release-archives.json",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Run python3 scripts/check_release_readiness.py --report > artifacts/release-readiness.json",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Run cat artifacts/release-archives.json artifacts/release-readiness.json",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9
+          },
+          {
+            "name": "Post Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 17
+          },
+          {
+            "name": "Post Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 18
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 19
+          }
+        ]
+      },
+      {
+        "id": 121857442940,
+        "name": "lifecycle-100 (0)",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40404147412,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run go build -race -trimpath -o bin/lifecycle100-race ./scripts/lifecycle100",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run python3 scripts/verify_lifecycle100.py --binary bin/lifecycle100-race --transport 0 --artifacts artifacts/lifecycle-100",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Run python3 scripts/repro_quic_close.py --ref 89292ba58eeb8ffd356a2b37edb689666d1ab237 --mode original --go go --repeat 10 --output artifacts/quic-close-before.json",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 6
+          },
+          {
+            "name": "Run python3 scripts/repro_quic_close.py --ref HEAD --mode fixed --go go --repeat 100 --output artifacts/quic-close-fixed.json",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 7
+          },
+          {
+            "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Post Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15
+          },
+          {
+            "name": "Post Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 16
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 17
+          }
+        ]
+      },
+      {
+        "id": 121857443085,
+        "name": "lifecycle-100 (3)",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40404147412,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run go build -race -trimpath -o bin/lifecycle100-race ./scripts/lifecycle100",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run python3 scripts/verify_lifecycle100.py --binary bin/lifecycle100-race --transport 3 --artifacts artifacts/lifecycle-100",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Run python3 scripts/repro_quic_close.py --ref 89292ba58eeb8ffd356a2b37edb689666d1ab237 --mode original --go go --repeat 10 --output artifacts/quic-close-before.json",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 6
+          },
+          {
+            "name": "Run python3 scripts/repro_quic_close.py --ref HEAD --mode fixed --go go --repeat 100 --output artifacts/quic-close-fixed.json",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 7
+          },
+          {
+            "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Post Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15
+          },
+          {
+            "name": "Post Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 16
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 17
+          }
+        ]
+      }
+    ]
+  },
+  "smoke_jobs": {
+    "jobs": [
+      {
+        "id": 121857441198,
+        "name": "verifier",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40404147279,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run python3 -m unittest discover -s scripts/tests -p '*soak.py' -v",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run go test -race ./scripts/soak24h",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Run python3 scripts/repro_soak_fixture_fds.py --ref be1be779c87c84ddae7a4aba0d9173fa1b0d5d33 --mode original --go go --repeat 10 --output artifacts/soak-fixture-before.json",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Run python3 scripts/repro_soak_fixture_fds.py --ref HEAD --mode fixed --go go --repeat 10 --output artifacts/soak-fixture-fixed.json",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Run go build -trimpath -o bin/soak24h ./scripts/soak24h",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Validate ordinary-build preflight without starting 24h",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9
+          },
+          {
+            "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10
+          },
+          {
+            "name": "Post Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 19
+          },
+          {
+            "name": "Post Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 20
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 21
+          }
+        ]
+      },
+      {
+        "id": 121857967891,
+        "name": "pilot (1, 1)",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40404147279,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run go build -race -trimpath -o bin/soak24h-race ./scripts/soak24h",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run python3 scripts/verify_soak.py --binary bin/soak24h-race --transport 1 --mode 1 --pilot --duration-seconds 60 --warmup-seconds 12 --sample-seconds 5 --pool-min 16 --pool-max 64 --workers 2 --qps 10 --artifacts artifacts/soak-pilot",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Post Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11
+          },
+          {
+            "name": "Post Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          }
+        ]
+      },
+      {
+        "id": 121857967895,
+        "name": "pilot (2, 1)",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40404147279,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run go build -race -trimpath -o bin/soak24h-race ./scripts/soak24h",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run python3 scripts/verify_soak.py --binary bin/soak24h-race --transport 2 --mode 1 --pilot --duration-seconds 60 --warmup-seconds 12 --sample-seconds 5 --pool-min 16 --pool-max 64 --workers 2 --qps 10 --artifacts artifacts/soak-pilot",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Post Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11
+          },
+          {
+            "name": "Post Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          }
+        ]
+      },
+      {
+        "id": 121857967900,
+        "name": "pilot (2, 2)",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40404147279,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run go build -race -trimpath -o bin/soak24h-race ./scripts/soak24h",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run python3 scripts/verify_soak.py --binary bin/soak24h-race --transport 2 --mode 2 --pilot --duration-seconds 60 --warmup-seconds 12 --sample-seconds 5 --pool-min 16 --pool-max 64 --workers 2 --qps 10 --artifacts artifacts/soak-pilot",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Post Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11
+          },
+          {
+            "name": "Post Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          }
+        ]
+      },
+      {
+        "id": 121857967906,
+        "name": "pilot (3, 2)",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40404147279,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run go build -race -trimpath -o bin/soak24h-race ./scripts/soak24h",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run python3 scripts/verify_soak.py --binary bin/soak24h-race --transport 3 --mode 2 --pilot --duration-seconds 60 --warmup-seconds 12 --sample-seconds 5 --pool-min 16 --pool-max 64 --workers 2 --qps 10 --artifacts artifacts/soak-pilot",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Post Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11
+          },
+          {
+            "name": "Post Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          }
+        ]
+      },
+      {
+        "id": 121857967923,
+        "name": "pilot (3, 1)",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40404147279,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run go build -race -trimpath -o bin/soak24h-race ./scripts/soak24h",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run python3 scripts/verify_soak.py --binary bin/soak24h-race --transport 3 --mode 1 --pilot --duration-seconds 60 --warmup-seconds 12 --sample-seconds 5 --pool-min 16 --pool-max 64 --workers 2 --qps 10 --artifacts artifacts/soak-pilot",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Post Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11
+          },
+          {
+            "name": "Post Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          }
+        ]
+      },
+      {
+        "id": 121857967937,
+        "name": "pilot (1, 2)",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40404147279,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run go build -race -trimpath -o bin/soak24h-race ./scripts/soak24h",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run python3 scripts/verify_soak.py --binary bin/soak24h-race --transport 1 --mode 2 --pilot --duration-seconds 60 --warmup-seconds 12 --sample-seconds 5 --pool-min 16 --pool-max 64 --workers 2 --qps 10 --artifacts artifacts/soak-pilot",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Post Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11
+          },
+          {
+            "name": "Post Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          }
+        ]
+      },
+      {
+        "id": 121857967957,
+        "name": "pilot (0, 1)",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40404147279,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run go build -race -trimpath -o bin/soak24h-race ./scripts/soak24h",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run python3 scripts/verify_soak.py --binary bin/soak24h-race --transport 0 --mode 1 --pilot --duration-seconds 60 --warmup-seconds 12 --sample-seconds 5 --pool-min 16 --pool-max 64 --workers 2 --qps 10 --artifacts artifacts/soak-pilot",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Post Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11
+          },
+          {
+            "name": "Post Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          }
+        ]
+      },
+      {
+        "id": 121857968037,
+        "name": "pilot (0, 2)",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40404147279,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run go build -race -trimpath -o bin/soak24h-race ./scripts/soak24h",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run python3 scripts/verify_soak.py --binary bin/soak24h-race --transport 0 --mode 2 --pilot --duration-seconds 60 --warmup-seconds 12 --sample-seconds 5 --pool-min 16 --pool-max 64 --workers 2 --qps 10 --artifacts artifacts/soak-pilot",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Post Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11
+          },
+          {
+            "name": "Post Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          }
+        ]
+      }
+    ]
+  },
+  "allocator_jobs": {
+    "jobs": [
+      {
+        "id": 121857443319,
+        "name": "allocator (race)",
+        "status": "completed",
+        "conclusion": "failure",
+        "run_id": 40404147693,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Ensure strace stack unwinding is available",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run python3 -m unittest discover -s scripts/tests",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Build unchanged Go probe and known allocation control",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Known allocation with mmap call stacks",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Preserve traced pilot and untraced three-minute pilot separately",
+            "status": "completed",
+            "conclusion": "failure",
+            "number": 8
+          },
+          {
+            "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9
+          },
+          {
+            "name": "Post Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 17
+          },
+          {
+            "name": "Post Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 18
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 19
+          }
+        ]
+      },
+      {
+        "id": 121857443756,
+        "name": "allocator (ordinary)",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40404147693,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Ensure strace stack unwinding is available",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run python3 -m unittest discover -s scripts/tests",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Build unchanged Go probe and known allocation control",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Known allocation with mmap call stacks",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Preserve traced pilot and untraced three-minute pilot separately",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9
+          },
+          {
+            "name": "Post Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 17
+          },
+          {
+            "name": "Post Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 18
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 19
+          }
+        ]
+      }
+    ]
+  },
+  "retention_jobs": {
+    "jobs": [
+      {
+        "id": 121857441554,
+        "name": "retention (race)",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40404147487,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run python3 -m unittest discover -s scripts/tests",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Go regression and real released-allocation calibration",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Original180s pilot then separate120s GC-sampled stop observation and Go-scavenge",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Post Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          },
+          {
+            "name": "Post Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 14
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15
+          }
+        ]
+      },
+      {
+        "id": 121857442228,
+        "name": "retention (ordinary)",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40404147487,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run python3 -m unittest discover -s scripts/tests",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Go regression and real released-allocation calibration",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Original180s pilot then separate120s GC-sampled stop observation and Go-scavenge",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Post Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          },
+          {
+            "name": "Post Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 14
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15
+          }
+        ]
+      }
+    ]
+  }
+}
