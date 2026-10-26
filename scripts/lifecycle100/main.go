@@ -238,14 +238,44 @@ func (f *fixture) close() {
 	f.conns.Range(func(k, v any) bool { k.(net.Conn).Close(); return true })
 	f.wg.Wait()
 }
-func unusedPort() (int, error) {
-	l, e := net.Listen("tcp", "127.0.0.1:0")
-	if e != nil {
-		return 0, e
+
+// Reserve TCP and UDP for both roles concurrently. Opening and immediately
+// closing two :0 listeners can return the same port twice.
+func reservePorts() (front, tunnel int, release func(), err error) {
+	var held []io.Closer
+	release = func() {
+		for _, c := range held {
+			c.Close()
+		}
 	}
-	defer l.Close()
-	return l.Addr().(*net.TCPAddr).Port, nil
+	defer func() {
+		if err != nil {
+			release()
+		}
+	}()
+	for i := 0; i < 2; i++ {
+		var l net.Listener
+		l, err = net.Listen("tcp", "127.0.0.1:0")
+		if err != nil {
+			return
+		}
+		held = append(held, l)
+		port := l.Addr().(*net.TCPAddr).Port
+		var u *net.UDPConn
+		u, err = net.ListenUDP("udp", &net.UDPAddr{IP: net.IPv4(127, 0, 0, 1), Port: port})
+		if err != nil {
+			return
+		}
+		held = append(held, u)
+		if i == 0 {
+			front = port
+		} else {
+			tunnel = port
+		}
+	}
+	return
 }
+
 func echo(port int, udp bool) (exchange, error) {
 	proto := "tcp"
 	size := 32768
@@ -353,16 +383,12 @@ func (r *runner) fresh(mode, n int) (row cycle) {
 	row.Number = n
 	start := time.Now()
 	defer func() { row.Duration = time.Since(start).Seconds() }()
-	front, e := unusedPort()
+	front, tunnel, release, e := reservePorts()
 	if e != nil {
 		row.Error = e.Error()
 		return
 	}
-	tunnel, e := unusedPort()
-	if e != nil {
-		row.Error = e.Error()
-		return
-	}
+	release()
 	su, cu := r.urls(mode, front, tunnel)
 	v := r.o.verified.Load() + 2
 	s, e := r.server(su)
@@ -425,16 +451,14 @@ func (r *runner) runScenario(kind string, mode, cycles, warmup int, checkpoint f
 	}
 	if kind == "replace-server" {
 		var e error
-		front, e = unusedPort()
+		var tunnel int
+		var release func()
+		front, tunnel, release, e = reservePorts()
 		if e != nil {
 			out.Error = e.Error()
 			return
 		}
-		tunnel, e := unusedPort()
-		if e != nil {
-			out.Error = e.Error()
-			return
-		}
+		release()
 		var cu *url.URL
 		su, cu = r.urls(mode, front, tunnel)
 		v := r.o.verified.Load() + 2
