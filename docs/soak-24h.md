@@ -52,3 +52,19 @@ python3 scripts/summarize_soak.py --artifacts artifacts/soak-full --output artif
 开发首轮2:8小池、10QPS、2worker未达到声明负载，预热期出现调度丢弃，保留两个原始失败；它们是独立容量场景，不作为16:64候选结果。随后20秒8组试跑业务均成功（各150TCP/50UDP），但以首个稳态样本为基线时，TCP/WS四组FD检查失败：采样可见连接池补充期间的周期变化。改用上述多点预热上界，原增量预算不变，且要求足够预热样本；四组失败不重新涂绿，使用新策略和足够预热重新运行。
 
 已完成的本地开发试跑8/8通过，每组20秒、200次业务交换；该阶段为工作区开发构建，规范源码CI结果及原始证据在完成后另行记录。所有中间失败保留，生产源码未因此作修改，后续真实24小时仍需检查H2堆与RSS趋势。
+
+
+## TNV-018：回显夹具的splice FD污染
+
+首次规范源码be1be779的常规CI19/19通过，Soak smoke8/9成功。H2 mode1的600次交换全部成功、正常回收，但某次FD49超过预热上界31+16，因此验证器正确保持失败；该报告不以重跑成功覆盖。其余七组通过。
+
+调查发现同进程TCP回显夹具使用`io.Copy(TCPConn,TCPConn)`，Go1.26.10的Linux实现会租用/缓存splice管道。夹具和引擎共用进程，管道会进入`/proc/self/fd`计数。独立原生四连接子进程对照，原始复制分支每轮稳定增加8个pipeFD；初版夹具10/10出现同样额外FD，修正后10/10无新增pipeFD。修正只在测试回显端隐藏ReaderFrom/WriterTo并使用32KiB显式缓冲复制，生产源码、全量FD计数方法和所有预算不变。
+
+原CI没有保存FD类型清单，不能断言那一次49FD全部来自splice；原始失败及归因限制继续保留。独立机制已证明并隔离，随后在修正夹具上重新执行完整短时矩阵。对之前H2 GC堆样本也不作未经证明的统一解释；真正24小时仍待执行。
+
+报告统计同进程整体（引擎、负载驱动、计量及回显夹具），不是独立产品进程的性能指标。消除夹具的缓存pipeFD，使计量更能反映当前候选场景；不从总数中扣除或忽略任何FD类别。
+
+```sh
+python3 scripts/repro_soak_fixture_fds.py --ref be1be779c87c84ddae7a4aba0d9173fa1b0d5d33 --mode original --go go --repeat 10 --output artifacts/fixture-before.json
+python3 scripts/repro_soak_fixture_fds.py --ref HEAD --mode fixed --go go --repeat 10 --output artifacts/fixture-fixed.json
+```

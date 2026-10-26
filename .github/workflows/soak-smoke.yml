@@ -19,11 +19,15 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v6.0.2
+        with:
+          fetch-depth: 0
       - uses: actions/setup-go@v6.1.0
         with:
           go-version-file: go.mod
       - run: python3 -m unittest discover -s scripts/tests -p test_verify_soak.py -v
       - run: go test -race ./scripts/soak24h
+      - run: python3 scripts/repro_soak_fixture_fds.py --ref be1be779c87c84ddae7a4aba0d9173fa1b0d5d33 --mode original --go go --repeat 10 --output artifacts/soak-fixture-before.json
+      - run: python3 scripts/repro_soak_fixture_fds.py --ref HEAD --mode fixed --go go --repeat 10 --output artifacts/soak-fixture-fixed.json
       - run: go build -trimpath -o bin/soak24h ./scripts/soak24h
       - name: Validate ordinary-build preflight without starting 24h
         run: |
@@ -48,6 +52,8 @@ jobs:
         mode: [1, 2]
     steps:
       - uses: actions/checkout@v6.0.2
+        with:
+          fetch-depth: 0
       - uses: actions/setup-go@v6.1.0
         with:
           go-version-file: go.mod

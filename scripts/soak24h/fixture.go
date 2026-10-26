@@ -165,7 +165,13 @@ func newFixture() (*fixture, error) {
 				return
 			}
 			f.conns.Store(c, true)
-			f.wg.Go(func() { defer f.conns.Delete(c); defer c.Close(); io.Copy(c, c) })
+			f.wg.Go(func() {
+				defer f.conns.Delete(c)
+				defer c.Close()
+				// Hide TCPConn's ReaderFrom/WriterTo so the target fixture cannot add
+				// Linux splice-pool pipe FDs to the tunnel resource measurement.
+				io.CopyBuffer(struct{ io.Writer }{c}, struct{ io.Reader }{c}, make([]byte, 32*1024))
+			})
 		}
 	})
 	f.wg.Go(func() {
