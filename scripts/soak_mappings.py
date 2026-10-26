@@ -116,7 +116,9 @@ def capture(a):
            '--pool-max', '64', '--workers', '2', '--qps', '10', '--artifacts', str(a.artifacts/'pilot')]
     if a.post_stop_observe_seconds:
         cmd += ['--post-stop-observe-seconds',str(a.post_stop_observe_seconds)]
-    if a.diagnostic_go_scavenge:cmd.append('--diagnostic-go-scavenge')
+    if a.diagnostic_go_scavenge:
+        cmd.append('--diagnostic-go-scavenge')
+        if a.post_stop_observe_seconds:cmd.append('--post-stop-observer-ack')
     seen = set()
     identity = None
     with (a.artifacts/'driver.log').open('w') as log:
@@ -146,6 +148,12 @@ def capture(a):
                             snap.update(phase=p['phase'],at_seconds=p['at_seconds'],checkpoint_age_seconds=(snap['read_started_ns']-mtime)/1e9,point_statm_rss=p['resources']['rss'])
                             if field=='post_stop_observation':snap['load_evidence_sha256']=load_evidence_hash(report)
                             evidence['samples'].append(snap);seen.add(key)
+                            if field=='post_stop_observation' and p['phase']=='poststop_gc' and report['settings'].get('post_stop_observer_ack') and p['at_seconds']>=report['settings']['post_stop_observe_seconds']:
+                                if not 0<=snap['checkpoint_age_seconds']<=.1 or (snap['read_finished_ns']-snap['read_started_ns'])/1e9>.1:raise ValueError('pre-scavenge mapping not timely; no acknowledgment')
+                                ack=report_path.parent/'post-stop-observer-ack.json'
+                                temp=ack.with_suffix('.tmp')
+                                temp.write_text(json.dumps({'phase':p['phase'],'at_seconds':p['at_seconds'],'mapping_sha256':snap['sha256'],'load_evidence_sha256':snap['load_evidence_sha256']}))
+                                temp.replace(ack)
                 except (FileNotFoundError, ProcessLookupError, json.JSONDecodeError, KeyError):
                     pass  # startup/final exit races; audit requires every load checkpoint
                 except (ValueError, PermissionError) as e:

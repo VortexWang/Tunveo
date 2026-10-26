@@ -420,6 +420,7 @@ func main() {
 	qps := flag.Int("qps", 10, "aggregate offered requests/second,1..50")
 	folder := flag.String("artifacts", "", "new output directory")
 	postStop := flag.Duration("post-stop-observe", 0, "diagnostic GC-sampled interval after cleanup; pilot only")
+	observerAck := flag.Bool("post-stop-observer-ack", false, "require external pre-scavenge mapping acknowledgment")
 	goScavenge := flag.Bool("diagnostic-go-scavenge", false, "after observation, call FreeOSMemory once; pilot only")
 	flag.Parse()
 	if *describe {
@@ -430,7 +431,7 @@ func main() {
 		json.NewEncoder(os.Stdout).Encode(map[string]any{"build_info": info, "go_version": runtime.Version(), "goos": runtime.GOOS, "goarch": runtime.GOARCH})
 		return
 	}
-	if *postStop < 0 || *postStop > 10*time.Minute || (*postStop > 0 && *postStop < 5*time.Second) || (*goScavenge && *postStop == 0) || (*postStop > 0 && *duration >= 24*time.Hour) || *poolMin < 1 || *poolMax < *poolMin || *poolMax > 4096 || *transport < 0 || *transport > 3 || (*mode != 1 && *mode != 2) || *duration < time.Second || *duration > 72*time.Hour || *warmup < time.Second || *interval < time.Second || *interval > time.Minute || *workers < 1 || *workers > 2 || *qps < 1 || *qps > 50 || *folder == "" {
+	if (*observerAck && (!*goScavenge || *postStop == 0)) || *postStop < 0 || *postStop > 10*time.Minute || (*postStop > 0 && *postStop < 5*time.Second) || (*goScavenge && *postStop == 0) || (*postStop > 0 && *duration >= 24*time.Hour) || *poolMin < 1 || *poolMax < *poolMin || *poolMax > 4096 || *transport < 0 || *transport > 3 || (*mode != 1 && *mode != 2) || *duration < time.Second || *duration > 72*time.Hour || *warmup < time.Second || *interval < time.Second || *interval > time.Minute || *workers < 1 || *workers > 2 || *qps < 1 || *qps > 50 || *folder == "" {
 		fmt.Fprintln(os.Stderr, "invalid soak settings")
 		os.Exit(2)
 	}
@@ -461,6 +462,7 @@ func main() {
 	}
 	r.Settings["post_stop_observe_seconds"] = postStop.Seconds()
 	r.Settings["diagnostic_go_scavenge"] = *goScavenge
+	r.Settings["post_stop_observer_ack"] = *observerAck
 	path := filepath.Join(*folder, "report.json")
 	checkpoint := func() error { return writeResult(path, r) }
 	if e := checkpoint(); e != nil {
@@ -561,7 +563,13 @@ func main() {
 	r.Settings["observed_verifications"] = o.verified.Load()
 	r.Settings["observed_restarts"] = o.restarts.Load()
 	if failure == nil && *postStop > 0 {
-		if e = observeRetention(r, *postStop, 5*time.Second, *goScavenge, checkpoint); e != nil {
+		var beforeScavenge func(retentionPoint) error
+		if *observerAck {
+			beforeScavenge = func(p retentionPoint) error {
+				return waitRetentionObserverAck(filepath.Join(*folder, "post-stop-observer-ack.json"), p, 5*time.Second)
+			}
+		}
+		if e = observeRetention(r, *postStop, 5*time.Second, *goScavenge, checkpoint, beforeScavenge); e != nil {
 			failure = e
 		}
 	}

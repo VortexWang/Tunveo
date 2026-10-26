@@ -34,7 +34,7 @@ def validate_build(info):
          'formal source checkout must be identifiable and unmodified')
 
 def validate_report(r, pilot):
-    need(pilot or (not r['settings'].get('post_stop_observe_seconds', 0) and not r['settings'].get('diagnostic_go_scavenge', False) and not r.get('post_stop_observation')), 'post-stop experiments cannot qualify as formal soak')
+    need(pilot or (not r['settings'].get('post_stop_observe_seconds', 0) and not r['settings'].get('diagnostic_go_scavenge', False) and not r.get('post_stop_observation') and not r['settings'].get('post_stop_observer_ack',False)), 'post-stop experiments cannot qualify as formal soak')
     need(r['schema_version'] == 1 and r['status'] == 'passed' and not r.get('error'), 'probe did not pass')
     s = r['settings']
     need(r['transport'] in range(4) and r['mode'] in (1, 2), 'invalid profile')
@@ -144,13 +144,16 @@ def main():
     p.add_argument('--goroutine-diagnostics', action='store_true', help='bounded local stack capture; diagnostic run, not canonical acceptance')
     p.add_argument('--post-stop-observe-seconds', type=float, default=0)
     p.add_argument('--diagnostic-go-scavenge', action='store_true')
+    p.add_argument('--post-stop-observer-ack',action='store_true')
     p.add_argument('--pilot', action='store_true', help='short run, categorically ineligible for the 24h gate')
     p.add_argument('--artifacts', type=Path, required=True)
     a = p.parse_args()
     if not math.isfinite(a.post_stop_observe_seconds) or a.post_stop_observe_seconds < 0 or a.post_stop_observe_seconds > 600 or (0 < a.post_stop_observe_seconds < 5):
         p.error('post-stop observation must be zero or5..600seconds')
-    if (a.post_stop_observe_seconds or a.diagnostic_go_scavenge) and not a.pilot:
+    if (a.post_stop_observe_seconds or a.diagnostic_go_scavenge or a.post_stop_observer_ack) and not a.pilot:
         p.error('post-stop experiments require --pilot')
+    if a.post_stop_observer_ack and not (a.post_stop_observe_seconds and a.diagnostic_go_scavenge):
+        p.error('observer acknowledgment requires post-stop Go-scavenge experiment')
     if a.diagnostic_go_scavenge and not a.post_stop_observe_seconds:
         p.error('Go scavenging requires a separate post-stop observation')
     if a.goroutine_diagnostics and not a.pilot:
@@ -195,6 +198,8 @@ def main():
         summary['post_stop_observe_seconds'] = a.post_stop_observe_seconds
     if a.diagnostic_go_scavenge:
         command.append('--diagnostic-go-scavenge')
+    if a.post_stop_observer_ack:
+        command.append('--post-stop-observer-ack')
     if a.goroutine_diagnostics:
         command.append('--goroutine-diagnostics')
         summary['goroutine_diagnostics'] = True

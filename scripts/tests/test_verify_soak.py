@@ -52,6 +52,7 @@ class SoakEvidenceTests(unittest.TestCase):
     def test_post_stop_diagnostics_cannot_qualify_as_formal(self):
         for change in (lambda r:r['settings'].update(post_stop_observe_seconds=120),
                        lambda r:r['settings'].update(diagnostic_go_scavenge=True),
+                       lambda r:r['settings'].update(post_stop_observer_ack=True),
                        lambda r:r.update(post_stop_observation=[{'phase':'poststop_go_scavenge'}])):
             r=fixture();change(r)
             with self.assertRaises(ValueError):soak.validate_report(r,False)

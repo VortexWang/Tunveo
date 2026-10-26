@@ -44,6 +44,12 @@ def audit(folder):
         record=records[mappings.point_key(p)]
         if record.get('load_evidence_sha256')!=evidence_hash:
             raise ValueError('load envelope or original after_stop was rewritten')
+    handshake=None
+    if r['settings'].get('post_stop_observer_ack'):
+        handshake=json.loads((folder/'pilot/native/post-stop-observer-ack.json').read_text())
+        record=records[mappings.point_key(gc[-1])]
+        if (handshake['phase'],handshake['at_seconds'])!=mappings.point_key(gc[-1]) or handshake['mapping_sha256']!=record['sha256'] or handshake['load_evidence_sha256']!=evidence_hash:
+            raise ValueError('observer acknowledgment does not match completed pre-scavenge evidence')
     indices=[gc[0],gc[-1]]+scavenged
     selected=[]
     for p in indices:
@@ -65,7 +71,7 @@ def audit(folder):
                     heap_alloc=b['heap_alloc']-a['heap_alloc'],groups_rss_bytes={k:b['groups_rss_bytes'].get(k,0)-a['groups_rss_bytes'].get(k,0) for k in sorted(a['groups_rss_bytes'].keys()|b['groups_rss_bytes'].keys())})
     return dict(active_acceptance=original['status'],active_error=original['error'],active_rss_delta=original['statm_rss_delta'],
                 audited_events=original['audited_events'],load_evidence_sha256=evidence_hash,
-                gc_sampled_seconds=gc[-1]['at_seconds'],gc_samples=len(gc),selected=selected,
+                observer_acknowledgment=handshake,gc_sampled_seconds=gc[-1]['at_seconds'],gc_samples=len(gc),selected=selected,
                 gc_window_delta=delta(selected[0],selected[1]),
                 go_scavenge_delta=delta(selected[1],selected[2]) if scavenged else None,
                 scope='post-stop repeatedGC observation, then explicit Go-scavenge; separate clocks/reads, not natural idle; never rewrites active envelope, after_stop, budgets, or failed result')
