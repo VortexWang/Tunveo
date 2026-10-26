@@ -1,4 +1,4 @@
-import json,sys,tempfile,unittest
+import json,sys,tempfile,unittest,shlex
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).parents[1]))
 import soak_gdb_callers as c
@@ -28,6 +28,11 @@ class GDBCallerTests(unittest.TestCase):
   self.assertEqual(self.audit([self.entry(),self.returned()])['rows'][0]['caller_category'],'race_runtime_other')
   self.assertEqual(self.audit([self.entry('__sanitizer::internal_mmap\n__tsan::TraceSwitchPart'),self.returned()])['rows'][0]['caller_category'],'race_trace')
   self.assertEqual(self.audit([self.entry('??\nCannot access memory'),self.returned()])['rows'][0]['caller_category'],'unresolved')
+ def test_gdb_run_redirection_preserves_all_probe_arguments(self):
+  args=['--duration','60s','--warmup','12s','--artifacts','/tmp/a b/native']
+  tokens=shlex.split(c.run_command(args,Path('/tmp/a b')))
+  self.assertEqual(tokens[:1+len(args)],['run']+args)
+  self.assertIn('>/tmp/a b/native-stdout.log',tokens)
  def test_nonzero_or_partial_execution_is_rejected(self):
   for state in ({'entry_calls':1,'returns':1,'exit_code':1},{'entry_calls':2,'returns':1,'exit_code':0}):
    with self.assertRaises(ValueError):self.audit([self.entry(),self.returned()],state)

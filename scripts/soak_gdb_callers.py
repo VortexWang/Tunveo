@@ -6,6 +6,7 @@ import json
 import os
 from pathlib import Path
 import re
+import shlex
 import subprocess
 import sys
 import audit_soak_allocations as alloc
@@ -59,10 +60,14 @@ def read_calls(folder):
             'scope':'cumulative successful virtual requests, not live mappings or RSS; no unmap/reuse ledger; missing/unknown frames never guessed'}
 
 
+def run_command(args,folder):
+    return 'run '+shlex.join(args)+' >'+shlex.quote(str(folder/'native-stdout.log'))+' 2>'+shlex.quote(str(folder/'native-stderr.log'))+' < /dev/null'
+
+
 def launch(binary,folder,symbol,args):
     folder.mkdir(parents=True,exist_ok=False)
     address,nm=symbol_address(binary,symbol)
-    dump(folder/'gdb-config.json',{'entry_symbol':symbol,'entry_address':address,'binary_sha256':hashlib.sha256(binary.read_bytes()).hexdigest()})
+    dump(folder/'gdb-config.json',{'entry_symbol':symbol,'entry_address':address,'binary_sha256':hashlib.sha256(binary.read_bytes()).hexdigest(),'inferior_arguments':args,'run_command':run_command(args,folder.resolve())})
     (folder/'binary-symbols.txt').write_text(nm)
     env=dict(os.environ);env['TUNVEO_GDB_OUTPUT']=str(folder.resolve())
     cmd=['gdb','--batch','--nx','-x',str(ROOT/'gdb_mmap.py'),'--args',str(binary),*args]

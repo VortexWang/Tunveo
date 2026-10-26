@@ -59,8 +59,7 @@ gdb.events.exited.connect(exited)
 # nm records the symbol and exact address before GDB starts. No inferred offset.
 Entered('*0x'+format(config['entry_address'],'x'),internal=True)
 try:
-    gdb.execute('run >'+shlex.quote(str(folder/'native-stdout.log'))+
-                ' 2>'+shlex.quote(str(folder/'native-stderr.log'))+' < /dev/null')
+    gdb.execute(config['run_command'])
 finally:
     stream.close()
     (folder/'gdb-result.json').write_text(json.dumps(state,indent=2)+'\n')
