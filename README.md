@@ -82,3 +82,5 @@ Integrated acceptance, packaging checks and remaining release gates: [current st
 TLS modes, certificate rejection controls and HTTP/2 mode-0 behavior: [TNV-014 and acceptance matrix](docs/tls-support-matrix.md).
 
 Default/explicit TLS identities and expired-leaf rejection: [TNV-015](docs/tls-identity.md).
+
+QUIC address release and hundred-cycle resource acceptance: [TNV-017](docs/lifecycle-100.md).
