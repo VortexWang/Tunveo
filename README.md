@@ -84,3 +84,5 @@ TLS modes, certificate rejection controls and HTTP/2 mode-0 behavior: [TNV-014 a
 Default/explicit TLS identities and expired-leaf rejection: [TNV-015](docs/tls-identity.md).
 
 QUIC address release and hundred-cycle resource acceptance: [TNV-017](docs/lifecycle-100.md).
+
+Continuous-load probe and separate short-pilot/24-hour admission: [soak tooling](docs/soak-24h.md).
