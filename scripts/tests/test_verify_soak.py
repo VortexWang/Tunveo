@@ -136,3 +136,16 @@ class SoakEvidenceTests(unittest.TestCase):
         for info in ('', valid.replace('false','true'), valid+'\nbuild\t-race=true', 'vcs.revision=abc'):
             with self.assertRaises(ValueError):
                 soak.validate_build(info)
+
+
+class DiagnosticAdmissionTests(unittest.TestCase):
+    def test_formal_diagnostic_run_rejected_before_output_or_process(self):
+        import subprocess
+        with tempfile.TemporaryDirectory() as folder:
+            output = Path(folder) / 'must-not-exist'
+            run = subprocess.run(['python3', str(Path(soak.__file__)),
+                '--binary', '/missing/probe', '--transport', '2', '--mode', '2',
+                '--goroutine-diagnostics', '--artifacts', str(output)], capture_output=True, text=True)
+            self.assertEqual(run.returncode, 2)
+            self.assertIn('diagnostics require --pilot', run.stderr)
+            self.assertFalse(output.exists())

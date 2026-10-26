@@ -1,0 +1,55 @@
+name: WebSocket resource diagnosis
+on:
+  pull_request:
+    paths:
+      - 'scripts/soak24h/**'
+      - 'scripts/verify_soak.py'
+      - '.github/workflows/ws-diagnostics.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  ws-mode2:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        probe: [baseline, diagnostic]
+    steps:
+      - uses: actions/checkout@v6.0.2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-go@v6.1.0
+        with:
+          go-version-file: go.mod
+      - name: Build immutable original or instrumented probe
+        env:
+          PROBE: ${{ matrix.probe }}
+        run: |
+          mkdir -p bin artifacts
+          if [ "$PROBE" = baseline ]; then
+            git worktree add --detach "$RUNNER_TEMP/ws-baseline" ee3b813d83564629e3a4b3ccc0eba21eee6d16f4
+            (cd "$RUNNER_TEMP/ws-baseline" && go build -race -trimpath -o "$GITHUB_WORKSPACE/bin/probe" ./scripts/soak24h)
+          else
+            go build -race -trimpath -o bin/probe ./scripts/soak24h
+          fi
+          ./bin/probe --describe > artifacts/build.json
+          sha256sum bin/probe > artifacts/binary.sha256
+      - name: Three independent fixed-load windows, preserve every failure
+        env:
+          PROBE: ${{ matrix.probe }}
+        run: |
+          status=0
+          extra=()
+          if [ "$PROBE" = diagnostic ]; then extra+=(--goroutine-diagnostics); fi
+          for trial in 1 2 3; do
+            python3 scripts/verify_soak.py --binary bin/probe --transport 2 --mode 2 --pilot --duration-seconds 60 --warmup-seconds 12 --sample-seconds 5 --pool-min 16 --pool-max 64 --workers 2 --qps 10 "${extra[@]}" --artifacts "artifacts/trial-$trial" || status=1
+          done
+          exit "$status"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: ws-mode2-${{ matrix.probe }}
+          path: artifacts
+          retention-days: 30

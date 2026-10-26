@@ -1,0 +1,11 @@
+{
+  "baseline_commit": "ee3b813d83564629e3a4b3ccc0eba21eee6d16f4",
+  "diagnostic_source": "ee3b813+dirty; production code unchanged",
+  "source_sha256": {
+    "scripts/soak24h/main.go": "79cd47d30f105c6b39b403f54cb5690f11b185ef7eae27f664fb3c544f6f516c",
+    "scripts/soak24h/diagnostics.go": "b9b25a73dbb27b5e2ef6981d18b90374f8639227d8fc6dfa8da6b73975a110d4",
+    "scripts/verify_soak.py": "6d4b949535898385499ca0398897737efc950ff4c91621772b9370c87fc0698f"
+  },
+  "local_result": "baseline failed scheduler tick; diagnostic pilot passed without reproducing goroutine64",
+  "not_24h": true
+}

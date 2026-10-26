@@ -123,9 +123,12 @@ def main():
     p.add_argument('--pool-max', type=int, default=64)
     p.add_argument('--workers', type=int, default=2)
     p.add_argument('--qps', type=int, default=10)
+    p.add_argument('--goroutine-diagnostics', action='store_true', help='bounded local stack capture; diagnostic run, not canonical acceptance')
     p.add_argument('--pilot', action='store_true', help='short run, categorically ineligible for the 24h gate')
     p.add_argument('--artifacts', type=Path, required=True)
     a = p.parse_args()
+    if a.goroutine_diagnostics and not a.pilot:
+        p.error('goroutine diagnostics require --pilot; formal acceptance remains uninstrumented')
     duration = a.duration_seconds if a.duration_seconds is not None else (60 if a.pilot else 86400)
     warmup = a.warmup_seconds if a.warmup_seconds is not None else (12 if a.pilot else 60)
     interval = a.sample_seconds if a.sample_seconds is not None else (5 if a.pilot else 30)
@@ -161,6 +164,9 @@ def main():
     command = [str(binary), '--transport', str(a.transport), '--mode', str(a.mode), '--duration', f'{duration}s',
                '--warmup', f'{warmup}s', '--sample-interval', f'{interval}s', '--workers', str(a.workers),
                '--qps', str(a.qps), '--pool-min', str(a.pool_min), '--pool-max', str(a.pool_max), '--artifacts', str(a.artifacts / 'native')]
+    if a.goroutine_diagnostics:
+        command.append('--goroutine-diagnostics')
+        summary['goroutine_diagnostics'] = True
     def interrupted(signum, frame):
         raise KeyboardInterrupt
     previous_term = signal.signal(signal.SIGTERM, interrupted)

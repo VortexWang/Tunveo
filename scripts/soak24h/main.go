@@ -195,7 +195,7 @@ type job struct {
 	measured  bool
 }
 
-func runLoad(r *result, front, workers, qps int, warmup, duration, interval time.Duration, a *audit, engineDone <-chan error, interrupted <-chan os.Signal, checkpoint func() error) error {
+func runLoad(r *result, front, workers, qps int, warmup, duration, interval time.Duration, a *audit, engineDone <-chan error, interrupted <-chan os.Signal, checkpoint func() error, diagnostics *goroutineDiagnostics) error {
 	queues := make([]chan job, workers)
 	errs := make(chan error, workers+1)
 	var wg sync.WaitGroup
@@ -273,7 +273,13 @@ func runLoad(r *result, front, workers, qps int, warmup, duration, interval time
 		if e != nil {
 			return e
 		}
-		r.Points = append(r.Points, point{time.Since(started).Seconds(), phase, s, measured.snapshot()})
+		p := point{time.Since(started).Seconds(), phase, s, measured.snapshot()}
+		r.Points = append(r.Points, p)
+		if diagnostics != nil {
+			if e := diagnostics.observe(p, warmup.Seconds()); e != nil {
+				return e
+			}
+		}
 		r.Counts = measured.snapshot()
 		return checkpoint()
 	}
@@ -370,6 +376,7 @@ loop:
 	return failure
 }
 func main() {
+	diagnosticFlag := flag.Bool("goroutine-diagnostics", false, "write bounded local goroutine stacks at warmup maxima and budget excursions")
 	describe := flag.Bool("describe", false, "print build metadata without running")
 	poolMin := flag.Int("pool-min", 16, "minimum idle pool")
 	poolMax := flag.Int("pool-max", 64, "maximum negotiated pool")
@@ -436,6 +443,11 @@ func main() {
 	if e != nil {
 		panic(e)
 	}
+	var diagnostics *goroutineDiagnostics
+	if *diagnosticFlag {
+		diagnostics = &goroutineDiagnostics{folder: *folder}
+		r.Settings["goroutine_diagnostics"] = true
+	}
 	var s *server.Server
 	var c *client.Client
 	operation := func() error {
@@ -482,7 +494,7 @@ func main() {
 		signals := make(chan os.Signal, 1)
 		signal.Notify(signals, os.Interrupt, syscall.SIGTERM)
 		defer signal.Stop(signals)
-		return runLoad(r, front, *workers, *qps, *warmup, *duration, *interval, a, done, signals, checkpoint)
+		return runLoad(r, front, *workers, *qps, *warmup, *duration, *interval, a, done, signals, checkpoint, diagnostics)
 	}
 	failure := operation()
 	var endpoints []endpoint
@@ -499,6 +511,11 @@ func main() {
 	r.Final, e = settle(0, &r.Idle)
 	if e != nil && failure == nil {
 		failure = e
+	}
+	if diagnostics != nil {
+		if e = diagnostics.capture("after-stop"); e != nil && failure == nil {
+			failure = e
+		}
 	}
 	if e = a.close(); e != nil && failure == nil {
 		failure = e

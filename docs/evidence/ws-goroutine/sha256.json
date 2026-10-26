@@ -1,0 +1,22 @@
+{
+  "local-raw.zip": {
+    "sha256": "988d6ff7a35befc0456346a23a7269d3ae38a9723684f814a01a06a3e8ea5c92",
+    "bytes": 116555
+  },
+  "python-tests.log": {
+    "sha256": "eba5ac277322e4e1ebb1691ed2b27c979375ae12069b00e4803f10a70c3273a2",
+    "bytes": 4198
+  },
+  "metadata.json": {
+    "sha256": "e37f284ad231a839ff965fe33f3304c02a09ad002c568525251ebce4ad9b9a5f",
+    "bytes": 591
+  },
+  "go-race.log": {
+    "sha256": "900d7fde177388d5303e7b748e6ca02e7011440901f59230ed19dfd245e51ebd",
+    "bytes": 959
+  },
+  "go-vet.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  }
+}
