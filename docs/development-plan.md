@@ -327,3 +327,9 @@ PR19源码19653e6常规CI19/19、Soak smoke9/9成功，TLS旧服务端配对分�
 补充smaps_rollup原文、字节字段与读取耗时，Python独立逐点复核，Linux真实匿名mmap控制确认观测。保持statm资源预算与三轮普通/race H2协议，不直接把匿名页归为race或泄漏；见 [OS诊断](soak-os-memory.md)。前轮TLS验收最终10/11分片成功，旧服务端TLS0正例分片失败，发布门槛不关闭。
 
 规范源码54295c8：本地普通3/3、race2/3，新增race第二轮RSS+64.078125MiB失败，对应Anonymous+64.015625MiB、HeapAlloc仅+15072B；确认本轮增长主要为匿名驻留，分配者未定。CI诊断3/3、常规19/19通过；六份CI与六份本地证据逐点独立审计，7200业务/8628事件通过但一轮资源failed。预算与24小时门槛保持不变。
+
+## 31. RSS映射所有权受控验证（2026-10-26）
+
+外部读取原负载进程smaps，保留逐checkpoint压缩原文，按已核对Go1.26.10/LLVM范围拆分shadow、metadata及未归属匿名页。32MiB触碰分配控制校验范围；普通/race各三轮原协议，保留资源失败。见 [映射诊断](soak-mapping-ownership.md)。
+
+规范源码149709d：CI映射专项2/2及常规19/19通过，六轮H2均在原预算内；独立原文复核确认race32MiB控制对应shadow+64MiB。实际race窗口shadow约+20–21MiB、metadata约+1MiB、Go标注堆驻留约+10–12MiB，仍有未命名匿名约+19–22MiB未归属。外部smaps与原statm相邻但不原子，不追溯解释历史超限。本地两控制因proc权限不可用保留失败，无本地pilot；Python37项通过，完整原文/指纹/脚本归档，预算与24小时门槛不变。

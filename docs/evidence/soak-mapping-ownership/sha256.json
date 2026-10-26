@@ -1,0 +1,17 @@
+{
+  "audit-ci-driver.py": "92f317c3da6b121869f9767027bf097c3984f2fddfe7cbf8a85c9359714d8744",
+  "audit-labels-driver.py": "ca2665b52bb2da59664719a9ea73e61d5778edacf779ae75ff7dda746de103f4",
+  "ci-audit.json": "7ef3b3d3e1949b4d1504c3059568c97e90093ad5998849eae6fddf53e0f8b6bb",
+  "ci-metadata.json": "97ddc703a87d1ab3306ccbe2f15ca39aba83a1a9219a2a945c99930994a35aa4",
+  "ci-original-zips.zip": "de811c4bfb5251e484ae4dbdd51ee30eab7e6b342bd2c3cfe9743b17b8a8c141",
+  "current-ci-status.json": "1442a910b9339bcdf000b12831edd75aca4279fbe92aef68ff32cc7494ec55f7",
+  "local-permission-failures.json": "aec30aee1676e88ffc4e3a6b6846c1bfef09b37f0843b2189181cdd5dd38b5e5",
+  "local-unavailable-controls.zip": "a9c3f546c908dc476dcbc2c90c86d85a480ec026db631cf81366d6b4f12a06d3",
+  "map-shadow-disassembly.log.gz": "981667499154a8f2d67251631706c044630d561ea66aded346c95d772f185546",
+  "metadata.json": "fa6a5a502489f652c5b3b457506475d2daea2e1e06781192501ffeb1f9b3fe54",
+  "named-mapping-audit.json": "8336cbd846cbd32d8768c3fca1f1a5ecd208429a280cadfbf82600025bd9475b",
+  "parser-self-audit.json": "6dbfc965f989ad83992a319a68adddaad51e72b977d312cedeadb06c7b2ca64f",
+  "parser-self-smaps.gz": "b37b5d88777b4e89747722109c537538447590549901c485e51c09a8032207cf",
+  "python-tests.log": "7077d4f3b74dc96269bb6911ae662e68516dd5008ae1bd9dea95ef6202686437",
+  "source-profile.json": "03029588a458a7139be0b826c11660c4524b0cb3cd2dbabc0bcce22e3272ccbc"
+}

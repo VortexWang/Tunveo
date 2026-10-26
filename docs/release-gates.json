@@ -48,9 +48,10 @@
         "docs/soak-24h.md",
         "docs/ordinary-soak-preflight.md",
         "docs/soak-runtime-diagnostics.md",
-        "docs/soak-os-memory.md"
+        "docs/soak-os-memory.md",
+        "docs/soak-mapping-ownership.md"
       ],
-      "reason": "Short pilots remain ineligible. New timing/memory diagnostic sourcefe4e9b2: dedicatedCI3/3, regularCI19/19, smoke9/9 passed, but local same-source H2 race trial2 reproduced RSS+66.23046875MiB over64MiB budget (liveGoHeap+0.8557MiB at same samples). Injected250ms checkpoint proves possible scheduling coupling; historical natural tick-miss cause remains unconfirmed. All failures retained, no threshold increase. Eight actual24h profiles and long-run review remain incomplete. Additional OS rollup diagnostics do not replace statm acceptance or establish allocation ownership; historical failures remain open. Source54295c8 local H2 race trial2 fails RSS+64.078125MiB; same-point Anonymous+64.015625MiB, HeapAlloc+15072B. Allocation ownership unresolved. DedicatedCI3/3 and regularCI19/19 pass;12 windows remain pilots,11 accepted/1resource failure."
+      "reason": "Short pilots remain ineligible. New timing/memory diagnostic sourcefe4e9b2: dedicatedCI3/3, regularCI19/19, smoke9/9 passed, but local same-source H2 race trial2 reproduced RSS+66.23046875MiB over64MiB budget (liveGoHeap+0.8557MiB at same samples). Injected250ms checkpoint proves possible scheduling coupling; historical natural tick-miss cause remains unconfirmed. All failures retained, no threshold increase. Eight actual24h profiles and long-run review remain incomplete. Additional OS rollup diagnostics do not replace statm acceptance or establish allocation ownership; historical failures remain open. Source54295c8 local H2 race trial2 fails RSS+64.078125MiB; same-point Anonymous+64.015625MiB, HeapAlloc+15072B. Allocation ownership unresolved. DedicatedCI3/3 and regularCI19/19 pass;12 windows remain pilots,11 accepted/1resource failure. Source149709d external mappingCI2/2 plus regularCI19/19 pass;6 windows remain pilots. Race shadow about20-21MiB and unnamed anonymous19-22MiB grow; latter ownership unresolved. Local external controls unavailable due procfs permissions. Historical failures and64MiB budget retained."
     },
     {
       "id": "native_platforms",
