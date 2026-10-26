@@ -39,8 +39,16 @@ TCP/QUIC/WebSocket/HTTP2 × 两种流向，每组预热12秒、正式短时60秒
 
 PR18源码4544c12的[Soak smoke40311379498](https://github.com/VortexWang/Tunveo/actions/runs/40311379498)，TCP mode2任务121538477196失败：预热中漏一个声明负载tick，已完成59TCP/20UDP，无业务失败，但dropped=1，measured_seconds=0，未进入正式计时。进程正常回收，无强杀。根因未确认，不能直接归为环境故障或引擎缺陷；不放宽节拍要求，不重跑覆盖，也不以本地普通构建8/8关闭。
 
-原始artifact12646250591的ZIP/digest/CRC已核对并保存`prior-race-tcp2-failure.zip`，SHA256为`4016f590b290b8909840f5f79cc9b58f55f2f5b9360fe73ddf02c1c98fa66804`。其余任务及常规CI按真实最终状态另行记录，不宣称完整回归全绿。
+原始artifact12646250591的ZIP/digest/CRC已核对并保存`prior-race-tcp2-failure.zip`，SHA256为`4016f590b290b8909840f5f79cc9b58f55f2f5b9360fe73ddf02c1c98fa66804`。完整race pilot结果及另一项失败见下文；常规CI仍未全部完成，不宣称完整回归全绿。
 
 ## 后续准入
 
-`soak_24h`仍pending，verified_input_sha256仍null。上述60秒全部为pilot，既不能代替八组各连续86400秒，也不能替代专用持续运行环境、其他原生平台、旧端兼容或集成评审。先完成当前源码CI并建立race漏tick的受控诊断，再评估正式24小时运行条件。
+`soak_24h`仍pending，verified_input_sha256仍null。上述60秒全部为pilot，既不能代替八组各连续86400秒，也不能替代专用持续运行环境、其他原生平台、旧端兼容或集成评审。先完成当前源码CI并建立race漏tick与HTTP/2 RSS增长的受控诊断，再评估正式24小时运行条件。
+
+## 同期race CI完整结果补录
+
+Soak smoke40311379498最终9个任务中7个成功、2个失败：验证器成功，八个pilot中6/8成功；失败为TCP mode2预热漏tick，以及HTTP/2 mode1 RSS超预算。各任务最终状态保存在`prior-soak-ci-jobs.json`。
+
+HTTP/2 mode1完整60秒450TCP/150UDP、719条审计，无业务失败/丢弃，正常回收，无强杀；资源验证failed。后半段预热RSS上界126136320B，67.0057秒采样194191360B，增量64.90234375MiB超过原定64MiB；同采样GC后HeapAlloc25685352B。结束RSS185593856B另行保留，原规则不要求结束RSS立即回落。不能据此认定堆泄漏或将其全部归因于race/运行环境；不修改预算或排除计数。
+
+原始artifact12646320771 ZIP/digest/CRC通过，保存`prior-race-h2-rss-failure.zip`，SHA256 `97a3d0e4aa32c142beef5ccc107cfeb44ca5c6614b12d912393080023e809198`。两项原始失败均保留，普通构建8/8和race6/8分别陈述。提交后的干净汇总器19653e6再次独立复核本地八场景通过，未修改任何运行数据；新源码GitHub CI尚未完成，正式24小时继续阻断。

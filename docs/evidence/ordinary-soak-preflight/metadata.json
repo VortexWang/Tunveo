@@ -7,19 +7,37 @@
   },
   "binary_sha256": "c5433755fbbaa6434e2163ab0ffb7d21a6a393a73f8e5cb2bc84da8482e20cde",
   "runner_source": "2cb2a0e32cdb97db8f01f6acda8d88119e5739ce",
-  "collector_scope": "working-tree Python-only semantic revalidation fix; runtime unchanged",
+  "collector_scope": "clean19653e6177fc404fec3572c2e73756757c096558 post-commit audit passed; producer/binary from2cb2a0e; productionGo unchanged",
   "fixed_files_sha256": {
     "scripts/verify_soak.py": "efdc7ab8374880c89e3a5fb95099e9e7428176953c925b8253f1c1f12581c13e",
     "scripts/summarize_soak.py": "4bb962c74359148a0e07f1f5a3cf670ddd26d3c26ec960166bb7ea88becd371b",
     "scripts/tests/test_summarize_soak.py": "5e07973d3ee8a16122c863234694396417ddcbe5d49d3409ed49b125b75ba54b"
   },
-  "prior_race_failure": {
-    "run_id": 40311379498,
-    "job_id": 121538477196,
-    "artifact_id": 12646250591,
-    "digest": "sha256:4016f590b290b8909840f5f79cc9b58f55f2f5b9360fe73ddf02c1c98fa66804",
-    "source": "4544c12e3c6eaa47c83a5798111266b4acfefd39",
-    "status": "failed",
-    "reason": "scheduler missed declared offered-load ticks during warmup; dropped1; measured0; root cause unconfirmed"
-  }
+  "prior_race_failures": [
+    {
+      "run_id": 40311379498,
+      "job_id": 121538477196,
+      "artifact_id": 12646250591,
+      "digest": "sha256:4016f590b290b8909840f5f79cc9b58f55f2f5b9360fe73ddf02c1c98fa66804",
+      "source": "4544c12e3c6eaa47c83a5798111266b4acfefd39",
+      "status": "failed",
+      "reason": "scheduler missed declared offered-load ticks during warmup; dropped1; measured0; root cause unconfirmed"
+    },
+    {
+      "run_id": 40311379498,
+      "job_id": 121538477192,
+      "artifact_id": 12646320771,
+      "source": "4544c12e3c6eaa47c83a5798111266b4acfefd39",
+      "digest": "sha256:97a3d0e4aa32c142beef5ccc107cfeb44ca5c6614b12d912393080023e809198",
+      "status": "failed",
+      "reason": "active resource bound: rss; root cause unconfirmed",
+      "warmup_rss_upper": 126136320,
+      "peak_rss": 194191360,
+      "increase_bytes": 68055040,
+      "budget_bytes": 67108864,
+      "peak_at_seconds": 67.005742549,
+      "exchanges": 600,
+      "audited_events": 719
+    }
+  ]
 }

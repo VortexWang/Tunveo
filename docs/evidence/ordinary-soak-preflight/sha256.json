@@ -1,4 +1,8 @@
 {
+  "prior-soak-ci-jobs.json": {
+    "sha256": "d71bd6d9f62a7a2b417e2a1e3b8d54bf49b3371c36d7ce3504f74c4663007a75",
+    "bytes": 1043
+  },
   "execution.json": {
     "sha256": "26c9cbdff1c78814a0b410b07e1e74360c73032bff8778cb2e2d36d5b2bfe1d4",
     "bytes": 1525
@@ -19,9 +23,17 @@
     "sha256": "d194510b0853e522c30be97ac71a46f973fcd3ca4b994279e9e567c81ec27211",
     "bytes": 4708
   },
+  "prior-race-h2-rss-failure.zip": {
+    "sha256": "97a3d0e4aa32c142beef5ccc107cfeb44ca5c6614b12d912393080023e809198",
+    "bytes": 59673
+  },
+  "post-commit-audit.json": {
+    "sha256": "97cf7cb5c3af04b584101d4f325f2ade8b4b7e0ca534cfdf16cf73754828fb91",
+    "bytes": 3680
+  },
   "metadata.json": {
-    "sha256": "5f8ac025a5382be7816e7955b1fc0c95ffecf5b386275caea3595a02b4f93873",
-    "bytes": 2053
+    "sha256": "868289adca28a6279cd56a5f3b476fdadf877c7a7874476d87485018b88300df",
+    "bytes": 2710
   },
   "prior-race-tcp2-failure.zip": {
     "sha256": "4016f590b290b8909840f5f79cc9b58f55f2f5b9360fe73ddf02c1c98fa66804",
