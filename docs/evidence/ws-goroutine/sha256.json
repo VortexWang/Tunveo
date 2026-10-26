@@ -7,6 +7,14 @@
     "sha256": "988d6ff7a35befc0456346a23a7269d3ae38a9723684f814a01a06a3e8ea5c92",
     "bytes": 116555
   },
+  "ci-baseline.zip": {
+    "sha256": "1558cf95dcb7678c5052e68d086e581c7380694554df08d7967a1e095413ba5a",
+    "bytes": 187137
+  },
+  "ci-audit.json": {
+    "sha256": "cc24fb52ab3fa9701270a2e2da96103cbb226de40ad1fd7f5cdcfb6a3208e418",
+    "bytes": 6955
+  },
   "clean-uninstrumented.zip": {
     "sha256": "882bca28d9812f4dd3f59c5e56a2dce47c230584ecb0ee296e9a153ec3094c55",
     "bytes": 64545
@@ -34,6 +42,10 @@
   "metadata.json": {
     "sha256": "e37f284ad231a839ff965fe33f3304c02a09ad002c568525251ebce4ad9b9a5f",
     "bytes": 591
+  },
+  "ci-fixed.zip": {
+    "sha256": "8abf0d77cb3b41d7ea1848e9737d65f5aef9136ec957cae506b9103716cc74ca",
+    "bytes": 249689
   },
   "dial-fixed.log": {
     "sha256": "722dc9168532c707036c57ace8db2b520442d6628209ded14fb5050bf72dd868",
