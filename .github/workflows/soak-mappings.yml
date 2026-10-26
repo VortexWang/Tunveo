@@ -1,0 +1,52 @@
+name: Soak mapping ownership
+on:
+  pull_request:
+    paths:
+      - 'scripts/soak_mappings.py'
+      - 'scripts/mappingcontrol/**'
+      - 'scripts/tests/test_soak_mappings.py'
+      - '.github/workflows/soak-mappings.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  mappings:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        build: [ordinary, race]
+    steps:
+      - uses: actions/checkout@v6.0.2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-go@v6.1.0
+        with:
+          go-version-file: go.mod
+      - run: python3 -m unittest discover -s scripts/tests
+      - name: Build probe and allocation control from same clean source
+        env:
+          BUILD: ${{ matrix.build }}
+        run: |
+          extra=()
+          if [ "$BUILD" = race ]; then extra+=(-race); fi
+          go build "${extra[@]}" -trimpath -o bin/probe ./scripts/soak24h
+          go build "${extra[@]}" -trimpath -o bin/control ./scripts/mappingcontrol
+          mkdir -p artifacts
+          sha256sum bin/probe bin/control "$(go env GOROOT)/src/runtime/race/internal/amd64v1/race_linux.syso" > artifacts/binary-sha256.txt
+      - name: Known touched allocation control
+        run: python3 scripts/soak_mappings.py control --binary bin/control --artifacts artifacts/control
+      - name: Three separately preserved H2 mode1 mapping pilots
+        run: |
+          status=0
+          for trial in 1 2 3; do
+            python3 scripts/soak_mappings.py capture --binary bin/probe --artifacts "artifacts/trial-$trial" || status=1
+          done
+          exit "$status"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: soak-mappings-${{ matrix.build }}
+          path: artifacts
+          retention-days: 30
