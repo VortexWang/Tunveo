@@ -14,6 +14,14 @@ jobs:
       matrix:
         tls: [0, 1, 2]
         pair: [tunveo-tunveo, tunveo-upstream, upstream-tunveo]
+        identity: [explicit-ip]
+        include:
+          - tls: 2
+            pair: tunveo-tunveo
+            identity: default-ip
+          - tls: 2
+            pair: tunveo-tunveo
+            identity: explicit-dns
     steps:
       - uses: actions/checkout@v6.0.2
         with:
@@ -28,24 +36,31 @@ jobs:
       - name: Ten rounds per positive cell
         run: |
           pair='${{ matrix.pair }}'
-          python3 scripts/verify_forwarding.py --binary bin/tunveo --upstream bin/nodepass-original --pair "${pair/-//}" --tls '${{ matrix.tls }}' --pool 2:8 --pool 64:1024 --repeat 10 --go go --artifacts artifacts/positive
+          python3 scripts/verify_forwarding.py --binary bin/tunveo --upstream bin/nodepass-original --pair "${pair/-//}" --tls '${{ matrix.tls }}' --identity '${{ matrix.identity }}' --pool 2:8 --pool 64:1024 --repeat 10 --go go --artifacts artifacts/positive
+      # Negative I/O probes finish before the engine's normal handshake retry.
+      # Keep the two-second rejection observation; positive I/O budgets are unchanged.
       - name: Ten rounds per untrusted CA cell
         if: always() && steps.build.conclusion == 'success' && matrix.tls == 2
         run: |
           pair='${{ matrix.pair }}'
-          python3 scripts/verify_forwarding.py --binary bin/tunveo --upstream bin/nodepass-original --pair "${pair/-//}" --tls 2 --reject-tls untrusted-ca --pool 2:8 --pool 64:1024 --repeat 10 --go go --artifacts artifacts/untrusted-ca
+          python3 scripts/verify_forwarding.py --binary bin/tunveo --upstream bin/nodepass-original --pair "${pair/-//}" --tls 2 --identity '${{ matrix.identity }}' --reject-tls untrusted-ca --io-timeout .5 --pool 2:8 --pool 64:1024 --repeat 10 --go go --artifacts artifacts/untrusted-ca
       - name: Ten rounds per wrong hostname cell
         if: always() && steps.build.conclusion == 'success' && matrix.tls == 2
         run: |
           pair='${{ matrix.pair }}'
-          python3 scripts/verify_forwarding.py --binary bin/tunveo --upstream bin/nodepass-original --pair "${pair/-//}" --tls 2 --reject-tls wrong-hostname --pool 2:8 --pool 64:1024 --repeat 10 --go go --artifacts artifacts/wrong-hostname
+          python3 scripts/verify_forwarding.py --binary bin/tunveo --upstream bin/nodepass-original --pair "${pair/-//}" --tls 2 --identity '${{ matrix.identity }}' --reject-tls wrong-hostname --io-timeout .5 --pool 2:8 --pool 64:1024 --repeat 10 --go go --artifacts artifacts/wrong-hostname
+      - name: Ten rounds per expired certificate cell
+        if: always() && steps.build.conclusion == 'success' && matrix.tls == 2
+        run: |
+          pair='${{ matrix.pair }}'
+          python3 scripts/verify_forwarding.py --binary bin/tunveo --upstream bin/nodepass-original --pair "${pair/-//}" --tls 2 --identity '${{ matrix.identity }}' --reject-tls expired --io-timeout .5 --pool 2:8 --pool 64:1024 --repeat 10 --go go --artifacts artifacts/expired
       - name: Print reports for durable review
         if: always()
         run: python3 scripts/summarize_tls_acceptance.py --artifacts artifacts --output artifacts/summary.json
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
-          name: tls-${{ matrix.tls }}-${{ matrix.pair }}
+          name: tls-${{ matrix.tls }}-${{ matrix.pair }}-${{ matrix.identity }}
           path: |
             artifacts
             bin/nodepass-original.provenance.json

@@ -7,7 +7,7 @@ Uses Python's standard library. Every application exchange is attempted once.
 
 import argparse
 import contextlib
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 import hashlib
 import itertools
 import json
@@ -143,10 +143,36 @@ def echo_service():
             thread.join(timeout=1)
 
 
+class ProbeSetupError(Exception):
+    """A broken diagnostic setup must never count as TLS rejection."""
+
+
+def probe_socket(port, udp):
+    # An unbound loopback socket can be auto-assigned its destination port.
+    # Linux can then echo UDP (and even TCP) back to the same socket without
+    # any listener. Choose a distinct source BEFORE connect/send; these are
+    # local allocations, not application retries.
+    for _ in range(100):
+        conn = None
+        try:
+            conn = socket.socket(type=socket.SOCK_DGRAM if udp else socket.SOCK_STREAM)
+            conn.bind(("127.0.0.1", 0))
+            if conn.getsockname()[1] != port:
+                return conn
+        except OSError as exc:
+            if conn is not None:
+                conn.close()
+            raise ProbeSetupError("cannot allocate a diagnostic source socket") from exc
+        conn.close()
+    raise ProbeSetupError("cannot allocate a source port distinct from the destination")
+
+
 def exchange(port, udp=False, timeout=3):
     payload = bytes(range(256)) * (2 if udp else 128)
     deadline = time.monotonic() + timeout
-    with socket.socket(type=socket.SOCK_DGRAM if udp else socket.SOCK_STREAM) as conn:
+    with probe_socket(port, udp) as conn:
+        if time.monotonic() >= deadline:
+            raise ProbeSetupError("diagnostic source allocation exhausted the exchange budget")
         def budget():
             remaining = deadline - time.monotonic()
             if remaining <= 0:
@@ -154,6 +180,9 @@ def exchange(port, udp=False, timeout=3):
             conn.settimeout(remaining)
         budget()
         conn.connect(("127.0.0.1", port))
+        local, peer = conn.getsockname(), conn.getpeername()
+        if local == peer:
+            raise ProbeSetupError("diagnostic self-connection detected")
         budget()
         conn.sendall(payload)
         received = bytearray()
@@ -167,7 +196,8 @@ def exchange(port, udp=False, timeout=3):
                 break  # a truncated datagram must not be assembled from later packets
         if received != payload:
             raise RuntimeError(f"payload mismatch: sent={len(payload)} received={len(received)}")
-    return {"sent_bytes": len(payload), "received_bytes": len(received), "attempts": 1}
+    return {"sent_bytes": len(payload), "received_bytes": len(received), "attempts": 1,
+            "local_endpoint": local, "peer_endpoint": peer, "protocol": "udp" if udp else "tcp"}
 
 
 class CapturedLog:
@@ -284,17 +314,18 @@ def run_case(server_bin, client_bin, row, folder, args, checkpoint):
             server_target, client_target = (front, target) if row["mode"] == 1 else (target, front)
             cert_options = ""
             if row["tls"] == 2:
-                cert_name = "wrong-hostname" if args.reject_tls == "wrong-hostname" else "trusted"
+                cert_name = args.reject_tls if args.reject_tls in ("wrong-hostname", "expired") else "trusted"
                 crt, key = args.certificates[cert_name]
                 cert_options = f"&crt={crt}&key={key}"
+            sni = "" if args.identity == "default-ip" else "&sni=" + ("matrix.test" if args.identity == "explicit-dns" else "127.0.0.1")
             urls = [
                 f"server://smoke-only@127.0.0.1:{tunnel}/127.0.0.1:{server_target}?mode={row['mode']}&type={row['transport']}&tls={row['tls']}&max={row['pool']['max']}&log=debug{cert_options}",
-                f"client://smoke-only@127.0.0.1:{tunnel}/127.0.0.1:{client_target}?mode=2&min={row['pool']['min']}&log=debug&sni=127.0.0.1",
+                f"client://smoke-only@127.0.0.1:{tunnel}/127.0.0.1:{client_target}?mode=2&min={row['pool']['min']}&log=debug{sni}",
             ]
             row["commands"] = [[str(b), clean(u)] for b, u in zip((server_bin, client_bin), urls)]
             env = {k: v for k, v in os.environ.items() if not k.startswith(("NP_", "TUNVEO_"))}
             if row["tls"] == 2:
-                trust_name = "untrusted" if args.reject_tls == "untrusted-ca" else cert_name
+                trust_name = "untrusted" if args.reject_tls == "untrusted-ca" else ("trusted" if args.reject_tls == "expired" else cert_name)
                 env.update(SSL_CERT_FILE=str(args.certificates[trust_name][0]),
                            SSL_CERT_DIR=str(args.cert_root / "empty-roots"))
 
@@ -335,11 +366,11 @@ def run_case(server_bin, client_bin, row, folder, args, checkpoint):
                         time.sleep(.025)
                     for udp in (False, True):
                         try:
-                            exchange(front, udp=udp, timeout=args.io_timeout)
+                            details = exchange(front, udp=udp, timeout=args.io_timeout)
                         except (OSError, RuntimeError) as exc:
                             failures.append(type(exc).__name__)
                         else:
-                            raise RuntimeError("untrusted TLS forwarded application data")
+                            raise RuntimeError("unexpected application echo during TLS rejection probe: " + json.dumps(details))
                     return {"negative": args.reject_tls, "observation_seconds": round(time.monotonic()-start, 3), "application_rejections": failures}
                 phase("certificate_verification", rejected)
                 for name in ("tcp_echo", "udp_echo"):
@@ -420,8 +451,55 @@ def certificate_fixture(folder, name, san="IP:127.0.0.1"):
     subprocess.run(["openssl", "req", "-x509", "-newkey", "ec", "-pkeyopt",
                     "ec_paramgen_curve:P-256", "-nodes", "-days", "1",
                     "-subj", "/CN=matrix-fixture", "-addext", "subjectAltName=" + san,
+                    "-addext", "basicConstraints=critical,CA:TRUE",
                     "-keyout", str(key), "-out", str(crt)],
                    check=True, capture_output=True, timeout=10)
+    key.chmod(0o600)
+    return crt, key
+
+
+def expired_fixture(folder, authority, san):
+    """Sign a genuinely expired leaf using the still-valid trusted authority."""
+    crt, key, csr = (folder / ("expired" + suffix) for suffix in (".crt", ".key", ".csr"))
+    subprocess.run(["openssl", "req", "-new", "-newkey", "ec", "-pkeyopt", "ec_paramgen_curve:P-256",
+                    "-nodes", "-subj", "/CN=expired-fixture", "-keyout", str(key), "-out", str(csr)],
+                   check=True, capture_output=True, timeout=10)
+    (folder / "index").write_text("")
+    (folder / "serial").write_text("01\n")
+    (folder / "issued").mkdir()
+    ca_crt, ca_key = authority
+    config = folder / "ca.cnf"
+    config.write_text(f"""[ca]
+default_ca=fixture
+[fixture]
+database={folder / 'index'}
+serial={folder / 'serial'}
+new_certs_dir={folder / 'issued'}
+certificate={ca_crt}
+private_key={ca_key}
+default_md=sha256
+policy=identity
+x509_extensions=leaf
+[identity]
+commonName=supplied
+[leaf]
+basicConstraints=critical,CA:FALSE
+keyUsage=critical,digitalSignature
+extendedKeyUsage=serverAuth
+subjectAltName={san}
+""")
+    now = datetime.now(timezone.utc)
+    start, end = (now - timedelta(days=d) for d in (2, 1))
+    subprocess.run(["openssl", "ca", "-batch", "-config", str(config), "-in", str(csr), "-out", str(crt),
+                    "-notext", "-startdate", start.strftime("%Y%m%d%H%M%SZ"), "-enddate", end.strftime("%Y%m%d%H%M%SZ")],
+                   check=True, capture_output=True, timeout=10)
+    # Verify the fixture's actual failure reason independently of the engine.
+    check = subprocess.run(["openssl", "verify", "-CAfile", str(ca_crt), str(crt)], capture_output=True, text=True, timeout=5)
+    if check.returncode == 0 or "certificate has expired" not in check.stdout + check.stderr:
+        raise RuntimeError("expired fixture did not produce the expected X.509 expiry error")
+    identity_flag = "-verify_ip" if san.startswith("IP:") else "-verify_hostname"
+    subprocess.run(["openssl", "verify", "-no_check_time", "-purpose", "sslserver", "-CAfile", str(ca_crt),
+                    identity_flag, san.split(":", 1)[1], str(crt)], check=True, capture_output=True, timeout=5)
     key.chmod(0o600)
     return crt, key
 
@@ -435,7 +513,8 @@ def main(argv=None):
     parser.add_argument("--pool", type=parse_pair, action="append", help="min:max; repeatable; default 2:8")
     parser.add_argument("--repeat", type=int, default=1)
     parser.add_argument("--tls", type=int, choices=(0, 1, 2), action="append", help="requested TLS mode; repeatable; default 1")
-    parser.add_argument("--reject-tls", choices=("untrusted-ca", "wrong-hostname"), help="TLS 2 negative: require no data forwarding during a bounded observation")
+    parser.add_argument("--reject-tls", choices=("untrusted-ca", "wrong-hostname", "expired"), help="TLS 2 negative: require no data forwarding during a bounded observation")
+    parser.add_argument("--identity", choices=("explicit-ip", "default-ip", "explicit-dns"), default="explicit-ip", help="certificate identity scenario; default preserves the original matrix")
     parser.add_argument("--startup-timeout", type=float, default=5)
     parser.add_argument("--phase-timeout", type=float, default=15)
     parser.add_argument("--io-timeout", type=float, default=3)
@@ -461,7 +540,7 @@ def main(argv=None):
     root = (args.artifacts or Path("artifacts/forwarding") / (datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ") + "-" + uuid.uuid4().hex[:8])).resolve()
     root.mkdir(parents=True, exist_ok=False)
     output = args.output.resolve() if args.output else root / "report.json"
-    report = {"runner_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(), "schema_version": 3, "status": "running", "started_at": datetime.now(timezone.utc).isoformat(), "environment": {"platform": platform.platform(), "machine": platform.machine(), "python": platform.python_version()}, "binaries": {k: binary_metadata(v, args.go) for k, v in binaries.items()}, "settings": {"tls": modes, "negative": args.reject_tls, "log_level": "debug", "application_attempts": 1, "readiness": "observed log milestones", "timeouts": {k: getattr(args, k) for k in ("startup_timeout", "phase_timeout", "io_timeout", "cleanup_timeout")}}, "results": []}
+    report = {"runner_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(), "schema_version": 4, "status": "running", "started_at": datetime.now(timezone.utc).isoformat(), "environment": {"platform": platform.platform(), "machine": platform.machine(), "python": platform.python_version()}, "binaries": {k: binary_metadata(v, args.go) for k, v in binaries.items()}, "settings": {"tls": modes, "identity": args.identity, "negative": args.reject_tls, "log_level": "debug", "application_attempts": 1, "readiness": "observed log milestones", "timeouts": {k: getattr(args, k) for k in ("startup_timeout", "phase_timeout", "io_timeout", "cleanup_timeout")}}, "results": []}
     def checkpoint():
         atomic_json(output, report)
     checkpoint()
@@ -473,9 +552,12 @@ def main(argv=None):
         args.certificates = {}
         if 2 in modes:
             folder = Path(certificates.name)
-            args.certificates["trusted"] = certificate_fixture(folder, "trusted")
-            args.certificates["untrusted"] = certificate_fixture(folder, "other")
-            args.certificates["wrong-hostname"] = certificate_fixture(folder, "wrong", "IP:127.0.0.2")
+            san = "DNS:matrix.test" if args.identity == "explicit-dns" else "IP:127.0.0.1"
+            args.certificates["trusted"] = certificate_fixture(folder, "trusted", san)
+            args.certificates["untrusted"] = certificate_fixture(folder, "other", san)
+            args.certificates["wrong-hostname"] = certificate_fixture(folder, "wrong", "DNS:wrong.test")
+            if args.reject_tls == "expired":
+                args.certificates["expired"] = expired_fixture(folder, args.certificates["trusted"], san)
             (folder / "empty-roots").mkdir()
         args.cert_root = Path(certificates.name)
         cases = list(dict.fromkeys(args.case or [(t, m) for m in (1, 2) for t in range(4)]))
@@ -483,7 +565,7 @@ def main(argv=None):
         for pair, tls, (transport, mode), (minimum, maximum), iteration in itertools.product(pairs, modes, cases, pools, range(1, args.repeat + 1)):
             server, client = (binaries[k] for k in pair.split("/"))
             effective = 1 if transport in (1, 3) and tls == 0 else tls
-            row = {"id": f"{len(report['results']) + 1:04d}", "pair_server_client": pair, "transport": transport, "mode": mode, "tls": tls, "effective_tls": effective, "negative": args.reject_tls, "pool": {"min": minimum, "max": maximum}, "iteration": iteration}
+            row = {"id": f"{len(report['results']) + 1:04d}", "pair_server_client": pair, "transport": transport, "mode": mode, "tls": tls, "effective_tls": effective, "identity": args.identity, "negative": args.reject_tls, "pool": {"min": minimum, "max": maximum}, "iteration": iteration}
             report["results"].append(row)
             checkpoint()
             run_case(server, client, row, root / row["id"], args, checkpoint)

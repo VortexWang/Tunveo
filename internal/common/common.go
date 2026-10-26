@@ -36,8 +36,8 @@ const (
 	// the pool stops accepting new connections until existing ones are released.
 	DefaultMaxPool = 1024
 
-	// DefaultServerName is the default TLS Server Name Indication (SNI) hostname when not explicitly provided.
-	// Set to "none" to indicate either IP-based connection or omission of SNI field in the TLS ClientHello.
+	// DefaultServerName is the legacy fallback when no dial host is available.
+	// It is a literal identity, not a switch that disables SNI or verification.
 	DefaultServerName = "none"
 
 	// DefaultLBStrategy specifies the default load-balancing strategy when multiple target addresses are available:
@@ -184,8 +184,8 @@ type Config struct {
 	// TargetAddrs holds the raw target address strings as provided in the URL path (comma-separated, e.g. "10.0.1.1:443,10.0.1.2:443").
 	TargetAddrs []string
 
-	// ServerName is the TLS Server Name Indication (SNI) hostname sent in TLS ClientHello. Set to "none"
-	// for IP-based connections or to explicitly omit SNI. Used for tunnel-endpoint TLS sessions.
+	// ServerName is the certificate identity for tunnel TLS sessions. DNS names
+	// also select SNI; Go omits the SNI extension for literal IP identities.
 	ServerName string
 
 	// ServerPort is the port component extracted from TunnelAddr. Used for logging and port conflict detection.

@@ -6,17 +6,17 @@
       "id": "regression",
       "status": "passed",
       "evidence": [
-        "docs/evidence/tls-matrix/ci.json",
-        "https://github.com/VortexWang/Tunveo/actions/runs/40238595212"
+        "docs/evidence/tls-identity/ci.json",
+        "https://github.com/VortexWang/Tunveo/actions/runs/40246652146"
       ],
-      "reason": "14 scoped CI jobs passed on f236559; default/explicit identity policy TNV-015 and broader security audit remain open."
+      "reason": "15 scoped CI jobs passed on adccb517; identity and probe corrections validated, broader initial-control/reload/fault audit remains open."
     },
     {
       "id": "packaging",
       "status": "passed",
       "evidence": [
-        "docs/evidence/tls-matrix/ci.json",
-        "docs/evidence/tls-matrix/regression-evidence.zip"
+        "docs/evidence/tls-identity/ci.json",
+        "docs/evidence/tls-identity/regression-evidence.zip"
       ],
       "reason": "Eight snapshot archive checks and Linux amd64 container smoke; other native platforms remain pending."
     },
@@ -24,10 +24,11 @@
       "id": "supported_matrix_10x",
       "status": "failed",
       "evidence": [
-        "docs/evidence/tls-matrix/coverage.json",
-        "docs/evidence/tls-matrix/acceptance-evidence.zip"
+        "docs/evidence/tls-identity/coverage.json",
+        "docs/evidence/tls-identity/compatibility-evidence.zip",
+        "docs/evidence/tls-identity/identity-evidence.zip"
       ],
-      "reason": "All 2400 planned cells executed: 44 old-server failures (40 H2 TLS0, 2 initial EOF, 2 forced stops). TNV-015 default/explicit SNI and expired-certificate coverage also remain open."
+      "reason": "Corrected 4160-cell measurement complete: 41 old-server failures (40 H2 TLS0, 1 initial EOF). Maintained pairs passed all observed cells. Earlier failures and the uninstrumented first-run echo anomaly remain preserved, not rewritten."
     },
     {
       "id": "lifecycle_100",
@@ -51,7 +52,7 @@
       "id": "integration_review",
       "status": "pending",
       "evidence": [],
-      "reason": "Stacked PRs through PR 14 remain unmerged; PR 3 superseded by PR 4; TLS acceptance and TNV-015 still require review."
+      "reason": "Stacked PRs through PR15 remain unmerged; PR3 superseded by PR4. Review TNV015/TNV016 and old-server compatibility failures before integration."
     }
   ]
 }

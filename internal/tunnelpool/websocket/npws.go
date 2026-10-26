@@ -69,7 +69,14 @@ func (tc *tlsConn) ConnectionState() tls.ConnectionState {
 	return tls.ConnectionState{}
 }
 
+// NewClientPool retains the original address-derived certificate identity.
 func NewClientPool(minCap, maxCap int, minIvl, maxIvl, keepAlive time.Duration, tlsCode, serverURL string) *Pool {
+	return NewClientPoolWithServerName(minCap, maxCap, minIvl, maxIvl, keepAlive, tlsCode, serverURL, "")
+}
+
+// NewClientPoolWithServerName separates the TLS identity from the dial URL.
+// An empty override retains the URL host. The URL/HTTP Host is not rewritten.
+func NewClientPoolWithServerName(minCap, maxCap int, minIvl, maxIvl, keepAlive time.Duration, tlsCode, serverURL, tlsServerName string) *Pool {
 	if minCap <= 0 {
 		minCap = defaultMinCap
 	}
@@ -95,20 +102,24 @@ func NewClientPool(minCap, maxCap int, minIvl, maxIvl, keepAlive time.Duration, 
 		serverName, serverPort = name, port
 	}
 
+	if tlsServerName == "" {
+		tlsServerName = serverName
+	}
+
 	var tlsConfig *tls.Config
 	var wsScheme string
 	switch tlsCode {
 	case "1":
 		tlsConfig = &tls.Config{
 			InsecureSkipVerify: true,
-			ServerName:         serverName,
+			ServerName:         tlsServerName,
 			MinVersion:         tls.VersionTLS13,
 		}
 		wsScheme = "wss"
 	case "2":
 		tlsConfig = &tls.Config{
 			InsecureSkipVerify: false,
-			ServerName:         serverName,
+			ServerName:         tlsServerName,
 			MinVersion:         tls.VersionTLS13,
 		}
 		wsScheme = "wss"
@@ -116,7 +127,7 @@ func NewClientPool(minCap, maxCap int, minIvl, maxIvl, keepAlive time.Duration, 
 		if serverPort == "443" {
 			tlsConfig = &tls.Config{
 				InsecureSkipVerify: false,
-				ServerName:         serverName,
+				ServerName:         tlsServerName,
 				MinVersion:         tls.VersionTLS13,
 			}
 			wsScheme = "wss"

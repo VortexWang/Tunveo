@@ -13,3 +13,5 @@ Subsequent maintained changes: [TNV-003](../pool-publication.md) replaces the fo
 Subsequent maintained changes: [TNV-004](../run-lifecycle.md) adds permanent pool resource lifetimes, generation-fenced Flush/setup/waiters, captured QUIC/H2 physical metadata and cancellable setup across all four bundled libraries. H2 handler close joins outstanding writes. Original sources.json hashes remain historical; licenses and notices are retained. Public H2 deadlines still need TNV-005 isolation.
 
 Subsequent maintained changes: [TNV-005](../h2-stream-deadlines.md) replaces H2 public deadline forwarding with per-stream bounded I/O adapters, joins active pumps on close and links request cancellation after response headers. H2 response Flush errors are propagated. Wire protocol, original licenses and historical source hashes are unchanged.
+
+Subsequent maintained change: [TNV-015](../tls-identity.md) adds an optional WebSocket constructor entry point for the TLS name while preserving NewClientPool and the dial URL/HTTP Host. Original import hashes remain historical; license files are unchanged.

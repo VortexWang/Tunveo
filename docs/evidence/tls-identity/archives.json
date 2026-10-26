@@ -1,0 +1,22 @@
+{
+  "compatibility-evidence.zip": {
+    "bytes": 4924172,
+    "sha256": "28f5b09787e33fc1074f3006cee017781211e3e1b59addbe83f60f3266f7fe0d"
+  },
+  "identity-evidence.zip": {
+    "bytes": 1740172,
+    "sha256": "36bb7d95d13da844b0f6bed70d8c622e64b357cab12b81c9ce6c9e618fdb2681"
+  },
+  "initial-regression-evidence.zip": {
+    "bytes": 274966,
+    "sha256": "13146557c7a8147cb9d8dcc488d55712d4291b3ce053f08e7e01e5dec8dd725c"
+  },
+  "prior-attempt-evidence.zip": {
+    "bytes": 541001,
+    "sha256": "2406f69b28550fcadd991303880f3a8cd9ab4ff08ad4c39f39579ab1238f598b"
+  },
+  "regression-evidence.zip": {
+    "bytes": 165811,
+    "sha256": "258418c2d16a8878a102a607d628506e0b16d0d15fbb793fc6072e05dce22b12"
+  }
+}

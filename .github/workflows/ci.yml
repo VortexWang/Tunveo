@@ -296,3 +296,25 @@ jobs:
           name: tls-mode-regression
           path: artifacts
           retention-days: 14
+
+  tls-identity-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v6.0.2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-go@v6.1.0
+        with:
+          go-version-file: go.mod
+      - run: go test -race -count=10 -run '^TestTLSIdentityAndClientHello$' ./internal/common
+      - run: go build -race -trimpath -o bin/tunveo-race ./cmd/tunveo
+      - run: python3 scripts/verify_tls_identity.py --binary bin/tunveo-race --go go --artifacts artifacts/identity
+      - run: python3 scripts/repro_probe_selfecho.py --ref d555c8b969c6ff9c60279a1a74f8d1d0c21e15fb --mode original --output artifacts/identity/selfecho-before.json
+      - run: python3 scripts/repro_probe_selfecho.py --ref HEAD --mode fixed --output artifacts/identity/selfecho-fixed.json
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: tls-identity-regression
+          path: artifacts/identity
+          retention-days: 14
