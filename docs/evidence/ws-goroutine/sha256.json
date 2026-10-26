@@ -7,9 +7,17 @@
     "sha256": "988d6ff7a35befc0456346a23a7269d3ae38a9723684f814a01a06a3e8ea5c92",
     "bytes": 116555
   },
+  "clean-uninstrumented.zip": {
+    "sha256": "882bca28d9812f4dd3f59c5e56a2dce47c230584ecb0ee296e9a153ec3094c55",
+    "bytes": 64545
+  },
   "fixed-go-race.log": {
     "sha256": "784c02d02589683bb28ce26d12fe8a2bce8143086082f4d679dedd863475e822",
     "bytes": 966
+  },
+  "dial-fixed-native.json": {
+    "sha256": "1504ab1b0481338bfe0068731798b97c474a98f9282676179c14dd1c6caf9475",
+    "bytes": 1690
   },
   "spike-and-fixed.zip": {
     "sha256": "b966e2d343c2cec352fec56c6d792de1d783bb75a825f0640ff18d9dbd966e2e",

@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "mode": "fixed",
+  "source_commit": "4544c12e3c6eaa47c83a5798111266b4acfefd39",
+  "template_sha256": "2bff36766542a3a5e146146954a5783fcf2104a0eddda6ee1a8df57ba2081e90",
+  "archive_sha256": "8cc10526e6d19b4604dff3047d05378f548221c3f0f62f4caef16dd8d3069de9",
+  "repeat": 10,
+  "passed": 10,
+  "failed": 0,
+  "exit_code": 0,
+  "stdout": "=== RUN   TestClientManagerBoundsConcurrentDials\n--- PASS: TestClientManagerBoundsConcurrentDials (0.54s)\n=== RUN   TestClientManagerBoundsConcurrentDials\n--- PASS: TestClientManagerBoundsConcurrentDials (0.53s)\n=== RUN   TestClientManagerBoundsConcurrentDials\n--- PASS: TestClientManagerBoundsConcurrentDials (0.54s)\n=== RUN   TestClientManagerBoundsConcurrentDials\n--- PASS: TestClientManagerBoundsConcurrentDials (0.54s)\n=== RUN   TestClientManagerBoundsConcurrentDials\n--- PASS: TestClientManagerBoundsConcurrentDials (0.54s)\n=== RUN   TestClientManagerBoundsConcurrentDials\n--- PASS: TestClientManagerBoundsConcurrentDials (0.54s)\n=== RUN   TestClientManagerBoundsConcurrentDials\n--- PASS: TestClientManagerBoundsConcurrentDials (0.54s)\n=== RUN   TestClientManagerBoundsConcurrentDials\n--- PASS: TestClientManagerBoundsConcurrentDials (0.54s)\n=== RUN   TestClientManagerBoundsConcurrentDials\n--- PASS: TestClientManagerBoundsConcurrentDials (0.53s)\n=== RUN   TestClientManagerBoundsConcurrentDials\n--- PASS: TestClientManagerBoundsConcurrentDials (0.54s)\nPASS\nok  \tgithub.com/VortexWang/Tunveo/internal/tunnelpool/websocket\t6.405s\n",
+  "stderr": "",
+  "scope": "controlled pre-upgrade TLS gate; maximum simultaneous dials and full deficit attempts, not historical spike attribution or performance"
+}
