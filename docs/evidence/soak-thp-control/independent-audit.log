@@ -1,0 +1,12 @@
+thp-ordinary-default-first
+default pilot_passed activeMiB 8.56640625 postStopRSS [39.1094, 49.0039, 48.2969] heapRSS [6.3828, 33.3359, 33.0781] heapAHP [4.0, 12.0, 12.0]
+disablethp pilot_passed activeMiB 17.09765625 postStopRSS [38.6914, 19.3516, 18.4805] heapRSS [19.4883, 3.6836, 3.3047] heapAHP [0.0, 0.0, 0.0]
+thp-race-default-first
+default failed activeMiB 72.5625 postStopRSS [178.8008, 160.3867, 159.1328] heapRSS [9.2578, 8.1406, 7.5078] heapAHP [2.0, 2.0, 2.0]
+disablethp failed activeMiB 79.03125 postStopRSS [158.6094, 156.1719, 154.9297] heapRSS [4.1328, 3.8516, 3.1328] heapAHP [0.0, 0.0, 0.0]
+thp-ordinary-disablethp-first
+disablethp pilot_passed activeMiB 15.421875 postStopRSS [36.125, 19.2344, 18.4922] heapRSS [6.6602, 3.5977, 3.2891] heapAHP [0.0, 0.0, 0.0]
+default pilot_passed activeMiB 8.65625 postStopRSS [26.8906, 20.6484, 19.957] heapRSS [5.957, 4.9609, 4.6133] heapAHP [2.0, 0.0, 0.0]
+thp-race-disablethp-first
+disablethp failed activeMiB 83.55859375 postStopRSS [160.0156, 158.3789, 157.3203] heapRSS [4.6055, 4.9414, 4.4062] heapAHP [0.0, 0.0, 0.0]
+default failed activeMiB 71.30859375 postStopRSS [187.7344, 155.875, 154.8516] heapRSS [6.1602, 6.1406, 5.8125] heapAHP [0.0, 0.0, 0.0]
