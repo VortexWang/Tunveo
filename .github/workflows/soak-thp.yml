@@ -1,0 +1,48 @@
+name: Soak THP paired pilot
+on:
+  pull_request:
+    paths:
+      - 'scripts/soak_thp.py'
+      - 'scripts/tests/test_soak_thp.py'
+      - '.github/workflows/soak-thp.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  paired:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        build: [ordinary, race]
+        order: [default-first, disablethp-first]
+    steps:
+      - uses: actions/checkout@v6.0.2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-go@v6.1.0
+        with:
+          go-version-file: go.mod
+      - run: python3 -m unittest discover -s scripts/tests
+      - name: Build one clean binary for both arms
+        env:
+          BUILD: ${{ matrix.build }}
+        run: |
+          mkdir -p artifacts
+          extra=()
+          if [ "$BUILD" = race ]; then extra+=(-race); fi
+          go build "${extra[@]}" -trimpath -o bin/probe ./scripts/soak24h
+          go version > artifacts/go-version.txt
+          go version -m bin/probe > artifacts/build-info.txt
+          sha256sum "$(go env GOROOT)/src/runtime/mem_linux.go" "$(go env GOROOT)/src/runtime/extern.go" > artifacts/runtime-source.sha256
+          cp "$(go env GOROOT)/src/runtime/mem_linux.go" artifacts/runtime-mem_linux.go.txt
+          cp "$(go env GOROOT)/src/runtime/extern.go" artifacts/runtime-extern.go.txt
+      - name: Two sequential180s pilots each followed by120s GC observation
+        run: python3 scripts/soak_thp.py --binary bin/probe --order '${{ matrix.order }}' --artifacts artifacts/experiment
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: thp-${{ matrix.build }}-${{ matrix.order }}
+          path: artifacts
+          retention-days: 30

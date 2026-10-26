@@ -131,6 +131,8 @@ def capture(a):
                     if identity is None:
                         identity = pid_identity(pid)
                         evidence.update(native_pid=pid, native_start_ticks=identity)
+                        entries = Path(f'/proc/{pid}/environ').read_bytes().split(b'\0')
+                        evidence['native_runtime_environment'] = {key: next((item.split(b'=',1)[1].decode() for item in entries if item.startswith((key+'=').encode())), None) for key in ('GODEBUG','GOGC','GOMEMLIMIT','GOMAXPROCS')}
                         if hashlib.sha256(Path(f'/proc/{pid}/exe').read_bytes()).hexdigest() != evidence['binary_sha256']:
                             raise ValueError('native executable mismatch')
                     report_path = a.artifacts/'pilot/native/report.json'
