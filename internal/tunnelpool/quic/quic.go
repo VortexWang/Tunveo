@@ -316,12 +316,29 @@ func (p *Pool) startListener() error {
 	clonedTLS.MinVersion = tls.VersionTLS13
 
 	quicConfig := buildQUICConfig(p.keepAlive, p.maxCap)
-	newListener, err := quic.ListenAddr(p.listenAddr, clonedTLS, quicConfig)
+	// Own both layers explicitly. A convenience ListenAddr listener may keep
+	// its UDP transport alive while closed connection IDs drain. Pool.Close
+	// must release the address before a replacement endpoint starts.
+	packet, err := net.ListenPacket("udp", p.listenAddr)
 	if err != nil {
 		return fmt.Errorf("startListener: %w", err)
 	}
-
-	if _, ok := p.life.Track(newListener); !ok {
+	transport := &quic.Transport{Conn: packet}
+	newListener, err := transport.Listen(clonedTLS, quicConfig)
+	if err != nil {
+		transport.Close()
+		packet.Close()
+		return fmt.Errorf("startListener: %w", err)
+	}
+	closeTransport := lifetime.CloserFunc(func() error {
+		// Transport.Close joins its packet reader but does not close a supplied
+		// PacketConn. Keep that final socket close in the same owned resource.
+		newListener.Close()
+		err := transport.Close()
+		packet.Close()
+		return err
+	})
+	if _, ok := p.life.Track(closeTransport); !ok {
 		return context.Canceled
 	}
 	p.quicListener.Store(newListener)

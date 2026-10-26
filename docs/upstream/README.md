@@ -15,3 +15,8 @@ Subsequent maintained changes: [TNV-004](../run-lifecycle.md) adds permanent poo
 Subsequent maintained changes: [TNV-005](../h2-stream-deadlines.md) replaces H2 public deadline forwarding with per-stream bounded I/O adapters, joins active pumps on close and links request cancellation after response headers. H2 response Flush errors are propagated. Wire protocol, original licenses and historical source hashes are unchanged.
 
 Subsequent maintained change: [TNV-015](../tls-identity.md) adds an optional WebSocket constructor entry point for the TLS name while preserving NewClientPool and the dial URL/HTTP Host. Original import hashes remain historical; license files are unchanged.
+
+TNV-017 additionally gives the QUIC server pool explicit ownership of its
+`quic.Transport` and supplied UDP socket, so pool Close releases the address
+before returning; the original convenience-listener close could retain it while
+closed connection IDs drained. Original copyright/license notices are retained.
