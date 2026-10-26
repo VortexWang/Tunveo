@@ -84,16 +84,16 @@ def allocations_at(events,at):
         if ret is None:continue
         if ret[1]=='-1':continue
         if e['call']=='mmap':
-            size=re.match(r'mmap\([^,]+, (\d+),',body)
+            size=re.match(r'mmap\([^,]+,\s*(\d+)\s*,',body)
             if size is None or not ret[1].startswith('0x'):raise ValueError('unparsed mmap')
             start=int(ret[1],16);end=start+int(size[1]);intervals=remove(intervals,start,end)
             intervals.append((start,end,stack_owner(e['stack'])))
         elif e['call']=='munmap':
-            args=re.match(r'munmap\((0x[0-9a-f]+), (\d+)\)',body)
+            args=re.match(r'munmap\((0x[0-9a-f]+),\s*(\d+)\s*\)',body)
             if args is None:raise ValueError('unparsed munmap')
             lo=int(args[1],16);intervals=remove(intervals,lo,lo+int(args[2]))
         elif e['call']=='mremap':
-            args=re.match(r'mremap\((0x[0-9a-f]+), (\d+), (\d+),',body)
+            args=re.match(r'mremap\((0x[0-9a-f]+),\s*(\d+)\s*,\s*(\d+)\s*,',body)
             if args is None or not ret[1].startswith('0x'):raise ValueError('unparsed mremap')
             lo=int(args[1],16);intervals=remove(intervals,lo,lo+int(args[2]))
             lo=int(ret[1],16);end=lo+int(args[3]);intervals=remove(intervals,lo,end)

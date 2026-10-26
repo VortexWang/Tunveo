@@ -28,6 +28,15 @@ class AllocationTests(unittest.TestCase):
   self.assertEqual(a.allocations_at(e,a.ns('1.5')),[])
   self.assertEqual(a.allocations_at(e,a.ns('2.5')),[(4096,8192,'race_allocator_other')])
   self.assertEqual(a.allocations_at(e,a.ns('3.5')),[(16384,24576,'unresolved')])
+ def test_real_strace_resumed_argument_whitespace(self):
+  raw="""1 1.0 mmap(NULL, 8192 , PROT_READ, MAP_PRIVATE, -1, 0) = 0x1000 <0.000001>
+ > lib(__tsan::InternalAlloc+0x1) [0x1]
+1 2.0 munmap(0x1000, 8192 <unfinished ...>
+1 2.000001 <... munmap resumed>) = 0 <0.000010>
+"""
+  events=a.parse_trace(raw)
+  self.assertEqual(a.allocations_at(events,a.ns('1.5')),[(4096,12288,'race_allocator_other')])
+  self.assertEqual(a.allocations_at(events,a.ns('2.5')),[])
  def test_no_rss_prorating_or_guessed_allocator(self):
   v=dict(start=0,end=4096)
   self.assertEqual(a.owner_of(v,[(0,2048,'race_trace'),(2048,4096,'race_allocator_other')]),'race_runtime_mixed')
