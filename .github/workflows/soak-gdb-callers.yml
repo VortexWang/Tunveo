@@ -1,0 +1,47 @@
+name: Soak GDB caller diagnostic
+on:
+  pull_request:
+    paths:
+      - 'scripts/gdb_mmap.py'
+      - 'scripts/soak_gdb_callers.py'
+      - 'scripts/gdbcontrol/**'
+      - 'scripts/tests/test_soak_gdb_callers.py'
+      - '.github/workflows/soak-gdb-callers.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  callers:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6.0.2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-go@v6.1.0
+        with:
+          go-version-file: go.mod
+      - name: Install debugger on isolated CI VM
+        run: |
+          if ! command -v gdb >/dev/null; then
+            sudo apt-get update
+            sudo apt-get install -y gdb
+          fi
+          mkdir -p artifacts
+          gdb --version > artifacts/gdb-version.txt
+      - run: python3 -m unittest discover -s scripts/tests
+      - name: Build unchanged race probe and known C ABI allocation control
+        run: |
+          go build -race -trimpath -o bin/probe ./scripts/soak24h
+          gcc -g -O1 -fomit-frame-pointer -fno-optimize-sibling-calls -no-pie -o bin/gdb-control scripts/gdbcontrol/main.c
+          sha256sum bin/probe bin/gdb-control "$(go env GOROOT)/src/runtime/race/internal/amd64v1/race_linux.syso" > artifacts/binary-sha256.txt
+          readelf -S bin/probe > artifacts/elf-sections.txt
+          readelf --debug-dump=frames bin/probe > artifacts/elf-frames.txt
+      - name: Known caller control, GDB60s diagnostic, independent untraced180s pilot
+        run: python3 scripts/soak_gdb_callers.py --binary bin/probe --control bin/gdb-control --artifacts artifacts/experiment
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: soak-gdb-callers-race
+          path: artifacts
+          retention-days: 30
