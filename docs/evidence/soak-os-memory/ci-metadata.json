@@ -1,0 +1,328 @@
+{
+  "source": "54295c8f98177cebc18b61c4b1476526f6740474",
+  "artifacts": {
+    "artifacts": [
+      {
+        "id": 12654987975,
+        "name": "h2-rss-race",
+        "size_in_bytes": 196373,
+        "url": "https://api.github.com/repos/VortexWang/Tunveo/actions/artifacts/12654987975",
+        "archive_download_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/artifacts/12654987975/zip",
+        "expired": false,
+        "created_at": "2026-10-26T13:32:18Z",
+        "expires_at": "2026-11-25T13:32:17Z",
+        "updated_at": "2026-10-26T13:32:18Z",
+        "digest": "sha256:9479acf9901c8fb7be9a0a2ac6b456506277b8fc5ca502a08d3da845196db0fe",
+        "workflow_run": {
+          "id": 40330759181,
+          "repository_id": 1432849936,
+          "head_repository_id": 1432849936,
+          "head_branch": "test/soak-os-memory",
+          "head_sha": "54295c8f98177cebc18b61c4b1476526f6740474"
+        }
+      },
+      {
+        "id": 12654613013,
+        "name": "h2-rss-ordinary",
+        "size_in_bytes": 193427,
+        "url": "https://api.github.com/repos/VortexWang/Tunveo/actions/artifacts/12654613013",
+        "archive_download_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/artifacts/12654613013/zip",
+        "expired": false,
+        "created_at": "2026-10-26T13:32:06Z",
+        "expires_at": "2026-11-25T13:32:05Z",
+        "updated_at": "2026-10-26T13:32:06Z",
+        "digest": "sha256:fcda03237e6ce83fb6dbc9c1d7372ffac55144caf99b452305f5ada4f26831be",
+        "workflow_run": {
+          "id": 40330759181,
+          "repository_id": 1432849936,
+          "head_repository_id": 1432849936,
+          "head_branch": "test/soak-os-memory",
+          "head_sha": "54295c8f98177cebc18b61c4b1476526f6740474"
+        }
+      },
+      {
+        "id": 12654262456,
+        "name": "soak-timing-control",
+        "size_in_bytes": 13220,
+        "url": "https://api.github.com/repos/VortexWang/Tunveo/actions/artifacts/12654262456",
+        "archive_download_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/artifacts/12654262456/zip",
+        "expired": false,
+        "created_at": "2026-10-26T13:28:36Z",
+        "expires_at": "2026-11-25T13:28:35Z",
+        "updated_at": "2026-10-26T13:28:36Z",
+        "digest": "sha256:9991b9298febda15ab4c036c2c3dd03dbde1587f1552de0b24d9c18122b16e5e",
+        "workflow_run": {
+          "id": 40330759181,
+          "repository_id": 1432849936,
+          "head_repository_id": 1432849936,
+          "head_branch": "test/soak-os-memory",
+          "head_sha": "54295c8f98177cebc18b61c4b1476526f6740474"
+        }
+      }
+    ]
+  },
+  "jobs": {
+    "jobs": [
+      {
+        "id": 121599243077,
+        "name": "timing",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40330759181,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run python3 scripts/repro_soak_checkpoint.py --ref 8c45fe55738a302d0b6e3274ee7ef8ed9e0c3221 --go go --repeat 10 --output artifacts/checkpoint-parent.json",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run python3 scripts/repro_soak_checkpoint.py --ref HEAD --go go --repeat 10 --require-timing --output artifacts/checkpoint-current.json",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Run go test -race -v ./scripts/soak24h",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Run python3 -m unittest discover -s scripts/tests -p test_soak_os_memory.py",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Post Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15
+          },
+          {
+            "name": "Post Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 16
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 17
+          }
+        ]
+      },
+      {
+        "id": 121599243227,
+        "name": "h2 (race)",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40330759181,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Build identical source with declared instrumentation",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Three separate H2 mode1 windows, unchanged acceptance budgets",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Post Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11
+          },
+          {
+            "name": "Post Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          }
+        ]
+      },
+      {
+        "id": 121599243540,
+        "name": "h2 (ordinary)",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40330759181,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Build identical source with declared instrumentation",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Three separate H2 mode1 windows, unchanged acceptance budgets",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Post Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11
+          },
+          {
+            "name": "Post Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          }
+        ]
+      }
+    ]
+  },
+  "workflow_status": {
+    "workflow_runs": [
+      {
+        "id": 40330759275,
+        "name": "WebSocket resource diagnosis",
+        "status": "in_progress",
+        "conclusion": null,
+        "run_number": 6,
+        "jobs_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/runs/40330759275/jobs",
+        "logs_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/runs/40330759275/logs",
+        "workflow_id": 396937189
+      },
+      {
+        "id": 40330759181,
+        "name": "Soak timing and RSS diagnosis",
+        "status": "in_progress",
+        "conclusion": null,
+        "run_number": 2,
+        "jobs_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/runs/40330759181/jobs",
+        "logs_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/runs/40330759181/logs",
+        "workflow_id": 397029040
+      },
+      {
+        "id": 40330759446,
+        "name": "Soak smoke",
+        "status": "queued",
+        "conclusion": null,
+        "run_number": 8,
+        "jobs_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/runs/40330759446/jobs",
+        "logs_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/runs/40330759446/logs",
+        "workflow_id": 396778155
+      },
+      {
+        "id": 40330759296,
+        "name": "TLS acceptance",
+        "status": "in_progress",
+        "conclusion": null,
+        "run_number": 13,
+        "jobs_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/runs/40330759296/jobs",
+        "logs_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/runs/40330759296/logs",
+        "workflow_id": 396433780
+      },
+      {
+        "id": 40330759290,
+        "name": "CI",
+        "status": "in_progress",
+        "conclusion": null,
+        "run_number": 44,
+        "jobs_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/runs/40330759290/jobs",
+        "logs_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/runs/40330759290/logs",
+        "workflow_id": 395672756
+      }
+    ]
+  },
+  "ci_checkout": "b64fb3d2dc1773ed341b6d7ca3439856b96f1032",
+  "ci_tree": "884508a0b8eb501cbcb2fceb8eabd3dc06564825"
+}

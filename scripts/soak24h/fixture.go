@@ -18,24 +18,25 @@ import (
 )
 
 type sample struct {
-	Cycle        int     `json:"cycle"`
-	Goroutines   int     `json:"goroutines"`
-	FD           int     `json:"fd"`
-	HeapAlloc    uint64  `json:"heap_alloc"`
-	HeapInuse    uint64  `json:"heap_inuse"`
-	Sys          uint64  `json:"sys"`
-	RSS          uint64  `json:"rss"`
-	HeapSys      uint64  `json:"heap_sys"`
-	HeapIdle     uint64  `json:"heap_idle"`
-	HeapReleased uint64  `json:"heap_released"`
-	StackInuse   uint64  `json:"stack_inuse"`
-	OtherSys     uint64  `json:"other_sys"`
-	TotalAlloc   uint64  `json:"total_alloc"`
-	Mallocs      uint64  `json:"mallocs"`
-	Frees        uint64  `json:"frees"`
-	NumGC        uint32  `json:"num_gc"`
-	PauseTotalNS uint64  `json:"gc_pause_total_ns"`
-	GCSeconds    float64 `json:"gc_wall_seconds"`
+	Cycle        int        `json:"cycle"`
+	Goroutines   int        `json:"goroutines"`
+	FD           int        `json:"fd"`
+	HeapAlloc    uint64     `json:"heap_alloc"`
+	HeapInuse    uint64     `json:"heap_inuse"`
+	Sys          uint64     `json:"sys"`
+	RSS          uint64     `json:"rss"`
+	HeapSys      uint64     `json:"heap_sys"`
+	HeapIdle     uint64     `json:"heap_idle"`
+	HeapReleased uint64     `json:"heap_released"`
+	StackInuse   uint64     `json:"stack_inuse"`
+	OtherSys     uint64     `json:"other_sys"`
+	TotalAlloc   uint64     `json:"total_alloc"`
+	Mallocs      uint64     `json:"mallocs"`
+	Frees        uint64     `json:"frees"`
+	NumGC        uint32     `json:"num_gc"`
+	PauseTotalNS uint64     `json:"gc_pause_total_ns"`
+	GCSeconds    float64    `json:"gc_wall_seconds"`
+	OSMemory     procMemory `json:"os_memory"`
 }
 type observer struct{ verified, pending, restarts atomic.Int64 }
 
@@ -108,7 +109,7 @@ func measure(n int) (sample, error) {
 		HeapSys: m.HeapSys, HeapIdle: m.HeapIdle, HeapReleased: m.HeapReleased,
 		StackInuse: m.StackInuse, OtherSys: m.OtherSys, TotalAlloc: m.TotalAlloc,
 		Mallocs: m.Mallocs, Frees: m.Frees, NumGC: m.NumGC, PauseTotalNS: m.PauseTotalNs,
-		GCSeconds: gcSeconds}, nil
+		GCSeconds: gcSeconds, OSMemory: readProcMemory()}, nil
 }
 func returned(s, b sample) bool {
 	return s.Goroutines <= b.Goroutines+4 && s.FD <= b.FD+2 && s.HeapAlloc <= b.HeapAlloc+8*1024*1024

@@ -1,0 +1,23 @@
+{
+  "source_commit": "54295c8f98177cebc18b61c4b1476526f6740474",
+  "source_tree": "884508a0b8eb501cbcb2fceb8eabd3dc06564825",
+  "ci_checkout": "b64fb3d2dc1773ed341b6d7ca3439856b96f1032",
+  "ci_tree_matches_source": true,
+  "toolchain": "go1.26.10 linux/amd64",
+  "toolchain_tar_sha256": "ccfe7ae822d2c2f41f4fe7c956199967a4dac22d0ee0d2b2bfdb440aab3b20c5",
+  "ordinary_command": "go build -trimpath -o bin/os-memory-ordinary ./scripts/soak24h",
+  "race_command": "go build -race -trimpath -o bin/os-memory-race ./scripts/soak24h",
+  "build_vcs_modified": false,
+  "host_scope": "local8CPUquota/8GiB, paired20QPS, CI ordinary/race separateVMs; read-only metadata/artifact retrieval during local windows; not idle dedicated benchmark",
+  "scope": "all twelve60s windows pilot; historical failures retained; exactly one new local resource failure; no threshold changes; allocation ownership unconfirmed",
+  "read_seconds_scope": "whole procfs read plus raw-string conversion and parsing; also within existing measure/snapshot timing",
+  "tests": {
+    "python": 35,
+    "go": "go test -race -v ./scripts/soak24h; includes real16MiB anonymous mapping control and existing scheduler/FD/traffic tests"
+  },
+  "script_sha256": {
+    "scripts/verify_soak.py": "efdc7ab8374880c89e3a5fb95099e9e7428176953c925b8253f1c1f12581c13e",
+    "scripts/audit_soak_os_memory.py": "3244fa645b1cfbf078fc1dac3de0fcf2f25c1c0eaca68a54677512b646ad4a0e",
+    "scripts/soak24h/proc_memory.go": "f4488e83bc1ba39c0dc824f78288d475dfad4e9d322fe954b594e30ea8b72788"
+  }
+}

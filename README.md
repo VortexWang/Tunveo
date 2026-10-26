@@ -92,3 +92,5 @@ WebSocket dial admission and resource spike diagnostics: [bounded local stacks a
 Ordinary-build eight-profile pilot and raw-log suite validation: [preflight evidence](docs/ordinary-soak-preflight.md).
 
 Sampling/checkpoint timing and H2 ordinary/race RSS comparison: [controlled diagnosis](docs/soak-runtime-diagnostics.md).
+
+OS驻留内存诊断及限制见 [docs/soak-os-memory.md](docs/soak-os-memory.md)。
