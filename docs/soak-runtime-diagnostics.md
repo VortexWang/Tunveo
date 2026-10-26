@@ -63,3 +63,5 @@ PR19规范源码19653e6：常规CI40314437009的19项任务全部成功，Soak s
 另独立下载PR19的八份race pilot artifact，逐份核对digest/CRC/清单并重读全部5752条事件及原始日志，8/8通过；CI检出61cac987的树与19653e6相同。该轮新通过不覆盖PR18 race6/8。PR19失败TLS任务的原始汇总有44条failed记录：40条旧服务端H2请求TLS0的握手阶段进程退出，4条旧服务端配对中证书负例在初始HTTPS握手收到EOF（3条expired、1条wrong-hostname），没有当作有效证书拒绝通过；本项未重做其余单元格的完整覆盖证明。
 
 完整本地与专项CI原始数据、构建指纹、调度控制、上一轮CI资料和SHA256清单见 [evidence/soak-runtime-diagnostics](evidence/soak-runtime-diagnostics)。生产引擎Go、依赖、阈值不变，TLS/原生平台/集成及发布指纹等门槛仍开放。下一项需在固定环境细分OS驻留内存来源，并等待/捕获带耗时记录的自然漏tick；正式24小时保持pending，未启动、未合并、未发布。
+
+补录：该源码TLS acceptance40322786525最终失败，11任务10成功，失败为旧服务端TLS0分片正例；不作完整覆盖成功声明。下一轮OS分项见 [soak-os-memory.md](soak-os-memory.md)。
