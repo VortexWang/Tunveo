@@ -36,6 +36,7 @@ class SoakEvidenceTests(unittest.TestCase):
     def test_partial_gaps_restarts_drops_and_source_mutation_rejected(self):
         mutations = [lambda r: r.update(measured_seconds=86399),
                      lambda r: r['settings'].update(observed_restarts=1),
+                     lambda r: r['settings'].update(goroutine_diagnostics=True),
                      lambda r: r['counts'].update(dropped=1),
                      lambda r: r['warmup_counts'].update(failed=1),
                      lambda r: r.update(build_info='-race=true vcs.modified=false vcs.revision=abc'),

@@ -70,6 +70,7 @@ def validate_report(r, pilot):
     trend = {key: statistics.median(p['resources'][key] for p in steady[-quarter:]) -
              statistics.median(p['resources'][key] for p in steady[:quarter]) for key in TREND}
     if not pilot:
+        need(not s.get('goroutine_diagnostics', False), 'formal soak must not include diagnostic stack profiling')
         need(s['duration_seconds'] >= 86400 and r['measured_seconds'] >= 86400, '24 continuous measured hours required')
         need(s['warmup_seconds'] >= 60 and len(steady) >= 120, 'insufficient long-run warmup/samples')
         validate_build(r['build_info'])
