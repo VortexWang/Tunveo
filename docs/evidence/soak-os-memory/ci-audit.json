@@ -1,0 +1,3298 @@
+{
+  "race-1": {
+    "summary_status": "pilot_passed",
+    "error": null,
+    "audited_events": 719,
+    "counts": {
+      "tcp": 450,
+      "udp": 150,
+      "failed": 0,
+      "dropped": 0
+    },
+    "file_hashes_verified": 5,
+    "os_memory": {
+      "report_sha256": "190120ee41bdb89119e706a6d3748a23e3f06c9bcdaebbb85b4375aec79b16f7",
+      "probe_status": "passed",
+      "build_info": "go\tgo1.26.10\npath\tgithub.com/VortexWang/Tunveo/scripts/soak24h\nmod\tgithub.com/VortexWang/Tunveo\tv0.0.0-20261026132739-b64fb3d2dc17\t\ndep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\ndep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\ndep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\ndep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\ndep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\ndep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\nbuild\t-buildmode=exe\nbuild\t-compiler=gc\nbuild\t-race=true\nbuild\t-trimpath=true\nbuild\tCGO_ENABLED=1\nbuild\tGOARCH=amd64\nbuild\tGOOS=linux\nbuild\tGOAMD64=v1\nbuild\tvcs=git\nbuild\tvcs.revision=b64fb3d2dc1773ed341b6d7ca3439856b96f1032\nbuild\tvcs.time=2026-10-26T13:27:39Z\nbuild\tvcs.modified=false\n",
+      "sample_count": 21,
+      "baseline_at_seconds": 10.005453154,
+      "peak_at_seconds": 67.009208437,
+      "statm_rss_delta": 52899840,
+      "heap_alloc_delta": -341920,
+      "rollup_delta_bytes": {
+        "AnonHugePages": -12582912,
+        "Anonymous": 52899840,
+        "FilePmdMapped": 0,
+        "KSM": 0,
+        "LazyFree": 0,
+        "Locked": 0,
+        "Private_Clean": 5410816,
+        "Private_Dirty": 47489024,
+        "Private_Hugetlb": 0,
+        "Pss": 52899840,
+        "Pss_Anon": 52899840,
+        "Pss_Dirty": 47489024,
+        "Pss_File": 0,
+        "Pss_Shmem": 0,
+        "Referenced": 52899840,
+        "Rss": 52899840,
+        "Shared_Clean": 0,
+        "Shared_Dirty": 0,
+        "Shared_Hugetlb": 0,
+        "ShmemPmdMapped": 0,
+        "Swap": 0,
+        "SwapPss": 0
+      },
+      "max_read_seconds": 0.003568383,
+      "scheduler_timing": {
+        "max_tick_lag_seconds": 0.01267929,
+        "max_measure_seconds": 0.011588174,
+        "max_checkpoint_seconds": 0.005858758,
+        "max_snapshot_seconds": 0.017098744,
+        "missed_at_seconds": 0,
+        "expected_slot": 0,
+        "observed_slot": 0,
+        "missed_slots": 0
+      }
+    }
+  },
+  "race-2": {
+    "summary_status": "pilot_passed",
+    "error": null,
+    "audited_events": 719,
+    "counts": {
+      "tcp": 450,
+      "udp": 150,
+      "failed": 0,
+      "dropped": 0
+    },
+    "file_hashes_verified": 5,
+    "os_memory": {
+      "report_sha256": "9494664cf52757724d17454176e5b890c1e51891116eb2be7aea18074883da45",
+      "probe_status": "passed",
+      "build_info": "go\tgo1.26.10\npath\tgithub.com/VortexWang/Tunveo/scripts/soak24h\nmod\tgithub.com/VortexWang/Tunveo\tv0.0.0-20261026132739-b64fb3d2dc17\t\ndep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\ndep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\ndep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\ndep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\ndep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\ndep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\nbuild\t-buildmode=exe\nbuild\t-compiler=gc\nbuild\t-race=true\nbuild\t-trimpath=true\nbuild\tCGO_ENABLED=1\nbuild\tGOARCH=amd64\nbuild\tGOOS=linux\nbuild\tGOAMD64=v1\nbuild\tvcs=git\nbuild\tvcs.revision=b64fb3d2dc1773ed341b6d7ca3439856b96f1032\nbuild\tvcs.time=2026-10-26T13:27:39Z\nbuild\tvcs.modified=false\n",
+      "sample_count": 21,
+      "baseline_at_seconds": 10.006106756,
+      "peak_at_seconds": 62.006329226,
+      "statm_rss_delta": 62951424,
+      "heap_alloc_delta": -1346472,
+      "rollup_delta_bytes": {
+        "AnonHugePages": 8388608,
+        "Anonymous": 62951424,
+        "FilePmdMapped": 0,
+        "KSM": 0,
+        "LazyFree": 0,
+        "Locked": 0,
+        "Private_Clean": 0,
+        "Private_Dirty": 62951424,
+        "Private_Hugetlb": 0,
+        "Pss": 62951424,
+        "Pss_Anon": 62951424,
+        "Pss_Dirty": 62951424,
+        "Pss_File": 0,
+        "Pss_Shmem": 0,
+        "Referenced": 62951424,
+        "Rss": 62951424,
+        "Shared_Clean": 0,
+        "Shared_Dirty": 0,
+        "Shared_Hugetlb": 0,
+        "ShmemPmdMapped": 0,
+        "Swap": 0,
+        "SwapPss": 0
+      },
+      "max_read_seconds": 0.003056256,
+      "scheduler_timing": {
+        "max_tick_lag_seconds": 0.008393263,
+        "max_measure_seconds": 0.008848954,
+        "max_checkpoint_seconds": 0.005174127,
+        "max_snapshot_seconds": 0.012632563,
+        "missed_at_seconds": 0,
+        "expected_slot": 0,
+        "observed_slot": 0,
+        "missed_slots": 0
+      }
+    }
+  },
+  "race-3": {
+    "summary_status": "pilot_passed",
+    "error": null,
+    "audited_events": 719,
+    "counts": {
+      "tcp": 450,
+      "udp": 150,
+      "failed": 0,
+      "dropped": 0
+    },
+    "file_hashes_verified": 5,
+    "os_memory": {
+      "report_sha256": "bad306d131324c0d885b4fb05870759dfb242814c4bef599535cdd5a40f617d6",
+      "probe_status": "passed",
+      "build_info": "go\tgo1.26.10\npath\tgithub.com/VortexWang/Tunveo/scripts/soak24h\nmod\tgithub.com/VortexWang/Tunveo\tv0.0.0-20261026132739-b64fb3d2dc17\t\ndep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\ndep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\ndep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\ndep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\ndep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\ndep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\nbuild\t-buildmode=exe\nbuild\t-compiler=gc\nbuild\t-race=true\nbuild\t-trimpath=true\nbuild\tCGO_ENABLED=1\nbuild\tGOARCH=amd64\nbuild\tGOOS=linux\nbuild\tGOAMD64=v1\nbuild\tvcs=git\nbuild\tvcs.revision=b64fb3d2dc1773ed341b6d7ca3439856b96f1032\nbuild\tvcs.time=2026-10-26T13:27:39Z\nbuild\tvcs.modified=false\n",
+      "sample_count": 21,
+      "baseline_at_seconds": 8.005447821,
+      "peak_at_seconds": 67.008083984,
+      "statm_rss_delta": 63332352,
+      "heap_alloc_delta": 693864,
+      "rollup_delta_bytes": {
+        "AnonHugePages": 8388608,
+        "Anonymous": 63266816,
+        "FilePmdMapped": 0,
+        "KSM": 0,
+        "LazyFree": 0,
+        "Locked": 0,
+        "Private_Clean": 65536,
+        "Private_Dirty": 63266816,
+        "Private_Hugetlb": 0,
+        "Pss": 63332352,
+        "Pss_Anon": 63266816,
+        "Pss_Dirty": 63266816,
+        "Pss_File": 65536,
+        "Pss_Shmem": 0,
+        "Referenced": 63332352,
+        "Rss": 63332352,
+        "Shared_Clean": 0,
+        "Shared_Dirty": 0,
+        "Shared_Hugetlb": 0,
+        "ShmemPmdMapped": 0,
+        "Swap": 0,
+        "SwapPss": 0
+      },
+      "max_read_seconds": 0.002871377,
+      "scheduler_timing": {
+        "max_tick_lag_seconds": 0.011048271,
+        "max_measure_seconds": 0.009343448,
+        "max_checkpoint_seconds": 0.004733899,
+        "max_snapshot_seconds": 0.013168632,
+        "missed_at_seconds": 0,
+        "expected_slot": 0,
+        "observed_slot": 0,
+        "missed_slots": 0
+      }
+    }
+  },
+  "ordinary-1": {
+    "summary_status": "pilot_passed",
+    "error": null,
+    "audited_events": 719,
+    "counts": {
+      "tcp": 450,
+      "udp": 150,
+      "failed": 0,
+      "dropped": 0
+    },
+    "file_hashes_verified": 5,
+    "os_memory": {
+      "report_sha256": "0ceae7ba121595f2c7e25264d4e11ff404c6a64c97444b3425fea137a763fff0",
+      "probe_status": "passed",
+      "build_info": "go\tgo1.26.10\npath\tgithub.com/VortexWang/Tunveo/scripts/soak24h\nmod\tgithub.com/VortexWang/Tunveo\tv0.0.0-20261026132739-b64fb3d2dc17\t\ndep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\ndep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\ndep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\ndep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\ndep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\ndep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\nbuild\t-buildmode=exe\nbuild\t-compiler=gc\nbuild\t-trimpath=true\nbuild\tCGO_ENABLED=1\nbuild\tGOARCH=amd64\nbuild\tGOOS=linux\nbuild\tGOAMD64=v1\nbuild\tvcs=git\nbuild\tvcs.revision=b64fb3d2dc1773ed341b6d7ca3439856b96f1032\nbuild\tvcs.time=2026-10-26T13:27:39Z\nbuild\tvcs.modified=false\n",
+      "sample_count": 21,
+      "baseline_at_seconds": 10.003524583,
+      "peak_at_seconds": 67.004523444,
+      "statm_rss_delta": 10878976,
+      "heap_alloc_delta": 132992,
+      "rollup_delta_bytes": {
+        "AnonHugePages": 10485760,
+        "Anonymous": 10813440,
+        "FilePmdMapped": 0,
+        "KSM": 0,
+        "LazyFree": 0,
+        "Locked": 0,
+        "Private_Clean": 9846784,
+        "Private_Dirty": 1032192,
+        "Private_Hugetlb": 0,
+        "Pss": 10878976,
+        "Pss_Anon": 10813440,
+        "Pss_Dirty": 1032192,
+        "Pss_File": 65536,
+        "Pss_Shmem": 0,
+        "Referenced": 10878976,
+        "Rss": 10878976,
+        "Shared_Clean": 0,
+        "Shared_Dirty": 0,
+        "Shared_Hugetlb": 0,
+        "ShmemPmdMapped": 0,
+        "Swap": 0,
+        "SwapPss": 0
+      },
+      "max_read_seconds": 0.000946383,
+      "scheduler_timing": {
+        "max_tick_lag_seconds": 0.004205961,
+        "max_measure_seconds": 0.003490741,
+        "max_checkpoint_seconds": 0.00080552,
+        "max_snapshot_seconds": 0.004125699,
+        "missed_at_seconds": 0,
+        "expected_slot": 0,
+        "observed_slot": 0,
+        "missed_slots": 0
+      }
+    }
+  },
+  "ordinary-2": {
+    "summary_status": "pilot_passed",
+    "error": null,
+    "audited_events": 719,
+    "counts": {
+      "tcp": 450,
+      "udp": 150,
+      "failed": 0,
+      "dropped": 0
+    },
+    "file_hashes_verified": 5,
+    "os_memory": {
+      "report_sha256": "e1659ce6508e640feb61e4fabfb292591d84ac86bf9d0497c2184e4e281f23ff",
+      "probe_status": "passed",
+      "build_info": "go\tgo1.26.10\npath\tgithub.com/VortexWang/Tunveo/scripts/soak24h\nmod\tgithub.com/VortexWang/Tunveo\tv0.0.0-20261026132739-b64fb3d2dc17\t\ndep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\ndep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\ndep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\ndep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\ndep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\ndep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\nbuild\t-buildmode=exe\nbuild\t-compiler=gc\nbuild\t-trimpath=true\nbuild\tCGO_ENABLED=1\nbuild\tGOARCH=amd64\nbuild\tGOOS=linux\nbuild\tGOAMD64=v1\nbuild\tvcs=git\nbuild\tvcs.revision=b64fb3d2dc1773ed341b6d7ca3439856b96f1032\nbuild\tvcs.time=2026-10-26T13:27:39Z\nbuild\tvcs.modified=false\n",
+      "sample_count": 21,
+      "baseline_at_seconds": 10.003527458,
+      "peak_at_seconds": 67.003907857,
+      "statm_rss_delta": 6643712,
+      "heap_alloc_delta": 791464,
+      "rollup_delta_bytes": {
+        "AnonHugePages": 6291456,
+        "Anonymous": 6582272,
+        "FilePmdMapped": 0,
+        "KSM": 0,
+        "LazyFree": 0,
+        "Locked": 0,
+        "Private_Clean": 61440,
+        "Private_Dirty": 6582272,
+        "Private_Hugetlb": 0,
+        "Pss": 6643712,
+        "Pss_Anon": 6582272,
+        "Pss_Dirty": 6582272,
+        "Pss_File": 61440,
+        "Pss_Shmem": 0,
+        "Referenced": 6643712,
+        "Rss": 6643712,
+        "Shared_Clean": 0,
+        "Shared_Dirty": 0,
+        "Shared_Hugetlb": 0,
+        "ShmemPmdMapped": 0,
+        "Swap": 0,
+        "SwapPss": 0
+      },
+      "max_read_seconds": 0.000544184,
+      "scheduler_timing": {
+        "max_tick_lag_seconds": 0.004071479,
+        "max_measure_seconds": 0.003498192,
+        "max_checkpoint_seconds": 0.00091309,
+        "max_snapshot_seconds": 0.004255129,
+        "missed_at_seconds": 0,
+        "expected_slot": 0,
+        "observed_slot": 0,
+        "missed_slots": 0
+      }
+    }
+  },
+  "ordinary-3": {
+    "summary_status": "pilot_passed",
+    "error": null,
+    "audited_events": 719,
+    "counts": {
+      "tcp": 450,
+      "udp": 150,
+      "failed": 0,
+      "dropped": 0
+    },
+    "file_hashes_verified": 5,
+    "os_memory": {
+      "report_sha256": "492a0de9c0e76c2052018b79497e5d8f92a4e0f7c61d14140b1908b223d36ecc",
+      "probe_status": "passed",
+      "build_info": "go\tgo1.26.10\npath\tgithub.com/VortexWang/Tunveo/scripts/soak24h\nmod\tgithub.com/VortexWang/Tunveo\tv0.0.0-20261026132739-b64fb3d2dc17\t\ndep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\ndep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\ndep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\ndep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\ndep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\ndep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\nbuild\t-buildmode=exe\nbuild\t-compiler=gc\nbuild\t-trimpath=true\nbuild\tCGO_ENABLED=1\nbuild\tGOARCH=amd64\nbuild\tGOOS=linux\nbuild\tGOAMD64=v1\nbuild\tvcs=git\nbuild\tvcs.revision=b64fb3d2dc1773ed341b6d7ca3439856b96f1032\nbuild\tvcs.time=2026-10-26T13:27:39Z\nbuild\tvcs.modified=false\n",
+      "sample_count": 21,
+      "baseline_at_seconds": 10.003060278,
+      "peak_at_seconds": 67.003658289,
+      "statm_rss_delta": 8695808,
+      "heap_alloc_delta": 184464,
+      "rollup_delta_bytes": {
+        "AnonHugePages": 8388608,
+        "Anonymous": 8699904,
+        "FilePmdMapped": 0,
+        "KSM": 0,
+        "LazyFree": 0,
+        "Locked": 0,
+        "Private_Clean": -4096,
+        "Private_Dirty": 8699904,
+        "Private_Hugetlb": 0,
+        "Pss": 8695808,
+        "Pss_Anon": 8699904,
+        "Pss_Dirty": 8699904,
+        "Pss_File": -4096,
+        "Pss_Shmem": 0,
+        "Referenced": 8695808,
+        "Rss": 8695808,
+        "Shared_Clean": 0,
+        "Shared_Dirty": 0,
+        "Shared_Hugetlb": 0,
+        "ShmemPmdMapped": 0,
+        "Swap": 0,
+        "SwapPss": 0
+      },
+      "max_read_seconds": 0.000456941,
+      "scheduler_timing": {
+        "max_tick_lag_seconds": 0.004251648,
+        "max_measure_seconds": 0.003566782,
+        "max_checkpoint_seconds": 0.000850153,
+        "max_snapshot_seconds": 0.004302643,
+        "missed_at_seconds": 0,
+        "expected_slot": 0,
+        "observed_slot": 0,
+        "missed_slots": 0
+      }
+    }
+  },
+  "timing-parent": {
+    "sha256": "aa386e40bcf1e5ae573120b0629b5380746dc3b2e6b52a326097755572069718",
+    "result": {
+      "status": "passed",
+      "source_commit": "8c45fe55738a302d0b6e3274ee7ef8ed9e0c3221",
+      "repeat": 10,
+      "template_sha256": "9df33d008abdbbb7a81285699d8f45adecb7486fbd6881bcc0c777833791273e",
+      "archive_sha256": "85e687f9885d029a9c0251db37909941d2ea9d6693f8e78d45b19ca72220dfeb",
+      "require_timing": false,
+      "exit_code": 0,
+      "observations": [
+        {
+          "schema_version": 0,
+          "status": "failed",
+          "transport": 0,
+          "mode": 0,
+          "build_info": "",
+          "go_version": "",
+          "started_at": "",
+          "finished_at": "",
+          "settings": null,
+          "host": null,
+          "measured_seconds": 0,
+          "warmup_counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 1
+          },
+          "counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 0
+          },
+          "idle_baseline": {
+            "cycle": 0,
+            "goroutines": 0,
+            "fd": 0,
+            "heap_alloc": 0,
+            "heap_inuse": 0,
+            "sys": 0,
+            "rss": 0
+          },
+          "after_stop": {
+            "cycle": 0,
+            "goroutines": 0,
+            "fd": 0,
+            "heap_alloc": 0,
+            "heap_inuse": 0,
+            "sys": 0,
+            "rss": 0
+          },
+          "points": [
+            {
+              "at_seconds": 0.001009401,
+              "phase": "warmup",
+              "resources": {
+                "cycle": 0,
+                "goroutines": 5,
+                "fd": 11,
+                "heap_alloc": 213776,
+                "heap_inuse": 729088,
+                "sys": 8681736,
+                "rss": 35213312
+              },
+              "counts": {
+                "tcp": 0,
+                "udp": 0,
+                "failed": 0,
+                "dropped": 0
+              }
+            },
+            {
+              "at_seconds": 0.252619611,
+              "phase": "drained",
+              "resources": {
+                "cycle": 0,
+                "goroutines": 4,
+                "fd": 10,
+                "heap_alloc": 212328,
+                "heap_inuse": 688128,
+                "sys": 9009416,
+                "rss": 35647488
+              },
+              "counts": {
+                "tcp": 0,
+                "udp": 0,
+                "failed": 0,
+                "dropped": 0
+              }
+            }
+          ],
+          "stop_seconds": 0,
+          "error": "scheduler missed declared offered-load ticks"
+        },
+        {
+          "schema_version": 0,
+          "status": "failed",
+          "transport": 0,
+          "mode": 0,
+          "build_info": "",
+          "go_version": "",
+          "started_at": "",
+          "finished_at": "",
+          "settings": null,
+          "host": null,
+          "measured_seconds": 0,
+          "warmup_counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 1
+          },
+          "counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 0
+          },
+          "idle_baseline": {
+            "cycle": 0,
+            "goroutines": 0,
+            "fd": 0,
+            "heap_alloc": 0,
+            "heap_inuse": 0,
+            "sys": 0,
+            "rss": 0
+          },
+          "after_stop": {
+            "cycle": 0,
+            "goroutines": 0,
+            "fd": 0,
+            "heap_alloc": 0,
+            "heap_inuse": 0,
+            "sys": 0,
+            "rss": 0
+          },
+          "points": [
+            {
+              "at_seconds": 0.000725441,
+              "phase": "warmup",
+              "resources": {
+                "cycle": 0,
+                "goroutines": 5,
+                "fd": 11,
+                "heap_alloc": 250240,
+                "heap_inuse": 802816,
+                "sys": 9279752,
+                "rss": 37482496
+              },
+              "counts": {
+                "tcp": 0,
+                "udp": 0,
+                "failed": 0,
+                "dropped": 0
+              }
+            },
+            {
+              "at_seconds": 0.251955766,
+              "phase": "drained",
+              "resources": {
+                "cycle": 0,
+                "goroutines": 4,
+                "fd": 10,
+                "heap_alloc": 247384,
+                "heap_inuse": 729088,
+                "sys": 9279752,
+                "rss": 36806656
+              },
+              "counts": {
+                "tcp": 0,
+                "udp": 0,
+                "failed": 0,
+                "dropped": 0
+              }
+            }
+          ],
+          "stop_seconds": 0,
+          "error": "scheduler missed declared offered-load ticks"
+        },
+        {
+          "schema_version": 0,
+          "status": "failed",
+          "transport": 0,
+          "mode": 0,
+          "build_info": "",
+          "go_version": "",
+          "started_at": "",
+          "finished_at": "",
+          "settings": null,
+          "host": null,
+          "measured_seconds": 0,
+          "warmup_counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 1
+          },
+          "counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 0
+          },
+          "idle_baseline": {
+            "cycle": 0,
+            "goroutines": 0,
+            "fd": 0,
+            "heap_alloc": 0,
+            "heap_inuse": 0,
+            "sys": 0,
+            "rss": 0
+          },
+          "after_stop": {
+            "cycle": 0,
+            "goroutines": 0,
+            "fd": 0,
+            "heap_alloc": 0,
+            "heap_inuse": 0,
+            "sys": 0,
+            "rss": 0
+          },
+          "points": [
+            {
+              "at_seconds": 0.000716539,
+              "phase": "warmup",
+              "resources": {
+                "cycle": 0,
+                "goroutines": 5,
+                "fd": 11,
+                "heap_alloc": 242616,
+                "heap_inuse": 761856,
+                "sys": 9287944,
+                "rss": 37888000
+              },
+              "counts": {
+                "tcp": 0,
+                "udp": 0,
+                "failed": 0,
+                "dropped": 0
+              }
+            },
+            {
+              "at_seconds": 0.251554612,
+              "phase": "drained",
+              "resources": {
+                "cycle": 0,
+                "goroutines": 4,
+                "fd": 10,
+                "heap_alloc": 248584,
+                "heap_inuse": 737280,
+                "sys": 9296136,
+                "rss": 37781504
+              },
+              "counts": {
+                "tcp": 0,
+                "udp": 0,
+                "failed": 0,
+                "dropped": 0
+              }
+            }
+          ],
+          "stop_seconds": 0,
+          "error": "scheduler missed declared offered-load ticks"
+        },
+        {
+          "schema_version": 0,
+          "status": "failed",
+          "transport": 0,
+          "mode": 0,
+          "build_info": "",
+          "go_version": "",
+          "started_at": "",
+          "finished_at": "",
+          "settings": null,
+          "host": null,
+          "measured_seconds": 0,
+          "warmup_counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 1
+          },
+          "counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 0
+          },
+          "idle_baseline": {
+            "cycle": 0,
+            "goroutines": 0,
+            "fd": 0,
+            "heap_alloc": 0,
+            "heap_inuse": 0,
+            "sys": 0,
+            "rss": 0
+          },
+          "after_stop": {
+            "cycle": 0,
+            "goroutines": 0,
+            "fd": 0,
+            "heap_alloc": 0,
+            "heap_inuse": 0,
+            "sys": 0,
+            "rss": 0
+          },
+          "points": [
+            {
+              "at_seconds": 0.000686356,
+              "phase": "warmup",
+              "resources": {
+                "cycle": 0,
+                "goroutines": 5,
+                "fd": 11,
+                "heap_alloc": 254128,
+                "heap_inuse": 827392,
+                "sys": 9296136,
+                "rss": 38174720
+              },
+              "counts": {
+                "tcp": 0,
+                "udp": 0,
+                "failed": 0,
+                "dropped": 0
+              }
+            },
+            {
+              "at_seconds": 0.251528988,
+              "phase": "drained",
+              "resources": {
+                "cycle": 0,
+                "goroutines": 4,
+                "fd": 10,
+                "heap_alloc": 242160,
+                "heap_inuse": 778240,
+                "sys": 9296136,
+                "rss": 38199296
+              },
+              "counts": {
+                "tcp": 0,
+                "udp": 0,
+                "failed": 0,
+                "dropped": 0
+              }
+            }
+          ],
+          "stop_seconds": 0,
+          "error": "scheduler missed declared offered-load ticks"
+        },
+        {
+          "schema_version": 0,
+          "status": "failed",
+          "transport": 0,
+          "mode": 0,
+          "build_info": "",
+          "go_version": "",
+          "started_at": "",
+          "finished_at": "",
+          "settings": null,
+          "host": null,
+          "measured_seconds": 0,
+          "warmup_counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 1
+          },
+          "counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 0
+          },
+          "idle_baseline": {
+            "cycle": 0,
+            "goroutines": 0,
+            "fd": 0,
+            "heap_alloc": 0,
+            "heap_inuse": 0,
+            "sys": 0,
+            "rss": 0
+          },
+          "after_stop": {
+            "cycle": 0,
+            "goroutines": 0,
+            "fd": 0,
+            "heap_alloc": 0,
+            "heap_inuse": 0,
+            "sys": 0,
+            "rss": 0
+          },
+          "points": [
+            {
+              "at_seconds": 0.000661474,
+              "phase": "warmup",
+              "resources": {
+                "cycle": 0,
+                "goroutines": 5,
+                "fd": 11,
+                "heap_alloc": 254608,
+                "heap_inuse": 802816,
+                "sys": 9296136,
+                "rss": 38334464
+              },
+              "counts": {
+                "tcp": 0,
+                "udp": 0,
+                "failed": 0,
+                "dropped": 0
+              }
+            },
+            {
+              "at_seconds": 0.251407764,
+              "phase": "drained",
+              "resources": {
+                "cycle": 0,
+                "goroutines": 4,
+                "fd": 10,
+                "heap_alloc": 250376,
+                "heap_inuse": 753664,
+                "sys": 9296136,
+                "rss": 38350848
+              },
+              "counts": {
+                "tcp": 0,
+                "udp": 0,
+                "failed": 0,
+                "dropped": 0
+              }
+            }
+          ],
+          "stop_seconds": 0,
+          "error": "scheduler missed declared offered-load ticks"
+        },
+        {
+          "schema_version": 0,
+          "status": "failed",
+          "transport": 0,
+          "mode": 0,
+          "build_info": "",
+          "go_version": "",
+          "started_at": "",
+          "finished_at": "",
+          "settings": null,
+          "host": null,
+          "measured_seconds": 0,
+          "warmup_counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 1
+          },
+          "counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 0
+          },
+          "idle_baseline": {
+            "cycle": 0,
+            "goroutines": 0,
+            "fd": 0,
+            "heap_alloc": 0,
+            "heap_inuse": 0,
+            "sys": 0,
+            "rss": 0
+          },
+          "after_stop": {
+            "cycle": 0,
+            "goroutines": 0,
+            "fd": 0,
+            "heap_alloc": 0,
+            "heap_inuse": 0,
+            "sys": 0,
+            "rss": 0
+          },
+          "points": [
+            {
+              "at_seconds": 0.000688565,
+              "phase": "warmup",
+              "resources": {
+                "cycle": 0,
+                "goroutines": 5,
+                "fd": 11,
+                "heap_alloc": 247344,
+                "heap_inuse": 802816,
+                "sys": 9296136,
+                "rss": 38481920
+              },
+              "counts": {
+                "tcp": 0,
+                "udp": 0,
+                "failed": 0,
+                "dropped": 0
+              }
+            },
+            {
+              "at_seconds": 0.251388955,
+              "phase": "drained",
+              "resources": {
+                "cycle": 0,
+                "goroutines": 4,
+                "fd": 10,
+                "heap_alloc": 242904,
+                "heap_inuse": 770048,
+                "sys": 9296136,
+                "rss": 38510592
+              },
+              "counts": {
+                "tcp": 0,
+                "udp": 0,
+                "failed": 0,
+                "dropped": 0
+              }
+            }
+          ],
+          "stop_seconds": 0,
+          "error": "scheduler missed declared offered-load ticks"
+        },
+        {
+          "schema_version": 0,
+          "status": "failed",
+          "transport": 0,
+          "mode": 0,
+          "build_info": "",
+          "go_version": "",
+          "started_at": "",
+          "finished_at": "",
+          "settings": null,
+          "host": null,
+          "measured_seconds": 0,
+          "warmup_counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 1
+          },
+          "counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 0
+          },
+          "idle_baseline": {
+            "cycle": 0,
+            "goroutines": 0,
+            "fd": 0,
+            "heap_alloc": 0,
+            "heap_inuse": 0,
+            "sys": 0,
+            "rss": 0
+          },
+          "after_stop": {
+            "cycle": 0,
+            "goroutines": 0,
+            "fd": 0,
+            "heap_alloc": 0,
+            "heap_inuse": 0,
+            "sys": 0,
+            "rss": 0
+          },
+          "points": [
+            {
+              "at_seconds": 0.000626746,
+              "phase": "warmup",
+              "resources": {
+                "cycle": 0,
+                "goroutines": 5,
+                "fd": 11,
+                "heap_alloc": 254704,
+                "heap_inuse": 802816,
+                "sys": 9296136,
+                "rss": 38596608
+              },
+              "counts": {
+                "tcp": 0,
+                "udp": 0,
+                "failed": 0,
+                "dropped": 0
+              }
+            },
+            {
+              "at_seconds": 0.251474016,
+              "phase": "drained",
+              "resources": {
+                "cycle": 0,
+                "goroutines": 4,
+                "fd": 10,
+                "heap_alloc": 250128,
+                "heap_inuse": 753664,
+                "sys": 9296136,
+                "rss": 38084608
+              },
+              "counts": {
+                "tcp": 0,
+                "udp": 0,
+                "failed": 0,
+                "dropped": 0
+              }
+            }
+          ],
+          "stop_seconds": 0,
+          "error": "scheduler missed declared offered-load ticks"
+        },
+        {
+          "schema_version": 0,
+          "status": "failed",
+          "transport": 0,
+          "mode": 0,
+          "build_info": "",
+          "go_version": "",
+          "started_at": "",
+          "finished_at": "",
+          "settings": null,
+          "host": null,
+          "measured_seconds": 0,
+          "warmup_counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 1
+          },
+          "counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 0
+          },
+          "idle_baseline": {
+            "cycle": 0,
+            "goroutines": 0,
+            "fd": 0,
+            "heap_alloc": 0,
+            "heap_inuse": 0,
+            "sys": 0,
+            "rss": 0
+          },
+          "after_stop": {
+            "cycle": 0,
+            "goroutines": 0,
+            "fd": 0,
+            "heap_alloc": 0,
+            "heap_inuse": 0,
+            "sys": 0,
+            "rss": 0
+          },
+          "points": [
+            {
+              "at_seconds": 0.000722567,
+              "phase": "warmup",
+              "resources": {
+                "cycle": 0,
+                "goroutines": 5,
+                "fd": 11,
+                "heap_alloc": 263624,
+                "heap_inuse": 860160,
+                "sys": 9296136,
+                "rss": 38514688
+              },
+              "counts": {
+                "tcp": 0,
+                "udp": 0,
+                "failed": 0,
+                "dropped": 0
+              }
+            },
+            {
+              "at_seconds": 0.251918,
+              "phase": "drained",
+              "resources": {
+                "cycle": 0,
+                "goroutines": 4,
+                "fd": 10,
+                "heap_alloc": 250832,
+                "heap_inuse": 778240,
+                "sys": 9296136,
+                "rss": 37818368
+              },
+              "counts": {
+                "tcp": 0,
+                "udp": 0,
+                "failed": 0,
+                "dropped": 0
+              }
+            }
+          ],
+          "stop_seconds": 0,
+          "error": "scheduler missed declared offered-load ticks"
+        },
+        {
+          "schema_version": 0,
+          "status": "failed",
+          "transport": 0,
+          "mode": 0,
+          "build_info": "",
+          "go_version": "",
+          "started_at": "",
+          "finished_at": "",
+          "settings": null,
+          "host": null,
+          "measured_seconds": 0,
+          "warmup_counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 1
+          },
+          "counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 0
+          },
+          "idle_baseline": {
+            "cycle": 0,
+            "goroutines": 0,
+            "fd": 0,
+            "heap_alloc": 0,
+            "heap_inuse": 0,
+            "sys": 0,
+            "rss": 0
+          },
+          "after_stop": {
+            "cycle": 0,
+            "goroutines": 0,
+            "fd": 0,
+            "heap_alloc": 0,
+            "heap_inuse": 0,
+            "sys": 0,
+            "rss": 0
+          },
+          "points": [
+            {
+              "at_seconds": 0.000713031,
+              "phase": "warmup",
+              "resources": {
+                "cycle": 0,
+                "goroutines": 5,
+                "fd": 11,
+                "heap_alloc": 265560,
+                "heap_inuse": 884736,
+                "sys": 9296136,
+                "rss": 38969344
+              },
+              "counts": {
+                "tcp": 0,
+                "udp": 0,
+                "failed": 0,
+                "dropped": 0
+              }
+            },
+            {
+              "at_seconds": 0.25181384,
+              "phase": "drained",
+              "resources": {
+                "cycle": 0,
+                "goroutines": 4,
+                "fd": 10,
+                "heap_alloc": 253376,
+                "heap_inuse": 819200,
+                "sys": 9296136,
+                "rss": 38600704
+              },
+              "counts": {
+                "tcp": 0,
+                "udp": 0,
+                "failed": 0,
+                "dropped": 0
+              }
+            }
+          ],
+          "stop_seconds": 0,
+          "error": "scheduler missed declared offered-load ticks"
+        },
+        {
+          "schema_version": 0,
+          "status": "failed",
+          "transport": 0,
+          "mode": 0,
+          "build_info": "",
+          "go_version": "",
+          "started_at": "",
+          "finished_at": "",
+          "settings": null,
+          "host": null,
+          "measured_seconds": 0,
+          "warmup_counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 1
+          },
+          "counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 0
+          },
+          "idle_baseline": {
+            "cycle": 0,
+            "goroutines": 0,
+            "fd": 0,
+            "heap_alloc": 0,
+            "heap_inuse": 0,
+            "sys": 0,
+            "rss": 0
+          },
+          "after_stop": {
+            "cycle": 0,
+            "goroutines": 0,
+            "fd": 0,
+            "heap_alloc": 0,
+            "heap_inuse": 0,
+            "sys": 0,
+            "rss": 0
+          },
+          "points": [
+            {
+              "at_seconds": 0.000654972,
+              "phase": "warmup",
+              "resources": {
+                "cycle": 0,
+                "goroutines": 5,
+                "fd": 11,
+                "heap_alloc": 266384,
+                "heap_inuse": 835584,
+                "sys": 9296136,
+                "rss": 39006208
+              },
+              "counts": {
+                "tcp": 0,
+                "udp": 0,
+                "failed": 0,
+                "dropped": 0
+              }
+            },
+            {
+              "at_seconds": 0.251785179,
+              "phase": "drained",
+              "resources": {
+                "cycle": 0,
+                "goroutines": 4,
+                "fd": 10,
+                "heap_alloc": 244912,
+                "heap_inuse": 786432,
+                "sys": 9296136,
+                "rss": 38617088
+              },
+              "counts": {
+                "tcp": 0,
+                "udp": 0,
+                "failed": 0,
+                "dropped": 0
+              }
+            }
+          ],
+          "stop_seconds": 0,
+          "error": "scheduler missed declared offered-load ticks"
+        }
+      ],
+      "stdout": "=== RUN   TestCheckpointStallControl\n    scheduler_control_test.go:50: CHECKPOINT-STALL-CONTROL: {\"schema_version\":0,\"status\":\"failed\",\"transport\":0,\"mode\":0,\"build_info\":\"\",\"go_version\":\"\",\"started_at\":\"\",\"finished_at\":\"\",\"settings\":null,\"host\":null,\"measured_seconds\":0,\"warmup_counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":1},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"idle_baseline\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0},\"after_stop\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0},\"points\":[{\"at_seconds\":0.001009401,\"phase\":\"warmup\",\"resources\":{\"cycle\":0,\"goroutines\":5,\"fd\":11,\"heap_alloc\":213776,\"heap_inuse\":729088,\"sys\":8681736,\"rss\":35213312},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0}},{\"at_seconds\":0.252619611,\"phase\":\"drained\",\"resources\":{\"cycle\":0,\"goroutines\":4,\"fd\":10,\"heap_alloc\":212328,\"heap_inuse\":688128,\"sys\":9009416,\"rss\":35647488},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0}}],\"stop_seconds\":0,\"error\":\"scheduler missed declared offered-load ticks\"}\n--- PASS: TestCheckpointStallControl (0.27s)\n=== RUN   TestCheckpointStallControl\n    scheduler_control_test.go:50: CHECKPOINT-STALL-CONTROL: {\"schema_version\":0,\"status\":\"failed\",\"transport\":0,\"mode\":0,\"build_info\":\"\",\"go_version\":\"\",\"started_at\":\"\",\"finished_at\":\"\",\"settings\":null,\"host\":null,\"measured_seconds\":0,\"warmup_counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":1},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"idle_baseline\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0},\"after_stop\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0},\"points\":[{\"at_seconds\":0.000725441,\"phase\":\"warmup\",\"resources\":{\"cycle\":0,\"goroutines\":5,\"fd\":11,\"heap_alloc\":250240,\"heap_inuse\":802816,\"sys\":9279752,\"rss\":37482496},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0}},{\"at_seconds\":0.251955766,\"phase\":\"drained\",\"resources\":{\"cycle\":0,\"goroutines\":4,\"fd\":10,\"heap_alloc\":247384,\"heap_inuse\":729088,\"sys\":9279752,\"rss\":36806656},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0}}],\"stop_seconds\":0,\"error\":\"scheduler missed declared offered-load ticks\"}\n--- PASS: TestCheckpointStallControl (0.26s)\n=== RUN   TestCheckpointStallControl\n    scheduler_control_test.go:50: CHECKPOINT-STALL-CONTROL: {\"schema_version\":0,\"status\":\"failed\",\"transport\":0,\"mode\":0,\"build_info\":\"\",\"go_version\":\"\",\"started_at\":\"\",\"finished_at\":\"\",\"settings\":null,\"host\":null,\"measured_seconds\":0,\"warmup_counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":1},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"idle_baseline\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0},\"after_stop\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0},\"points\":[{\"at_seconds\":0.000716539,\"phase\":\"warmup\",\"resources\":{\"cycle\":0,\"goroutines\":5,\"fd\":11,\"heap_alloc\":242616,\"heap_inuse\":761856,\"sys\":9287944,\"rss\":37888000},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0}},{\"at_seconds\":0.251554612,\"phase\":\"drained\",\"resources\":{\"cycle\":0,\"goroutines\":4,\"fd\":10,\"heap_alloc\":248584,\"heap_inuse\":737280,\"sys\":9296136,\"rss\":37781504},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0}}],\"stop_seconds\":0,\"error\":\"scheduler missed declared offered-load ticks\"}\n--- PASS: TestCheckpointStallControl (0.26s)\n=== RUN   TestCheckpointStallControl\n    scheduler_control_test.go:50: CHECKPOINT-STALL-CONTROL: {\"schema_version\":0,\"status\":\"failed\",\"transport\":0,\"mode\":0,\"build_info\":\"\",\"go_version\":\"\",\"started_at\":\"\",\"finished_at\":\"\",\"settings\":null,\"host\":null,\"measured_seconds\":0,\"warmup_counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":1},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"idle_baseline\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0},\"after_stop\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0},\"points\":[{\"at_seconds\":0.000686356,\"phase\":\"warmup\",\"resources\":{\"cycle\":0,\"goroutines\":5,\"fd\":11,\"heap_alloc\":254128,\"heap_inuse\":827392,\"sys\":9296136,\"rss\":38174720},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0}},{\"at_seconds\":0.251528988,\"phase\":\"drained\",\"resources\":{\"cycle\":0,\"goroutines\":4,\"fd\":10,\"heap_alloc\":242160,\"heap_inuse\":778240,\"sys\":9296136,\"rss\":38199296},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0}}],\"stop_seconds\":0,\"error\":\"scheduler missed declared offered-load ticks\"}\n--- PASS: TestCheckpointStallControl (0.25s)\n=== RUN   TestCheckpointStallControl\n    scheduler_control_test.go:50: CHECKPOINT-STALL-CONTROL: {\"schema_version\":0,\"status\":\"failed\",\"transport\":0,\"mode\":0,\"build_info\":\"\",\"go_version\":\"\",\"started_at\":\"\",\"finished_at\":\"\",\"settings\":null,\"host\":null,\"measured_seconds\":0,\"warmup_counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":1},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"idle_baseline\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0},\"after_stop\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0},\"points\":[{\"at_seconds\":0.000661474,\"phase\":\"warmup\",\"resources\":{\"cycle\":0,\"goroutines\":5,\"fd\":11,\"heap_alloc\":254608,\"heap_inuse\":802816,\"sys\":9296136,\"rss\":38334464},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0}},{\"at_seconds\":0.251407764,\"phase\":\"drained\",\"resources\":{\"cycle\":0,\"goroutines\":4,\"fd\":10,\"heap_alloc\":250376,\"heap_inuse\":753664,\"sys\":9296136,\"rss\":38350848},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0}}],\"stop_seconds\":0,\"error\":\"scheduler missed declared offered-load ticks\"}\n--- PASS: TestCheckpointStallControl (0.25s)\n=== RUN   TestCheckpointStallControl\n    scheduler_control_test.go:50: CHECKPOINT-STALL-CONTROL: {\"schema_version\":0,\"status\":\"failed\",\"transport\":0,\"mode\":0,\"build_info\":\"\",\"go_version\":\"\",\"started_at\":\"\",\"finished_at\":\"\",\"settings\":null,\"host\":null,\"measured_seconds\":0,\"warmup_counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":1},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"idle_baseline\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0},\"after_stop\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0},\"points\":[{\"at_seconds\":0.000688565,\"phase\":\"warmup\",\"resources\":{\"cycle\":0,\"goroutines\":5,\"fd\":11,\"heap_alloc\":247344,\"heap_inuse\":802816,\"sys\":9296136,\"rss\":38481920},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0}},{\"at_seconds\":0.251388955,\"phase\":\"drained\",\"resources\":{\"cycle\":0,\"goroutines\":4,\"fd\":10,\"heap_alloc\":242904,\"heap_inuse\":770048,\"sys\":9296136,\"rss\":38510592},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0}}],\"stop_seconds\":0,\"error\":\"scheduler missed declared offered-load ticks\"}\n--- PASS: TestCheckpointStallControl (0.25s)\n=== RUN   TestCheckpointStallControl\n    scheduler_control_test.go:50: CHECKPOINT-STALL-CONTROL: {\"schema_version\":0,\"status\":\"failed\",\"transport\":0,\"mode\":0,\"build_info\":\"\",\"go_version\":\"\",\"started_at\":\"\",\"finished_at\":\"\",\"settings\":null,\"host\":null,\"measured_seconds\":0,\"warmup_counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":1},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"idle_baseline\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0},\"after_stop\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0},\"points\":[{\"at_seconds\":0.000626746,\"phase\":\"warmup\",\"resources\":{\"cycle\":0,\"goroutines\":5,\"fd\":11,\"heap_alloc\":254704,\"heap_inuse\":802816,\"sys\":9296136,\"rss\":38596608},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0}},{\"at_seconds\":0.251474016,\"phase\":\"drained\",\"resources\":{\"cycle\":0,\"goroutines\":4,\"fd\":10,\"heap_alloc\":250128,\"heap_inuse\":753664,\"sys\":9296136,\"rss\":38084608},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0}}],\"stop_seconds\":0,\"error\":\"scheduler missed declared offered-load ticks\"}\n--- PASS: TestCheckpointStallControl (0.26s)\n=== RUN   TestCheckpointStallControl\n    scheduler_control_test.go:50: CHECKPOINT-STALL-CONTROL: {\"schema_version\":0,\"status\":\"failed\",\"transport\":0,\"mode\":0,\"build_info\":\"\",\"go_version\":\"\",\"started_at\":\"\",\"finished_at\":\"\",\"settings\":null,\"host\":null,\"measured_seconds\":0,\"warmup_counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":1},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"idle_baseline\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0},\"after_stop\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0},\"points\":[{\"at_seconds\":0.000722567,\"phase\":\"warmup\",\"resources\":{\"cycle\":0,\"goroutines\":5,\"fd\":11,\"heap_alloc\":263624,\"heap_inuse\":860160,\"sys\":9296136,\"rss\":38514688},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0}},{\"at_seconds\":0.251918,\"phase\":\"drained\",\"resources\":{\"cycle\":0,\"goroutines\":4,\"fd\":10,\"heap_alloc\":250832,\"heap_inuse\":778240,\"sys\":9296136,\"rss\":37818368},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0}}],\"stop_seconds\":0,\"error\":\"scheduler missed declared offered-load ticks\"}\n--- PASS: TestCheckpointStallControl (0.26s)\n=== RUN   TestCheckpointStallControl\n    scheduler_control_test.go:50: CHECKPOINT-STALL-CONTROL: {\"schema_version\":0,\"status\":\"failed\",\"transport\":0,\"mode\":0,\"build_info\":\"\",\"go_version\":\"\",\"started_at\":\"\",\"finished_at\":\"\",\"settings\":null,\"host\":null,\"measured_seconds\":0,\"warmup_counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":1},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"idle_baseline\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0},\"after_stop\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0},\"points\":[{\"at_seconds\":0.000713031,\"phase\":\"warmup\",\"resources\":{\"cycle\":0,\"goroutines\":5,\"fd\":11,\"heap_alloc\":265560,\"heap_inuse\":884736,\"sys\":9296136,\"rss\":38969344},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0}},{\"at_seconds\":0.25181384,\"phase\":\"drained\",\"resources\":{\"cycle\":0,\"goroutines\":4,\"fd\":10,\"heap_alloc\":253376,\"heap_inuse\":819200,\"sys\":9296136,\"rss\":38600704},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0}}],\"stop_seconds\":0,\"error\":\"scheduler missed declared offered-load ticks\"}\n--- PASS: TestCheckpointStallControl (0.26s)\n=== RUN   TestCheckpointStallControl\n    scheduler_control_test.go:50: CHECKPOINT-STALL-CONTROL: {\"schema_version\":0,\"status\":\"failed\",\"transport\":0,\"mode\":0,\"build_info\":\"\",\"go_version\":\"\",\"started_at\":\"\",\"finished_at\":\"\",\"settings\":null,\"host\":null,\"measured_seconds\":0,\"warmup_counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":1},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"idle_baseline\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0},\"after_stop\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0},\"points\":[{\"at_seconds\":0.000654972,\"phase\":\"warmup\",\"resources\":{\"cycle\":0,\"goroutines\":5,\"fd\":11,\"heap_alloc\":266384,\"heap_inuse\":835584,\"sys\":9296136,\"rss\":39006208},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0}},{\"at_seconds\":0.251785179,\"phase\":\"drained\",\"resources\":{\"cycle\":0,\"goroutines\":4,\"fd\":10,\"heap_alloc\":244912,\"heap_inuse\":786432,\"sys\":9296136,\"rss\":38617088},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0}}],\"stop_seconds\":0,\"error\":\"scheduler missed declared offered-load ticks\"}\n--- PASS: TestCheckpointStallControl (0.26s)\nPASS\nok  \tgithub.com/VortexWang/Tunveo/scripts/soak24h\t3.576s\n",
+      "stderr": "go: downloading golang.org/x/net v0.60.0\ngo: downloading github.com/quic-go/quic-go v0.60.0\ngo: downloading github.com/coder/websocket v1.8.15\ngo: downloading golang.org/x/sys v0.48.0\ngo: downloading golang.org/x/crypto v0.57.0\ngo: downloading golang.org/x/text v0.42.0\n",
+      "scope": "injected250ms checkpoint delay in a real loopback echo fixture; proves possible harness coupling, not historical CI attribution; expected probe failures remain failures"
+    }
+  },
+  "timing-current": {
+    "sha256": "595a78f323053446c2b76567d64f76dd2bb8949cc76513c0ef69667a5e2a7a09",
+    "result": {
+      "status": "passed",
+      "source_commit": "b64fb3d2dc1773ed341b6d7ca3439856b96f1032",
+      "repeat": 10,
+      "template_sha256": "9df33d008abdbbb7a81285699d8f45adecb7486fbd6881bcc0c777833791273e",
+      "archive_sha256": "32f08393bfa7333e3f76379b368a1f77f5b7f188d8f789b32b50dd6bba38a6d7",
+      "require_timing": true,
+      "exit_code": 0,
+      "observations": [
+        {
+          "schema_version": 0,
+          "status": "failed",
+          "transport": 0,
+          "mode": 0,
+          "build_info": "",
+          "go_version": "",
+          "started_at": "",
+          "finished_at": "",
+          "settings": null,
+          "host": null,
+          "measured_seconds": 0,
+          "warmup_counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 1
+          },
+          "counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 0
+          },
+          "idle_baseline": {
+            "cycle": 0,
+            "goroutines": 0,
+            "fd": 0,
+            "heap_alloc": 0,
+            "heap_inuse": 0,
+            "sys": 0,
+            "rss": 0,
+            "heap_sys": 0,
+            "heap_idle": 0,
+            "heap_released": 0,
+            "stack_inuse": 0,
+            "other_sys": 0,
+            "total_alloc": 0,
+            "mallocs": 0,
+            "frees": 0,
+            "num_gc": 0,
+            "gc_pause_total_ns": 0,
+            "gc_wall_seconds": 0,
+            "os_memory": {
+              "read_seconds": 0
+            }
+          },
+          "after_stop": {
+            "cycle": 0,
+            "goroutines": 0,
+            "fd": 0,
+            "heap_alloc": 0,
+            "heap_inuse": 0,
+            "sys": 0,
+            "rss": 0,
+            "heap_sys": 0,
+            "heap_idle": 0,
+            "heap_released": 0,
+            "stack_inuse": 0,
+            "other_sys": 0,
+            "total_alloc": 0,
+            "mallocs": 0,
+            "frees": 0,
+            "num_gc": 0,
+            "gc_pause_total_ns": 0,
+            "gc_wall_seconds": 0,
+            "os_memory": {
+              "read_seconds": 0
+            }
+          },
+          "points": [
+            {
+              "at_seconds": 0.001649451,
+              "phase": "warmup",
+              "resources": {
+                "cycle": 0,
+                "goroutines": 5,
+                "fd": 11,
+                "heap_alloc": 212936,
+                "heap_inuse": 704512,
+                "sys": 8673544,
+                "rss": 35258368,
+                "heap_sys": 3637248,
+                "heap_idle": 2932736,
+                "heap_released": 2727936,
+                "stack_inuse": 557056,
+                "other_sys": 1109928,
+                "total_alloc": 303728,
+                "mallocs": 943,
+                "frees": 253,
+                "num_gc": 1,
+                "gc_pause_total_ns": 38465,
+                "gc_wall_seconds": 0.001156055,
+                "os_memory": {
+                  "bytes": {
+                    "AnonHugePages": 23068672,
+                    "Anonymous": 27242496,
+                    "FilePmdMapped": 0,
+                    "KSM": 0,
+                    "LazyFree": 0,
+                    "Locked": 0,
+                    "Private_Clean": 0,
+                    "Private_Dirty": 33607680,
+                    "Private_Hugetlb": 0,
+                    "Pss": 33656832,
+                    "Pss_Anon": 27242496,
+                    "Pss_Dirty": 33607680,
+                    "Pss_File": 6414336,
+                    "Pss_Shmem": 0,
+                    "Referenced": 35274752,
+                    "Rss": 35274752,
+                    "Shared_Clean": 1667072,
+                    "Shared_Dirty": 0,
+                    "Shared_Hugetlb": 0,
+                    "ShmemPmdMapped": 0,
+                    "Swap": 0,
+                    "SwapPss": 0
+                  },
+                  "smaps_rollup_raw": "00400000-7ffe57e03000 ---p 00000000 00:00 0                              [rollup]\nRss:               34448 kB\nPss:               32868 kB\nPss_Dirty:         32820 kB\nPss_Anon:          26604 kB\nPss_File:           6264 kB\nPss_Shmem:             0 kB\nShared_Clean:       1628 kB\nShared_Dirty:          0 kB\nPrivate_Clean:         0 kB\nPrivate_Dirty:     32820 kB\nReferenced:        34448 kB\nAnonymous:         26604 kB\nKSM:                   0 kB\nLazyFree:              0 kB\nAnonHugePages:     22528 kB\nShmemPmdMapped:        0 kB\nFilePmdMapped:         0 kB\nShared_Hugetlb:        0 kB\nPrivate_Hugetlb:       0 kB\nSwap:                  0 kB\nSwapPss:               0 kB\nLocked:                0 kB\n",
+                  "read_seconds": 0.000238023
+                }
+              },
+              "counts": {
+                "tcp": 0,
+                "udp": 0,
+                "failed": 0,
+                "dropped": 0
+              },
+              "measure_seconds": 0.001598307,
+              "checkpoint_seconds": 0.250584108,
+              "snapshot_seconds": 0.252185807
+            },
+            {
+              "at_seconds": 0.253429303,
+              "phase": "drained",
+              "resources": {
+                "cycle": 0,
+                "goroutines": 4,
+                "fd": 10,
+                "heap_alloc": 222352,
+                "heap_inuse": 729088,
+                "sys": 8739080,
+                "rss": 35557376,
+                "heap_sys": 3637248,
+                "heap_idle": 2908160,
+                "heap_released": 2686976,
+                "stack_inuse": 557056,
+                "other_sys": 748456,
+                "total_alloc": 323904,
+                "mallocs": 1027,
+                "frees": 341,
+                "num_gc": 2,
+                "gc_pause_total_ns": 71085,
+                "gc_wall_seconds": 0.000519825,
+                "os_memory": {
+                  "bytes": {
+                    "AnonHugePages": 18874368,
+                    "Anonymous": 27533312,
+                    "FilePmdMapped": 0,
+                    "KSM": 0,
+                    "LazyFree": 0,
+                    "Locked": 0,
+                    "Private_Clean": 0,
+                    "Private_Dirty": 33898496,
+                    "Private_Hugetlb": 0,
+                    "Pss": 33947648,
+                    "Pss_Anon": 27533312,
+                    "Pss_Dirty": 33898496,
+                    "Pss_File": 6414336,
+                    "Pss_Shmem": 0,
+                    "Referenced": 35565568,
+                    "Rss": 35565568,
+                    "Shared_Clean": 1667072,
+                    "Shared_Dirty": 0,
+                    "Shared_Hugetlb": 0,
+                    "ShmemPmdMapped": 0,
+                    "Swap": 0,
+                    "SwapPss": 0
+                  },
+                  "smaps_rollup_raw": "00400000-7ffe57e03000 ---p 00000000 00:00 0                              [rollup]\nRss:               34732 kB\nPss:               33152 kB\nPss_Dirty:         33104 kB\nPss_Anon:          26888 kB\nPss_File:           6264 kB\nPss_Shmem:             0 kB\nShared_Clean:       1628 kB\nShared_Dirty:          0 kB\nPrivate_Clean:         0 kB\nPrivate_Dirty:     33104 kB\nReferenced:        34732 kB\nAnonymous:         26888 kB\nKSM:                   0 kB\nLazyFree:              0 kB\nAnonHugePages:     18432 kB\nShmemPmdMapped:        0 kB\nFilePmdMapped:         0 kB\nShared_Hugetlb:        0 kB\nPrivate_Hugetlb:       0 kB\nSwap:                  0 kB\nSwapPss:               0 kB\nLocked:                0 kB\n",
+                  "read_seconds": 0.000295966
+                }
+              },
+              "counts": {
+                "tcp": 0,
+                "udp": 0,
+                "failed": 0,
+                "dropped": 0
+              },
+              "measure_seconds": 0.00096871,
+              "checkpoint_seconds": 1.988e-06,
+              "snapshot_seconds": 0.000973776
+            }
+          ],
+          "stop_seconds": 0,
+          "error": "scheduler missed declared offered-load ticks",
+          "scheduler_timing": {
+            "max_tick_lag_seconds": 0.152218013,
+            "max_measure_seconds": 0.001598307,
+            "max_checkpoint_seconds": 0.250584108,
+            "max_snapshot_seconds": 0.252185807,
+            "missed_at_seconds": 0.252322702,
+            "expected_slot": 1,
+            "observed_slot": 2,
+            "missed_slots": 1
+          }
+        },
+        {
+          "schema_version": 0,
+          "status": "failed",
+          "transport": 0,
+          "mode": 0,
+          "build_info": "",
+          "go_version": "",
+          "started_at": "",
+          "finished_at": "",
+          "settings": null,
+          "host": null,
+          "measured_seconds": 0,
+          "warmup_counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 1
+          },
+          "counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 0
+          },
+          "idle_baseline": {
+            "cycle": 0,
+            "goroutines": 0,
+            "fd": 0,
+            "heap_alloc": 0,
+            "heap_inuse": 0,
+            "sys": 0,
+            "rss": 0,
+            "heap_sys": 0,
+            "heap_idle": 0,
+            "heap_released": 0,
+            "stack_inuse": 0,
+            "other_sys": 0,
+            "total_alloc": 0,
+            "mallocs": 0,
+            "frees": 0,
+            "num_gc": 0,
+            "gc_pause_total_ns": 0,
+            "gc_wall_seconds": 0,
+            "os_memory": {
+              "read_seconds": 0
+            }
+          },
+          "after_stop": {
+            "cycle": 0,
+            "goroutines": 0,
+            "fd": 0,
+            "heap_alloc": 0,
+            "heap_inuse": 0,
+            "sys": 0,
+            "rss": 0,
+            "heap_sys": 0,
+            "heap_idle": 0,
+            "heap_released": 0,
+            "stack_inuse": 0,
+            "other_sys": 0,
+            "total_alloc": 0,
+            "mallocs": 0,
+            "frees": 0,
+            "num_gc": 0,
+            "gc_pause_total_ns": 0,
+            "gc_wall_seconds": 0,
+            "os_memory": {
+              "read_seconds": 0
+            }
+          },
+          "points": [
+            {
+              "at_seconds": 0.001120472,
+              "phase": "warmup",
+              "resources": {
+                "cycle": 0,
+                "goroutines": 5,
+                "fd": 11,
+                "heap_alloc": 271776,
+                "heap_inuse": 860160,
+                "sys": 9001224,
+                "rss": 38014976,
+                "heap_sys": 3637248,
+                "heap_idle": 2777088,
+                "heap_released": 1753088,
+                "stack_inuse": 557056,
+                "other_sys": 938952,
+                "total_alloc": 1293600,
+                "mallocs": 1973,
+                "frees": 828,
+                "num_gc": 3,
+                "gc_pause_total_ns": 213300,
+                "gc_wall_seconds": 0.000671362,
+                "os_memory": {
+                  "bytes": {
+                    "AnonHugePages": 18874368,
+                    "Anonymous": 29925376,
+                    "FilePmdMapped": 0,
+                    "KSM": 0,
+                    "LazyFree": 0,
+                    "Locked": 0,
+                    "Private_Clean": 0,
+                    "Private_Dirty": 36356096,
+                    "Private_Hugetlb": 0,
+                    "Pss": 36405248,
+                    "Pss_Anon": 29925376,
+                    "Pss_Dirty": 36356096,
+                    "Pss_File": 6479872,
+                    "Pss_Shmem": 0,
+                    "Referenced": 38023168,
+                    "Rss": 38023168,
+                    "Shared_Clean": 1667072,
+                    "Shared_Dirty": 0,
+                    "Shared_Hugetlb": 0,
+                    "ShmemPmdMapped": 0,
+                    "Swap": 0,
+                    "SwapPss": 0
+                  },
+                  "smaps_rollup_raw": "00400000-7ffe57e03000 ---p 00000000 00:00 0                              [rollup]\nRss:               37132 kB\nPss:               35552 kB\nPss_Dirty:         35504 kB\nPss_Anon:          29224 kB\nPss_File:           6328 kB\nPss_Shmem:             0 kB\nShared_Clean:       1628 kB\nShared_Dirty:          0 kB\nPrivate_Clean:         0 kB\nPrivate_Dirty:     35504 kB\nReferenced:        37132 kB\nAnonymous:         29224 kB\nKSM:                   0 kB\nLazyFree:              0 kB\nAnonHugePages:     18432 kB\nShmemPmdMapped:        0 kB\nFilePmdMapped:         0 kB\nShared_Hugetlb:        0 kB\nPrivate_Hugetlb:       0 kB\nSwap:                  0 kB\nSwapPss:               0 kB\nLocked:                0 kB\n",
+                  "read_seconds": 0.000287141
+                }
+              },
+              "counts": {
+                "tcp": 0,
+                "udp": 0,
+                "failed": 0,
+                "dropped": 0
+              },
+              "measure_seconds": 0.001099771,
+              "checkpoint_seconds": 0.250418223,
+              "snapshot_seconds": 0.251521347
+            },
+            {
+              "at_seconds": 0.252597574,
+              "phase": "drained",
+              "resources": {
+                "cycle": 0,
+                "goroutines": 4,
+                "fd": 10,
+                "heap_alloc": 254272,
+                "heap_inuse": 819200,
+                "sys": 9271560,
+                "rss": 37482496,
+                "heap_sys": 3637248,
+                "heap_idle": 2818048,
+                "heap_released": 1736704,
+                "stack_inuse": 557056,
+                "other_sys": 1180648,
+                "total_alloc": 1305296,
+                "mallocs": 2053,
+                "frees": 947,
+                "num_gc": 4,
+                "gc_pause_total_ns": 241335,
+                "gc_wall_seconds": 0.000400912,
+                "os_memory": {
+                  "bytes": {
+                    "AnonHugePages": 18874368,
+                    "Anonymous": 29323264,
+                    "FilePmdMapped": 0,
+                    "KSM": 0,
+                    "LazyFree": 0,
+                    "Locked": 0,
+                    "Private_Clean": 0,
+                    "Private_Dirty": 35753984,
+                    "Private_Hugetlb": 0,
+                    "Pss": 35803136,
+                    "Pss_Anon": 29323264,
+                    "Pss_Dirty": 35753984,
+                    "Pss_File": 6479872,
+                    "Pss_Shmem": 0,
+                    "Referenced": 37421056,
+                    "Rss": 37421056,
+                    "Shared_Clean": 1667072,
+                    "Shared_Dirty": 0,
+                    "Shared_Hugetlb": 0,
+                    "ShmemPmdMapped": 0,
+                    "Swap": 0,
+                    "SwapPss": 0
+                  },
+                  "smaps_rollup_raw": "00400000-7ffe57e03000 ---p 00000000 00:00 0                              [rollup]\nRss:               36544 kB\nPss:               34964 kB\nPss_Dirty:         34916 kB\nPss_Anon:          28636 kB\nPss_File:           6328 kB\nPss_Shmem:             0 kB\nShared_Clean:       1628 kB\nShared_Dirty:          0 kB\nPrivate_Clean:         0 kB\nPrivate_Dirty:     34916 kB\nReferenced:        36544 kB\nAnonymous:         28636 kB\nKSM:                   0 kB\nLazyFree:              0 kB\nAnonHugePages:     18432 kB\nShmemPmdMapped:        0 kB\nFilePmdMapped:         0 kB\nShared_Hugetlb:        0 kB\nPrivate_Hugetlb:       0 kB\nSwap:                  0 kB\nSwapPss:               0 kB\nLocked:                0 kB\n",
+                  "read_seconds": 0.000333992
+                }
+              },
+              "counts": {
+                "tcp": 0,
+                "udp": 0,
+                "failed": 0,
+                "dropped": 0
+              },
+              "measure_seconds": 0.000913619,
+              "checkpoint_seconds": 7.54e-07,
+              "snapshot_seconds": 0.000917357
+            }
+          ],
+          "stop_seconds": 0,
+          "error": "scheduler missed declared offered-load ticks",
+          "scheduler_timing": {
+            "max_tick_lag_seconds": 0.151535243,
+            "max_measure_seconds": 0.001099771,
+            "max_checkpoint_seconds": 0.250418223,
+            "max_snapshot_seconds": 0.251521347,
+            "missed_at_seconds": 0.251554826,
+            "expected_slot": 1,
+            "observed_slot": 2,
+            "missed_slots": 1
+          }
+        },
+        {
+          "schema_version": 0,
+          "status": "failed",
+          "transport": 0,
+          "mode": 0,
+          "build_info": "",
+          "go_version": "",
+          "started_at": "",
+          "finished_at": "",
+          "settings": null,
+          "host": null,
+          "measured_seconds": 0,
+          "warmup_counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 1
+          },
+          "counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 0
+          },
+          "idle_baseline": {
+            "cycle": 0,
+            "goroutines": 0,
+            "fd": 0,
+            "heap_alloc": 0,
+            "heap_inuse": 0,
+            "sys": 0,
+            "rss": 0,
+            "heap_sys": 0,
+            "heap_idle": 0,
+            "heap_released": 0,
+            "stack_inuse": 0,
+            "other_sys": 0,
+            "total_alloc": 0,
+            "mallocs": 0,
+            "frees": 0,
+            "num_gc": 0,
+            "gc_pause_total_ns": 0,
+            "gc_wall_seconds": 0,
+            "os_memory": {
+              "read_seconds": 0
+            }
+          },
+          "after_stop": {
+            "cycle": 0,
+            "goroutines": 0,
+            "fd": 0,
+            "heap_alloc": 0,
+            "heap_inuse": 0,
+            "sys": 0,
+            "rss": 0,
+            "heap_sys": 0,
+            "heap_idle": 0,
+            "heap_released": 0,
+            "stack_inuse": 0,
+            "other_sys": 0,
+            "total_alloc": 0,
+            "mallocs": 0,
+            "frees": 0,
+            "num_gc": 0,
+            "gc_pause_total_ns": 0,
+            "gc_wall_seconds": 0,
+            "os_memory": {
+              "read_seconds": 0
+            }
+          },
+          "points": [
+            {
+              "at_seconds": 0.001084516,
+              "phase": "warmup",
+              "resources": {
+                "cycle": 0,
+                "goroutines": 5,
+                "fd": 11,
+                "heap_alloc": 272168,
+                "heap_inuse": 851968,
+                "sys": 9271560,
+                "rss": 38576128,
+                "heap_sys": 3637248,
+                "heap_idle": 2785280,
+                "heap_released": 1466368,
+                "stack_inuse": 557056,
+                "other_sys": 1171432,
+                "total_alloc": 2233320,
+                "mallocs": 2464,
+                "frees": 1322,
+                "num_gc": 5,
+                "gc_pause_total_ns": 406209,
+                "gc_wall_seconds": 0.000578716,
+                "os_memory": {
+                  "bytes": {
+                    "AnonHugePages": 18874368,
+                    "Anonymous": 30425088,
+                    "FilePmdMapped": 0,
+                    "KSM": 0,
+                    "LazyFree": 0,
+                    "Locked": 0,
+                    "Private_Clean": 0,
+                    "Private_Dirty": 36855808,
+                    "Private_Hugetlb": 0,
+                    "Pss": 36904960,
+                    "Pss_Anon": 30425088,
+                    "Pss_Dirty": 36855808,
+                    "Pss_File": 6479872,
+                    "Pss_Shmem": 0,
+                    "Referenced": 38522880,
+                    "Rss": 38522880,
+                    "Shared_Clean": 1667072,
+                    "Shared_Dirty": 0,
+                    "Shared_Hugetlb": 0,
+                    "ShmemPmdMapped": 0,
+                    "Swap": 0,
+                    "SwapPss": 0
+                  },
+                  "smaps_rollup_raw": "00400000-7ffe57e03000 ---p 00000000 00:00 0                              [rollup]\nRss:               37620 kB\nPss:               36040 kB\nPss_Dirty:         35992 kB\nPss_Anon:          29712 kB\nPss_File:           6328 kB\nPss_Shmem:             0 kB\nShared_Clean:       1628 kB\nShared_Dirty:          0 kB\nPrivate_Clean:         0 kB\nPrivate_Dirty:     35992 kB\nReferenced:        37620 kB\nAnonymous:         29712 kB\nKSM:                   0 kB\nLazyFree:              0 kB\nAnonHugePages:     18432 kB\nShmemPmdMapped:        0 kB\nFilePmdMapped:         0 kB\nShared_Hugetlb:        0 kB\nPrivate_Hugetlb:       0 kB\nSwap:                  0 kB\nSwapPss:               0 kB\nLocked:                0 kB\n",
+                  "read_seconds": 0.000365677
+                }
+              },
+              "counts": {
+                "tcp": 0,
+                "udp": 0,
+                "failed": 0,
+                "dropped": 0
+              },
+              "measure_seconds": 0.001065038,
+              "checkpoint_seconds": 0.250401562,
+              "snapshot_seconds": 0.251470398
+            },
+            {
+              "at_seconds": 0.252512108,
+              "phase": "drained",
+              "resources": {
+                "cycle": 0,
+                "goroutines": 4,
+                "fd": 10,
+                "heap_alloc": 255088,
+                "heap_inuse": 811008,
+                "sys": 9271560,
+                "rss": 38350848,
+                "heap_sys": 3637248,
+                "heap_idle": 2826240,
+                "heap_released": 1728512,
+                "stack_inuse": 557056,
+                "other_sys": 1171432,
+                "total_alloc": 2253224,
+                "mallocs": 2546,
+                "frees": 1435,
+                "num_gc": 6,
+                "gc_pause_total_ns": 496043,
+                "gc_wall_seconds": 0.000439065,
+                "os_memory": {
+                  "bytes": {
+                    "AnonHugePages": 18874368,
+                    "Anonymous": 30257152,
+                    "FilePmdMapped": 0,
+                    "KSM": 0,
+                    "LazyFree": 0,
+                    "Locked": 0,
+                    "Private_Clean": 0,
+                    "Private_Dirty": 36687872,
+                    "Private_Hugetlb": 0,
+                    "Pss": 36737024,
+                    "Pss_Anon": 30257152,
+                    "Pss_Dirty": 36687872,
+                    "Pss_File": 6479872,
+                    "Pss_Shmem": 0,
+                    "Referenced": 38354944,
+                    "Rss": 38354944,
+                    "Shared_Clean": 1667072,
+                    "Shared_Dirty": 0,
+                    "Shared_Hugetlb": 0,
+                    "ShmemPmdMapped": 0,
+                    "Swap": 0,
+                    "SwapPss": 0
+                  },
+                  "smaps_rollup_raw": "00400000-7ffe57e03000 ---p 00000000 00:00 0                              [rollup]\nRss:               37456 kB\nPss:               35876 kB\nPss_Dirty:         35828 kB\nPss_Anon:          29548 kB\nPss_File:           6328 kB\nPss_Shmem:             0 kB\nShared_Clean:       1628 kB\nShared_Dirty:          0 kB\nPrivate_Clean:         0 kB\nPrivate_Dirty:     35828 kB\nReferenced:        37456 kB\nAnonymous:         29548 kB\nKSM:                   0 kB\nLazyFree:              0 kB\nAnonHugePages:     18432 kB\nShmemPmdMapped:        0 kB\nFilePmdMapped:         0 kB\nShared_Hugetlb:        0 kB\nPrivate_Hugetlb:       0 kB\nSwap:                  0 kB\nSwapPss:               0 kB\nLocked:                0 kB\n",
+                  "read_seconds": 0.000299526
+                }
+              },
+              "counts": {
+                "tcp": 0,
+                "udp": 0,
+                "failed": 0,
+                "dropped": 0
+              },
+              "measure_seconds": 0.000904945,
+              "checkpoint_seconds": 5.44e-07,
+              "snapshot_seconds": 0.000908003
+            }
+          ],
+          "stop_seconds": 0,
+          "error": "scheduler missed declared offered-load ticks",
+          "scheduler_timing": {
+            "max_tick_lag_seconds": 0.151483396,
+            "max_measure_seconds": 0.001065038,
+            "max_checkpoint_seconds": 0.250401562,
+            "max_snapshot_seconds": 0.251470398,
+            "missed_at_seconds": 0.251501881,
+            "expected_slot": 1,
+            "observed_slot": 2,
+            "missed_slots": 1
+          }
+        },
+        {
+          "schema_version": 0,
+          "status": "failed",
+          "transport": 0,
+          "mode": 0,
+          "build_info": "",
+          "go_version": "",
+          "started_at": "",
+          "finished_at": "",
+          "settings": null,
+          "host": null,
+          "measured_seconds": 0,
+          "warmup_counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 1
+          },
+          "counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 0
+          },
+          "idle_baseline": {
+            "cycle": 0,
+            "goroutines": 0,
+            "fd": 0,
+            "heap_alloc": 0,
+            "heap_inuse": 0,
+            "sys": 0,
+            "rss": 0,
+            "heap_sys": 0,
+            "heap_idle": 0,
+            "heap_released": 0,
+            "stack_inuse": 0,
+            "other_sys": 0,
+            "total_alloc": 0,
+            "mallocs": 0,
+            "frees": 0,
+            "num_gc": 0,
+            "gc_pause_total_ns": 0,
+            "gc_wall_seconds": 0,
+            "os_memory": {
+              "read_seconds": 0
+            }
+          },
+          "after_stop": {
+            "cycle": 0,
+            "goroutines": 0,
+            "fd": 0,
+            "heap_alloc": 0,
+            "heap_inuse": 0,
+            "sys": 0,
+            "rss": 0,
+            "heap_sys": 0,
+            "heap_idle": 0,
+            "heap_released": 0,
+            "stack_inuse": 0,
+            "other_sys": 0,
+            "total_alloc": 0,
+            "mallocs": 0,
+            "frees": 0,
+            "num_gc": 0,
+            "gc_pause_total_ns": 0,
+            "gc_wall_seconds": 0,
+            "os_memory": {
+              "read_seconds": 0
+            }
+          },
+          "points": [
+            {
+              "at_seconds": 0.000929542,
+              "phase": "warmup",
+              "resources": {
+                "cycle": 0,
+                "goroutines": 5,
+                "fd": 11,
+                "heap_alloc": 282120,
+                "heap_inuse": 901120,
+                "sys": 9271560,
+                "rss": 39075840,
+                "heap_sys": 3604480,
+                "heap_idle": 2703360,
+                "heap_released": 1286144,
+                "stack_inuse": 589824,
+                "other_sys": 1171432,
+                "total_alloc": 3181000,
+                "mallocs": 2956,
+                "frees": 1800,
+                "num_gc": 7,
+                "gc_pause_total_ns": 569109,
+                "gc_wall_seconds": 0.000472925,
+                "os_memory": {
+                  "bytes": {
+                    "AnonHugePages": 18874368,
+                    "Anonymous": 30916608,
+                    "FilePmdMapped": 0,
+                    "KSM": 0,
+                    "LazyFree": 0,
+                    "Locked": 0,
+                    "Private_Clean": 0,
+                    "Private_Dirty": 37412864,
+                    "Private_Hugetlb": 0,
+                    "Pss": 37462016,
+                    "Pss_Anon": 30916608,
+                    "Pss_Dirty": 37412864,
+                    "Pss_File": 6545408,
+                    "Pss_Shmem": 0,
+                    "Referenced": 39079936,
+                    "Rss": 39079936,
+                    "Shared_Clean": 1667072,
+                    "Shared_Dirty": 0,
+                    "Shared_Hugetlb": 0,
+                    "ShmemPmdMapped": 0,
+                    "Swap": 0,
+                    "SwapPss": 0
+                  },
+                  "smaps_rollup_raw": "00400000-7ffe57e03000 ---p 00000000 00:00 0                              [rollup]\nRss:               38164 kB\nPss:               36584 kB\nPss_Dirty:         36536 kB\nPss_Anon:          30192 kB\nPss_File:           6392 kB\nPss_Shmem:             0 kB\nShared_Clean:       1628 kB\nShared_Dirty:          0 kB\nPrivate_Clean:         0 kB\nPrivate_Dirty:     36536 kB\nReferenced:        38164 kB\nAnonymous:         30192 kB\nKSM:                   0 kB\nLazyFree:              0 kB\nAnonHugePages:     18432 kB\nShmemPmdMapped:        0 kB\nFilePmdMapped:         0 kB\nShared_Hugetlb:        0 kB\nPrivate_Hugetlb:       0 kB\nSwap:                  0 kB\nSwapPss:               0 kB\nLocked:                0 kB\n",
+                  "read_seconds": 0.000307442
+                }
+              },
+              "counts": {
+                "tcp": 0,
+                "udp": 0,
+                "failed": 0,
+                "dropped": 0
+              },
+              "measure_seconds": 0.00091357,
+              "checkpoint_seconds": 0.250167655,
+              "snapshot_seconds": 0.251084754
+            },
+            {
+              "at_seconds": 0.252160871,
+              "phase": "drained",
+              "resources": {
+                "cycle": 0,
+                "goroutines": 4,
+                "fd": 10,
+                "heap_alloc": 264160,
+                "heap_inuse": 876544,
+                "sys": 9279752,
+                "rss": 38776832,
+                "heap_sys": 3604480,
+                "heap_idle": 2727936,
+                "heap_released": 1613824,
+                "stack_inuse": 589824,
+                "other_sys": 1171432,
+                "total_alloc": 3200208,
+                "mallocs": 3035,
+                "frees": 1918,
+                "num_gc": 8,
+                "gc_pause_total_ns": 601009,
+                "gc_wall_seconds": 0.00042811,
+                "os_memory": {
+                  "bytes": {
+                    "AnonHugePages": 18874368,
+                    "Anonymous": 30617600,
+                    "FilePmdMapped": 0,
+                    "KSM": 0,
+                    "LazyFree": 0,
+                    "Locked": 0,
+                    "Private_Clean": 0,
+                    "Private_Dirty": 37113856,
+                    "Private_Hugetlb": 0,
+                    "Pss": 37163008,
+                    "Pss_Anon": 30617600,
+                    "Pss_Dirty": 37113856,
+                    "Pss_File": 6545408,
+                    "Pss_Shmem": 0,
+                    "Referenced": 38780928,
+                    "Rss": 38780928,
+                    "Shared_Clean": 1667072,
+                    "Shared_Dirty": 0,
+                    "Shared_Hugetlb": 0,
+                    "ShmemPmdMapped": 0,
+                    "Swap": 0,
+                    "SwapPss": 0
+                  },
+                  "smaps_rollup_raw": "00400000-7ffe57e03000 ---p 00000000 00:00 0                              [rollup]\nRss:               37872 kB\nPss:               36292 kB\nPss_Dirty:         36244 kB\nPss_Anon:          29900 kB\nPss_File:           6392 kB\nPss_Shmem:             0 kB\nShared_Clean:       1628 kB\nShared_Dirty:          0 kB\nPrivate_Clean:         0 kB\nPrivate_Dirty:     36244 kB\nReferenced:        37872 kB\nAnonymous:         29900 kB\nKSM:                   0 kB\nLazyFree:              0 kB\nAnonHugePages:     18432 kB\nShmemPmdMapped:        0 kB\nFilePmdMapped:         0 kB\nShared_Hugetlb:        0 kB\nPrivate_Hugetlb:       0 kB\nSwap:                  0 kB\nSwapPss:               0 kB\nLocked:                0 kB\n",
+                  "read_seconds": 0.000307878
+                }
+              },
+              "counts": {
+                "tcp": 0,
+                "udp": 0,
+                "failed": 0,
+                "dropped": 0
+              },
+              "measure_seconds": 0.000892747,
+              "checkpoint_seconds": 7.07e-07,
+              "snapshot_seconds": 0.000896114
+            }
+          ],
+          "stop_seconds": 0,
+          "error": "scheduler missed declared offered-load ticks",
+          "scheduler_timing": {
+            "max_tick_lag_seconds": 0.151096689,
+            "max_measure_seconds": 0.00091357,
+            "max_checkpoint_seconds": 0.250167655,
+            "max_snapshot_seconds": 0.251084754,
+            "missed_at_seconds": 0.251112553,
+            "expected_slot": 1,
+            "observed_slot": 2,
+            "missed_slots": 1
+          }
+        },
+        {
+          "schema_version": 0,
+          "status": "failed",
+          "transport": 0,
+          "mode": 0,
+          "build_info": "",
+          "go_version": "",
+          "started_at": "",
+          "finished_at": "",
+          "settings": null,
+          "host": null,
+          "measured_seconds": 0,
+          "warmup_counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 1
+          },
+          "counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 0
+          },
+          "idle_baseline": {
+            "cycle": 0,
+            "goroutines": 0,
+            "fd": 0,
+            "heap_alloc": 0,
+            "heap_inuse": 0,
+            "sys": 0,
+            "rss": 0,
+            "heap_sys": 0,
+            "heap_idle": 0,
+            "heap_released": 0,
+            "stack_inuse": 0,
+            "other_sys": 0,
+            "total_alloc": 0,
+            "mallocs": 0,
+            "frees": 0,
+            "num_gc": 0,
+            "gc_pause_total_ns": 0,
+            "gc_wall_seconds": 0,
+            "os_memory": {
+              "read_seconds": 0
+            }
+          },
+          "after_stop": {
+            "cycle": 0,
+            "goroutines": 0,
+            "fd": 0,
+            "heap_alloc": 0,
+            "heap_inuse": 0,
+            "sys": 0,
+            "rss": 0,
+            "heap_sys": 0,
+            "heap_idle": 0,
+            "heap_released": 0,
+            "stack_inuse": 0,
+            "other_sys": 0,
+            "total_alloc": 0,
+            "mallocs": 0,
+            "frees": 0,
+            "num_gc": 0,
+            "gc_pause_total_ns": 0,
+            "gc_wall_seconds": 0,
+            "os_memory": {
+              "read_seconds": 0
+            }
+          },
+          "points": [
+            {
+              "at_seconds": 0.001050473,
+              "phase": "warmup",
+              "resources": {
+                "cycle": 0,
+                "goroutines": 5,
+                "fd": 11,
+                "heap_alloc": 264840,
+                "heap_inuse": 958464,
+                "sys": 9279752,
+                "rss": 39108608,
+                "heap_sys": 3604480,
+                "heap_idle": 2646016,
+                "heap_released": 1540096,
+                "stack_inuse": 589824,
+                "other_sys": 1171432,
+                "total_alloc": 4122056,
+                "mallocs": 3436,
+                "frees": 2290,
+                "num_gc": 9,
+                "gc_pause_total_ns": 693237,
+                "gc_wall_seconds": 0.000579174,
+                "os_memory": {
+                  "bytes": {
+                    "AnonHugePages": 18874368,
+                    "Anonymous": 30953472,
+                    "FilePmdMapped": 0,
+                    "KSM": 0,
+                    "LazyFree": 0,
+                    "Locked": 0,
+                    "Private_Clean": 0,
+                    "Private_Dirty": 37449728,
+                    "Private_Hugetlb": 0,
+                    "Pss": 37498880,
+                    "Pss_Anon": 30953472,
+                    "Pss_Dirty": 37449728,
+                    "Pss_File": 6545408,
+                    "Pss_Shmem": 0,
+                    "Referenced": 39116800,
+                    "Rss": 39116800,
+                    "Shared_Clean": 1667072,
+                    "Shared_Dirty": 0,
+                    "Shared_Hugetlb": 0,
+                    "ShmemPmdMapped": 0,
+                    "Swap": 0,
+                    "SwapPss": 0
+                  },
+                  "smaps_rollup_raw": "00400000-7ffe57e03000 ---p 00000000 00:00 0                              [rollup]\nRss:               38200 kB\nPss:               36620 kB\nPss_Dirty:         36572 kB\nPss_Anon:          30228 kB\nPss_File:           6392 kB\nPss_Shmem:             0 kB\nShared_Clean:       1628 kB\nShared_Dirty:          0 kB\nPrivate_Clean:         0 kB\nPrivate_Dirty:     36572 kB\nReferenced:        38200 kB\nAnonymous:         30228 kB\nKSM:                   0 kB\nLazyFree:              0 kB\nAnonHugePages:     18432 kB\nShmemPmdMapped:        0 kB\nFilePmdMapped:         0 kB\nShared_Hugetlb:        0 kB\nPrivate_Hugetlb:       0 kB\nSwap:                  0 kB\nSwapPss:               0 kB\nLocked:                0 kB\n",
+                  "read_seconds": 0.000317373
+                }
+              },
+              "counts": {
+                "tcp": 0,
+                "udp": 0,
+                "failed": 0,
+                "dropped": 0
+              },
+              "measure_seconds": 0.001029515,
+              "checkpoint_seconds": 0.250866456,
+              "snapshot_seconds": 0.25189977
+            },
+            {
+              "at_seconds": 0.252883055,
+              "phase": "drained",
+              "resources": {
+                "cycle": 0,
+                "goroutines": 4,
+                "fd": 10,
+                "heap_alloc": 263640,
+                "heap_inuse": 876544,
+                "sys": 9279752,
+                "rss": 39165952,
+                "heap_sys": 3604480,
+                "heap_idle": 2727936,
+                "heap_released": 1515520,
+                "stack_inuse": 589824,
+                "other_sys": 1171152,
+                "total_alloc": 4141480,
+                "mallocs": 3517,
+                "frees": 2401,
+                "num_gc": 10,
+                "gc_pause_total_ns": 723174,
+                "gc_wall_seconds": 0.000348523,
+                "os_memory": {
+                  "bytes": {
+                    "AnonHugePages": 18874368,
+                    "Anonymous": 31006720,
+                    "FilePmdMapped": 0,
+                    "KSM": 0,
+                    "LazyFree": 0,
+                    "Locked": 0,
+                    "Private_Clean": 0,
+                    "Private_Dirty": 37502976,
+                    "Private_Hugetlb": 0,
+                    "Pss": 37552128,
+                    "Pss_Anon": 31006720,
+                    "Pss_Dirty": 37502976,
+                    "Pss_File": 6545408,
+                    "Pss_Shmem": 0,
+                    "Referenced": 39170048,
+                    "Rss": 39170048,
+                    "Shared_Clean": 1667072,
+                    "Shared_Dirty": 0,
+                    "Shared_Hugetlb": 0,
+                    "ShmemPmdMapped": 0,
+                    "Swap": 0,
+                    "SwapPss": 0
+                  },
+                  "smaps_rollup_raw": "00400000-7ffe57e03000 ---p 00000000 00:00 0                              [rollup]\nRss:               38252 kB\nPss:               36672 kB\nPss_Dirty:         36624 kB\nPss_Anon:          30280 kB\nPss_File:           6392 kB\nPss_Shmem:             0 kB\nShared_Clean:       1628 kB\nShared_Dirty:          0 kB\nPrivate_Clean:         0 kB\nPrivate_Dirty:     36624 kB\nReferenced:        38252 kB\nAnonymous:         30280 kB\nKSM:                   0 kB\nLazyFree:              0 kB\nAnonHugePages:     18432 kB\nShmemPmdMapped:        0 kB\nFilePmdMapped:         0 kB\nShared_Hugetlb:        0 kB\nPrivate_Hugetlb:       0 kB\nSwap:                  0 kB\nSwapPss:               0 kB\nLocked:                0 kB\n",
+                  "read_seconds": 0.000305223
+                }
+              },
+              "counts": {
+                "tcp": 0,
+                "udp": 0,
+                "failed": 0,
+                "dropped": 0
+              },
+              "measure_seconds": 0.000809887,
+              "checkpoint_seconds": 5.46e-07,
+              "snapshot_seconds": 0.000812904
+            }
+          ],
+          "stop_seconds": 0,
+          "error": "scheduler missed declared offered-load ticks",
+          "scheduler_timing": {
+            "max_tick_lag_seconds": 0.151914349,
+            "max_measure_seconds": 0.001029515,
+            "max_checkpoint_seconds": 0.250866456,
+            "max_snapshot_seconds": 0.25189977,
+            "missed_at_seconds": 0.251935814,
+            "expected_slot": 1,
+            "observed_slot": 2,
+            "missed_slots": 1
+          }
+        },
+        {
+          "schema_version": 0,
+          "status": "failed",
+          "transport": 0,
+          "mode": 0,
+          "build_info": "",
+          "go_version": "",
+          "started_at": "",
+          "finished_at": "",
+          "settings": null,
+          "host": null,
+          "measured_seconds": 0,
+          "warmup_counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 1
+          },
+          "counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 0
+          },
+          "idle_baseline": {
+            "cycle": 0,
+            "goroutines": 0,
+            "fd": 0,
+            "heap_alloc": 0,
+            "heap_inuse": 0,
+            "sys": 0,
+            "rss": 0,
+            "heap_sys": 0,
+            "heap_idle": 0,
+            "heap_released": 0,
+            "stack_inuse": 0,
+            "other_sys": 0,
+            "total_alloc": 0,
+            "mallocs": 0,
+            "frees": 0,
+            "num_gc": 0,
+            "gc_pause_total_ns": 0,
+            "gc_wall_seconds": 0,
+            "os_memory": {
+              "read_seconds": 0
+            }
+          },
+          "after_stop": {
+            "cycle": 0,
+            "goroutines": 0,
+            "fd": 0,
+            "heap_alloc": 0,
+            "heap_inuse": 0,
+            "sys": 0,
+            "rss": 0,
+            "heap_sys": 0,
+            "heap_idle": 0,
+            "heap_released": 0,
+            "stack_inuse": 0,
+            "other_sys": 0,
+            "total_alloc": 0,
+            "mallocs": 0,
+            "frees": 0,
+            "num_gc": 0,
+            "gc_pause_total_ns": 0,
+            "gc_wall_seconds": 0,
+            "os_memory": {
+              "read_seconds": 0
+            }
+          },
+          "points": [
+            {
+              "at_seconds": 0.001018427,
+              "phase": "warmup",
+              "resources": {
+                "cycle": 0,
+                "goroutines": 5,
+                "fd": 11,
+                "heap_alloc": 278472,
+                "heap_inuse": 909312,
+                "sys": 9279752,
+                "rss": 39325696,
+                "heap_sys": 3604480,
+                "heap_idle": 2695168,
+                "heap_released": 1581056,
+                "stack_inuse": 589824,
+                "other_sys": 1168832,
+                "total_alloc": 5071848,
+                "mallocs": 3919,
+                "frees": 2774,
+                "num_gc": 11,
+                "gc_pause_total_ns": 888620,
+                "gc_wall_seconds": 0.00057071,
+                "os_memory": {
+                  "bytes": {
+                    "AnonHugePages": 18874368,
+                    "Anonymous": 31166464,
+                    "FilePmdMapped": 0,
+                    "KSM": 0,
+                    "LazyFree": 0,
+                    "Locked": 0,
+                    "Private_Clean": 0,
+                    "Private_Dirty": 37662720,
+                    "Private_Hugetlb": 0,
+                    "Pss": 37711872,
+                    "Pss_Anon": 31166464,
+                    "Pss_Dirty": 37662720,
+                    "Pss_File": 6545408,
+                    "Pss_Shmem": 0,
+                    "Referenced": 39329792,
+                    "Rss": 39329792,
+                    "Shared_Clean": 1667072,
+                    "Shared_Dirty": 0,
+                    "Shared_Hugetlb": 0,
+                    "ShmemPmdMapped": 0,
+                    "Swap": 0,
+                    "SwapPss": 0
+                  },
+                  "smaps_rollup_raw": "00400000-7ffe57e03000 ---p 00000000 00:00 0                              [rollup]\nRss:               38408 kB\nPss:               36828 kB\nPss_Dirty:         36780 kB\nPss_Anon:          30436 kB\nPss_File:           6392 kB\nPss_Shmem:             0 kB\nShared_Clean:       1628 kB\nShared_Dirty:          0 kB\nPrivate_Clean:         0 kB\nPrivate_Dirty:     36780 kB\nReferenced:        38408 kB\nAnonymous:         30436 kB\nKSM:                   0 kB\nLazyFree:              0 kB\nAnonHugePages:     18432 kB\nShmemPmdMapped:        0 kB\nFilePmdMapped:         0 kB\nShared_Hugetlb:        0 kB\nPrivate_Hugetlb:       0 kB\nSwap:                  0 kB\nSwapPss:               0 kB\nLocked:                0 kB\n",
+                  "read_seconds": 0.000304977
+                }
+              },
+              "counts": {
+                "tcp": 0,
+                "udp": 0,
+                "failed": 0,
+                "dropped": 0
+              },
+              "measure_seconds": 0.000996194,
+              "checkpoint_seconds": 0.250844158,
+              "snapshot_seconds": 0.251844381
+            },
+            {
+              "at_seconds": 0.252965916,
+              "phase": "drained",
+              "resources": {
+                "cycle": 0,
+                "goroutines": 4,
+                "fd": 10,
+                "heap_alloc": 256400,
+                "heap_inuse": 811008,
+                "sys": 9279752,
+                "rss": 39350272,
+                "heap_sys": 3604480,
+                "heap_idle": 2793472,
+                "heap_released": 1581056,
+                "stack_inuse": 589824,
+                "other_sys": 1168832,
+                "total_alloc": 5083344,
+                "mallocs": 3998,
+                "frees": 2882,
+                "num_gc": 12,
+                "gc_pause_total_ns": 1051045,
+                "gc_wall_seconds": 0.000492051,
+                "os_memory": {
+                  "bytes": {
+                    "AnonHugePages": 18874368,
+                    "Anonymous": 31191040,
+                    "FilePmdMapped": 0,
+                    "KSM": 0,
+                    "LazyFree": 0,
+                    "Locked": 0,
+                    "Private_Clean": 0,
+                    "Private_Dirty": 37687296,
+                    "Private_Hugetlb": 0,
+                    "Pss": 37736448,
+                    "Pss_Anon": 31191040,
+                    "Pss_Dirty": 37687296,
+                    "Pss_File": 6545408,
+                    "Pss_Shmem": 0,
+                    "Referenced": 39354368,
+                    "Rss": 39354368,
+                    "Shared_Clean": 1667072,
+                    "Shared_Dirty": 0,
+                    "Shared_Hugetlb": 0,
+                    "ShmemPmdMapped": 0,
+                    "Swap": 0,
+                    "SwapPss": 0
+                  },
+                  "smaps_rollup_raw": "00400000-7ffe57e03000 ---p 00000000 00:00 0                              [rollup]\nRss:               38432 kB\nPss:               36852 kB\nPss_Dirty:         36804 kB\nPss_Anon:          30460 kB\nPss_File:           6392 kB\nPss_Shmem:             0 kB\nShared_Clean:       1628 kB\nShared_Dirty:          0 kB\nPrivate_Clean:         0 kB\nPrivate_Dirty:     36804 kB\nReferenced:        38432 kB\nAnonymous:         30460 kB\nKSM:                   0 kB\nLazyFree:              0 kB\nAnonHugePages:     18432 kB\nShmemPmdMapped:        0 kB\nFilePmdMapped:         0 kB\nShared_Hugetlb:        0 kB\nPrivate_Hugetlb:       0 kB\nSwap:                  0 kB\nSwapPss:               0 kB\nLocked:                0 kB\n",
+                  "read_seconds": 0.000305752
+                }
+              },
+              "counts": {
+                "tcp": 0,
+                "udp": 0,
+                "failed": 0,
+                "dropped": 0
+              },
+              "measure_seconds": 0.00094171,
+              "checkpoint_seconds": 5.45e-07,
+              "snapshot_seconds": 0.000944822
+            }
+          ],
+          "stop_seconds": 0,
+          "error": "scheduler missed declared offered-load ticks",
+          "scheduler_timing": {
+            "max_tick_lag_seconds": 0.151860863,
+            "max_measure_seconds": 0.000996194,
+            "max_checkpoint_seconds": 0.250844158,
+            "max_snapshot_seconds": 0.251844381,
+            "missed_at_seconds": 0.251884067,
+            "expected_slot": 1,
+            "observed_slot": 2,
+            "missed_slots": 1
+          }
+        },
+        {
+          "schema_version": 0,
+          "status": "failed",
+          "transport": 0,
+          "mode": 0,
+          "build_info": "",
+          "go_version": "",
+          "started_at": "",
+          "finished_at": "",
+          "settings": null,
+          "host": null,
+          "measured_seconds": 0,
+          "warmup_counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 1
+          },
+          "counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 0
+          },
+          "idle_baseline": {
+            "cycle": 0,
+            "goroutines": 0,
+            "fd": 0,
+            "heap_alloc": 0,
+            "heap_inuse": 0,
+            "sys": 0,
+            "rss": 0,
+            "heap_sys": 0,
+            "heap_idle": 0,
+            "heap_released": 0,
+            "stack_inuse": 0,
+            "other_sys": 0,
+            "total_alloc": 0,
+            "mallocs": 0,
+            "frees": 0,
+            "num_gc": 0,
+            "gc_pause_total_ns": 0,
+            "gc_wall_seconds": 0,
+            "os_memory": {
+              "read_seconds": 0
+            }
+          },
+          "after_stop": {
+            "cycle": 0,
+            "goroutines": 0,
+            "fd": 0,
+            "heap_alloc": 0,
+            "heap_inuse": 0,
+            "sys": 0,
+            "rss": 0,
+            "heap_sys": 0,
+            "heap_idle": 0,
+            "heap_released": 0,
+            "stack_inuse": 0,
+            "other_sys": 0,
+            "total_alloc": 0,
+            "mallocs": 0,
+            "frees": 0,
+            "num_gc": 0,
+            "gc_pause_total_ns": 0,
+            "gc_wall_seconds": 0,
+            "os_memory": {
+              "read_seconds": 0
+            }
+          },
+          "points": [
+            {
+              "at_seconds": 0.000990174,
+              "phase": "warmup",
+              "resources": {
+                "cycle": 0,
+                "goroutines": 5,
+                "fd": 11,
+                "heap_alloc": 283008,
+                "heap_inuse": 933888,
+                "sys": 9279752,
+                "rss": 39710720,
+                "heap_sys": 3571712,
+                "heap_idle": 2637824,
+                "heap_released": 1318912,
+                "stack_inuse": 622592,
+                "other_sys": 1168832,
+                "total_alloc": 6010888,
+                "mallocs": 4408,
+                "frees": 3249,
+                "num_gc": 13,
+                "gc_pause_total_ns": 1141424,
+                "gc_wall_seconds": 0.000525194,
+                "os_memory": {
+                  "bytes": {
+                    "AnonHugePages": 18874368,
+                    "Anonymous": 31551488,
+                    "FilePmdMapped": 0,
+                    "KSM": 0,
+                    "LazyFree": 0,
+                    "Locked": 0,
+                    "Private_Clean": 0,
+                    "Private_Dirty": 38047744,
+                    "Private_Hugetlb": 0,
+                    "Pss": 38096896,
+                    "Pss_Anon": 31551488,
+                    "Pss_Dirty": 38047744,
+                    "Pss_File": 6545408,
+                    "Pss_Shmem": 0,
+                    "Referenced": 39714816,
+                    "Rss": 39714816,
+                    "Shared_Clean": 1667072,
+                    "Shared_Dirty": 0,
+                    "Shared_Hugetlb": 0,
+                    "ShmemPmdMapped": 0,
+                    "Swap": 0,
+                    "SwapPss": 0
+                  },
+                  "smaps_rollup_raw": "00400000-7ffe57e03000 ---p 00000000 00:00 0                              [rollup]\nRss:               38784 kB\nPss:               37204 kB\nPss_Dirty:         37156 kB\nPss_Anon:          30812 kB\nPss_File:           6392 kB\nPss_Shmem:             0 kB\nShared_Clean:       1628 kB\nShared_Dirty:          0 kB\nPrivate_Clean:         0 kB\nPrivate_Dirty:     37156 kB\nReferenced:        38784 kB\nAnonymous:         30812 kB\nKSM:                   0 kB\nLazyFree:              0 kB\nAnonHugePages:     18432 kB\nShmemPmdMapped:        0 kB\nFilePmdMapped:         0 kB\nShared_Hugetlb:        0 kB\nPrivate_Hugetlb:       0 kB\nSwap:                  0 kB\nSwapPss:               0 kB\nLocked:                0 kB\n",
+                  "read_seconds": 0.000307678
+                }
+              },
+              "counts": {
+                "tcp": 0,
+                "udp": 0,
+                "failed": 0,
+                "dropped": 0
+              },
+              "measure_seconds": 0.000971244,
+              "checkpoint_seconds": 0.25013128,
+              "snapshot_seconds": 0.251105856
+            },
+            {
+              "at_seconds": 0.252075037,
+              "phase": "drained",
+              "resources": {
+                "cycle": 0,
+                "goroutines": 4,
+                "fd": 10,
+                "heap_alloc": 265176,
+                "heap_inuse": 860160,
+                "sys": 9279752,
+                "rss": 39555072,
+                "heap_sys": 3571712,
+                "heap_idle": 2711552,
+                "heap_released": 1515520,
+                "stack_inuse": 622592,
+                "other_sys": 1168832,
+                "total_alloc": 6030424,
+                "mallocs": 4490,
+                "frees": 3367,
+                "num_gc": 14,
+                "gc_pause_total_ns": 1171585,
+                "gc_wall_seconds": 0.000342112,
+                "os_memory": {
+                  "bytes": {
+                    "AnonHugePages": 18874368,
+                    "Anonymous": 31399936,
+                    "FilePmdMapped": 0,
+                    "KSM": 0,
+                    "LazyFree": 0,
+                    "Locked": 0,
+                    "Private_Clean": 0,
+                    "Private_Dirty": 37896192,
+                    "Private_Hugetlb": 0,
+                    "Pss": 37945344,
+                    "Pss_Anon": 31399936,
+                    "Pss_Dirty": 37896192,
+                    "Pss_File": 6545408,
+                    "Pss_Shmem": 0,
+                    "Referenced": 39563264,
+                    "Rss": 39563264,
+                    "Shared_Clean": 1667072,
+                    "Shared_Dirty": 0,
+                    "Shared_Hugetlb": 0,
+                    "ShmemPmdMapped": 0,
+                    "Swap": 0,
+                    "SwapPss": 0
+                  },
+                  "smaps_rollup_raw": "00400000-7ffe57e03000 ---p 00000000 00:00 0                              [rollup]\nRss:               38636 kB\nPss:               37056 kB\nPss_Dirty:         37008 kB\nPss_Anon:          30664 kB\nPss_File:           6392 kB\nPss_Shmem:             0 kB\nShared_Clean:       1628 kB\nShared_Dirty:          0 kB\nPrivate_Clean:         0 kB\nPrivate_Dirty:     37008 kB\nReferenced:        38636 kB\nAnonymous:         30664 kB\nKSM:                   0 kB\nLazyFree:              0 kB\nAnonHugePages:     18432 kB\nShmemPmdMapped:        0 kB\nFilePmdMapped:         0 kB\nShared_Hugetlb:        0 kB\nPrivate_Hugetlb:       0 kB\nSwap:                  0 kB\nSwapPss:               0 kB\nLocked:                0 kB\n",
+                  "read_seconds": 0.000310366
+                }
+              },
+              "counts": {
+                "tcp": 0,
+                "udp": 0,
+                "failed": 0,
+                "dropped": 0
+              },
+              "measure_seconds": 0.000791702,
+              "checkpoint_seconds": 5.82e-07,
+              "snapshot_seconds": 0.00079481
+            }
+          ],
+          "stop_seconds": 0,
+          "error": "scheduler missed declared offered-load ticks",
+          "scheduler_timing": {
+            "max_tick_lag_seconds": 0.15114302,
+            "max_measure_seconds": 0.000971244,
+            "max_checkpoint_seconds": 0.25013128,
+            "max_snapshot_seconds": 0.251105856,
+            "missed_at_seconds": 0.251159822,
+            "expected_slot": 1,
+            "observed_slot": 2,
+            "missed_slots": 1
+          }
+        },
+        {
+          "schema_version": 0,
+          "status": "failed",
+          "transport": 0,
+          "mode": 0,
+          "build_info": "",
+          "go_version": "",
+          "started_at": "",
+          "finished_at": "",
+          "settings": null,
+          "host": null,
+          "measured_seconds": 0,
+          "warmup_counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 1
+          },
+          "counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 0
+          },
+          "idle_baseline": {
+            "cycle": 0,
+            "goroutines": 0,
+            "fd": 0,
+            "heap_alloc": 0,
+            "heap_inuse": 0,
+            "sys": 0,
+            "rss": 0,
+            "heap_sys": 0,
+            "heap_idle": 0,
+            "heap_released": 0,
+            "stack_inuse": 0,
+            "other_sys": 0,
+            "total_alloc": 0,
+            "mallocs": 0,
+            "frees": 0,
+            "num_gc": 0,
+            "gc_pause_total_ns": 0,
+            "gc_wall_seconds": 0,
+            "os_memory": {
+              "read_seconds": 0
+            }
+          },
+          "after_stop": {
+            "cycle": 0,
+            "goroutines": 0,
+            "fd": 0,
+            "heap_alloc": 0,
+            "heap_inuse": 0,
+            "sys": 0,
+            "rss": 0,
+            "heap_sys": 0,
+            "heap_idle": 0,
+            "heap_released": 0,
+            "stack_inuse": 0,
+            "other_sys": 0,
+            "total_alloc": 0,
+            "mallocs": 0,
+            "frees": 0,
+            "num_gc": 0,
+            "gc_pause_total_ns": 0,
+            "gc_wall_seconds": 0,
+            "os_memory": {
+              "read_seconds": 0
+            }
+          },
+          "points": [
+            {
+              "at_seconds": 0.001011773,
+              "phase": "warmup",
+              "resources": {
+                "cycle": 0,
+                "goroutines": 5,
+                "fd": 11,
+                "heap_alloc": 279992,
+                "heap_inuse": 925696,
+                "sys": 9279752,
+                "rss": 39739392,
+                "heap_sys": 3571712,
+                "heap_idle": 2646016,
+                "heap_released": 1466368,
+                "stack_inuse": 622592,
+                "other_sys": 1163968,
+                "total_alloc": 6949096,
+                "mallocs": 4891,
+                "frees": 3732,
+                "num_gc": 15,
+                "gc_pause_total_ns": 1341281,
+                "gc_wall_seconds": 0.000581328,
+                "os_memory": {
+                  "bytes": {
+                    "AnonHugePages": 18874368,
+                    "Anonymous": 31580160,
+                    "FilePmdMapped": 0,
+                    "KSM": 0,
+                    "LazyFree": 0,
+                    "Locked": 0,
+                    "Private_Clean": 0,
+                    "Private_Dirty": 38076416,
+                    "Private_Hugetlb": 0,
+                    "Pss": 38125568,
+                    "Pss_Anon": 31580160,
+                    "Pss_Dirty": 38076416,
+                    "Pss_File": 6545408,
+                    "Pss_Shmem": 0,
+                    "Referenced": 39743488,
+                    "Rss": 39743488,
+                    "Shared_Clean": 1667072,
+                    "Shared_Dirty": 0,
+                    "Shared_Hugetlb": 0,
+                    "ShmemPmdMapped": 0,
+                    "Swap": 0,
+                    "SwapPss": 0
+                  },
+                  "smaps_rollup_raw": "00400000-7ffe57e03000 ---p 00000000 00:00 0                              [rollup]\nRss:               38812 kB\nPss:               37232 kB\nPss_Dirty:         37184 kB\nPss_Anon:          30840 kB\nPss_File:           6392 kB\nPss_Shmem:             0 kB\nShared_Clean:       1628 kB\nShared_Dirty:          0 kB\nPrivate_Clean:         0 kB\nPrivate_Dirty:     37184 kB\nReferenced:        38812 kB\nAnonymous:         30840 kB\nKSM:                   0 kB\nLazyFree:              0 kB\nAnonHugePages:     18432 kB\nShmemPmdMapped:        0 kB\nFilePmdMapped:         0 kB\nShared_Hugetlb:        0 kB\nPrivate_Hugetlb:       0 kB\nSwap:                  0 kB\nSwapPss:               0 kB\nLocked:                0 kB\n",
+                  "read_seconds": 0.000304106
+                }
+              },
+              "counts": {
+                "tcp": 0,
+                "udp": 0,
+                "failed": 0,
+                "dropped": 0
+              },
+              "measure_seconds": 0.000992911,
+              "checkpoint_seconds": 0.250958986,
+              "snapshot_seconds": 0.251955539
+            },
+            {
+              "at_seconds": 0.252946665,
+              "phase": "drained",
+              "resources": {
+                "cycle": 0,
+                "goroutines": 4,
+                "fd": 10,
+                "heap_alloc": 266104,
+                "heap_inuse": 851968,
+                "sys": 9279752,
+                "rss": 39628800,
+                "heap_sys": 3571712,
+                "heap_idle": 2719744,
+                "heap_released": 1597440,
+                "stack_inuse": 622592,
+                "other_sys": 1163968,
+                "total_alloc": 6960896,
+                "mallocs": 4972,
+                "frees": 3844,
+                "num_gc": 16,
+                "gc_pause_total_ns": 1418857,
+                "gc_wall_seconds": 0.000357056,
+                "os_memory": {
+                  "bytes": {
+                    "AnonHugePages": 18874368,
+                    "Anonymous": 31473664,
+                    "FilePmdMapped": 0,
+                    "KSM": 0,
+                    "LazyFree": 0,
+                    "Locked": 0,
+                    "Private_Clean": 0,
+                    "Private_Dirty": 37969920,
+                    "Private_Hugetlb": 0,
+                    "Pss": 38019072,
+                    "Pss_Anon": 31473664,
+                    "Pss_Dirty": 37969920,
+                    "Pss_File": 6545408,
+                    "Pss_Shmem": 0,
+                    "Referenced": 39636992,
+                    "Rss": 39636992,
+                    "Shared_Clean": 1667072,
+                    "Shared_Dirty": 0,
+                    "Shared_Hugetlb": 0,
+                    "ShmemPmdMapped": 0,
+                    "Swap": 0,
+                    "SwapPss": 0
+                  },
+                  "smaps_rollup_raw": "00400000-7ffe57e03000 ---p 00000000 00:00 0                              [rollup]\nRss:               38708 kB\nPss:               37128 kB\nPss_Dirty:         37080 kB\nPss_Anon:          30736 kB\nPss_File:           6392 kB\nPss_Shmem:             0 kB\nShared_Clean:       1628 kB\nShared_Dirty:          0 kB\nPrivate_Clean:         0 kB\nPrivate_Dirty:     37080 kB\nReferenced:        38708 kB\nAnonymous:         30736 kB\nKSM:                   0 kB\nLazyFree:              0 kB\nAnonHugePages:     18432 kB\nShmemPmdMapped:        0 kB\nFilePmdMapped:         0 kB\nShared_Hugetlb:        0 kB\nPrivate_Hugetlb:       0 kB\nSwap:                  0 kB\nSwapPss:               0 kB\nLocked:                0 kB\n",
+                  "read_seconds": 0.000330226
+                }
+              },
+              "counts": {
+                "tcp": 0,
+                "udp": 0,
+                "failed": 0,
+                "dropped": 0
+              },
+              "measure_seconds": 0.000833366,
+              "checkpoint_seconds": 6.58e-07,
+              "snapshot_seconds": 0.000836626
+            }
+          ],
+          "stop_seconds": 0,
+          "error": "scheduler missed declared offered-load ticks",
+          "scheduler_timing": {
+            "max_tick_lag_seconds": 0.151969771,
+            "max_measure_seconds": 0.000992911,
+            "max_checkpoint_seconds": 0.250958986,
+            "max_snapshot_seconds": 0.251955539,
+            "missed_at_seconds": 0.251985998,
+            "expected_slot": 1,
+            "observed_slot": 2,
+            "missed_slots": 1
+          }
+        },
+        {
+          "schema_version": 0,
+          "status": "failed",
+          "transport": 0,
+          "mode": 0,
+          "build_info": "",
+          "go_version": "",
+          "started_at": "",
+          "finished_at": "",
+          "settings": null,
+          "host": null,
+          "measured_seconds": 0,
+          "warmup_counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 1
+          },
+          "counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 0
+          },
+          "idle_baseline": {
+            "cycle": 0,
+            "goroutines": 0,
+            "fd": 0,
+            "heap_alloc": 0,
+            "heap_inuse": 0,
+            "sys": 0,
+            "rss": 0,
+            "heap_sys": 0,
+            "heap_idle": 0,
+            "heap_released": 0,
+            "stack_inuse": 0,
+            "other_sys": 0,
+            "total_alloc": 0,
+            "mallocs": 0,
+            "frees": 0,
+            "num_gc": 0,
+            "gc_pause_total_ns": 0,
+            "gc_wall_seconds": 0,
+            "os_memory": {
+              "read_seconds": 0
+            }
+          },
+          "after_stop": {
+            "cycle": 0,
+            "goroutines": 0,
+            "fd": 0,
+            "heap_alloc": 0,
+            "heap_inuse": 0,
+            "sys": 0,
+            "rss": 0,
+            "heap_sys": 0,
+            "heap_idle": 0,
+            "heap_released": 0,
+            "stack_inuse": 0,
+            "other_sys": 0,
+            "total_alloc": 0,
+            "mallocs": 0,
+            "frees": 0,
+            "num_gc": 0,
+            "gc_pause_total_ns": 0,
+            "gc_wall_seconds": 0,
+            "os_memory": {
+              "read_seconds": 0
+            }
+          },
+          "points": [
+            {
+              "at_seconds": 0.000985047,
+              "phase": "warmup",
+              "resources": {
+                "cycle": 0,
+                "goroutines": 5,
+                "fd": 11,
+                "heap_alloc": 280816,
+                "heap_inuse": 901120,
+                "sys": 9287944,
+                "rss": 39931904,
+                "heap_sys": 3571712,
+                "heap_idle": 2670592,
+                "heap_released": 1531904,
+                "stack_inuse": 622592,
+                "other_sys": 1163968,
+                "total_alloc": 7874656,
+                "mallocs": 5372,
+                "frees": 4207,
+                "num_gc": 17,
+                "gc_pause_total_ns": 1513771,
+                "gc_wall_seconds": 0.000526737,
+                "os_memory": {
+                  "bytes": {
+                    "AnonHugePages": 18874368,
+                    "Anonymous": 31768576,
+                    "FilePmdMapped": 0,
+                    "KSM": 0,
+                    "LazyFree": 0,
+                    "Locked": 0,
+                    "Private_Clean": 0,
+                    "Private_Dirty": 38264832,
+                    "Private_Hugetlb": 0,
+                    "Pss": 38313984,
+                    "Pss_Anon": 31768576,
+                    "Pss_Dirty": 38264832,
+                    "Pss_File": 6545408,
+                    "Pss_Shmem": 0,
+                    "Referenced": 39931904,
+                    "Rss": 39931904,
+                    "Shared_Clean": 1667072,
+                    "Shared_Dirty": 0,
+                    "Shared_Hugetlb": 0,
+                    "ShmemPmdMapped": 0,
+                    "Swap": 0,
+                    "SwapPss": 0
+                  },
+                  "smaps_rollup_raw": "00400000-7ffe57e03000 ---p 00000000 00:00 0                              [rollup]\nRss:               38996 kB\nPss:               37416 kB\nPss_Dirty:         37368 kB\nPss_Anon:          31024 kB\nPss_File:           6392 kB\nPss_Shmem:             0 kB\nShared_Clean:       1628 kB\nShared_Dirty:          0 kB\nPrivate_Clean:         0 kB\nPrivate_Dirty:     37368 kB\nReferenced:        38996 kB\nAnonymous:         31024 kB\nKSM:                   0 kB\nLazyFree:              0 kB\nAnonHugePages:     18432 kB\nShmemPmdMapped:        0 kB\nFilePmdMapped:         0 kB\nShared_Hugetlb:        0 kB\nPrivate_Hugetlb:       0 kB\nSwap:                  0 kB\nSwapPss:               0 kB\nLocked:                0 kB\n",
+                  "read_seconds": 0.000307929
+                }
+              },
+              "counts": {
+                "tcp": 0,
+                "udp": 0,
+                "failed": 0,
+                "dropped": 0
+              },
+              "measure_seconds": 0.000966269,
+              "checkpoint_seconds": 0.250878042,
+              "snapshot_seconds": 0.251848169
+            },
+            {
+              "at_seconds": 0.252890818,
+              "phase": "drained",
+              "resources": {
+                "cycle": 0,
+                "goroutines": 4,
+                "fd": 10,
+                "heap_alloc": 258000,
+                "heap_inuse": 819200,
+                "sys": 9287944,
+                "rss": 39960576,
+                "heap_sys": 3571712,
+                "heap_idle": 2752512,
+                "heap_released": 1523712,
+                "stack_inuse": 622592,
+                "other_sys": 1163968,
+                "total_alloc": 7893856,
+                "mallocs": 5451,
+                "frees": 4324,
+                "num_gc": 18,
+                "gc_pause_total_ns": 1631182,
+                "gc_wall_seconds": 0.000470643,
+                "os_memory": {
+                  "bytes": {
+                    "AnonHugePages": 18874368,
+                    "Anonymous": 31805440,
+                    "FilePmdMapped": 0,
+                    "KSM": 0,
+                    "LazyFree": 0,
+                    "Locked": 0,
+                    "Private_Clean": 0,
+                    "Private_Dirty": 38301696,
+                    "Private_Hugetlb": 0,
+                    "Pss": 38350848,
+                    "Pss_Anon": 31805440,
+                    "Pss_Dirty": 38301696,
+                    "Pss_File": 6545408,
+                    "Pss_Shmem": 0,
+                    "Referenced": 39968768,
+                    "Rss": 39968768,
+                    "Shared_Clean": 1667072,
+                    "Shared_Dirty": 0,
+                    "Shared_Hugetlb": 0,
+                    "ShmemPmdMapped": 0,
+                    "Swap": 0,
+                    "SwapPss": 0
+                  },
+                  "smaps_rollup_raw": "00400000-7ffe57e03000 ---p 00000000 00:00 0                              [rollup]\nRss:               39032 kB\nPss:               37452 kB\nPss_Dirty:         37404 kB\nPss_Anon:          31060 kB\nPss_File:           6392 kB\nPss_Shmem:             0 kB\nShared_Clean:       1628 kB\nShared_Dirty:          0 kB\nPrivate_Clean:         0 kB\nPrivate_Dirty:     37404 kB\nReferenced:        39032 kB\nAnonymous:         31060 kB\nKSM:                   0 kB\nLazyFree:              0 kB\nAnonHugePages:     18432 kB\nShmemPmdMapped:        0 kB\nFilePmdMapped:         0 kB\nShared_Hugetlb:        0 kB\nPrivate_Hugetlb:       0 kB\nSwap:                  0 kB\nSwapPss:               0 kB\nLocked:                0 kB\n",
+                  "read_seconds": 0.000319105
+                }
+              },
+              "counts": {
+                "tcp": 0,
+                "udp": 0,
+                "failed": 0,
+                "dropped": 0
+              },
+              "measure_seconds": 0.000936931,
+              "checkpoint_seconds": 5.15e-07,
+              "snapshot_seconds": 0.00093993
+            }
+          ],
+          "stop_seconds": 0,
+          "error": "scheduler missed declared offered-load ticks",
+          "scheduler_timing": {
+            "max_tick_lag_seconds": 0.15186334,
+            "max_measure_seconds": 0.000966269,
+            "max_checkpoint_seconds": 0.250878042,
+            "max_snapshot_seconds": 0.251848169,
+            "missed_at_seconds": 0.251878854,
+            "expected_slot": 1,
+            "observed_slot": 2,
+            "missed_slots": 1
+          }
+        },
+        {
+          "schema_version": 0,
+          "status": "failed",
+          "transport": 0,
+          "mode": 0,
+          "build_info": "",
+          "go_version": "",
+          "started_at": "",
+          "finished_at": "",
+          "settings": null,
+          "host": null,
+          "measured_seconds": 0,
+          "warmup_counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 1
+          },
+          "counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 0
+          },
+          "idle_baseline": {
+            "cycle": 0,
+            "goroutines": 0,
+            "fd": 0,
+            "heap_alloc": 0,
+            "heap_inuse": 0,
+            "sys": 0,
+            "rss": 0,
+            "heap_sys": 0,
+            "heap_idle": 0,
+            "heap_released": 0,
+            "stack_inuse": 0,
+            "other_sys": 0,
+            "total_alloc": 0,
+            "mallocs": 0,
+            "frees": 0,
+            "num_gc": 0,
+            "gc_pause_total_ns": 0,
+            "gc_wall_seconds": 0,
+            "os_memory": {
+              "read_seconds": 0
+            }
+          },
+          "after_stop": {
+            "cycle": 0,
+            "goroutines": 0,
+            "fd": 0,
+            "heap_alloc": 0,
+            "heap_inuse": 0,
+            "sys": 0,
+            "rss": 0,
+            "heap_sys": 0,
+            "heap_idle": 0,
+            "heap_released": 0,
+            "stack_inuse": 0,
+            "other_sys": 0,
+            "total_alloc": 0,
+            "mallocs": 0,
+            "frees": 0,
+            "num_gc": 0,
+            "gc_pause_total_ns": 0,
+            "gc_wall_seconds": 0,
+            "os_memory": {
+              "read_seconds": 0
+            }
+          },
+          "points": [
+            {
+              "at_seconds": 0.001056512,
+              "phase": "warmup",
+              "resources": {
+                "cycle": 0,
+                "goroutines": 5,
+                "fd": 11,
+                "heap_alloc": 273152,
+                "heap_inuse": 876544,
+                "sys": 9287944,
+                "rss": 39788544,
+                "heap_sys": 3571712,
+                "heap_idle": 2695168,
+                "heap_released": 1687552,
+                "stack_inuse": 622592,
+                "other_sys": 1163968,
+                "total_alloc": 8812784,
+                "mallocs": 5843,
+                "frees": 4686,
+                "num_gc": 19,
+                "gc_pause_total_ns": 1745070,
+                "gc_wall_seconds": 0.000536317,
+                "os_memory": {
+                  "bytes": {
+                    "AnonHugePages": 18874368,
+                    "Anonymous": 31629312,
+                    "FilePmdMapped": 0,
+                    "KSM": 0,
+                    "LazyFree": 0,
+                    "Locked": 0,
+                    "Private_Clean": 0,
+                    "Private_Dirty": 38125568,
+                    "Private_Hugetlb": 0,
+                    "Pss": 38174720,
+                    "Pss_Anon": 31629312,
+                    "Pss_Dirty": 38125568,
+                    "Pss_File": 6545408,
+                    "Pss_Shmem": 0,
+                    "Referenced": 39792640,
+                    "Rss": 39792640,
+                    "Shared_Clean": 1667072,
+                    "Shared_Dirty": 0,
+                    "Shared_Hugetlb": 0,
+                    "ShmemPmdMapped": 0,
+                    "Swap": 0,
+                    "SwapPss": 0
+                  },
+                  "smaps_rollup_raw": "00400000-7ffe57e03000 ---p 00000000 00:00 0                              [rollup]\nRss:               38860 kB\nPss:               37280 kB\nPss_Dirty:         37232 kB\nPss_Anon:          30888 kB\nPss_File:           6392 kB\nPss_Shmem:             0 kB\nShared_Clean:       1628 kB\nShared_Dirty:          0 kB\nPrivate_Clean:         0 kB\nPrivate_Dirty:     37232 kB\nReferenced:        38860 kB\nAnonymous:         30888 kB\nKSM:                   0 kB\nLazyFree:              0 kB\nAnonHugePages:     18432 kB\nShmemPmdMapped:        0 kB\nFilePmdMapped:         0 kB\nShared_Hugetlb:        0 kB\nPrivate_Hugetlb:       0 kB\nSwap:                  0 kB\nSwapPss:               0 kB\nLocked:                0 kB\n",
+                  "read_seconds": 0.000301136
+                }
+              },
+              "counts": {
+                "tcp": 0,
+                "udp": 0,
+                "failed": 0,
+                "dropped": 0
+              },
+              "measure_seconds": 0.001039592,
+              "checkpoint_seconds": 0.251024244,
+              "snapshot_seconds": 0.252067779
+            },
+            {
+              "at_seconds": 0.253068844,
+              "phase": "drained",
+              "resources": {
+                "cycle": 0,
+                "goroutines": 4,
+                "fd": 10,
+                "heap_alloc": 267920,
+                "heap_inuse": 811008,
+                "sys": 9287944,
+                "rss": 39800832,
+                "heap_sys": 3571712,
+                "heap_idle": 2760704,
+                "heap_released": 1679360,
+                "stack_inuse": 622592,
+                "other_sys": 1163968,
+                "total_alloc": 8832960,
+                "mallocs": 5936,
+                "frees": 4798,
+                "num_gc": 20,
+                "gc_pause_total_ns": 1808432,
+                "gc_wall_seconds": 0.00039687,
+                "os_memory": {
+                  "bytes": {
+                    "AnonHugePages": 18874368,
+                    "Anonymous": 31637504,
+                    "FilePmdMapped": 0,
+                    "KSM": 0,
+                    "LazyFree": 0,
+                    "Locked": 0,
+                    "Private_Clean": 0,
+                    "Private_Dirty": 38133760,
+                    "Private_Hugetlb": 0,
+                    "Pss": 38182912,
+                    "Pss_Anon": 31637504,
+                    "Pss_Dirty": 38133760,
+                    "Pss_File": 6545408,
+                    "Pss_Shmem": 0,
+                    "Referenced": 39800832,
+                    "Rss": 39800832,
+                    "Shared_Clean": 1667072,
+                    "Shared_Dirty": 0,
+                    "Shared_Hugetlb": 0,
+                    "ShmemPmdMapped": 0,
+                    "Swap": 0,
+                    "SwapPss": 0
+                  },
+                  "smaps_rollup_raw": "00400000-7ffe57e03000 ---p 00000000 00:00 0                              [rollup]\nRss:               38868 kB\nPss:               37288 kB\nPss_Dirty:         37240 kB\nPss_Anon:          30896 kB\nPss_File:           6392 kB\nPss_Shmem:             0 kB\nShared_Clean:       1628 kB\nShared_Dirty:          0 kB\nPrivate_Clean:         0 kB\nPrivate_Dirty:     37240 kB\nReferenced:        38868 kB\nAnonymous:         30896 kB\nKSM:                   0 kB\nLazyFree:              0 kB\nAnonHugePages:     18432 kB\nShmemPmdMapped:        0 kB\nFilePmdMapped:         0 kB\nShared_Hugetlb:        0 kB\nPrivate_Hugetlb:       0 kB\nSwap:                  0 kB\nSwapPss:               0 kB\nLocked:                0 kB\n",
+                  "read_seconds": 0.000314465
+                }
+              },
+              "counts": {
+                "tcp": 0,
+                "udp": 0,
+                "failed": 0,
+                "dropped": 0
+              },
+              "measure_seconds": 0.000861763,
+              "checkpoint_seconds": 5.76e-07,
+              "snapshot_seconds": 0.000864955
+            }
+          ],
+          "stop_seconds": 0,
+          "error": "scheduler missed declared offered-load ticks",
+          "scheduler_timing": {
+            "max_tick_lag_seconds": 0.152081385,
+            "max_measure_seconds": 0.001039592,
+            "max_checkpoint_seconds": 0.251024244,
+            "max_snapshot_seconds": 0.252067779,
+            "missed_at_seconds": 0.252096653,
+            "expected_slot": 1,
+            "observed_slot": 2,
+            "missed_slots": 1
+          }
+        }
+      ],
+      "stdout": "=== RUN   TestCheckpointStallControl\n    scheduler_control_test.go:50: CHECKPOINT-STALL-CONTROL: {\"schema_version\":0,\"status\":\"failed\",\"transport\":0,\"mode\":0,\"build_info\":\"\",\"go_version\":\"\",\"started_at\":\"\",\"finished_at\":\"\",\"settings\":null,\"host\":null,\"measured_seconds\":0,\"warmup_counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":1},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"idle_baseline\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0,\"heap_sys\":0,\"heap_idle\":0,\"heap_released\":0,\"stack_inuse\":0,\"other_sys\":0,\"total_alloc\":0,\"mallocs\":0,\"frees\":0,\"num_gc\":0,\"gc_pause_total_ns\":0,\"gc_wall_seconds\":0,\"os_memory\":{\"read_seconds\":0}},\"after_stop\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0,\"heap_sys\":0,\"heap_idle\":0,\"heap_released\":0,\"stack_inuse\":0,\"other_sys\":0,\"total_alloc\":0,\"mallocs\":0,\"frees\":0,\"num_gc\":0,\"gc_pause_total_ns\":0,\"gc_wall_seconds\":0,\"os_memory\":{\"read_seconds\":0}},\"points\":[{\"at_seconds\":0.001649451,\"phase\":\"warmup\",\"resources\":{\"cycle\":0,\"goroutines\":5,\"fd\":11,\"heap_alloc\":212936,\"heap_inuse\":704512,\"sys\":8673544,\"rss\":35258368,\"heap_sys\":3637248,\"heap_idle\":2932736,\"heap_released\":2727936,\"stack_inuse\":557056,\"other_sys\":1109928,\"total_alloc\":303728,\"mallocs\":943,\"frees\":253,\"num_gc\":1,\"gc_pause_total_ns\":38465,\"gc_wall_seconds\":0.001156055,\"os_memory\":{\"bytes\":{\"AnonHugePages\":23068672,\"Anonymous\":27242496,\"FilePmdMapped\":0,\"KSM\":0,\"LazyFree\":0,\"Locked\":0,\"Private_Clean\":0,\"Private_Dirty\":33607680,\"Private_Hugetlb\":0,\"Pss\":33656832,\"Pss_Anon\":27242496,\"Pss_Dirty\":33607680,\"Pss_File\":6414336,\"Pss_Shmem\":0,\"Referenced\":35274752,\"Rss\":35274752,\"Shared_Clean\":1667072,\"Shared_Dirty\":0,\"Shared_Hugetlb\":0,\"ShmemPmdMapped\":0,\"Swap\":0,\"SwapPss\":0},\"smaps_rollup_raw\":\"00400000-7ffe57e03000 ---p 00000000 00:00 0                              [rollup]\\nRss:               34448 kB\\nPss:               32868 kB\\nPss_Dirty:         32820 kB\\nPss_Anon:          26604 kB\\nPss_File:           6264 kB\\nPss_Shmem:             0 kB\\nShared_Clean:       1628 kB\\nShared_Dirty:          0 kB\\nPrivate_Clean:         0 kB\\nPrivate_Dirty:     32820 kB\\nReferenced:        34448 kB\\nAnonymous:         26604 kB\\nKSM:                   0 kB\\nLazyFree:              0 kB\\nAnonHugePages:     22528 kB\\nShmemPmdMapped:        0 kB\\nFilePmdMapped:         0 kB\\nShared_Hugetlb:        0 kB\\nPrivate_Hugetlb:       0 kB\\nSwap:                  0 kB\\nSwapPss:               0 kB\\nLocked:                0 kB\\n\",\"read_seconds\":0.000238023}},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"measure_seconds\":0.001598307,\"checkpoint_seconds\":0.250584108,\"snapshot_seconds\":0.252185807},{\"at_seconds\":0.253429303,\"phase\":\"drained\",\"resources\":{\"cycle\":0,\"goroutines\":4,\"fd\":10,\"heap_alloc\":222352,\"heap_inuse\":729088,\"sys\":8739080,\"rss\":35557376,\"heap_sys\":3637248,\"heap_idle\":2908160,\"heap_released\":2686976,\"stack_inuse\":557056,\"other_sys\":748456,\"total_alloc\":323904,\"mallocs\":1027,\"frees\":341,\"num_gc\":2,\"gc_pause_total_ns\":71085,\"gc_wall_seconds\":0.000519825,\"os_memory\":{\"bytes\":{\"AnonHugePages\":18874368,\"Anonymous\":27533312,\"FilePmdMapped\":0,\"KSM\":0,\"LazyFree\":0,\"Locked\":0,\"Private_Clean\":0,\"Private_Dirty\":33898496,\"Private_Hugetlb\":0,\"Pss\":33947648,\"Pss_Anon\":27533312,\"Pss_Dirty\":33898496,\"Pss_File\":6414336,\"Pss_Shmem\":0,\"Referenced\":35565568,\"Rss\":35565568,\"Shared_Clean\":1667072,\"Shared_Dirty\":0,\"Shared_Hugetlb\":0,\"ShmemPmdMapped\":0,\"Swap\":0,\"SwapPss\":0},\"smaps_rollup_raw\":\"00400000-7ffe57e03000 ---p 00000000 00:00 0                              [rollup]\\nRss:               34732 kB\\nPss:               33152 kB\\nPss_Dirty:         33104 kB\\nPss_Anon:          26888 kB\\nPss_File:           6264 kB\\nPss_Shmem:             0 kB\\nShared_Clean:       1628 kB\\nShared_Dirty:          0 kB\\nPrivate_Clean:         0 kB\\nPrivate_Dirty:     33104 kB\\nReferenced:        34732 kB\\nAnonymous:         26888 kB\\nKSM:                   0 kB\\nLazyFree:              0 kB\\nAnonHugePages:     18432 kB\\nShmemPmdMapped:        0 kB\\nFilePmdMapped:         0 kB\\nShared_Hugetlb:        0 kB\\nPrivate_Hugetlb:       0 kB\\nSwap:                  0 kB\\nSwapPss:               0 kB\\nLocked:                0 kB\\n\",\"read_seconds\":0.000295966}},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"measure_seconds\":0.00096871,\"checkpoint_seconds\":0.000001988,\"snapshot_seconds\":0.000973776}],\"stop_seconds\":0,\"error\":\"scheduler missed declared offered-load ticks\",\"scheduler_timing\":{\"max_tick_lag_seconds\":0.152218013,\"max_measure_seconds\":0.001598307,\"max_checkpoint_seconds\":0.250584108,\"max_snapshot_seconds\":0.252185807,\"missed_at_seconds\":0.252322702,\"expected_slot\":1,\"observed_slot\":2,\"missed_slots\":1}}\n--- PASS: TestCheckpointStallControl (0.28s)\n=== RUN   TestCheckpointStallControl\n    scheduler_control_test.go:50: CHECKPOINT-STALL-CONTROL: {\"schema_version\":0,\"status\":\"failed\",\"transport\":0,\"mode\":0,\"build_info\":\"\",\"go_version\":\"\",\"started_at\":\"\",\"finished_at\":\"\",\"settings\":null,\"host\":null,\"measured_seconds\":0,\"warmup_counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":1},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"idle_baseline\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0,\"heap_sys\":0,\"heap_idle\":0,\"heap_released\":0,\"stack_inuse\":0,\"other_sys\":0,\"total_alloc\":0,\"mallocs\":0,\"frees\":0,\"num_gc\":0,\"gc_pause_total_ns\":0,\"gc_wall_seconds\":0,\"os_memory\":{\"read_seconds\":0}},\"after_stop\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0,\"heap_sys\":0,\"heap_idle\":0,\"heap_released\":0,\"stack_inuse\":0,\"other_sys\":0,\"total_alloc\":0,\"mallocs\":0,\"frees\":0,\"num_gc\":0,\"gc_pause_total_ns\":0,\"gc_wall_seconds\":0,\"os_memory\":{\"read_seconds\":0}},\"points\":[{\"at_seconds\":0.001120472,\"phase\":\"warmup\",\"resources\":{\"cycle\":0,\"goroutines\":5,\"fd\":11,\"heap_alloc\":271776,\"heap_inuse\":860160,\"sys\":9001224,\"rss\":38014976,\"heap_sys\":3637248,\"heap_idle\":2777088,\"heap_released\":1753088,\"stack_inuse\":557056,\"other_sys\":938952,\"total_alloc\":1293600,\"mallocs\":1973,\"frees\":828,\"num_gc\":3,\"gc_pause_total_ns\":213300,\"gc_wall_seconds\":0.000671362,\"os_memory\":{\"bytes\":{\"AnonHugePages\":18874368,\"Anonymous\":29925376,\"FilePmdMapped\":0,\"KSM\":0,\"LazyFree\":0,\"Locked\":0,\"Private_Clean\":0,\"Private_Dirty\":36356096,\"Private_Hugetlb\":0,\"Pss\":36405248,\"Pss_Anon\":29925376,\"Pss_Dirty\":36356096,\"Pss_File\":6479872,\"Pss_Shmem\":0,\"Referenced\":38023168,\"Rss\":38023168,\"Shared_Clean\":1667072,\"Shared_Dirty\":0,\"Shared_Hugetlb\":0,\"ShmemPmdMapped\":0,\"Swap\":0,\"SwapPss\":0},\"smaps_rollup_raw\":\"00400000-7ffe57e03000 ---p 00000000 00:00 0                              [rollup]\\nRss:               37132 kB\\nPss:               35552 kB\\nPss_Dirty:         35504 kB\\nPss_Anon:          29224 kB\\nPss_File:           6328 kB\\nPss_Shmem:             0 kB\\nShared_Clean:       1628 kB\\nShared_Dirty:          0 kB\\nPrivate_Clean:         0 kB\\nPrivate_Dirty:     35504 kB\\nReferenced:        37132 kB\\nAnonymous:         29224 kB\\nKSM:                   0 kB\\nLazyFree:              0 kB\\nAnonHugePages:     18432 kB\\nShmemPmdMapped:        0 kB\\nFilePmdMapped:         0 kB\\nShared_Hugetlb:        0 kB\\nPrivate_Hugetlb:       0 kB\\nSwap:                  0 kB\\nSwapPss:               0 kB\\nLocked:                0 kB\\n\",\"read_seconds\":0.000287141}},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"measure_seconds\":0.001099771,\"checkpoint_seconds\":0.250418223,\"snapshot_seconds\":0.251521347},{\"at_seconds\":0.252597574,\"phase\":\"drained\",\"resources\":{\"cycle\":0,\"goroutines\":4,\"fd\":10,\"heap_alloc\":254272,\"heap_inuse\":819200,\"sys\":9271560,\"rss\":37482496,\"heap_sys\":3637248,\"heap_idle\":2818048,\"heap_released\":1736704,\"stack_inuse\":557056,\"other_sys\":1180648,\"total_alloc\":1305296,\"mallocs\":2053,\"frees\":947,\"num_gc\":4,\"gc_pause_total_ns\":241335,\"gc_wall_seconds\":0.000400912,\"os_memory\":{\"bytes\":{\"AnonHugePages\":18874368,\"Anonymous\":29323264,\"FilePmdMapped\":0,\"KSM\":0,\"LazyFree\":0,\"Locked\":0,\"Private_Clean\":0,\"Private_Dirty\":35753984,\"Private_Hugetlb\":0,\"Pss\":35803136,\"Pss_Anon\":29323264,\"Pss_Dirty\":35753984,\"Pss_File\":6479872,\"Pss_Shmem\":0,\"Referenced\":37421056,\"Rss\":37421056,\"Shared_Clean\":1667072,\"Shared_Dirty\":0,\"Shared_Hugetlb\":0,\"ShmemPmdMapped\":0,\"Swap\":0,\"SwapPss\":0},\"smaps_rollup_raw\":\"00400000-7ffe57e03000 ---p 00000000 00:00 0                              [rollup]\\nRss:               36544 kB\\nPss:               34964 kB\\nPss_Dirty:         34916 kB\\nPss_Anon:          28636 kB\\nPss_File:           6328 kB\\nPss_Shmem:             0 kB\\nShared_Clean:       1628 kB\\nShared_Dirty:          0 kB\\nPrivate_Clean:         0 kB\\nPrivate_Dirty:     34916 kB\\nReferenced:        36544 kB\\nAnonymous:         28636 kB\\nKSM:                   0 kB\\nLazyFree:              0 kB\\nAnonHugePages:     18432 kB\\nShmemPmdMapped:        0 kB\\nFilePmdMapped:         0 kB\\nShared_Hugetlb:        0 kB\\nPrivate_Hugetlb:       0 kB\\nSwap:                  0 kB\\nSwapPss:               0 kB\\nLocked:                0 kB\\n\",\"read_seconds\":0.000333992}},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"measure_seconds\":0.000913619,\"checkpoint_seconds\":7.54e-7,\"snapshot_seconds\":0.000917357}],\"stop_seconds\":0,\"error\":\"scheduler missed declared offered-load ticks\",\"scheduler_timing\":{\"max_tick_lag_seconds\":0.151535243,\"max_measure_seconds\":0.001099771,\"max_checkpoint_seconds\":0.250418223,\"max_snapshot_seconds\":0.251521347,\"missed_at_seconds\":0.251554826,\"expected_slot\":1,\"observed_slot\":2,\"missed_slots\":1}}\n--- PASS: TestCheckpointStallControl (0.26s)\n=== RUN   TestCheckpointStallControl\n    scheduler_control_test.go:50: CHECKPOINT-STALL-CONTROL: {\"schema_version\":0,\"status\":\"failed\",\"transport\":0,\"mode\":0,\"build_info\":\"\",\"go_version\":\"\",\"started_at\":\"\",\"finished_at\":\"\",\"settings\":null,\"host\":null,\"measured_seconds\":0,\"warmup_counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":1},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"idle_baseline\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0,\"heap_sys\":0,\"heap_idle\":0,\"heap_released\":0,\"stack_inuse\":0,\"other_sys\":0,\"total_alloc\":0,\"mallocs\":0,\"frees\":0,\"num_gc\":0,\"gc_pause_total_ns\":0,\"gc_wall_seconds\":0,\"os_memory\":{\"read_seconds\":0}},\"after_stop\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0,\"heap_sys\":0,\"heap_idle\":0,\"heap_released\":0,\"stack_inuse\":0,\"other_sys\":0,\"total_alloc\":0,\"mallocs\":0,\"frees\":0,\"num_gc\":0,\"gc_pause_total_ns\":0,\"gc_wall_seconds\":0,\"os_memory\":{\"read_seconds\":0}},\"points\":[{\"at_seconds\":0.001084516,\"phase\":\"warmup\",\"resources\":{\"cycle\":0,\"goroutines\":5,\"fd\":11,\"heap_alloc\":272168,\"heap_inuse\":851968,\"sys\":9271560,\"rss\":38576128,\"heap_sys\":3637248,\"heap_idle\":2785280,\"heap_released\":1466368,\"stack_inuse\":557056,\"other_sys\":1171432,\"total_alloc\":2233320,\"mallocs\":2464,\"frees\":1322,\"num_gc\":5,\"gc_pause_total_ns\":406209,\"gc_wall_seconds\":0.000578716,\"os_memory\":{\"bytes\":{\"AnonHugePages\":18874368,\"Anonymous\":30425088,\"FilePmdMapped\":0,\"KSM\":0,\"LazyFree\":0,\"Locked\":0,\"Private_Clean\":0,\"Private_Dirty\":36855808,\"Private_Hugetlb\":0,\"Pss\":36904960,\"Pss_Anon\":30425088,\"Pss_Dirty\":36855808,\"Pss_File\":6479872,\"Pss_Shmem\":0,\"Referenced\":38522880,\"Rss\":38522880,\"Shared_Clean\":1667072,\"Shared_Dirty\":0,\"Shared_Hugetlb\":0,\"ShmemPmdMapped\":0,\"Swap\":0,\"SwapPss\":0},\"smaps_rollup_raw\":\"00400000-7ffe57e03000 ---p 00000000 00:00 0                              [rollup]\\nRss:               37620 kB\\nPss:               36040 kB\\nPss_Dirty:         35992 kB\\nPss_Anon:          29712 kB\\nPss_File:           6328 kB\\nPss_Shmem:             0 kB\\nShared_Clean:       1628 kB\\nShared_Dirty:          0 kB\\nPrivate_Clean:         0 kB\\nPrivate_Dirty:     35992 kB\\nReferenced:        37620 kB\\nAnonymous:         29712 kB\\nKSM:                   0 kB\\nLazyFree:              0 kB\\nAnonHugePages:     18432 kB\\nShmemPmdMapped:        0 kB\\nFilePmdMapped:         0 kB\\nShared_Hugetlb:        0 kB\\nPrivate_Hugetlb:       0 kB\\nSwap:                  0 kB\\nSwapPss:               0 kB\\nLocked:                0 kB\\n\",\"read_seconds\":0.000365677}},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"measure_seconds\":0.001065038,\"checkpoint_seconds\":0.250401562,\"snapshot_seconds\":0.251470398},{\"at_seconds\":0.252512108,\"phase\":\"drained\",\"resources\":{\"cycle\":0,\"goroutines\":4,\"fd\":10,\"heap_alloc\":255088,\"heap_inuse\":811008,\"sys\":9271560,\"rss\":38350848,\"heap_sys\":3637248,\"heap_idle\":2826240,\"heap_released\":1728512,\"stack_inuse\":557056,\"other_sys\":1171432,\"total_alloc\":2253224,\"mallocs\":2546,\"frees\":1435,\"num_gc\":6,\"gc_pause_total_ns\":496043,\"gc_wall_seconds\":0.000439065,\"os_memory\":{\"bytes\":{\"AnonHugePages\":18874368,\"Anonymous\":30257152,\"FilePmdMapped\":0,\"KSM\":0,\"LazyFree\":0,\"Locked\":0,\"Private_Clean\":0,\"Private_Dirty\":36687872,\"Private_Hugetlb\":0,\"Pss\":36737024,\"Pss_Anon\":30257152,\"Pss_Dirty\":36687872,\"Pss_File\":6479872,\"Pss_Shmem\":0,\"Referenced\":38354944,\"Rss\":38354944,\"Shared_Clean\":1667072,\"Shared_Dirty\":0,\"Shared_Hugetlb\":0,\"ShmemPmdMapped\":0,\"Swap\":0,\"SwapPss\":0},\"smaps_rollup_raw\":\"00400000-7ffe57e03000 ---p 00000000 00:00 0                              [rollup]\\nRss:               37456 kB\\nPss:               35876 kB\\nPss_Dirty:         35828 kB\\nPss_Anon:          29548 kB\\nPss_File:           6328 kB\\nPss_Shmem:             0 kB\\nShared_Clean:       1628 kB\\nShared_Dirty:          0 kB\\nPrivate_Clean:         0 kB\\nPrivate_Dirty:     35828 kB\\nReferenced:        37456 kB\\nAnonymous:         29548 kB\\nKSM:                   0 kB\\nLazyFree:              0 kB\\nAnonHugePages:     18432 kB\\nShmemPmdMapped:        0 kB\\nFilePmdMapped:         0 kB\\nShared_Hugetlb:        0 kB\\nPrivate_Hugetlb:       0 kB\\nSwap:                  0 kB\\nSwapPss:               0 kB\\nLocked:                0 kB\\n\",\"read_seconds\":0.000299526}},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"measure_seconds\":0.000904945,\"checkpoint_seconds\":5.44e-7,\"snapshot_seconds\":0.000908003}],\"stop_seconds\":0,\"error\":\"scheduler missed declared offered-load ticks\",\"scheduler_timing\":{\"max_tick_lag_seconds\":0.151483396,\"max_measure_seconds\":0.001065038,\"max_checkpoint_seconds\":0.250401562,\"max_snapshot_seconds\":0.251470398,\"missed_at_seconds\":0.251501881,\"expected_slot\":1,\"observed_slot\":2,\"missed_slots\":1}}\n--- PASS: TestCheckpointStallControl (0.26s)\n=== RUN   TestCheckpointStallControl\n    scheduler_control_test.go:50: CHECKPOINT-STALL-CONTROL: {\"schema_version\":0,\"status\":\"failed\",\"transport\":0,\"mode\":0,\"build_info\":\"\",\"go_version\":\"\",\"started_at\":\"\",\"finished_at\":\"\",\"settings\":null,\"host\":null,\"measured_seconds\":0,\"warmup_counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":1},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"idle_baseline\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0,\"heap_sys\":0,\"heap_idle\":0,\"heap_released\":0,\"stack_inuse\":0,\"other_sys\":0,\"total_alloc\":0,\"mallocs\":0,\"frees\":0,\"num_gc\":0,\"gc_pause_total_ns\":0,\"gc_wall_seconds\":0,\"os_memory\":{\"read_seconds\":0}},\"after_stop\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0,\"heap_sys\":0,\"heap_idle\":0,\"heap_released\":0,\"stack_inuse\":0,\"other_sys\":0,\"total_alloc\":0,\"mallocs\":0,\"frees\":0,\"num_gc\":0,\"gc_pause_total_ns\":0,\"gc_wall_seconds\":0,\"os_memory\":{\"read_seconds\":0}},\"points\":[{\"at_seconds\":0.000929542,\"phase\":\"warmup\",\"resources\":{\"cycle\":0,\"goroutines\":5,\"fd\":11,\"heap_alloc\":282120,\"heap_inuse\":901120,\"sys\":9271560,\"rss\":39075840,\"heap_sys\":3604480,\"heap_idle\":2703360,\"heap_released\":1286144,\"stack_inuse\":589824,\"other_sys\":1171432,\"total_alloc\":3181000,\"mallocs\":2956,\"frees\":1800,\"num_gc\":7,\"gc_pause_total_ns\":569109,\"gc_wall_seconds\":0.000472925,\"os_memory\":{\"bytes\":{\"AnonHugePages\":18874368,\"Anonymous\":30916608,\"FilePmdMapped\":0,\"KSM\":0,\"LazyFree\":0,\"Locked\":0,\"Private_Clean\":0,\"Private_Dirty\":37412864,\"Private_Hugetlb\":0,\"Pss\":37462016,\"Pss_Anon\":30916608,\"Pss_Dirty\":37412864,\"Pss_File\":6545408,\"Pss_Shmem\":0,\"Referenced\":39079936,\"Rss\":39079936,\"Shared_Clean\":1667072,\"Shared_Dirty\":0,\"Shared_Hugetlb\":0,\"ShmemPmdMapped\":0,\"Swap\":0,\"SwapPss\":0},\"smaps_rollup_raw\":\"00400000-7ffe57e03000 ---p 00000000 00:00 0                              [rollup]\\nRss:               38164 kB\\nPss:               36584 kB\\nPss_Dirty:         36536 kB\\nPss_Anon:          30192 kB\\nPss_File:           6392 kB\\nPss_Shmem:             0 kB\\nShared_Clean:       1628 kB\\nShared_Dirty:          0 kB\\nPrivate_Clean:         0 kB\\nPrivate_Dirty:     36536 kB\\nReferenced:        38164 kB\\nAnonymous:         30192 kB\\nKSM:                   0 kB\\nLazyFree:              0 kB\\nAnonHugePages:     18432 kB\\nShmemPmdMapped:        0 kB\\nFilePmdMapped:         0 kB\\nShared_Hugetlb:        0 kB\\nPrivate_Hugetlb:       0 kB\\nSwap:                  0 kB\\nSwapPss:               0 kB\\nLocked:                0 kB\\n\",\"read_seconds\":0.000307442}},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"measure_seconds\":0.00091357,\"checkpoint_seconds\":0.250167655,\"snapshot_seconds\":0.251084754},{\"at_seconds\":0.252160871,\"phase\":\"drained\",\"resources\":{\"cycle\":0,\"goroutines\":4,\"fd\":10,\"heap_alloc\":264160,\"heap_inuse\":876544,\"sys\":9279752,\"rss\":38776832,\"heap_sys\":3604480,\"heap_idle\":2727936,\"heap_released\":1613824,\"stack_inuse\":589824,\"other_sys\":1171432,\"total_alloc\":3200208,\"mallocs\":3035,\"frees\":1918,\"num_gc\":8,\"gc_pause_total_ns\":601009,\"gc_wall_seconds\":0.00042811,\"os_memory\":{\"bytes\":{\"AnonHugePages\":18874368,\"Anonymous\":30617600,\"FilePmdMapped\":0,\"KSM\":0,\"LazyFree\":0,\"Locked\":0,\"Private_Clean\":0,\"Private_Dirty\":37113856,\"Private_Hugetlb\":0,\"Pss\":37163008,\"Pss_Anon\":30617600,\"Pss_Dirty\":37113856,\"Pss_File\":6545408,\"Pss_Shmem\":0,\"Referenced\":38780928,\"Rss\":38780928,\"Shared_Clean\":1667072,\"Shared_Dirty\":0,\"Shared_Hugetlb\":0,\"ShmemPmdMapped\":0,\"Swap\":0,\"SwapPss\":0},\"smaps_rollup_raw\":\"00400000-7ffe57e03000 ---p 00000000 00:00 0                              [rollup]\\nRss:               37872 kB\\nPss:               36292 kB\\nPss_Dirty:         36244 kB\\nPss_Anon:          29900 kB\\nPss_File:           6392 kB\\nPss_Shmem:             0 kB\\nShared_Clean:       1628 kB\\nShared_Dirty:          0 kB\\nPrivate_Clean:         0 kB\\nPrivate_Dirty:     36244 kB\\nReferenced:        37872 kB\\nAnonymous:         29900 kB\\nKSM:                   0 kB\\nLazyFree:              0 kB\\nAnonHugePages:     18432 kB\\nShmemPmdMapped:        0 kB\\nFilePmdMapped:         0 kB\\nShared_Hugetlb:        0 kB\\nPrivate_Hugetlb:       0 kB\\nSwap:                  0 kB\\nSwapPss:               0 kB\\nLocked:                0 kB\\n\",\"read_seconds\":0.000307878}},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"measure_seconds\":0.000892747,\"checkpoint_seconds\":7.07e-7,\"snapshot_seconds\":0.000896114}],\"stop_seconds\":0,\"error\":\"scheduler missed declared offered-load ticks\",\"scheduler_timing\":{\"max_tick_lag_seconds\":0.151096689,\"max_measure_seconds\":0.00091357,\"max_checkpoint_seconds\":0.250167655,\"max_snapshot_seconds\":0.251084754,\"missed_at_seconds\":0.251112553,\"expected_slot\":1,\"observed_slot\":2,\"missed_slots\":1}}\n--- PASS: TestCheckpointStallControl (0.26s)\n=== RUN   TestCheckpointStallControl\n    scheduler_control_test.go:50: CHECKPOINT-STALL-CONTROL: {\"schema_version\":0,\"status\":\"failed\",\"transport\":0,\"mode\":0,\"build_info\":\"\",\"go_version\":\"\",\"started_at\":\"\",\"finished_at\":\"\",\"settings\":null,\"host\":null,\"measured_seconds\":0,\"warmup_counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":1},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"idle_baseline\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0,\"heap_sys\":0,\"heap_idle\":0,\"heap_released\":0,\"stack_inuse\":0,\"other_sys\":0,\"total_alloc\":0,\"mallocs\":0,\"frees\":0,\"num_gc\":0,\"gc_pause_total_ns\":0,\"gc_wall_seconds\":0,\"os_memory\":{\"read_seconds\":0}},\"after_stop\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0,\"heap_sys\":0,\"heap_idle\":0,\"heap_released\":0,\"stack_inuse\":0,\"other_sys\":0,\"total_alloc\":0,\"mallocs\":0,\"frees\":0,\"num_gc\":0,\"gc_pause_total_ns\":0,\"gc_wall_seconds\":0,\"os_memory\":{\"read_seconds\":0}},\"points\":[{\"at_seconds\":0.001050473,\"phase\":\"warmup\",\"resources\":{\"cycle\":0,\"goroutines\":5,\"fd\":11,\"heap_alloc\":264840,\"heap_inuse\":958464,\"sys\":9279752,\"rss\":39108608,\"heap_sys\":3604480,\"heap_idle\":2646016,\"heap_released\":1540096,\"stack_inuse\":589824,\"other_sys\":1171432,\"total_alloc\":4122056,\"mallocs\":3436,\"frees\":2290,\"num_gc\":9,\"gc_pause_total_ns\":693237,\"gc_wall_seconds\":0.000579174,\"os_memory\":{\"bytes\":{\"AnonHugePages\":18874368,\"Anonymous\":30953472,\"FilePmdMapped\":0,\"KSM\":0,\"LazyFree\":0,\"Locked\":0,\"Private_Clean\":0,\"Private_Dirty\":37449728,\"Private_Hugetlb\":0,\"Pss\":37498880,\"Pss_Anon\":30953472,\"Pss_Dirty\":37449728,\"Pss_File\":6545408,\"Pss_Shmem\":0,\"Referenced\":39116800,\"Rss\":39116800,\"Shared_Clean\":1667072,\"Shared_Dirty\":0,\"Shared_Hugetlb\":0,\"ShmemPmdMapped\":0,\"Swap\":0,\"SwapPss\":0},\"smaps_rollup_raw\":\"00400000-7ffe57e03000 ---p 00000000 00:00 0                              [rollup]\\nRss:               38200 kB\\nPss:               36620 kB\\nPss_Dirty:         36572 kB\\nPss_Anon:          30228 kB\\nPss_File:           6392 kB\\nPss_Shmem:             0 kB\\nShared_Clean:       1628 kB\\nShared_Dirty:          0 kB\\nPrivate_Clean:         0 kB\\nPrivate_Dirty:     36572 kB\\nReferenced:        38200 kB\\nAnonymous:         30228 kB\\nKSM:                   0 kB\\nLazyFree:              0 kB\\nAnonHugePages:     18432 kB\\nShmemPmdMapped:        0 kB\\nFilePmdMapped:         0 kB\\nShared_Hugetlb:        0 kB\\nPrivate_Hugetlb:       0 kB\\nSwap:                  0 kB\\nSwapPss:               0 kB\\nLocked:                0 kB\\n\",\"read_seconds\":0.000317373}},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"measure_seconds\":0.001029515,\"checkpoint_seconds\":0.250866456,\"snapshot_seconds\":0.25189977},{\"at_seconds\":0.252883055,\"phase\":\"drained\",\"resources\":{\"cycle\":0,\"goroutines\":4,\"fd\":10,\"heap_alloc\":263640,\"heap_inuse\":876544,\"sys\":9279752,\"rss\":39165952,\"heap_sys\":3604480,\"heap_idle\":2727936,\"heap_released\":1515520,\"stack_inuse\":589824,\"other_sys\":1171152,\"total_alloc\":4141480,\"mallocs\":3517,\"frees\":2401,\"num_gc\":10,\"gc_pause_total_ns\":723174,\"gc_wall_seconds\":0.000348523,\"os_memory\":{\"bytes\":{\"AnonHugePages\":18874368,\"Anonymous\":31006720,\"FilePmdMapped\":0,\"KSM\":0,\"LazyFree\":0,\"Locked\":0,\"Private_Clean\":0,\"Private_Dirty\":37502976,\"Private_Hugetlb\":0,\"Pss\":37552128,\"Pss_Anon\":31006720,\"Pss_Dirty\":37502976,\"Pss_File\":6545408,\"Pss_Shmem\":0,\"Referenced\":39170048,\"Rss\":39170048,\"Shared_Clean\":1667072,\"Shared_Dirty\":0,\"Shared_Hugetlb\":0,\"ShmemPmdMapped\":0,\"Swap\":0,\"SwapPss\":0},\"smaps_rollup_raw\":\"00400000-7ffe57e03000 ---p 00000000 00:00 0                              [rollup]\\nRss:               38252 kB\\nPss:               36672 kB\\nPss_Dirty:         36624 kB\\nPss_Anon:          30280 kB\\nPss_File:           6392 kB\\nPss_Shmem:             0 kB\\nShared_Clean:       1628 kB\\nShared_Dirty:          0 kB\\nPrivate_Clean:         0 kB\\nPrivate_Dirty:     36624 kB\\nReferenced:        38252 kB\\nAnonymous:         30280 kB\\nKSM:                   0 kB\\nLazyFree:              0 kB\\nAnonHugePages:     18432 kB\\nShmemPmdMapped:        0 kB\\nFilePmdMapped:         0 kB\\nShared_Hugetlb:        0 kB\\nPrivate_Hugetlb:       0 kB\\nSwap:                  0 kB\\nSwapPss:               0 kB\\nLocked:                0 kB\\n\",\"read_seconds\":0.000305223}},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"measure_seconds\":0.000809887,\"checkpoint_seconds\":5.46e-7,\"snapshot_seconds\":0.000812904}],\"stop_seconds\":0,\"error\":\"scheduler missed declared offered-load ticks\",\"scheduler_timing\":{\"max_tick_lag_seconds\":0.151914349,\"max_measure_seconds\":0.001029515,\"max_checkpoint_seconds\":0.250866456,\"max_snapshot_seconds\":0.25189977,\"missed_at_seconds\":0.251935814,\"expected_slot\":1,\"observed_slot\":2,\"missed_slots\":1}}\n--- PASS: TestCheckpointStallControl (0.26s)\n=== RUN   TestCheckpointStallControl\n    scheduler_control_test.go:50: CHECKPOINT-STALL-CONTROL: {\"schema_version\":0,\"status\":\"failed\",\"transport\":0,\"mode\":0,\"build_info\":\"\",\"go_version\":\"\",\"started_at\":\"\",\"finished_at\":\"\",\"settings\":null,\"host\":null,\"measured_seconds\":0,\"warmup_counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":1},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"idle_baseline\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0,\"heap_sys\":0,\"heap_idle\":0,\"heap_released\":0,\"stack_inuse\":0,\"other_sys\":0,\"total_alloc\":0,\"mallocs\":0,\"frees\":0,\"num_gc\":0,\"gc_pause_total_ns\":0,\"gc_wall_seconds\":0,\"os_memory\":{\"read_seconds\":0}},\"after_stop\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0,\"heap_sys\":0,\"heap_idle\":0,\"heap_released\":0,\"stack_inuse\":0,\"other_sys\":0,\"total_alloc\":0,\"mallocs\":0,\"frees\":0,\"num_gc\":0,\"gc_pause_total_ns\":0,\"gc_wall_seconds\":0,\"os_memory\":{\"read_seconds\":0}},\"points\":[{\"at_seconds\":0.001018427,\"phase\":\"warmup\",\"resources\":{\"cycle\":0,\"goroutines\":5,\"fd\":11,\"heap_alloc\":278472,\"heap_inuse\":909312,\"sys\":9279752,\"rss\":39325696,\"heap_sys\":3604480,\"heap_idle\":2695168,\"heap_released\":1581056,\"stack_inuse\":589824,\"other_sys\":1168832,\"total_alloc\":5071848,\"mallocs\":3919,\"frees\":2774,\"num_gc\":11,\"gc_pause_total_ns\":888620,\"gc_wall_seconds\":0.00057071,\"os_memory\":{\"bytes\":{\"AnonHugePages\":18874368,\"Anonymous\":31166464,\"FilePmdMapped\":0,\"KSM\":0,\"LazyFree\":0,\"Locked\":0,\"Private_Clean\":0,\"Private_Dirty\":37662720,\"Private_Hugetlb\":0,\"Pss\":37711872,\"Pss_Anon\":31166464,\"Pss_Dirty\":37662720,\"Pss_File\":6545408,\"Pss_Shmem\":0,\"Referenced\":39329792,\"Rss\":39329792,\"Shared_Clean\":1667072,\"Shared_Dirty\":0,\"Shared_Hugetlb\":0,\"ShmemPmdMapped\":0,\"Swap\":0,\"SwapPss\":0},\"smaps_rollup_raw\":\"00400000-7ffe57e03000 ---p 00000000 00:00 0                              [rollup]\\nRss:               38408 kB\\nPss:               36828 kB\\nPss_Dirty:         36780 kB\\nPss_Anon:          30436 kB\\nPss_File:           6392 kB\\nPss_Shmem:             0 kB\\nShared_Clean:       1628 kB\\nShared_Dirty:          0 kB\\nPrivate_Clean:         0 kB\\nPrivate_Dirty:     36780 kB\\nReferenced:        38408 kB\\nAnonymous:         30436 kB\\nKSM:                   0 kB\\nLazyFree:              0 kB\\nAnonHugePages:     18432 kB\\nShmemPmdMapped:        0 kB\\nFilePmdMapped:         0 kB\\nShared_Hugetlb:        0 kB\\nPrivate_Hugetlb:       0 kB\\nSwap:                  0 kB\\nSwapPss:               0 kB\\nLocked:                0 kB\\n\",\"read_seconds\":0.000304977}},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"measure_seconds\":0.000996194,\"checkpoint_seconds\":0.250844158,\"snapshot_seconds\":0.251844381},{\"at_seconds\":0.252965916,\"phase\":\"drained\",\"resources\":{\"cycle\":0,\"goroutines\":4,\"fd\":10,\"heap_alloc\":256400,\"heap_inuse\":811008,\"sys\":9279752,\"rss\":39350272,\"heap_sys\":3604480,\"heap_idle\":2793472,\"heap_released\":1581056,\"stack_inuse\":589824,\"other_sys\":1168832,\"total_alloc\":5083344,\"mallocs\":3998,\"frees\":2882,\"num_gc\":12,\"gc_pause_total_ns\":1051045,\"gc_wall_seconds\":0.000492051,\"os_memory\":{\"bytes\":{\"AnonHugePages\":18874368,\"Anonymous\":31191040,\"FilePmdMapped\":0,\"KSM\":0,\"LazyFree\":0,\"Locked\":0,\"Private_Clean\":0,\"Private_Dirty\":37687296,\"Private_Hugetlb\":0,\"Pss\":37736448,\"Pss_Anon\":31191040,\"Pss_Dirty\":37687296,\"Pss_File\":6545408,\"Pss_Shmem\":0,\"Referenced\":39354368,\"Rss\":39354368,\"Shared_Clean\":1667072,\"Shared_Dirty\":0,\"Shared_Hugetlb\":0,\"ShmemPmdMapped\":0,\"Swap\":0,\"SwapPss\":0},\"smaps_rollup_raw\":\"00400000-7ffe57e03000 ---p 00000000 00:00 0                              [rollup]\\nRss:               38432 kB\\nPss:               36852 kB\\nPss_Dirty:         36804 kB\\nPss_Anon:          30460 kB\\nPss_File:           6392 kB\\nPss_Shmem:             0 kB\\nShared_Clean:       1628 kB\\nShared_Dirty:          0 kB\\nPrivate_Clean:         0 kB\\nPrivate_Dirty:     36804 kB\\nReferenced:        38432 kB\\nAnonymous:         30460 kB\\nKSM:                   0 kB\\nLazyFree:              0 kB\\nAnonHugePages:     18432 kB\\nShmemPmdMapped:        0 kB\\nFilePmdMapped:         0 kB\\nShared_Hugetlb:        0 kB\\nPrivate_Hugetlb:       0 kB\\nSwap:                  0 kB\\nSwapPss:               0 kB\\nLocked:                0 kB\\n\",\"read_seconds\":0.000305752}},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"measure_seconds\":0.00094171,\"checkpoint_seconds\":5.45e-7,\"snapshot_seconds\":0.000944822}],\"stop_seconds\":0,\"error\":\"scheduler missed declared offered-load ticks\",\"scheduler_timing\":{\"max_tick_lag_seconds\":0.151860863,\"max_measure_seconds\":0.000996194,\"max_checkpoint_seconds\":0.250844158,\"max_snapshot_seconds\":0.251844381,\"missed_at_seconds\":0.251884067,\"expected_slot\":1,\"observed_slot\":2,\"missed_slots\":1}}\n--- PASS: TestCheckpointStallControl (0.26s)\n=== RUN   TestCheckpointStallControl\n    scheduler_control_test.go:50: CHECKPOINT-STALL-CONTROL: {\"schema_version\":0,\"status\":\"failed\",\"transport\":0,\"mode\":0,\"build_info\":\"\",\"go_version\":\"\",\"started_at\":\"\",\"finished_at\":\"\",\"settings\":null,\"host\":null,\"measured_seconds\":0,\"warmup_counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":1},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"idle_baseline\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0,\"heap_sys\":0,\"heap_idle\":0,\"heap_released\":0,\"stack_inuse\":0,\"other_sys\":0,\"total_alloc\":0,\"mallocs\":0,\"frees\":0,\"num_gc\":0,\"gc_pause_total_ns\":0,\"gc_wall_seconds\":0,\"os_memory\":{\"read_seconds\":0}},\"after_stop\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0,\"heap_sys\":0,\"heap_idle\":0,\"heap_released\":0,\"stack_inuse\":0,\"other_sys\":0,\"total_alloc\":0,\"mallocs\":0,\"frees\":0,\"num_gc\":0,\"gc_pause_total_ns\":0,\"gc_wall_seconds\":0,\"os_memory\":{\"read_seconds\":0}},\"points\":[{\"at_seconds\":0.000990174,\"phase\":\"warmup\",\"resources\":{\"cycle\":0,\"goroutines\":5,\"fd\":11,\"heap_alloc\":283008,\"heap_inuse\":933888,\"sys\":9279752,\"rss\":39710720,\"heap_sys\":3571712,\"heap_idle\":2637824,\"heap_released\":1318912,\"stack_inuse\":622592,\"other_sys\":1168832,\"total_alloc\":6010888,\"mallocs\":4408,\"frees\":3249,\"num_gc\":13,\"gc_pause_total_ns\":1141424,\"gc_wall_seconds\":0.000525194,\"os_memory\":{\"bytes\":{\"AnonHugePages\":18874368,\"Anonymous\":31551488,\"FilePmdMapped\":0,\"KSM\":0,\"LazyFree\":0,\"Locked\":0,\"Private_Clean\":0,\"Private_Dirty\":38047744,\"Private_Hugetlb\":0,\"Pss\":38096896,\"Pss_Anon\":31551488,\"Pss_Dirty\":38047744,\"Pss_File\":6545408,\"Pss_Shmem\":0,\"Referenced\":39714816,\"Rss\":39714816,\"Shared_Clean\":1667072,\"Shared_Dirty\":0,\"Shared_Hugetlb\":0,\"ShmemPmdMapped\":0,\"Swap\":0,\"SwapPss\":0},\"smaps_rollup_raw\":\"00400000-7ffe57e03000 ---p 00000000 00:00 0                              [rollup]\\nRss:               38784 kB\\nPss:               37204 kB\\nPss_Dirty:         37156 kB\\nPss_Anon:          30812 kB\\nPss_File:           6392 kB\\nPss_Shmem:             0 kB\\nShared_Clean:       1628 kB\\nShared_Dirty:          0 kB\\nPrivate_Clean:         0 kB\\nPrivate_Dirty:     37156 kB\\nReferenced:        38784 kB\\nAnonymous:         30812 kB\\nKSM:                   0 kB\\nLazyFree:              0 kB\\nAnonHugePages:     18432 kB\\nShmemPmdMapped:        0 kB\\nFilePmdMapped:         0 kB\\nShared_Hugetlb:        0 kB\\nPrivate_Hugetlb:       0 kB\\nSwap:                  0 kB\\nSwapPss:               0 kB\\nLocked:                0 kB\\n\",\"read_seconds\":0.000307678}},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"measure_seconds\":0.000971244,\"checkpoint_seconds\":0.25013128,\"snapshot_seconds\":0.251105856},{\"at_seconds\":0.252075037,\"phase\":\"drained\",\"resources\":{\"cycle\":0,\"goroutines\":4,\"fd\":10,\"heap_alloc\":265176,\"heap_inuse\":860160,\"sys\":9279752,\"rss\":39555072,\"heap_sys\":3571712,\"heap_idle\":2711552,\"heap_released\":1515520,\"stack_inuse\":622592,\"other_sys\":1168832,\"total_alloc\":6030424,\"mallocs\":4490,\"frees\":3367,\"num_gc\":14,\"gc_pause_total_ns\":1171585,\"gc_wall_seconds\":0.000342112,\"os_memory\":{\"bytes\":{\"AnonHugePages\":18874368,\"Anonymous\":31399936,\"FilePmdMapped\":0,\"KSM\":0,\"LazyFree\":0,\"Locked\":0,\"Private_Clean\":0,\"Private_Dirty\":37896192,\"Private_Hugetlb\":0,\"Pss\":37945344,\"Pss_Anon\":31399936,\"Pss_Dirty\":37896192,\"Pss_File\":6545408,\"Pss_Shmem\":0,\"Referenced\":39563264,\"Rss\":39563264,\"Shared_Clean\":1667072,\"Shared_Dirty\":0,\"Shared_Hugetlb\":0,\"ShmemPmdMapped\":0,\"Swap\":0,\"SwapPss\":0},\"smaps_rollup_raw\":\"00400000-7ffe57e03000 ---p 00000000 00:00 0                              [rollup]\\nRss:               38636 kB\\nPss:               37056 kB\\nPss_Dirty:         37008 kB\\nPss_Anon:          30664 kB\\nPss_File:           6392 kB\\nPss_Shmem:             0 kB\\nShared_Clean:       1628 kB\\nShared_Dirty:          0 kB\\nPrivate_Clean:         0 kB\\nPrivate_Dirty:     37008 kB\\nReferenced:        38636 kB\\nAnonymous:         30664 kB\\nKSM:                   0 kB\\nLazyFree:              0 kB\\nAnonHugePages:     18432 kB\\nShmemPmdMapped:        0 kB\\nFilePmdMapped:         0 kB\\nShared_Hugetlb:        0 kB\\nPrivate_Hugetlb:       0 kB\\nSwap:                  0 kB\\nSwapPss:               0 kB\\nLocked:                0 kB\\n\",\"read_seconds\":0.000310366}},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"measure_seconds\":0.000791702,\"checkpoint_seconds\":5.82e-7,\"snapshot_seconds\":0.00079481}],\"stop_seconds\":0,\"error\":\"scheduler missed declared offered-load ticks\",\"scheduler_timing\":{\"max_tick_lag_seconds\":0.15114302,\"max_measure_seconds\":0.000971244,\"max_checkpoint_seconds\":0.25013128,\"max_snapshot_seconds\":0.251105856,\"missed_at_seconds\":0.251159822,\"expected_slot\":1,\"observed_slot\":2,\"missed_slots\":1}}\n--- PASS: TestCheckpointStallControl (0.26s)\n=== RUN   TestCheckpointStallControl\n    scheduler_control_test.go:50: CHECKPOINT-STALL-CONTROL: {\"schema_version\":0,\"status\":\"failed\",\"transport\":0,\"mode\":0,\"build_info\":\"\",\"go_version\":\"\",\"started_at\":\"\",\"finished_at\":\"\",\"settings\":null,\"host\":null,\"measured_seconds\":0,\"warmup_counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":1},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"idle_baseline\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0,\"heap_sys\":0,\"heap_idle\":0,\"heap_released\":0,\"stack_inuse\":0,\"other_sys\":0,\"total_alloc\":0,\"mallocs\":0,\"frees\":0,\"num_gc\":0,\"gc_pause_total_ns\":0,\"gc_wall_seconds\":0,\"os_memory\":{\"read_seconds\":0}},\"after_stop\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0,\"heap_sys\":0,\"heap_idle\":0,\"heap_released\":0,\"stack_inuse\":0,\"other_sys\":0,\"total_alloc\":0,\"mallocs\":0,\"frees\":0,\"num_gc\":0,\"gc_pause_total_ns\":0,\"gc_wall_seconds\":0,\"os_memory\":{\"read_seconds\":0}},\"points\":[{\"at_seconds\":0.001011773,\"phase\":\"warmup\",\"resources\":{\"cycle\":0,\"goroutines\":5,\"fd\":11,\"heap_alloc\":279992,\"heap_inuse\":925696,\"sys\":9279752,\"rss\":39739392,\"heap_sys\":3571712,\"heap_idle\":2646016,\"heap_released\":1466368,\"stack_inuse\":622592,\"other_sys\":1163968,\"total_alloc\":6949096,\"mallocs\":4891,\"frees\":3732,\"num_gc\":15,\"gc_pause_total_ns\":1341281,\"gc_wall_seconds\":0.000581328,\"os_memory\":{\"bytes\":{\"AnonHugePages\":18874368,\"Anonymous\":31580160,\"FilePmdMapped\":0,\"KSM\":0,\"LazyFree\":0,\"Locked\":0,\"Private_Clean\":0,\"Private_Dirty\":38076416,\"Private_Hugetlb\":0,\"Pss\":38125568,\"Pss_Anon\":31580160,\"Pss_Dirty\":38076416,\"Pss_File\":6545408,\"Pss_Shmem\":0,\"Referenced\":39743488,\"Rss\":39743488,\"Shared_Clean\":1667072,\"Shared_Dirty\":0,\"Shared_Hugetlb\":0,\"ShmemPmdMapped\":0,\"Swap\":0,\"SwapPss\":0},\"smaps_rollup_raw\":\"00400000-7ffe57e03000 ---p 00000000 00:00 0                              [rollup]\\nRss:               38812 kB\\nPss:               37232 kB\\nPss_Dirty:         37184 kB\\nPss_Anon:          30840 kB\\nPss_File:           6392 kB\\nPss_Shmem:             0 kB\\nShared_Clean:       1628 kB\\nShared_Dirty:          0 kB\\nPrivate_Clean:         0 kB\\nPrivate_Dirty:     37184 kB\\nReferenced:        38812 kB\\nAnonymous:         30840 kB\\nKSM:                   0 kB\\nLazyFree:              0 kB\\nAnonHugePages:     18432 kB\\nShmemPmdMapped:        0 kB\\nFilePmdMapped:         0 kB\\nShared_Hugetlb:        0 kB\\nPrivate_Hugetlb:       0 kB\\nSwap:                  0 kB\\nSwapPss:               0 kB\\nLocked:                0 kB\\n\",\"read_seconds\":0.000304106}},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"measure_seconds\":0.000992911,\"checkpoint_seconds\":0.250958986,\"snapshot_seconds\":0.251955539},{\"at_seconds\":0.252946665,\"phase\":\"drained\",\"resources\":{\"cycle\":0,\"goroutines\":4,\"fd\":10,\"heap_alloc\":266104,\"heap_inuse\":851968,\"sys\":9279752,\"rss\":39628800,\"heap_sys\":3571712,\"heap_idle\":2719744,\"heap_released\":1597440,\"stack_inuse\":622592,\"other_sys\":1163968,\"total_alloc\":6960896,\"mallocs\":4972,\"frees\":3844,\"num_gc\":16,\"gc_pause_total_ns\":1418857,\"gc_wall_seconds\":0.000357056,\"os_memory\":{\"bytes\":{\"AnonHugePages\":18874368,\"Anonymous\":31473664,\"FilePmdMapped\":0,\"KSM\":0,\"LazyFree\":0,\"Locked\":0,\"Private_Clean\":0,\"Private_Dirty\":37969920,\"Private_Hugetlb\":0,\"Pss\":38019072,\"Pss_Anon\":31473664,\"Pss_Dirty\":37969920,\"Pss_File\":6545408,\"Pss_Shmem\":0,\"Referenced\":39636992,\"Rss\":39636992,\"Shared_Clean\":1667072,\"Shared_Dirty\":0,\"Shared_Hugetlb\":0,\"ShmemPmdMapped\":0,\"Swap\":0,\"SwapPss\":0},\"smaps_rollup_raw\":\"00400000-7ffe57e03000 ---p 00000000 00:00 0                              [rollup]\\nRss:               38708 kB\\nPss:               37128 kB\\nPss_Dirty:         37080 kB\\nPss_Anon:          30736 kB\\nPss_File:           6392 kB\\nPss_Shmem:             0 kB\\nShared_Clean:       1628 kB\\nShared_Dirty:          0 kB\\nPrivate_Clean:         0 kB\\nPrivate_Dirty:     37080 kB\\nReferenced:        38708 kB\\nAnonymous:         30736 kB\\nKSM:                   0 kB\\nLazyFree:              0 kB\\nAnonHugePages:     18432 kB\\nShmemPmdMapped:        0 kB\\nFilePmdMapped:         0 kB\\nShared_Hugetlb:        0 kB\\nPrivate_Hugetlb:       0 kB\\nSwap:                  0 kB\\nSwapPss:               0 kB\\nLocked:                0 kB\\n\",\"read_seconds\":0.000330226}},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"measure_seconds\":0.000833366,\"checkpoint_seconds\":6.58e-7,\"snapshot_seconds\":0.000836626}],\"stop_seconds\":0,\"error\":\"scheduler missed declared offered-load ticks\",\"scheduler_timing\":{\"max_tick_lag_seconds\":0.151969771,\"max_measure_seconds\":0.000992911,\"max_checkpoint_seconds\":0.250958986,\"max_snapshot_seconds\":0.251955539,\"missed_at_seconds\":0.251985998,\"expected_slot\":1,\"observed_slot\":2,\"missed_slots\":1}}\n--- PASS: TestCheckpointStallControl (0.26s)\n=== RUN   TestCheckpointStallControl\n    scheduler_control_test.go:50: CHECKPOINT-STALL-CONTROL: {\"schema_version\":0,\"status\":\"failed\",\"transport\":0,\"mode\":0,\"build_info\":\"\",\"go_version\":\"\",\"started_at\":\"\",\"finished_at\":\"\",\"settings\":null,\"host\":null,\"measured_seconds\":0,\"warmup_counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":1},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"idle_baseline\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0,\"heap_sys\":0,\"heap_idle\":0,\"heap_released\":0,\"stack_inuse\":0,\"other_sys\":0,\"total_alloc\":0,\"mallocs\":0,\"frees\":0,\"num_gc\":0,\"gc_pause_total_ns\":0,\"gc_wall_seconds\":0,\"os_memory\":{\"read_seconds\":0}},\"after_stop\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0,\"heap_sys\":0,\"heap_idle\":0,\"heap_released\":0,\"stack_inuse\":0,\"other_sys\":0,\"total_alloc\":0,\"mallocs\":0,\"frees\":0,\"num_gc\":0,\"gc_pause_total_ns\":0,\"gc_wall_seconds\":0,\"os_memory\":{\"read_seconds\":0}},\"points\":[{\"at_seconds\":0.000985047,\"phase\":\"warmup\",\"resources\":{\"cycle\":0,\"goroutines\":5,\"fd\":11,\"heap_alloc\":280816,\"heap_inuse\":901120,\"sys\":9287944,\"rss\":39931904,\"heap_sys\":3571712,\"heap_idle\":2670592,\"heap_released\":1531904,\"stack_inuse\":622592,\"other_sys\":1163968,\"total_alloc\":7874656,\"mallocs\":5372,\"frees\":4207,\"num_gc\":17,\"gc_pause_total_ns\":1513771,\"gc_wall_seconds\":0.000526737,\"os_memory\":{\"bytes\":{\"AnonHugePages\":18874368,\"Anonymous\":31768576,\"FilePmdMapped\":0,\"KSM\":0,\"LazyFree\":0,\"Locked\":0,\"Private_Clean\":0,\"Private_Dirty\":38264832,\"Private_Hugetlb\":0,\"Pss\":38313984,\"Pss_Anon\":31768576,\"Pss_Dirty\":38264832,\"Pss_File\":6545408,\"Pss_Shmem\":0,\"Referenced\":39931904,\"Rss\":39931904,\"Shared_Clean\":1667072,\"Shared_Dirty\":0,\"Shared_Hugetlb\":0,\"ShmemPmdMapped\":0,\"Swap\":0,\"SwapPss\":0},\"smaps_rollup_raw\":\"00400000-7ffe57e03000 ---p 00000000 00:00 0                              [rollup]\\nRss:               38996 kB\\nPss:               37416 kB\\nPss_Dirty:         37368 kB\\nPss_Anon:          31024 kB\\nPss_File:           6392 kB\\nPss_Shmem:             0 kB\\nShared_Clean:       1628 kB\\nShared_Dirty:          0 kB\\nPrivate_Clean:         0 kB\\nPrivate_Dirty:     37368 kB\\nReferenced:        38996 kB\\nAnonymous:         31024 kB\\nKSM:                   0 kB\\nLazyFree:              0 kB\\nAnonHugePages:     18432 kB\\nShmemPmdMapped:        0 kB\\nFilePmdMapped:         0 kB\\nShared_Hugetlb:        0 kB\\nPrivate_Hugetlb:       0 kB\\nSwap:                  0 kB\\nSwapPss:               0 kB\\nLocked:                0 kB\\n\",\"read_seconds\":0.000307929}},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"measure_seconds\":0.000966269,\"checkpoint_seconds\":0.250878042,\"snapshot_seconds\":0.251848169},{\"at_seconds\":0.252890818,\"phase\":\"drained\",\"resources\":{\"cycle\":0,\"goroutines\":4,\"fd\":10,\"heap_alloc\":258000,\"heap_inuse\":819200,\"sys\":9287944,\"rss\":39960576,\"heap_sys\":3571712,\"heap_idle\":2752512,\"heap_released\":1523712,\"stack_inuse\":622592,\"other_sys\":1163968,\"total_alloc\":7893856,\"mallocs\":5451,\"frees\":4324,\"num_gc\":18,\"gc_pause_total_ns\":1631182,\"gc_wall_seconds\":0.000470643,\"os_memory\":{\"bytes\":{\"AnonHugePages\":18874368,\"Anonymous\":31805440,\"FilePmdMapped\":0,\"KSM\":0,\"LazyFree\":0,\"Locked\":0,\"Private_Clean\":0,\"Private_Dirty\":38301696,\"Private_Hugetlb\":0,\"Pss\":38350848,\"Pss_Anon\":31805440,\"Pss_Dirty\":38301696,\"Pss_File\":6545408,\"Pss_Shmem\":0,\"Referenced\":39968768,\"Rss\":39968768,\"Shared_Clean\":1667072,\"Shared_Dirty\":0,\"Shared_Hugetlb\":0,\"ShmemPmdMapped\":0,\"Swap\":0,\"SwapPss\":0},\"smaps_rollup_raw\":\"00400000-7ffe57e03000 ---p 00000000 00:00 0                              [rollup]\\nRss:               39032 kB\\nPss:               37452 kB\\nPss_Dirty:         37404 kB\\nPss_Anon:          31060 kB\\nPss_File:           6392 kB\\nPss_Shmem:             0 kB\\nShared_Clean:       1628 kB\\nShared_Dirty:          0 kB\\nPrivate_Clean:         0 kB\\nPrivate_Dirty:     37404 kB\\nReferenced:        39032 kB\\nAnonymous:         31060 kB\\nKSM:                   0 kB\\nLazyFree:              0 kB\\nAnonHugePages:     18432 kB\\nShmemPmdMapped:        0 kB\\nFilePmdMapped:         0 kB\\nShared_Hugetlb:        0 kB\\nPrivate_Hugetlb:       0 kB\\nSwap:                  0 kB\\nSwapPss:               0 kB\\nLocked:                0 kB\\n\",\"read_seconds\":0.000319105}},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"measure_seconds\":0.000936931,\"checkpoint_seconds\":5.15e-7,\"snapshot_seconds\":0.00093993}],\"stop_seconds\":0,\"error\":\"scheduler missed declared offered-load ticks\",\"scheduler_timing\":{\"max_tick_lag_seconds\":0.15186334,\"max_measure_seconds\":0.000966269,\"max_checkpoint_seconds\":0.250878042,\"max_snapshot_seconds\":0.251848169,\"missed_at_seconds\":0.251878854,\"expected_slot\":1,\"observed_slot\":2,\"missed_slots\":1}}\n--- PASS: TestCheckpointStallControl (0.26s)\n=== RUN   TestCheckpointStallControl\n    scheduler_control_test.go:50: CHECKPOINT-STALL-CONTROL: {\"schema_version\":0,\"status\":\"failed\",\"transport\":0,\"mode\":0,\"build_info\":\"\",\"go_version\":\"\",\"started_at\":\"\",\"finished_at\":\"\",\"settings\":null,\"host\":null,\"measured_seconds\":0,\"warmup_counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":1},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"idle_baseline\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0,\"heap_sys\":0,\"heap_idle\":0,\"heap_released\":0,\"stack_inuse\":0,\"other_sys\":0,\"total_alloc\":0,\"mallocs\":0,\"frees\":0,\"num_gc\":0,\"gc_pause_total_ns\":0,\"gc_wall_seconds\":0,\"os_memory\":{\"read_seconds\":0}},\"after_stop\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0,\"heap_sys\":0,\"heap_idle\":0,\"heap_released\":0,\"stack_inuse\":0,\"other_sys\":0,\"total_alloc\":0,\"mallocs\":0,\"frees\":0,\"num_gc\":0,\"gc_pause_total_ns\":0,\"gc_wall_seconds\":0,\"os_memory\":{\"read_seconds\":0}},\"points\":[{\"at_seconds\":0.001056512,\"phase\":\"warmup\",\"resources\":{\"cycle\":0,\"goroutines\":5,\"fd\":11,\"heap_alloc\":273152,\"heap_inuse\":876544,\"sys\":9287944,\"rss\":39788544,\"heap_sys\":3571712,\"heap_idle\":2695168,\"heap_released\":1687552,\"stack_inuse\":622592,\"other_sys\":1163968,\"total_alloc\":8812784,\"mallocs\":5843,\"frees\":4686,\"num_gc\":19,\"gc_pause_total_ns\":1745070,\"gc_wall_seconds\":0.000536317,\"os_memory\":{\"bytes\":{\"AnonHugePages\":18874368,\"Anonymous\":31629312,\"FilePmdMapped\":0,\"KSM\":0,\"LazyFree\":0,\"Locked\":0,\"Private_Clean\":0,\"Private_Dirty\":38125568,\"Private_Hugetlb\":0,\"Pss\":38174720,\"Pss_Anon\":31629312,\"Pss_Dirty\":38125568,\"Pss_File\":6545408,\"Pss_Shmem\":0,\"Referenced\":39792640,\"Rss\":39792640,\"Shared_Clean\":1667072,\"Shared_Dirty\":0,\"Shared_Hugetlb\":0,\"ShmemPmdMapped\":0,\"Swap\":0,\"SwapPss\":0},\"smaps_rollup_raw\":\"00400000-7ffe57e03000 ---p 00000000 00:00 0                              [rollup]\\nRss:               38860 kB\\nPss:               37280 kB\\nPss_Dirty:         37232 kB\\nPss_Anon:          30888 kB\\nPss_File:           6392 kB\\nPss_Shmem:             0 kB\\nShared_Clean:       1628 kB\\nShared_Dirty:          0 kB\\nPrivate_Clean:         0 kB\\nPrivate_Dirty:     37232 kB\\nReferenced:        38860 kB\\nAnonymous:         30888 kB\\nKSM:                   0 kB\\nLazyFree:              0 kB\\nAnonHugePages:     18432 kB\\nShmemPmdMapped:        0 kB\\nFilePmdMapped:         0 kB\\nShared_Hugetlb:        0 kB\\nPrivate_Hugetlb:       0 kB\\nSwap:                  0 kB\\nSwapPss:               0 kB\\nLocked:                0 kB\\n\",\"read_seconds\":0.000301136}},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"measure_seconds\":0.001039592,\"checkpoint_seconds\":0.251024244,\"snapshot_seconds\":0.252067779},{\"at_seconds\":0.253068844,\"phase\":\"drained\",\"resources\":{\"cycle\":0,\"goroutines\":4,\"fd\":10,\"heap_alloc\":267920,\"heap_inuse\":811008,\"sys\":9287944,\"rss\":39800832,\"heap_sys\":3571712,\"heap_idle\":2760704,\"heap_released\":1679360,\"stack_inuse\":622592,\"other_sys\":1163968,\"total_alloc\":8832960,\"mallocs\":5936,\"frees\":4798,\"num_gc\":20,\"gc_pause_total_ns\":1808432,\"gc_wall_seconds\":0.00039687,\"os_memory\":{\"bytes\":{\"AnonHugePages\":18874368,\"Anonymous\":31637504,\"FilePmdMapped\":0,\"KSM\":0,\"LazyFree\":0,\"Locked\":0,\"Private_Clean\":0,\"Private_Dirty\":38133760,\"Private_Hugetlb\":0,\"Pss\":38182912,\"Pss_Anon\":31637504,\"Pss_Dirty\":38133760,\"Pss_File\":6545408,\"Pss_Shmem\":0,\"Referenced\":39800832,\"Rss\":39800832,\"Shared_Clean\":1667072,\"Shared_Dirty\":0,\"Shared_Hugetlb\":0,\"ShmemPmdMapped\":0,\"Swap\":0,\"SwapPss\":0},\"smaps_rollup_raw\":\"00400000-7ffe57e03000 ---p 00000000 00:00 0                              [rollup]\\nRss:               38868 kB\\nPss:               37288 kB\\nPss_Dirty:         37240 kB\\nPss_Anon:          30896 kB\\nPss_File:           6392 kB\\nPss_Shmem:             0 kB\\nShared_Clean:       1628 kB\\nShared_Dirty:          0 kB\\nPrivate_Clean:         0 kB\\nPrivate_Dirty:     37240 kB\\nReferenced:        38868 kB\\nAnonymous:         30896 kB\\nKSM:                   0 kB\\nLazyFree:              0 kB\\nAnonHugePages:     18432 kB\\nShmemPmdMapped:        0 kB\\nFilePmdMapped:         0 kB\\nShared_Hugetlb:        0 kB\\nPrivate_Hugetlb:       0 kB\\nSwap:                  0 kB\\nSwapPss:               0 kB\\nLocked:                0 kB\\n\",\"read_seconds\":0.000314465}},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"measure_seconds\":0.000861763,\"checkpoint_seconds\":5.76e-7,\"snapshot_seconds\":0.000864955}],\"stop_seconds\":0,\"error\":\"scheduler missed declared offered-load ticks\",\"scheduler_timing\":{\"max_tick_lag_seconds\":0.152081385,\"max_measure_seconds\":0.001039592,\"max_checkpoint_seconds\":0.251024244,\"max_snapshot_seconds\":0.252067779,\"missed_at_seconds\":0.252096653,\"expected_slot\":1,\"observed_slot\":2,\"missed_slots\":1}}\n--- PASS: TestCheckpointStallControl (0.26s)\nPASS\nok  \tgithub.com/VortexWang/Tunveo/scripts/soak24h\t3.598s\n",
+      "stderr": "",
+      "scope": "injected250ms checkpoint delay in a real loopback echo fixture; proves possible harness coupling, not historical CI attribution; expected probe failures remain failures"
+    }
+  }
+}

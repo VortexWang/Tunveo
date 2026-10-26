@@ -1,0 +1,53 @@
+go: downloading github.com/coder/websocket v1.8.15
+go: downloading github.com/quic-go/quic-go v0.60.0
+go: downloading golang.org/x/net v0.60.0
+go: downloading golang.org/x/sys v0.48.0
+go: downloading golang.org/x/crypto v0.57.0
+go: downloading golang.org/x/text v0.42.0
+=== RUN   TestDiagnosticCaptureContainsLiveStackAndIsBounded
+--- PASS: TestDiagnosticCaptureContainsLiveStackAndIsBounded (0.03s)
+=== RUN   TestDiagnosticCaptureFailureIsReturned
+--- PASS: TestDiagnosticCaptureFailureIsReturned (0.00s)
+=== RUN   TestFixturePipeFDIsolation
+    fixture_fd_test.go:41: mode=raw
+        === RUN   TestFixturePipeFDChild
+            fixture_fd_test.go:109: RAW-SPLICE-PIPES baseline=2 actual=10
+        --- PASS: TestFixturePipeFDChild (0.00s)
+        PASS
+    fixture_fd_test.go:41: mode=fixture
+        === RUN   TestFixturePipeFDChild
+            fixture_fd_test.go:114: FIXTURE-NO-PIPE-INCREASE baseline=2 actual=2
+        --- PASS: TestFixturePipeFDChild (0.00s)
+        PASS
+--- PASS: TestFixturePipeFDIsolation (0.02s)
+=== RUN   TestFixturePipeFDChild
+    fixture_fd_test.go:50: subprocess-only native fixture
+--- SKIP: TestFixturePipeFDChild (0.00s)
+=== RUN   TestExchangeAuditsActualBytesAndRejectsCorruption
+--- PASS: TestExchangeAuditsActualBytesAndRejectsCorruption (0.00s)
+=== RUN   TestSelfTupleRejectedBeforeApplicationWrite
+--- PASS: TestSelfTupleRejectedBeforeApplicationWrite (0.00s)
+=== RUN   TestRollupObservesTouchedAnonymousMapping
+    proc_memory_linux_test.go:36: OS-MEMORY-CONTROL before=map[AnonHugePages:0 Anonymous:24698880 FilePmdMapped:0 KSM:0 LazyFree:0 Locked:0 Private_Clean:0 Private_Dirty:24829952 Private_Hugetlb:0 Pss:26986496 Pss_Anon:24698880 Pss_Dirty:26915840 Pss_File:2287616 Pss_Shmem:0 Referenced:31707136 Rss:31707136 Shared_Clean:651264 Shared_Dirty:6225920 Shared_Hugetlb:0 ShmemPmdMapped:0 Swap:0 SwapPss:0] after=map[AnonHugePages:0 Anonymous:41521152 FilePmdMapped:0 KSM:0 LazyFree:0 Locked:0 Private_Clean:0 Private_Dirty:41652224 Private_Hugetlb:0 Pss:43808768 Pss_Anon:41521152 Pss_Dirty:43738112 Pss_File:2287616 Pss_Shmem:0 Referenced:48529408 Rss:48529408 Shared_Clean:651264 Shared_Dirty:6225920 Shared_Hugetlb:0 ShmemPmdMapped:0 Swap:0 SwapPss:0]
+--- PASS: TestRollupObservesTouchedAnonymousMapping (0.01s)
+=== RUN   TestRollupRejectsUntrustworthyEvidence
+=== RUN   TestRollupRejectsUntrustworthyEvidence/negative
+=== RUN   TestRollupRejectsUntrustworthyEvidence/missing
+=== RUN   TestRollupRejectsUntrustworthyEvidence/duplicate
+=== RUN   TestRollupRejectsUntrustworthyEvidence/header
+=== RUN   TestRollupRejectsUntrustworthyEvidence/unit
+=== RUN   TestRollupRejectsUntrustworthyEvidence/overflow
+--- PASS: TestRollupRejectsUntrustworthyEvidence (0.00s)
+    --- PASS: TestRollupRejectsUntrustworthyEvidence/negative (0.00s)
+    --- PASS: TestRollupRejectsUntrustworthyEvidence/missing (0.00s)
+    --- PASS: TestRollupRejectsUntrustworthyEvidence/duplicate (0.00s)
+    --- PASS: TestRollupRejectsUntrustworthyEvidence/header (0.00s)
+    --- PASS: TestRollupRejectsUntrustworthyEvidence/unit (0.00s)
+    --- PASS: TestRollupRejectsUntrustworthyEvidence/overflow (0.00s)
+=== RUN   TestCheckpointStallControl
+    scheduler_control_test.go:50: CHECKPOINT-STALL-CONTROL: {"schema_version":0,"status":"failed","transport":0,"mode":0,"build_info":"","go_version":"","started_at":"","finished_at":"","settings":null,"host":null,"measured_seconds":0,"warmup_counts":{"tcp":0,"udp":0,"failed":0,"dropped":1},"counts":{"tcp":0,"udp":0,"failed":0,"dropped":0},"idle_baseline":{"cycle":0,"goroutines":0,"fd":0,"heap_alloc":0,"heap_inuse":0,"sys":0,"rss":0,"heap_sys":0,"heap_idle":0,"heap_released":0,"stack_inuse":0,"other_sys":0,"total_alloc":0,"mallocs":0,"frees":0,"num_gc":0,"gc_pause_total_ns":0,"gc_wall_seconds":0,"os_memory":{"read_seconds":0}},"after_stop":{"cycle":0,"goroutines":0,"fd":0,"heap_alloc":0,"heap_inuse":0,"sys":0,"rss":0,"heap_sys":0,"heap_idle":0,"heap_released":0,"stack_inuse":0,"other_sys":0,"total_alloc":0,"mallocs":0,"frees":0,"num_gc":0,"gc_pause_total_ns":0,"gc_wall_seconds":0,"os_memory":{"read_seconds":0}},"points":[{"at_seconds":0.000912863,"phase":"warmup","resources":{"cycle":0,"goroutines":5,"fd":12,"heap_alloc":314192,"heap_inuse":950272,"sys":14334216,"rss":32239616,"heap_sys":7700480,"heap_idle":6750208,"heap_released":2842624,"stack_inuse":688128,"other_sys":1870816,"total_alloc":21302208,"mallocs":2230,"frees":1463,"num_gc":8,"gc_pause_total_ns":760413,"gc_wall_seconds":0.000564515,"os_memory":{"bytes":{"AnonHugePages":0,"Anonymous":25112576,"FilePmdMapped":0,"KSM":0,"LazyFree":0,"Locked":0,"Private_Clean":0,"Private_Dirty":25243648,"Private_Hugetlb":0,"Pss":27444224,"Pss_Anon":25112576,"Pss_Dirty":27372544,"Pss_File":2331648,"Pss_Shmem":0,"Referenced":32251904,"Rss":32251904,"Shared_Clean":651264,"Shared_Dirty":6356992,"Shared_Hugetlb":0,"ShmemPmdMapped":0,"Swap":0,"SwapPss":0},"smaps_rollup_raw":"00400000-7ffd3fe8a000 ---p 00000000 00:00 0                              [rollup]\nRss:               31496 kB\nPss:               26801 kB\nPss_Dirty:         26731 kB\nPss_Anon:          24524 kB\nPss_File:           2277 kB\nPss_Shmem:             0 kB\nShared_Clean:        636 kB\nShared_Dirty:       6208 kB\nPrivate_Clean:         0 kB\nPrivate_Dirty:     24652 kB\nReferenced:        31496 kB\nAnonymous:         24524 kB\nKSM:                   0 kB\nLazyFree:              0 kB\nAnonHugePages:         0 kB\nShmemPmdMapped:        0 kB\nFilePmdMapped:         0 kB\nShared_Hugetlb:        0 kB\nPrivate_Hugetlb:       0 kB\nSwap:                  0 kB\nSwapPss:               0 kB\nLocked:                0 kB\n","read_seconds":0.000218151}},"counts":{"tcp":0,"udp":0,"failed":0,"dropped":0},"measure_seconds":0.000889106,"checkpoint_seconds":0.25020667,"snapshot_seconds":0.251099131},{"at_seconds":0.252963751,"phase":"drained","resources":{"cycle":0,"goroutines":4,"fd":11,"heap_alloc":305704,"heap_inuse":933888,"sys":14342408,"rss":29761536,"heap_sys":7700480,"heap_idle":6766592,"heap_released":5832704,"stack_inuse":688128,"other_sys":1868768,"total_alloc":21322384,"mallocs":2314,"frees":1567,"num_gc":9,"gc_pause_total_ns":969229,"gc_wall_seconds":0.000886838,"os_memory":{"bytes":{"AnonHugePages":0,"Anonymous":22622208,"FilePmdMapped":0,"KSM":0,"LazyFree":0,"Locked":0,"Private_Clean":16384,"Private_Dirty":29110272,"Private_Hugetlb":0,"Pss":29213696,"Pss_Anon":22622208,"Pss_Dirty":29110272,"Pss_File":6591488,"Pss_Shmem":0,"Referenced":29761536,"Rss":29761536,"Shared_Clean":634880,"Shared_Dirty":0,"Shared_Hugetlb":0,"ShmemPmdMapped":0,"Swap":0,"SwapPss":0},"smaps_rollup_raw":"00400000-7ffd3fe8a000 ---p 00000000 00:00 0                              [rollup]\nRss:               29064 kB\nPss:               28529 kB\nPss_Dirty:         28428 kB\nPss_Anon:          22092 kB\nPss_File:           6437 kB\nPss_Shmem:             0 kB\nShared_Clean:        620 kB\nShared_Dirty:          0 kB\nPrivate_Clean:        16 kB\nPrivate_Dirty:     28428 kB\nReferenced:        29064 kB\nAnonymous:         22092 kB\nKSM:                   0 kB\nLazyFree:              0 kB\nAnonHugePages:         0 kB\nShmemPmdMapped:        0 kB\nFilePmdMapped:         0 kB\nShared_Hugetlb:        0 kB\nPrivate_Hugetlb:       0 kB\nSwap:                  0 kB\nSwapPss:               0 kB\nLocked:                0 kB\n","read_seconds":0.000444333}},"counts":{"tcp":0,"udp":0,"failed":0,"dropped":0},"measure_seconds":0.001662413,"checkpoint_seconds":5.71e-7,"snapshot_seconds":0.001665057}],"stop_seconds":0,"error":"scheduler missed declared offered-load ticks","scheduler_timing":{"max_tick_lag_seconds":0.151110278,"max_measure_seconds":0.001662413,"max_checkpoint_seconds":0.25020667,"max_snapshot_seconds":0.251099131,"missed_at_seconds":0.251157801,"expected_slot":1,"observed_slot":2,"missed_slots":1}}
+--- PASS: TestCheckpointStallControl (0.26s)
+=== RUN   TestRejectedCheckpointStallHasTimingEvidence
+--- PASS: TestRejectedCheckpointStallHasTimingEvidence (0.26s)
+PASS
+ok  	github.com/VortexWang/Tunveo/scripts/soak24h	1.586s
