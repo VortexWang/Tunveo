@@ -112,6 +112,22 @@ def validate_events(path, r):
     return sum(sum(c.values()) for c in totals.values())
 
 
+def validate_engine_logs(native, stderr, pool_max, transport):
+    with gzip.open(native / 'engine.log.gz', 'rt') as stream:
+        verified = 0
+        negotiated = []
+        for line in stream:
+            need(not any(x in line for x in ('DATA RACE', 'panic:', 'fatal error:', 'Client restart', 'Server restart')), 'engine failure/restart')
+            verified += 'RAM cert verified with sha256 fingerprint' in line
+            if 'Sending tunnel config:' in line or 'Loading tunnel config:' in line:
+                match = re.search(r'MAX=(\d+)\|TLS=(\d+)\|TYPE=(\d+)\|', line)
+                need(match is not None, 'missing negotiated configuration')
+                negotiated.append(tuple(int(x) for x in match.groups()))
+    need(verified == 2, 'missing or repeated engine verification')
+    need(negotiated == [(pool_max, 1, transport)] * 2, 'negotiated pool/TLS/transport mismatch')
+    need(not any(x in stderr.read_text() for x in ('DATA RACE', 'panic:', 'fatal error:')), 'runtime failure')
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--binary', type=Path, required=True)
@@ -212,19 +228,7 @@ def main():
         need(all(r['settings'][key] == value for key, value in [('qps', a.qps), ('workers', a.workers), ('pool_min', a.pool_min), ('pool_max', a.pool_max)]), 'requested workload mismatch')
         summary.update(validate_report(r, a.pilot))
         summary['audited_events'] = validate_events(native / 'exchanges.jsonl.gz', r)
-        with gzip.open(native / 'engine.log.gz', 'rt') as stream:
-            verified = 0
-            negotiated = []
-            for line in stream:
-                need(not any(x in line for x in ('DATA RACE', 'panic:', 'fatal error:', 'Client restart', 'Server restart')), 'engine failure/restart')
-                verified += 'RAM cert verified with sha256 fingerprint' in line
-                if 'Sending tunnel config:' in line or 'Loading tunnel config:' in line:
-                    match = re.search(r'MAX=(\d+)\|TLS=(\d+)\|TYPE=(\d+)\|', line)
-                    need(match is not None, 'missing negotiated configuration')
-                    negotiated.append(tuple(int(x) for x in match.groups()))
-        need(verified == 2, 'missing or repeated engine verification')
-        need(negotiated == [(a.pool_max, 1, a.transport)] * 2, 'negotiated pool/TLS/transport mismatch')
-        need(not any(x in (a.artifacts / 'stderr.log').read_text() for x in ('DATA RACE', 'panic:', 'fatal error:')), 'runtime failure')
+        validate_engine_logs(native, a.artifacts / 'stderr.log', a.pool_max, a.transport)
     except (ValueError, KeyError, TypeError, OSError, EOFError, json.JSONDecodeError) as exc:
         summary.update(status='failed', qualifies_24h=False, error=f'{type(exc).__name__}: {exc}')
     summary['elapsed_seconds'] = round(time.monotonic() - start, 3)

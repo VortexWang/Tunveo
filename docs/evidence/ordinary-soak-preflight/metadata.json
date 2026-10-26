@@ -1,0 +1,25 @@
+{
+  "binary": {
+    "build_info": "go\tgo1.26.10\npath\tgithub.com/VortexWang/Tunveo/scripts/soak24h\nmod\tgithub.com/VortexWang/Tunveo\tv0.0.0-20261026110552-2cb2a0e32cdb\t\ndep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\ndep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\ndep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\ndep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\ndep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\ndep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\nbuild\t-buildmode=exe\nbuild\t-compiler=gc\nbuild\t-trimpath=true\nbuild\tCGO_ENABLED=1\nbuild\tGOARCH=amd64\nbuild\tGOOS=linux\nbuild\tGOAMD64=v1\nbuild\tvcs=git\nbuild\tvcs.revision=2cb2a0e32cdb97db8f01f6acda8d88119e5739ce\nbuild\tvcs.time=2026-10-26T11:05:52Z\nbuild\tvcs.modified=false\n",
+    "go_version": "go1.26.10",
+    "goarch": "amd64",
+    "goos": "linux"
+  },
+  "binary_sha256": "c5433755fbbaa6434e2163ab0ffb7d21a6a393a73f8e5cb2bc84da8482e20cde",
+  "runner_source": "2cb2a0e32cdb97db8f01f6acda8d88119e5739ce",
+  "collector_scope": "working-tree Python-only semantic revalidation fix; runtime unchanged",
+  "fixed_files_sha256": {
+    "scripts/verify_soak.py": "efdc7ab8374880c89e3a5fb95099e9e7428176953c925b8253f1c1f12581c13e",
+    "scripts/summarize_soak.py": "4bb962c74359148a0e07f1f5a3cf670ddd26d3c26ec960166bb7ea88becd371b",
+    "scripts/tests/test_summarize_soak.py": "5e07973d3ee8a16122c863234694396417ddcbe5d49d3409ed49b125b75ba54b"
+  },
+  "prior_race_failure": {
+    "run_id": 40311379498,
+    "job_id": 121538477196,
+    "artifact_id": 12646250591,
+    "digest": "sha256:4016f590b290b8909840f5f79cc9b58f55f2f5b9360fe73ddf02c1c98fa66804",
+    "source": "4544c12e3c6eaa47c83a5798111266b4acfefd39",
+    "status": "failed",
+    "reason": "scheduler missed declared offered-load ticks during warmup; dropped1; measured0; root cause unconfirmed"
+  }
+}

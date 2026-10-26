@@ -1,0 +1,71 @@
+{
+  "source": "2cb2a0e32cdb97db8f01f6acda8d88119e5739ce",
+  "binary_sha256": "c5433755fbbaa6434e2163ab0ffb7d21a6a393a73f8e5cb2bc84da8482e20cde",
+  "runner_sha256": "1afe9925b4d6a3915acbd1f8fa565bdf1c97659d8ced7210bc5d223cbb3faa55",
+  "pilot": true,
+  "qualifies_24h": false,
+  "concurrent_profiles": 8,
+  "aggregate_qps": 80,
+  "cgroup_cpu": "800000 100000",
+  "cgroup_memory": "8589934592",
+  "started_at": "2026-10-26T11:11:18.247717+00:00",
+  "results": [
+    {
+      "transport": 0,
+      "mode": 1,
+      "exit_code": 0,
+      "status": "pilot_passed",
+      "error": null
+    },
+    {
+      "transport": 0,
+      "mode": 2,
+      "exit_code": 0,
+      "status": "pilot_passed",
+      "error": null
+    },
+    {
+      "transport": 1,
+      "mode": 1,
+      "exit_code": 0,
+      "status": "pilot_passed",
+      "error": null
+    },
+    {
+      "transport": 1,
+      "mode": 2,
+      "exit_code": 0,
+      "status": "pilot_passed",
+      "error": null
+    },
+    {
+      "transport": 2,
+      "mode": 1,
+      "exit_code": 0,
+      "status": "pilot_passed",
+      "error": null
+    },
+    {
+      "transport": 2,
+      "mode": 2,
+      "exit_code": 0,
+      "status": "pilot_passed",
+      "error": null
+    },
+    {
+      "transport": 3,
+      "mode": 1,
+      "exit_code": 0,
+      "status": "pilot_passed",
+      "error": null
+    },
+    {
+      "transport": 3,
+      "mode": 2,
+      "exit_code": 0,
+      "status": "pilot_passed",
+      "error": null
+    }
+  ],
+  "finished_at": "2026-10-26T11:12:35.567186+00:00"
+}

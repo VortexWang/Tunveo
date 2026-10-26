@@ -1,0 +1,6 @@
+{
+  "baseline": "2cb2a0e32cdb97db8f01f6acda8d88119e5739ce",
+  "template_sha256": "5e07973d3ee8a16122c863234694396417ddcbe5d49d3409ed49b125b75ba54b",
+  "before_exit_code": 1,
+  "before_failure_subcases": 11
+}
