@@ -1,0 +1,14 @@
+{
+  "baseline": "ee3b813d83564629e3a4b3ccc0eba21eee6d16f4",
+  "diagnostic_binary_sha256": "60ef96af0f1b95987f0fa264a724d65d3eafe67aaea790c19f8b873c0b7655b9",
+  "fixed_binary_sha256": "dcb31e9cba3beb125f60355426d9777ac343f07cfc349f117a5dd04d5a3b0fef",
+  "fixed_source_sha256": {
+    "internal/tunnelpool/websocket/npws.go": "a75b54ef6708d9fe0a66722c80009565d2d6c4e44632d04eff911127f088d871",
+    "internal/tunnelpool/websocket/dial_limit_test.go": "2bff36766542a3a5e146146954a5783fcf2104a0eddda6ee1a8df57ba2081e90",
+    "scripts/soak24h/main.go": "79cd47d30f105c6b39b403f54cb5690f11b185ef7eae27f664fb3c544f6f516c",
+    "scripts/soak24h/diagnostics.go": "b9b25a73dbb27b5e2ef6981d18b90374f8639227d8fc6dfa8da6b73975a110d4",
+    "scripts/verify_soak.py": "1afe9925b4d6a3915acbd1f8fa565bdf1c97659d8ced7210bc5d223cbb3faa55"
+  },
+  "scope": "local dirty developer builds; source snapshots preserved in git, not canonical acceptance",
+  "change": "per-Pool4 in-flight WSS dials; budgets unchanged"
+}

@@ -1,0 +1,15 @@
+ok  	github.com/VortexWang/Tunveo/cmd/tunveo	1.046s
+ok  	github.com/VortexWang/Tunveo/internal/client	1.110s
+ok  	github.com/VortexWang/Tunveo/internal/common	1.246s
+ok  	github.com/VortexWang/Tunveo/internal/master	1.363s
+ok  	github.com/VortexWang/Tunveo/internal/server	1.302s
+?   	github.com/VortexWang/Tunveo/internal/transport	[no test files]
+ok  	github.com/VortexWang/Tunveo/internal/tunnelpool/http2	1.569s
+ok  	github.com/VortexWang/Tunveo/internal/tunnelpool/idle	1.035s
+ok  	github.com/VortexWang/Tunveo/internal/tunnelpool/lifetime	1.012s
+ok  	github.com/VortexWang/Tunveo/internal/tunnelpool/quic	1.019s
+ok  	github.com/VortexWang/Tunveo/internal/tunnelpool/tcp	1.012s
+?   	github.com/VortexWang/Tunveo/internal/tunnelpool/websocket	[no test files]
+ok  	github.com/VortexWang/Tunveo/scripts/lifecycle100	1.027s
+?   	github.com/VortexWang/Tunveo/scripts/repro_tls_verify	[no test files]
+ok  	github.com/VortexWang/Tunveo/scripts/soak24h	(cached)

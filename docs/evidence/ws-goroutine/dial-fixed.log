@@ -1,0 +1,22 @@
+=== RUN   TestClientManagerBoundsConcurrentDials
+--- PASS: TestClientManagerBoundsConcurrentDials (0.54s)
+=== RUN   TestClientManagerBoundsConcurrentDials
+--- PASS: TestClientManagerBoundsConcurrentDials (0.54s)
+=== RUN   TestClientManagerBoundsConcurrentDials
+--- PASS: TestClientManagerBoundsConcurrentDials (0.56s)
+=== RUN   TestClientManagerBoundsConcurrentDials
+--- PASS: TestClientManagerBoundsConcurrentDials (0.54s)
+=== RUN   TestClientManagerBoundsConcurrentDials
+--- PASS: TestClientManagerBoundsConcurrentDials (0.53s)
+=== RUN   TestClientManagerBoundsConcurrentDials
+--- PASS: TestClientManagerBoundsConcurrentDials (0.53s)
+=== RUN   TestClientManagerBoundsConcurrentDials
+--- PASS: TestClientManagerBoundsConcurrentDials (0.53s)
+=== RUN   TestClientManagerBoundsConcurrentDials
+--- PASS: TestClientManagerBoundsConcurrentDials (0.53s)
+=== RUN   TestClientManagerBoundsConcurrentDials
+--- PASS: TestClientManagerBoundsConcurrentDials (0.53s)
+=== RUN   TestClientManagerBoundsConcurrentDials
+--- PASS: TestClientManagerBoundsConcurrentDials (0.53s)
+PASS
+ok  	github.com/VortexWang/Tunveo/internal/tunnelpool/websocket	6.392s

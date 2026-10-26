@@ -1,0 +1,74 @@
+{
+  "fixed-python.log": {
+    "sha256": "daf39f0cf0e37c92eb48a3e68260e0d93a954ed09ade3ee5e684fbd32fdd2d06",
+    "bytes": 4198
+  },
+  "local-raw.zip": {
+    "sha256": "988d6ff7a35befc0456346a23a7269d3ae38a9723684f814a01a06a3e8ea5c92",
+    "bytes": 116555
+  },
+  "ci-baseline.zip": {
+    "sha256": "1558cf95dcb7678c5052e68d086e581c7380694554df08d7967a1e095413ba5a",
+    "bytes": 187137
+  },
+  "ci-audit.json": {
+    "sha256": "cc24fb52ab3fa9701270a2e2da96103cbb226de40ad1fd7f5cdcfb6a3208e418",
+    "bytes": 6955
+  },
+  "clean-uninstrumented.zip": {
+    "sha256": "882bca28d9812f4dd3f59c5e56a2dce47c230584ecb0ee296e9a153ec3094c55",
+    "bytes": 64545
+  },
+  "fixed-go-race.log": {
+    "sha256": "784c02d02589683bb28ce26d12fe8a2bce8143086082f4d679dedd863475e822",
+    "bytes": 966
+  },
+  "dial-fixed-native.json": {
+    "sha256": "1504ab1b0481338bfe0068731798b97c474a98f9282676179c14dd1c6caf9475",
+    "bytes": 1690
+  },
+  "spike-and-fixed.zip": {
+    "sha256": "b966e2d343c2cec352fec56c6d792de1d783bb75a825f0640ff18d9dbd966e2e",
+    "bytes": 172691
+  },
+  "python-tests.log": {
+    "sha256": "eba5ac277322e4e1ebb1691ed2b27c979375ae12069b00e4803f10a70c3273a2",
+    "bytes": 4198
+  },
+  "spike-and-fixed-metadata.json": {
+    "sha256": "79671735a82640d1e22b559e764fffbd8b317cbcc8cb2fb1585d6d54e9994b48",
+    "bytes": 991
+  },
+  "metadata.json": {
+    "sha256": "e37f284ad231a839ff965fe33f3304c02a09ad002c568525251ebce4ad9b9a5f",
+    "bytes": 591
+  },
+  "ci-fixed.zip": {
+    "sha256": "8abf0d77cb3b41d7ea1848e9737d65f5aef9136ec957cae506b9103716cc74ca",
+    "bytes": 249689
+  },
+  "dial-fixed.log": {
+    "sha256": "722dc9168532c707036c57ace8db2b520442d6628209ded14fb5050bf72dd868",
+    "bytes": 1136
+  },
+  "dial-before.log": {
+    "sha256": "93fb5ddd414eac95358d11d4f1109e47dbdbec3b9ea2e45e64930541fd926742",
+    "bytes": 8136
+  },
+  "go-race.log": {
+    "sha256": "900d7fde177388d5303e7b748e6ca02e7011440901f59230ed19dfd245e51ebd",
+    "bytes": 959
+  },
+  "fixed-go-vet.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "go-vet.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "dial-before-native.json": {
+    "sha256": "0ce7fd6c48a0a4fa62913302cfd8a145a3987a197b7a9c719947345930b17e9c",
+    "bytes": 12967
+  }
+}
