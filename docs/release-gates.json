@@ -45,9 +45,10 @@
       "id": "soak_24h",
       "status": "pending",
       "evidence": [
-        "docs/soak-24h.md"
+        "docs/soak-24h.md",
+        "docs/ordinary-soak-preflight.md"
       ],
-      "reason": "Continuous native load, strict pilot/full separation, source preflight and bounded interruption tooling prepared; short pilot evidence is ineligible. Eight actual24h profiles and long-run resource review not completed."
+      "reason": "Ordinary clean2cb2a0e eight-profile60s pilot passed (4800 exchanges/5752 events), no24h qualification. TNV020 raw-log suite fix verified locally. PR18 race pilots6/8: TCP mode2 warmup missed one offered-load tick, H2 mode1 RSS rose64.90234375MiB over its64MiB budget; root causes unconfirmed, original failures retained. Eight actual24h profiles and long-run review remain incomplete."
     },
     {
       "id": "native_platforms",

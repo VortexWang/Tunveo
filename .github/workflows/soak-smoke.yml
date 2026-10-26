@@ -4,6 +4,8 @@ on:
     paths:
       - 'scripts/soak24h/**'
       - 'scripts/verify_soak.py'
+      - 'scripts/summarize_soak.py'
+      - 'scripts/tests/test_summarize_soak.py'
       - 'scripts/tests/test_verify_soak.py'
       - '.github/workflows/soak-smoke.yml'
       - 'cmd/**'
@@ -24,7 +26,7 @@ jobs:
       - uses: actions/setup-go@v6.1.0
         with:
           go-version-file: go.mod
-      - run: python3 -m unittest discover -s scripts/tests -p test_verify_soak.py -v
+      - run: python3 -m unittest discover -s scripts/tests -p '*soak.py' -v
       - run: go test -race ./scripts/soak24h
       - run: python3 scripts/repro_soak_fixture_fds.py --ref be1be779c87c84ddae7a4aba0d9173fa1b0d5d33 --mode original --go go --repeat 10 --output artifacts/soak-fixture-before.json
       - run: python3 scripts/repro_soak_fixture_fds.py --ref HEAD --mode fixed --go go --repeat 10 --output artifacts/soak-fixture-fixed.json

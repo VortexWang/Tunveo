@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 import re
 
-from verify_soak import need, validate_report, validate_events
+from verify_soak import need, validate_report, validate_events, validate_engine_logs
 
 
 def collect(root, pilot):
@@ -21,6 +21,8 @@ def collect(root, pilot):
             continue
         need(summary['pilot'] == pilot, 'mixed pilot and formal evidence')
         need(summary['status'] == ('pilot_passed' if pilot else 'candidate_passed'), 'failed profile summary')
+        need(summary.get('exit_code') == 0 and not summary.get('error'), 'nonzero or errored profile summary')
+        need(not summary['cleanup'].get('interrupted_or_timeout', False), 'interrupted profile summary')
         need(summary['cleanup']['reaped'] and not summary['cleanup']['forced_kill'], 'process cleanup not complete')
         need(set(summary['files']) >= {'native/report.json', 'native/exchanges.jsonl.gz', 'native/engine.log.gz', 'stderr.log', 'stdout.log'}, 'missing evidence inventory')
         runners.add(summary['runner_sha256'])
@@ -32,6 +34,7 @@ def collect(root, pilot):
         r = json.loads((native / 'report.json').read_text())
         measured = validate_report(r, pilot)
         events = validate_events(native / 'exchanges.jsonl.gz', r)
+        validate_engine_logs(native, path.parent / 'stderr.log', r['settings']['pool_max'], r['transport'])
         key = (r['transport'], r['mode'])
         need(key not in seen, 'duplicate profile')
         seen.add(key)

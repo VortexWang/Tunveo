@@ -1,0 +1,38 @@
+test_complete (test_lifecycle100.LifecycleEvidenceTests.test_complete) ... ok
+test_failed_and_partial_runs_rejected (test_lifecycle100.LifecycleEvidenceTests.test_failed_and_partial_runs_rejected) ... ok
+test_resource_leaks_and_missing_metrics_rejected (test_lifecycle100.LifecycleEvidenceTests.test_resource_leaks_and_missing_metrics_rejected) ... ok
+test_self_echo_and_application_retry_rejected (test_lifecycle100.LifecycleEvidenceTests.test_self_echo_and_application_retry_rejected) ... ok
+test_cannot_remove_gate (test_release_readiness.ReleaseReadinessTests.test_cannot_remove_gate) ... ok
+test_complete_matching_policy_passes (test_release_readiness.ReleaseReadinessTests.test_complete_matching_policy_passes) ... ok
+test_pass_without_evidence_rejected (test_release_readiness.ReleaseReadinessTests.test_pass_without_evidence_rejected) ... ok
+test_pending_gate_blocks (test_release_readiness.ReleaseReadinessTests.test_pending_gate_blocks) ... ok
+test_stale_fingerprint_blocks (test_release_readiness.ReleaseReadinessTests.test_stale_fingerprint_blocks) ... ok
+test_complete_short_suite_revalidated_without_24h_promotion (test_summarize_soak.SuiteRawLogTests.test_complete_short_suite_revalidated_without_24h_promotion) ... ok
+test_nonzero_and_interrupted_summaries_cannot_claim_success (test_summarize_soak.SuiteRawLogTests.test_nonzero_and_interrupted_summaries_cannot_claim_success) ... ok
+test_semantically_invalid_logs_rejected_even_with_matching_hashes (test_summarize_soak.SuiteRawLogTests.test_semantically_invalid_logs_rejected_even_with_matching_hashes) ... ok
+test_short_udp_datagram_is_rejected (test_verify_forwarding.ExchangeTests.test_short_udp_datagram_is_rejected) ... ok
+test_socket_allocation_failure_is_not_tls_rejection (test_verify_forwarding.ExchangeTests.test_socket_allocation_failure_is_not_tls_rejection) ... ok
+test_tcp_dribble_cannot_reset_total_deadline (test_verify_forwarding.ExchangeTests.test_tcp_dribble_cannot_reset_total_deadline) ... ok
+test_tcp_source_cannot_be_the_destination (test_verify_forwarding.ExchangeTests.test_tcp_source_cannot_be_the_destination) ... ok
+test_udp_source_cannot_be_the_destination (test_verify_forwarding.ExchangeTests.test_udp_source_cannot_be_the_destination) ... ok
+test_interrupt_persists_partial_report_and_reaps_children (test_verify_forwarding.RunnerTests.test_interrupt_persists_partial_report_and_reaps_children) ... ok
+test_negative_control_rejects_a_ready_untrusted_pool (test_verify_forwarding.RunnerTests.test_negative_control_rejects_a_ready_untrusted_pool) ... ok
+test_negative_control_rejects_echo_even_without_ready_log (test_verify_forwarding.RunnerTests.test_negative_control_rejects_echo_even_without_ready_log) ... ok
+test_negotiated_mode_mismatch_is_a_failure (test_verify_forwarding.RunnerTests.test_negotiated_mode_mismatch_is_a_failure) ... ok
+test_plain_mode_does_not_require_ram_fingerprint (test_verify_forwarding.RunnerTests.test_plain_mode_does_not_require_ram_fingerprint) ... ok
+test_selected_cases_and_payloads (test_verify_forwarding.RunnerTests.test_selected_cases_and_payloads) ... ok
+test_tcp_success_is_preserved_on_udp_timeout_and_logs_are_redacted (test_verify_forwarding.RunnerTests.test_tcp_success_is_preserved_on_udp_timeout_and_logs_are_redacted) ... ok
+test_terminate_persists_partial_report_and_reaps_children (test_verify_forwarding.RunnerTests.test_terminate_persists_partial_report_and_reaps_children) ... ok
+test_formal_diagnostic_run_rejected_before_output_or_process (test_verify_soak.DiagnosticAdmissionTests.test_formal_diagnostic_run_rejected_before_output_or_process) ... ok
+test_collector_refuses_empty_or_partial_suite (test_verify_soak.SoakEvidenceTests.test_collector_refuses_empty_or_partial_suite) ... ok
+test_event_missing_duplicate_self_echo_and_digests_rejected (test_verify_soak.SoakEvidenceTests.test_event_missing_duplicate_self_echo_and_digests_rejected) ... ok
+test_formal_build_preflight_rejects_race_or_unknown_source (test_verify_soak.SoakEvidenceTests.test_formal_build_preflight_rejects_race_or_unknown_source) ... ok
+test_full_and_pilot_admission_are_distinct (test_verify_soak.SoakEvidenceTests.test_full_and_pilot_admission_are_distinct) ... ok
+test_interrupt_reaps_native_process (test_verify_soak.SoakEvidenceTests.test_interrupt_reaps_native_process) ... ok
+test_live_trend_and_return_leaks_rejected (test_verify_soak.SoakEvidenceTests.test_live_trend_and_return_leaks_rejected) ... ok
+test_partial_gaps_restarts_drops_and_source_mutation_rejected (test_verify_soak.SoakEvidenceTests.test_partial_gaps_restarts_drops_and_source_mutation_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 33 tests in 4.869s
+
+OK

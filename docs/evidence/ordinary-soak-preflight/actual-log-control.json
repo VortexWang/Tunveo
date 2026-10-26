@@ -1,0 +1,21 @@
+{
+  "scope": "copied actual eight-profile ordinary evidence; one controlled injected panic plus refreshed matching file hash; original raw files unchanged",
+  "results": [
+    {
+      "version": "before",
+      "exit_code": 0,
+      "result": {
+        "status": "pilot_passed",
+        "qualifies_24h": false
+      }
+    },
+    {
+      "version": "fixed",
+      "exit_code": 2,
+      "result": {
+        "status": "rejected",
+        "error": "engine failure/restart"
+      }
+    }
+  ]
+}
