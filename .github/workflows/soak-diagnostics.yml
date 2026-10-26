@@ -1,0 +1,67 @@
+name: Soak timing and RSS diagnosis
+on:
+  pull_request:
+    paths:
+      - 'scripts/soak24h/**'
+      - 'scripts/repro_soak_checkpoint.py'
+      - '.github/workflows/soak-diagnostics.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  timing:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6.0.2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-go@v6.1.0
+        with:
+          go-version-file: go.mod
+      - run: python3 scripts/repro_soak_checkpoint.py --ref 8c45fe55738a302d0b6e3274ee7ef8ed9e0c3221 --go go --repeat 10 --output artifacts/checkpoint-parent.json
+      - run: python3 scripts/repro_soak_checkpoint.py --ref HEAD --go go --repeat 10 --require-timing --output artifacts/checkpoint-current.json
+      - run: go test -race ./scripts/soak24h
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: soak-timing-control
+          path: artifacts
+          retention-days: 30
+  h2:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        build: [ordinary, race]
+    steps:
+      - uses: actions/checkout@v6.0.2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-go@v6.1.0
+        with:
+          go-version-file: go.mod
+      - name: Build identical source with declared instrumentation
+        env:
+          BUILD: ${{ matrix.build }}
+        run: |
+          extra=()
+          if [ "$BUILD" = race ]; then extra+=(-race); fi
+          go build "${extra[@]}" -trimpath -o bin/probe ./scripts/soak24h
+          mkdir -p artifacts
+          ./bin/probe --describe > artifacts/build.json
+          sha256sum bin/probe > artifacts/binary.sha256
+      - name: Three separate H2 mode1 windows, unchanged acceptance budgets
+        run: |
+          status=0
+          for trial in 1 2 3; do
+            python3 scripts/verify_soak.py --binary bin/probe --transport 3 --mode 1 --pilot --duration-seconds 60 --warmup-seconds 12 --sample-seconds 5 --pool-min 16 --pool-max 64 --workers 2 --qps 10 --artifacts "artifacts/trial-$trial" || status=1
+          done
+          exit "$status"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: h2-rss-${{ matrix.build }}
+          path: artifacts
+          retention-days: 30

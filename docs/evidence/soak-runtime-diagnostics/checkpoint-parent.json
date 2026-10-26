@@ -1,0 +1,864 @@
+{
+  "status": "passed",
+  "source_commit": "8c45fe55738a302d0b6e3274ee7ef8ed9e0c3221",
+  "repeat": 10,
+  "template_sha256": "9df33d008abdbbb7a81285699d8f45adecb7486fbd6881bcc0c777833791273e",
+  "archive_sha256": "85e687f9885d029a9c0251db37909941d2ea9d6693f8e78d45b19ca72220dfeb",
+  "require_timing": false,
+  "exit_code": 0,
+  "observations": [
+    {
+      "schema_version": 0,
+      "status": "failed",
+      "transport": 0,
+      "mode": 0,
+      "build_info": "",
+      "go_version": "",
+      "started_at": "",
+      "finished_at": "",
+      "settings": null,
+      "host": null,
+      "measured_seconds": 0,
+      "warmup_counts": {
+        "tcp": 0,
+        "udp": 0,
+        "failed": 0,
+        "dropped": 1
+      },
+      "counts": {
+        "tcp": 0,
+        "udp": 0,
+        "failed": 0,
+        "dropped": 0
+      },
+      "idle_baseline": {
+        "cycle": 0,
+        "goroutines": 0,
+        "fd": 0,
+        "heap_alloc": 0,
+        "heap_inuse": 0,
+        "sys": 0,
+        "rss": 0
+      },
+      "after_stop": {
+        "cycle": 0,
+        "goroutines": 0,
+        "fd": 0,
+        "heap_alloc": 0,
+        "heap_inuse": 0,
+        "sys": 0,
+        "rss": 0
+      },
+      "points": [
+        {
+          "at_seconds": 0.002215699,
+          "phase": "warmup",
+          "resources": {
+            "cycle": 0,
+            "goroutines": 5,
+            "fd": 11,
+            "heap_alloc": 279840,
+            "heap_inuse": 786432,
+            "sys": 8935688,
+            "rss": 23511040
+          },
+          "counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 0
+          }
+        },
+        {
+          "at_seconds": 0.25440146,
+          "phase": "drained",
+          "resources": {
+            "cycle": 0,
+            "goroutines": 4,
+            "fd": 10,
+            "heap_alloc": 292560,
+            "heap_inuse": 802816,
+            "sys": 9525512,
+            "rss": 24125440
+          },
+          "counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 0
+          }
+        }
+      ],
+      "stop_seconds": 0,
+      "error": "scheduler missed declared offered-load ticks"
+    },
+    {
+      "schema_version": 0,
+      "status": "failed",
+      "transport": 0,
+      "mode": 0,
+      "build_info": "",
+      "go_version": "",
+      "started_at": "",
+      "finished_at": "",
+      "settings": null,
+      "host": null,
+      "measured_seconds": 0,
+      "warmup_counts": {
+        "tcp": 0,
+        "udp": 0,
+        "failed": 0,
+        "dropped": 1
+      },
+      "counts": {
+        "tcp": 0,
+        "udp": 0,
+        "failed": 0,
+        "dropped": 0
+      },
+      "idle_baseline": {
+        "cycle": 0,
+        "goroutines": 0,
+        "fd": 0,
+        "heap_alloc": 0,
+        "heap_inuse": 0,
+        "sys": 0,
+        "rss": 0
+      },
+      "after_stop": {
+        "cycle": 0,
+        "goroutines": 0,
+        "fd": 0,
+        "heap_alloc": 0,
+        "heap_inuse": 0,
+        "sys": 0,
+        "rss": 0
+      },
+      "points": [
+        {
+          "at_seconds": 0.001732397,
+          "phase": "warmup",
+          "resources": {
+            "cycle": 0,
+            "goroutines": 5,
+            "fd": 11,
+            "heap_alloc": 338000,
+            "heap_inuse": 991232,
+            "sys": 9533704,
+            "rss": 27222016
+          },
+          "counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 0
+          }
+        },
+        {
+          "at_seconds": 0.253072973,
+          "phase": "drained",
+          "resources": {
+            "cycle": 0,
+            "goroutines": 4,
+            "fd": 10,
+            "heap_alloc": 324992,
+            "heap_inuse": 942080,
+            "sys": 9533704,
+            "rss": 26853376
+          },
+          "counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 0
+          }
+        }
+      ],
+      "stop_seconds": 0,
+      "error": "scheduler missed declared offered-load ticks"
+    },
+    {
+      "schema_version": 0,
+      "status": "failed",
+      "transport": 0,
+      "mode": 0,
+      "build_info": "",
+      "go_version": "",
+      "started_at": "",
+      "finished_at": "",
+      "settings": null,
+      "host": null,
+      "measured_seconds": 0,
+      "warmup_counts": {
+        "tcp": 0,
+        "udp": 0,
+        "failed": 0,
+        "dropped": 1
+      },
+      "counts": {
+        "tcp": 0,
+        "udp": 0,
+        "failed": 0,
+        "dropped": 0
+      },
+      "idle_baseline": {
+        "cycle": 0,
+        "goroutines": 0,
+        "fd": 0,
+        "heap_alloc": 0,
+        "heap_inuse": 0,
+        "sys": 0,
+        "rss": 0
+      },
+      "after_stop": {
+        "cycle": 0,
+        "goroutines": 0,
+        "fd": 0,
+        "heap_alloc": 0,
+        "heap_inuse": 0,
+        "sys": 0,
+        "rss": 0
+      },
+      "points": [
+        {
+          "at_seconds": 0.000797636,
+          "phase": "warmup",
+          "resources": {
+            "cycle": 0,
+            "goroutines": 5,
+            "fd": 11,
+            "heap_alloc": 332984,
+            "heap_inuse": 974848,
+            "sys": 9541896,
+            "rss": 27717632
+          },
+          "counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 0
+          }
+        },
+        {
+          "at_seconds": 0.251522305,
+          "phase": "drained",
+          "resources": {
+            "cycle": 0,
+            "goroutines": 4,
+            "fd": 10,
+            "heap_alloc": 325488,
+            "heap_inuse": 933888,
+            "sys": 9541896,
+            "rss": 27799552
+          },
+          "counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 0
+          }
+        }
+      ],
+      "stop_seconds": 0,
+      "error": "scheduler missed declared offered-load ticks"
+    },
+    {
+      "schema_version": 0,
+      "status": "failed",
+      "transport": 0,
+      "mode": 0,
+      "build_info": "",
+      "go_version": "",
+      "started_at": "",
+      "finished_at": "",
+      "settings": null,
+      "host": null,
+      "measured_seconds": 0,
+      "warmup_counts": {
+        "tcp": 0,
+        "udp": 0,
+        "failed": 0,
+        "dropped": 1
+      },
+      "counts": {
+        "tcp": 0,
+        "udp": 0,
+        "failed": 0,
+        "dropped": 0
+      },
+      "idle_baseline": {
+        "cycle": 0,
+        "goroutines": 0,
+        "fd": 0,
+        "heap_alloc": 0,
+        "heap_inuse": 0,
+        "sys": 0,
+        "rss": 0
+      },
+      "after_stop": {
+        "cycle": 0,
+        "goroutines": 0,
+        "fd": 0,
+        "heap_alloc": 0,
+        "heap_inuse": 0,
+        "sys": 0,
+        "rss": 0
+      },
+      "points": [
+        {
+          "at_seconds": 0.001176677,
+          "phase": "warmup",
+          "resources": {
+            "cycle": 0,
+            "goroutines": 5,
+            "fd": 11,
+            "heap_alloc": 325104,
+            "heap_inuse": 942080,
+            "sys": 9541896,
+            "rss": 28229632
+          },
+          "counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 0
+          }
+        },
+        {
+          "at_seconds": 0.2524367,
+          "phase": "drained",
+          "resources": {
+            "cycle": 0,
+            "goroutines": 4,
+            "fd": 10,
+            "heap_alloc": 319968,
+            "heap_inuse": 917504,
+            "sys": 9541896,
+            "rss": 27881472
+          },
+          "counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 0
+          }
+        }
+      ],
+      "stop_seconds": 0,
+      "error": "scheduler missed declared offered-load ticks"
+    },
+    {
+      "schema_version": 0,
+      "status": "failed",
+      "transport": 0,
+      "mode": 0,
+      "build_info": "",
+      "go_version": "",
+      "started_at": "",
+      "finished_at": "",
+      "settings": null,
+      "host": null,
+      "measured_seconds": 0,
+      "warmup_counts": {
+        "tcp": 0,
+        "udp": 0,
+        "failed": 0,
+        "dropped": 1
+      },
+      "counts": {
+        "tcp": 0,
+        "udp": 0,
+        "failed": 0,
+        "dropped": 0
+      },
+      "idle_baseline": {
+        "cycle": 0,
+        "goroutines": 0,
+        "fd": 0,
+        "heap_alloc": 0,
+        "heap_inuse": 0,
+        "sys": 0,
+        "rss": 0
+      },
+      "after_stop": {
+        "cycle": 0,
+        "goroutines": 0,
+        "fd": 0,
+        "heap_alloc": 0,
+        "heap_inuse": 0,
+        "sys": 0,
+        "rss": 0
+      },
+      "points": [
+        {
+          "at_seconds": 0.000858404,
+          "phase": "warmup",
+          "resources": {
+            "cycle": 0,
+            "goroutines": 5,
+            "fd": 11,
+            "heap_alloc": 341400,
+            "heap_inuse": 958464,
+            "sys": 9550088,
+            "rss": 28401664
+          },
+          "counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 0
+          }
+        },
+        {
+          "at_seconds": 0.251588524,
+          "phase": "drained",
+          "resources": {
+            "cycle": 0,
+            "goroutines": 4,
+            "fd": 10,
+            "heap_alloc": 333760,
+            "heap_inuse": 925696,
+            "sys": 9550088,
+            "rss": 28446720
+          },
+          "counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 0
+          }
+        }
+      ],
+      "stop_seconds": 0,
+      "error": "scheduler missed declared offered-load ticks"
+    },
+    {
+      "schema_version": 0,
+      "status": "failed",
+      "transport": 0,
+      "mode": 0,
+      "build_info": "",
+      "go_version": "",
+      "started_at": "",
+      "finished_at": "",
+      "settings": null,
+      "host": null,
+      "measured_seconds": 0,
+      "warmup_counts": {
+        "tcp": 0,
+        "udp": 0,
+        "failed": 0,
+        "dropped": 1
+      },
+      "counts": {
+        "tcp": 0,
+        "udp": 0,
+        "failed": 0,
+        "dropped": 0
+      },
+      "idle_baseline": {
+        "cycle": 0,
+        "goroutines": 0,
+        "fd": 0,
+        "heap_alloc": 0,
+        "heap_inuse": 0,
+        "sys": 0,
+        "rss": 0
+      },
+      "after_stop": {
+        "cycle": 0,
+        "goroutines": 0,
+        "fd": 0,
+        "heap_alloc": 0,
+        "heap_inuse": 0,
+        "sys": 0,
+        "rss": 0
+      },
+      "points": [
+        {
+          "at_seconds": 0.000609758,
+          "phase": "warmup",
+          "resources": {
+            "cycle": 0,
+            "goroutines": 5,
+            "fd": 11,
+            "heap_alloc": 347168,
+            "heap_inuse": 950272,
+            "sys": 9550088,
+            "rss": 28729344
+          },
+          "counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 0
+          }
+        },
+        {
+          "at_seconds": 0.251309398,
+          "phase": "drained",
+          "resources": {
+            "cycle": 0,
+            "goroutines": 4,
+            "fd": 10,
+            "heap_alloc": 324976,
+            "heap_inuse": 909312,
+            "sys": 9550088,
+            "rss": 28749824
+          },
+          "counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 0
+          }
+        }
+      ],
+      "stop_seconds": 0,
+      "error": "scheduler missed declared offered-load ticks"
+    },
+    {
+      "schema_version": 0,
+      "status": "failed",
+      "transport": 0,
+      "mode": 0,
+      "build_info": "",
+      "go_version": "",
+      "started_at": "",
+      "finished_at": "",
+      "settings": null,
+      "host": null,
+      "measured_seconds": 0,
+      "warmup_counts": {
+        "tcp": 0,
+        "udp": 0,
+        "failed": 0,
+        "dropped": 1
+      },
+      "counts": {
+        "tcp": 0,
+        "udp": 0,
+        "failed": 0,
+        "dropped": 0
+      },
+      "idle_baseline": {
+        "cycle": 0,
+        "goroutines": 0,
+        "fd": 0,
+        "heap_alloc": 0,
+        "heap_inuse": 0,
+        "sys": 0,
+        "rss": 0
+      },
+      "after_stop": {
+        "cycle": 0,
+        "goroutines": 0,
+        "fd": 0,
+        "heap_alloc": 0,
+        "heap_inuse": 0,
+        "sys": 0,
+        "rss": 0
+      },
+      "points": [
+        {
+          "at_seconds": 0.000775106,
+          "phase": "warmup",
+          "resources": {
+            "cycle": 0,
+            "goroutines": 5,
+            "fd": 11,
+            "heap_alloc": 338528,
+            "heap_inuse": 933888,
+            "sys": 9558280,
+            "rss": 28897280
+          },
+          "counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 0
+          }
+        },
+        {
+          "at_seconds": 0.251504658,
+          "phase": "drained",
+          "resources": {
+            "cycle": 0,
+            "goroutines": 4,
+            "fd": 10,
+            "heap_alloc": 333416,
+            "heap_inuse": 909312,
+            "sys": 9558280,
+            "rss": 28938240
+          },
+          "counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 0
+          }
+        }
+      ],
+      "stop_seconds": 0,
+      "error": "scheduler missed declared offered-load ticks"
+    },
+    {
+      "schema_version": 0,
+      "status": "failed",
+      "transport": 0,
+      "mode": 0,
+      "build_info": "",
+      "go_version": "",
+      "started_at": "",
+      "finished_at": "",
+      "settings": null,
+      "host": null,
+      "measured_seconds": 0,
+      "warmup_counts": {
+        "tcp": 0,
+        "udp": 0,
+        "failed": 0,
+        "dropped": 1
+      },
+      "counts": {
+        "tcp": 0,
+        "udp": 0,
+        "failed": 0,
+        "dropped": 0
+      },
+      "idle_baseline": {
+        "cycle": 0,
+        "goroutines": 0,
+        "fd": 0,
+        "heap_alloc": 0,
+        "heap_inuse": 0,
+        "sys": 0,
+        "rss": 0
+      },
+      "after_stop": {
+        "cycle": 0,
+        "goroutines": 0,
+        "fd": 0,
+        "heap_alloc": 0,
+        "heap_inuse": 0,
+        "sys": 0,
+        "rss": 0
+      },
+      "points": [
+        {
+          "at_seconds": 0.000807737,
+          "phase": "warmup",
+          "resources": {
+            "cycle": 0,
+            "goroutines": 5,
+            "fd": 11,
+            "heap_alloc": 350200,
+            "heap_inuse": 999424,
+            "sys": 9558280,
+            "rss": 29405184
+          },
+          "counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 0
+          }
+        },
+        {
+          "at_seconds": 0.251777631,
+          "phase": "drained",
+          "resources": {
+            "cycle": 0,
+            "goroutines": 4,
+            "fd": 10,
+            "heap_alloc": 326496,
+            "heap_inuse": 909312,
+            "sys": 9558280,
+            "rss": 29229056
+          },
+          "counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 0
+          }
+        }
+      ],
+      "stop_seconds": 0,
+      "error": "scheduler missed declared offered-load ticks"
+    },
+    {
+      "schema_version": 0,
+      "status": "failed",
+      "transport": 0,
+      "mode": 0,
+      "build_info": "",
+      "go_version": "",
+      "started_at": "",
+      "finished_at": "",
+      "settings": null,
+      "host": null,
+      "measured_seconds": 0,
+      "warmup_counts": {
+        "tcp": 0,
+        "udp": 0,
+        "failed": 0,
+        "dropped": 1
+      },
+      "counts": {
+        "tcp": 0,
+        "udp": 0,
+        "failed": 0,
+        "dropped": 0
+      },
+      "idle_baseline": {
+        "cycle": 0,
+        "goroutines": 0,
+        "fd": 0,
+        "heap_alloc": 0,
+        "heap_inuse": 0,
+        "sys": 0,
+        "rss": 0
+      },
+      "after_stop": {
+        "cycle": 0,
+        "goroutines": 0,
+        "fd": 0,
+        "heap_alloc": 0,
+        "heap_inuse": 0,
+        "sys": 0,
+        "rss": 0
+      },
+      "points": [
+        {
+          "at_seconds": 0.000699249,
+          "phase": "warmup",
+          "resources": {
+            "cycle": 0,
+            "goroutines": 5,
+            "fd": 11,
+            "heap_alloc": 342136,
+            "heap_inuse": 933888,
+            "sys": 9558280,
+            "rss": 29691904
+          },
+          "counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 0
+          }
+        },
+        {
+          "at_seconds": 0.252051752,
+          "phase": "drained",
+          "resources": {
+            "cycle": 0,
+            "goroutines": 4,
+            "fd": 10,
+            "heap_alloc": 336480,
+            "heap_inuse": 917504,
+            "sys": 9820424,
+            "rss": 29462528
+          },
+          "counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 0
+          }
+        }
+      ],
+      "stop_seconds": 0,
+      "error": "scheduler missed declared offered-load ticks"
+    },
+    {
+      "schema_version": 0,
+      "status": "failed",
+      "transport": 0,
+      "mode": 0,
+      "build_info": "",
+      "go_version": "",
+      "started_at": "",
+      "finished_at": "",
+      "settings": null,
+      "host": null,
+      "measured_seconds": 0,
+      "warmup_counts": {
+        "tcp": 0,
+        "udp": 0,
+        "failed": 0,
+        "dropped": 1
+      },
+      "counts": {
+        "tcp": 0,
+        "udp": 0,
+        "failed": 0,
+        "dropped": 0
+      },
+      "idle_baseline": {
+        "cycle": 0,
+        "goroutines": 0,
+        "fd": 0,
+        "heap_alloc": 0,
+        "heap_inuse": 0,
+        "sys": 0,
+        "rss": 0
+      },
+      "after_stop": {
+        "cycle": 0,
+        "goroutines": 0,
+        "fd": 0,
+        "heap_alloc": 0,
+        "heap_inuse": 0,
+        "sys": 0,
+        "rss": 0
+      },
+      "points": [
+        {
+          "at_seconds": 0.000801184,
+          "phase": "warmup",
+          "resources": {
+            "cycle": 0,
+            "goroutines": 5,
+            "fd": 11,
+            "heap_alloc": 341856,
+            "heap_inuse": 933888,
+            "sys": 9820424,
+            "rss": 29650944
+          },
+          "counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 0
+          }
+        },
+        {
+          "at_seconds": 0.251852393,
+          "phase": "drained",
+          "resources": {
+            "cycle": 0,
+            "goroutines": 4,
+            "fd": 10,
+            "heap_alloc": 335312,
+            "heap_inuse": 901120,
+            "sys": 9820424,
+            "rss": 29536256
+          },
+          "counts": {
+            "tcp": 0,
+            "udp": 0,
+            "failed": 0,
+            "dropped": 0
+          }
+        }
+      ],
+      "stop_seconds": 0,
+      "error": "scheduler missed declared offered-load ticks"
+    }
+  ],
+  "stdout": "=== RUN   TestCheckpointStallControl\n    scheduler_control_test.go:50: CHECKPOINT-STALL-CONTROL: {\"schema_version\":0,\"status\":\"failed\",\"transport\":0,\"mode\":0,\"build_info\":\"\",\"go_version\":\"\",\"started_at\":\"\",\"finished_at\":\"\",\"settings\":null,\"host\":null,\"measured_seconds\":0,\"warmup_counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":1},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"idle_baseline\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0},\"after_stop\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0},\"points\":[{\"at_seconds\":0.002215699,\"phase\":\"warmup\",\"resources\":{\"cycle\":0,\"goroutines\":5,\"fd\":11,\"heap_alloc\":279840,\"heap_inuse\":786432,\"sys\":8935688,\"rss\":23511040},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0}},{\"at_seconds\":0.25440146,\"phase\":\"drained\",\"resources\":{\"cycle\":0,\"goroutines\":4,\"fd\":10,\"heap_alloc\":292560,\"heap_inuse\":802816,\"sys\":9525512,\"rss\":24125440},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0}}],\"stop_seconds\":0,\"error\":\"scheduler missed declared offered-load ticks\"}\n--- PASS: TestCheckpointStallControl (0.26s)\n=== RUN   TestCheckpointStallControl\n    scheduler_control_test.go:50: CHECKPOINT-STALL-CONTROL: {\"schema_version\":0,\"status\":\"failed\",\"transport\":0,\"mode\":0,\"build_info\":\"\",\"go_version\":\"\",\"started_at\":\"\",\"finished_at\":\"\",\"settings\":null,\"host\":null,\"measured_seconds\":0,\"warmup_counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":1},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"idle_baseline\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0},\"after_stop\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0},\"points\":[{\"at_seconds\":0.001732397,\"phase\":\"warmup\",\"resources\":{\"cycle\":0,\"goroutines\":5,\"fd\":11,\"heap_alloc\":338000,\"heap_inuse\":991232,\"sys\":9533704,\"rss\":27222016},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0}},{\"at_seconds\":0.253072973,\"phase\":\"drained\",\"resources\":{\"cycle\":0,\"goroutines\":4,\"fd\":10,\"heap_alloc\":324992,\"heap_inuse\":942080,\"sys\":9533704,\"rss\":26853376},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0}}],\"stop_seconds\":0,\"error\":\"scheduler missed declared offered-load ticks\"}\n--- PASS: TestCheckpointStallControl (0.26s)\n=== RUN   TestCheckpointStallControl\n    scheduler_control_test.go:50: CHECKPOINT-STALL-CONTROL: {\"schema_version\":0,\"status\":\"failed\",\"transport\":0,\"mode\":0,\"build_info\":\"\",\"go_version\":\"\",\"started_at\":\"\",\"finished_at\":\"\",\"settings\":null,\"host\":null,\"measured_seconds\":0,\"warmup_counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":1},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"idle_baseline\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0},\"after_stop\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0},\"points\":[{\"at_seconds\":0.000797636,\"phase\":\"warmup\",\"resources\":{\"cycle\":0,\"goroutines\":5,\"fd\":11,\"heap_alloc\":332984,\"heap_inuse\":974848,\"sys\":9541896,\"rss\":27717632},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0}},{\"at_seconds\":0.251522305,\"phase\":\"drained\",\"resources\":{\"cycle\":0,\"goroutines\":4,\"fd\":10,\"heap_alloc\":325488,\"heap_inuse\":933888,\"sys\":9541896,\"rss\":27799552},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0}}],\"stop_seconds\":0,\"error\":\"scheduler missed declared offered-load ticks\"}\n--- PASS: TestCheckpointStallControl (0.26s)\n=== RUN   TestCheckpointStallControl\n    scheduler_control_test.go:50: CHECKPOINT-STALL-CONTROL: {\"schema_version\":0,\"status\":\"failed\",\"transport\":0,\"mode\":0,\"build_info\":\"\",\"go_version\":\"\",\"started_at\":\"\",\"finished_at\":\"\",\"settings\":null,\"host\":null,\"measured_seconds\":0,\"warmup_counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":1},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"idle_baseline\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0},\"after_stop\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0},\"points\":[{\"at_seconds\":0.001176677,\"phase\":\"warmup\",\"resources\":{\"cycle\":0,\"goroutines\":5,\"fd\":11,\"heap_alloc\":325104,\"heap_inuse\":942080,\"sys\":9541896,\"rss\":28229632},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0}},{\"at_seconds\":0.2524367,\"phase\":\"drained\",\"resources\":{\"cycle\":0,\"goroutines\":4,\"fd\":10,\"heap_alloc\":319968,\"heap_inuse\":917504,\"sys\":9541896,\"rss\":27881472},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0}}],\"stop_seconds\":0,\"error\":\"scheduler missed declared offered-load ticks\"}\n--- PASS: TestCheckpointStallControl (0.26s)\n=== RUN   TestCheckpointStallControl\n    scheduler_control_test.go:50: CHECKPOINT-STALL-CONTROL: {\"schema_version\":0,\"status\":\"failed\",\"transport\":0,\"mode\":0,\"build_info\":\"\",\"go_version\":\"\",\"started_at\":\"\",\"finished_at\":\"\",\"settings\":null,\"host\":null,\"measured_seconds\":0,\"warmup_counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":1},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"idle_baseline\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0},\"after_stop\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0},\"points\":[{\"at_seconds\":0.000858404,\"phase\":\"warmup\",\"resources\":{\"cycle\":0,\"goroutines\":5,\"fd\":11,\"heap_alloc\":341400,\"heap_inuse\":958464,\"sys\":9550088,\"rss\":28401664},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0}},{\"at_seconds\":0.251588524,\"phase\":\"drained\",\"resources\":{\"cycle\":0,\"goroutines\":4,\"fd\":10,\"heap_alloc\":333760,\"heap_inuse\":925696,\"sys\":9550088,\"rss\":28446720},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0}}],\"stop_seconds\":0,\"error\":\"scheduler missed declared offered-load ticks\"}\n--- PASS: TestCheckpointStallControl (0.26s)\n=== RUN   TestCheckpointStallControl\n    scheduler_control_test.go:50: CHECKPOINT-STALL-CONTROL: {\"schema_version\":0,\"status\":\"failed\",\"transport\":0,\"mode\":0,\"build_info\":\"\",\"go_version\":\"\",\"started_at\":\"\",\"finished_at\":\"\",\"settings\":null,\"host\":null,\"measured_seconds\":0,\"warmup_counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":1},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"idle_baseline\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0},\"after_stop\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0},\"points\":[{\"at_seconds\":0.000609758,\"phase\":\"warmup\",\"resources\":{\"cycle\":0,\"goroutines\":5,\"fd\":11,\"heap_alloc\":347168,\"heap_inuse\":950272,\"sys\":9550088,\"rss\":28729344},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0}},{\"at_seconds\":0.251309398,\"phase\":\"drained\",\"resources\":{\"cycle\":0,\"goroutines\":4,\"fd\":10,\"heap_alloc\":324976,\"heap_inuse\":909312,\"sys\":9550088,\"rss\":28749824},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0}}],\"stop_seconds\":0,\"error\":\"scheduler missed declared offered-load ticks\"}\n--- PASS: TestCheckpointStallControl (0.25s)\n=== RUN   TestCheckpointStallControl\n    scheduler_control_test.go:50: CHECKPOINT-STALL-CONTROL: {\"schema_version\":0,\"status\":\"failed\",\"transport\":0,\"mode\":0,\"build_info\":\"\",\"go_version\":\"\",\"started_at\":\"\",\"finished_at\":\"\",\"settings\":null,\"host\":null,\"measured_seconds\":0,\"warmup_counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":1},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"idle_baseline\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0},\"after_stop\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0},\"points\":[{\"at_seconds\":0.000775106,\"phase\":\"warmup\",\"resources\":{\"cycle\":0,\"goroutines\":5,\"fd\":11,\"heap_alloc\":338528,\"heap_inuse\":933888,\"sys\":9558280,\"rss\":28897280},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0}},{\"at_seconds\":0.251504658,\"phase\":\"drained\",\"resources\":{\"cycle\":0,\"goroutines\":4,\"fd\":10,\"heap_alloc\":333416,\"heap_inuse\":909312,\"sys\":9558280,\"rss\":28938240},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0}}],\"stop_seconds\":0,\"error\":\"scheduler missed declared offered-load ticks\"}\n--- PASS: TestCheckpointStallControl (0.25s)\n=== RUN   TestCheckpointStallControl\n    scheduler_control_test.go:50: CHECKPOINT-STALL-CONTROL: {\"schema_version\":0,\"status\":\"failed\",\"transport\":0,\"mode\":0,\"build_info\":\"\",\"go_version\":\"\",\"started_at\":\"\",\"finished_at\":\"\",\"settings\":null,\"host\":null,\"measured_seconds\":0,\"warmup_counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":1},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"idle_baseline\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0},\"after_stop\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0},\"points\":[{\"at_seconds\":0.000807737,\"phase\":\"warmup\",\"resources\":{\"cycle\":0,\"goroutines\":5,\"fd\":11,\"heap_alloc\":350200,\"heap_inuse\":999424,\"sys\":9558280,\"rss\":29405184},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0}},{\"at_seconds\":0.251777631,\"phase\":\"drained\",\"resources\":{\"cycle\":0,\"goroutines\":4,\"fd\":10,\"heap_alloc\":326496,\"heap_inuse\":909312,\"sys\":9558280,\"rss\":29229056},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0}}],\"stop_seconds\":0,\"error\":\"scheduler missed declared offered-load ticks\"}\n--- PASS: TestCheckpointStallControl (0.26s)\n=== RUN   TestCheckpointStallControl\n    scheduler_control_test.go:50: CHECKPOINT-STALL-CONTROL: {\"schema_version\":0,\"status\":\"failed\",\"transport\":0,\"mode\":0,\"build_info\":\"\",\"go_version\":\"\",\"started_at\":\"\",\"finished_at\":\"\",\"settings\":null,\"host\":null,\"measured_seconds\":0,\"warmup_counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":1},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"idle_baseline\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0},\"after_stop\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0},\"points\":[{\"at_seconds\":0.000699249,\"phase\":\"warmup\",\"resources\":{\"cycle\":0,\"goroutines\":5,\"fd\":11,\"heap_alloc\":342136,\"heap_inuse\":933888,\"sys\":9558280,\"rss\":29691904},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0}},{\"at_seconds\":0.252051752,\"phase\":\"drained\",\"resources\":{\"cycle\":0,\"goroutines\":4,\"fd\":10,\"heap_alloc\":336480,\"heap_inuse\":917504,\"sys\":9820424,\"rss\":29462528},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0}}],\"stop_seconds\":0,\"error\":\"scheduler missed declared offered-load ticks\"}\n--- PASS: TestCheckpointStallControl (0.26s)\n=== RUN   TestCheckpointStallControl\n    scheduler_control_test.go:50: CHECKPOINT-STALL-CONTROL: {\"schema_version\":0,\"status\":\"failed\",\"transport\":0,\"mode\":0,\"build_info\":\"\",\"go_version\":\"\",\"started_at\":\"\",\"finished_at\":\"\",\"settings\":null,\"host\":null,\"measured_seconds\":0,\"warmup_counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":1},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0},\"idle_baseline\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0},\"after_stop\":{\"cycle\":0,\"goroutines\":0,\"fd\":0,\"heap_alloc\":0,\"heap_inuse\":0,\"sys\":0,\"rss\":0},\"points\":[{\"at_seconds\":0.000801184,\"phase\":\"warmup\",\"resources\":{\"cycle\":0,\"goroutines\":5,\"fd\":11,\"heap_alloc\":341856,\"heap_inuse\":933888,\"sys\":9820424,\"rss\":29650944},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0}},{\"at_seconds\":0.251852393,\"phase\":\"drained\",\"resources\":{\"cycle\":0,\"goroutines\":4,\"fd\":10,\"heap_alloc\":335312,\"heap_inuse\":901120,\"sys\":9820424,\"rss\":29536256},\"counts\":{\"tcp\":0,\"udp\":0,\"failed\":0,\"dropped\":0}}],\"stop_seconds\":0,\"error\":\"scheduler missed declared offered-load ticks\"}\n--- PASS: TestCheckpointStallControl (0.26s)\nPASS\nok  \tgithub.com/VortexWang/Tunveo/scripts/soak24h\t3.571s\n",
+  "stderr": "",
+  "scope": "injected250ms checkpoint delay in a real loopback echo fixture; proves possible harness coupling, not historical CI attribution; expected probe failures remain failures"
+}
