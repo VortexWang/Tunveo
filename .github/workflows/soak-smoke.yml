@@ -1,0 +1,62 @@
+name: Soak smoke
+on:
+  pull_request:
+    paths:
+      - 'scripts/soak24h/**'
+      - 'scripts/verify_soak.py'
+      - 'scripts/tests/test_verify_soak.py'
+      - '.github/workflows/soak-smoke.yml'
+      - 'cmd/**'
+      - 'internal/**'
+      - 'go.mod'
+      - 'go.sum'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verifier:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6.0.2
+      - uses: actions/setup-go@v6.1.0
+        with:
+          go-version-file: go.mod
+      - run: python3 -m unittest discover -s scripts/tests -p test_verify_soak.py -v
+      - run: go test -race ./scripts/soak24h
+      - run: go build -trimpath -o bin/soak24h ./scripts/soak24h
+      - name: Validate ordinary-build preflight without starting 24h
+        run: |
+          mkdir -p artifacts
+          ./bin/soak24h --describe > artifacts/soak-native-build.json
+          PYTHONPATH=scripts python3 -c 'import json; from verify_soak import validate_build; validate_build(json.load(open("artifacts/soak-native-build.json"))["build_info"])'
+          sha256sum bin/soak24h > artifacts/soak-native-build.sha256
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: soak-native-preflight
+          path: artifacts
+          retention-days: 30
+  pilot:
+    needs: verifier
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        transport: [0, 1, 2, 3]
+        mode: [1, 2]
+    steps:
+      - uses: actions/checkout@v6.0.2
+      - uses: actions/setup-go@v6.1.0
+        with:
+          go-version-file: go.mod
+      - run: go build -race -trimpath -o bin/soak24h-race ./scripts/soak24h
+      # Short pilots remain categorically ineligible for the 24-hour gate.
+      - run: python3 scripts/verify_soak.py --binary bin/soak24h-race --transport ${{ matrix.transport }} --mode ${{ matrix.mode }} --pilot --duration-seconds 60 --warmup-seconds 12 --sample-seconds 5 --pool-min 16 --pool-max 64 --workers 2 --qps 10 --artifacts artifacts/soak-pilot
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: soak-pilot-${{ matrix.transport }}-${{ matrix.mode }}
+          path: artifacts/soak-pilot
+          retention-days: 30

@@ -44,8 +44,10 @@
     {
       "id": "soak_24h",
       "status": "pending",
-      "evidence": [],
-      "reason": "24-hour declared-load validation not completed."
+      "evidence": [
+        "docs/soak-24h.md"
+      ],
+      "reason": "Continuous native load, strict pilot/full separation, source preflight and bounded interruption tooling prepared; short pilot evidence is ineligible. Eight actual24h profiles and long-run resource review not completed."
     },
     {
       "id": "native_platforms",
