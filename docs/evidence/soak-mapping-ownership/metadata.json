@@ -1,0 +1,22 @@
+{
+  "source_commit": "149709df8cf90aba1bbc18524adbdc184bde2b6f",
+  "source_tree": "8819f0f6d0a126881e2a144a965f0e315f184421",
+  "go_probe_unchanged_from": "54295c8f98177cebc18b61c4b1476526f6740474",
+  "scope": "Local two allocation controls unavailable due procfs permissions, no local pilot; CI controls and six pilots independently audited; all pilots remain ineligible for24h",
+  "python_tests": 37,
+  "parser_self_vmas": 55,
+  "poll_seconds": 0.01,
+  "selected_max_checkpoint_age_seconds": 0.1,
+  "selected_max_read_seconds": 0.1,
+  "artifact_policy": "no overwrite or rerun of failed local controls; all future CI resource failures remain failed",
+  "host_observer": "external Python process, smaps page-walk adds overhead; adjacent reads not atomic",
+  "runner_command": "python3 scripts/soak_mappings.py capture --binary bin/probe --artifacts artifacts/trial-N",
+  "ci_checkout": "3691792698a47939a6a01e63b80a3e61c2c993eb",
+  "ci_tree_matches_source": true,
+  "ownership_limit": "shadow and metadata source-defined ranges; Go named mappings from runtime VMA labels; unnamed anonymous19-22MiB growth remains unowned",
+  "go_vma_naming_source_sha256": {
+    "set_vma_name_linux.go": "d4360e1d3e9ca42ec05150de6820e5ac551b4cb6ad669a4eac50e5da0090659c",
+    "mheap.go": "6147548986e268b53fca158135149396a586cfd7d82aef7669b06f59a113bc04",
+    "extern.go": "1afbe8b480e8c6b6a4d54b0f88f07606077a061f653198fa150e5d2a45e2bc8a"
+  }
+}

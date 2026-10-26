@@ -1,0 +1,49 @@
+{
+  "scope": "source-defined address ranges; local external controls unavailable; actual ownership requires successful control and captured smaps",
+  "go": "go1.26.10 linux/amd64",
+  "llvm_revision": "51bfeff0e4b0757ff773da6882f4d538996c9b04",
+  "ranges": {
+    "race_shadow": [
+      "0x200000000000",
+      "0x21c000000000"
+    ],
+    "race_metadata": [
+      "0x300000000000",
+      "0x400000000000"
+    ]
+  },
+  "sources": {
+    "/tmp/tunveo-toolchain/go/src/runtime/race/README": "8e7ca72a2a50b5a8ba85884ad86a0321486e6880b4ebc465cbeffbf9005e27ad",
+    "/tmp/tunveo-toolchain/go/src/runtime/race/internal/amd64v1/race_linux.syso": "5bdd6b292a1d7bb4a21c3134bafec7545f23133e2e640fed265a7f8c5b67a638",
+    "/tmp/tunveo-toolchain/go/src/runtime/race/internal/amd64v1/race_linux.patch": "ee5b1bd2108a0067edbf707650ca220c09094d49aac54c6d2355991ad84e3965",
+    "artifacts/mapping-memory/sources/tsan_platform.h": "d534b22356939deb60ff2a9ffe38667417854281dd1960d207a1347fedd3773d",
+    "artifacts/mapping-memory/sources/tsan_defs.h": "39094f41c44534672c4f1247a4edbfb11840eaf6354494971097a64af66cfe03"
+  },
+  "urls": [
+    "https://github.com/llvm/llvm-project/blob/51bfeff0e4b0757ff773da6882f4d538996c9b04/compiler-rt/lib/tsan/rtl/tsan_platform.h",
+    "https://github.com/llvm/llvm-project/blob/51bfeff0e4b0757ff773da6882f4d538996c9b04/compiler-rt/lib/tsan/rtl/tsan_defs.h",
+    "https://github.com/golang/go/blob/go1.26.10/src/runtime/race/README"
+  ],
+  "builds": {
+    "ordinary": {
+      "sha256": "feedb75eda87ca40ded668557b8ab24c10bb3491fec4dac33ef0f86e1033ae25",
+      "description": {
+        "build_info": "go\tgo1.26.10\npath\tgithub.com/VortexWang/Tunveo/scripts/soak24h\nmod\tgithub.com/VortexWang/Tunveo\tv0.0.0-20261026134730-149709df8cf9\t\ndep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\ndep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\ndep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\ndep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\ndep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\ndep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\nbuild\t-buildmode=exe\nbuild\t-compiler=gc\nbuild\t-trimpath=true\nbuild\tCGO_ENABLED=1\nbuild\tGOARCH=amd64\nbuild\tGOOS=linux\nbuild\tGOAMD64=v1\nbuild\tvcs=git\nbuild\tvcs.revision=149709df8cf90aba1bbc18524adbdc184bde2b6f\nbuild\tvcs.time=2026-10-26T13:47:30Z\nbuild\tvcs.modified=false\n",
+        "go_version": "go1.26.10",
+        "goarch": "amd64",
+        "goos": "linux"
+      },
+      "control_sha256": "a6ffcb137feadac81b489d2ff4d4ac213468764c7f2ce8d9cc6db7f60352fe89"
+    },
+    "race": {
+      "sha256": "2949f608a405feb7ce6826639d751f95faeac7d89b3b7a641a541abd20cbb57b",
+      "description": {
+        "build_info": "go\tgo1.26.10\npath\tgithub.com/VortexWang/Tunveo/scripts/soak24h\nmod\tgithub.com/VortexWang/Tunveo\tv0.0.0-20261026134730-149709df8cf9\t\ndep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\ndep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\ndep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\ndep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\ndep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\ndep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\nbuild\t-buildmode=exe\nbuild\t-compiler=gc\nbuild\t-race=true\nbuild\t-trimpath=true\nbuild\tCGO_ENABLED=1\nbuild\tGOARCH=amd64\nbuild\tGOOS=linux\nbuild\tGOAMD64=v1\nbuild\tvcs=git\nbuild\tvcs.revision=149709df8cf90aba1bbc18524adbdc184bde2b6f\nbuild\tvcs.time=2026-10-26T13:47:30Z\nbuild\tvcs.modified=false\n",
+        "go_version": "go1.26.10",
+        "goarch": "amd64",
+        "goos": "linux"
+      },
+      "control_sha256": "b29a5035cacc5636856d1b71e8942e75dd224a609b3308910d18c0edf659ff98"
+    }
+  }
+}

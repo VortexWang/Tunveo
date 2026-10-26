@@ -1,0 +1,584 @@
+{
+  "soak-mappings-ordinary": {
+    "control_shadow_delta": 0,
+    "control_prediction_observed": false,
+    "pilots": {
+      "1": {
+        "status": "pilot_passed",
+        "error": null,
+        "audited_events": 719,
+        "baseline_at_seconds": 10.003558148,
+        "peak_at_seconds": 67.00334235,
+        "groups_delta_bytes": {
+          "file_mapping": {
+            "Size": 0,
+            "Rss": 0,
+            "Pss": 0,
+            "Anonymous": 0,
+            "Private_Dirty": -9715712,
+            "Swap": 0
+          },
+          "kernel_named": {
+            "Size": 0,
+            "Rss": 0,
+            "Pss": 0,
+            "Anonymous": 0,
+            "Private_Dirty": 0,
+            "Swap": 0
+          },
+          "other_anonymous": {
+            "Size": 262144,
+            "Rss": 8699904,
+            "Pss": 8699904,
+            "Anonymous": 8699904,
+            "Private_Dirty": 8699904,
+            "Swap": 0
+          }
+        },
+        "smaps_rss_delta": 8699904,
+        "statm_rss_delta": 8699904,
+        "selected_checkpoint_age_seconds": [
+          0.002557308,
+          0.010838973
+        ],
+        "max_read_seconds": 0.000908015,
+        "samples": 18,
+        "rollup_audit": {
+          "report_sha256": "cf75a2b71d775c525ed38207a457176054594d16500acf6c5e5acb5c8472a816",
+          "probe_status": "passed",
+          "build_info": "go\tgo1.26.10\npath\tgithub.com/VortexWang/Tunveo/scripts/soak24h\nmod\tgithub.com/VortexWang/Tunveo\tv0.0.0-20261026134751-3691792698a4\t\ndep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\ndep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\ndep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\ndep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\ndep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\ndep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\nbuild\t-buildmode=exe\nbuild\t-compiler=gc\nbuild\t-trimpath=true\nbuild\tCGO_ENABLED=1\nbuild\tGOARCH=amd64\nbuild\tGOOS=linux\nbuild\tGOAMD64=v1\nbuild\tvcs=git\nbuild\tvcs.revision=3691792698a47939a6a01e63b80a3e61c2c993eb\nbuild\tvcs.time=2026-10-26T13:47:51Z\nbuild\tvcs.modified=false\n",
+          "sample_count": 21,
+          "baseline_at_seconds": 10.003558148,
+          "peak_at_seconds": 67.00334235,
+          "statm_rss_delta": 8699904,
+          "heap_alloc_delta": 289464,
+          "rollup_delta_bytes": {
+            "AnonHugePages": 8388608,
+            "Anonymous": 8699904,
+            "FilePmdMapped": 0,
+            "KSM": 0,
+            "LazyFree": 0,
+            "Locked": 0,
+            "Private_Clean": 9715712,
+            "Private_Dirty": -1015808,
+            "Private_Hugetlb": 0,
+            "Pss": 8699904,
+            "Pss_Anon": 8699904,
+            "Pss_Dirty": -1015808,
+            "Pss_File": 0,
+            "Pss_Shmem": 0,
+            "Referenced": 8699904,
+            "Rss": 8699904,
+            "Shared_Clean": 0,
+            "Shared_Dirty": 0,
+            "Shared_Hugetlb": 0,
+            "ShmemPmdMapped": 0,
+            "Swap": 0,
+            "SwapPss": 0
+          },
+          "max_read_seconds": 0.000897896,
+          "scheduler_timing": {
+            "max_tick_lag_seconds": 0.004059043,
+            "max_measure_seconds": 0.00356084,
+            "max_checkpoint_seconds": 0.002070893,
+            "max_snapshot_seconds": 0.005574894,
+            "missed_at_seconds": 0,
+            "expected_slot": 0,
+            "observed_slot": 0,
+            "missed_slots": 0
+          }
+        },
+        "scope": "post-checkpoint asynchronous smaps; different reads, not atomic attribution"
+      },
+      "2": {
+        "status": "pilot_passed",
+        "error": null,
+        "audited_events": 719,
+        "baseline_at_seconds": 10.004026182,
+        "peak_at_seconds": 67.0034937,
+        "groups_delta_bytes": {
+          "file_mapping": {
+            "Size": 0,
+            "Rss": 0,
+            "Pss": 0,
+            "Anonymous": 4096,
+            "Private_Dirty": 4096,
+            "Swap": 0
+          },
+          "kernel_named": {
+            "Size": 0,
+            "Rss": 0,
+            "Pss": 0,
+            "Anonymous": 0,
+            "Private_Dirty": 0,
+            "Swap": 0
+          },
+          "other_anonymous": {
+            "Size": 262144,
+            "Rss": 6606848,
+            "Pss": 6606848,
+            "Anonymous": 6606848,
+            "Private_Dirty": 6606848,
+            "Swap": 0
+          }
+        },
+        "smaps_rss_delta": 6606848,
+        "statm_rss_delta": 6606848,
+        "selected_checkpoint_age_seconds": [
+          0.002380706,
+          0.002231594
+        ],
+        "max_read_seconds": 0.000870453,
+        "samples": 18,
+        "rollup_audit": {
+          "report_sha256": "ac355023756b24f0ad9bff28c008aecacf76d0aa4c03fe51e39103b230166688",
+          "probe_status": "passed",
+          "build_info": "go\tgo1.26.10\npath\tgithub.com/VortexWang/Tunveo/scripts/soak24h\nmod\tgithub.com/VortexWang/Tunveo\tv0.0.0-20261026134751-3691792698a4\t\ndep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\ndep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\ndep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\ndep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\ndep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\ndep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\nbuild\t-buildmode=exe\nbuild\t-compiler=gc\nbuild\t-trimpath=true\nbuild\tCGO_ENABLED=1\nbuild\tGOARCH=amd64\nbuild\tGOOS=linux\nbuild\tGOAMD64=v1\nbuild\tvcs=git\nbuild\tvcs.revision=3691792698a47939a6a01e63b80a3e61c2c993eb\nbuild\tvcs.time=2026-10-26T13:47:51Z\nbuild\tvcs.modified=false\n",
+          "sample_count": 21,
+          "baseline_at_seconds": 10.004026182,
+          "peak_at_seconds": 67.0034937,
+          "statm_rss_delta": 6606848,
+          "heap_alloc_delta": 262576,
+          "rollup_delta_bytes": {
+            "AnonHugePages": 6291456,
+            "Anonymous": 6610944,
+            "FilePmdMapped": 0,
+            "KSM": 0,
+            "LazyFree": 0,
+            "Locked": 0,
+            "Private_Clean": -4096,
+            "Private_Dirty": 6610944,
+            "Private_Hugetlb": 0,
+            "Pss": 6606848,
+            "Pss_Anon": 6610944,
+            "Pss_Dirty": 6610944,
+            "Pss_File": -4096,
+            "Pss_Shmem": 0,
+            "Referenced": 6606848,
+            "Rss": 6606848,
+            "Shared_Clean": 0,
+            "Shared_Dirty": 0,
+            "Shared_Hugetlb": 0,
+            "ShmemPmdMapped": 0,
+            "Swap": 0,
+            "SwapPss": 0
+          },
+          "max_read_seconds": 0.000708903,
+          "scheduler_timing": {
+            "max_tick_lag_seconds": 0.004465011,
+            "max_measure_seconds": 0.003518537,
+            "max_checkpoint_seconds": 0.000834919,
+            "max_snapshot_seconds": 0.004180943,
+            "missed_at_seconds": 0,
+            "expected_slot": 0,
+            "observed_slot": 0,
+            "missed_slots": 0
+          }
+        },
+        "scope": "post-checkpoint asynchronous smaps; different reads, not atomic attribution"
+      },
+      "3": {
+        "status": "pilot_passed",
+        "error": null,
+        "audited_events": 719,
+        "baseline_at_seconds": 10.004342626,
+        "peak_at_seconds": 67.003676046,
+        "groups_delta_bytes": {
+          "file_mapping": {
+            "Size": 0,
+            "Rss": 0,
+            "Pss": 0,
+            "Anonymous": 0,
+            "Private_Dirty": 0,
+            "Swap": 0
+          },
+          "kernel_named": {
+            "Size": 0,
+            "Rss": 0,
+            "Pss": 0,
+            "Anonymous": 0,
+            "Private_Dirty": 0,
+            "Swap": 0
+          },
+          "other_anonymous": {
+            "Size": 0,
+            "Rss": 6619136,
+            "Pss": 6619136,
+            "Anonymous": 6619136,
+            "Private_Dirty": 6619136,
+            "Swap": 0
+          }
+        },
+        "smaps_rss_delta": 6619136,
+        "statm_rss_delta": 6602752,
+        "selected_checkpoint_age_seconds": [
+          0.008212543,
+          0.003879263
+        ],
+        "max_read_seconds": 0.000906942,
+        "samples": 18,
+        "rollup_audit": {
+          "report_sha256": "22c0af002252cbf8a975d05f8022f568609d7303b6e6e8e638d438d79665be4c",
+          "probe_status": "passed",
+          "build_info": "go\tgo1.26.10\npath\tgithub.com/VortexWang/Tunveo/scripts/soak24h\nmod\tgithub.com/VortexWang/Tunveo\tv0.0.0-20261026134751-3691792698a4\t\ndep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\ndep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\ndep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\ndep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\ndep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\ndep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\nbuild\t-buildmode=exe\nbuild\t-compiler=gc\nbuild\t-trimpath=true\nbuild\tCGO_ENABLED=1\nbuild\tGOARCH=amd64\nbuild\tGOOS=linux\nbuild\tGOAMD64=v1\nbuild\tvcs=git\nbuild\tvcs.revision=3691792698a47939a6a01e63b80a3e61c2c993eb\nbuild\tvcs.time=2026-10-26T13:47:51Z\nbuild\tvcs.modified=false\n",
+          "sample_count": 21,
+          "baseline_at_seconds": 10.004342626,
+          "peak_at_seconds": 67.003676046,
+          "statm_rss_delta": 6602752,
+          "heap_alloc_delta": 202600,
+          "rollup_delta_bytes": {
+            "AnonHugePages": 6291456,
+            "Anonymous": 6602752,
+            "FilePmdMapped": 0,
+            "KSM": 0,
+            "LazyFree": 0,
+            "Locked": 0,
+            "Private_Clean": 0,
+            "Private_Dirty": 6602752,
+            "Private_Hugetlb": 0,
+            "Pss": 6602752,
+            "Pss_Anon": 6602752,
+            "Pss_Dirty": 6602752,
+            "Pss_File": 0,
+            "Pss_Shmem": 0,
+            "Referenced": 6602752,
+            "Rss": 6602752,
+            "Shared_Clean": 0,
+            "Shared_Dirty": 0,
+            "Shared_Hugetlb": 0,
+            "ShmemPmdMapped": 0,
+            "Swap": 0,
+            "SwapPss": 0
+          },
+          "max_read_seconds": 0.000590212,
+          "scheduler_timing": {
+            "max_tick_lag_seconds": 0.004881411,
+            "max_measure_seconds": 0.003575363,
+            "max_checkpoint_seconds": 0.000873071,
+            "max_snapshot_seconds": 0.004132145,
+            "missed_at_seconds": 0,
+            "expected_slot": 0,
+            "observed_slot": 0,
+            "missed_slots": 0
+          }
+        },
+        "scope": "post-checkpoint asynchronous smaps; different reads, not atomic attribution"
+      }
+    }
+  },
+  "soak-mappings-race": {
+    "control_shadow_delta": 67108864,
+    "control_prediction_observed": true,
+    "pilots": {
+      "1": {
+        "status": "pilot_passed",
+        "error": null,
+        "audited_events": 719,
+        "baseline_at_seconds": 10.004150158,
+        "peak_at_seconds": 67.007106592,
+        "groups_delta_bytes": {
+          "file_mapping": {
+            "Size": 0,
+            "Rss": 65536,
+            "Pss": 65536,
+            "Anonymous": 0,
+            "Private_Dirty": -12881920,
+            "Swap": 0
+          },
+          "kernel_named": {
+            "Size": 0,
+            "Rss": 0,
+            "Pss": 0,
+            "Anonymous": 0,
+            "Private_Dirty": 0,
+            "Swap": 0
+          },
+          "other_anonymous": {
+            "Size": 18464768,
+            "Rss": 35721216,
+            "Pss": 35721216,
+            "Anonymous": 35721216,
+            "Private_Dirty": 35721216,
+            "Swap": 0
+          },
+          "race_metadata": {
+            "Size": 0,
+            "Rss": 1191936,
+            "Pss": 1191936,
+            "Anonymous": 1191936,
+            "Private_Dirty": 1191936,
+            "Swap": 0
+          },
+          "race_shadow": {
+            "Size": 0,
+            "Rss": 20897792,
+            "Pss": 20897792,
+            "Anonymous": 20897792,
+            "Private_Dirty": 20897792,
+            "Swap": 0
+          }
+        },
+        "smaps_rss_delta": 57876480,
+        "statm_rss_delta": 58310656,
+        "selected_checkpoint_age_seconds": [
+          0.002474731,
+          0.00358629
+        ],
+        "max_read_seconds": 0.001630646,
+        "samples": 18,
+        "rollup_audit": {
+          "report_sha256": "6da523d5a693e8663898892a03c561d4c36f7f33acb955c40b866ea58e1dc5fe",
+          "probe_status": "passed",
+          "build_info": "go\tgo1.26.10\npath\tgithub.com/VortexWang/Tunveo/scripts/soak24h\nmod\tgithub.com/VortexWang/Tunveo\tv0.0.0-20261026134751-3691792698a4\t\ndep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\ndep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\ndep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\ndep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\ndep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\ndep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\nbuild\t-buildmode=exe\nbuild\t-compiler=gc\nbuild\t-race=true\nbuild\t-trimpath=true\nbuild\tCGO_ENABLED=1\nbuild\tGOARCH=amd64\nbuild\tGOOS=linux\nbuild\tGOAMD64=v1\nbuild\tvcs=git\nbuild\tvcs.revision=3691792698a47939a6a01e63b80a3e61c2c993eb\nbuild\tvcs.time=2026-10-26T13:47:51Z\nbuild\tvcs.modified=false\n",
+          "sample_count": 21,
+          "baseline_at_seconds": 10.004150158,
+          "peak_at_seconds": 67.007106592,
+          "statm_rss_delta": 58310656,
+          "heap_alloc_delta": 604064,
+          "rollup_delta_bytes": {
+            "AnonHugePages": 8388608,
+            "Anonymous": 58245120,
+            "FilePmdMapped": 0,
+            "KSM": 0,
+            "LazyFree": 0,
+            "Locked": 0,
+            "Private_Clean": 12947456,
+            "Private_Dirty": 45363200,
+            "Private_Hugetlb": 0,
+            "Pss": 58310656,
+            "Pss_Anon": 58245120,
+            "Pss_Dirty": 45363200,
+            "Pss_File": 65536,
+            "Pss_Shmem": 0,
+            "Referenced": 58310656,
+            "Rss": 58310656,
+            "Shared_Clean": 0,
+            "Shared_Dirty": 0,
+            "Shared_Hugetlb": 0,
+            "ShmemPmdMapped": 0,
+            "Swap": 0,
+            "SwapPss": 0
+          },
+          "max_read_seconds": 0.001639376,
+          "scheduler_timing": {
+            "max_tick_lag_seconds": 0.007810728,
+            "max_measure_seconds": 0.008358712,
+            "max_checkpoint_seconds": 0.00639117,
+            "max_snapshot_seconds": 0.01287004,
+            "missed_at_seconds": 0,
+            "expected_slot": 0,
+            "observed_slot": 0,
+            "missed_slots": 0
+          }
+        },
+        "scope": "post-checkpoint asynchronous smaps; different reads, not atomic attribution"
+      },
+      "2": {
+        "status": "pilot_passed",
+        "error": null,
+        "audited_events": 719,
+        "baseline_at_seconds": 10.004136156,
+        "peak_at_seconds": 52.006266206,
+        "groups_delta_bytes": {
+          "file_mapping": {
+            "Size": 0,
+            "Rss": 0,
+            "Pss": 0,
+            "Anonymous": 0,
+            "Private_Dirty": 0,
+            "Swap": 0
+          },
+          "kernel_named": {
+            "Size": 0,
+            "Rss": 0,
+            "Pss": 0,
+            "Anonymous": 0,
+            "Private_Dirty": 0,
+            "Swap": 0
+          },
+          "other_anonymous": {
+            "Size": 15319040,
+            "Rss": 31096832,
+            "Pss": 31096832,
+            "Anonymous": 31096832,
+            "Private_Dirty": 31096832,
+            "Swap": 0
+          },
+          "race_metadata": {
+            "Size": 0,
+            "Rss": 1007616,
+            "Pss": 1007616,
+            "Anonymous": 1007616,
+            "Private_Dirty": 1007616,
+            "Swap": 0
+          },
+          "race_shadow": {
+            "Size": 0,
+            "Rss": 21463040,
+            "Pss": 21463040,
+            "Anonymous": 21463040,
+            "Private_Dirty": 21463040,
+            "Swap": 0
+          }
+        },
+        "smaps_rss_delta": 53567488,
+        "statm_rss_delta": 59543552,
+        "selected_checkpoint_age_seconds": [
+          0.007366445,
+          0.003169736
+        ],
+        "max_read_seconds": 0.002377762,
+        "samples": 18,
+        "rollup_audit": {
+          "report_sha256": "396eb4723d93c97b7c3cead7fd9389caff1779e2d2e075e30018c1daa4bc2980",
+          "probe_status": "passed",
+          "build_info": "go\tgo1.26.10\npath\tgithub.com/VortexWang/Tunveo/scripts/soak24h\nmod\tgithub.com/VortexWang/Tunveo\tv0.0.0-20261026134751-3691792698a4\t\ndep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\ndep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\ndep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\ndep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\ndep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\ndep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\nbuild\t-buildmode=exe\nbuild\t-compiler=gc\nbuild\t-race=true\nbuild\t-trimpath=true\nbuild\tCGO_ENABLED=1\nbuild\tGOARCH=amd64\nbuild\tGOOS=linux\nbuild\tGOAMD64=v1\nbuild\tvcs=git\nbuild\tvcs.revision=3691792698a47939a6a01e63b80a3e61c2c993eb\nbuild\tvcs.time=2026-10-26T13:47:51Z\nbuild\tvcs.modified=false\n",
+          "sample_count": 21,
+          "baseline_at_seconds": 10.004136156,
+          "peak_at_seconds": 52.006266206,
+          "statm_rss_delta": 59543552,
+          "heap_alloc_delta": 434896,
+          "rollup_delta_bytes": {
+            "AnonHugePages": -8388608,
+            "Anonymous": 59543552,
+            "FilePmdMapped": 0,
+            "KSM": 0,
+            "LazyFree": 0,
+            "Locked": 0,
+            "Private_Clean": 0,
+            "Private_Dirty": 59543552,
+            "Private_Hugetlb": 0,
+            "Pss": 59543552,
+            "Pss_Anon": 59543552,
+            "Pss_Dirty": 59543552,
+            "Pss_File": 0,
+            "Pss_Shmem": 0,
+            "Referenced": 59543552,
+            "Rss": 59543552,
+            "Shared_Clean": 0,
+            "Shared_Dirty": 0,
+            "Shared_Hugetlb": 0,
+            "ShmemPmdMapped": 0,
+            "Swap": 0,
+            "SwapPss": 0
+          },
+          "max_read_seconds": 0.001909039,
+          "scheduler_timing": {
+            "max_tick_lag_seconds": 0.007557028,
+            "max_measure_seconds": 0.008173042,
+            "max_checkpoint_seconds": 0.00512469,
+            "max_snapshot_seconds": 0.013086472,
+            "missed_at_seconds": 0,
+            "expected_slot": 0,
+            "observed_slot": 0,
+            "missed_slots": 0
+          }
+        },
+        "scope": "post-checkpoint asynchronous smaps; different reads, not atomic attribution"
+      },
+      "3": {
+        "status": "pilot_passed",
+        "error": null,
+        "audited_events": 719,
+        "baseline_at_seconds": 10.004360397,
+        "peak_at_seconds": 62.008648269,
+        "groups_delta_bytes": {
+          "file_mapping": {
+            "Size": 0,
+            "Rss": 65536,
+            "Pss": 64512,
+            "Anonymous": 0,
+            "Private_Dirty": 0,
+            "Swap": 0
+          },
+          "kernel_named": {
+            "Size": 0,
+            "Rss": 0,
+            "Pss": 0,
+            "Anonymous": 0,
+            "Private_Dirty": 0,
+            "Swap": 0
+          },
+          "other_anonymous": {
+            "Size": 17678336,
+            "Rss": 32636928,
+            "Pss": 32636928,
+            "Anonymous": 32636928,
+            "Private_Dirty": 32636928,
+            "Swap": 0
+          },
+          "race_metadata": {
+            "Size": 0,
+            "Rss": 1032192,
+            "Pss": 1032192,
+            "Anonymous": 1032192,
+            "Private_Dirty": 1032192,
+            "Swap": 0
+          },
+          "race_shadow": {
+            "Size": 0,
+            "Rss": 22441984,
+            "Pss": 22441984,
+            "Anonymous": 22441984,
+            "Private_Dirty": 22441984,
+            "Swap": 0
+          }
+        },
+        "smaps_rss_delta": 56176640,
+        "statm_rss_delta": 56766464,
+        "selected_checkpoint_age_seconds": [
+          0.004373629,
+          0.005968225
+        ],
+        "max_read_seconds": 0.001639133,
+        "samples": 18,
+        "rollup_audit": {
+          "report_sha256": "368035285cb5c24f45b0071386d866d7492a02ffe461fce7b7112ef32eaea8a0",
+          "probe_status": "passed",
+          "build_info": "go\tgo1.26.10\npath\tgithub.com/VortexWang/Tunveo/scripts/soak24h\nmod\tgithub.com/VortexWang/Tunveo\tv0.0.0-20261026134751-3691792698a4\t\ndep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\ndep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\ndep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\ndep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\ndep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\ndep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\nbuild\t-buildmode=exe\nbuild\t-compiler=gc\nbuild\t-race=true\nbuild\t-trimpath=true\nbuild\tCGO_ENABLED=1\nbuild\tGOARCH=amd64\nbuild\tGOOS=linux\nbuild\tGOAMD64=v1\nbuild\tvcs=git\nbuild\tvcs.revision=3691792698a47939a6a01e63b80a3e61c2c993eb\nbuild\tvcs.time=2026-10-26T13:47:51Z\nbuild\tvcs.modified=false\n",
+          "sample_count": 21,
+          "baseline_at_seconds": 10.004360397,
+          "peak_at_seconds": 62.008648269,
+          "statm_rss_delta": 56766464,
+          "heap_alloc_delta": 420936,
+          "rollup_delta_bytes": {
+            "AnonHugePages": 8388608,
+            "Anonymous": 56700928,
+            "FilePmdMapped": 0,
+            "KSM": 0,
+            "LazyFree": 0,
+            "Locked": 0,
+            "Private_Clean": 65536,
+            "Private_Dirty": 56700928,
+            "Private_Hugetlb": 0,
+            "Pss": 56765440,
+            "Pss_Anon": 56700928,
+            "Pss_Dirty": 56700928,
+            "Pss_File": 64512,
+            "Pss_Shmem": 0,
+            "Referenced": 56766464,
+            "Rss": 56766464,
+            "Shared_Clean": 0,
+            "Shared_Dirty": 0,
+            "Shared_Hugetlb": 0,
+            "ShmemPmdMapped": 0,
+            "Swap": 0,
+            "SwapPss": 0
+          },
+          "max_read_seconds": 0.001677493,
+          "scheduler_timing": {
+            "max_tick_lag_seconds": 0.007254484,
+            "max_measure_seconds": 0.008186433,
+            "max_checkpoint_seconds": 0.005276873,
+            "max_snapshot_seconds": 0.012473849,
+            "missed_at_seconds": 0,
+            "expected_slot": 0,
+            "observed_slot": 0,
+            "missed_slots": 0
+          }
+        },
+        "scope": "post-checkpoint asynchronous smaps; different reads, not atomic attribution"
+      }
+    }
+  }
+}

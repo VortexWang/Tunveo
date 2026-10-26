@@ -331,3 +331,5 @@ PR19源码19653e6常规CI19/19、Soak smoke9/9成功，TLS旧服务端配对分�
 ## 31. RSS映射所有权受控验证（2026-10-26）
 
 外部读取原负载进程smaps，保留逐checkpoint压缩原文，按已核对Go1.26.10/LLVM范围拆分shadow、metadata及未归属匿名页。32MiB触碰分配控制校验范围；普通/race各三轮原协议，保留资源失败。见 [映射诊断](soak-mapping-ownership.md)。
+
+规范源码149709d：CI映射专项2/2及常规19/19通过，六轮H2均在原预算内；独立原文复核确认race32MiB控制对应shadow+64MiB。实际race窗口shadow约+20–21MiB、metadata约+1MiB、Go标注堆驻留约+10–12MiB，仍有未命名匿名约+19–22MiB未归属。外部smaps与原statm相邻但不原子，不追溯解释历史超限。本地两控制因proc权限不可用保留失败，无本地pilot；Python37项通过，完整原文/指纹/脚本归档，预算与24小时门槛不变。

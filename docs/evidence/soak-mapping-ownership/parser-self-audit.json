@@ -1,0 +1,31 @@
+{
+  "scope": "real Python self smaps parser check only; not Go allocation control or traffic pilot",
+  "groups": {
+    "file_mapping": {
+      "Size": 34652160,
+      "Rss": 5832704,
+      "Pss": 4978688,
+      "Anonymous": 1290240,
+      "Private_Dirty": 1290240,
+      "Swap": 0
+    },
+    "other_anonymous": {
+      "Size": 4743168,
+      "Rss": 3383296,
+      "Pss": 3383296,
+      "Anonymous": 3383296,
+      "Private_Dirty": 3383296,
+      "Swap": 0
+    },
+    "kernel_named": {
+      "Size": 2293760,
+      "Rss": 2105344,
+      "Pss": 2101248,
+      "Anonymous": 2101248,
+      "Private_Dirty": 2101248,
+      "Swap": 0
+    }
+  },
+  "vmas": 55,
+  "raw_gzip_sha256": "b37b5d88777b4e89747722109c537538447590549901c485e51c09a8032207cf"
+}

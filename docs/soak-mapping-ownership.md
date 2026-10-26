@@ -28,4 +28,32 @@ python3 scripts/soak_mappings.py audit artifacts/trial-1
 
 PR21源码54295c8的Soak smoke40330759446已成功；TLS40330759296在本轮初次核对时仍运行中。上一轮常规19/19、映射前诊断3/3继续有效；不宣称完整兼容通过。
 
-规范源码、分配控制和六个新窗口结果后续补录。
+规范源码、控制和六窗口结果如下。
+
+
+## 规范源码实测与局限
+
+规范源码`149709df8cf90aba1bbc18524adbdc184bde2b6f`。CI检出`3691792698a47939a6a01e63b80a3e61c2c993eb`经实际git对象核对，树均为`8819f0f6d0a126881e2a144a965f0e315f184421`。生产引擎、原Go负载探针和verify_soak.py均与PR21相同，只有外部工具、独立控制、工作流及文档新增。
+
+本地普通和race两次控制在首次读取子进程smaps时均PermissionError，未完成控制、未启动本地负载。两次失败与空stderr原样归档，无权限提升、无改procfs权限，不能称本地分配控制通过。真实Python self/smaps格式检查解析55个VMA，只支持解析器验证。两个负载和控制二进制来自同一干净源码，指纹已保留。
+
+[映射专项CI40333753710](https://github.com/VortexWang/Tunveo/actions/runs/40333753710)普通/race两个任务均成功。该环境中普通32MiB持有分配的shadow增量0，race增量正好64MiB；预测shadow地址确实处于有驻留页的VMA。两个原始ZIP发布digest、CRC、逐文件哈希、实际运行库syso指纹、控制原文/预测地址以及六份pilot全部事件/日志/资源和映射原文，均下载后独立复核。
+
+六轮普通/race各3/3原预算通过，各600业务交换/719条含预热事件，合计3600/4314，无业务失败/丢弃/重试，正常回收。新增映射证据没有再现一次超限，不覆盖历史三次资源失败。普通/race在独立CI VM，不能按同机性能差分解释。
+
+| 构建/轮次 | 原statm RSS增长MiB | 外部smaps RSS增长MiB | shadow增长MiB | race metadata增长MiB | Go标注堆映射驻留增长MiB | 未命名匿名增长MiB |
+| --- | --- | --- | --- | --- | --- | --- |
+| ordinary 1 | 8.2969 | 8.2969 | 0 | 0 | 8.0000 | 0 |
+| ordinary 2 | 6.3008 | 6.3008 | 0 | 0 | 6.0000 | 0 |
+| ordinary 3 | 6.2969 | 6.3125 | 0 | 0 | 6.0000 | 0 |
+| race 1 | 55.6094 | 55.1953 | 19.9297 | 1.1367 | 11.5273 | 22.1563 |
+| race 2 | 56.7852 | 51.0859 | 20.4688 | 0.9609 | 10.2266 | 19.0664 |
+| race 3 | 54.1367 | 53.5742 | 21.4023 | 0.9844 | 10.5391 | 20.1719 |
+
+表内省略Go其他已命名运行时映射及少量文件页，完整分项和求和核对在named-mapping-audit.json。Go1.26.10 runtime/set_vma_name_linux.go使用“ Go: ”前缀，mheap.go为堆映射传递heap名称；真实原文有`[anon: Go: heap]`，据此单独统计驻留堆映射，**不是存活对象HeapAlloc**，也不能认定引擎泄漏。原宽分组other_anonymous含Go已命名匿名页，已在第二阶段原文复核中按名称继续拆开，没有把30–34MiB宽分组全部称为未归属。
+
+两点外部采集在checkpoint更新后约2.2–10.8ms启动，所有smaps读取最长约2.378ms。即使时间接近，race第二轮smaps与statm增量仍相差约5.70MiB；它们不是同一读取，不能用shadow/metadata/Go堆的外部数字对原statm做精确比例归因，更不能追溯断言历史超限全部同因。结论只限本轮：约20–21MiB位于race shadow，约1MiB位于race metadata，另有约19–22MiB未命名匿名驻留增长，后者分配所有权尚未查明。
+
+[常规CI40333753586](https://github.com/VortexWang/Tunveo/actions/runs/40333753586)19/19成功，Python37项通过；当前TLS仍运行中，未宣称全兼容通过。本轮仅新增映射工作流，没有重新执行当前源码八场景Soak矩阵；PR21原Soak smoke9/9已核对任务状态，不作为本轮新矩阵证据。
+
+原始CI ZIP、本地不可用控制、来源/二进制指纹、反汇编、全部复核脚本/结果与SHA256清单见 [evidence/soak-mapping-ownership](evidence/soak-mapping-ownership)。下一步需区分未命名匿名映射的分配者及增长是否有界，保持原64MiB预算；正式24小时仍pending，未启动、未合并、未发布。

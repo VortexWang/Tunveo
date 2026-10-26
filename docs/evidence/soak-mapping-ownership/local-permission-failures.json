@@ -1,0 +1,16 @@
+{
+  "source": "149709df8cf90aba1bbc18524adbdc184bde2b6f",
+  "ordinary": {
+    "exit_code": 1,
+    "error": "PermissionError: [Errno 13] Permission denied: '/proc/5/smaps'",
+    "artifacts": "control-ordinary",
+    "control_completed": false
+  },
+  "race": {
+    "exit_code": 1,
+    "error": "PermissionError: [Errno 13] Permission denied: '/proc/5/smaps'",
+    "artifacts": "control-race",
+    "control_completed": false
+  },
+  "scope": "Both first real controls stopped at baseline external smaps read. Child processes terminated/reaped by control finally. No local pilot launched. No ownership result; no privilege escalation or procfs permission changes."
+}
