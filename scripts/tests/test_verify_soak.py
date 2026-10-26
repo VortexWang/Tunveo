@@ -49,6 +49,22 @@ class SoakEvidenceTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 soak.validate_report(r, False)
 
+    def test_post_stop_diagnostics_cannot_qualify_as_formal(self):
+        for change in (lambda r:r['settings'].update(post_stop_observe_seconds=120),
+                       lambda r:r['settings'].update(diagnostic_go_scavenge=True),
+                       lambda r:r.update(post_stop_observation=[{'phase':'poststop_go_scavenge'}])):
+            r=fixture();change(r)
+            with self.assertRaises(ValueError):soak.validate_report(r,False)
+        import subprocess,sys
+        with tempfile.TemporaryDirectory() as folder:
+            output=Path(folder)/'never-created'
+            result=subprocess.run([sys.executable,str(Path(soak.__file__)),'--binary','/no-binary',
+                                   '--transport','3','--mode','1','--post-stop-observe-seconds','120',
+                                   '--artifacts',str(output)],capture_output=True,text=True)
+            self.assertEqual(result.returncode,2)
+            self.assertIn('require --pilot',result.stderr)
+            self.assertFalse(output.exists())
+
     def test_live_trend_and_return_leaks_rejected(self):
         for key, allowance in soak.TREND.items():
             r = fixture()

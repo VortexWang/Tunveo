@@ -34,6 +34,7 @@ def validate_build(info):
          'formal source checkout must be identifiable and unmodified')
 
 def validate_report(r, pilot):
+    need(pilot or (not r['settings'].get('post_stop_observe_seconds', 0) and not r['settings'].get('diagnostic_go_scavenge', False) and not r.get('post_stop_observation')), 'post-stop experiments cannot qualify as formal soak')
     need(r['schema_version'] == 1 and r['status'] == 'passed' and not r.get('error'), 'probe did not pass')
     s = r['settings']
     need(r['transport'] in range(4) and r['mode'] in (1, 2), 'invalid profile')
@@ -141,9 +142,17 @@ def main():
     p.add_argument('--workers', type=int, default=2)
     p.add_argument('--qps', type=int, default=10)
     p.add_argument('--goroutine-diagnostics', action='store_true', help='bounded local stack capture; diagnostic run, not canonical acceptance')
+    p.add_argument('--post-stop-observe-seconds', type=float, default=0)
+    p.add_argument('--diagnostic-go-scavenge', action='store_true')
     p.add_argument('--pilot', action='store_true', help='short run, categorically ineligible for the 24h gate')
     p.add_argument('--artifacts', type=Path, required=True)
     a = p.parse_args()
+    if not math.isfinite(a.post_stop_observe_seconds) or a.post_stop_observe_seconds < 0 or a.post_stop_observe_seconds > 600 or (0 < a.post_stop_observe_seconds < 5):
+        p.error('post-stop observation must be zero or5..600seconds')
+    if (a.post_stop_observe_seconds or a.diagnostic_go_scavenge) and not a.pilot:
+        p.error('post-stop experiments require --pilot')
+    if a.diagnostic_go_scavenge and not a.post_stop_observe_seconds:
+        p.error('Go scavenging requires a separate post-stop observation')
     if a.goroutine_diagnostics and not a.pilot:
         p.error('goroutine diagnostics require --pilot; formal acceptance remains uninstrumented')
     duration = a.duration_seconds if a.duration_seconds is not None else (60 if a.pilot else 86400)
@@ -181,6 +190,11 @@ def main():
     command = [str(binary), '--transport', str(a.transport), '--mode', str(a.mode), '--duration', f'{duration}s',
                '--warmup', f'{warmup}s', '--sample-interval', f'{interval}s', '--workers', str(a.workers),
                '--qps', str(a.qps), '--pool-min', str(a.pool_min), '--pool-max', str(a.pool_max), '--artifacts', str(a.artifacts / 'native')]
+    if a.post_stop_observe_seconds:
+        command += ['--post-stop-observe', f'{a.post_stop_observe_seconds}s']
+        summary['post_stop_observe_seconds'] = a.post_stop_observe_seconds
+    if a.diagnostic_go_scavenge:
+        command.append('--diagnostic-go-scavenge')
     if a.goroutine_diagnostics:
         command.append('--goroutine-diagnostics')
         summary['goroutine_diagnostics'] = True
@@ -194,7 +208,7 @@ def main():
                 proc = subprocess.Popen(command, env=env, stdout=stdout, stderr=stderr, start_new_session=True)
                 summary['native_pid'] = proc.pid
                 (a.artifacts / 'summary.json').write_text(json.dumps(summary, indent=2) + '\n')
-                summary['exit_code'] = proc.wait(timeout=duration + warmup + 120)
+                summary['exit_code'] = proc.wait(timeout=duration + warmup + a.post_stop_observe_seconds + 120)
                 summary['cleanup'] = {'reaped': True, 'forced_kill': False}
             except (subprocess.TimeoutExpired, KeyboardInterrupt, OSError) as exc:
                 summary.update(status='failed', qualifies_24h=False, error=type(exc).__name__, termination_reason=type(exc).__name__)

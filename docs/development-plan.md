@@ -339,3 +339,7 @@ PR19源码19653e6常规CI19/19、Soak smoke9/9成功，TLS旧服务端配对分�
 通过CI strace mmap调用栈关联完整VMA，保留缺栈/部分覆盖/混合来源为未归属；单独做无strace180秒窗口，原64MiB预算不变。Go构建不支持TSan后台profile_memory，未打开内存刷新或降低history。见 [分配来源诊断](soak-allocator-provenance.md)。
 
 规范修正源码73e8a40：初版strace合法空白解析失败保留，冻结同trace对照前失败/后通过，Python41项通过。调用栈完整VMA证据将一个race60秒窗口中20.3828MiB匿名增长关联到sanitizer mmap路径，更高层调用者未展开。无strace180秒race RSS+80.0625MiB超原64MiB预算，业务1800次仍成功；末30秒RSS中位数比初30秒高26.6875MiB，未关闭稳定性问题。新分配CI普通成功/race资源失败，完整四ZIP和各版本结果分别归档，24小时保持pending。
+
+## 33. 停载保留与Go堆回收对照（2026-10-27）
+
+原180秒负载后追加独立120秒GC采样观察，再单列显式Go回收；冻结原验收样本哈希，不修改预算或用停载低值改写失败。新增32MiB真实释放控制和正式模式拒绝守卫，见 [停载诊断](soak-post-stop-retention.md)。前轮常规CI最终19/19，TLS旧服务端三个分片失败，兼容及24小时门槛保持开放。
