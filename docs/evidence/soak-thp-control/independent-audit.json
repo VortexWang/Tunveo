@@ -1,0 +1,1275 @@
+{
+  "source_sha": "f988a599714e2acfbc8c904bc9b35a03ece2fd0c",
+  "checkout_sha": "c2381785769c02f5a786f51cfdcc65903c5ba9a3",
+  "cases": {
+    "thp-ordinary-default-first": {
+      "order": [
+        "default",
+        "disablethp"
+      ],
+      "driver_status": "pilot_passed",
+      "cases": [
+        {
+          "policy": "default",
+          "binary_sha256": "9e60cc9b5e6baf9288c00eb8fe09ba5f2a068d5762e8b5f53e372f7dc02c47e8",
+          "active_acceptance": "pilot_passed",
+          "active_error": null,
+          "active_rss_delta": 8982528,
+          "counts": {
+            "tcp": 1350,
+            "udp": 450,
+            "failed": 0,
+            "dropped": 0
+          },
+          "audited_events": 1919,
+          "selected": [
+            {
+              "phase": "poststop_gc",
+              "at_seconds": 0.001334887,
+              "statm_rss": 41009152,
+              "heap_alloc": 735816,
+              "go_heap": {
+                "rss": 6692864,
+                "anon_huge_pages": 4194304,
+                "all_no_hugepage": false,
+                "vmas": [
+                  {
+                    "start": 19096439619584,
+                    "end": 19096489951232,
+                    "rss": 6692864,
+                    "AnonHugePages": 4194304,
+                    "THPeligible": 1,
+                    "VmFlags": [
+                      "rd",
+                      "wr",
+                      "mr",
+                      "mw",
+                      "me",
+                      "ac",
+                      "sd"
+                    ]
+                  }
+                ]
+              },
+              "mapping_sha256": "c8caf881c34fe6a637453d8f6774f49aa5d236ce87a4531c45840b5d398d0825"
+            },
+            {
+              "phase": "poststop_gc",
+              "at_seconds": 120.001554998,
+              "statm_rss": 51384320,
+              "heap_alloc": 799936,
+              "go_heap": {
+                "rss": 34955264,
+                "anon_huge_pages": 12582912,
+                "all_no_hugepage": false,
+                "vmas": [
+                  {
+                    "start": 19096439619584,
+                    "end": 19096489951232,
+                    "rss": 34955264,
+                    "AnonHugePages": 12582912,
+                    "THPeligible": 1,
+                    "VmFlags": [
+                      "rd",
+                      "wr",
+                      "mr",
+                      "mw",
+                      "me",
+                      "ac",
+                      "sd"
+                    ]
+                  }
+                ]
+              },
+              "mapping_sha256": "1bc6d4eec597bbc9647a879d3f6bb237d9e37eeba45a743d551c852ca60ca514"
+            },
+            {
+              "phase": "poststop_go_scavenge",
+              "at_seconds": 120.01540784,
+              "statm_rss": 50642944,
+              "heap_alloc": 661728,
+              "go_heap": {
+                "rss": 34684928,
+                "anon_huge_pages": 12582912,
+                "all_no_hugepage": false,
+                "vmas": [
+                  {
+                    "start": 19096439619584,
+                    "end": 19096489951232,
+                    "rss": 34684928,
+                    "AnonHugePages": 12582912,
+                    "THPeligible": 1,
+                    "VmFlags": [
+                      "rd",
+                      "wr",
+                      "mr",
+                      "mw",
+                      "me",
+                      "ac",
+                      "sd"
+                    ]
+                  }
+                ]
+              },
+              "mapping_sha256": "a223d8a93fe5163c86ffd942ed7e19c41ea4d5c6caa003c208d3dc9deb3fa535"
+            }
+          ],
+          "all_heap_no_hugepage": false,
+          "max_heap_anon_huge_pages": 41943040,
+          "final_groups_rss": {
+            "file_mapping": 11517952,
+            "unnamed_anonymous": 2306048,
+            "kernel_named": 32768,
+            "[anon: Go: heap reservation]": 0,
+            "[anon: Go: heap]": 34684928,
+            "[anon: Go: immortal metadata]": 1867776,
+            "[anon: Go: gc bits]": 196608,
+            "[anon: Go: profiler hash buckets]": 438272,
+            "[anon: Go: allspans array]": 12288,
+            "[anon: Go: page alloc index]": 4096,
+            "[anon: Go: heap index]": 4096,
+            "[anon: Go: scavenge index]": 4096,
+            "[anon: Go: page summary]": 0,
+            "[anon: Go: page alloc]": 20480,
+            "[anon: Go: GC span queue]": 32768,
+            "[anon: Go: getrandom states]": 4096
+          },
+          "host_selected_policies": [
+            {
+              "enabled": {
+                "raw": "[always] madvise never\n"
+              },
+              "defrag": {
+                "raw": "always defer defer+madvise [madvise] never\n"
+              },
+              "khugepaged/max_ptes_none": {
+                "raw": "511\n"
+              }
+            },
+            {
+              "enabled": {
+                "raw": "[always] madvise never\n"
+              },
+              "defrag": {
+                "raw": "always defer defer+madvise [madvise] never\n"
+              },
+              "khugepaged/max_ptes_none": {
+                "raw": "511\n"
+              }
+            }
+          ],
+          "selected_host_policies_equal": true
+        },
+        {
+          "policy": "disablethp",
+          "binary_sha256": "9e60cc9b5e6baf9288c00eb8fe09ba5f2a068d5762e8b5f53e372f7dc02c47e8",
+          "active_acceptance": "pilot_passed",
+          "active_error": null,
+          "active_rss_delta": 17928192,
+          "counts": {
+            "tcp": 1350,
+            "udp": 450,
+            "failed": 0,
+            "dropped": 0
+          },
+          "audited_events": 1919,
+          "selected": [
+            {
+              "phase": "poststop_gc",
+              "at_seconds": 0.001566453,
+              "statm_rss": 40570880,
+              "heap_alloc": 730672,
+              "go_heap": {
+                "rss": 20434944,
+                "anon_huge_pages": 0,
+                "all_no_hugepage": true,
+                "vmas": [
+                  {
+                    "start": 10889168158720,
+                    "end": 10889218490368,
+                    "rss": 20434944,
+                    "AnonHugePages": 0,
+                    "THPeligible": 0,
+                    "VmFlags": [
+                      "rd",
+                      "wr",
+                      "mr",
+                      "mw",
+                      "me",
+                      "ac",
+                      "sd",
+                      "nh"
+                    ]
+                  }
+                ]
+              },
+              "mapping_sha256": "fdc66292a4f7981d39533b6fb279ac526c050ad8de3bf6df75ff1a743e0a0a71"
+            },
+            {
+              "phase": "poststop_gc",
+              "at_seconds": 120.00155918,
+              "statm_rss": 20291584,
+              "heap_alloc": 794856,
+              "go_heap": {
+                "rss": 3862528,
+                "anon_huge_pages": 0,
+                "all_no_hugepage": true,
+                "vmas": [
+                  {
+                    "start": 10889168158720,
+                    "end": 10889218490368,
+                    "rss": 3862528,
+                    "AnonHugePages": 0,
+                    "THPeligible": 0,
+                    "VmFlags": [
+                      "rd",
+                      "wr",
+                      "mr",
+                      "mw",
+                      "me",
+                      "ac",
+                      "sd",
+                      "nh"
+                    ]
+                  }
+                ]
+              },
+              "mapping_sha256": "f0a2ad1c89ef7150cdc90cc067682d5e6dc495a622fd4ceefc943c0a8e9aaaa7"
+            },
+            {
+              "phase": "poststop_go_scavenge",
+              "at_seconds": 120.020811421,
+              "statm_rss": 19378176,
+              "heap_alloc": 656488,
+              "go_heap": {
+                "rss": 3465216,
+                "anon_huge_pages": 0,
+                "all_no_hugepage": true,
+                "vmas": [
+                  {
+                    "start": 10889168158720,
+                    "end": 10889218490368,
+                    "rss": 3465216,
+                    "AnonHugePages": 0,
+                    "THPeligible": 0,
+                    "VmFlags": [
+                      "rd",
+                      "wr",
+                      "mr",
+                      "mw",
+                      "me",
+                      "ac",
+                      "sd",
+                      "nh"
+                    ]
+                  }
+                ]
+              },
+              "mapping_sha256": "12cf0865fb2c4485fe14479e1cb8473832df0c3fba8e586ba771261b9c63328c"
+            }
+          ],
+          "all_heap_no_hugepage": true,
+          "max_heap_anon_huge_pages": 0,
+          "final_groups_rss": {
+            "file_mapping": 11513856,
+            "unnamed_anonymous": 2293760,
+            "kernel_named": 32768,
+            "[anon: Go: heap reservation]": 0,
+            "[anon: Go: heap]": 3465216,
+            "[anon: Go: immortal metadata]": 1888256,
+            "[anon: Go: gc bits]": 196608,
+            "[anon: Go: profiler hash buckets]": 425984,
+            "[anon: Go: page alloc index]": 4096,
+            "[anon: Go: heap index]": 4096,
+            "[anon: Go: scavenge index]": 4096,
+            "[anon: Go: page summary]": 0,
+            "[anon: Go: page alloc]": 20480,
+            "[anon: Go: allspans array]": 12288,
+            "[anon: Go: GC span queue]": 32768,
+            "[anon: Go: getrandom states]": 4096
+          },
+          "host_selected_policies": [
+            {
+              "enabled": {
+                "raw": "[always] madvise never\n"
+              },
+              "defrag": {
+                "raw": "always defer defer+madvise [madvise] never\n"
+              },
+              "khugepaged/max_ptes_none": {
+                "raw": "511\n"
+              }
+            },
+            {
+              "enabled": {
+                "raw": "[always] madvise never\n"
+              },
+              "defrag": {
+                "raw": "always defer defer+madvise [madvise] never\n"
+              },
+              "khugepaged/max_ptes_none": {
+                "raw": "511\n"
+              }
+            }
+          ],
+          "selected_host_policies_equal": true
+        }
+      ],
+      "go_runtime_source_hashes": "08cc392d6b540338b966c9593691a700d8ac99ce4081f444f792b994e37b52c7  /opt/hostedtoolcache/go/1.26.10/x64/src/runtime/mem_linux.go\n1afbe8b480e8c6b6a4d54b0f88f07606077a061f653198fa150e5d2a45e2bc8a  /opt/hostedtoolcache/go/1.26.10/x64/src/runtime/extern.go\n"
+    },
+    "thp-race-default-first": {
+      "order": [
+        "default",
+        "disablethp"
+      ],
+      "driver_status": "failed",
+      "cases": [
+        {
+          "policy": "default",
+          "binary_sha256": "f3b643dcf0cbcdd0d17b14ec2995ea7fbe218dcdcf6a59eca31183408f600ac4",
+          "active_acceptance": "failed",
+          "active_error": "ValueError: active resource bound: rss",
+          "active_rss_delta": 76087296,
+          "counts": {
+            "tcp": 1350,
+            "udp": 450,
+            "failed": 0,
+            "dropped": 0
+          },
+          "audited_events": 1919,
+          "selected": [
+            {
+              "phase": "poststop_gc",
+              "at_seconds": 0.00307397,
+              "statm_rss": 187486208,
+              "heap_alloc": 733312,
+              "go_heap": {
+                "rss": 9707520,
+                "anon_huge_pages": 2097152,
+                "all_no_hugepage": false,
+                "vmas": [
+                  {
+                    "start": 824633720832,
+                    "end": 824692441088,
+                    "rss": 9707520,
+                    "AnonHugePages": 2097152,
+                    "THPeligible": 1,
+                    "VmFlags": [
+                      "rd",
+                      "wr",
+                      "mr",
+                      "mw",
+                      "me",
+                      "ac",
+                      "sd"
+                    ]
+                  }
+                ]
+              },
+              "mapping_sha256": "2fff3b30eb755cc4b2315e41dffc5ee3ad21cac9f5d5c218ca7197ca7158c04a"
+            },
+            {
+              "phase": "poststop_gc",
+              "at_seconds": 120.005809038,
+              "statm_rss": 168177664,
+              "heap_alloc": 829352,
+              "go_heap": {
+                "rss": 8536064,
+                "anon_huge_pages": 2097152,
+                "all_no_hugepage": false,
+                "vmas": [
+                  {
+                    "start": 824633720832,
+                    "end": 824692441088,
+                    "rss": 8536064,
+                    "AnonHugePages": 2097152,
+                    "THPeligible": 1,
+                    "VmFlags": [
+                      "rd",
+                      "wr",
+                      "mr",
+                      "mw",
+                      "me",
+                      "ac",
+                      "sd"
+                    ]
+                  }
+                ]
+              },
+              "mapping_sha256": "e1a18002d24bfe140153a25a061c41a7b1f000e2d2452f8e24a40b635f4d0072"
+            },
+            {
+              "phase": "poststop_go_scavenge",
+              "at_seconds": 120.042298525,
+              "statm_rss": 166862848,
+              "heap_alloc": 658424,
+              "go_heap": {
+                "rss": 7872512,
+                "anon_huge_pages": 2097152,
+                "all_no_hugepage": false,
+                "vmas": [
+                  {
+                    "start": 824633720832,
+                    "end": 824692441088,
+                    "rss": 7872512,
+                    "AnonHugePages": 2097152,
+                    "THPeligible": 1,
+                    "VmFlags": [
+                      "rd",
+                      "wr",
+                      "mr",
+                      "mw",
+                      "me",
+                      "ac",
+                      "sd"
+                    ]
+                  }
+                ]
+              },
+              "mapping_sha256": "de54b2ac41272d2fb6e0b434b1532ffd74f8d55c0f005cb18f16270f5a3fac8e"
+            }
+          ],
+          "all_heap_no_hugepage": false,
+          "max_heap_anon_huge_pages": 46137344,
+          "final_groups_rss": {
+            "file_mapping": 14696448,
+            "unnamed_anonymous": 81698816,
+            "kernel_named": 32768,
+            "[anon: Go: heap]": 7872512,
+            "[anon: Go: heap reservation]": 0,
+            "race_shadow": 56770560,
+            "race_metadata": 3440640,
+            "[anon: Go: immortal metadata]": 1982464,
+            "[anon: Go: profiler hash buckets]": 602112,
+            "[anon: Go: heap index]": 4096,
+            "[anon: Go: scavenge index]": 4096,
+            "[anon: Go: page summary]": 0,
+            "[anon: Go: page alloc]": 20480,
+            "[anon: Go: gc bits]": 196608,
+            "[anon: Go: page alloc index]": 4096,
+            "[anon: Go: GC span queue]": 32768,
+            "[anon: Go: allspans array]": 12288,
+            "[anon: Go: getrandom states]": 4096
+          },
+          "host_selected_policies": [
+            {
+              "enabled": {
+                "raw": "[always] madvise never\n"
+              },
+              "defrag": {
+                "raw": "always defer defer+madvise [madvise] never\n"
+              },
+              "khugepaged/max_ptes_none": {
+                "raw": "511\n"
+              }
+            },
+            {
+              "enabled": {
+                "raw": "[always] madvise never\n"
+              },
+              "defrag": {
+                "raw": "always defer defer+madvise [madvise] never\n"
+              },
+              "khugepaged/max_ptes_none": {
+                "raw": "511\n"
+              }
+            }
+          ],
+          "selected_host_policies_equal": true
+        },
+        {
+          "policy": "disablethp",
+          "binary_sha256": "f3b643dcf0cbcdd0d17b14ec2995ea7fbe218dcdcf6a59eca31183408f600ac4",
+          "active_acceptance": "failed",
+          "active_error": "ValueError: active resource bound: rss",
+          "active_rss_delta": 82870272,
+          "counts": {
+            "tcp": 1350,
+            "udp": 450,
+            "failed": 0,
+            "dropped": 0
+          },
+          "audited_events": 1919,
+          "selected": [
+            {
+              "phase": "poststop_gc",
+              "at_seconds": 0.002612219,
+              "statm_rss": 166313984,
+              "heap_alloc": 623280,
+              "go_heap": {
+                "rss": 4333568,
+                "anon_huge_pages": 0,
+                "all_no_hugepage": true,
+                "vmas": [
+                  {
+                    "start": 824633720832,
+                    "end": 824692441088,
+                    "rss": 4333568,
+                    "AnonHugePages": 0,
+                    "THPeligible": 0,
+                    "VmFlags": [
+                      "rd",
+                      "wr",
+                      "mr",
+                      "mw",
+                      "me",
+                      "ac",
+                      "sd",
+                      "nh"
+                    ]
+                  }
+                ]
+              },
+              "mapping_sha256": "54559428416975c519544fbf5321861e78ab5f59fb105c7f39191b26130b68e0"
+            },
+            {
+              "phase": "poststop_gc",
+              "at_seconds": 120.00632241,
+              "statm_rss": 163758080,
+              "heap_alloc": 666296,
+              "go_heap": {
+                "rss": 4038656,
+                "anon_huge_pages": 0,
+                "all_no_hugepage": true,
+                "vmas": [
+                  {
+                    "start": 824633720832,
+                    "end": 824692441088,
+                    "rss": 4038656,
+                    "AnonHugePages": 0,
+                    "THPeligible": 0,
+                    "VmFlags": [
+                      "rd",
+                      "wr",
+                      "mr",
+                      "mw",
+                      "me",
+                      "ac",
+                      "sd",
+                      "nh"
+                    ]
+                  }
+                ]
+              },
+              "mapping_sha256": "04ee42dfb137fa8be462ac4141a8e41295f1033af3aaba314600fde532cb4c12"
+            },
+            {
+              "phase": "poststop_go_scavenge",
+              "at_seconds": 120.038697065,
+              "statm_rss": 162455552,
+              "heap_alloc": 659160,
+              "go_heap": {
+                "rss": 3284992,
+                "anon_huge_pages": 0,
+                "all_no_hugepage": true,
+                "vmas": [
+                  {
+                    "start": 824633720832,
+                    "end": 824692441088,
+                    "rss": 3284992,
+                    "AnonHugePages": 0,
+                    "THPeligible": 0,
+                    "VmFlags": [
+                      "rd",
+                      "wr",
+                      "mr",
+                      "mw",
+                      "me",
+                      "ac",
+                      "sd",
+                      "nh"
+                    ]
+                  }
+                ]
+              },
+              "mapping_sha256": "69231fc17c0f151ba3b414b1c06878c34566db7baf8b76c2a3ab89156c93cfa9"
+            }
+          ],
+          "all_heap_no_hugepage": true,
+          "max_heap_anon_huge_pages": 0,
+          "final_groups_rss": {
+            "file_mapping": 14696448,
+            "unnamed_anonymous": 83779584,
+            "kernel_named": 40960,
+            "[anon: Go: heap]": 3284992,
+            "[anon: Go: heap reservation]": 0,
+            "race_shadow": 55177216,
+            "race_metadata": 3137536,
+            "[anon: Go: immortal metadata]": 2027520,
+            "[anon: Go: profiler hash buckets]": 565248,
+            "[anon: Go: heap index]": 4096,
+            "[anon: Go: scavenge index]": 4096,
+            "[anon: Go: page summary]": 0,
+            "[anon: Go: page alloc]": 20480,
+            "[anon: Go: gc bits]": 196608,
+            "[anon: Go: page alloc index]": 4096,
+            "[anon: Go: allspans array]": 12288,
+            "[anon: Go: GC span queue]": 32768,
+            "[anon: Go: getrandom states]": 4096
+          },
+          "host_selected_policies": [
+            {
+              "enabled": {
+                "raw": "[always] madvise never\n"
+              },
+              "defrag": {
+                "raw": "always defer defer+madvise [madvise] never\n"
+              },
+              "khugepaged/max_ptes_none": {
+                "raw": "511\n"
+              }
+            },
+            {
+              "enabled": {
+                "raw": "[always] madvise never\n"
+              },
+              "defrag": {
+                "raw": "always defer defer+madvise [madvise] never\n"
+              },
+              "khugepaged/max_ptes_none": {
+                "raw": "511\n"
+              }
+            }
+          ],
+          "selected_host_policies_equal": true
+        }
+      ],
+      "go_runtime_source_hashes": "08cc392d6b540338b966c9593691a700d8ac99ce4081f444f792b994e37b52c7  /opt/hostedtoolcache/go/1.26.10/x64/src/runtime/mem_linux.go\n1afbe8b480e8c6b6a4d54b0f88f07606077a061f653198fa150e5d2a45e2bc8a  /opt/hostedtoolcache/go/1.26.10/x64/src/runtime/extern.go\n"
+    },
+    "thp-ordinary-disablethp-first": {
+      "order": [
+        "disablethp",
+        "default"
+      ],
+      "driver_status": "pilot_passed",
+      "cases": [
+        {
+          "policy": "disablethp",
+          "binary_sha256": "9e60cc9b5e6baf9288c00eb8fe09ba5f2a068d5762e8b5f53e372f7dc02c47e8",
+          "active_acceptance": "pilot_passed",
+          "active_error": null,
+          "active_rss_delta": 16171008,
+          "counts": {
+            "tcp": 1350,
+            "udp": 450,
+            "failed": 0,
+            "dropped": 0
+          },
+          "audited_events": 1919,
+          "selected": [
+            {
+              "phase": "poststop_gc",
+              "at_seconds": 0.001422407,
+              "statm_rss": 37879808,
+              "heap_alloc": 832336,
+              "go_heap": {
+                "rss": 6983680,
+                "anon_huge_pages": 0,
+                "all_no_hugepage": true,
+                "vmas": [
+                  {
+                    "start": 14763283185664,
+                    "end": 14763333517312,
+                    "rss": 6983680,
+                    "AnonHugePages": 0,
+                    "THPeligible": 0,
+                    "VmFlags": [
+                      "rd",
+                      "wr",
+                      "mr",
+                      "mw",
+                      "me",
+                      "ac",
+                      "sd",
+                      "nh"
+                    ]
+                  }
+                ]
+              },
+              "mapping_sha256": "095850f1e8a1862ecb3f799f32f2a692270f22b9ee7c7b6e5a5932429b800346"
+            },
+            {
+              "phase": "poststop_gc",
+              "at_seconds": 120.001219508,
+              "statm_rss": 20168704,
+              "heap_alloc": 792104,
+              "go_heap": {
+                "rss": 3772416,
+                "anon_huge_pages": 0,
+                "all_no_hugepage": true,
+                "vmas": [
+                  {
+                    "start": 14763283185664,
+                    "end": 14763333517312,
+                    "rss": 3772416,
+                    "AnonHugePages": 0,
+                    "THPeligible": 0,
+                    "VmFlags": [
+                      "rd",
+                      "wr",
+                      "mr",
+                      "mw",
+                      "me",
+                      "ac",
+                      "sd",
+                      "nh"
+                    ]
+                  }
+                ]
+              },
+              "mapping_sha256": "26595f4cd92763ae32c87dd716c2f81687db9f4f23197ebfb9a58c3eb2b3a312"
+            },
+            {
+              "phase": "poststop_go_scavenge",
+              "at_seconds": 120.020336867,
+              "statm_rss": 19390464,
+              "heap_alloc": 653736,
+              "go_heap": {
+                "rss": 3448832,
+                "anon_huge_pages": 0,
+                "all_no_hugepage": true,
+                "vmas": [
+                  {
+                    "start": 14763283185664,
+                    "end": 14763333517312,
+                    "rss": 3448832,
+                    "AnonHugePages": 0,
+                    "THPeligible": 0,
+                    "VmFlags": [
+                      "rd",
+                      "wr",
+                      "mr",
+                      "mw",
+                      "me",
+                      "ac",
+                      "sd",
+                      "nh"
+                    ]
+                  }
+                ]
+              },
+              "mapping_sha256": "2fae2668b3fa89c4f997c6e5327e16e4448f36bf7bd5bec8609b72d167a2604d"
+            }
+          ],
+          "all_heap_no_hugepage": true,
+          "max_heap_anon_huge_pages": 0,
+          "final_groups_rss": {
+            "file_mapping": 11517952,
+            "unnamed_anonymous": 2289664,
+            "kernel_named": 36864,
+            "[anon: Go: heap reservation]": 0,
+            "[anon: Go: heap]": 3448832,
+            "[anon: Go: immortal metadata]": 1855488,
+            "[anon: Go: profiler hash buckets]": 434176,
+            "[anon: Go: gc bits]": 196608,
+            "[anon: Go: allspans array]": 12288,
+            "[anon: Go: heap index]": 4096,
+            "[anon: Go: scavenge index]": 4096,
+            "[anon: Go: page summary]": 0,
+            "[anon: Go: page alloc]": 20480,
+            "[anon: Go: page alloc index]": 4096,
+            "[anon: Go: GC span queue]": 32768,
+            "[anon: Go: getrandom states]": 4096
+          },
+          "host_selected_policies": [
+            {
+              "enabled": {
+                "raw": "[always] madvise never\n"
+              },
+              "defrag": {
+                "raw": "always defer defer+madvise [madvise] never\n"
+              },
+              "khugepaged/max_ptes_none": {
+                "raw": "511\n"
+              }
+            },
+            {
+              "enabled": {
+                "raw": "[always] madvise never\n"
+              },
+              "defrag": {
+                "raw": "always defer defer+madvise [madvise] never\n"
+              },
+              "khugepaged/max_ptes_none": {
+                "raw": "511\n"
+              }
+            }
+          ],
+          "selected_host_policies_equal": true
+        },
+        {
+          "policy": "default",
+          "binary_sha256": "9e60cc9b5e6baf9288c00eb8fe09ba5f2a068d5762e8b5f53e372f7dc02c47e8",
+          "active_acceptance": "pilot_passed",
+          "active_error": null,
+          "active_rss_delta": 9076736,
+          "counts": {
+            "tcp": 1350,
+            "udp": 450,
+            "failed": 0,
+            "dropped": 0
+          },
+          "audited_events": 1919,
+          "selected": [
+            {
+              "phase": "poststop_gc",
+              "at_seconds": 0.001555326,
+              "statm_rss": 28196864,
+              "heap_alloc": 733768,
+              "go_heap": {
+                "rss": 6246400,
+                "anon_huge_pages": 2097152,
+                "all_no_hugepage": false,
+                "vmas": [
+                  {
+                    "start": 62019646521344,
+                    "end": 62019692658688,
+                    "rss": 6246400,
+                    "AnonHugePages": 2097152,
+                    "THPeligible": 1,
+                    "VmFlags": [
+                      "rd",
+                      "wr",
+                      "mr",
+                      "mw",
+                      "me",
+                      "ac",
+                      "sd"
+                    ]
+                  }
+                ]
+              },
+              "mapping_sha256": "2120db203af08c5c5e2374b2fda1e538fd63abcbc7ec8654949b4488fd134162"
+            },
+            {
+              "phase": "poststop_gc",
+              "at_seconds": 120.001495277,
+              "statm_rss": 21651456,
+              "heap_alloc": 798072,
+              "go_heap": {
+                "rss": 5201920,
+                "anon_huge_pages": 0,
+                "all_no_hugepage": false,
+                "vmas": [
+                  {
+                    "start": 62019646521344,
+                    "end": 62019692658688,
+                    "rss": 5201920,
+                    "AnonHugePages": 0,
+                    "THPeligible": 1,
+                    "VmFlags": [
+                      "rd",
+                      "wr",
+                      "mr",
+                      "mw",
+                      "me",
+                      "ac",
+                      "sd"
+                    ]
+                  }
+                ]
+              },
+              "mapping_sha256": "ee620558aeeb73163cb46b9c618f96fe7c4ac91b4f1d95e1342370343ac742ea"
+            },
+            {
+              "phase": "poststop_go_scavenge",
+              "at_seconds": 120.020636498,
+              "statm_rss": 20926464,
+              "heap_alloc": 659704,
+              "go_heap": {
+                "rss": 4837376,
+                "anon_huge_pages": 0,
+                "all_no_hugepage": false,
+                "vmas": [
+                  {
+                    "start": 62019646521344,
+                    "end": 62019692658688,
+                    "rss": 4837376,
+                    "AnonHugePages": 0,
+                    "THPeligible": 1,
+                    "VmFlags": [
+                      "rd",
+                      "wr",
+                      "mr",
+                      "mw",
+                      "me",
+                      "ac",
+                      "sd"
+                    ]
+                  }
+                ]
+              },
+              "mapping_sha256": "99706cf5c62d87f0ab871fc3e382e9ebc92002ef14321daeaf04d38bf8eca16c"
+            }
+          ],
+          "all_heap_no_hugepage": false,
+          "max_heap_anon_huge_pages": 37748736,
+          "final_groups_rss": {
+            "file_mapping": 11517952,
+            "unnamed_anonymous": 2293760,
+            "kernel_named": 40960,
+            "[anon: Go: heap reservation]": 0,
+            "[anon: Go: heap]": 4837376,
+            "[anon: Go: immortal metadata]": 1867776,
+            "[anon: Go: profiler hash buckets]": 466944,
+            "[anon: Go: page alloc index]": 4096,
+            "[anon: Go: heap index]": 4096,
+            "[anon: Go: scavenge index]": 4096,
+            "[anon: Go: page summary]": 0,
+            "[anon: Go: page alloc]": 20480,
+            "[anon: Go: gc bits]": 196608,
+            "[anon: Go: allspans array]": 12288,
+            "[anon: Go: GC span queue]": 32768,
+            "[anon: Go: getrandom states]": 4096
+          },
+          "host_selected_policies": [
+            {
+              "enabled": {
+                "raw": "[always] madvise never\n"
+              },
+              "defrag": {
+                "raw": "always defer defer+madvise [madvise] never\n"
+              },
+              "khugepaged/max_ptes_none": {
+                "raw": "511\n"
+              }
+            },
+            {
+              "enabled": {
+                "raw": "[always] madvise never\n"
+              },
+              "defrag": {
+                "raw": "always defer defer+madvise [madvise] never\n"
+              },
+              "khugepaged/max_ptes_none": {
+                "raw": "511\n"
+              }
+            }
+          ],
+          "selected_host_policies_equal": true
+        }
+      ],
+      "go_runtime_source_hashes": "08cc392d6b540338b966c9593691a700d8ac99ce4081f444f792b994e37b52c7  /opt/hostedtoolcache/go/1.26.10/x64/src/runtime/mem_linux.go\n1afbe8b480e8c6b6a4d54b0f88f07606077a061f653198fa150e5d2a45e2bc8a  /opt/hostedtoolcache/go/1.26.10/x64/src/runtime/extern.go\n"
+    },
+    "thp-race-disablethp-first": {
+      "order": [
+        "disablethp",
+        "default"
+      ],
+      "driver_status": "failed",
+      "cases": [
+        {
+          "policy": "disablethp",
+          "binary_sha256": "f3b643dcf0cbcdd0d17b14ec2995ea7fbe218dcdcf6a59eca31183408f600ac4",
+          "active_acceptance": "failed",
+          "active_error": "ValueError: active resource bound: rss",
+          "active_rss_delta": 87617536,
+          "counts": {
+            "tcp": 1350,
+            "udp": 450,
+            "failed": 0,
+            "dropped": 0
+          },
+          "audited_events": 1919,
+          "selected": [
+            {
+              "phase": "poststop_gc",
+              "at_seconds": 0.004259423,
+              "statm_rss": 167788544,
+              "heap_alloc": 621048,
+              "go_heap": {
+                "rss": 4829184,
+                "anon_huge_pages": 0,
+                "all_no_hugepage": true,
+                "vmas": [
+                  {
+                    "start": 824633720832,
+                    "end": 824692441088,
+                    "rss": 4829184,
+                    "AnonHugePages": 0,
+                    "THPeligible": 0,
+                    "VmFlags": [
+                      "rd",
+                      "wr",
+                      "mr",
+                      "mw",
+                      "me",
+                      "ac",
+                      "sd",
+                      "nh"
+                    ]
+                  }
+                ]
+              },
+              "mapping_sha256": "c8b3c9fe28939ba40e1fce311b8769264916f8a6b9e9356bd080ee443fee2391"
+            },
+            {
+              "phase": "poststop_gc",
+              "at_seconds": 120.008030976,
+              "statm_rss": 166072320,
+              "heap_alloc": 826728,
+              "go_heap": {
+                "rss": 5181440,
+                "anon_huge_pages": 0,
+                "all_no_hugepage": true,
+                "vmas": [
+                  {
+                    "start": 824633720832,
+                    "end": 824692441088,
+                    "rss": 5181440,
+                    "AnonHugePages": 0,
+                    "THPeligible": 0,
+                    "VmFlags": [
+                      "rd",
+                      "wr",
+                      "mr",
+                      "mw",
+                      "me",
+                      "ac",
+                      "sd",
+                      "nh"
+                    ]
+                  }
+                ]
+              },
+              "mapping_sha256": "476c3774d2e9538dab7f55fe57d24bfd618428f9fd1e22d9257049d1c54608f1"
+            },
+            {
+              "phase": "poststop_go_scavenge",
+              "at_seconds": 120.056464811,
+              "statm_rss": 164962304,
+              "heap_alloc": 655640,
+              "go_heap": {
+                "rss": 4620288,
+                "anon_huge_pages": 0,
+                "all_no_hugepage": true,
+                "vmas": [
+                  {
+                    "start": 824633720832,
+                    "end": 824692441088,
+                    "rss": 4620288,
+                    "AnonHugePages": 0,
+                    "THPeligible": 0,
+                    "VmFlags": [
+                      "rd",
+                      "wr",
+                      "mr",
+                      "mw",
+                      "me",
+                      "ac",
+                      "sd",
+                      "nh"
+                    ]
+                  }
+                ]
+              },
+              "mapping_sha256": "bf295cd9dda80bf2417999cf90ead2e91da53e635e1b1787810aa122636e0c8f"
+            }
+          ],
+          "all_heap_no_hugepage": true,
+          "max_heap_anon_huge_pages": 0,
+          "final_groups_rss": {
+            "file_mapping": 14565376,
+            "unnamed_anonymous": 84201472,
+            "kernel_named": 36864,
+            "[anon: Go: heap]": 4620288,
+            "[anon: Go: heap reservation]": 0,
+            "race_shadow": 55427072,
+            "race_metadata": 3592192,
+            "[anon: Go: immortal metadata]": 2007040,
+            "[anon: Go: profiler hash buckets]": 573440,
+            "[anon: Go: heap index]": 4096,
+            "[anon: Go: scavenge index]": 4096,
+            "[anon: Go: page summary]": 0,
+            "[anon: Go: page alloc]": 20480,
+            "[anon: Go: GC span queue]": 32768,
+            "[anon: Go: gc bits]": 196608,
+            "[anon: Go: page alloc index]": 4096,
+            "[anon: Go: allspans array]": 12288,
+            "[anon: Go: getrandom states]": 4096
+          },
+          "host_selected_policies": [
+            {
+              "enabled": {
+                "raw": "[always] madvise never\n"
+              },
+              "defrag": {
+                "raw": "always defer defer+madvise [madvise] never\n"
+              },
+              "khugepaged/max_ptes_none": {
+                "raw": "511\n"
+              }
+            },
+            {
+              "enabled": {
+                "raw": "[always] madvise never\n"
+              },
+              "defrag": {
+                "raw": "always defer defer+madvise [madvise] never\n"
+              },
+              "khugepaged/max_ptes_none": {
+                "raw": "511\n"
+              }
+            }
+          ],
+          "selected_host_policies_equal": true
+        },
+        {
+          "policy": "default",
+          "binary_sha256": "f3b643dcf0cbcdd0d17b14ec2995ea7fbe218dcdcf6a59eca31183408f600ac4",
+          "active_acceptance": "failed",
+          "active_error": "ValueError: active resource bound: rss",
+          "active_rss_delta": 74772480,
+          "counts": {
+            "tcp": 1350,
+            "udp": 450,
+            "failed": 0,
+            "dropped": 0
+          },
+          "audited_events": 1919,
+          "selected": [
+            {
+              "phase": "poststop_gc",
+              "at_seconds": 0.005180051,
+              "statm_rss": 196853760,
+              "heap_alloc": 650792,
+              "go_heap": {
+                "rss": 6459392,
+                "anon_huge_pages": 0,
+                "all_no_hugepage": false,
+                "vmas": [
+                  {
+                    "start": 824633720832,
+                    "end": 824692441088,
+                    "rss": 6459392,
+                    "AnonHugePages": 0,
+                    "THPeligible": 1,
+                    "VmFlags": [
+                      "rd",
+                      "wr",
+                      "mr",
+                      "mw",
+                      "me",
+                      "ac",
+                      "sd"
+                    ]
+                  }
+                ]
+              },
+              "mapping_sha256": "f0732d1e193cc79e0ada5af4d5eff7ae1ef84ac0b72e5e7505a8068933c5d748"
+            },
+            {
+              "phase": "poststop_gc",
+              "at_seconds": 120.007592394,
+              "statm_rss": 163446784,
+              "heap_alloc": 825464,
+              "go_heap": {
+                "rss": 6438912,
+                "anon_huge_pages": 0,
+                "all_no_hugepage": false,
+                "vmas": [
+                  {
+                    "start": 824633720832,
+                    "end": 824692441088,
+                    "rss": 6438912,
+                    "AnonHugePages": 0,
+                    "THPeligible": 1,
+                    "VmFlags": [
+                      "rd",
+                      "wr",
+                      "mr",
+                      "mw",
+                      "me",
+                      "ac",
+                      "sd"
+                    ]
+                  }
+                ]
+              },
+              "mapping_sha256": "d2e0fe80f7ce5307f2c039701d3ea4c68e698827f1346e607fbc71926dd24114"
+            },
+            {
+              "phase": "poststop_go_scavenge",
+              "at_seconds": 120.044294394,
+              "statm_rss": 162373632,
+              "heap_alloc": 654504,
+              "go_heap": {
+                "rss": 6094848,
+                "anon_huge_pages": 0,
+                "all_no_hugepage": false,
+                "vmas": [
+                  {
+                    "start": 824633720832,
+                    "end": 824692441088,
+                    "rss": 6094848,
+                    "AnonHugePages": 0,
+                    "THPeligible": 1,
+                    "VmFlags": [
+                      "rd",
+                      "wr",
+                      "mr",
+                      "mw",
+                      "me",
+                      "ac",
+                      "sd"
+                    ]
+                  }
+                ]
+              },
+              "mapping_sha256": "99c64d3af19fc08b3f8a38918f167f957527f8552a967a41a2a81463a8ee0f61"
+            }
+          ],
+          "all_heap_no_hugepage": false,
+          "max_heap_anon_huge_pages": 52428800,
+          "final_groups_rss": {
+            "file_mapping": 14565376,
+            "unnamed_anonymous": 83185664,
+            "kernel_named": 36864,
+            "[anon: Go: heap]": 6094848,
+            "[anon: Go: heap reservation]": 0,
+            "race_shadow": 52744192,
+            "race_metadata": 3469312,
+            "[anon: Go: immortal metadata]": 1986560,
+            "[anon: Go: profiler hash buckets]": 569344,
+            "[anon: Go: heap index]": 4096,
+            "[anon: Go: scavenge index]": 4096,
+            "[anon: Go: page summary]": 0,
+            "[anon: Go: page alloc]": 20480,
+            "[anon: Go: gc bits]": 196608,
+            "[anon: Go: GC span queue]": 32768,
+            "[anon: Go: page alloc index]": 4096,
+            "[anon: Go: allspans array]": 12288,
+            "[anon: Go: getrandom states]": 4096
+          },
+          "host_selected_policies": [
+            {
+              "enabled": {
+                "raw": "[always] madvise never\n"
+              },
+              "defrag": {
+                "raw": "always defer defer+madvise [madvise] never\n"
+              },
+              "khugepaged/max_ptes_none": {
+                "raw": "511\n"
+              }
+            },
+            {
+              "enabled": {
+                "raw": "[always] madvise never\n"
+              },
+              "defrag": {
+                "raw": "always defer defer+madvise [madvise] never\n"
+              },
+              "khugepaged/max_ptes_none": {
+                "raw": "511\n"
+              }
+            }
+          ],
+          "selected_host_policies_equal": true
+        }
+      ],
+      "go_runtime_source_hashes": "08cc392d6b540338b966c9593691a700d8ac99ce4081f444f792b994e37b52c7  /opt/hostedtoolcache/go/1.26.10/x64/src/runtime/mem_linux.go\n1afbe8b480e8c6b6a4d54b0f88f07606077a061f653198fa150e5d2a45e2bc8a  /opt/hostedtoolcache/go/1.26.10/x64/src/runtime/extern.go\n"
+    }
+  },
+  "scope": "8 one-attempt pilots; same binary within each pair, separate processes; selected policy snapshots do not establish all host state constant; original resource failures retained"
+}
