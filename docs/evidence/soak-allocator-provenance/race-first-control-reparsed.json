@@ -1,0 +1,489 @@
+{
+  "trace_sha256": "e79e593a469d1202ef90ed2756bbcfabfa81d4a99aacecad0cea4993b454d02e",
+  "native_pid": 4617,
+  "native_mmaps": 80,
+  "native_mmaps_with_stacks": 80,
+  "mmap_owners": {
+    "race_runtime_other": 31,
+    "unresolved": 49
+  },
+  "rows": [
+    {
+      "at_seconds": null,
+      "phase": null,
+      "groups": {
+        "file_mapping": 4202496,
+        "unresolved": 14708736,
+        "kernel_named": 36864,
+        "[anon: Go: heap]": 2097152,
+        "[anon: Go: heap reservation]": 0,
+        "race_shadow": 1040384,
+        "race_metadata": 32768,
+        "race_runtime_other": 3301376,
+        "[anon: Go: profiler hash buckets]": 4096,
+        "[anon: Go: heap index]": 4096,
+        "[anon: Go: scavenge index]": 4096,
+        "[anon: Go: page summary]": 0,
+        "[anon: Go: page alloc]": 20480,
+        "[anon: Go: gc bits]": 8192,
+        "[anon: Go: immortal metadata]": 356352,
+        "[anon: Go: page alloc index]": 4096,
+        "[anon: Go: allspans array]": 4096
+      },
+      "unnamed_vmas": [
+        {
+          "start": "0x663000",
+          "end": "0x15d0000",
+          "rss": 14581760,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd6c000000",
+          "end": "0x7fcd6c021000",
+          "rss": 4096,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd6c021000",
+          "end": "0x7fcd70000000",
+          "rss": 0,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd70000000",
+          "end": "0x7fcd70021000",
+          "rss": 4096,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd70021000",
+          "end": "0x7fcd74000000",
+          "rss": 0,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd74000000",
+          "end": "0x7fcd74021000",
+          "rss": 4096,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd74021000",
+          "end": "0x7fcd78000000",
+          "rss": 0,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd78000000",
+          "end": "0x7fcd78021000",
+          "rss": 4096,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd78021000",
+          "end": "0x7fcd7c000000",
+          "rss": 0,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd7cffd000",
+          "end": "0x7fcd7cffe000",
+          "rss": 0,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd7cffe000",
+          "end": "0x7fcd7dffe000",
+          "rss": 8192,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd7dffe000",
+          "end": "0x7fcd7dfff000",
+          "rss": 0,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd7dfff000",
+          "end": "0x7fcd7efff000",
+          "rss": 8192,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd7efff000",
+          "end": "0x7fcd7f000000",
+          "rss": 0,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd7f000000",
+          "end": "0x7fcd80000000",
+          "rss": 8192,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd80000000",
+          "end": "0x7fcd80021000",
+          "rss": 4096,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd80021000",
+          "end": "0x7fcd84000000",
+          "rss": 0,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd845fe000",
+          "end": "0x7fcd845ff000",
+          "rss": 0,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd845ff000",
+          "end": "0x7fcd855ff000",
+          "rss": 8192,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd855ff000",
+          "end": "0x7fcd85600000",
+          "rss": 0,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd85600000",
+          "end": "0x7fcd86600000",
+          "rss": 16384,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd86600000",
+          "end": "0x7fcd86e00000",
+          "rss": 2097152,
+          "owner": "race_runtime_other"
+        },
+        {
+          "start": "0x7fcdcd800000",
+          "end": "0x7fcdcd900000",
+          "rss": 4096,
+          "owner": "race_runtime_other"
+        },
+        {
+          "start": "0x7fcdcd9e0000",
+          "end": "0x7fcdcdb00000",
+          "rss": 8192,
+          "owner": "race_runtime_other"
+        },
+        {
+          "start": "0x7fcdcdb0a000",
+          "end": "0x7fcdcdb4a000",
+          "rss": 8192,
+          "owner": "race_runtime_other"
+        },
+        {
+          "start": "0x7fcdcdb8a000",
+          "end": "0x7fcdcdf00000",
+          "rss": 573440,
+          "owner": "race_runtime_other"
+        },
+        {
+          "start": "0x7fcdce000000",
+          "end": "0x7fcdce100000",
+          "rss": 286720,
+          "owner": "race_runtime_other"
+        },
+        {
+          "start": "0x7fcdce14e000",
+          "end": "0x7fcdce16e000",
+          "rss": 45056,
+          "owner": "race_runtime_other"
+        },
+        {
+          "start": "0x7fcdce1ae000",
+          "end": "0x7fcdce1ce000",
+          "rss": 4096,
+          "owner": "race_runtime_other"
+        },
+        {
+          "start": "0x7fcdce200000",
+          "end": "0x7fcdce300000",
+          "rss": 274432,
+          "owner": "race_runtime_other"
+        },
+        {
+          "start": "0x7fcdce606000",
+          "end": "0x7fcdce613000",
+          "rss": 20480,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcdce682000",
+          "end": "0x7fcdce695000",
+          "rss": 16384,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcdce69a000",
+          "end": "0x7fcdce6a1000",
+          "rss": 20480,
+          "owner": "unresolved"
+        }
+      ]
+    },
+    {
+      "at_seconds": null,
+      "phase": null,
+      "groups": {
+        "file_mapping": 4202496,
+        "unresolved": 14721024,
+        "kernel_named": 36864,
+        "[anon: Go: heap]": 35651584,
+        "[anon: Go: heap reservation]": 0,
+        "race_shadow": 68247552,
+        "race_metadata": 32768,
+        "race_runtime_other": 3649536,
+        "[anon: Go: profiler hash buckets]": 4096,
+        "[anon: Go: heap index]": 4096,
+        "[anon: Go: scavenge index]": 4096,
+        "[anon: Go: page summary]": 0,
+        "[anon: Go: page alloc]": 20480,
+        "[anon: Go: immortal metadata]": 630784,
+        "[anon: Go: gc bits]": 73728,
+        "[anon: Go: page alloc index]": 4096,
+        "[anon: Go: allspans array]": 4096
+      },
+      "unnamed_vmas": [
+        {
+          "start": "0x663000",
+          "end": "0x15d0000",
+          "rss": 14581760,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd64000000",
+          "end": "0x7fcd64021000",
+          "rss": 4096,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd64021000",
+          "end": "0x7fcd68000000",
+          "rss": 0,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd6afff000",
+          "end": "0x7fcd6b000000",
+          "rss": 0,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd6b000000",
+          "end": "0x7fcd6c000000",
+          "rss": 8192,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd6c000000",
+          "end": "0x7fcd6c021000",
+          "rss": 4096,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd6c021000",
+          "end": "0x7fcd70000000",
+          "rss": 0,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd70000000",
+          "end": "0x7fcd70021000",
+          "rss": 4096,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd70021000",
+          "end": "0x7fcd74000000",
+          "rss": 0,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd74000000",
+          "end": "0x7fcd74021000",
+          "rss": 4096,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd74021000",
+          "end": "0x7fcd78000000",
+          "rss": 0,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd78000000",
+          "end": "0x7fcd78021000",
+          "rss": 4096,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd78021000",
+          "end": "0x7fcd7c000000",
+          "rss": 0,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd7cffd000",
+          "end": "0x7fcd7cffe000",
+          "rss": 0,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd7cffe000",
+          "end": "0x7fcd7dffe000",
+          "rss": 8192,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd7dffe000",
+          "end": "0x7fcd7dfff000",
+          "rss": 0,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd7dfff000",
+          "end": "0x7fcd7efff000",
+          "rss": 8192,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd7efff000",
+          "end": "0x7fcd7f000000",
+          "rss": 0,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd7f000000",
+          "end": "0x7fcd80000000",
+          "rss": 8192,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd80000000",
+          "end": "0x7fcd80021000",
+          "rss": 4096,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd80021000",
+          "end": "0x7fcd84000000",
+          "rss": 0,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd845fe000",
+          "end": "0x7fcd845ff000",
+          "rss": 0,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd845ff000",
+          "end": "0x7fcd855ff000",
+          "rss": 8192,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd855ff000",
+          "end": "0x7fcd85600000",
+          "rss": 0,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd85600000",
+          "end": "0x7fcd86600000",
+          "rss": 16384,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcd86600000",
+          "end": "0x7fcd86e00000",
+          "rss": 2097152,
+          "owner": "race_runtime_other"
+        },
+        {
+          "start": "0x7fcdcd800000",
+          "end": "0x7fcdcd900000",
+          "rss": 4096,
+          "owner": "race_runtime_other"
+        },
+        {
+          "start": "0x7fcdcd950000",
+          "end": "0x7fcdcd990000",
+          "rss": 262144,
+          "owner": "race_runtime_other"
+        },
+        {
+          "start": "0x7fcdcd9e0000",
+          "end": "0x7fcdcdb00000",
+          "rss": 8192,
+          "owner": "race_runtime_other"
+        },
+        {
+          "start": "0x7fcdcdb0a000",
+          "end": "0x7fcdcdb4a000",
+          "rss": 8192,
+          "owner": "race_runtime_other"
+        },
+        {
+          "start": "0x7fcdcdb8a000",
+          "end": "0x7fcdcdf00000",
+          "rss": 573440,
+          "owner": "race_runtime_other"
+        },
+        {
+          "start": "0x7fcdce000000",
+          "end": "0x7fcdce100000",
+          "rss": 286720,
+          "owner": "race_runtime_other"
+        },
+        {
+          "start": "0x7fcdce14e000",
+          "end": "0x7fcdce16e000",
+          "rss": 131072,
+          "owner": "race_runtime_other"
+        },
+        {
+          "start": "0x7fcdce1ae000",
+          "end": "0x7fcdce1ce000",
+          "rss": 4096,
+          "owner": "race_runtime_other"
+        },
+        {
+          "start": "0x7fcdce200000",
+          "end": "0x7fcdce300000",
+          "rss": 274432,
+          "owner": "race_runtime_other"
+        },
+        {
+          "start": "0x7fcdce606000",
+          "end": "0x7fcdce613000",
+          "rss": 20480,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcdce682000",
+          "end": "0x7fcdce695000",
+          "rss": 16384,
+          "owner": "unresolved"
+        },
+        {
+          "start": "0x7fcdce69a000",
+          "end": "0x7fcdce6a1000",
+          "rss": 20480,
+          "owner": "unresolved"
+        }
+      ]
+    }
+  ],
+  "scope": "complete VMA coverage by live mmap intervals at both read boundaries; mixed/partial/unwound frames remain unresolved; adjacent snapshots not atomic"
+}

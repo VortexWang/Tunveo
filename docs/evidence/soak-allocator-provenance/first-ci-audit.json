@@ -1,0 +1,5561 @@
+{
+  "ordinary": {
+    "control": {
+      "trace_sha256": "997ecd4b43da6336d54f22cae1a4eb66983bc83d6e6011dd821f938d008682ae",
+      "native_pid": 4527,
+      "native_mmaps": 28,
+      "native_mmaps_with_stacks": 28,
+      "mmap_owners": {
+        "unresolved": 28
+      },
+      "rows": [
+        {
+          "at_seconds": null,
+          "phase": null,
+          "groups": {
+            "file_mapping": 1830912,
+            "unresolved": 81920,
+            "[anon: Go: heap reservation]": 0,
+            "[anon: Go: heap]": 4194304,
+            "[anon: Go: immortal metadata]": 344064,
+            "[anon: Go: profiler hash buckets]": 4096,
+            "[anon: Go: heap index]": 4096,
+            "[anon: Go: scavenge index]": 4096,
+            "[anon: Go: page summary]": 0,
+            "[anon: Go: page alloc]": 20480,
+            "[anon: Go: gc bits]": 8192,
+            "[anon: Go: allspans array]": 4096,
+            "[anon: Go: page alloc index]": 4096,
+            "kernel_named": 24576
+          },
+          "unnamed_vmas": [
+            {
+              "start": "0x5cf000",
+              "end": "0x604000",
+              "rss": 81920,
+              "owner": "unresolved"
+            }
+          ]
+        },
+        {
+          "at_seconds": null,
+          "phase": null,
+          "groups": {
+            "file_mapping": 1896448,
+            "unresolved": 81920,
+            "[anon: Go: heap reservation]": 0,
+            "[anon: Go: heap]": 37748736,
+            "[anon: Go: immortal metadata]": 610304,
+            "[anon: Go: profiler hash buckets]": 4096,
+            "[anon: Go: heap index]": 4096,
+            "[anon: Go: scavenge index]": 4096,
+            "[anon: Go: page summary]": 0,
+            "[anon: Go: page alloc]": 20480,
+            "[anon: Go: gc bits]": 73728,
+            "[anon: Go: allspans array]": 4096,
+            "[anon: Go: page alloc index]": 4096,
+            "kernel_named": 24576
+          },
+          "unnamed_vmas": [
+            {
+              "start": "0x5cf000",
+              "end": "0x604000",
+              "rss": 81920,
+              "owner": "unresolved"
+            }
+          ]
+        }
+      ],
+      "scope": "complete VMA coverage by live mmap intervals at both read boundaries; mixed/partial/unwound frames remain unresolved; adjacent snapshots not atomic"
+    },
+    "control_shadow_rss_delta": 0,
+    "windows": {
+      "traced": {
+        "mapping_audit": {
+          "status": "pilot_passed",
+          "error": null,
+          "audited_events": 719,
+          "baseline_at_seconds": 10.007464721,
+          "peak_at_seconds": 67.009890149,
+          "groups_delta_bytes": {
+            "file_mapping": {
+              "Size": 0,
+              "Rss": 0,
+              "Pss": 0,
+              "Anonymous": 0,
+              "Private_Dirty": -9646080,
+              "Swap": 0
+            },
+            "kernel_named": {
+              "Size": 0,
+              "Rss": 0,
+              "Pss": 0,
+              "Anonymous": 0,
+              "Private_Dirty": 0,
+              "Swap": 0
+            },
+            "other_anonymous": {
+              "Size": 0,
+              "Rss": 6627328,
+              "Pss": 6627328,
+              "Anonymous": 6627328,
+              "Private_Dirty": 6627328,
+              "Swap": 0
+            }
+          },
+          "smaps_rss_delta": 6627328,
+          "statm_rss_delta": 6627328,
+          "selected_checkpoint_age_seconds": [
+            0.00908583,
+            0.003988453
+          ],
+          "max_read_seconds": 0.003035451,
+          "samples": 18,
+          "rollup_audit": {
+            "report_sha256": "4e172c4a3015213f49b02d338f42a9876fbe42da47fa4c8bb236380f1265f53d",
+            "probe_status": "passed",
+            "build_info": "go\tgo1.26.10\npath\tgithub.com/VortexWang/Tunveo/scripts/soak24h\nmod\tgithub.com/VortexWang/Tunveo\tv0.0.0-20261026141554-6e421a55b9db\t\ndep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\ndep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\ndep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\ndep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\ndep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\ndep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\nbuild\t-buildmode=exe\nbuild\t-compiler=gc\nbuild\t-trimpath=true\nbuild\tCGO_ENABLED=1\nbuild\tGOARCH=amd64\nbuild\tGOOS=linux\nbuild\tGOAMD64=v1\nbuild\tvcs=git\nbuild\tvcs.revision=6e421a55b9db2468d55be8dd950c58dc80b6a148\nbuild\tvcs.time=2026-10-26T14:15:54Z\nbuild\tvcs.modified=false\n",
+            "sample_count": 21,
+            "baseline_at_seconds": 10.007464721,
+            "peak_at_seconds": 67.009890149,
+            "statm_rss_delta": 6627328,
+            "heap_alloc_delta": 284728,
+            "rollup_delta_bytes": {
+              "AnonHugePages": 6291456,
+              "Anonymous": 6627328,
+              "FilePmdMapped": 0,
+              "KSM": 0,
+              "LazyFree": 0,
+              "Locked": 0,
+              "Private_Clean": 9646080,
+              "Private_Dirty": -3018752,
+              "Private_Hugetlb": 0,
+              "Pss": 6627328,
+              "Pss_Anon": 6627328,
+              "Pss_Dirty": -3023872,
+              "Pss_File": 0,
+              "Pss_Shmem": 0,
+              "Referenced": 6627328,
+              "Rss": 6627328,
+              "Shared_Clean": 65536,
+              "Shared_Dirty": -65536,
+              "Shared_Hugetlb": 0,
+              "ShmemPmdMapped": 0,
+              "Swap": 0,
+              "SwapPss": 0
+            },
+            "max_read_seconds": 0.001255904,
+            "scheduler_timing": {
+              "max_tick_lag_seconds": 0.013517769,
+              "max_measure_seconds": 0.029172222,
+              "max_checkpoint_seconds": 0.001514534,
+              "max_snapshot_seconds": 0.029978007,
+              "missed_at_seconds": 0,
+              "expected_slot": 0,
+              "observed_slot": 0,
+              "missed_slots": 0
+            }
+          },
+          "scope": "post-checkpoint asynchronous smaps; different reads, not atomic attribution"
+        },
+        "duration_seconds": 60,
+        "counts": {
+          "tcp": 450,
+          "udp": 150,
+          "failed": 0,
+          "dropped": 0
+        },
+        "curve": {
+          "rss": {
+            "early_median": 57892864.0,
+            "late_median": 57987072.0,
+            "early_to_late_delta": 94208.0
+          },
+          "heap_alloc": {
+            "early_median": 27540844.0,
+            "late_median": 27633248.0,
+            "early_to_late_delta": 92404.0
+          },
+          "heap_sys": {
+            "early_median": 48676864.0,
+            "late_median": 48660480.0,
+            "early_to_late_delta": -16384.0
+          }
+        },
+        "allocations": {
+          "trace_sha256": "4ddd9feb4db253808f60f62b58c314441c66eb3167dbaefedd978939d18da41e",
+          "native_pid": 4546,
+          "native_mmaps": 76,
+          "native_mmaps_with_stacks": 76,
+          "mmap_owners": {
+            "unresolved": 76
+          },
+          "rows": [
+            {
+              "at_seconds": 0.029177902,
+              "phase": "warmup",
+              "groups": {
+                "file_mapping": 11436032,
+                "unresolved": 2281472,
+                "kernel_named": 32768,
+                "[anon: Go: heap reservation]": 0,
+                "[anon: Go: heap]": 25165824,
+                "[anon: Go: immortal metadata]": 1327104,
+                "[anon: Go: gc bits]": 139264,
+                "[anon: Go: profiler hash buckets]": 45056,
+                "[anon: Go: page alloc index]": 8192,
+                "[anon: Go: heap index]": 4096,
+                "[anon: Go: scavenge index]": 8192,
+                "[anon: Go: page summary]": 0,
+                "[anon: Go: page alloc]": 24576,
+                "[anon: Go: allspans array]": 8192,
+                "[anon: Go: GC span queue]": 12288,
+                "[anon: Go: getrandom states]": 4096
+              },
+              "unnamed_vmas": [
+                {
+                  "start": "0xdea000",
+                  "end": "0x2e2d000",
+                  "rss": 2142208,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6288000000",
+                  "end": "0x7f6288021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6288021000",
+                  "end": "0x7f628c000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628efff000",
+                  "end": "0x7f628f000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628f000000",
+                  "end": "0x7f6290000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6290000000",
+                  "end": "0x7f6290021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6290021000",
+                  "end": "0x7f6294000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6294000000",
+                  "end": "0x7f6294021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6294021000",
+                  "end": "0x7f6298000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6298000000",
+                  "end": "0x7f6298021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6298021000",
+                  "end": "0x7f629c000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f629c000000",
+                  "end": "0x7f629c021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f629c021000",
+                  "end": "0x7f62a0000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a0000000",
+                  "end": "0x7f62a0021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a0021000",
+                  "end": "0x7f62a4000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a4ffd000",
+                  "end": "0x7f62a4ffe000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a4ffe000",
+                  "end": "0x7f62a5ffe000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a5ffe000",
+                  "end": "0x7f62a5fff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a5fff000",
+                  "end": "0x7f62a6fff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a6fff000",
+                  "end": "0x7f62a7000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a7000000",
+                  "end": "0x7f62a8000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a8000000",
+                  "end": "0x7f62a8021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a8021000",
+                  "end": "0x7f62ac000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62acffd000",
+                  "end": "0x7f62acffe000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62acffe000",
+                  "end": "0x7f62adffe000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62adffe000",
+                  "end": "0x7f62adfff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62adfff000",
+                  "end": "0x7f62aefff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62aefff000",
+                  "end": "0x7f62af000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62af000000",
+                  "end": "0x7f62b0000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b0000000",
+                  "end": "0x7f62b0021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b0021000",
+                  "end": "0x7f62b4000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b48ff000",
+                  "end": "0x7f62b4900000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b4900000",
+                  "end": "0x7f62b5900000",
+                  "rss": 16384,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc406000",
+                  "end": "0x7f62fc413000",
+                  "rss": 20480,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc5ef000",
+                  "end": "0x7f62fc5f2000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc5fc000",
+                  "end": "0x7f62fc5fe000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                }
+              ]
+            },
+            {
+              "at_seconds": 2.005983521,
+              "phase": "warmup",
+              "groups": {
+                "file_mapping": 11501568,
+                "unresolved": 2293760,
+                "kernel_named": 32768,
+                "[anon: Go: heap reservation]": 0,
+                "[anon: Go: heap]": 33554432,
+                "[anon: Go: immortal metadata]": 1437696,
+                "[anon: Go: gc bits]": 200704,
+                "[anon: Go: profiler hash buckets]": 86016,
+                "[anon: Go: page alloc index]": 8192,
+                "[anon: Go: heap index]": 4096,
+                "[anon: Go: scavenge index]": 8192,
+                "[anon: Go: page summary]": 0,
+                "[anon: Go: page alloc]": 24576,
+                "[anon: Go: allspans array]": 8192,
+                "[anon: Go: GC span queue]": 12288,
+                "[anon: Go: getrandom states]": 4096
+              },
+              "unnamed_vmas": [
+                {
+                  "start": "0xdea000",
+                  "end": "0x2e2d000",
+                  "rss": 2142208,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6280000000",
+                  "end": "0x7f6280021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6280021000",
+                  "end": "0x7f6284000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6288000000",
+                  "end": "0x7f6288021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6288021000",
+                  "end": "0x7f628c000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628dffe000",
+                  "end": "0x7f628dfff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628dfff000",
+                  "end": "0x7f628efff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628efff000",
+                  "end": "0x7f628f000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628f000000",
+                  "end": "0x7f6290000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6290000000",
+                  "end": "0x7f6290021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6290021000",
+                  "end": "0x7f6294000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6294000000",
+                  "end": "0x7f6294021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6294021000",
+                  "end": "0x7f6298000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6298000000",
+                  "end": "0x7f6298021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6298021000",
+                  "end": "0x7f629c000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f629c000000",
+                  "end": "0x7f629c021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f629c021000",
+                  "end": "0x7f62a0000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a0000000",
+                  "end": "0x7f62a0021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a0021000",
+                  "end": "0x7f62a4000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a4ffd000",
+                  "end": "0x7f62a4ffe000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a4ffe000",
+                  "end": "0x7f62a5ffe000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a5ffe000",
+                  "end": "0x7f62a5fff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a5fff000",
+                  "end": "0x7f62a6fff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a6fff000",
+                  "end": "0x7f62a7000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a7000000",
+                  "end": "0x7f62a8000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a8000000",
+                  "end": "0x7f62a8021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a8021000",
+                  "end": "0x7f62ac000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62acffd000",
+                  "end": "0x7f62acffe000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62acffe000",
+                  "end": "0x7f62adffe000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62adffe000",
+                  "end": "0x7f62adfff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62adfff000",
+                  "end": "0x7f62aefff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62aefff000",
+                  "end": "0x7f62af000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62af000000",
+                  "end": "0x7f62b0000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b0000000",
+                  "end": "0x7f62b0021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b0021000",
+                  "end": "0x7f62b4000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b48ff000",
+                  "end": "0x7f62b4900000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b4900000",
+                  "end": "0x7f62b5900000",
+                  "rss": 16384,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc406000",
+                  "end": "0x7f62fc413000",
+                  "rss": 20480,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc5ef000",
+                  "end": "0x7f62fc5f2000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc5fc000",
+                  "end": "0x7f62fc5fe000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                }
+              ]
+            },
+            {
+              "at_seconds": 4.012641123,
+              "phase": "warmup",
+              "groups": {
+                "file_mapping": 11501568,
+                "unresolved": 2293760,
+                "kernel_named": 32768,
+                "[anon: Go: heap reservation]": 0,
+                "[anon: Go: heap]": 33554432,
+                "[anon: Go: immortal metadata]": 1507328,
+                "[anon: Go: gc bits]": 200704,
+                "[anon: Go: profiler hash buckets]": 94208,
+                "[anon: Go: page alloc index]": 8192,
+                "[anon: Go: heap index]": 4096,
+                "[anon: Go: scavenge index]": 8192,
+                "[anon: Go: page summary]": 0,
+                "[anon: Go: page alloc]": 24576,
+                "[anon: Go: allspans array]": 8192,
+                "[anon: Go: GC span queue]": 16384,
+                "[anon: Go: getrandom states]": 4096
+              },
+              "unnamed_vmas": [
+                {
+                  "start": "0xdea000",
+                  "end": "0x2e2d000",
+                  "rss": 2142208,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6280000000",
+                  "end": "0x7f6280021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6280021000",
+                  "end": "0x7f6284000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6288000000",
+                  "end": "0x7f6288021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6288021000",
+                  "end": "0x7f628c000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628dffe000",
+                  "end": "0x7f628dfff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628dfff000",
+                  "end": "0x7f628efff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628efff000",
+                  "end": "0x7f628f000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628f000000",
+                  "end": "0x7f6290000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6290000000",
+                  "end": "0x7f6290021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6290021000",
+                  "end": "0x7f6294000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6294000000",
+                  "end": "0x7f6294021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6294021000",
+                  "end": "0x7f6298000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6298000000",
+                  "end": "0x7f6298021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6298021000",
+                  "end": "0x7f629c000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f629c000000",
+                  "end": "0x7f629c021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f629c021000",
+                  "end": "0x7f62a0000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a0000000",
+                  "end": "0x7f62a0021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a0021000",
+                  "end": "0x7f62a4000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a4ffd000",
+                  "end": "0x7f62a4ffe000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a4ffe000",
+                  "end": "0x7f62a5ffe000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a5ffe000",
+                  "end": "0x7f62a5fff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a5fff000",
+                  "end": "0x7f62a6fff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a6fff000",
+                  "end": "0x7f62a7000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a7000000",
+                  "end": "0x7f62a8000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a8000000",
+                  "end": "0x7f62a8021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a8021000",
+                  "end": "0x7f62ac000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62acffd000",
+                  "end": "0x7f62acffe000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62acffe000",
+                  "end": "0x7f62adffe000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62adffe000",
+                  "end": "0x7f62adfff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62adfff000",
+                  "end": "0x7f62aefff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62aefff000",
+                  "end": "0x7f62af000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62af000000",
+                  "end": "0x7f62b0000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b0000000",
+                  "end": "0x7f62b0021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b0021000",
+                  "end": "0x7f62b4000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b48ff000",
+                  "end": "0x7f62b4900000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b4900000",
+                  "end": "0x7f62b5900000",
+                  "rss": 16384,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc406000",
+                  "end": "0x7f62fc413000",
+                  "rss": 20480,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc5ef000",
+                  "end": "0x7f62fc5f2000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc5fc000",
+                  "end": "0x7f62fc5fe000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                }
+              ]
+            },
+            {
+              "at_seconds": 6.00579169,
+              "phase": "warmup",
+              "groups": {
+                "file_mapping": 11501568,
+                "unresolved": 2293760,
+                "kernel_named": 32768,
+                "[anon: Go: heap reservation]": 0,
+                "[anon: Go: heap]": 35651584,
+                "[anon: Go: immortal metadata]": 1515520,
+                "[anon: Go: gc bits]": 200704,
+                "[anon: Go: profiler hash buckets]": 94208,
+                "[anon: Go: page alloc index]": 8192,
+                "[anon: Go: heap index]": 4096,
+                "[anon: Go: scavenge index]": 8192,
+                "[anon: Go: page summary]": 0,
+                "[anon: Go: page alloc]": 24576,
+                "[anon: Go: allspans array]": 8192,
+                "[anon: Go: GC span queue]": 16384,
+                "[anon: Go: getrandom states]": 4096
+              },
+              "unnamed_vmas": [
+                {
+                  "start": "0xdea000",
+                  "end": "0x2e2d000",
+                  "rss": 2142208,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6280000000",
+                  "end": "0x7f6280021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6280021000",
+                  "end": "0x7f6284000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6288000000",
+                  "end": "0x7f6288021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6288021000",
+                  "end": "0x7f628c000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628dffe000",
+                  "end": "0x7f628dfff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628dfff000",
+                  "end": "0x7f628efff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628efff000",
+                  "end": "0x7f628f000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628f000000",
+                  "end": "0x7f6290000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6290000000",
+                  "end": "0x7f6290021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6290021000",
+                  "end": "0x7f6294000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6294000000",
+                  "end": "0x7f6294021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6294021000",
+                  "end": "0x7f6298000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6298000000",
+                  "end": "0x7f6298021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6298021000",
+                  "end": "0x7f629c000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f629c000000",
+                  "end": "0x7f629c021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f629c021000",
+                  "end": "0x7f62a0000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a0000000",
+                  "end": "0x7f62a0021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a0021000",
+                  "end": "0x7f62a4000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a4ffd000",
+                  "end": "0x7f62a4ffe000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a4ffe000",
+                  "end": "0x7f62a5ffe000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a5ffe000",
+                  "end": "0x7f62a5fff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a5fff000",
+                  "end": "0x7f62a6fff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a6fff000",
+                  "end": "0x7f62a7000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a7000000",
+                  "end": "0x7f62a8000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a8000000",
+                  "end": "0x7f62a8021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a8021000",
+                  "end": "0x7f62ac000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62acffd000",
+                  "end": "0x7f62acffe000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62acffe000",
+                  "end": "0x7f62adffe000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62adffe000",
+                  "end": "0x7f62adfff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62adfff000",
+                  "end": "0x7f62aefff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62aefff000",
+                  "end": "0x7f62af000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62af000000",
+                  "end": "0x7f62b0000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b0000000",
+                  "end": "0x7f62b0021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b0021000",
+                  "end": "0x7f62b4000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b48ff000",
+                  "end": "0x7f62b4900000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b4900000",
+                  "end": "0x7f62b5900000",
+                  "rss": 16384,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc406000",
+                  "end": "0x7f62fc413000",
+                  "rss": 20480,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc5ef000",
+                  "end": "0x7f62fc5f2000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc5fc000",
+                  "end": "0x7f62fc5fe000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                }
+              ]
+            },
+            {
+              "at_seconds": 8.007451342,
+              "phase": "warmup",
+              "groups": {
+                "file_mapping": 11501568,
+                "unresolved": 2293760,
+                "kernel_named": 32768,
+                "[anon: Go: heap reservation]": 0,
+                "[anon: Go: heap]": 35651584,
+                "[anon: Go: immortal metadata]": 1519616,
+                "[anon: Go: gc bits]": 200704,
+                "[anon: Go: profiler hash buckets]": 94208,
+                "[anon: Go: page alloc index]": 8192,
+                "[anon: Go: heap index]": 4096,
+                "[anon: Go: scavenge index]": 8192,
+                "[anon: Go: page summary]": 0,
+                "[anon: Go: page alloc]": 24576,
+                "[anon: Go: allspans array]": 8192,
+                "[anon: Go: GC span queue]": 16384,
+                "[anon: Go: getrandom states]": 4096
+              },
+              "unnamed_vmas": [
+                {
+                  "start": "0xdea000",
+                  "end": "0x2e2d000",
+                  "rss": 2142208,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6280000000",
+                  "end": "0x7f6280021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6280021000",
+                  "end": "0x7f6284000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6288000000",
+                  "end": "0x7f6288021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6288021000",
+                  "end": "0x7f628c000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628dffe000",
+                  "end": "0x7f628dfff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628dfff000",
+                  "end": "0x7f628efff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628efff000",
+                  "end": "0x7f628f000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628f000000",
+                  "end": "0x7f6290000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6290000000",
+                  "end": "0x7f6290021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6290021000",
+                  "end": "0x7f6294000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6294000000",
+                  "end": "0x7f6294021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6294021000",
+                  "end": "0x7f6298000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6298000000",
+                  "end": "0x7f6298021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6298021000",
+                  "end": "0x7f629c000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f629c000000",
+                  "end": "0x7f629c021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f629c021000",
+                  "end": "0x7f62a0000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a0000000",
+                  "end": "0x7f62a0021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a0021000",
+                  "end": "0x7f62a4000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a4ffd000",
+                  "end": "0x7f62a4ffe000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a4ffe000",
+                  "end": "0x7f62a5ffe000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a5ffe000",
+                  "end": "0x7f62a5fff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a5fff000",
+                  "end": "0x7f62a6fff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a6fff000",
+                  "end": "0x7f62a7000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a7000000",
+                  "end": "0x7f62a8000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a8000000",
+                  "end": "0x7f62a8021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a8021000",
+                  "end": "0x7f62ac000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62acffd000",
+                  "end": "0x7f62acffe000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62acffe000",
+                  "end": "0x7f62adffe000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62adffe000",
+                  "end": "0x7f62adfff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62adfff000",
+                  "end": "0x7f62aefff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62aefff000",
+                  "end": "0x7f62af000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62af000000",
+                  "end": "0x7f62b0000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b0000000",
+                  "end": "0x7f62b0021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b0021000",
+                  "end": "0x7f62b4000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b48ff000",
+                  "end": "0x7f62b4900000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b4900000",
+                  "end": "0x7f62b5900000",
+                  "rss": 16384,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc406000",
+                  "end": "0x7f62fc413000",
+                  "rss": 20480,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc5ef000",
+                  "end": "0x7f62fc5f2000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc5fc000",
+                  "end": "0x7f62fc5fe000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                }
+              ]
+            },
+            {
+              "at_seconds": 10.007464721,
+              "phase": "warmup",
+              "groups": {
+                "file_mapping": 11501568,
+                "unresolved": 2293760,
+                "kernel_named": 32768,
+                "[anon: Go: heap reservation]": 0,
+                "[anon: Go: heap]": 35651584,
+                "[anon: Go: immortal metadata]": 1531904,
+                "[anon: Go: gc bits]": 200704,
+                "[anon: Go: profiler hash buckets]": 94208,
+                "[anon: Go: page alloc index]": 8192,
+                "[anon: Go: heap index]": 4096,
+                "[anon: Go: scavenge index]": 8192,
+                "[anon: Go: page summary]": 0,
+                "[anon: Go: page alloc]": 24576,
+                "[anon: Go: allspans array]": 8192,
+                "[anon: Go: GC span queue]": 16384,
+                "[anon: Go: getrandom states]": 4096
+              },
+              "unnamed_vmas": [
+                {
+                  "start": "0xdea000",
+                  "end": "0x2e2d000",
+                  "rss": 2142208,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6280000000",
+                  "end": "0x7f6280021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6280021000",
+                  "end": "0x7f6284000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6288000000",
+                  "end": "0x7f6288021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6288021000",
+                  "end": "0x7f628c000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628dffe000",
+                  "end": "0x7f628dfff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628dfff000",
+                  "end": "0x7f628efff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628efff000",
+                  "end": "0x7f628f000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628f000000",
+                  "end": "0x7f6290000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6290000000",
+                  "end": "0x7f6290021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6290021000",
+                  "end": "0x7f6294000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6294000000",
+                  "end": "0x7f6294021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6294021000",
+                  "end": "0x7f6298000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6298000000",
+                  "end": "0x7f6298021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6298021000",
+                  "end": "0x7f629c000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f629c000000",
+                  "end": "0x7f629c021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f629c021000",
+                  "end": "0x7f62a0000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a0000000",
+                  "end": "0x7f62a0021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a0021000",
+                  "end": "0x7f62a4000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a4ffd000",
+                  "end": "0x7f62a4ffe000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a4ffe000",
+                  "end": "0x7f62a5ffe000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a5ffe000",
+                  "end": "0x7f62a5fff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a5fff000",
+                  "end": "0x7f62a6fff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a6fff000",
+                  "end": "0x7f62a7000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a7000000",
+                  "end": "0x7f62a8000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a8000000",
+                  "end": "0x7f62a8021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a8021000",
+                  "end": "0x7f62ac000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62acffd000",
+                  "end": "0x7f62acffe000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62acffe000",
+                  "end": "0x7f62adffe000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62adffe000",
+                  "end": "0x7f62adfff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62adfff000",
+                  "end": "0x7f62aefff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62aefff000",
+                  "end": "0x7f62af000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62af000000",
+                  "end": "0x7f62b0000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b0000000",
+                  "end": "0x7f62b0021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b0021000",
+                  "end": "0x7f62b4000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b48ff000",
+                  "end": "0x7f62b4900000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b4900000",
+                  "end": "0x7f62b5900000",
+                  "rss": 16384,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc406000",
+                  "end": "0x7f62fc413000",
+                  "rss": 20480,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc5ef000",
+                  "end": "0x7f62fc5f2000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc5fc000",
+                  "end": "0x7f62fc5fe000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                }
+              ]
+            },
+            {
+              "at_seconds": 12.006984018,
+              "phase": "measured",
+              "groups": {
+                "file_mapping": 11501568,
+                "unresolved": 2293760,
+                "kernel_named": 32768,
+                "[anon: Go: heap reservation]": 0,
+                "[anon: Go: heap]": 35651584,
+                "[anon: Go: immortal metadata]": 1548288,
+                "[anon: Go: gc bits]": 200704,
+                "[anon: Go: profiler hash buckets]": 98304,
+                "[anon: Go: page alloc index]": 8192,
+                "[anon: Go: heap index]": 4096,
+                "[anon: Go: scavenge index]": 8192,
+                "[anon: Go: page summary]": 0,
+                "[anon: Go: page alloc]": 24576,
+                "[anon: Go: allspans array]": 8192,
+                "[anon: Go: GC span queue]": 16384,
+                "[anon: Go: getrandom states]": 4096
+              },
+              "unnamed_vmas": [
+                {
+                  "start": "0xdea000",
+                  "end": "0x2e2d000",
+                  "rss": 2142208,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6280000000",
+                  "end": "0x7f6280021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6280021000",
+                  "end": "0x7f6284000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6288000000",
+                  "end": "0x7f6288021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6288021000",
+                  "end": "0x7f628c000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628dffe000",
+                  "end": "0x7f628dfff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628dfff000",
+                  "end": "0x7f628efff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628efff000",
+                  "end": "0x7f628f000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628f000000",
+                  "end": "0x7f6290000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6290000000",
+                  "end": "0x7f6290021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6290021000",
+                  "end": "0x7f6294000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6294000000",
+                  "end": "0x7f6294021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6294021000",
+                  "end": "0x7f6298000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6298000000",
+                  "end": "0x7f6298021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6298021000",
+                  "end": "0x7f629c000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f629c000000",
+                  "end": "0x7f629c021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f629c021000",
+                  "end": "0x7f62a0000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a0000000",
+                  "end": "0x7f62a0021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a0021000",
+                  "end": "0x7f62a4000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a4ffd000",
+                  "end": "0x7f62a4ffe000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a4ffe000",
+                  "end": "0x7f62a5ffe000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a5ffe000",
+                  "end": "0x7f62a5fff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a5fff000",
+                  "end": "0x7f62a6fff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a6fff000",
+                  "end": "0x7f62a7000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a7000000",
+                  "end": "0x7f62a8000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a8000000",
+                  "end": "0x7f62a8021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a8021000",
+                  "end": "0x7f62ac000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62acffd000",
+                  "end": "0x7f62acffe000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62acffe000",
+                  "end": "0x7f62adffe000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62adffe000",
+                  "end": "0x7f62adfff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62adfff000",
+                  "end": "0x7f62aefff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62aefff000",
+                  "end": "0x7f62af000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62af000000",
+                  "end": "0x7f62b0000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b0000000",
+                  "end": "0x7f62b0021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b0021000",
+                  "end": "0x7f62b4000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b48ff000",
+                  "end": "0x7f62b4900000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b4900000",
+                  "end": "0x7f62b5900000",
+                  "rss": 16384,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc406000",
+                  "end": "0x7f62fc413000",
+                  "rss": 20480,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc5ef000",
+                  "end": "0x7f62fc5f2000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc5fc000",
+                  "end": "0x7f62fc5fe000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                }
+              ]
+            },
+            {
+              "at_seconds": 17.015011459,
+              "phase": "measured",
+              "groups": {
+                "file_mapping": 11501568,
+                "unresolved": 2293760,
+                "kernel_named": 32768,
+                "[anon: Go: heap reservation]": 0,
+                "[anon: Go: heap]": 41943040,
+                "[anon: Go: immortal metadata]": 1638400,
+                "[anon: Go: gc bits]": 200704,
+                "[anon: Go: profiler hash buckets]": 110592,
+                "[anon: Go: page alloc index]": 8192,
+                "[anon: Go: heap index]": 4096,
+                "[anon: Go: scavenge index]": 8192,
+                "[anon: Go: page summary]": 0,
+                "[anon: Go: page alloc]": 24576,
+                "[anon: Go: allspans array]": 8192,
+                "[anon: Go: GC span queue]": 16384,
+                "[anon: Go: getrandom states]": 4096
+              },
+              "unnamed_vmas": [
+                {
+                  "start": "0xdea000",
+                  "end": "0x2e2d000",
+                  "rss": 2142208,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6280000000",
+                  "end": "0x7f6280021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6280021000",
+                  "end": "0x7f6284000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6288000000",
+                  "end": "0x7f6288021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6288021000",
+                  "end": "0x7f628c000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628dffe000",
+                  "end": "0x7f628dfff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628dfff000",
+                  "end": "0x7f628efff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628efff000",
+                  "end": "0x7f628f000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628f000000",
+                  "end": "0x7f6290000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6290000000",
+                  "end": "0x7f6290021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6290021000",
+                  "end": "0x7f6294000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6294000000",
+                  "end": "0x7f6294021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6294021000",
+                  "end": "0x7f6298000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6298000000",
+                  "end": "0x7f6298021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6298021000",
+                  "end": "0x7f629c000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f629c000000",
+                  "end": "0x7f629c021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f629c021000",
+                  "end": "0x7f62a0000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a0000000",
+                  "end": "0x7f62a0021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a0021000",
+                  "end": "0x7f62a4000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a4ffd000",
+                  "end": "0x7f62a4ffe000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a4ffe000",
+                  "end": "0x7f62a5ffe000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a5ffe000",
+                  "end": "0x7f62a5fff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a5fff000",
+                  "end": "0x7f62a6fff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a6fff000",
+                  "end": "0x7f62a7000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a7000000",
+                  "end": "0x7f62a8000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a8000000",
+                  "end": "0x7f62a8021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a8021000",
+                  "end": "0x7f62ac000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62acffd000",
+                  "end": "0x7f62acffe000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62acffe000",
+                  "end": "0x7f62adffe000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62adffe000",
+                  "end": "0x7f62adfff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62adfff000",
+                  "end": "0x7f62aefff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62aefff000",
+                  "end": "0x7f62af000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62af000000",
+                  "end": "0x7f62b0000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b0000000",
+                  "end": "0x7f62b0021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b0021000",
+                  "end": "0x7f62b4000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b48ff000",
+                  "end": "0x7f62b4900000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b4900000",
+                  "end": "0x7f62b5900000",
+                  "rss": 16384,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc406000",
+                  "end": "0x7f62fc413000",
+                  "rss": 20480,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc5ef000",
+                  "end": "0x7f62fc5f2000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc5fc000",
+                  "end": "0x7f62fc5fe000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                }
+              ]
+            },
+            {
+              "at_seconds": 22.008431213,
+              "phase": "measured",
+              "groups": {
+                "file_mapping": 11501568,
+                "unresolved": 2293760,
+                "kernel_named": 32768,
+                "[anon: Go: heap reservation]": 0,
+                "[anon: Go: heap]": 41943040,
+                "[anon: Go: immortal metadata]": 1712128,
+                "[anon: Go: gc bits]": 200704,
+                "[anon: Go: profiler hash buckets]": 118784,
+                "[anon: Go: page alloc index]": 8192,
+                "[anon: Go: heap index]": 4096,
+                "[anon: Go: scavenge index]": 8192,
+                "[anon: Go: page summary]": 0,
+                "[anon: Go: page alloc]": 24576,
+                "[anon: Go: allspans array]": 12288,
+                "[anon: Go: GC span queue]": 16384,
+                "[anon: Go: getrandom states]": 4096
+              },
+              "unnamed_vmas": [
+                {
+                  "start": "0xdea000",
+                  "end": "0x2e2d000",
+                  "rss": 2142208,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6280000000",
+                  "end": "0x7f6280021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6280021000",
+                  "end": "0x7f6284000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6288000000",
+                  "end": "0x7f6288021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6288021000",
+                  "end": "0x7f628c000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628dffe000",
+                  "end": "0x7f628dfff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628dfff000",
+                  "end": "0x7f628efff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628efff000",
+                  "end": "0x7f628f000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628f000000",
+                  "end": "0x7f6290000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6290000000",
+                  "end": "0x7f6290021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6290021000",
+                  "end": "0x7f6294000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6294000000",
+                  "end": "0x7f6294021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6294021000",
+                  "end": "0x7f6298000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6298000000",
+                  "end": "0x7f6298021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6298021000",
+                  "end": "0x7f629c000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f629c000000",
+                  "end": "0x7f629c021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f629c021000",
+                  "end": "0x7f62a0000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a0000000",
+                  "end": "0x7f62a0021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a0021000",
+                  "end": "0x7f62a4000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a4ffd000",
+                  "end": "0x7f62a4ffe000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a4ffe000",
+                  "end": "0x7f62a5ffe000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a5ffe000",
+                  "end": "0x7f62a5fff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a5fff000",
+                  "end": "0x7f62a6fff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a6fff000",
+                  "end": "0x7f62a7000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a7000000",
+                  "end": "0x7f62a8000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a8000000",
+                  "end": "0x7f62a8021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a8021000",
+                  "end": "0x7f62ac000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62acffd000",
+                  "end": "0x7f62acffe000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62acffe000",
+                  "end": "0x7f62adffe000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62adffe000",
+                  "end": "0x7f62adfff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62adfff000",
+                  "end": "0x7f62aefff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62aefff000",
+                  "end": "0x7f62af000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62af000000",
+                  "end": "0x7f62b0000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b0000000",
+                  "end": "0x7f62b0021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b0021000",
+                  "end": "0x7f62b4000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b48ff000",
+                  "end": "0x7f62b4900000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b4900000",
+                  "end": "0x7f62b5900000",
+                  "rss": 16384,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc406000",
+                  "end": "0x7f62fc413000",
+                  "rss": 20480,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc5ef000",
+                  "end": "0x7f62fc5f2000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc5fc000",
+                  "end": "0x7f62fc5fe000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                }
+              ]
+            },
+            {
+              "at_seconds": 27.008506343,
+              "phase": "measured",
+              "groups": {
+                "file_mapping": 11501568,
+                "unresolved": 2293760,
+                "kernel_named": 32768,
+                "[anon: Go: heap reservation]": 0,
+                "[anon: Go: heap]": 41943040,
+                "[anon: Go: immortal metadata]": 1720320,
+                "[anon: Go: gc bits]": 200704,
+                "[anon: Go: profiler hash buckets]": 135168,
+                "[anon: Go: page alloc index]": 8192,
+                "[anon: Go: heap index]": 4096,
+                "[anon: Go: scavenge index]": 8192,
+                "[anon: Go: page summary]": 0,
+                "[anon: Go: page alloc]": 24576,
+                "[anon: Go: allspans array]": 12288,
+                "[anon: Go: GC span queue]": 16384,
+                "[anon: Go: getrandom states]": 4096
+              },
+              "unnamed_vmas": [
+                {
+                  "start": "0xdea000",
+                  "end": "0x2e2d000",
+                  "rss": 2142208,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6280000000",
+                  "end": "0x7f6280021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6280021000",
+                  "end": "0x7f6284000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6288000000",
+                  "end": "0x7f6288021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6288021000",
+                  "end": "0x7f628c000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628dffe000",
+                  "end": "0x7f628dfff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628dfff000",
+                  "end": "0x7f628efff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628efff000",
+                  "end": "0x7f628f000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628f000000",
+                  "end": "0x7f6290000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6290000000",
+                  "end": "0x7f6290021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6290021000",
+                  "end": "0x7f6294000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6294000000",
+                  "end": "0x7f6294021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6294021000",
+                  "end": "0x7f6298000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6298000000",
+                  "end": "0x7f6298021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6298021000",
+                  "end": "0x7f629c000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f629c000000",
+                  "end": "0x7f629c021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f629c021000",
+                  "end": "0x7f62a0000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a0000000",
+                  "end": "0x7f62a0021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a0021000",
+                  "end": "0x7f62a4000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a4ffd000",
+                  "end": "0x7f62a4ffe000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a4ffe000",
+                  "end": "0x7f62a5ffe000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a5ffe000",
+                  "end": "0x7f62a5fff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a5fff000",
+                  "end": "0x7f62a6fff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a6fff000",
+                  "end": "0x7f62a7000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a7000000",
+                  "end": "0x7f62a8000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a8000000",
+                  "end": "0x7f62a8021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a8021000",
+                  "end": "0x7f62ac000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62acffd000",
+                  "end": "0x7f62acffe000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62acffe000",
+                  "end": "0x7f62adffe000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62adffe000",
+                  "end": "0x7f62adfff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62adfff000",
+                  "end": "0x7f62aefff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62aefff000",
+                  "end": "0x7f62af000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62af000000",
+                  "end": "0x7f62b0000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b0000000",
+                  "end": "0x7f62b0021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b0021000",
+                  "end": "0x7f62b4000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b48ff000",
+                  "end": "0x7f62b4900000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b4900000",
+                  "end": "0x7f62b5900000",
+                  "rss": 16384,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc406000",
+                  "end": "0x7f62fc413000",
+                  "rss": 20480,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc5ef000",
+                  "end": "0x7f62fc5f2000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc5fc000",
+                  "end": "0x7f62fc5fe000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                }
+              ]
+            },
+            {
+              "at_seconds": 32.020029778,
+              "phase": "measured",
+              "groups": {
+                "file_mapping": 11501568,
+                "unresolved": 2293760,
+                "kernel_named": 32768,
+                "[anon: Go: heap reservation]": 0,
+                "[anon: Go: heap]": 41943040,
+                "[anon: Go: immortal metadata]": 1732608,
+                "[anon: Go: gc bits]": 200704,
+                "[anon: Go: profiler hash buckets]": 147456,
+                "[anon: Go: page alloc index]": 8192,
+                "[anon: Go: heap index]": 4096,
+                "[anon: Go: scavenge index]": 8192,
+                "[anon: Go: page summary]": 0,
+                "[anon: Go: page alloc]": 24576,
+                "[anon: Go: allspans array]": 12288,
+                "[anon: Go: GC span queue]": 16384,
+                "[anon: Go: getrandom states]": 4096
+              },
+              "unnamed_vmas": [
+                {
+                  "start": "0xdea000",
+                  "end": "0x2e2d000",
+                  "rss": 2142208,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6280000000",
+                  "end": "0x7f6280021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6280021000",
+                  "end": "0x7f6284000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6288000000",
+                  "end": "0x7f6288021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6288021000",
+                  "end": "0x7f628c000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628dffe000",
+                  "end": "0x7f628dfff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628dfff000",
+                  "end": "0x7f628efff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628efff000",
+                  "end": "0x7f628f000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628f000000",
+                  "end": "0x7f6290000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6290000000",
+                  "end": "0x7f6290021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6290021000",
+                  "end": "0x7f6294000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6294000000",
+                  "end": "0x7f6294021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6294021000",
+                  "end": "0x7f6298000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6298000000",
+                  "end": "0x7f6298021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6298021000",
+                  "end": "0x7f629c000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f629c000000",
+                  "end": "0x7f629c021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f629c021000",
+                  "end": "0x7f62a0000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a0000000",
+                  "end": "0x7f62a0021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a0021000",
+                  "end": "0x7f62a4000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a4ffd000",
+                  "end": "0x7f62a4ffe000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a4ffe000",
+                  "end": "0x7f62a5ffe000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a5ffe000",
+                  "end": "0x7f62a5fff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a5fff000",
+                  "end": "0x7f62a6fff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a6fff000",
+                  "end": "0x7f62a7000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a7000000",
+                  "end": "0x7f62a8000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a8000000",
+                  "end": "0x7f62a8021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a8021000",
+                  "end": "0x7f62ac000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62acffd000",
+                  "end": "0x7f62acffe000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62acffe000",
+                  "end": "0x7f62adffe000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62adffe000",
+                  "end": "0x7f62adfff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62adfff000",
+                  "end": "0x7f62aefff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62aefff000",
+                  "end": "0x7f62af000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62af000000",
+                  "end": "0x7f62b0000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b0000000",
+                  "end": "0x7f62b0021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b0021000",
+                  "end": "0x7f62b4000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b48ff000",
+                  "end": "0x7f62b4900000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b4900000",
+                  "end": "0x7f62b5900000",
+                  "rss": 16384,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc406000",
+                  "end": "0x7f62fc413000",
+                  "rss": 20480,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc5ef000",
+                  "end": "0x7f62fc5f2000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc5fc000",
+                  "end": "0x7f62fc5fe000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                }
+              ]
+            },
+            {
+              "at_seconds": 37.013454083,
+              "phase": "measured",
+              "groups": {
+                "file_mapping": 11501568,
+                "unresolved": 2293760,
+                "kernel_named": 32768,
+                "[anon: Go: heap reservation]": 0,
+                "[anon: Go: heap]": 41943040,
+                "[anon: Go: immortal metadata]": 1765376,
+                "[anon: Go: gc bits]": 200704,
+                "[anon: Go: profiler hash buckets]": 155648,
+                "[anon: Go: page alloc index]": 8192,
+                "[anon: Go: heap index]": 4096,
+                "[anon: Go: scavenge index]": 8192,
+                "[anon: Go: page summary]": 0,
+                "[anon: Go: page alloc]": 24576,
+                "[anon: Go: allspans array]": 12288,
+                "[anon: Go: GC span queue]": 16384,
+                "[anon: Go: getrandom states]": 4096
+              },
+              "unnamed_vmas": [
+                {
+                  "start": "0xdea000",
+                  "end": "0x2e2d000",
+                  "rss": 2142208,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6280000000",
+                  "end": "0x7f6280021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6280021000",
+                  "end": "0x7f6284000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6288000000",
+                  "end": "0x7f6288021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6288021000",
+                  "end": "0x7f628c000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628dffe000",
+                  "end": "0x7f628dfff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628dfff000",
+                  "end": "0x7f628efff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628efff000",
+                  "end": "0x7f628f000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628f000000",
+                  "end": "0x7f6290000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6290000000",
+                  "end": "0x7f6290021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6290021000",
+                  "end": "0x7f6294000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6294000000",
+                  "end": "0x7f6294021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6294021000",
+                  "end": "0x7f6298000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6298000000",
+                  "end": "0x7f6298021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6298021000",
+                  "end": "0x7f629c000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f629c000000",
+                  "end": "0x7f629c021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f629c021000",
+                  "end": "0x7f62a0000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a0000000",
+                  "end": "0x7f62a0021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a0021000",
+                  "end": "0x7f62a4000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a4ffd000",
+                  "end": "0x7f62a4ffe000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a4ffe000",
+                  "end": "0x7f62a5ffe000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a5ffe000",
+                  "end": "0x7f62a5fff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a5fff000",
+                  "end": "0x7f62a6fff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a6fff000",
+                  "end": "0x7f62a7000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a7000000",
+                  "end": "0x7f62a8000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a8000000",
+                  "end": "0x7f62a8021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a8021000",
+                  "end": "0x7f62ac000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62acffd000",
+                  "end": "0x7f62acffe000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62acffe000",
+                  "end": "0x7f62adffe000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62adffe000",
+                  "end": "0x7f62adfff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62adfff000",
+                  "end": "0x7f62aefff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62aefff000",
+                  "end": "0x7f62af000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62af000000",
+                  "end": "0x7f62b0000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b0000000",
+                  "end": "0x7f62b0021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b0021000",
+                  "end": "0x7f62b4000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b48ff000",
+                  "end": "0x7f62b4900000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b4900000",
+                  "end": "0x7f62b5900000",
+                  "rss": 16384,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc406000",
+                  "end": "0x7f62fc413000",
+                  "rss": 20480,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc5ef000",
+                  "end": "0x7f62fc5f2000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc5fc000",
+                  "end": "0x7f62fc5fe000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                }
+              ]
+            },
+            {
+              "at_seconds": 42.019267436,
+              "phase": "measured",
+              "groups": {
+                "file_mapping": 11501568,
+                "unresolved": 2293760,
+                "kernel_named": 32768,
+                "[anon: Go: heap reservation]": 0,
+                "[anon: Go: heap]": 41943040,
+                "[anon: Go: immortal metadata]": 1769472,
+                "[anon: Go: gc bits]": 200704,
+                "[anon: Go: profiler hash buckets]": 155648,
+                "[anon: Go: page alloc index]": 8192,
+                "[anon: Go: heap index]": 4096,
+                "[anon: Go: scavenge index]": 8192,
+                "[anon: Go: page summary]": 0,
+                "[anon: Go: page alloc]": 24576,
+                "[anon: Go: allspans array]": 12288,
+                "[anon: Go: GC span queue]": 16384,
+                "[anon: Go: getrandom states]": 4096
+              },
+              "unnamed_vmas": [
+                {
+                  "start": "0xdea000",
+                  "end": "0x2e2d000",
+                  "rss": 2142208,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6280000000",
+                  "end": "0x7f6280021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6280021000",
+                  "end": "0x7f6284000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6288000000",
+                  "end": "0x7f6288021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6288021000",
+                  "end": "0x7f628c000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628dffe000",
+                  "end": "0x7f628dfff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628dfff000",
+                  "end": "0x7f628efff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628efff000",
+                  "end": "0x7f628f000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628f000000",
+                  "end": "0x7f6290000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6290000000",
+                  "end": "0x7f6290021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6290021000",
+                  "end": "0x7f6294000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6294000000",
+                  "end": "0x7f6294021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6294021000",
+                  "end": "0x7f6298000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6298000000",
+                  "end": "0x7f6298021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6298021000",
+                  "end": "0x7f629c000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f629c000000",
+                  "end": "0x7f629c021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f629c021000",
+                  "end": "0x7f62a0000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a0000000",
+                  "end": "0x7f62a0021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a0021000",
+                  "end": "0x7f62a4000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a4ffd000",
+                  "end": "0x7f62a4ffe000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a4ffe000",
+                  "end": "0x7f62a5ffe000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a5ffe000",
+                  "end": "0x7f62a5fff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a5fff000",
+                  "end": "0x7f62a6fff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a6fff000",
+                  "end": "0x7f62a7000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a7000000",
+                  "end": "0x7f62a8000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a8000000",
+                  "end": "0x7f62a8021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a8021000",
+                  "end": "0x7f62ac000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62acffd000",
+                  "end": "0x7f62acffe000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62acffe000",
+                  "end": "0x7f62adffe000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62adffe000",
+                  "end": "0x7f62adfff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62adfff000",
+                  "end": "0x7f62aefff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62aefff000",
+                  "end": "0x7f62af000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62af000000",
+                  "end": "0x7f62b0000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b0000000",
+                  "end": "0x7f62b0021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b0021000",
+                  "end": "0x7f62b4000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b48ff000",
+                  "end": "0x7f62b4900000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b4900000",
+                  "end": "0x7f62b5900000",
+                  "rss": 16384,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc406000",
+                  "end": "0x7f62fc413000",
+                  "rss": 20480,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc5ef000",
+                  "end": "0x7f62fc5f2000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc5fc000",
+                  "end": "0x7f62fc5fe000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                }
+              ]
+            },
+            {
+              "at_seconds": 47.007479833,
+              "phase": "measured",
+              "groups": {
+                "file_mapping": 11501568,
+                "unresolved": 2293760,
+                "kernel_named": 32768,
+                "[anon: Go: heap reservation]": 0,
+                "[anon: Go: heap]": 41943040,
+                "[anon: Go: immortal metadata]": 1769472,
+                "[anon: Go: gc bits]": 200704,
+                "[anon: Go: profiler hash buckets]": 159744,
+                "[anon: Go: page alloc index]": 8192,
+                "[anon: Go: heap index]": 4096,
+                "[anon: Go: scavenge index]": 8192,
+                "[anon: Go: page summary]": 0,
+                "[anon: Go: page alloc]": 24576,
+                "[anon: Go: allspans array]": 12288,
+                "[anon: Go: GC span queue]": 16384,
+                "[anon: Go: getrandom states]": 4096
+              },
+              "unnamed_vmas": [
+                {
+                  "start": "0xdea000",
+                  "end": "0x2e2d000",
+                  "rss": 2142208,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6280000000",
+                  "end": "0x7f6280021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6280021000",
+                  "end": "0x7f6284000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6288000000",
+                  "end": "0x7f6288021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6288021000",
+                  "end": "0x7f628c000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628dffe000",
+                  "end": "0x7f628dfff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628dfff000",
+                  "end": "0x7f628efff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628efff000",
+                  "end": "0x7f628f000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628f000000",
+                  "end": "0x7f6290000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6290000000",
+                  "end": "0x7f6290021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6290021000",
+                  "end": "0x7f6294000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6294000000",
+                  "end": "0x7f6294021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6294021000",
+                  "end": "0x7f6298000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6298000000",
+                  "end": "0x7f6298021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6298021000",
+                  "end": "0x7f629c000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f629c000000",
+                  "end": "0x7f629c021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f629c021000",
+                  "end": "0x7f62a0000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a0000000",
+                  "end": "0x7f62a0021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a0021000",
+                  "end": "0x7f62a4000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a4ffd000",
+                  "end": "0x7f62a4ffe000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a4ffe000",
+                  "end": "0x7f62a5ffe000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a5ffe000",
+                  "end": "0x7f62a5fff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a5fff000",
+                  "end": "0x7f62a6fff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a6fff000",
+                  "end": "0x7f62a7000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a7000000",
+                  "end": "0x7f62a8000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a8000000",
+                  "end": "0x7f62a8021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a8021000",
+                  "end": "0x7f62ac000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62acffd000",
+                  "end": "0x7f62acffe000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62acffe000",
+                  "end": "0x7f62adffe000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62adffe000",
+                  "end": "0x7f62adfff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62adfff000",
+                  "end": "0x7f62aefff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62aefff000",
+                  "end": "0x7f62af000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62af000000",
+                  "end": "0x7f62b0000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b0000000",
+                  "end": "0x7f62b0021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b0021000",
+                  "end": "0x7f62b4000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b48ff000",
+                  "end": "0x7f62b4900000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b4900000",
+                  "end": "0x7f62b5900000",
+                  "rss": 16384,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc406000",
+                  "end": "0x7f62fc413000",
+                  "rss": 20480,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc5ef000",
+                  "end": "0x7f62fc5f2000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc5fc000",
+                  "end": "0x7f62fc5fe000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                }
+              ]
+            },
+            {
+              "at_seconds": 52.007911322,
+              "phase": "measured",
+              "groups": {
+                "file_mapping": 11501568,
+                "unresolved": 2293760,
+                "kernel_named": 32768,
+                "[anon: Go: heap reservation]": 0,
+                "[anon: Go: heap]": 41943040,
+                "[anon: Go: immortal metadata]": 1773568,
+                "[anon: Go: gc bits]": 200704,
+                "[anon: Go: profiler hash buckets]": 159744,
+                "[anon: Go: page alloc index]": 8192,
+                "[anon: Go: heap index]": 4096,
+                "[anon: Go: scavenge index]": 8192,
+                "[anon: Go: page summary]": 0,
+                "[anon: Go: page alloc]": 24576,
+                "[anon: Go: allspans array]": 12288,
+                "[anon: Go: GC span queue]": 16384,
+                "[anon: Go: getrandom states]": 4096
+              },
+              "unnamed_vmas": [
+                {
+                  "start": "0xdea000",
+                  "end": "0x2e2d000",
+                  "rss": 2142208,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6280000000",
+                  "end": "0x7f6280021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6280021000",
+                  "end": "0x7f6284000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6288000000",
+                  "end": "0x7f6288021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6288021000",
+                  "end": "0x7f628c000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628dffe000",
+                  "end": "0x7f628dfff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628dfff000",
+                  "end": "0x7f628efff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628efff000",
+                  "end": "0x7f628f000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628f000000",
+                  "end": "0x7f6290000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6290000000",
+                  "end": "0x7f6290021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6290021000",
+                  "end": "0x7f6294000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6294000000",
+                  "end": "0x7f6294021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6294021000",
+                  "end": "0x7f6298000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6298000000",
+                  "end": "0x7f6298021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6298021000",
+                  "end": "0x7f629c000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f629c000000",
+                  "end": "0x7f629c021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f629c021000",
+                  "end": "0x7f62a0000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a0000000",
+                  "end": "0x7f62a0021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a0021000",
+                  "end": "0x7f62a4000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a4ffd000",
+                  "end": "0x7f62a4ffe000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a4ffe000",
+                  "end": "0x7f62a5ffe000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a5ffe000",
+                  "end": "0x7f62a5fff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a5fff000",
+                  "end": "0x7f62a6fff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a6fff000",
+                  "end": "0x7f62a7000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a7000000",
+                  "end": "0x7f62a8000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a8000000",
+                  "end": "0x7f62a8021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a8021000",
+                  "end": "0x7f62ac000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62acffd000",
+                  "end": "0x7f62acffe000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62acffe000",
+                  "end": "0x7f62adffe000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62adffe000",
+                  "end": "0x7f62adfff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62adfff000",
+                  "end": "0x7f62aefff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62aefff000",
+                  "end": "0x7f62af000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62af000000",
+                  "end": "0x7f62b0000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b0000000",
+                  "end": "0x7f62b0021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b0021000",
+                  "end": "0x7f62b4000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b48ff000",
+                  "end": "0x7f62b4900000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b4900000",
+                  "end": "0x7f62b5900000",
+                  "rss": 16384,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc406000",
+                  "end": "0x7f62fc413000",
+                  "rss": 20480,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc5ef000",
+                  "end": "0x7f62fc5f2000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc5fc000",
+                  "end": "0x7f62fc5fe000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                }
+              ]
+            },
+            {
+              "at_seconds": 57.015516574,
+              "phase": "measured",
+              "groups": {
+                "file_mapping": 11501568,
+                "unresolved": 2293760,
+                "kernel_named": 32768,
+                "[anon: Go: heap reservation]": 0,
+                "[anon: Go: heap]": 41943040,
+                "[anon: Go: immortal metadata]": 1777664,
+                "[anon: Go: gc bits]": 200704,
+                "[anon: Go: profiler hash buckets]": 167936,
+                "[anon: Go: page alloc index]": 8192,
+                "[anon: Go: heap index]": 4096,
+                "[anon: Go: scavenge index]": 8192,
+                "[anon: Go: page summary]": 0,
+                "[anon: Go: page alloc]": 24576,
+                "[anon: Go: allspans array]": 12288,
+                "[anon: Go: GC span queue]": 16384,
+                "[anon: Go: getrandom states]": 4096
+              },
+              "unnamed_vmas": [
+                {
+                  "start": "0xdea000",
+                  "end": "0x2e2d000",
+                  "rss": 2142208,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6280000000",
+                  "end": "0x7f6280021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6280021000",
+                  "end": "0x7f6284000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6288000000",
+                  "end": "0x7f6288021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6288021000",
+                  "end": "0x7f628c000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628dffe000",
+                  "end": "0x7f628dfff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628dfff000",
+                  "end": "0x7f628efff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628efff000",
+                  "end": "0x7f628f000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628f000000",
+                  "end": "0x7f6290000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6290000000",
+                  "end": "0x7f6290021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6290021000",
+                  "end": "0x7f6294000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6294000000",
+                  "end": "0x7f6294021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6294021000",
+                  "end": "0x7f6298000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6298000000",
+                  "end": "0x7f6298021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6298021000",
+                  "end": "0x7f629c000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f629c000000",
+                  "end": "0x7f629c021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f629c021000",
+                  "end": "0x7f62a0000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a0000000",
+                  "end": "0x7f62a0021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a0021000",
+                  "end": "0x7f62a4000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a4ffd000",
+                  "end": "0x7f62a4ffe000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a4ffe000",
+                  "end": "0x7f62a5ffe000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a5ffe000",
+                  "end": "0x7f62a5fff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a5fff000",
+                  "end": "0x7f62a6fff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a6fff000",
+                  "end": "0x7f62a7000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a7000000",
+                  "end": "0x7f62a8000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a8000000",
+                  "end": "0x7f62a8021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a8021000",
+                  "end": "0x7f62ac000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62acffd000",
+                  "end": "0x7f62acffe000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62acffe000",
+                  "end": "0x7f62adffe000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62adffe000",
+                  "end": "0x7f62adfff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62adfff000",
+                  "end": "0x7f62aefff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62aefff000",
+                  "end": "0x7f62af000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62af000000",
+                  "end": "0x7f62b0000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b0000000",
+                  "end": "0x7f62b0021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b0021000",
+                  "end": "0x7f62b4000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b48ff000",
+                  "end": "0x7f62b4900000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b4900000",
+                  "end": "0x7f62b5900000",
+                  "rss": 16384,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc406000",
+                  "end": "0x7f62fc413000",
+                  "rss": 20480,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc5ef000",
+                  "end": "0x7f62fc5f2000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc5fc000",
+                  "end": "0x7f62fc5fe000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                }
+              ]
+            },
+            {
+              "at_seconds": 62.018703626,
+              "phase": "measured",
+              "groups": {
+                "file_mapping": 11501568,
+                "unresolved": 2293760,
+                "kernel_named": 32768,
+                "[anon: Go: heap reservation]": 0,
+                "[anon: Go: heap]": 41943040,
+                "[anon: Go: immortal metadata]": 1777664,
+                "[anon: Go: gc bits]": 200704,
+                "[anon: Go: profiler hash buckets]": 167936,
+                "[anon: Go: page alloc index]": 8192,
+                "[anon: Go: heap index]": 4096,
+                "[anon: Go: scavenge index]": 8192,
+                "[anon: Go: page summary]": 0,
+                "[anon: Go: page alloc]": 24576,
+                "[anon: Go: allspans array]": 12288,
+                "[anon: Go: GC span queue]": 16384,
+                "[anon: Go: getrandom states]": 4096
+              },
+              "unnamed_vmas": [
+                {
+                  "start": "0xdea000",
+                  "end": "0x2e2d000",
+                  "rss": 2142208,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6280000000",
+                  "end": "0x7f6280021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6280021000",
+                  "end": "0x7f6284000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6288000000",
+                  "end": "0x7f6288021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6288021000",
+                  "end": "0x7f628c000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628dffe000",
+                  "end": "0x7f628dfff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628dfff000",
+                  "end": "0x7f628efff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628efff000",
+                  "end": "0x7f628f000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628f000000",
+                  "end": "0x7f6290000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6290000000",
+                  "end": "0x7f6290021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6290021000",
+                  "end": "0x7f6294000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6294000000",
+                  "end": "0x7f6294021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6294021000",
+                  "end": "0x7f6298000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6298000000",
+                  "end": "0x7f6298021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6298021000",
+                  "end": "0x7f629c000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f629c000000",
+                  "end": "0x7f629c021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f629c021000",
+                  "end": "0x7f62a0000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a0000000",
+                  "end": "0x7f62a0021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a0021000",
+                  "end": "0x7f62a4000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a4ffd000",
+                  "end": "0x7f62a4ffe000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a4ffe000",
+                  "end": "0x7f62a5ffe000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a5ffe000",
+                  "end": "0x7f62a5fff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a5fff000",
+                  "end": "0x7f62a6fff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a6fff000",
+                  "end": "0x7f62a7000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a7000000",
+                  "end": "0x7f62a8000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a8000000",
+                  "end": "0x7f62a8021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a8021000",
+                  "end": "0x7f62ac000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62acffd000",
+                  "end": "0x7f62acffe000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62acffe000",
+                  "end": "0x7f62adffe000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62adffe000",
+                  "end": "0x7f62adfff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62adfff000",
+                  "end": "0x7f62aefff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62aefff000",
+                  "end": "0x7f62af000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62af000000",
+                  "end": "0x7f62b0000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b0000000",
+                  "end": "0x7f62b0021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b0021000",
+                  "end": "0x7f62b4000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b48ff000",
+                  "end": "0x7f62b4900000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b4900000",
+                  "end": "0x7f62b5900000",
+                  "rss": 16384,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc406000",
+                  "end": "0x7f62fc413000",
+                  "rss": 20480,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc5ef000",
+                  "end": "0x7f62fc5f2000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc5fc000",
+                  "end": "0x7f62fc5fe000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                }
+              ]
+            },
+            {
+              "at_seconds": 67.009890149,
+              "phase": "measured",
+              "groups": {
+                "file_mapping": 11501568,
+                "unresolved": 2293760,
+                "kernel_named": 32768,
+                "[anon: Go: heap reservation]": 0,
+                "[anon: Go: heap]": 41943040,
+                "[anon: Go: immortal metadata]": 1781760,
+                "[anon: Go: gc bits]": 200704,
+                "[anon: Go: profiler hash buckets]": 176128,
+                "[anon: Go: page alloc index]": 8192,
+                "[anon: Go: heap index]": 4096,
+                "[anon: Go: scavenge index]": 8192,
+                "[anon: Go: page summary]": 0,
+                "[anon: Go: page alloc]": 24576,
+                "[anon: Go: allspans array]": 12288,
+                "[anon: Go: GC span queue]": 16384,
+                "[anon: Go: getrandom states]": 4096
+              },
+              "unnamed_vmas": [
+                {
+                  "start": "0xdea000",
+                  "end": "0x2e2d000",
+                  "rss": 2142208,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6280000000",
+                  "end": "0x7f6280021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6280021000",
+                  "end": "0x7f6284000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6288000000",
+                  "end": "0x7f6288021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6288021000",
+                  "end": "0x7f628c000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628dffe000",
+                  "end": "0x7f628dfff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628dfff000",
+                  "end": "0x7f628efff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628efff000",
+                  "end": "0x7f628f000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f628f000000",
+                  "end": "0x7f6290000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6290000000",
+                  "end": "0x7f6290021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6290021000",
+                  "end": "0x7f6294000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6294000000",
+                  "end": "0x7f6294021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6294021000",
+                  "end": "0x7f6298000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6298000000",
+                  "end": "0x7f6298021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f6298021000",
+                  "end": "0x7f629c000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f629c000000",
+                  "end": "0x7f629c021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f629c021000",
+                  "end": "0x7f62a0000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a0000000",
+                  "end": "0x7f62a0021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a0021000",
+                  "end": "0x7f62a4000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a4ffd000",
+                  "end": "0x7f62a4ffe000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a4ffe000",
+                  "end": "0x7f62a5ffe000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a5ffe000",
+                  "end": "0x7f62a5fff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a5fff000",
+                  "end": "0x7f62a6fff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a6fff000",
+                  "end": "0x7f62a7000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a7000000",
+                  "end": "0x7f62a8000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a8000000",
+                  "end": "0x7f62a8021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62a8021000",
+                  "end": "0x7f62ac000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62acffd000",
+                  "end": "0x7f62acffe000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62acffe000",
+                  "end": "0x7f62adffe000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62adffe000",
+                  "end": "0x7f62adfff000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62adfff000",
+                  "end": "0x7f62aefff000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62aefff000",
+                  "end": "0x7f62af000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62af000000",
+                  "end": "0x7f62b0000000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b0000000",
+                  "end": "0x7f62b0021000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b0021000",
+                  "end": "0x7f62b4000000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b48ff000",
+                  "end": "0x7f62b4900000",
+                  "rss": 0,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62b4900000",
+                  "end": "0x7f62b5900000",
+                  "rss": 16384,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc406000",
+                  "end": "0x7f62fc413000",
+                  "rss": 20480,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc5ef000",
+                  "end": "0x7f62fc5f2000",
+                  "rss": 8192,
+                  "owner": "unresolved"
+                },
+                {
+                  "start": "0x7f62fc5fc000",
+                  "end": "0x7f62fc5fe000",
+                  "rss": 4096,
+                  "owner": "unresolved"
+                }
+              ]
+            }
+          ],
+          "scope": "complete VMA coverage by live mmap intervals at both read boundaries; mixed/partial/unwound frames remain unresolved; adjacent snapshots not atomic"
+        },
+        "allocation_delta_bytes": {
+          "[anon: Go: GC span queue]": 0,
+          "[anon: Go: allspans array]": 4096,
+          "[anon: Go: gc bits]": 0,
+          "[anon: Go: getrandom states]": 0,
+          "[anon: Go: heap index]": 0,
+          "[anon: Go: heap reservation]": 0,
+          "[anon: Go: heap]": 6291456,
+          "[anon: Go: immortal metadata]": 249856,
+          "[anon: Go: page alloc index]": 0,
+          "[anon: Go: page alloc]": 0,
+          "[anon: Go: page summary]": 0,
+          "[anon: Go: profiler hash buckets]": 81920,
+          "[anon: Go: scavenge index]": 0,
+          "file_mapping": 0,
+          "kernel_named": 0,
+          "unresolved": 0
+        }
+      },
+      "untraced-180": {
+        "mapping_audit": {
+          "status": "pilot_passed",
+          "error": null,
+          "audited_events": 1919,
+          "baseline_at_seconds": 10.003584317,
+          "peak_at_seconds": 187.00427168,
+          "groups_delta_bytes": {
+            "file_mapping": {
+              "Size": 0,
+              "Rss": 0,
+              "Pss": 0,
+              "Anonymous": 4096,
+              "Private_Dirty": 4096,
+              "Swap": 0
+            },
+            "kernel_named": {
+              "Size": 0,
+              "Rss": 0,
+              "Pss": 0,
+              "Anonymous": 0,
+              "Private_Dirty": 0,
+              "Swap": 0
+            },
+            "other_anonymous": {
+              "Size": 67444736,
+              "Rss": 9031680,
+              "Pss": 9031680,
+              "Anonymous": 9031680,
+              "Private_Dirty": 9031680,
+              "Swap": 0
+            }
+          },
+          "smaps_rss_delta": 9031680,
+          "statm_rss_delta": 9023488,
+          "selected_checkpoint_age_seconds": [
+            0.009326154,
+            0.010866771
+          ],
+          "max_read_seconds": 0.000956493,
+          "samples": 42,
+          "rollup_audit": {
+            "report_sha256": "9f5cb0410f905d2e132ee83f67c5c1779a35d51fe202b4711d9a6689feb99188",
+            "probe_status": "passed",
+            "build_info": "go\tgo1.26.10\npath\tgithub.com/VortexWang/Tunveo/scripts/soak24h\nmod\tgithub.com/VortexWang/Tunveo\tv0.0.0-20261026141554-6e421a55b9db\t\ndep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\ndep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\ndep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\ndep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\ndep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\ndep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\nbuild\t-buildmode=exe\nbuild\t-compiler=gc\nbuild\t-trimpath=true\nbuild\tCGO_ENABLED=1\nbuild\tGOARCH=amd64\nbuild\tGOOS=linux\nbuild\tGOAMD64=v1\nbuild\tvcs=git\nbuild\tvcs.revision=6e421a55b9db2468d55be8dd950c58dc80b6a148\nbuild\tvcs.time=2026-10-26T14:15:54Z\nbuild\tvcs.modified=false\n",
+            "sample_count": 45,
+            "baseline_at_seconds": 10.003584317,
+            "peak_at_seconds": 187.00427168,
+            "statm_rss_delta": 9023488,
+            "heap_alloc_delta": 1684432,
+            "rollup_delta_bytes": {
+              "AnonHugePages": 8388608,
+              "Anonymous": 9027584,
+              "FilePmdMapped": 0,
+              "KSM": 0,
+              "LazyFree": 0,
+              "Locked": 0,
+              "Private_Clean": -4096,
+              "Private_Dirty": 9027584,
+              "Private_Hugetlb": 0,
+              "Pss": 9023488,
+              "Pss_Anon": 9027584,
+              "Pss_Dirty": 9027584,
+              "Pss_File": -4096,
+              "Pss_Shmem": 0,
+              "Referenced": 9023488,
+              "Rss": 9023488,
+              "Shared_Clean": 0,
+              "Shared_Dirty": 0,
+              "Shared_Hugetlb": 0,
+              "ShmemPmdMapped": 0,
+              "Swap": 0,
+              "SwapPss": 0
+            },
+            "max_read_seconds": 0.000619375,
+            "scheduler_timing": {
+              "max_tick_lag_seconds": 0.006643613,
+              "max_measure_seconds": 0.005487979,
+              "max_checkpoint_seconds": 0.002324694,
+              "max_snapshot_seconds": 0.00611576,
+              "missed_at_seconds": 0,
+              "expected_slot": 0,
+              "observed_slot": 0,
+              "missed_slots": 0
+            }
+          },
+          "scope": "post-checkpoint asynchronous smaps; different reads, not atomic attribution"
+        },
+        "duration_seconds": 180,
+        "counts": {
+          "tcp": 1350,
+          "udp": 450,
+          "failed": 0,
+          "dropped": 0
+        },
+        "curve": {
+          "rss": {
+            "early_median": 59875328.0,
+            "late_median": 60219392.0,
+            "early_to_late_delta": 344064.0
+          },
+          "heap_alloc": {
+            "early_median": 27505144.0,
+            "late_median": 27981616.0,
+            "early_to_late_delta": 476472.0
+          },
+          "heap_sys": {
+            "early_median": 48627712.0,
+            "late_median": 48578560.0,
+            "early_to_late_delta": -49152.0
+          }
+        }
+      }
+    }
+  },
+  "race": {
+    "control": {
+      "trace_sha256": "e79e593a469d1202ef90ed2756bbcfabfa81d4a99aacecad0cea4993b454d02e",
+      "native_pid": 4617,
+      "native_mmaps": 80,
+      "native_mmaps_with_stacks": 80,
+      "mmap_owners": {
+        "race_runtime_other": 31,
+        "unresolved": 49
+      },
+      "rows": [
+        {
+          "at_seconds": null,
+          "phase": null,
+          "groups": {
+            "file_mapping": 4202496,
+            "unresolved": 14708736,
+            "kernel_named": 36864,
+            "[anon: Go: heap]": 2097152,
+            "[anon: Go: heap reservation]": 0,
+            "race_shadow": 1040384,
+            "race_metadata": 32768,
+            "race_runtime_other": 3301376,
+            "[anon: Go: profiler hash buckets]": 4096,
+            "[anon: Go: heap index]": 4096,
+            "[anon: Go: scavenge index]": 4096,
+            "[anon: Go: page summary]": 0,
+            "[anon: Go: page alloc]": 20480,
+            "[anon: Go: gc bits]": 8192,
+            "[anon: Go: immortal metadata]": 356352,
+            "[anon: Go: page alloc index]": 4096,
+            "[anon: Go: allspans array]": 4096
+          },
+          "unnamed_vmas": [
+            {
+              "start": "0x663000",
+              "end": "0x15d0000",
+              "rss": 14581760,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd6c000000",
+              "end": "0x7fcd6c021000",
+              "rss": 4096,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd6c021000",
+              "end": "0x7fcd70000000",
+              "rss": 0,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd70000000",
+              "end": "0x7fcd70021000",
+              "rss": 4096,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd70021000",
+              "end": "0x7fcd74000000",
+              "rss": 0,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd74000000",
+              "end": "0x7fcd74021000",
+              "rss": 4096,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd74021000",
+              "end": "0x7fcd78000000",
+              "rss": 0,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd78000000",
+              "end": "0x7fcd78021000",
+              "rss": 4096,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd78021000",
+              "end": "0x7fcd7c000000",
+              "rss": 0,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd7cffd000",
+              "end": "0x7fcd7cffe000",
+              "rss": 0,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd7cffe000",
+              "end": "0x7fcd7dffe000",
+              "rss": 8192,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd7dffe000",
+              "end": "0x7fcd7dfff000",
+              "rss": 0,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd7dfff000",
+              "end": "0x7fcd7efff000",
+              "rss": 8192,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd7efff000",
+              "end": "0x7fcd7f000000",
+              "rss": 0,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd7f000000",
+              "end": "0x7fcd80000000",
+              "rss": 8192,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd80000000",
+              "end": "0x7fcd80021000",
+              "rss": 4096,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd80021000",
+              "end": "0x7fcd84000000",
+              "rss": 0,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd845fe000",
+              "end": "0x7fcd845ff000",
+              "rss": 0,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd845ff000",
+              "end": "0x7fcd855ff000",
+              "rss": 8192,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd855ff000",
+              "end": "0x7fcd85600000",
+              "rss": 0,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd85600000",
+              "end": "0x7fcd86600000",
+              "rss": 16384,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd86600000",
+              "end": "0x7fcd86e00000",
+              "rss": 2097152,
+              "owner": "race_runtime_other"
+            },
+            {
+              "start": "0x7fcdcd800000",
+              "end": "0x7fcdcd900000",
+              "rss": 4096,
+              "owner": "race_runtime_other"
+            },
+            {
+              "start": "0x7fcdcd9e0000",
+              "end": "0x7fcdcdb00000",
+              "rss": 8192,
+              "owner": "race_runtime_other"
+            },
+            {
+              "start": "0x7fcdcdb0a000",
+              "end": "0x7fcdcdb4a000",
+              "rss": 8192,
+              "owner": "race_runtime_other"
+            },
+            {
+              "start": "0x7fcdcdb8a000",
+              "end": "0x7fcdcdf00000",
+              "rss": 573440,
+              "owner": "race_runtime_other"
+            },
+            {
+              "start": "0x7fcdce000000",
+              "end": "0x7fcdce100000",
+              "rss": 286720,
+              "owner": "race_runtime_other"
+            },
+            {
+              "start": "0x7fcdce14e000",
+              "end": "0x7fcdce16e000",
+              "rss": 45056,
+              "owner": "race_runtime_other"
+            },
+            {
+              "start": "0x7fcdce1ae000",
+              "end": "0x7fcdce1ce000",
+              "rss": 4096,
+              "owner": "race_runtime_other"
+            },
+            {
+              "start": "0x7fcdce200000",
+              "end": "0x7fcdce300000",
+              "rss": 274432,
+              "owner": "race_runtime_other"
+            },
+            {
+              "start": "0x7fcdce606000",
+              "end": "0x7fcdce613000",
+              "rss": 20480,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcdce682000",
+              "end": "0x7fcdce695000",
+              "rss": 16384,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcdce69a000",
+              "end": "0x7fcdce6a1000",
+              "rss": 20480,
+              "owner": "unresolved"
+            }
+          ]
+        },
+        {
+          "at_seconds": null,
+          "phase": null,
+          "groups": {
+            "file_mapping": 4202496,
+            "unresolved": 14721024,
+            "kernel_named": 36864,
+            "[anon: Go: heap]": 35651584,
+            "[anon: Go: heap reservation]": 0,
+            "race_shadow": 68247552,
+            "race_metadata": 32768,
+            "race_runtime_other": 3649536,
+            "[anon: Go: profiler hash buckets]": 4096,
+            "[anon: Go: heap index]": 4096,
+            "[anon: Go: scavenge index]": 4096,
+            "[anon: Go: page summary]": 0,
+            "[anon: Go: page alloc]": 20480,
+            "[anon: Go: immortal metadata]": 630784,
+            "[anon: Go: gc bits]": 73728,
+            "[anon: Go: page alloc index]": 4096,
+            "[anon: Go: allspans array]": 4096
+          },
+          "unnamed_vmas": [
+            {
+              "start": "0x663000",
+              "end": "0x15d0000",
+              "rss": 14581760,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd64000000",
+              "end": "0x7fcd64021000",
+              "rss": 4096,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd64021000",
+              "end": "0x7fcd68000000",
+              "rss": 0,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd6afff000",
+              "end": "0x7fcd6b000000",
+              "rss": 0,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd6b000000",
+              "end": "0x7fcd6c000000",
+              "rss": 8192,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd6c000000",
+              "end": "0x7fcd6c021000",
+              "rss": 4096,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd6c021000",
+              "end": "0x7fcd70000000",
+              "rss": 0,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd70000000",
+              "end": "0x7fcd70021000",
+              "rss": 4096,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd70021000",
+              "end": "0x7fcd74000000",
+              "rss": 0,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd74000000",
+              "end": "0x7fcd74021000",
+              "rss": 4096,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd74021000",
+              "end": "0x7fcd78000000",
+              "rss": 0,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd78000000",
+              "end": "0x7fcd78021000",
+              "rss": 4096,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd78021000",
+              "end": "0x7fcd7c000000",
+              "rss": 0,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd7cffd000",
+              "end": "0x7fcd7cffe000",
+              "rss": 0,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd7cffe000",
+              "end": "0x7fcd7dffe000",
+              "rss": 8192,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd7dffe000",
+              "end": "0x7fcd7dfff000",
+              "rss": 0,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd7dfff000",
+              "end": "0x7fcd7efff000",
+              "rss": 8192,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd7efff000",
+              "end": "0x7fcd7f000000",
+              "rss": 0,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd7f000000",
+              "end": "0x7fcd80000000",
+              "rss": 8192,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd80000000",
+              "end": "0x7fcd80021000",
+              "rss": 4096,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd80021000",
+              "end": "0x7fcd84000000",
+              "rss": 0,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd845fe000",
+              "end": "0x7fcd845ff000",
+              "rss": 0,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd845ff000",
+              "end": "0x7fcd855ff000",
+              "rss": 8192,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd855ff000",
+              "end": "0x7fcd85600000",
+              "rss": 0,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd85600000",
+              "end": "0x7fcd86600000",
+              "rss": 16384,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcd86600000",
+              "end": "0x7fcd86e00000",
+              "rss": 2097152,
+              "owner": "race_runtime_other"
+            },
+            {
+              "start": "0x7fcdcd800000",
+              "end": "0x7fcdcd900000",
+              "rss": 4096,
+              "owner": "race_runtime_other"
+            },
+            {
+              "start": "0x7fcdcd950000",
+              "end": "0x7fcdcd990000",
+              "rss": 262144,
+              "owner": "race_runtime_other"
+            },
+            {
+              "start": "0x7fcdcd9e0000",
+              "end": "0x7fcdcdb00000",
+              "rss": 8192,
+              "owner": "race_runtime_other"
+            },
+            {
+              "start": "0x7fcdcdb0a000",
+              "end": "0x7fcdcdb4a000",
+              "rss": 8192,
+              "owner": "race_runtime_other"
+            },
+            {
+              "start": "0x7fcdcdb8a000",
+              "end": "0x7fcdcdf00000",
+              "rss": 573440,
+              "owner": "race_runtime_other"
+            },
+            {
+              "start": "0x7fcdce000000",
+              "end": "0x7fcdce100000",
+              "rss": 286720,
+              "owner": "race_runtime_other"
+            },
+            {
+              "start": "0x7fcdce14e000",
+              "end": "0x7fcdce16e000",
+              "rss": 131072,
+              "owner": "race_runtime_other"
+            },
+            {
+              "start": "0x7fcdce1ae000",
+              "end": "0x7fcdce1ce000",
+              "rss": 4096,
+              "owner": "race_runtime_other"
+            },
+            {
+              "start": "0x7fcdce200000",
+              "end": "0x7fcdce300000",
+              "rss": 274432,
+              "owner": "race_runtime_other"
+            },
+            {
+              "start": "0x7fcdce606000",
+              "end": "0x7fcdce613000",
+              "rss": 20480,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcdce682000",
+              "end": "0x7fcdce695000",
+              "rss": 16384,
+              "owner": "unresolved"
+            },
+            {
+              "start": "0x7fcdce69a000",
+              "end": "0x7fcdce6a1000",
+              "rss": 20480,
+              "owner": "unresolved"
+            }
+          ]
+        }
+      ],
+      "scope": "complete VMA coverage by live mmap intervals at both read boundaries; mixed/partial/unwound frames remain unresolved; adjacent snapshots not atomic"
+    },
+    "control_shadow_rss_delta": 67207168,
+    "windows": {
+      "traced": {
+        "status": "not_run",
+        "reason": "initial CI audit-parser failure prevented load step"
+      },
+      "untraced-180": {
+        "status": "not_run",
+        "reason": "initial CI audit-parser failure prevented load step"
+      }
+    }
+  }
+}

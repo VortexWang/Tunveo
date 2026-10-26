@@ -1,0 +1,19 @@
+{
+  "source_commit": "73e8a40315f8bd61a58dfa8837e9390678907a2a",
+  "source_tree": "3cfda4ae883d877819a45f4a9b9183c71eab1ea8",
+  "ci_checkout": "fbbfe95e37258c9c22156494e14f3ce0f18e9111",
+  "ci_tree_matches_source": true,
+  "first_source_commit": "adc042d50bfa5d9acdc6f5846a554b2c29bcb9df",
+  "first_source_tree": "d61ee2bc52c0a3e0d3eb6e8a296b50c06ed54c91",
+  "first_checkout": "6e421a55b9db2468d55be8dd950c58dc80b6a148",
+  "first_tree_matches_source": true,
+  "production_go_probe_control_unchanged_from": "a25facbeccf42cd092fec37c52a34b49f64b65ee",
+  "fixed_tests": 41,
+  "local_scope": "No local cross-process smaps or ptrace rerun, prior permission-unavailable controls remain recorded in PR22",
+  "fixed_results": "4windows:3pass1RSSfailure;4800business5276audited events, all business succeeded;180s race RSS+80.0625MiB remains failed",
+  "all_results": "initial source ordinary2windows plus fixed4windows:6windows,7200business7914events; first race pilots skipped by parser failure",
+  "observer_scope": "traced60s vs untraced180s separate processes/VMs, non-atomic adjacent reads; no exact additive comparison to original statm or historical attribution",
+  "ownership_scope": "20.3828125MiB growth within fully covered VMAs attributed to sanitizer mmap callers in one traced race window. Unnamed baseline mappings remain unresolved; exact allocator subtype and long-run bound remain unconfirmed.",
+  "budget": "unchanged statmRSS+64MiB",
+  "release": "24h pending; no merge/tag/release"
+}

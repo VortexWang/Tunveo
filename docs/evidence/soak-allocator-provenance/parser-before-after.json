@@ -1,0 +1,11 @@
+{
+  "fixture_zip_sha256": "2d0d4dcad66cc2dd6827272749923162dbac9b99a8298f67411d02e0626fe968",
+  "original_source": "adc042d50bfa5d9acdc6f5846a554b2c29bcb9df",
+  "fixed_source": "73e8a40315f8bd61a58dfa8837e9390678907a2a",
+  "old_parser_sha256": "5e516aa541bf9e6d75fcceed35348b7824d9baef41104cec6670cfd4f2d4a38a",
+  "fixed_parser_sha256": "4ef5ad79550eba4ef76eadf95344c6897258ec74acafbdb63f731b20ec5279aa",
+  "original_result": "unparsed munmap",
+  "fixed_result": "raw_control_reparsed",
+  "fixed_mmaps": 80,
+  "scope": "same immutable CI trace; accepts valid spaces introduced by strace unfinished/resumed argument formatting; initial CI job remains failed and its race pilots skipped"
+}
