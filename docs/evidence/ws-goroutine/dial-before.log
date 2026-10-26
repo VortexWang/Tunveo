@@ -1,0 +1,76 @@
+=== RUN   TestClientManagerBoundsConcurrentDials
+    dial_limit_test.go:58: DIAL-LIMIT: fifth simultaneous TLS request; peak=5
+2026/10/26 18:54:24 http: TLS handshake error from 127.0.0.1:38364: write tcp 127.0.0.1:38535->127.0.0.1:38364: use of closed network connection
+2026/10/26 18:54:24 http: TLS handshake error from 127.0.0.1:38330: write tcp 127.0.0.1:38535->127.0.0.1:38330: use of closed network connection
+2026/10/26 18:54:24 http: TLS handshake error from 127.0.0.1:38352: write tcp 127.0.0.1:38535->127.0.0.1:38352: use of closed network connection
+2026/10/26 18:54:24 http: TLS handshake error from 127.0.0.1:38224: write tcp 127.0.0.1:38535->127.0.0.1:38224: use of closed network connection
+--- FAIL: TestClientManagerBoundsConcurrentDials (0.03s)
+=== RUN   TestClientManagerBoundsConcurrentDials
+    dial_limit_test.go:58: DIAL-LIMIT: fifth simultaneous TLS request; peak=5
+2026/10/26 18:54:24 http: TLS handshake error from 127.0.0.1:45410: read tcp 127.0.0.1:36513->127.0.0.1:45410: use of closed network connection
+2026/10/26 18:54:24 http: TLS handshake error from 127.0.0.1:45336: write tcp 127.0.0.1:36513->127.0.0.1:45336: use of closed network connection
+2026/10/26 18:54:24 http: TLS handshake error from 127.0.0.1:45338: write tcp 127.0.0.1:36513->127.0.0.1:45338: use of closed network connection
+2026/10/26 18:54:24 http: TLS handshake error from 127.0.0.1:45386: write tcp 127.0.0.1:36513->127.0.0.1:45386: use of closed network connection
+2026/10/26 18:54:24 http: TLS handshake error from 127.0.0.1:45372: write tcp 127.0.0.1:36513->127.0.0.1:45372: use of closed network connection
+2026/10/26 18:54:24 http: TLS handshake error from 127.0.0.1:45388: write tcp 127.0.0.1:36513->127.0.0.1:45388: use of closed network connection
+2026/10/26 18:54:24 http: TLS handshake error from 127.0.0.1:45404: write tcp 127.0.0.1:36513->127.0.0.1:45404: use of closed network connection
+2026/10/26 18:54:24 http: TLS handshake error from 127.0.0.1:45362: write tcp 127.0.0.1:36513->127.0.0.1:45362: use of closed network connection
+2026/10/26 18:54:24 http: TLS handshake error from 127.0.0.1:45350: write tcp 127.0.0.1:36513->127.0.0.1:45350: use of closed network connection
+--- FAIL: TestClientManagerBoundsConcurrentDials (0.02s)
+=== RUN   TestClientManagerBoundsConcurrentDials
+    dial_limit_test.go:58: DIAL-LIMIT: fifth simultaneous TLS request; peak=6
+2026/10/26 18:54:24 http: TLS handshake error from 127.0.0.1:55470: read tcp 127.0.0.1:33343->127.0.0.1:55470: use of closed network connection
+2026/10/26 18:54:24 http: TLS handshake error from 127.0.0.1:55412: read tcp 127.0.0.1:33343->127.0.0.1:55412: use of closed network connection
+2026/10/26 18:54:24 http: TLS handshake error from 127.0.0.1:55444: write tcp 127.0.0.1:33343->127.0.0.1:55444: use of closed network connection
+2026/10/26 18:54:24 http: TLS handshake error from 127.0.0.1:55454: write tcp 127.0.0.1:33343->127.0.0.1:55454: use of closed network connection
+2026/10/26 18:54:24 http: TLS handshake error from 127.0.0.1:55382: write tcp 127.0.0.1:33343->127.0.0.1:55382: use of closed network connection
+--- FAIL: TestClientManagerBoundsConcurrentDials (0.02s)
+=== RUN   TestClientManagerBoundsConcurrentDials
+    dial_limit_test.go:58: DIAL-LIMIT: fifth simultaneous TLS request; peak=5
+2026/10/26 18:54:24 http: TLS handshake error from 127.0.0.1:35636: read tcp 127.0.0.1:37577->127.0.0.1:35636: use of closed network connection
+2026/10/26 18:54:24 http: TLS handshake error from 127.0.0.1:35622: write tcp 127.0.0.1:37577->127.0.0.1:35622: use of closed network connection
+--- FAIL: TestClientManagerBoundsConcurrentDials (0.02s)
+=== RUN   TestClientManagerBoundsConcurrentDials
+    dial_limit_test.go:58: DIAL-LIMIT: fifth simultaneous TLS request; peak=5
+2026/10/26 18:54:24 http: TLS handshake error from 127.0.0.1:54588: read tcp 127.0.0.1:36757->127.0.0.1:54588: use of closed network connection
+2026/10/26 18:54:24 http: TLS handshake error from 127.0.0.1:54664: read tcp 127.0.0.1:36757->127.0.0.1:54664: use of closed network connection
+--- FAIL: TestClientManagerBoundsConcurrentDials (0.02s)
+=== RUN   TestClientManagerBoundsConcurrentDials
+    dial_limit_test.go:58: DIAL-LIMIT: fifth simultaneous TLS request; peak=7
+2026/10/26 18:54:25 http: TLS handshake error from 127.0.0.1:45432: read tcp 127.0.0.1:35795->127.0.0.1:45432: use of closed network connection
+2026/10/26 18:54:25 http: TLS handshake error from 127.0.0.1:45384: write tcp 127.0.0.1:35795->127.0.0.1:45384: use of closed network connection
+2026/10/26 18:54:25 http: TLS handshake error from 127.0.0.1:45412: write tcp 127.0.0.1:35795->127.0.0.1:45412: use of closed network connection
+2026/10/26 18:54:25 http: TLS handshake error from 127.0.0.1:45342: write tcp 127.0.0.1:35795->127.0.0.1:45342: use of closed network connection
+--- FAIL: TestClientManagerBoundsConcurrentDials (0.03s)
+=== RUN   TestClientManagerBoundsConcurrentDials
+    dial_limit_test.go:58: DIAL-LIMIT: fifth simultaneous TLS request; peak=5
+2026/10/26 18:54:25 http: TLS handshake error from 127.0.0.1:53884: read tcp 127.0.0.1:45147->127.0.0.1:53884: use of closed network connection
+2026/10/26 18:54:25 http: TLS handshake error from 127.0.0.1:53804: read tcp 127.0.0.1:45147->127.0.0.1:53804: use of closed network connection
+2026/10/26 18:54:25 http: TLS handshake error from 127.0.0.1:53814: read tcp 127.0.0.1:45147->127.0.0.1:53814: use of closed network connection
+2026/10/26 18:54:25 http: TLS handshake error from 127.0.0.1:53860: read tcp 127.0.0.1:45147->127.0.0.1:53860: use of closed network connection
+--- FAIL: TestClientManagerBoundsConcurrentDials (0.04s)
+=== RUN   TestClientManagerBoundsConcurrentDials
+    dial_limit_test.go:58: DIAL-LIMIT: fifth simultaneous TLS request; peak=5
+2026/10/26 18:54:25 http: TLS handshake error from 127.0.0.1:58846: read tcp 127.0.0.1:33335->127.0.0.1:58846: use of closed network connection
+2026/10/26 18:54:25 http: TLS handshake error from 127.0.0.1:58890: read tcp 127.0.0.1:33335->127.0.0.1:58890: use of closed network connection
+2026/10/26 18:54:25 http: TLS handshake error from 127.0.0.1:58918: write tcp 127.0.0.1:33335->127.0.0.1:58918: use of closed network connection
+--- FAIL: TestClientManagerBoundsConcurrentDials (0.03s)
+=== RUN   TestClientManagerBoundsConcurrentDials
+    dial_limit_test.go:58: DIAL-LIMIT: fifth simultaneous TLS request; peak=5
+2026/10/26 18:54:25 http: TLS handshake error from 127.0.0.1:60682: read tcp 127.0.0.1:39797->127.0.0.1:60682: use of closed network connection
+2026/10/26 18:54:25 http: TLS handshake error from 127.0.0.1:60764: read tcp 127.0.0.1:39797->127.0.0.1:60764: use of closed network connection
+2026/10/26 18:54:25 http: TLS handshake error from 127.0.0.1:60718: read tcp 127.0.0.1:39797->127.0.0.1:60718: use of closed network connection
+2026/10/26 18:54:25 http: TLS handshake error from 127.0.0.1:60778: write tcp 127.0.0.1:39797->127.0.0.1:60778: use of closed network connection
+2026/10/26 18:54:25 http: TLS handshake error from 127.0.0.1:60652: write tcp 127.0.0.1:39797->127.0.0.1:60652: use of closed network connection
+--- FAIL: TestClientManagerBoundsConcurrentDials (0.03s)
+=== RUN   TestClientManagerBoundsConcurrentDials
+    dial_limit_test.go:58: DIAL-LIMIT: fifth simultaneous TLS request; peak=5
+2026/10/26 18:54:25 http: TLS handshake error from 127.0.0.1:47292: read tcp 127.0.0.1:33793->127.0.0.1:47292: use of closed network connection
+2026/10/26 18:54:25 http: TLS handshake error from 127.0.0.1:47388: read tcp 127.0.0.1:33793->127.0.0.1:47388: use of closed network connection
+2026/10/26 18:54:25 http: TLS handshake error from 127.0.0.1:47314: read tcp 127.0.0.1:33793->127.0.0.1:47314: use of closed network connection
+2026/10/26 18:54:25 http: TLS handshake error from 127.0.0.1:47392: read tcp 127.0.0.1:33793->127.0.0.1:47392: use of closed network connection
+2026/10/26 18:54:25 http: TLS handshake error from 127.0.0.1:47368: write tcp 127.0.0.1:33793->127.0.0.1:47368: use of closed network connection
+--- FAIL: TestClientManagerBoundsConcurrentDials (0.05s)
+FAIL
+FAIL	github.com/VortexWang/Tunveo/internal/tunnelpool/websocket	0.307s
+FAIL

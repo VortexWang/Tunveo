@@ -23,6 +23,8 @@ Updated 2026-10-26. Status describes evidence, not a vulnerability severity cert
 | TNV-017 | Implemented; scoped hundred-cycle CI passed, pending integration | QUIC Close now owns Transport and UDP socket; native before10/10 reproduced/fixed100/100; CI19/19, ordinary/race each1600 cycles pass fixed resource budgets | Review [lifecycle evidence](lifecycle-100.md); preserve H2 race heap +5.93MiB within predefined8MiB budget for 24h follow-up; legacy compatibility/release blockers remain |
 | TNV-018 | Diagnostic fixture isolation implemented; native mechanism verified, canonical CI pending | Co-located TCP echo using io.Copy(TCPConn,TCPConn) leases/caches Linux splice pipe FDs; isolated four-connection native control before10/10 adds8pipeFDs, bounded user-space fixture after10/10 adds0 | Preserve first H2 FD49 CI failure (original FD kinds not captured); rerun unchanged budgets and review [soak evidence](soak-24h.md) |
 
+| TNV-019 | Implemented; controlled before/fixed native tests passed, canonical CI pending | WS replenishment fans out all missing dials; observed66 goroutines with nine parallel TLS/HTTP handshakes. Per-Pool four-worker admission retains full deficit and cancellation | Preserve historical64 and new66 failures; no budget increase; see [diagnosis and scoped fix](ws-goroutine-diagnosis.md) |
+
 Evidence, exact baseline commits and scope limitations are in [M1 findings](m1-findings.md) and [TNV-002 fix](tnv-002-fix.md). Unfixed security observations must not be presented as resolved by redacting the diagnostic artifact or by adding a test.
 
 TLS/log changes and process evidence: [security fix record](tls-log-safety.md).

@@ -1,22 +1,54 @@
 {
+  "fixed-python.log": {
+    "sha256": "daf39f0cf0e37c92eb48a3e68260e0d93a954ed09ade3ee5e684fbd32fdd2d06",
+    "bytes": 4198
+  },
   "local-raw.zip": {
     "sha256": "988d6ff7a35befc0456346a23a7269d3ae38a9723684f814a01a06a3e8ea5c92",
     "bytes": 116555
+  },
+  "fixed-go-race.log": {
+    "sha256": "784c02d02589683bb28ce26d12fe8a2bce8143086082f4d679dedd863475e822",
+    "bytes": 966
+  },
+  "spike-and-fixed.zip": {
+    "sha256": "b966e2d343c2cec352fec56c6d792de1d783bb75a825f0640ff18d9dbd966e2e",
+    "bytes": 172691
   },
   "python-tests.log": {
     "sha256": "eba5ac277322e4e1ebb1691ed2b27c979375ae12069b00e4803f10a70c3273a2",
     "bytes": 4198
   },
+  "spike-and-fixed-metadata.json": {
+    "sha256": "79671735a82640d1e22b559e764fffbd8b317cbcc8cb2fb1585d6d54e9994b48",
+    "bytes": 991
+  },
   "metadata.json": {
     "sha256": "e37f284ad231a839ff965fe33f3304c02a09ad002c568525251ebce4ad9b9a5f",
     "bytes": 591
+  },
+  "dial-fixed.log": {
+    "sha256": "722dc9168532c707036c57ace8db2b520442d6628209ded14fb5050bf72dd868",
+    "bytes": 1136
+  },
+  "dial-before.log": {
+    "sha256": "93fb5ddd414eac95358d11d4f1109e47dbdbec3b9ea2e45e64930541fd926742",
+    "bytes": 8136
   },
   "go-race.log": {
     "sha256": "900d7fde177388d5303e7b748e6ca02e7011440901f59230ed19dfd245e51ebd",
     "bytes": 959
   },
+  "fixed-go-vet.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
   "go-vet.log": {
     "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "bytes": 0
+  },
+  "dial-before-native.json": {
+    "sha256": "0ce7fd6c48a0a4fa62913302cfd8a145a3987a197b7a9c719947345930b17e9c",
+    "bytes": 12967
   }
 }

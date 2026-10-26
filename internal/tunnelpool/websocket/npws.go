@@ -21,6 +21,7 @@ import (
 )
 
 const (
+	maxConcurrentDials      = 4
 	defaultMinCap           = 1
 	defaultMaxCap           = 1
 	defaultMinIvl           = 1 * time.Second
@@ -307,10 +308,19 @@ func (p *Pool) ClientManager() {
 		if need > 0 {
 			var wg sync.WaitGroup
 			results := make(chan int, need)
+			// Each WSS dial also owns HTTP/TLS and server handshake work.
+			// Bound in-flight dials while still filling the full idle deficit.
+			jobs := make(chan struct{}, need)
 			for range need {
+				jobs <- struct{}{}
+			}
+			close(jobs)
+			for range min(need, maxConcurrentDials) {
 				wg.Go(func() {
-					if p.createConnection() {
-						results <- 1
+					for range jobs {
+						if p.createConnection() {
+							results <- 1
+						}
 					}
 				})
 			}

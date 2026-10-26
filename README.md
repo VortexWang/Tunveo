@@ -87,4 +87,4 @@ QUIC address release and hundred-cycle resource acceptance: [TNV-017](docs/lifec
 
 Continuous-load probe and separate short-pilot/24-hour admission: [soak tooling](docs/soak-24h.md).
 
-WebSocket mode 2 resource spike diagnostics: [bounded local stacks and controlled comparisons](docs/ws-goroutine-diagnosis.md).
+WebSocket dial admission and resource spike diagnostics: [bounded local stacks and controlled comparisons](docs/ws-goroutine-diagnosis.md).
