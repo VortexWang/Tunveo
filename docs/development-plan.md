@@ -319,3 +319,5 @@ TNV-017已修复：QUIC Pool.Close显式拥有Transport和UDP套接字，关闭�
 ## 29. 漏tick与HTTP/2 RSS受控诊断（2026-10-26）
 
 PR19源码19653e6常规CI19/19、Soak smoke9/9成功，TLS旧服务端配对分片仍失败；不覆盖PR18两项race失败。新增同步采样/写报告/ticker迟到和漏槽信息，以及Go内存分项与GC数据，预算不变。相同回环模板注入250ms checkpoint，父源码十轮均正确拒绝漏tick；只能证明可能的调度耦合，不能认定历史CI同因。接下来固定新观测源码，普通/race各三轮H2 mode1独立窗口，保留所有结果；见 [诊断协议](soak-runtime-diagnostics.md)。
+
+规范观测源码fe4e9b2：专项CI3/3、常规CI19/19、Soak smoke9/9成功。本地H2同源码普通3/3、race2/3；race第二轮RSS增量66.23046875MiB超64MiB、存活Go堆同采样只增0.8557MiB，业务600次仍成功，保留资源failed。调度控制父/当前各十轮本地及CI均识别250ms阻塞导致的漏tick；实际12轮未自然漏tick，不确定历史原因。原始证据和前轮CI8/8独立复核完整保留；预算和24小时pending不变，下一步区分OS/RSS来源与进一步时序诊断。

@@ -1,0 +1,1197 @@
+{
+  "source": "19653e6177fc404fec3572c2e73756757c096558",
+  "soak_artifacts": [
+    {
+      "id": 12647405100,
+      "name": "soak-pilot-0-2",
+      "size_in_bytes": 63241,
+      "url": "https://api.github.com/repos/VortexWang/Tunveo/actions/artifacts/12647405100",
+      "archive_download_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/artifacts/12647405100/zip",
+      "expired": false,
+      "created_at": "2026-10-26T11:34:29Z",
+      "expires_at": "2026-11-25T11:34:28Z",
+      "updated_at": "2026-10-26T11:34:29Z",
+      "digest": "sha256:69d0796e85de174bae6fa48878c5efcf3082c68dddd24c27378a76b0ee1f0a6a",
+      "workflow_run": {
+        "id": 40314437227,
+        "repository_id": 1432849936,
+        "head_repository_id": 1432849936,
+        "head_branch": "test/ordinary-soak-preflight",
+        "head_sha": "19653e6177fc404fec3572c2e73756757c096558"
+      }
+    },
+    {
+      "id": 12647190144,
+      "name": "soak-pilot-2-1",
+      "size_in_bytes": 62062,
+      "url": "https://api.github.com/repos/VortexWang/Tunveo/actions/artifacts/12647190144",
+      "archive_download_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/artifacts/12647190144/zip",
+      "expired": false,
+      "created_at": "2026-10-26T11:28:30Z",
+      "expires_at": "2026-11-25T11:28:29Z",
+      "updated_at": "2026-10-26T11:28:30Z",
+      "digest": "sha256:5ac4d29a2b00b55a865717157e8459795e21fd8f0b90c9a046bcd4cb80180d75",
+      "workflow_run": {
+        "id": 40314437227,
+        "repository_id": 1432849936,
+        "head_repository_id": 1432849936,
+        "head_branch": "test/ordinary-soak-preflight",
+        "head_sha": "19653e6177fc404fec3572c2e73756757c096558"
+      }
+    },
+    {
+      "id": 12647111509,
+      "name": "soak-pilot-1-2",
+      "size_in_bytes": 62001,
+      "url": "https://api.github.com/repos/VortexWang/Tunveo/actions/artifacts/12647111509",
+      "archive_download_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/artifacts/12647111509/zip",
+      "expired": false,
+      "created_at": "2026-10-26T11:33:58Z",
+      "expires_at": "2026-11-25T11:33:57Z",
+      "updated_at": "2026-10-26T11:33:58Z",
+      "digest": "sha256:502dfd344d09dd3497efee7da6839d815b21a2991a2a8c1eff3c7ca2e621e96d",
+      "workflow_run": {
+        "id": 40314437227,
+        "repository_id": 1432849936,
+        "head_repository_id": 1432849936,
+        "head_branch": "test/ordinary-soak-preflight",
+        "head_sha": "19653e6177fc404fec3572c2e73756757c096558"
+      }
+    },
+    {
+      "id": 12646528300,
+      "name": "soak-pilot-2-2",
+      "size_in_bytes": 62048,
+      "url": "https://api.github.com/repos/VortexWang/Tunveo/actions/artifacts/12646528300",
+      "archive_download_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/artifacts/12646528300/zip",
+      "expired": false,
+      "created_at": "2026-10-26T11:32:00Z",
+      "expires_at": "2026-11-25T11:31:59Z",
+      "updated_at": "2026-10-26T11:32:00Z",
+      "digest": "sha256:9e911f83b59b0be54aeae33d4e3c57a52881796a78ca54f4bce7c7db3369877f",
+      "workflow_run": {
+        "id": 40314437227,
+        "repository_id": 1432849936,
+        "head_repository_id": 1432849936,
+        "head_branch": "test/ordinary-soak-preflight",
+        "head_sha": "19653e6177fc404fec3572c2e73756757c096558"
+      }
+    },
+    {
+      "id": 12646243504,
+      "name": "soak-pilot-1-1",
+      "size_in_bytes": 62013,
+      "url": "https://api.github.com/repos/VortexWang/Tunveo/actions/artifacts/12646243504",
+      "archive_download_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/artifacts/12646243504/zip",
+      "expired": false,
+      "created_at": "2026-10-26T11:30:32Z",
+      "expires_at": "2026-11-25T11:30:31Z",
+      "updated_at": "2026-10-26T11:30:32Z",
+      "digest": "sha256:e02eddcdad1568c4ea5fb14bb1343afafca7ebee9c671db4a1980804b1f5fce3",
+      "workflow_run": {
+        "id": 40314437227,
+        "repository_id": 1432849936,
+        "head_repository_id": 1432849936,
+        "head_branch": "test/ordinary-soak-preflight",
+        "head_sha": "19653e6177fc404fec3572c2e73756757c096558"
+      }
+    },
+    {
+      "id": 12646157750,
+      "name": "soak-pilot-3-1",
+      "size_in_bytes": 59747,
+      "url": "https://api.github.com/repos/VortexWang/Tunveo/actions/artifacts/12646157750",
+      "archive_download_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/artifacts/12646157750/zip",
+      "expired": false,
+      "created_at": "2026-10-26T11:29:54Z",
+      "expires_at": "2026-11-25T11:29:53Z",
+      "updated_at": "2026-10-26T11:29:54Z",
+      "digest": "sha256:7f647561f6ecb2903cecebd763627c07561ea3a1c4e42a4473f35473d40218a9",
+      "workflow_run": {
+        "id": 40314437227,
+        "repository_id": 1432849936,
+        "head_repository_id": 1432849936,
+        "head_branch": "test/ordinary-soak-preflight",
+        "head_sha": "19653e6177fc404fec3572c2e73756757c096558"
+      }
+    },
+    {
+      "id": 12646024602,
+      "name": "soak-pilot-3-2",
+      "size_in_bytes": 58784,
+      "url": "https://api.github.com/repos/VortexWang/Tunveo/actions/artifacts/12646024602",
+      "archive_download_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/artifacts/12646024602/zip",
+      "expired": false,
+      "created_at": "2026-10-26T11:32:04Z",
+      "expires_at": "2026-11-25T11:32:03Z",
+      "updated_at": "2026-10-26T11:32:04Z",
+      "digest": "sha256:cd7bd6728d1f043d867daef59546d1d2edc379ef04da577c3d308069e5a28963",
+      "workflow_run": {
+        "id": 40314437227,
+        "repository_id": 1432849936,
+        "head_repository_id": 1432849936,
+        "head_branch": "test/ordinary-soak-preflight",
+        "head_sha": "19653e6177fc404fec3572c2e73756757c096558"
+      }
+    },
+    {
+      "id": 12645714499,
+      "name": "soak-pilot-0-1",
+      "size_in_bytes": 62990,
+      "url": "https://api.github.com/repos/VortexWang/Tunveo/actions/artifacts/12645714499",
+      "archive_download_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/artifacts/12645714499/zip",
+      "expired": false,
+      "created_at": "2026-10-26T11:25:19Z",
+      "expires_at": "2026-11-25T11:25:18Z",
+      "updated_at": "2026-10-26T11:25:19Z",
+      "digest": "sha256:4034a179369a91101bd4e2d323c7139bb42ecda1d7c944f2a66d418d88d39c33",
+      "workflow_run": {
+        "id": 40314437227,
+        "repository_id": 1432849936,
+        "head_repository_id": 1432849936,
+        "head_branch": "test/ordinary-soak-preflight",
+        "head_sha": "19653e6177fc404fec3572c2e73756757c096558"
+      }
+    }
+  ],
+  "tls_failed_jobs": [
+    {
+      "job_id": 121543368950,
+      "name": "matrix (0, upstream-tunveo, explicit-ip)",
+      "summary": {
+        "scope": "TLS 0/1/2 loopback, 4 transports, 2 flows, 2 capacities, 3 pairings; explicit-IP baseline plus maintained-peer default-IP/explicit-DNS identities; CA/name/expiry rejection controls",
+        "reports": [
+          {
+            "report": "artifacts/positive/report.json",
+            "sha256": "feddae6d48bc9530f5c92c201740009d2d61658ef505f644ea4b3de2c7b31881",
+            "status": "failed",
+            "settings": {
+              "tls": [
+                0
+              ],
+              "identity": "explicit-ip",
+              "negative": null,
+              "log_level": "debug",
+              "application_attempts": 1,
+              "readiness": "observed log milestones",
+              "timeouts": {
+                "startup_timeout": 5,
+                "phase_timeout": 15,
+                "io_timeout": 3,
+                "cleanup_timeout": 5
+              }
+            },
+            "binaries": {
+              "tunveo": {
+                "path": "/home/runner/work/Tunveo/Tunveo/bin/tunveo",
+                "sha256": "963d100f93b5fd0bc9134dd4257a4555d56d3dbc6f3dd2b95fd692883cd23514",
+                "version": "tunveo-dev linux/amd64",
+                "version_exit_code": 0,
+                "go_build_info": "/home/runner/work/Tunveo/Tunveo/bin/tunveo: go1.26.10\n\tpath\tgithub.com/VortexWang/Tunveo/cmd/tunveo\n\tmod\tgithub.com/VortexWang/Tunveo\tv0.0.0-20261026112115-61cac9873e29\t\n\tdep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\n\tdep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\n\tdep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\n\tdep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\n\tdep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\n\tdep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\n\tbuild\t-buildmode=exe\n\tbuild\t-compiler=gc\n\tbuild\t-trimpath=true\n\tbuild\tCGO_ENABLED=1\n\tbuild\tGOARCH=amd64\n\tbuild\tGOOS=linux\n\tbuild\tGOAMD64=v1\n\tbuild\tvcs=git\n\tbuild\tvcs.revision=61cac9873e296220407a799791fd07a2f7d7be86\n\tbuild\tvcs.time=2026-10-26T11:21:15Z\n\tbuild\tvcs.modified=false",
+                "go_build_info_exit_code": 0
+              },
+              "upstream": {
+                "path": "/home/runner/work/Tunveo/Tunveo/bin/nodepass-original",
+                "sha256": "eee9cc28a4217c1ee33a00502b929d21e537e268d71fcf4d61e7cba5d546114b",
+                "version": "nodepass-dev linux/amd64",
+                "version_exit_code": 0,
+                "go_build_info": "/home/runner/work/Tunveo/Tunveo/bin/nodepass-original: go1.26.10\n\tpath\tgithub.com/NodePassProject/nodepass/cmd/nodepass\n\tmod\tgithub.com/NodePassProject/nodepass\t(devel)\t\n\tdep\tgithub.com/NodePassProject/nph2\tv1.1.1\th1:Zci9/gLkq/SSeoapRlDoztfDNmoxoqhnSapsCg885G4=\n\tdep\tgithub.com/NodePassProject/npws\tv1.1.1\th1:sgFT5BoGVs7T22AYm5j6eNzsQVqIes6DfKAnV0m8OUo=\n\tdep\tgithub.com/NodePassProject/pool\tv1.1.1\th1:lB2VOugaRUcnBWPRw5bEGLSfS1KvmtXeB8RAoG265Ro=\n\tdep\tgithub.com/NodePassProject/quic\tv1.1.1\th1:fJhu2bwsEtAX6XekDVyViGSxh/6KZmtqbQEE8RhdQbk=\n\tdep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\n\tdep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\n\tdep\tgolang.org/x/crypto\tv0.53.0\th1:QZ4Muo8THX6CizN2vPPd5fBGHyogrdK9fG4wLPFUsto=\n\tdep\tgolang.org/x/net\tv0.56.0\th1:Rw8j/hFzGvJUZwNBXnAtf5sVDVt+65SK2C7IxCxZt5o=\n\tdep\tgolang.org/x/sys\tv0.46.0\th1:noSf2Fq6F8DBgS+LysIkx7rIExoNHJsxOAtPp4rthXw=\n\tdep\tgolang.org/x/text\tv0.39.0\th1:UbZz4pLOvn600D6Oh6GGEI6VAmndrEBLv8/6BEXzyus=\n\tbuild\t-buildmode=exe\n\tbuild\t-compiler=gc\n\tbuild\t-trimpath=true\n\tbuild\tCGO_ENABLED=1\n\tbuild\tGOARCH=amd64\n\tbuild\tGOOS=linux\n\tbuild\tGOAMD64=v1",
+                "go_build_info_exit_code": 0
+              }
+            },
+            "counts": {
+              "passed": 120,
+              "failed": 40
+            },
+            "observed_cells": 160,
+            "failures": [
+              {
+                "id": "0061",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 0,
+                "effective_tls": 1,
+                "identity": "explicit-ip",
+                "transport": 3,
+                "mode": 1,
+                "pool": {
+                  "min": 2,
+                  "max": 8
+                },
+                "iteration": 1,
+                "negative": null,
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "tunnel process exited before phase completion"
+              },
+              {
+                "id": "0062",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 0,
+                "effective_tls": 1,
+                "identity": "explicit-ip",
+                "transport": 3,
+                "mode": 1,
+                "pool": {
+                  "min": 2,
+                  "max": 8
+                },
+                "iteration": 2,
+                "negative": null,
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "tunnel process exited before phase completion"
+              },
+              {
+                "id": "0063",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 0,
+                "effective_tls": 1,
+                "identity": "explicit-ip",
+                "transport": 3,
+                "mode": 1,
+                "pool": {
+                  "min": 2,
+                  "max": 8
+                },
+                "iteration": 3,
+                "negative": null,
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "tunnel process exited before phase completion"
+              },
+              {
+                "id": "0064",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 0,
+                "effective_tls": 1,
+                "identity": "explicit-ip",
+                "transport": 3,
+                "mode": 1,
+                "pool": {
+                  "min": 2,
+                  "max": 8
+                },
+                "iteration": 4,
+                "negative": null,
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "engine failure before phase completion: panic: runtime error: invalid memory address or nil pointer dereference"
+              },
+              {
+                "id": "0065",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 0,
+                "effective_tls": 1,
+                "identity": "explicit-ip",
+                "transport": 3,
+                "mode": 1,
+                "pool": {
+                  "min": 2,
+                  "max": 8
+                },
+                "iteration": 5,
+                "negative": null,
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "tunnel process exited before phase completion"
+              },
+              {
+                "id": "0066",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 0,
+                "effective_tls": 1,
+                "identity": "explicit-ip",
+                "transport": 3,
+                "mode": 1,
+                "pool": {
+                  "min": 2,
+                  "max": 8
+                },
+                "iteration": 6,
+                "negative": null,
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "tunnel process exited before phase completion"
+              },
+              {
+                "id": "0067",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 0,
+                "effective_tls": 1,
+                "identity": "explicit-ip",
+                "transport": 3,
+                "mode": 1,
+                "pool": {
+                  "min": 2,
+                  "max": 8
+                },
+                "iteration": 7,
+                "negative": null,
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "tunnel process exited before phase completion"
+              },
+              {
+                "id": "0068",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 0,
+                "effective_tls": 1,
+                "identity": "explicit-ip",
+                "transport": 3,
+                "mode": 1,
+                "pool": {
+                  "min": 2,
+                  "max": 8
+                },
+                "iteration": 8,
+                "negative": null,
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "tunnel process exited before phase completion"
+              },
+              {
+                "id": "0069",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 0,
+                "effective_tls": 1,
+                "identity": "explicit-ip",
+                "transport": 3,
+                "mode": 1,
+                "pool": {
+                  "min": 2,
+                  "max": 8
+                },
+                "iteration": 9,
+                "negative": null,
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "tunnel process exited before phase completion"
+              },
+              {
+                "id": "0070",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 0,
+                "effective_tls": 1,
+                "identity": "explicit-ip",
+                "transport": 3,
+                "mode": 1,
+                "pool": {
+                  "min": 2,
+                  "max": 8
+                },
+                "iteration": 10,
+                "negative": null,
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "engine failure before phase completion: panic: runtime error: invalid memory address or nil pointer dereference"
+              },
+              {
+                "id": "0071",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 0,
+                "effective_tls": 1,
+                "identity": "explicit-ip",
+                "transport": 3,
+                "mode": 1,
+                "pool": {
+                  "min": 64,
+                  "max": 1024
+                },
+                "iteration": 1,
+                "negative": null,
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "engine failure before phase completion: panic: runtime error: invalid memory address or nil pointer dereference"
+              },
+              {
+                "id": "0072",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 0,
+                "effective_tls": 1,
+                "identity": "explicit-ip",
+                "transport": 3,
+                "mode": 1,
+                "pool": {
+                  "min": 64,
+                  "max": 1024
+                },
+                "iteration": 2,
+                "negative": null,
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "engine failure before phase completion: panic: runtime error: invalid memory address or nil pointer dereference"
+              },
+              {
+                "id": "0073",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 0,
+                "effective_tls": 1,
+                "identity": "explicit-ip",
+                "transport": 3,
+                "mode": 1,
+                "pool": {
+                  "min": 64,
+                  "max": 1024
+                },
+                "iteration": 3,
+                "negative": null,
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "tunnel process exited before phase completion"
+              },
+              {
+                "id": "0074",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 0,
+                "effective_tls": 1,
+                "identity": "explicit-ip",
+                "transport": 3,
+                "mode": 1,
+                "pool": {
+                  "min": 64,
+                  "max": 1024
+                },
+                "iteration": 4,
+                "negative": null,
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "tunnel process exited before phase completion"
+              },
+              {
+                "id": "0075",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 0,
+                "effective_tls": 1,
+                "identity": "explicit-ip",
+                "transport": 3,
+                "mode": 1,
+                "pool": {
+                  "min": 64,
+                  "max": 1024
+                },
+                "iteration": 5,
+                "negative": null,
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "tunnel process exited before phase completion"
+              },
+              {
+                "id": "0076",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 0,
+                "effective_tls": 1,
+                "identity": "explicit-ip",
+                "transport": 3,
+                "mode": 1,
+                "pool": {
+                  "min": 64,
+                  "max": 1024
+                },
+                "iteration": 6,
+                "negative": null,
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "tunnel process exited before phase completion"
+              },
+              {
+                "id": "0077",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 0,
+                "effective_tls": 1,
+                "identity": "explicit-ip",
+                "transport": 3,
+                "mode": 1,
+                "pool": {
+                  "min": 64,
+                  "max": 1024
+                },
+                "iteration": 7,
+                "negative": null,
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "tunnel process exited before phase completion"
+              },
+              {
+                "id": "0078",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 0,
+                "effective_tls": 1,
+                "identity": "explicit-ip",
+                "transport": 3,
+                "mode": 1,
+                "pool": {
+                  "min": 64,
+                  "max": 1024
+                },
+                "iteration": 8,
+                "negative": null,
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "engine failure before phase completion: panic: runtime error: invalid memory address or nil pointer dereference"
+              },
+              {
+                "id": "0079",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 0,
+                "effective_tls": 1,
+                "identity": "explicit-ip",
+                "transport": 3,
+                "mode": 1,
+                "pool": {
+                  "min": 64,
+                  "max": 1024
+                },
+                "iteration": 9,
+                "negative": null,
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "tunnel process exited before phase completion"
+              },
+              {
+                "id": "0080",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 0,
+                "effective_tls": 1,
+                "identity": "explicit-ip",
+                "transport": 3,
+                "mode": 1,
+                "pool": {
+                  "min": 64,
+                  "max": 1024
+                },
+                "iteration": 10,
+                "negative": null,
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "tunnel process exited before phase completion"
+              },
+              {
+                "id": "0141",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 0,
+                "effective_tls": 1,
+                "identity": "explicit-ip",
+                "transport": 3,
+                "mode": 2,
+                "pool": {
+                  "min": 2,
+                  "max": 8
+                },
+                "iteration": 1,
+                "negative": null,
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "tunnel process exited before phase completion"
+              },
+              {
+                "id": "0142",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 0,
+                "effective_tls": 1,
+                "identity": "explicit-ip",
+                "transport": 3,
+                "mode": 2,
+                "pool": {
+                  "min": 2,
+                  "max": 8
+                },
+                "iteration": 2,
+                "negative": null,
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "tunnel process exited before phase completion"
+              },
+              {
+                "id": "0143",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 0,
+                "effective_tls": 1,
+                "identity": "explicit-ip",
+                "transport": 3,
+                "mode": 2,
+                "pool": {
+                  "min": 2,
+                  "max": 8
+                },
+                "iteration": 3,
+                "negative": null,
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "tunnel process exited before phase completion"
+              },
+              {
+                "id": "0144",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 0,
+                "effective_tls": 1,
+                "identity": "explicit-ip",
+                "transport": 3,
+                "mode": 2,
+                "pool": {
+                  "min": 2,
+                  "max": 8
+                },
+                "iteration": 4,
+                "negative": null,
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "tunnel process exited before phase completion"
+              },
+              {
+                "id": "0145",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 0,
+                "effective_tls": 1,
+                "identity": "explicit-ip",
+                "transport": 3,
+                "mode": 2,
+                "pool": {
+                  "min": 2,
+                  "max": 8
+                },
+                "iteration": 5,
+                "negative": null,
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "tunnel process exited before phase completion"
+              },
+              {
+                "id": "0146",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 0,
+                "effective_tls": 1,
+                "identity": "explicit-ip",
+                "transport": 3,
+                "mode": 2,
+                "pool": {
+                  "min": 2,
+                  "max": 8
+                },
+                "iteration": 6,
+                "negative": null,
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "tunnel process exited before phase completion"
+              },
+              {
+                "id": "0147",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 0,
+                "effective_tls": 1,
+                "identity": "explicit-ip",
+                "transport": 3,
+                "mode": 2,
+                "pool": {
+                  "min": 2,
+                  "max": 8
+                },
+                "iteration": 7,
+                "negative": null,
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "tunnel process exited before phase completion"
+              },
+              {
+                "id": "0148",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 0,
+                "effective_tls": 1,
+                "identity": "explicit-ip",
+                "transport": 3,
+                "mode": 2,
+                "pool": {
+                  "min": 2,
+                  "max": 8
+                },
+                "iteration": 8,
+                "negative": null,
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "tunnel process exited before phase completion"
+              },
+              {
+                "id": "0149",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 0,
+                "effective_tls": 1,
+                "identity": "explicit-ip",
+                "transport": 3,
+                "mode": 2,
+                "pool": {
+                  "min": 2,
+                  "max": 8
+                },
+                "iteration": 9,
+                "negative": null,
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "tunnel process exited before phase completion"
+              },
+              {
+                "id": "0150",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 0,
+                "effective_tls": 1,
+                "identity": "explicit-ip",
+                "transport": 3,
+                "mode": 2,
+                "pool": {
+                  "min": 2,
+                  "max": 8
+                },
+                "iteration": 10,
+                "negative": null,
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "tunnel process exited before phase completion"
+              },
+              {
+                "id": "0151",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 0,
+                "effective_tls": 1,
+                "identity": "explicit-ip",
+                "transport": 3,
+                "mode": 2,
+                "pool": {
+                  "min": 64,
+                  "max": 1024
+                },
+                "iteration": 1,
+                "negative": null,
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "tunnel process exited before phase completion"
+              },
+              {
+                "id": "0152",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 0,
+                "effective_tls": 1,
+                "identity": "explicit-ip",
+                "transport": 3,
+                "mode": 2,
+                "pool": {
+                  "min": 64,
+                  "max": 1024
+                },
+                "iteration": 2,
+                "negative": null,
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "tunnel process exited before phase completion"
+              },
+              {
+                "id": "0153",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 0,
+                "effective_tls": 1,
+                "identity": "explicit-ip",
+                "transport": 3,
+                "mode": 2,
+                "pool": {
+                  "min": 64,
+                  "max": 1024
+                },
+                "iteration": 3,
+                "negative": null,
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "tunnel process exited before phase completion"
+              },
+              {
+                "id": "0154",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 0,
+                "effective_tls": 1,
+                "identity": "explicit-ip",
+                "transport": 3,
+                "mode": 2,
+                "pool": {
+                  "min": 64,
+                  "max": 1024
+                },
+                "iteration": 4,
+                "negative": null,
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "tunnel process exited before phase completion"
+              },
+              {
+                "id": "0155",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 0,
+                "effective_tls": 1,
+                "identity": "explicit-ip",
+                "transport": 3,
+                "mode": 2,
+                "pool": {
+                  "min": 64,
+                  "max": 1024
+                },
+                "iteration": 5,
+                "negative": null,
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "tunnel process exited before phase completion"
+              },
+              {
+                "id": "0156",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 0,
+                "effective_tls": 1,
+                "identity": "explicit-ip",
+                "transport": 3,
+                "mode": 2,
+                "pool": {
+                  "min": 64,
+                  "max": 1024
+                },
+                "iteration": 6,
+                "negative": null,
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "tunnel process exited before phase completion"
+              },
+              {
+                "id": "0157",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 0,
+                "effective_tls": 1,
+                "identity": "explicit-ip",
+                "transport": 3,
+                "mode": 2,
+                "pool": {
+                  "min": 64,
+                  "max": 1024
+                },
+                "iteration": 7,
+                "negative": null,
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "tunnel process exited before phase completion"
+              },
+              {
+                "id": "0158",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 0,
+                "effective_tls": 1,
+                "identity": "explicit-ip",
+                "transport": 3,
+                "mode": 2,
+                "pool": {
+                  "min": 64,
+                  "max": 1024
+                },
+                "iteration": 8,
+                "negative": null,
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "tunnel process exited before phase completion"
+              },
+              {
+                "id": "0159",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 0,
+                "effective_tls": 1,
+                "identity": "explicit-ip",
+                "transport": 3,
+                "mode": 2,
+                "pool": {
+                  "min": 64,
+                  "max": 1024
+                },
+                "iteration": 9,
+                "negative": null,
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "tunnel process exited before phase completion"
+              },
+              {
+                "id": "0160",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 0,
+                "effective_tls": 1,
+                "identity": "explicit-ip",
+                "transport": 3,
+                "mode": 2,
+                "pool": {
+                  "min": 64,
+                  "max": 1024
+                },
+                "iteration": 10,
+                "negative": null,
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "tunnel process exited before phase completion"
+              }
+            ]
+          }
+        ],
+        "all_observed_passed": false
+      }
+    },
+    {
+      "job_id": 121543369107,
+      "name": "matrix (2, upstream-tunveo, explicit-ip)",
+      "summary": {
+        "scope": "TLS 0/1/2 loopback, 4 transports, 2 flows, 2 capacities, 3 pairings; explicit-IP baseline plus maintained-peer default-IP/explicit-DNS identities; CA/name/expiry rejection controls",
+        "reports": [
+          {
+            "report": "artifacts/expired/report.json",
+            "sha256": "94801e5c672fdce163f179829e0271c15f18fad8aca1f8e56970db12c446f539",
+            "status": "failed",
+            "settings": {
+              "tls": [
+                2
+              ],
+              "identity": "explicit-ip",
+              "negative": "expired",
+              "log_level": "debug",
+              "application_attempts": 1,
+              "readiness": "observed log milestones",
+              "timeouts": {
+                "startup_timeout": 5,
+                "phase_timeout": 15,
+                "io_timeout": 0.5,
+                "cleanup_timeout": 5
+              }
+            },
+            "binaries": {
+              "tunveo": {
+                "path": "/home/runner/work/Tunveo/Tunveo/bin/tunveo",
+                "sha256": "963d100f93b5fd0bc9134dd4257a4555d56d3dbc6f3dd2b95fd692883cd23514",
+                "version": "tunveo-dev linux/amd64",
+                "version_exit_code": 0,
+                "go_build_info": "/home/runner/work/Tunveo/Tunveo/bin/tunveo: go1.26.10\n\tpath\tgithub.com/VortexWang/Tunveo/cmd/tunveo\n\tmod\tgithub.com/VortexWang/Tunveo\tv0.0.0-20261026112115-61cac9873e29\t\n\tdep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\n\tdep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\n\tdep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\n\tdep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\n\tdep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\n\tdep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\n\tbuild\t-buildmode=exe\n\tbuild\t-compiler=gc\n\tbuild\t-trimpath=true\n\tbuild\tCGO_ENABLED=1\n\tbuild\tGOARCH=amd64\n\tbuild\tGOOS=linux\n\tbuild\tGOAMD64=v1\n\tbuild\tvcs=git\n\tbuild\tvcs.revision=61cac9873e296220407a799791fd07a2f7d7be86\n\tbuild\tvcs.time=2026-10-26T11:21:15Z\n\tbuild\tvcs.modified=false",
+                "go_build_info_exit_code": 0
+              },
+              "upstream": {
+                "path": "/home/runner/work/Tunveo/Tunveo/bin/nodepass-original",
+                "sha256": "eee9cc28a4217c1ee33a00502b929d21e537e268d71fcf4d61e7cba5d546114b",
+                "version": "nodepass-dev linux/amd64",
+                "version_exit_code": 0,
+                "go_build_info": "/home/runner/work/Tunveo/Tunveo/bin/nodepass-original: go1.26.10\n\tpath\tgithub.com/NodePassProject/nodepass/cmd/nodepass\n\tmod\tgithub.com/NodePassProject/nodepass\t(devel)\t\n\tdep\tgithub.com/NodePassProject/nph2\tv1.1.1\th1:Zci9/gLkq/SSeoapRlDoztfDNmoxoqhnSapsCg885G4=\n\tdep\tgithub.com/NodePassProject/npws\tv1.1.1\th1:sgFT5BoGVs7T22AYm5j6eNzsQVqIes6DfKAnV0m8OUo=\n\tdep\tgithub.com/NodePassProject/pool\tv1.1.1\th1:lB2VOugaRUcnBWPRw5bEGLSfS1KvmtXeB8RAoG265Ro=\n\tdep\tgithub.com/NodePassProject/quic\tv1.1.1\th1:fJhu2bwsEtAX6XekDVyViGSxh/6KZmtqbQEE8RhdQbk=\n\tdep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\n\tdep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\n\tdep\tgolang.org/x/crypto\tv0.53.0\th1:QZ4Muo8THX6CizN2vPPd5fBGHyogrdK9fG4wLPFUsto=\n\tdep\tgolang.org/x/net\tv0.56.0\th1:Rw8j/hFzGvJUZwNBXnAtf5sVDVt+65SK2C7IxCxZt5o=\n\tdep\tgolang.org/x/sys\tv0.46.0\th1:noSf2Fq6F8DBgS+LysIkx7rIExoNHJsxOAtPp4rthXw=\n\tdep\tgolang.org/x/text\tv0.39.0\th1:UbZz4pLOvn600D6Oh6GGEI6VAmndrEBLv8/6BEXzyus=\n\tbuild\t-buildmode=exe\n\tbuild\t-compiler=gc\n\tbuild\t-trimpath=true\n\tbuild\tCGO_ENABLED=1\n\tbuild\tGOARCH=amd64\n\tbuild\tGOOS=linux\n\tbuild\tGOAMD64=v1",
+                "go_build_info_exit_code": 0
+              }
+            },
+            "counts": {
+              "passed": 157,
+              "failed": 3
+            },
+            "observed_cells": 160,
+            "failures": [
+              {
+                "id": "0077",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 2,
+                "effective_tls": 2,
+                "identity": "explicit-ip",
+                "transport": 3,
+                "mode": 1,
+                "pool": {
+                  "min": 64,
+                  "max": 1024
+                },
+                "iteration": 7,
+                "negative": "expired",
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "engine failure before phase completion: Client error: TunnelStart: tunnelHandshake failed: TunnelHandshake: Get \"https://127.0.0.1:34685/%22: EOF"
+              },
+              {
+                "id": "0096",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 2,
+                "effective_tls": 2,
+                "identity": "explicit-ip",
+                "transport": 0,
+                "mode": 2,
+                "pool": {
+                  "min": 64,
+                  "max": 1024
+                },
+                "iteration": 6,
+                "negative": "expired",
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "engine failure before phase completion: Client error: TunnelStart: tunnelHandshake failed: TunnelHandshake: Get \"https://127.0.0.1:52191/%22: EOF"
+              },
+              {
+                "id": "0133",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 2,
+                "effective_tls": 2,
+                "identity": "explicit-ip",
+                "transport": 2,
+                "mode": 2,
+                "pool": {
+                  "min": 64,
+                  "max": 1024
+                },
+                "iteration": 3,
+                "negative": "expired",
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "engine failure before phase completion: Client error: TunnelStart: tunnelHandshake failed: TunnelHandshake: Get \"https://127.0.0.1:36391/%22: EOF"
+              }
+            ]
+          },
+          {
+            "report": "artifacts/positive/report.json",
+            "sha256": "d84e7de16e657cd9548ef7eb62befe648ce589175d308468d1e78afed19eb034",
+            "status": "passed",
+            "settings": {
+              "tls": [
+                2
+              ],
+              "identity": "explicit-ip",
+              "negative": null,
+              "log_level": "debug",
+              "application_attempts": 1,
+              "readiness": "observed log milestones",
+              "timeouts": {
+                "startup_timeout": 5,
+                "phase_timeout": 15,
+                "io_timeout": 3,
+                "cleanup_timeout": 5
+              }
+            },
+            "binaries": {
+              "tunveo": {
+                "path": "/home/runner/work/Tunveo/Tunveo/bin/tunveo",
+                "sha256": "963d100f93b5fd0bc9134dd4257a4555d56d3dbc6f3dd2b95fd692883cd23514",
+                "version": "tunveo-dev linux/amd64",
+                "version_exit_code": 0,
+                "go_build_info": "/home/runner/work/Tunveo/Tunveo/bin/tunveo: go1.26.10\n\tpath\tgithub.com/VortexWang/Tunveo/cmd/tunveo\n\tmod\tgithub.com/VortexWang/Tunveo\tv0.0.0-20261026112115-61cac9873e29\t\n\tdep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\n\tdep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\n\tdep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\n\tdep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\n\tdep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\n\tdep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\n\tbuild\t-buildmode=exe\n\tbuild\t-compiler=gc\n\tbuild\t-trimpath=true\n\tbuild\tCGO_ENABLED=1\n\tbuild\tGOARCH=amd64\n\tbuild\tGOOS=linux\n\tbuild\tGOAMD64=v1\n\tbuild\tvcs=git\n\tbuild\tvcs.revision=61cac9873e296220407a799791fd07a2f7d7be86\n\tbuild\tvcs.time=2026-10-26T11:21:15Z\n\tbuild\tvcs.modified=false",
+                "go_build_info_exit_code": 0
+              },
+              "upstream": {
+                "path": "/home/runner/work/Tunveo/Tunveo/bin/nodepass-original",
+                "sha256": "eee9cc28a4217c1ee33a00502b929d21e537e268d71fcf4d61e7cba5d546114b",
+                "version": "nodepass-dev linux/amd64",
+                "version_exit_code": 0,
+                "go_build_info": "/home/runner/work/Tunveo/Tunveo/bin/nodepass-original: go1.26.10\n\tpath\tgithub.com/NodePassProject/nodepass/cmd/nodepass\n\tmod\tgithub.com/NodePassProject/nodepass\t(devel)\t\n\tdep\tgithub.com/NodePassProject/nph2\tv1.1.1\th1:Zci9/gLkq/SSeoapRlDoztfDNmoxoqhnSapsCg885G4=\n\tdep\tgithub.com/NodePassProject/npws\tv1.1.1\th1:sgFT5BoGVs7T22AYm5j6eNzsQVqIes6DfKAnV0m8OUo=\n\tdep\tgithub.com/NodePassProject/pool\tv1.1.1\th1:lB2VOugaRUcnBWPRw5bEGLSfS1KvmtXeB8RAoG265Ro=\n\tdep\tgithub.com/NodePassProject/quic\tv1.1.1\th1:fJhu2bwsEtAX6XekDVyViGSxh/6KZmtqbQEE8RhdQbk=\n\tdep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\n\tdep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\n\tdep\tgolang.org/x/crypto\tv0.53.0\th1:QZ4Muo8THX6CizN2vPPd5fBGHyogrdK9fG4wLPFUsto=\n\tdep\tgolang.org/x/net\tv0.56.0\th1:Rw8j/hFzGvJUZwNBXnAtf5sVDVt+65SK2C7IxCxZt5o=\n\tdep\tgolang.org/x/sys\tv0.46.0\th1:noSf2Fq6F8DBgS+LysIkx7rIExoNHJsxOAtPp4rthXw=\n\tdep\tgolang.org/x/text\tv0.39.0\th1:UbZz4pLOvn600D6Oh6GGEI6VAmndrEBLv8/6BEXzyus=\n\tbuild\t-buildmode=exe\n\tbuild\t-compiler=gc\n\tbuild\t-trimpath=true\n\tbuild\tCGO_ENABLED=1\n\tbuild\tGOARCH=amd64\n\tbuild\tGOOS=linux\n\tbuild\tGOAMD64=v1",
+                "go_build_info_exit_code": 0
+              }
+            },
+            "counts": {
+              "passed": 160
+            },
+            "observed_cells": 160,
+            "failures": []
+          },
+          {
+            "report": "artifacts/untrusted-ca/report.json",
+            "sha256": "e50b0125bdf53ef0b70599883adef1d8ca0d555886405ce09460566f02491d46",
+            "status": "passed",
+            "settings": {
+              "tls": [
+                2
+              ],
+              "identity": "explicit-ip",
+              "negative": "untrusted-ca",
+              "log_level": "debug",
+              "application_attempts": 1,
+              "readiness": "observed log milestones",
+              "timeouts": {
+                "startup_timeout": 5,
+                "phase_timeout": 15,
+                "io_timeout": 0.5,
+                "cleanup_timeout": 5
+              }
+            },
+            "binaries": {
+              "tunveo": {
+                "path": "/home/runner/work/Tunveo/Tunveo/bin/tunveo",
+                "sha256": "963d100f93b5fd0bc9134dd4257a4555d56d3dbc6f3dd2b95fd692883cd23514",
+                "version": "tunveo-dev linux/amd64",
+                "version_exit_code": 0,
+                "go_build_info": "/home/runner/work/Tunveo/Tunveo/bin/tunveo: go1.26.10\n\tpath\tgithub.com/VortexWang/Tunveo/cmd/tunveo\n\tmod\tgithub.com/VortexWang/Tunveo\tv0.0.0-20261026112115-61cac9873e29\t\n\tdep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\n\tdep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\n\tdep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\n\tdep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\n\tdep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\n\tdep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\n\tbuild\t-buildmode=exe\n\tbuild\t-compiler=gc\n\tbuild\t-trimpath=true\n\tbuild\tCGO_ENABLED=1\n\tbuild\tGOARCH=amd64\n\tbuild\tGOOS=linux\n\tbuild\tGOAMD64=v1\n\tbuild\tvcs=git\n\tbuild\tvcs.revision=61cac9873e296220407a799791fd07a2f7d7be86\n\tbuild\tvcs.time=2026-10-26T11:21:15Z\n\tbuild\tvcs.modified=false",
+                "go_build_info_exit_code": 0
+              },
+              "upstream": {
+                "path": "/home/runner/work/Tunveo/Tunveo/bin/nodepass-original",
+                "sha256": "eee9cc28a4217c1ee33a00502b929d21e537e268d71fcf4d61e7cba5d546114b",
+                "version": "nodepass-dev linux/amd64",
+                "version_exit_code": 0,
+                "go_build_info": "/home/runner/work/Tunveo/Tunveo/bin/nodepass-original: go1.26.10\n\tpath\tgithub.com/NodePassProject/nodepass/cmd/nodepass\n\tmod\tgithub.com/NodePassProject/nodepass\t(devel)\t\n\tdep\tgithub.com/NodePassProject/nph2\tv1.1.1\th1:Zci9/gLkq/SSeoapRlDoztfDNmoxoqhnSapsCg885G4=\n\tdep\tgithub.com/NodePassProject/npws\tv1.1.1\th1:sgFT5BoGVs7T22AYm5j6eNzsQVqIes6DfKAnV0m8OUo=\n\tdep\tgithub.com/NodePassProject/pool\tv1.1.1\th1:lB2VOugaRUcnBWPRw5bEGLSfS1KvmtXeB8RAoG265Ro=\n\tdep\tgithub.com/NodePassProject/quic\tv1.1.1\th1:fJhu2bwsEtAX6XekDVyViGSxh/6KZmtqbQEE8RhdQbk=\n\tdep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\n\tdep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\n\tdep\tgolang.org/x/crypto\tv0.53.0\th1:QZ4Muo8THX6CizN2vPPd5fBGHyogrdK9fG4wLPFUsto=\n\tdep\tgolang.org/x/net\tv0.56.0\th1:Rw8j/hFzGvJUZwNBXnAtf5sVDVt+65SK2C7IxCxZt5o=\n\tdep\tgolang.org/x/sys\tv0.46.0\th1:noSf2Fq6F8DBgS+LysIkx7rIExoNHJsxOAtPp4rthXw=\n\tdep\tgolang.org/x/text\tv0.39.0\th1:UbZz4pLOvn600D6Oh6GGEI6VAmndrEBLv8/6BEXzyus=\n\tbuild\t-buildmode=exe\n\tbuild\t-compiler=gc\n\tbuild\t-trimpath=true\n\tbuild\tCGO_ENABLED=1\n\tbuild\tGOARCH=amd64\n\tbuild\tGOOS=linux\n\tbuild\tGOAMD64=v1",
+                "go_build_info_exit_code": 0
+              }
+            },
+            "counts": {
+              "passed": 160
+            },
+            "observed_cells": 160,
+            "failures": []
+          },
+          {
+            "report": "artifacts/wrong-hostname/report.json",
+            "sha256": "ca1a2751241527043d4d6381eba8c64dbfbcc5e56fee0f54eb3a1f25d1de658b",
+            "status": "failed",
+            "settings": {
+              "tls": [
+                2
+              ],
+              "identity": "explicit-ip",
+              "negative": "wrong-hostname",
+              "log_level": "debug",
+              "application_attempts": 1,
+              "readiness": "observed log milestones",
+              "timeouts": {
+                "startup_timeout": 5,
+                "phase_timeout": 15,
+                "io_timeout": 0.5,
+                "cleanup_timeout": 5
+              }
+            },
+            "binaries": {
+              "tunveo": {
+                "path": "/home/runner/work/Tunveo/Tunveo/bin/tunveo",
+                "sha256": "963d100f93b5fd0bc9134dd4257a4555d56d3dbc6f3dd2b95fd692883cd23514",
+                "version": "tunveo-dev linux/amd64",
+                "version_exit_code": 0,
+                "go_build_info": "/home/runner/work/Tunveo/Tunveo/bin/tunveo: go1.26.10\n\tpath\tgithub.com/VortexWang/Tunveo/cmd/tunveo\n\tmod\tgithub.com/VortexWang/Tunveo\tv0.0.0-20261026112115-61cac9873e29\t\n\tdep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\n\tdep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\n\tdep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\n\tdep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\n\tdep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\n\tdep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\n\tbuild\t-buildmode=exe\n\tbuild\t-compiler=gc\n\tbuild\t-trimpath=true\n\tbuild\tCGO_ENABLED=1\n\tbuild\tGOARCH=amd64\n\tbuild\tGOOS=linux\n\tbuild\tGOAMD64=v1\n\tbuild\tvcs=git\n\tbuild\tvcs.revision=61cac9873e296220407a799791fd07a2f7d7be86\n\tbuild\tvcs.time=2026-10-26T11:21:15Z\n\tbuild\tvcs.modified=false",
+                "go_build_info_exit_code": 0
+              },
+              "upstream": {
+                "path": "/home/runner/work/Tunveo/Tunveo/bin/nodepass-original",
+                "sha256": "eee9cc28a4217c1ee33a00502b929d21e537e268d71fcf4d61e7cba5d546114b",
+                "version": "nodepass-dev linux/amd64",
+                "version_exit_code": 0,
+                "go_build_info": "/home/runner/work/Tunveo/Tunveo/bin/nodepass-original: go1.26.10\n\tpath\tgithub.com/NodePassProject/nodepass/cmd/nodepass\n\tmod\tgithub.com/NodePassProject/nodepass\t(devel)\t\n\tdep\tgithub.com/NodePassProject/nph2\tv1.1.1\th1:Zci9/gLkq/SSeoapRlDoztfDNmoxoqhnSapsCg885G4=\n\tdep\tgithub.com/NodePassProject/npws\tv1.1.1\th1:sgFT5BoGVs7T22AYm5j6eNzsQVqIes6DfKAnV0m8OUo=\n\tdep\tgithub.com/NodePassProject/pool\tv1.1.1\th1:lB2VOugaRUcnBWPRw5bEGLSfS1KvmtXeB8RAoG265Ro=\n\tdep\tgithub.com/NodePassProject/quic\tv1.1.1\th1:fJhu2bwsEtAX6XekDVyViGSxh/6KZmtqbQEE8RhdQbk=\n\tdep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\n\tdep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\n\tdep\tgolang.org/x/crypto\tv0.53.0\th1:QZ4Muo8THX6CizN2vPPd5fBGHyogrdK9fG4wLPFUsto=\n\tdep\tgolang.org/x/net\tv0.56.0\th1:Rw8j/hFzGvJUZwNBXnAtf5sVDVt+65SK2C7IxCxZt5o=\n\tdep\tgolang.org/x/sys\tv0.46.0\th1:noSf2Fq6F8DBgS+LysIkx7rIExoNHJsxOAtPp4rthXw=\n\tdep\tgolang.org/x/text\tv0.39.0\th1:UbZz4pLOvn600D6Oh6GGEI6VAmndrEBLv8/6BEXzyus=\n\tbuild\t-buildmode=exe\n\tbuild\t-compiler=gc\n\tbuild\t-trimpath=true\n\tbuild\tCGO_ENABLED=1\n\tbuild\tGOARCH=amd64\n\tbuild\tGOOS=linux\n\tbuild\tGOAMD64=v1",
+                "go_build_info_exit_code": 0
+              }
+            },
+            "counts": {
+              "passed": 159,
+              "failed": 1
+            },
+            "observed_cells": 160,
+            "failures": [
+              {
+                "id": "0080",
+                "pair_server_client": "upstream/tunveo",
+                "tls": 2,
+                "effective_tls": 2,
+                "identity": "explicit-ip",
+                "transport": 3,
+                "mode": 1,
+                "pool": {
+                  "min": 64,
+                  "max": 1024
+                },
+                "iteration": 10,
+                "negative": "wrong-hostname",
+                "status": "failed",
+                "failed_phase": "tunnel_handshake",
+                "error": "engine failure before phase completion: Client error: TunnelStart: tunnelHandshake failed: TunnelHandshake: Get \"https://127.0.0.1:43077/%22: EOF"
+              }
+            ]
+          }
+        ],
+        "all_observed_passed": false
+      }
+    }
+  ]
+}

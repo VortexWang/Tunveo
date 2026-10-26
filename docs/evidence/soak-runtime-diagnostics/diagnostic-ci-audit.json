@@ -1,0 +1,144 @@
+{
+  "source": "a94c2261809983870d2ef9499b0ace053224e298",
+  "head_source": "fe4e9b2f1383f1ac6038b256111d1d1d9833186b",
+  "run_id": 40322786732,
+  "rows": [
+    {
+      "build": "race",
+      "trial": 1,
+      "status": "pilot_passed",
+      "rss_increase_mib": 57.4609375,
+      "heap_alloc_increase_mib_at_rss_peak": 0.0489044189453125,
+      "scheduler_timing": {
+        "max_tick_lag_seconds": 0.005783042,
+        "max_measure_seconds": 0.007148386,
+        "max_checkpoint_seconds": 0.004691669,
+        "max_snapshot_seconds": 0.011421869,
+        "missed_at_seconds": 0,
+        "expected_slot": 0,
+        "observed_slot": 0,
+        "missed_slots": 0
+      },
+      "cpu_model": "model name\t: AMD EPYC 7763 64-Core Processor",
+      "cgroup_cpu": null,
+      "exchanges": 600,
+      "audited_events": 719
+    },
+    {
+      "build": "race",
+      "trial": 2,
+      "status": "pilot_passed",
+      "rss_increase_mib": 59.78125,
+      "heap_alloc_increase_mib_at_rss_peak": -0.8221817016601562,
+      "scheduler_timing": {
+        "max_tick_lag_seconds": 0.005842045,
+        "max_measure_seconds": 0.007750767,
+        "max_checkpoint_seconds": 0.002764264,
+        "max_snapshot_seconds": 0.009392558,
+        "missed_at_seconds": 0,
+        "expected_slot": 0,
+        "observed_slot": 0,
+        "missed_slots": 0
+      },
+      "cpu_model": "model name\t: AMD EPYC 7763 64-Core Processor",
+      "cgroup_cpu": null,
+      "exchanges": 600,
+      "audited_events": 719
+    },
+    {
+      "build": "race",
+      "trial": 3,
+      "status": "pilot_passed",
+      "rss_increase_mib": 60.4375,
+      "heap_alloc_increase_mib_at_rss_peak": 1.6876602172851562,
+      "scheduler_timing": {
+        "max_tick_lag_seconds": 0.005689813,
+        "max_measure_seconds": 0.009149699,
+        "max_checkpoint_seconds": 0.002794309,
+        "max_snapshot_seconds": 0.010858298,
+        "missed_at_seconds": 0,
+        "expected_slot": 0,
+        "observed_slot": 0,
+        "missed_slots": 0
+      },
+      "cpu_model": "model name\t: AMD EPYC 7763 64-Core Processor",
+      "cgroup_cpu": null,
+      "exchanges": 600,
+      "audited_events": 719
+    },
+    {
+      "build": "ordinary",
+      "trial": 1,
+      "status": "pilot_passed",
+      "rss_increase_mib": 8.3046875,
+      "heap_alloc_increase_mib_at_rss_peak": 0.6661300659179688,
+      "scheduler_timing": {
+        "max_tick_lag_seconds": 0.003517086,
+        "max_measure_seconds": 0.003039309,
+        "max_checkpoint_seconds": 0.00268055,
+        "max_snapshot_seconds": 0.005510553,
+        "missed_at_seconds": 0,
+        "expected_slot": 0,
+        "observed_slot": 0,
+        "missed_slots": 0
+      },
+      "cpu_model": "model name\t: AMD EPYC 7763 64-Core Processor",
+      "cgroup_cpu": null,
+      "exchanges": 600,
+      "audited_events": 719
+    },
+    {
+      "build": "ordinary",
+      "trial": 2,
+      "status": "pilot_passed",
+      "rss_increase_mib": 6.3125,
+      "heap_alloc_increase_mib_at_rss_peak": 0.6081390380859375,
+      "scheduler_timing": {
+        "max_tick_lag_seconds": 0.004487926,
+        "max_measure_seconds": 0.003738677,
+        "max_checkpoint_seconds": 0.00140769,
+        "max_snapshot_seconds": 0.004083463,
+        "missed_at_seconds": 0,
+        "expected_slot": 0,
+        "observed_slot": 0,
+        "missed_slots": 0
+      },
+      "cpu_model": "model name\t: AMD EPYC 7763 64-Core Processor",
+      "cgroup_cpu": null,
+      "exchanges": 600,
+      "audited_events": 719
+    },
+    {
+      "build": "ordinary",
+      "trial": 3,
+      "status": "pilot_passed",
+      "rss_increase_mib": 6.3671875,
+      "heap_alloc_increase_mib_at_rss_peak": 0.608062744140625,
+      "scheduler_timing": {
+        "max_tick_lag_seconds": 0.003717864,
+        "max_measure_seconds": 0.00320055,
+        "max_checkpoint_seconds": 0.002301285,
+        "max_snapshot_seconds": 0.004971269,
+        "missed_at_seconds": 0,
+        "expected_slot": 0,
+        "observed_slot": 0,
+        "missed_slots": 0
+      },
+      "cpu_model": "model name\t: AMD EPYC 7763 64-Core Processor",
+      "cgroup_cpu": null,
+      "exchanges": 600,
+      "audited_events": 719
+    }
+  ],
+  "control": {
+    "template_sha256": "9df33d008abdbbb7a81285699d8f45adecb7486fbd6881bcc0c777833791273e",
+    "parent_source": "8c45fe55738a302d0b6e3274ee7ef8ed9e0c3221",
+    "current_source": "a94c2261809983870d2ef9499b0ace053224e298",
+    "count_each": 10,
+    "current_min_checkpoint_seconds": 0.25003321,
+    "current_min_tick_lag_seconds": 0.150638129
+  },
+  "artifact_digests_and_crc_verified": true,
+  "all_events_and_file_hashes_revalidated": true,
+  "scope": "separate CI VMs for ordinary and race; each profile is a short independent pilot; no24h qualification"
+}
