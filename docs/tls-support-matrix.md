@@ -62,3 +62,5 @@ python3 scripts/verify_forwarding.py --binary bin/tunveo --tls 2 --reject-tls un
 python3 scripts/repro_handshake_eof.py --ref 114345043d9608e1e24e783a270cde75193e4f42 --mode original --go go --output artifacts/eof-original.json
 python3 scripts/repro_handshake_eof.py --ref HEAD --mode fixed --go go --output artifacts/eof-fixed.json
 ```
+
+后续 TNV-015 名称策略修复和过期叶证书测试见 [身份与有效期验收](tls-identity.md)；上文是本轮修复前的历史矩阵与失败记录，不据后续结果改写。
