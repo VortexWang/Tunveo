@@ -1,0 +1,2208 @@
+{
+  "initial-ordinary": {
+    "series": [
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 0.001111765,
+        "native_rollup_anon_huge_pages": 2097152,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "2a48afc00000",
+            "end": "2a48b2c00000",
+            "path": "[anon: Go: heap]",
+            "Rss": 11112448,
+            "LazyFree": 0,
+            "AnonHugePages": 2097152
+          }
+        ],
+        "go_heap_rss": 11112448,
+        "go_heap_anon_huge_pages": 2097152,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 5.003567728,
+        "native_rollup_anon_huge_pages": 20971520,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "2a48afc00000",
+            "end": "2a48b2c00000",
+            "path": "[anon: Go: heap]",
+            "Rss": 25694208,
+            "LazyFree": 0,
+            "AnonHugePages": 18874368
+          }
+        ],
+        "go_heap_rss": 25694208,
+        "go_heap_anon_huge_pages": 18874368,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 10.005972661,
+        "native_rollup_anon_huge_pages": 18874368,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "2a48afc00000",
+            "end": "2a48b2c00000",
+            "path": "[anon: Go: heap]",
+            "Rss": 25505792,
+            "LazyFree": 0,
+            "AnonHugePages": 16777216
+          }
+        ],
+        "go_heap_rss": 25505792,
+        "go_heap_anon_huge_pages": 16777216,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 15.008640939,
+        "native_rollup_anon_huge_pages": 23068672,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "2a48afc00000",
+            "end": "2a48b2c00000",
+            "path": "[anon: Go: heap]",
+            "Rss": 29700096,
+            "LazyFree": 0,
+            "AnonHugePages": 20971520
+          }
+        ],
+        "go_heap_rss": 29700096,
+        "go_heap_anon_huge_pages": 20971520,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 20.011000626,
+        "native_rollup_anon_huge_pages": 14680064,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "2a48afc00000",
+            "end": "2a48b2c00000",
+            "path": "[anon: Go: heap]",
+            "Rss": 29319168,
+            "LazyFree": 0,
+            "AnonHugePages": 12582912
+          }
+        ],
+        "go_heap_rss": 29319168,
+        "go_heap_anon_huge_pages": 12582912,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 25.017678638,
+        "native_rollup_anon_huge_pages": 14680064,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "2a48afc00000",
+            "end": "2a48b2c00000",
+            "path": "[anon: Go: heap]",
+            "Rss": 29499392,
+            "LazyFree": 0,
+            "AnonHugePages": 12582912
+          }
+        ],
+        "go_heap_rss": 29499392,
+        "go_heap_anon_huge_pages": 12582912,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 30.021092018,
+        "native_rollup_anon_huge_pages": 14680064,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "2a48afc00000",
+            "end": "2a48b2c00000",
+            "path": "[anon: Go: heap]",
+            "Rss": 29552640,
+            "LazyFree": 0,
+            "AnonHugePages": 12582912
+          }
+        ],
+        "go_heap_rss": 29552640,
+        "go_heap_anon_huge_pages": 12582912,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 35.023532296,
+        "native_rollup_anon_huge_pages": 14680064,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "2a48afc00000",
+            "end": "2a48b2c00000",
+            "path": "[anon: Go: heap]",
+            "Rss": 29552640,
+            "LazyFree": 0,
+            "AnonHugePages": 12582912
+          }
+        ],
+        "go_heap_rss": 29552640,
+        "go_heap_anon_huge_pages": 12582912,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 40.025920333,
+        "native_rollup_anon_huge_pages": 12582912,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "2a48afc00000",
+            "end": "2a48b2c00000",
+            "path": "[anon: Go: heap]",
+            "Rss": 29593600,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          }
+        ],
+        "go_heap_rss": 29593600,
+        "go_heap_anon_huge_pages": 10485760,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 45.032595206,
+        "native_rollup_anon_huge_pages": 12582912,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "2a48afc00000",
+            "end": "2a48b2c00000",
+            "path": "[anon: Go: heap]",
+            "Rss": 29667328,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          }
+        ],
+        "go_heap_rss": 29667328,
+        "go_heap_anon_huge_pages": 10485760,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 50.035053023,
+        "native_rollup_anon_huge_pages": 12582912,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "2a48afc00000",
+            "end": "2a48b2c00000",
+            "path": "[anon: Go: heap]",
+            "Rss": 29372416,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          }
+        ],
+        "go_heap_rss": 29372416,
+        "go_heap_anon_huge_pages": 10485760,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 55.039891683,
+        "native_rollup_anon_huge_pages": 12582912,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "2a48afc00000",
+            "end": "2a48b2c00000",
+            "path": "[anon: Go: heap]",
+            "Rss": 29601792,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          }
+        ],
+        "go_heap_rss": 29601792,
+        "go_heap_anon_huge_pages": 10485760,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 60.04244037,
+        "native_rollup_anon_huge_pages": 12582912,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "2a48afc00000",
+            "end": "2a48b2c00000",
+            "path": "[anon: Go: heap]",
+            "Rss": 29650944,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          }
+        ],
+        "go_heap_rss": 29650944,
+        "go_heap_anon_huge_pages": 10485760,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 65.048171021,
+        "native_rollup_anon_huge_pages": 12582912,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "2a48afc00000",
+            "end": "2a48b2c00000",
+            "path": "[anon: Go: heap]",
+            "Rss": 29466624,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          }
+        ],
+        "go_heap_rss": 29466624,
+        "go_heap_anon_huge_pages": 10485760,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 70.122867395,
+        "native_rollup_anon_huge_pages": 12582912,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "2a48afc00000",
+            "end": "2a48b2c00000",
+            "path": "[anon: Go: heap]",
+            "Rss": 29544448,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          }
+        ],
+        "go_heap_rss": 29544448,
+        "go_heap_anon_huge_pages": 10485760,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 75.126309642,
+        "native_rollup_anon_huge_pages": 12582912,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "2a48afc00000",
+            "end": "2a48b2c00000",
+            "path": "[anon: Go: heap]",
+            "Rss": 29474816,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          }
+        ],
+        "go_heap_rss": 29474816,
+        "go_heap_anon_huge_pages": 10485760,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 80.133382121,
+        "native_rollup_anon_huge_pages": 12582912,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "2a48afc00000",
+            "end": "2a48b2c00000",
+            "path": "[anon: Go: heap]",
+            "Rss": 29491200,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          }
+        ],
+        "go_heap_rss": 29491200,
+        "go_heap_anon_huge_pages": 10485760,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 85.156160153,
+        "native_rollup_anon_huge_pages": 12582912,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "2a48afc00000",
+            "end": "2a48b2c00000",
+            "path": "[anon: Go: heap]",
+            "Rss": 29118464,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          }
+        ],
+        "go_heap_rss": 29118464,
+        "go_heap_anon_huge_pages": 10485760,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 90.162905493,
+        "native_rollup_anon_huge_pages": 12582912,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "2a48afc00000",
+            "end": "2a48b2c00000",
+            "path": "[anon: Go: heap]",
+            "Rss": 29319168,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          }
+        ],
+        "go_heap_rss": 29319168,
+        "go_heap_anon_huge_pages": 10485760,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 95.166340876,
+        "native_rollup_anon_huge_pages": 12582912,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "2a48afc00000",
+            "end": "2a48b2c00000",
+            "path": "[anon: Go: heap]",
+            "Rss": 29401088,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          }
+        ],
+        "go_heap_rss": 29401088,
+        "go_heap_anon_huge_pages": 10485760,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 100.16895137,
+        "native_rollup_anon_huge_pages": 12582912,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "2a48afc00000",
+            "end": "2a48b2c00000",
+            "path": "[anon: Go: heap]",
+            "Rss": 29466624,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          }
+        ],
+        "go_heap_rss": 29466624,
+        "go_heap_anon_huge_pages": 10485760,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 105.171495544,
+        "native_rollup_anon_huge_pages": 12582912,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "2a48afc00000",
+            "end": "2a48b2c00000",
+            "path": "[anon: Go: heap]",
+            "Rss": 29605888,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          }
+        ],
+        "go_heap_rss": 29605888,
+        "go_heap_anon_huge_pages": 10485760,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 110.1741283,
+        "native_rollup_anon_huge_pages": 12582912,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "2a48afc00000",
+            "end": "2a48b2c00000",
+            "path": "[anon: Go: heap]",
+            "Rss": 29425664,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          }
+        ],
+        "go_heap_rss": 29425664,
+        "go_heap_anon_huge_pages": 10485760,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 115.181488294,
+        "native_rollup_anon_huge_pages": 12582912,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "2a48afc00000",
+            "end": "2a48b2c00000",
+            "path": "[anon: Go: heap]",
+            "Rss": 29315072,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          }
+        ],
+        "go_heap_rss": 29315072,
+        "go_heap_anon_huge_pages": 10485760,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 120.005212557,
+        "native_rollup_anon_huge_pages": 12582912,
+        "external_map_available": false
+      },
+      {
+        "phase": "poststop_go_scavenge",
+        "at_seconds": 120.008121585,
+        "native_rollup_anon_huge_pages": 12582912,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "2a48afc00000",
+            "end": "2a48b2c00000",
+            "path": "[anon: Go: heap]",
+            "Rss": 29179904,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          }
+        ],
+        "go_heap_rss": 29179904,
+        "go_heap_anon_huge_pages": 10485760,
+        "go_heap_lazy_free": 0
+      }
+    ],
+    "selected": [
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 0.001111765,
+        "native_rollup_anon_huge_pages": 2097152,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "2a48afc00000",
+            "end": "2a48b2c00000",
+            "path": "[anon: Go: heap]",
+            "Rss": 11112448,
+            "LazyFree": 0,
+            "AnonHugePages": 2097152
+          }
+        ],
+        "go_heap_rss": 11112448,
+        "go_heap_anon_huge_pages": 2097152,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 120.005212557,
+        "native_rollup_anon_huge_pages": 12582912,
+        "external_map_available": false
+      },
+      {
+        "phase": "poststop_go_scavenge",
+        "at_seconds": 120.008121585,
+        "native_rollup_anon_huge_pages": 12582912,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "2a48afc00000",
+            "end": "2a48b2c00000",
+            "path": "[anon: Go: heap]",
+            "Rss": 29179904,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          }
+        ],
+        "go_heap_rss": 29179904,
+        "go_heap_anon_huge_pages": 10485760,
+        "go_heap_lazy_free": 0
+      }
+    ],
+    "scope": "raw VMA counts only, no hugepage policy change and no causal attribution; initial ordinary pre-action map remains unavailable"
+  },
+  "initial-race": {
+    "series": [
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 0.003386327,
+        "native_rollup_anon_huge_pages": 44040192,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 7909376,
+            "LazyFree": 0,
+            "AnonHugePages": 0
+          }
+        ],
+        "go_heap_rss": 7909376,
+        "go_heap_anon_huge_pages": 0,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 5.018676691,
+        "native_rollup_anon_huge_pages": 44040192,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 7671808,
+            "LazyFree": 0,
+            "AnonHugePages": 0
+          }
+        ],
+        "go_heap_rss": 7671808,
+        "go_heap_anon_huge_pages": 0,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 10.03536712,
+        "native_rollup_anon_huge_pages": 44040192,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 7745536,
+            "LazyFree": 0,
+            "AnonHugePages": 0
+          }
+        ],
+        "go_heap_rss": 7745536,
+        "go_heap_anon_huge_pages": 0,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 15.051048145,
+        "native_rollup_anon_huge_pages": 44040192,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 7229440,
+            "LazyFree": 0,
+            "AnonHugePages": 0
+          }
+        ],
+        "go_heap_rss": 7229440,
+        "go_heap_anon_huge_pages": 0,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 20.06678659,
+        "native_rollup_anon_huge_pages": 44040192,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 7294976,
+            "LazyFree": 0,
+            "AnonHugePages": 0
+          }
+        ],
+        "go_heap_rss": 7294976,
+        "go_heap_anon_huge_pages": 0,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 25.086840599,
+        "native_rollup_anon_huge_pages": 44040192,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 7254016,
+            "LazyFree": 0,
+            "AnonHugePages": 0
+          }
+        ],
+        "go_heap_rss": 7254016,
+        "go_heap_anon_huge_pages": 0,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 30.104371114,
+        "native_rollup_anon_huge_pages": 44040192,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 7102464,
+            "LazyFree": 0,
+            "AnonHugePages": 0
+          }
+        ],
+        "go_heap_rss": 7102464,
+        "go_heap_anon_huge_pages": 0,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 35.12426468,
+        "native_rollup_anon_huge_pages": 44040192,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 6754304,
+            "LazyFree": 0,
+            "AnonHugePages": 0
+          }
+        ],
+        "go_heap_rss": 6754304,
+        "go_heap_anon_huge_pages": 0,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 40.145523132,
+        "native_rollup_anon_huge_pages": 44040192,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 7032832,
+            "LazyFree": 0,
+            "AnonHugePages": 0
+          }
+        ],
+        "go_heap_rss": 7032832,
+        "go_heap_anon_huge_pages": 0,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 45.163896696,
+        "native_rollup_anon_huge_pages": 44040192,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 7049216,
+            "LazyFree": 0,
+            "AnonHugePages": 0
+          }
+        ],
+        "go_heap_rss": 7049216,
+        "go_heap_anon_huge_pages": 0,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 50.184815303,
+        "native_rollup_anon_huge_pages": 44040192,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 7122944,
+            "LazyFree": 0,
+            "AnonHugePages": 0
+          }
+        ],
+        "go_heap_rss": 7122944,
+        "go_heap_anon_huge_pages": 0,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 55.203317579,
+        "native_rollup_anon_huge_pages": 44040192,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 7131136,
+            "LazyFree": 0,
+            "AnonHugePages": 0
+          }
+        ],
+        "go_heap_rss": 7131136,
+        "go_heap_anon_huge_pages": 0,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 60.223255002,
+        "native_rollup_anon_huge_pages": 44040192,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 6795264,
+            "LazyFree": 0,
+            "AnonHugePages": 0
+          }
+        ],
+        "go_heap_rss": 6795264,
+        "go_heap_anon_huge_pages": 0,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 65.242074129,
+        "native_rollup_anon_huge_pages": 44040192,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 7110656,
+            "LazyFree": 0,
+            "AnonHugePages": 0
+          }
+        ],
+        "go_heap_rss": 7110656,
+        "go_heap_anon_huge_pages": 0,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 70.264506541,
+        "native_rollup_anon_huge_pages": 44040192,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 7159808,
+            "LazyFree": 0,
+            "AnonHugePages": 0
+          }
+        ],
+        "go_heap_rss": 7159808,
+        "go_heap_anon_huge_pages": 0,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 75.283814838,
+        "native_rollup_anon_huge_pages": 44040192,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 7159808,
+            "LazyFree": 0,
+            "AnonHugePages": 0
+          }
+        ],
+        "go_heap_rss": 7159808,
+        "go_heap_anon_huge_pages": 0,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 80.305849926,
+        "native_rollup_anon_huge_pages": 44040192,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 7249920,
+            "LazyFree": 0,
+            "AnonHugePages": 0
+          }
+        ],
+        "go_heap_rss": 7249920,
+        "go_heap_anon_huge_pages": 0,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 85.327217357,
+        "native_rollup_anon_huge_pages": 44040192,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 7258112,
+            "LazyFree": 0,
+            "AnonHugePages": 0
+          }
+        ],
+        "go_heap_rss": 7258112,
+        "go_heap_anon_huge_pages": 0,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 90.350500676,
+        "native_rollup_anon_huge_pages": 44040192,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 7266304,
+            "LazyFree": 0,
+            "AnonHugePages": 0
+          }
+        ],
+        "go_heap_rss": 7266304,
+        "go_heap_anon_huge_pages": 0,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 95.373593083,
+        "native_rollup_anon_huge_pages": 44040192,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 7266304,
+            "LazyFree": 0,
+            "AnonHugePages": 0
+          }
+        ],
+        "go_heap_rss": 7266304,
+        "go_heap_anon_huge_pages": 0,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 100.397045266,
+        "native_rollup_anon_huge_pages": 44040192,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 7266304,
+            "LazyFree": 0,
+            "AnonHugePages": 0
+          }
+        ],
+        "go_heap_rss": 7266304,
+        "go_heap_anon_huge_pages": 0,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 105.421416862,
+        "native_rollup_anon_huge_pages": 44040192,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 7176192,
+            "LazyFree": 0,
+            "AnonHugePages": 0
+          }
+        ],
+        "go_heap_rss": 7176192,
+        "go_heap_anon_huge_pages": 0,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 110.444604223,
+        "native_rollup_anon_huge_pages": 44040192,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 7200768,
+            "LazyFree": 0,
+            "AnonHugePages": 0
+          }
+        ],
+        "go_heap_rss": 7200768,
+        "go_heap_anon_huge_pages": 0,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 115.469547238,
+        "native_rollup_anon_huge_pages": 44040192,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 7233536,
+            "LazyFree": 0,
+            "AnonHugePages": 0
+          }
+        ],
+        "go_heap_rss": 7233536,
+        "go_heap_anon_huge_pages": 0,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 120.007782782,
+        "native_rollup_anon_huge_pages": 44040192,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 6406144,
+            "LazyFree": 0,
+            "AnonHugePages": 0
+          }
+        ],
+        "go_heap_rss": 6406144,
+        "go_heap_anon_huge_pages": 0,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_go_scavenge",
+        "at_seconds": 120.028503274,
+        "native_rollup_anon_huge_pages": 44040192,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 6623232,
+            "LazyFree": 0,
+            "AnonHugePages": 0
+          }
+        ],
+        "go_heap_rss": 6623232,
+        "go_heap_anon_huge_pages": 0,
+        "go_heap_lazy_free": 0
+      }
+    ],
+    "selected": [
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 0.003386327,
+        "native_rollup_anon_huge_pages": 44040192,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 7909376,
+            "LazyFree": 0,
+            "AnonHugePages": 0
+          }
+        ],
+        "go_heap_rss": 7909376,
+        "go_heap_anon_huge_pages": 0,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 120.007782782,
+        "native_rollup_anon_huge_pages": 44040192,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 6406144,
+            "LazyFree": 0,
+            "AnonHugePages": 0
+          }
+        ],
+        "go_heap_rss": 6406144,
+        "go_heap_anon_huge_pages": 0,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_go_scavenge",
+        "at_seconds": 120.028503274,
+        "native_rollup_anon_huge_pages": 44040192,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 6623232,
+            "LazyFree": 0,
+            "AnonHugePages": 0
+          }
+        ],
+        "go_heap_rss": 6623232,
+        "go_heap_anon_huge_pages": 0,
+        "go_heap_lazy_free": 0
+      }
+    ],
+    "scope": "raw VMA counts only, no hugepage policy change and no causal attribution; initial ordinary pre-action map remains unavailable"
+  },
+  "ack-ordinary": {
+    "series": [
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 0.001576247,
+        "native_rollup_anon_huge_pages": 25165824,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "59f93800000",
+            "end": "59f96800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 25919488,
+            "LazyFree": 0,
+            "AnonHugePages": 23068672
+          }
+        ],
+        "go_heap_rss": 25919488,
+        "go_heap_anon_huge_pages": 23068672,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 5.006651116,
+        "native_rollup_anon_huge_pages": 4194304,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "59f93800000",
+            "end": "59f96800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 6225920,
+            "LazyFree": 0,
+            "AnonHugePages": 2097152
+          }
+        ],
+        "go_heap_rss": 6225920,
+        "go_heap_anon_huge_pages": 2097152,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 10.00996251,
+        "native_rollup_anon_huge_pages": 4194304,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "59f93800000",
+            "end": "59f96800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 5881856,
+            "LazyFree": 0,
+            "AnonHugePages": 2097152
+          }
+        ],
+        "go_heap_rss": 5881856,
+        "go_heap_anon_huge_pages": 2097152,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 15.012984061,
+        "native_rollup_anon_huge_pages": 4194304,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "59f93800000",
+            "end": "59f96800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 5890048,
+            "LazyFree": 0,
+            "AnonHugePages": 2097152
+          }
+        ],
+        "go_heap_rss": 5890048,
+        "go_heap_anon_huge_pages": 2097152,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 20.015949061,
+        "native_rollup_anon_huge_pages": 4194304,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "59f93800000",
+            "end": "59f96800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 5349376,
+            "LazyFree": 0,
+            "AnonHugePages": 2097152
+          }
+        ],
+        "go_heap_rss": 5349376,
+        "go_heap_anon_huge_pages": 2097152,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 25.018986856,
+        "native_rollup_anon_huge_pages": 4194304,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "59f93800000",
+            "end": "59f96800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 5414912,
+            "LazyFree": 0,
+            "AnonHugePages": 2097152
+          }
+        ],
+        "go_heap_rss": 5414912,
+        "go_heap_anon_huge_pages": 2097152,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 30.022837652,
+        "native_rollup_anon_huge_pages": 4194304,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "59f93800000",
+            "end": "59f96800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 5414912,
+            "LazyFree": 0,
+            "AnonHugePages": 2097152
+          }
+        ],
+        "go_heap_rss": 5414912,
+        "go_heap_anon_huge_pages": 2097152,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 35.02598792,
+        "native_rollup_anon_huge_pages": 4194304,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "59f93800000",
+            "end": "59f96800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 5439488,
+            "LazyFree": 0,
+            "AnonHugePages": 2097152
+          }
+        ],
+        "go_heap_rss": 5439488,
+        "go_heap_anon_huge_pages": 2097152,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 40.028937304,
+        "native_rollup_anon_huge_pages": 4194304,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "59f93800000",
+            "end": "59f96800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 5373952,
+            "LazyFree": 0,
+            "AnonHugePages": 2097152
+          }
+        ],
+        "go_heap_rss": 5373952,
+        "go_heap_anon_huge_pages": 2097152,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 45.035923305,
+        "native_rollup_anon_huge_pages": 4194304,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "59f93800000",
+            "end": "59f96800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 5373952,
+            "LazyFree": 0,
+            "AnonHugePages": 2097152
+          }
+        ],
+        "go_heap_rss": 5373952,
+        "go_heap_anon_huge_pages": 2097152,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 50.038919053,
+        "native_rollup_anon_huge_pages": 4194304,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "59f93800000",
+            "end": "59f96800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 5373952,
+            "LazyFree": 0,
+            "AnonHugePages": 2097152
+          }
+        ],
+        "go_heap_rss": 5373952,
+        "go_heap_anon_huge_pages": 2097152,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 55.041840121,
+        "native_rollup_anon_huge_pages": 4194304,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "59f93800000",
+            "end": "59f96800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 5513216,
+            "LazyFree": 0,
+            "AnonHugePages": 2097152
+          }
+        ],
+        "go_heap_rss": 5513216,
+        "go_heap_anon_huge_pages": 2097152,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 60.044969585,
+        "native_rollup_anon_huge_pages": 4194304,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "59f93800000",
+            "end": "59f96800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 5529600,
+            "LazyFree": 0,
+            "AnonHugePages": 2097152
+          }
+        ],
+        "go_heap_rss": 5529600,
+        "go_heap_anon_huge_pages": 2097152,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 65.047938201,
+        "native_rollup_anon_huge_pages": 4194304,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "59f93800000",
+            "end": "59f96800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 5562368,
+            "LazyFree": 0,
+            "AnonHugePages": 2097152
+          }
+        ],
+        "go_heap_rss": 5562368,
+        "go_heap_anon_huge_pages": 2097152,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 70.051042653,
+        "native_rollup_anon_huge_pages": 4194304,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "59f93800000",
+            "end": "59f96800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 5455872,
+            "LazyFree": 0,
+            "AnonHugePages": 2097152
+          }
+        ],
+        "go_heap_rss": 5455872,
+        "go_heap_anon_huge_pages": 2097152,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 75.058761279,
+        "native_rollup_anon_huge_pages": 4194304,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "59f93800000",
+            "end": "59f96800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 5464064,
+            "LazyFree": 0,
+            "AnonHugePages": 2097152
+          }
+        ],
+        "go_heap_rss": 5464064,
+        "go_heap_anon_huge_pages": 2097152,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 80.061796982,
+        "native_rollup_anon_huge_pages": 4194304,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "59f93800000",
+            "end": "59f96800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 5464064,
+            "LazyFree": 0,
+            "AnonHugePages": 2097152
+          }
+        ],
+        "go_heap_rss": 5464064,
+        "go_heap_anon_huge_pages": 2097152,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 85.064801115,
+        "native_rollup_anon_huge_pages": 4194304,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "59f93800000",
+            "end": "59f96800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 5464064,
+            "LazyFree": 0,
+            "AnonHugePages": 2097152
+          }
+        ],
+        "go_heap_rss": 5464064,
+        "go_heap_anon_huge_pages": 2097152,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 90.06782392,
+        "native_rollup_anon_huge_pages": 4194304,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "59f93800000",
+            "end": "59f96800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 5464064,
+            "LazyFree": 0,
+            "AnonHugePages": 2097152
+          }
+        ],
+        "go_heap_rss": 5464064,
+        "go_heap_anon_huge_pages": 2097152,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 95.07091076,
+        "native_rollup_anon_huge_pages": 4194304,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "59f93800000",
+            "end": "59f96800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 5267456,
+            "LazyFree": 0,
+            "AnonHugePages": 2097152
+          }
+        ],
+        "go_heap_rss": 5267456,
+        "go_heap_anon_huge_pages": 2097152,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 100.078778335,
+        "native_rollup_anon_huge_pages": 4194304,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "59f93800000",
+            "end": "59f96800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 5464064,
+            "LazyFree": 0,
+            "AnonHugePages": 2097152
+          }
+        ],
+        "go_heap_rss": 5464064,
+        "go_heap_anon_huge_pages": 2097152,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 105.081931304,
+        "native_rollup_anon_huge_pages": 4194304,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "59f93800000",
+            "end": "59f96800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 5623808,
+            "LazyFree": 0,
+            "AnonHugePages": 2097152
+          }
+        ],
+        "go_heap_rss": 5623808,
+        "go_heap_anon_huge_pages": 2097152,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 110.085179783,
+        "native_rollup_anon_huge_pages": 4194304,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "59f93800000",
+            "end": "59f96800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 5718016,
+            "LazyFree": 0,
+            "AnonHugePages": 2097152
+          }
+        ],
+        "go_heap_rss": 5718016,
+        "go_heap_anon_huge_pages": 2097152,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 115.088492775,
+        "native_rollup_anon_huge_pages": 4194304,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "59f93800000",
+            "end": "59f96800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 5521408,
+            "LazyFree": 0,
+            "AnonHugePages": 2097152
+          }
+        ],
+        "go_heap_rss": 5521408,
+        "go_heap_anon_huge_pages": 2097152,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 120.005588691,
+        "native_rollup_anon_huge_pages": 4194304,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "59f93800000",
+            "end": "59f96800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 5545984,
+            "LazyFree": 0,
+            "AnonHugePages": 2097152
+          }
+        ],
+        "go_heap_rss": 5545984,
+        "go_heap_anon_huge_pages": 2097152,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_go_scavenge",
+        "at_seconds": 120.02944523,
+        "native_rollup_anon_huge_pages": 2097152,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "59f93800000",
+            "end": "59f96800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 5234688,
+            "LazyFree": 0,
+            "AnonHugePages": 0
+          }
+        ],
+        "go_heap_rss": 5234688,
+        "go_heap_anon_huge_pages": 0,
+        "go_heap_lazy_free": 0
+      }
+    ],
+    "selected": [
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 0.001576247,
+        "native_rollup_anon_huge_pages": 25165824,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "59f93800000",
+            "end": "59f96800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 25919488,
+            "LazyFree": 0,
+            "AnonHugePages": 23068672
+          }
+        ],
+        "go_heap_rss": 25919488,
+        "go_heap_anon_huge_pages": 23068672,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 120.005588691,
+        "native_rollup_anon_huge_pages": 4194304,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "59f93800000",
+            "end": "59f96800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 5545984,
+            "LazyFree": 0,
+            "AnonHugePages": 2097152
+          }
+        ],
+        "go_heap_rss": 5545984,
+        "go_heap_anon_huge_pages": 2097152,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_go_scavenge",
+        "at_seconds": 120.02944523,
+        "native_rollup_anon_huge_pages": 2097152,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "59f93800000",
+            "end": "59f96800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 5234688,
+            "LazyFree": 0,
+            "AnonHugePages": 0
+          }
+        ],
+        "go_heap_rss": 5234688,
+        "go_heap_anon_huge_pages": 0,
+        "go_heap_lazy_free": 0
+      }
+    ],
+    "scope": "raw VMA counts only, no hugepage policy change and no causal attribution; initial ordinary pre-action map remains unavailable"
+  },
+  "ack-race": {
+    "series": [
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 0.003643349,
+        "native_rollup_anon_huge_pages": 18874368,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 6086656,
+            "LazyFree": 0,
+            "AnonHugePages": 0
+          }
+        ],
+        "go_heap_rss": 6086656,
+        "go_heap_anon_huge_pages": 0,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 5.018458098,
+        "native_rollup_anon_huge_pages": 18874368,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 5849088,
+            "LazyFree": 0,
+            "AnonHugePages": 0
+          }
+        ],
+        "go_heap_rss": 5849088,
+        "go_heap_anon_huge_pages": 0,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 10.029430897,
+        "native_rollup_anon_huge_pages": 35651584,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 21852160,
+            "LazyFree": 0,
+            "AnonHugePages": 16777216
+          }
+        ],
+        "go_heap_rss": 21852160,
+        "go_heap_anon_huge_pages": 16777216,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 15.040076698,
+        "native_rollup_anon_huge_pages": 35651584,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 21311488,
+            "LazyFree": 0,
+            "AnonHugePages": 4194304
+          }
+        ],
+        "go_heap_rss": 21311488,
+        "go_heap_anon_huge_pages": 4194304,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 20.053144259,
+        "native_rollup_anon_huge_pages": 31457280,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 26578944,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          }
+        ],
+        "go_heap_rss": 26578944,
+        "go_heap_anon_huge_pages": 10485760,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 25.06339082,
+        "native_rollup_anon_huge_pages": 31457280,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 26533888,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          }
+        ],
+        "go_heap_rss": 26533888,
+        "go_heap_anon_huge_pages": 10485760,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 30.074927395,
+        "native_rollup_anon_huge_pages": 48234496,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 26566656,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          }
+        ],
+        "go_heap_rss": 26566656,
+        "go_heap_anon_huge_pages": 10485760,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 35.08995058,
+        "native_rollup_anon_huge_pages": 48234496,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 26624000,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          }
+        ],
+        "go_heap_rss": 26624000,
+        "go_heap_anon_huge_pages": 10485760,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 40.100922288,
+        "native_rollup_anon_huge_pages": 54525952,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 26427392,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          }
+        ],
+        "go_heap_rss": 26427392,
+        "go_heap_anon_huge_pages": 10485760,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 45.115463653,
+        "native_rollup_anon_huge_pages": 54525952,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 26386432,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          }
+        ],
+        "go_heap_rss": 26386432,
+        "go_heap_anon_huge_pages": 10485760,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 50.141186782,
+        "native_rollup_anon_huge_pages": 54525952,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 26664960,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          }
+        ],
+        "go_heap_rss": 26664960,
+        "go_heap_anon_huge_pages": 10485760,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 55.220237119,
+        "native_rollup_anon_huge_pages": 54525952,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 26664960,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          }
+        ],
+        "go_heap_rss": 26664960,
+        "go_heap_anon_huge_pages": 10485760,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 60.236634428,
+        "native_rollup_anon_huge_pages": 54525952,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 26488832,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          }
+        ],
+        "go_heap_rss": 26488832,
+        "go_heap_anon_huge_pages": 10485760,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 65.252319183,
+        "native_rollup_anon_huge_pages": 54525952,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 26521600,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          }
+        ],
+        "go_heap_rss": 26521600,
+        "go_heap_anon_huge_pages": 10485760,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 70.267637635,
+        "native_rollup_anon_huge_pages": 54525952,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 26533888,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          }
+        ],
+        "go_heap_rss": 26533888,
+        "go_heap_anon_huge_pages": 10485760,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 75.283970735,
+        "native_rollup_anon_huge_pages": 54525952,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 26533888,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          }
+        ],
+        "go_heap_rss": 26533888,
+        "go_heap_anon_huge_pages": 10485760,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 80.297798385,
+        "native_rollup_anon_huge_pages": 54525952,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 26533888,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          }
+        ],
+        "go_heap_rss": 26533888,
+        "go_heap_anon_huge_pages": 10485760,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 85.309434148,
+        "native_rollup_anon_huge_pages": 54525952,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 26550272,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          }
+        ],
+        "go_heap_rss": 26550272,
+        "go_heap_anon_huge_pages": 10485760,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 90.324576986,
+        "native_rollup_anon_huge_pages": 54525952,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 26550272,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          }
+        ],
+        "go_heap_rss": 26550272,
+        "go_heap_anon_huge_pages": 10485760,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 95.335505349,
+        "native_rollup_anon_huge_pages": 54525952,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 26583040,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          }
+        ],
+        "go_heap_rss": 26583040,
+        "go_heap_anon_huge_pages": 10485760,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 100.351946673,
+        "native_rollup_anon_huge_pages": 54525952,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 26583040,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          }
+        ],
+        "go_heap_rss": 26583040,
+        "go_heap_anon_huge_pages": 10485760,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 105.368156668,
+        "native_rollup_anon_huge_pages": 54525952,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 26615808,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          }
+        ],
+        "go_heap_rss": 26615808,
+        "go_heap_anon_huge_pages": 10485760,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 110.380960189,
+        "native_rollup_anon_huge_pages": 54525952,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 26619904,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          }
+        ],
+        "go_heap_rss": 26619904,
+        "go_heap_anon_huge_pages": 10485760,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 115.397281032,
+        "native_rollup_anon_huge_pages": 54525952,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 26644480,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          }
+        ],
+        "go_heap_rss": 26644480,
+        "go_heap_anon_huge_pages": 10485760,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 120.004683143,
+        "native_rollup_anon_huge_pages": 54525952,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 26644480,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          }
+        ],
+        "go_heap_rss": 26644480,
+        "go_heap_anon_huge_pages": 10485760,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_go_scavenge",
+        "at_seconds": 120.027274719,
+        "native_rollup_anon_huge_pages": 54525952,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 25915392,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          }
+        ],
+        "go_heap_rss": 25915392,
+        "go_heap_anon_huge_pages": 10485760,
+        "go_heap_lazy_free": 0
+      }
+    ],
+    "selected": [
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 0.003643349,
+        "native_rollup_anon_huge_pages": 18874368,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 6086656,
+            "LazyFree": 0,
+            "AnonHugePages": 0
+          }
+        ],
+        "go_heap_rss": 6086656,
+        "go_heap_anon_huge_pages": 0,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 120.004683143,
+        "native_rollup_anon_huge_pages": 54525952,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 26644480,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          }
+        ],
+        "go_heap_rss": 26644480,
+        "go_heap_anon_huge_pages": 10485760,
+        "go_heap_lazy_free": 0
+      },
+      {
+        "phase": "poststop_go_scavenge",
+        "at_seconds": 120.027274719,
+        "native_rollup_anon_huge_pages": 54525952,
+        "external_map_available": true,
+        "go_heap_vmas": [
+          {
+            "start": "c000000000",
+            "end": "c003800000",
+            "path": "[anon: Go: heap]",
+            "Rss": 25915392,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          }
+        ],
+        "go_heap_rss": 25915392,
+        "go_heap_anon_huge_pages": 10485760,
+        "go_heap_lazy_free": 0
+      }
+    ],
+    "scope": "raw VMA counts only, no hugepage policy change and no causal attribution; initial ordinary pre-action map remains unavailable"
+  }
+}

@@ -1,0 +1,174 @@
+{
+  "ordinary": {
+    "active_acceptance": "pilot_passed",
+    "active_error": null,
+    "audited_events": 1919,
+    "counts": {
+      "tcp": 1350,
+      "udp": 450,
+      "failed": 0,
+      "dropped": 0
+    },
+    "original_load": {
+      "report_sha256": "5900aff1bffd0558bcf5048568be5a19cab65d06acbbffceb5b12963c3e68728",
+      "probe_status": "passed",
+      "build_info": "go\tgo1.26.10\npath\tgithub.com/VortexWang/Tunveo/scripts/soak24h\nmod\tgithub.com/VortexWang/Tunveo\tv0.0.0-20261026210806-0d2b8eb2e754\t\ndep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\ndep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\ndep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\ndep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\ndep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\ndep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\nbuild\t-buildmode=exe\nbuild\t-compiler=gc\nbuild\t-trimpath=true\nbuild\tCGO_ENABLED=1\nbuild\tGOARCH=amd64\nbuild\tGOOS=linux\nbuild\tGOAMD64=v1\nbuild\tvcs=git\nbuild\tvcs.revision=0d2b8eb2e7542e7f4406f72687afc8403b466db2\nbuild\tvcs.time=2026-10-26T21:08:06Z\nbuild\tvcs.modified=false\n",
+      "sample_count": 45,
+      "baseline_at_seconds": 10.002238367,
+      "peak_at_seconds": 142.004336965,
+      "statm_rss_delta": 18288640,
+      "heap_alloc_delta": 1988016,
+      "rollup_delta_bytes": {
+        "AnonHugePages": 0,
+        "Anonymous": 18288640,
+        "FilePmdMapped": 0,
+        "KSM": 0,
+        "LazyFree": 0,
+        "Locked": 0,
+        "Private_Clean": 1798144,
+        "Private_Dirty": 16490496,
+        "Private_Hugetlb": 0,
+        "Pss": 18288640,
+        "Pss_Anon": 18288640,
+        "Pss_Dirty": 16490496,
+        "Pss_File": 0,
+        "Pss_Shmem": 0,
+        "Referenced": 18288640,
+        "Rss": 18288640,
+        "Shared_Clean": 0,
+        "Shared_Dirty": 0,
+        "Shared_Hugetlb": 0,
+        "ShmemPmdMapped": 0,
+        "Swap": 0,
+        "SwapPss": 0
+      },
+      "max_read_seconds": 0.001095663,
+      "scheduler_timing": {
+        "max_tick_lag_seconds": 0.003554018,
+        "max_measure_seconds": 0.005822099,
+        "max_checkpoint_seconds": 0.001650691,
+        "max_snapshot_seconds": 0.006837411,
+        "missed_at_seconds": 0,
+        "expected_slot": 0,
+        "observed_slot": 0,
+        "missed_slots": 0
+      }
+    },
+    "post_stop_selected": [
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 0.00323523,
+        "rss": 22253568,
+        "heap_alloc": 922288,
+        "heap_released": 49438720,
+        "heap_sys": 56721408
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 120.002583142,
+        "rss": 19738624,
+        "heap_alloc": 986944,
+        "heap_released": 52232192,
+        "heap_sys": 56688640
+      },
+      {
+        "phase": "poststop_go_scavenge",
+        "at_seconds": 120.006705219,
+        "rss": 19263488,
+        "heap_alloc": 845600,
+        "heap_released": 52707328,
+        "heap_sys": 56688640
+      }
+    ],
+    "self_rollups_verified": 26,
+    "load_hash_seals_verified": 15,
+    "first_seal_at_seconds": 55.050081203,
+    "scope": "native self measurements only; JSON-only monitor started mid post-stop window,15 seals cover later checkpoints only; no external smaps or PID access attempted; original failure unchanged"
+  },
+  "race": {
+    "active_acceptance": "failed",
+    "active_error": "ValueError: active resource bound: rss",
+    "audited_events": 1919,
+    "counts": {
+      "tcp": 1350,
+      "udp": 450,
+      "failed": 0,
+      "dropped": 0
+    },
+    "original_load": {
+      "report_sha256": "9719fc02b705a051e48a62cc1b4e9bea58be4a5ea8f8eb8d659591ed8c7a410d",
+      "probe_status": "passed",
+      "build_info": "go\tgo1.26.10\npath\tgithub.com/VortexWang/Tunveo/scripts/soak24h\nmod\tgithub.com/VortexWang/Tunveo\tv0.0.0-20261026210806-0d2b8eb2e754\t\ndep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\ndep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\ndep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\ndep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\ndep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\ndep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\nbuild\t-buildmode=exe\nbuild\t-compiler=gc\nbuild\t-race=true\nbuild\t-trimpath=true\nbuild\tCGO_ENABLED=1\nbuild\tGOARCH=amd64\nbuild\tGOOS=linux\nbuild\tGOAMD64=v1\nbuild\tvcs=git\nbuild\tvcs.revision=0d2b8eb2e7542e7f4406f72687afc8403b466db2\nbuild\tvcs.time=2026-10-26T21:08:06Z\nbuild\tvcs.modified=false\n",
+      "sample_count": 45,
+      "baseline_at_seconds": 10.005345679,
+      "peak_at_seconds": 157.008410775,
+      "statm_rss_delta": 78430208,
+      "heap_alloc_delta": 1923968,
+      "rollup_delta_bytes": {
+        "AnonHugePages": 0,
+        "Anonymous": 78430208,
+        "FilePmdMapped": 0,
+        "KSM": 0,
+        "LazyFree": 0,
+        "Locked": 0,
+        "Private_Clean": 5419008,
+        "Private_Dirty": 73011200,
+        "Private_Hugetlb": 0,
+        "Pss": 78431232,
+        "Pss_Anon": 78430208,
+        "Pss_Dirty": 73011200,
+        "Pss_File": 1024,
+        "Pss_Shmem": 0,
+        "Referenced": 78430208,
+        "Rss": 78430208,
+        "Shared_Clean": 0,
+        "Shared_Dirty": 0,
+        "Shared_Hugetlb": 0,
+        "ShmemPmdMapped": 0,
+        "Swap": 0,
+        "SwapPss": 0
+      },
+      "max_read_seconds": 0.00651596,
+      "scheduler_timing": {
+        "max_tick_lag_seconds": 0.008727075,
+        "max_measure_seconds": 0.013440352,
+        "max_checkpoint_seconds": 0.009979045,
+        "max_snapshot_seconds": 0.020779664,
+        "missed_at_seconds": 0,
+        "expected_slot": 0,
+        "observed_slot": 0,
+        "missed_slots": 0
+      }
+    },
+    "post_stop_selected": [
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 0.00327785,
+        "rss": 156499968,
+        "heap_alloc": 799104,
+        "heap_released": 35520512,
+        "heap_sys": 61440000
+      },
+      {
+        "phase": "poststop_gc",
+        "at_seconds": 120.007849344,
+        "rss": 155410432,
+        "heap_alloc": 849944,
+        "heap_released": 57671680,
+        "heap_sys": 61472768
+      },
+      {
+        "phase": "poststop_go_scavenge",
+        "at_seconds": 120.028449488,
+        "rss": 154243072,
+        "heap_alloc": 839800,
+        "heap_released": 58941440,
+        "heap_sys": 61472768
+      }
+    ],
+    "self_rollups_verified": 26,
+    "load_hash_seals_verified": 15,
+    "first_seal_at_seconds": 55.206272264,
+    "scope": "native self measurements only; JSON-only monitor started mid post-stop window,15 seals cover later checkpoints only; no external smaps or PID access attempted; original failure unchanged"
+  }
+}

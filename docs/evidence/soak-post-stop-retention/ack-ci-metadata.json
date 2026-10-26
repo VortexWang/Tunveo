@@ -1,0 +1,191 @@
+{
+  "source": "a4bb807e47376bb67368c279f96350543f237735",
+  "checkout": "4eca0f8baeddbfa3aa26253053072eb1007fcfeb",
+  "tree": "b2f54586bf0a2e99d693dd9dca230fdf2485f973",
+  "artifacts": {
+    "artifacts": [
+      {
+        "id": 12690840665,
+        "name": "post-stop-retention-race",
+        "size_in_bytes": 462955,
+        "url": "https://api.github.com/repos/VortexWang/Tunveo/actions/artifacts/12690840665",
+        "archive_download_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/artifacts/12690840665/zip",
+        "expired": false,
+        "created_at": "2026-10-26T21:31:18Z",
+        "expires_at": "2026-11-25T21:31:17Z",
+        "updated_at": "2026-10-26T21:31:18Z",
+        "digest": "sha256:e563a514c2c425df88f658f8e9a79a4097e77c7a3e7ad4cad75c163a7020b6ce",
+        "workflow_run": {
+          "id": 40404147487,
+          "repository_id": 1432849936,
+          "head_repository_id": 1432849936,
+          "head_branch": "test/soak-post-stop-retention",
+          "head_sha": "a4bb807e47376bb67368c279f96350543f237735"
+        }
+      },
+      {
+        "id": 12690247907,
+        "name": "post-stop-retention-ordinary",
+        "size_in_bytes": 362638,
+        "url": "https://api.github.com/repos/VortexWang/Tunveo/actions/artifacts/12690247907",
+        "archive_download_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/artifacts/12690247907/zip",
+        "expired": false,
+        "created_at": "2026-10-26T21:35:31Z",
+        "expires_at": "2026-11-25T21:35:31Z",
+        "updated_at": "2026-10-26T21:35:31Z",
+        "digest": "sha256:d7f25dc55563fbfe8dae627c161adaa802262be2eacf207f56b844512da776bd",
+        "workflow_run": {
+          "id": 40404147487,
+          "repository_id": 1432849936,
+          "head_repository_id": 1432849936,
+          "head_branch": "test/soak-post-stop-retention",
+          "head_sha": "a4bb807e47376bb67368c279f96350543f237735"
+        }
+      }
+    ]
+  },
+  "jobs": {
+    "jobs": [
+      {
+        "id": 121857441554,
+        "name": "retention (race)",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40404147487,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run python3 -m unittest discover -s scripts/tests",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Go regression and real released-allocation calibration",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Original180s pilot then separate120s GC-sampled stop observation and Go-scavenge",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Post Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          },
+          {
+            "name": "Post Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 14
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15
+          }
+        ]
+      },
+      {
+        "id": 121857442228,
+        "name": "retention (ordinary)",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40404147487,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run python3 -m unittest discover -s scripts/tests",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Go regression and real released-allocation calibration",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Original180s pilot then separate120s GC-sampled stop observation and Go-scavenge",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Post Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          },
+          {
+            "name": "Post Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 14
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15
+          }
+        ]
+      }
+    ]
+  }
+}

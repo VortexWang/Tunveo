@@ -1,0 +1,52 @@
+name: Soak post-stop retention
+on:
+  pull_request:
+    paths:
+      - 'scripts/soak24h/**'
+      - 'scripts/soak_mappings.py'
+      - 'scripts/verify_soak.py'
+      - 'scripts/audit_soak_retention.py'
+      - 'scripts/tests/test_soak_retention.py'
+      - '.github/workflows/soak-retention.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  retention:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        build: [ordinary, race]
+    steps:
+      - uses: actions/checkout@v6.0.2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-go@v6.1.0
+        with:
+          go-version-file: go.mod
+      - run: python3 -m unittest discover -s scripts/tests
+      - name: Go regression and real released-allocation calibration
+        env:
+          BUILD: ${{ matrix.build }}
+        run: |
+          mkdir -p artifacts
+          extra=()
+          if [ "$BUILD" = race ]; then extra+=(-race); fi
+          go test "${extra[@]}" -v ./scripts/soak24h > artifacts/go-tests.log 2>&1
+          go build "${extra[@]}" -trimpath -o bin/probe ./scripts/soak24h
+          ./bin/probe --describe > artifacts/build.json
+          sha256sum bin/probe > artifacts/binary.sha256
+      - name: Original180s pilot then separate120s GC-sampled stop observation and Go-scavenge
+        run: |
+          status=0
+          python3 scripts/soak_mappings.py capture --binary bin/probe --duration-seconds 180 --post-stop-observe-seconds 120 --diagnostic-go-scavenge --artifacts artifacts/window || status=1
+          python3 scripts/audit_soak_retention.py artifacts/window --output artifacts/post-stop-audit.json || status=1
+          exit "$status"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: post-stop-retention-${{ matrix.build }}
+          path: artifacts
+          retention-days: 30

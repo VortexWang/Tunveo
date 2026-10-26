@@ -1,0 +1,20 @@
+{
+  "source_commit": "a4bb807e47376bb67368c279f96350543f237735",
+  "source_tree": "b2f54586bf0a2e99d693dd9dca230fdf2485f973",
+  "ci_checkout": "4eca0f8baeddbfa3aa26253053072eb1007fcfeb",
+  "ci_tree_verified": true,
+  "initial_source": "0d2b8eb2e7542e7f4406f72687afc8403b466db2",
+  "initial_tree": "f3ff7bb5dd7108c277c57ac01944d7fa9d3052de",
+  "initial_checkout": "0c1f0db022117518fecaabe8450cff24b1462aa3",
+  "initial_tree_verified": true,
+  "protocol": "180s H2mode1/TLS1/pool16:64/2workers10QPS/12s warmup/5s sample; original load+after_stop frozen; then separate120s forced-GC-sampled stop window and one explicitGo-scavenge",
+  "budget": "original statm RSS growth+64MiB, no post-stop RSS return budget invented",
+  "calibration": "32MiB Go allocation page-touched/held/released; held-to-GC HeapAlloc drops>=24MiB; final HeapReleased increases>=16MiB relative held. Records are raw staged measurements, no assumption of exact RSS effect.",
+  "local": "two clean initial-source builds same8CPUquota/8GiB host, concurrent total20QPS; no strace or external proc reads; lightweightJSON/metadata/artifact review during run. JSON-only seals started mid observation,15 checkpoints per build, not full-window external coverage.",
+  "initial_CI": "ordinary active pass but final pre-scavenge map missing, diagnosticfailed; race active RSS+75.55859375MiB failed, full diagnostic retained; neither failure overwritten",
+  "ack_CI": "both active pilots and complete observer-handshake diagnostics passed, race active+63.91796875MiB; post-stop statmRSS172.85546875MiB with HeapAlloc0.62843MiB afterGo-scavenge. This does not fix or override historical or same-source initial/local RSS failures.",
+  "six_windows": "2initialCI+2local+2ackCI,10800business/11514audited events,4active-pass/2active-RSSfailed; initial ordinary external diagnostic remains incomplete. All are pilots, no24h.",
+  "regressions": "43Python plus Go race package and staged real allocation tests; initial1ms unit-test mistakenly required3points and log retained; corrected phase cardinality, no resource threshold changed.",
+  "unresolved": "THP policy causality, exact race allocator subtype and long-term/reuse bound; static/other mappings are not live Go heap. Engine logs/events close at original cleanup, post-stage observes resources only, not proof of no late background events.",
+  "release": "pending24h; no merge/tag/release"
+}

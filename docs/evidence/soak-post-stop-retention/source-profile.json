@@ -1,0 +1,23 @@
+{
+  "go_version": "go1.26.10 linux/amd64",
+  "toolchain_tar_sha256": "ccfe7ae822d2c2f41f4fe7c956199967a4dac22d0ee0d2b2bfdb440aab3b20c5",
+  "runtime_sources": {
+    "debug/garbage.go": {
+      "sha256": "9828cef35aad0fbd62d055697ec936b53835db88bbb3cbc5f2e1163efddbd870",
+      "url": "https://github.com/golang/go/blob/go1.26.10/src/runtime/debug/garbage.go"
+    },
+    "mem_linux.go": {
+      "sha256": "08cc392d6b540338b966c9593691a700d8ac99ce4081f444f792b994e37b52c7",
+      "url": "https://github.com/golang/go/blob/go1.26.10/src/runtime/mem_linux.go"
+    },
+    "runtime1.go": {
+      "sha256": "e9aea0b82b76931e2181563cc967112de12416a90c5467da8f2e178bbb04b8b2",
+      "url": "https://github.com/golang/go/blob/go1.26.10/src/runtime/runtime1.go"
+    }
+  },
+  "references": [
+    "https://go.dev/doc/gc-guide#Linux_transparent_huge_pages",
+    "https://docs.kernel.org/admin-guide/mm/transhuge.html"
+  ],
+  "scope": "FreeOSMemory attempts Go memory return, not all-process RSS reset. HeapReleased is not resident-byte accounting. Raw AnonHugePages changes are a clue only; no THP sysfs/GODEBUG setting changed by this workflow."
+}

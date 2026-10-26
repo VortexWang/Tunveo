@@ -98,6 +98,11 @@ def point_key(p):
     return p['phase'], p['at_seconds']
 
 
+def load_evidence_hash(report):
+    keys=("points","counts","warmup_counts","idle_baseline","after_stop","measured_seconds","scheduler_timing","stop_seconds")
+    return hashlib.sha256(json.dumps({k:report[k] for k in keys},sort_keys=True,separators=(",",":")).encode()).hexdigest()
+
+
 def capture(a):
     binary = a.binary.resolve(strict=True)
     info = json.loads(subprocess.check_output([str(binary), '--describe']))
@@ -109,6 +114,11 @@ def capture(a):
            '--transport', '3', '--mode', '1', '--pilot', '--duration-seconds', str(a.duration_seconds),
            '--warmup-seconds', '12', '--sample-seconds', '5', '--pool-min', '16',
            '--pool-max', '64', '--workers', '2', '--qps', '10', '--artifacts', str(a.artifacts/'pilot')]
+    if a.post_stop_observe_seconds:
+        cmd += ['--post-stop-observe-seconds',str(a.post_stop_observe_seconds)]
+    if a.diagnostic_go_scavenge:
+        cmd.append('--diagnostic-go-scavenge')
+        if a.post_stop_observe_seconds:cmd.append('--post-stop-observer-ack')
     seen = set()
     identity = None
     with (a.artifacts/'driver.log').open('w') as log:
@@ -125,27 +135,32 @@ def capture(a):
                             raise ValueError('native executable mismatch')
                     report_path = a.artifacts/'pilot/native/report.json'
                     report = json.loads(report_path.read_text())
-                    if report.get('points'):
-                        p = report['points'][-1]
-                        key = point_key(p)
-                        if key not in seen and p['phase'] in ('warmup', 'measured'):
-                            mtime = report_path.stat().st_mtime_ns
-                            s = snapshot(pid, identity, a.artifacts, len(evidence['samples']), race)
-                            newer = json.loads(report_path.read_text())
-                            if point_key(newer['points'][-1]) != key:
-                                raise ValueError('checkpoint changed during mapping read')
-                            s.update(phase=p['phase'], at_seconds=p['at_seconds'],
-                                     checkpoint_age_seconds=(s['read_started_ns']-mtime)/1e9,
-                                     point_statm_rss=p['resources']['rss'])
-                            evidence['samples'].append(s)
-                            seen.add(key)
+                    candidates=[]
+                    if report.get('points'):candidates.append(('points',report['points'][-1]))
+                    if report.get('post_stop_observation'):candidates.append(('post_stop_observation',report['post_stop_observation'][-1]))
+                    for field,p in candidates:
+                        key=point_key(p)
+                        if key not in seen and p['phase'] in ('warmup','measured','poststop_gc','poststop_go_scavenge'):
+                            mtime=report_path.stat().st_mtime_ns
+                            snap=snapshot(pid,identity,a.artifacts,len(evidence['samples']),race)
+                            newer=json.loads(report_path.read_text())
+                            if point_key(newer[field][-1])!=key:raise ValueError('checkpoint changed during mapping read')
+                            snap.update(phase=p['phase'],at_seconds=p['at_seconds'],checkpoint_age_seconds=(snap['read_started_ns']-mtime)/1e9,point_statm_rss=p['resources']['rss'])
+                            if field=='post_stop_observation':snap['load_evidence_sha256']=load_evidence_hash(report)
+                            evidence['samples'].append(snap);seen.add(key)
+                            if field=='post_stop_observation' and p['phase']=='poststop_gc' and report['settings'].get('post_stop_observer_ack') and p['at_seconds']>=report['settings']['post_stop_observe_seconds']:
+                                if not 0<=snap['checkpoint_age_seconds']<=.1 or (snap['read_finished_ns']-snap['read_started_ns'])/1e9>.1:raise ValueError('pre-scavenge mapping not timely; no acknowledgment')
+                                ack=report_path.parent/'post-stop-observer-ack.json'
+                                temp=ack.with_suffix('.tmp')
+                                temp.write_text(json.dumps({'phase':p['phase'],'at_seconds':p['at_seconds'],'mapping_sha256':snap['sha256'],'load_evidence_sha256':snap['load_evidence_sha256']}))
+                                temp.replace(ack)
                 except (FileNotFoundError, ProcessLookupError, json.JSONDecodeError, KeyError):
                     pass  # startup/final exit races; audit requires every load checkpoint
                 except (ValueError, PermissionError) as e:
                     evidence['errors'].append(str(e))
                     break
                 time.sleep(.01)
-            code = proc.wait(timeout=a.duration_seconds+150)
+            code = proc.wait(timeout=a.duration_seconds+a.post_stop_observe_seconds+150)
         finally:
             if proc.poll() is None:
                 proc.terminate()
@@ -200,7 +215,8 @@ def audit(folder):
             raise ValueError('duplicate mapping sample')
         samples[point_key(point)] = point
     load = [p for p in r['points'] if p['phase'] in ('warmup', 'measured')]
-    if set(map(point_key, load)) != samples.keys():
+    expected=load+r.get('post_stop_observation',[])
+    if set(map(point_key,expected)) != samples.keys():
         raise ValueError('missing or extra load checkpoint mappings')
     warm = [p for p in load if p['phase'] == 'warmup' and p['at_seconds'] >= 6]
     base = max(warm, key=lambda p:p['resources']['rss'])
@@ -255,7 +271,10 @@ def main():
     subs=p.add_subparsers(dest='command',required=True)
     for name in ('capture','control'):
         s=subs.add_parser(name);s.add_argument('--binary',type=Path,required=True);s.add_argument('--artifacts',type=Path,required=True)
-        if name=='capture':s.add_argument('--duration-seconds',type=int,default=60,choices=range(1,3601))
+        if name=='capture':
+            s.add_argument('--duration-seconds',type=int,default=60,choices=range(1,3601))
+            s.add_argument('--post-stop-observe-seconds',type=int,default=0,choices=[0]+list(range(5,601)))
+            s.add_argument('--diagnostic-go-scavenge',action='store_true')
     s=subs.add_parser('audit');s.add_argument('artifacts',type=Path)
     a=p.parse_args()
     if a.command=='audit':

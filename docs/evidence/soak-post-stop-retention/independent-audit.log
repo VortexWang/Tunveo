@@ -1,0 +1,9 @@
+initial race failed activeRSS 75.55859 events 1919 diag complete
+ post [{'phase': 'poststop_gc', 'rss': 161.97266, 'heapAlloc': 0.68375, 'heapReleased': 46.63281, 'shadow': 53.01562, 'unnamed': 78.82031}, {'phase': 'poststop_gc', 'rss': 159.69531, 'heapAlloc': 0.7839, 'heapReleased': 50.88281, 'shadow': 53.6875, 'unnamed': 79.36719}, {'phase': 'poststop_go_scavenge', 'rss': 159.00391, 'heapAlloc': 0.61982, 'heapReleased': 52.07031, 'shadow': 53.54297, 'unnamed': 79.36719}]
+initial ordinary pilot_passed activeRSS 8.56641 events 1919 diag failed_missing_pre_action_map
+ack race pilot_passed activeRSS 63.91797 events 1919 diag complete
+ post [{'phase': 'poststop_gc', 'rss': 153.13281, 'heapAlloc': 0.6907, 'heapReleased': 47.53125, 'shadow': 48.62109, 'unnamed': 76.52344}, {'phase': 'poststop_gc', 'rss': 174.05078, 'heapAlloc': 0.79159, 'heapReleased': 51.70312, 'shadow': 49.09375, 'unnamed': 79.95312}, {'phase': 'poststop_go_scavenge', 'rss': 172.85547, 'heapAlloc': 0.62843, 'heapReleased': 52.91406, 'shadow': 48.95312, 'unnamed': 79.95312}]
+ack ordinary pilot_passed activeRSS 8.58594 events 1919 diag complete
+ post [{'phase': 'poststop_gc', 'rss': 41.71484, 'heapAlloc': 0.69935, 'heapReleased': 18.54688, 'shadow': 0.0, 'unnamed': 2.18359}, {'phase': 'poststop_gc', 'rss': 20.96875, 'heapAlloc': 0.76084, 'heapReleased': 43.92969, 'shadow': 0.0, 'unnamed': 2.18359}, {'phase': 'poststop_go_scavenge', 'rss': 20.23047, 'heapAlloc': 0.62887, 'heapReleased': 44.67969, 'shadow': 0.0, 'unnamed': 2.18359}]
+ordinary pilot_passed RSSdelta 17.44140625 events 1919 postRSS [21.22266, 18.82422, 18.37109] seals 15
+race failed RSSdelta 74.796875 events 1919 postRSS [149.25, 148.21094, 147.09766] seals 15
