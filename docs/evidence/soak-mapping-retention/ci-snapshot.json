@@ -1,0 +1,230 @@
+{
+  "source_sha": "99a0ec17e7eea87d7cfee7c9856fffd970dec90b",
+  "checkout_sha": "5c70c5d433d0b533a1b039239e92c0eec56ff24c",
+  "source_tree": "60ba41478f84e88662a08d8d8ea66a38d238675d",
+  "checkout_tree": "60ba41478f84e88662a08d8d8ea66a38d238675d",
+  "artifact": {
+    "id": 12727627992,
+    "name": "mapping-ledger-retention",
+    "size_in_bytes": 16924600,
+    "url": "https://api.github.com/repos/VortexWang/Tunveo/actions/artifacts/12727627992",
+    "archive_download_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/artifacts/12727627992/zip",
+    "expired": false,
+    "created_at": "2026-10-27T10:48:32Z",
+    "expires_at": "2026-11-26T10:48:28Z",
+    "updated_at": "2026-10-27T10:48:32Z",
+    "digest": "sha256:6016e43d58134119343a0aca4b93d6e676cf554b5289863cfd2c43eefe08ee52",
+    "workflow_run": {
+      "id": 40490226221,
+      "repository_id": 1432849936,
+      "head_repository_id": 1432849936,
+      "head_branch": "test/soak-mapping-retention",
+      "head_sha": "99a0ec17e7eea87d7cfee7c9856fffd970dec90b"
+    }
+  },
+  "workflow_runs": [
+    {
+      "id": 40490226139,
+      "name": "TLS acceptance",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    {
+      "id": 40490226176,
+      "name": "CI",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 40490226221,
+      "name": "Soak mapping ledger post-stop retention",
+      "status": "completed",
+      "conclusion": "failure"
+    }
+  ],
+  "ci_jobs": [
+    {
+      "id": 122142025401,
+      "name": "vulnerability-scan",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 122142025554,
+      "name": "security-regression",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 122142025565,
+      "name": "master-state-lifecycle-regression",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 122142025581,
+      "name": "verification-regression",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 122142025623,
+      "name": "forwarding",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 122142025649,
+      "name": "lifecycle-regression",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 122142025659,
+      "name": "pool-publication-regression",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 122142025684,
+      "name": "check",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 122142025708,
+      "name": "lifecycle-100 (2)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 122142025715,
+      "name": "h2-deadline-regression",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 122142025718,
+      "name": "lifecycle-100 (3)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 122142025729,
+      "name": "release-snapshot",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 122142025739,
+      "name": "lifecycle-100 (0)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 122142025766,
+      "name": "management-boundary-regression",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 122142025777,
+      "name": "tls-identity-regression",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 122142025788,
+      "name": "container-smoke",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 122142025799,
+      "name": "lifecycle-100 (1)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 122142025824,
+      "name": "tls-modes-regression",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 122142025826,
+      "name": "state-migration-regression",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "tls_jobs": [
+    {
+      "id": 122142025043,
+      "name": "matrix (0, tunveo-upstream, explicit-ip)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 122142025347,
+      "name": "matrix (2, tunveo-upstream, explicit-ip)",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    {
+      "id": 122142025384,
+      "name": "matrix (1, tunveo-upstream, explicit-ip)",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    {
+      "id": 122142025400,
+      "name": "matrix (0, tunveo-tunveo, explicit-ip)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 122142025421,
+      "name": "matrix (1, tunveo-tunveo, explicit-ip)",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    {
+      "id": 122142025464,
+      "name": "matrix (2, tunveo-tunveo, explicit-dns)",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    {
+      "id": 122142025469,
+      "name": "matrix (0, upstream-tunveo, explicit-ip)",
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "id": 122142025495,
+      "name": "matrix (2, tunveo-tunveo, default-ip)",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    {
+      "id": 122142025575,
+      "name": "matrix (1, upstream-tunveo, explicit-ip)",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    {
+      "id": 122142025585,
+      "name": "matrix (2, upstream-tunveo, explicit-ip)",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    {
+      "id": 122142025604,
+      "name": "matrix (2, tunveo-tunveo, explicit-ip)",
+      "status": "in_progress",
+      "conclusion": null
+    }
+  ],
+  "scope": "same-source CI status snapshot; old-server TLS0 shard failed, other TLS shards include in-progress entries; no claim of full compatibility pass"
+}
