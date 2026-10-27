@@ -10,6 +10,7 @@ import gzip
 import hashlib
 import json
 import os
+import re
 from pathlib import Path
 import subprocess
 
@@ -27,6 +28,23 @@ ADVICE = {0:'NORMAL',1:'RANDOM',2:'SEQUENTIAL',3:'WILLNEED',4:'DONTNEED',8:'FREE
           14:'HUGEPAGE',15:'NOHUGEPAGE',16:'DONTDUMP',17:'DODUMP',18:'WIPEONFORK',
           19:'KEEPONFORK',20:'COLD',21:'PAGEOUT',22:'POPULATE_READ',23:'POPULATE_WRITE',
           24:'DONTNEED_LOCKED',25:'COLLAPSE',100:'HWPOISON',101:'SOFT_OFFLINE'}
+
+
+def validate_layout(enter,exit):
+    def fields(text,header):
+        lines=[line.strip() for line in text.splitlines() if line.strip()]
+        if not lines or lines[0]!=header:raise ValueError('unexpected tracepoint layout header')
+        result={}
+        for line in lines[1:]:
+            match=re.fullmatch(r'(int|unsigned long|size_t|long)\s+(\w+);?',line)
+            if not match or match[2] in result:raise ValueError('invalid/duplicate tracepoint layout field')
+            result[match[2]]=match[1]
+        return result
+    if fields(enter,'tracepoint:syscalls:sys_enter_madvise')!={
+            '__syscall_nr':'int','start':'unsigned long','len_in':'size_t','behavior':'int'}:
+        raise ValueError('unexpected madvise entry field names/types')
+    if fields(exit,'tracepoint:syscalls:sys_exit_madvise')!={'__syscall_nr':'int','ret':'long'}:
+        raise ValueError('unexpected madvise exit field names/types')
 
 
 def program(plan):
