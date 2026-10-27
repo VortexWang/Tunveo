@@ -1,0 +1,29 @@
+[
+  {
+    "run_id": 40495990355,
+    "archive_sha256": "84104c3511c3b21f4de9da4c0e3f5f565c3b3fc9fad315fb0827449bbc52f14d",
+    "original_status": "failed",
+    "original_error": "ValueError: active resource bound: rss",
+    "stages": [
+      "control_passed",
+      "mapping_audit_passed"
+    ],
+    "budget_delta_bytes": 75382784,
+    "allowance_bytes": 67108864,
+    "scope": "published ZIP digest/CRC, original status and native report validation/budget only; not a second full mapping replay"
+  },
+  {
+    "run_id": 40495990430,
+    "archive_sha256": "514b21fcb9f0fa7b5c18f62cdc2f01a01f5484093c8f5f0141e7bb52a60ad94e",
+    "original_status": "failed",
+    "original_error": "ValueError: active resource bound: rss",
+    "stages": [
+      "control_passed",
+      "mapping_audit_passed",
+      "retention_audit_passed"
+    ],
+    "budget_delta_bytes": 72871936,
+    "allowance_bytes": 67108864,
+    "scope": "published ZIP digest/CRC, original status and native report validation/budget only; not a second full mapping replay"
+  }
+]
