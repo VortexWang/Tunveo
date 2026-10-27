@@ -1,0 +1,1 @@
+{"source_sha":"72c46ad030601f2d28d11ab539cb12df18ff79da","tree_sha":"f4698a5dea4b2dd204cfc4632700c7c5dd860e96","scope":"guard source only: reject exact entries without decoded FDE before GDB; workflow_dispatch only; 52 local Python tests and offline replay against both actual CI frame dumps; no new live GDB run"}

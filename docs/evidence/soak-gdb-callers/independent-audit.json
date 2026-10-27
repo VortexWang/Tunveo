@@ -1,0 +1,547 @@
+{
+  "initial": {
+    "source_sha": "0db125563760d41f9b7146e6c8be3c19d0bdbfdc",
+    "checkout_sha": "92366d00a7039d11086f7f25974988df7d6b953e",
+    "manifest": {
+      "description": {
+        "build_info": "go\tgo1.26.10\npath\tgithub.com/VortexWang/Tunveo/scripts/soak24h\nmod\tgithub.com/VortexWang/Tunveo\tv0.0.0-20261026235247-92366d00a703\t\ndep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\ndep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\ndep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\ndep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\ndep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\ndep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\nbuild\t-buildmode=exe\nbuild\t-compiler=gc\nbuild\t-race=true\nbuild\t-trimpath=true\nbuild\tCGO_ENABLED=1\nbuild\tGOARCH=amd64\nbuild\tGOOS=linux\nbuild\tGOAMD64=v1\nbuild\tvcs=git\nbuild\tvcs.revision=92366d00a7039d11086f7f25974988df7d6b953e\nbuild\tvcs.time=2026-10-26T23:52:47Z\nbuild\tvcs.modified=false\n",
+        "go_version": "go1.26.10",
+        "goarch": "amd64",
+        "goos": "linux"
+      },
+      "binary_sha256": "e28dcc744f2997f7beab8844972c530287a4e41a271c8993cbb4bcbaacf91a1b",
+      "pilot_only": true,
+      "traced_duration_seconds": 60,
+      "untraced_duration_seconds": 180,
+      "errors": [
+        "ValueError: incomplete GDB execution"
+      ],
+      "control": "passed",
+      "untraced_exit_code": 1,
+      "untraced_audit": {
+        "status": "failed",
+        "error": "ValueError: active resource bound: rss",
+        "audited_events": 1919,
+        "baseline_at_seconds": 10.003871971,
+        "peak_at_seconds": 167.005093026,
+        "groups_delta_bytes": {
+          "file_mapping": {
+            "Size": 0,
+            "Rss": 65536,
+            "Pss": 65536,
+            "Anonymous": 4096,
+            "Private_Dirty": -12828672,
+            "Swap": 0
+          },
+          "kernel_named": {
+            "Size": 0,
+            "Rss": 0,
+            "Pss": 0,
+            "Anonymous": 0,
+            "Private_Dirty": 0,
+            "Swap": 0
+          },
+          "other_anonymous": {
+            "Size": 28737536,
+            "Rss": 30531584,
+            "Pss": 30531584,
+            "Anonymous": 30531584,
+            "Private_Dirty": 30531584,
+            "Swap": 0
+          },
+          "race_metadata": {
+            "Size": 0,
+            "Rss": 2445312,
+            "Pss": 2445312,
+            "Anonymous": 2445312,
+            "Private_Dirty": 2445312,
+            "Swap": 0
+          },
+          "race_shadow": {
+            "Size": 0,
+            "Rss": 20791296,
+            "Pss": 20791296,
+            "Anonymous": 20791296,
+            "Private_Dirty": 20791296,
+            "Swap": 0
+          }
+        },
+        "smaps_rss_delta": 53833728,
+        "statm_rss_delta": 75829248,
+        "selected_checkpoint_age_seconds": [
+          0.010233547,
+          0.005494831
+        ],
+        "max_read_seconds": 0.003574818,
+        "samples": 42,
+        "rollup_audit": {
+          "report_sha256": "d145bf93bef076894600148ed4d05f00d20c7891e80e50381293fc1d637b2167",
+          "probe_status": "passed",
+          "build_info": "go\tgo1.26.10\npath\tgithub.com/VortexWang/Tunveo/scripts/soak24h\nmod\tgithub.com/VortexWang/Tunveo\tv0.0.0-20261026235247-92366d00a703\t\ndep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\ndep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\ndep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\ndep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\ndep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\ndep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\nbuild\t-buildmode=exe\nbuild\t-compiler=gc\nbuild\t-race=true\nbuild\t-trimpath=true\nbuild\tCGO_ENABLED=1\nbuild\tGOARCH=amd64\nbuild\tGOOS=linux\nbuild\tGOAMD64=v1\nbuild\tvcs=git\nbuild\tvcs.revision=92366d00a7039d11086f7f25974988df7d6b953e\nbuild\tvcs.time=2026-10-26T23:52:47Z\nbuild\tvcs.modified=false\n",
+          "sample_count": 45,
+          "baseline_at_seconds": 10.003871971,
+          "peak_at_seconds": 167.005093026,
+          "statm_rss_delta": 75829248,
+          "heap_alloc_delta": 542712,
+          "rollup_delta_bytes": {
+            "AnonHugePages": -14680064,
+            "Anonymous": 75767808,
+            "FilePmdMapped": 0,
+            "KSM": 0,
+            "LazyFree": 0,
+            "Locked": 0,
+            "Private_Clean": 12894208,
+            "Private_Dirty": 62935040,
+            "Private_Hugetlb": 0,
+            "Pss": 75829248,
+            "Pss_Anon": 75767808,
+            "Pss_Dirty": 62935040,
+            "Pss_File": 61440,
+            "Pss_Shmem": 0,
+            "Referenced": 75829248,
+            "Rss": 75829248,
+            "Shared_Clean": 0,
+            "Shared_Dirty": 0,
+            "Shared_Hugetlb": 0,
+            "ShmemPmdMapped": 0,
+            "Swap": 0,
+            "SwapPss": 0
+          },
+          "max_read_seconds": 0.003197318,
+          "scheduler_timing": {
+            "max_tick_lag_seconds": 0.068804848,
+            "max_measure_seconds": 0.007867007,
+            "max_checkpoint_seconds": 0.065253162,
+            "max_snapshot_seconds": 0.068707178,
+            "missed_at_seconds": 0,
+            "expected_slot": 0,
+            "observed_slot": 0,
+            "missed_slots": 0
+          }
+        },
+        "scope": "post-checkpoint asynchronous smaps; different reads, not atomic attribution"
+      },
+      "status": "failed",
+      "scope": "GDB observer affects scheduling; caller evidence alone does not assign any prior 80MiB VMA or prove a leak; independent untraced pilot retains all original budgets"
+    },
+    "control": {
+      "gdb_state": {
+        "entry_calls": 1,
+        "returns": 1,
+        "finish_errors": [],
+        "out_of_scope": [],
+        "exit_code": 0,
+        "gdb_version": "15.1",
+        "scope": "entry/return breakpoint observations only; no complete mmap/unmap ledger, no RSS attribution"
+      },
+      "groups": {
+        "unresolved": {
+          "entries": 1,
+          "successful_returns": 1,
+          "cumulative_successful_virtual_bytes": 1048576
+        }
+      },
+      "rows": [
+        {
+          "id": 1,
+          "size": 1048576,
+          "address": 140296613527552,
+          "returned": true,
+          "successful": true,
+          "caller_category": "unresolved",
+          "backtrace": "#0  control_mmap (addr=addr@entry=0x0, size=size@entry=1048576, prot=prot@entry=3, flags=flags@entry=34, fd=fd@entry=-1, offset=offset@entry=0) at scripts/gdbcontrol/main.c:7\n#1  0x00000000004011d8 in control_parent (size=size@entry=1048576) at scripts/gdbcontrol/main.c:13\n#2  0x0000000000401274 in main () at scripts/gdbcontrol/main.c:24\n"
+        }
+      ],
+      "scope": "cumulative successful virtual requests, not live mappings or RSS; no unmap/reuse ledger; missing/unknown frames never guessed"
+    },
+    "traced": {
+      "complete_native_execution": false,
+      "gdb_state": {
+        "entry_calls": 24,
+        "returns": 24,
+        "finish_errors": [],
+        "out_of_scope": [],
+        "exit_code": 2,
+        "gdb_version": "15.1",
+        "scope": "entry/return breakpoint observations only; no complete mmap/unmap ledger, no RSS attribution"
+      },
+      "partial_entries": 24,
+      "partial_entry_returns": 24,
+      "scope": "startup calls only; no 60s load or business coverage; original failure retained"
+    },
+    "untraced": {
+      "status": "failed",
+      "error": "ValueError: active resource bound: rss",
+      "audited_events": 1919,
+      "baseline_at_seconds": 10.003871971,
+      "peak_at_seconds": 167.005093026,
+      "groups_delta_bytes": {
+        "file_mapping": {
+          "Size": 0,
+          "Rss": 65536,
+          "Pss": 65536,
+          "Anonymous": 4096,
+          "Private_Dirty": -12828672,
+          "Swap": 0
+        },
+        "kernel_named": {
+          "Size": 0,
+          "Rss": 0,
+          "Pss": 0,
+          "Anonymous": 0,
+          "Private_Dirty": 0,
+          "Swap": 0
+        },
+        "other_anonymous": {
+          "Size": 28737536,
+          "Rss": 30531584,
+          "Pss": 30531584,
+          "Anonymous": 30531584,
+          "Private_Dirty": 30531584,
+          "Swap": 0
+        },
+        "race_metadata": {
+          "Size": 0,
+          "Rss": 2445312,
+          "Pss": 2445312,
+          "Anonymous": 2445312,
+          "Private_Dirty": 2445312,
+          "Swap": 0
+        },
+        "race_shadow": {
+          "Size": 0,
+          "Rss": 20791296,
+          "Pss": 20791296,
+          "Anonymous": 20791296,
+          "Private_Dirty": 20791296,
+          "Swap": 0
+        }
+      },
+      "smaps_rss_delta": 53833728,
+      "statm_rss_delta": 75829248,
+      "selected_checkpoint_age_seconds": [
+        0.010233547,
+        0.005494831
+      ],
+      "max_read_seconds": 0.003574818,
+      "samples": 42,
+      "rollup_audit": {
+        "report_sha256": "d145bf93bef076894600148ed4d05f00d20c7891e80e50381293fc1d637b2167",
+        "probe_status": "passed",
+        "build_info": "go\tgo1.26.10\npath\tgithub.com/VortexWang/Tunveo/scripts/soak24h\nmod\tgithub.com/VortexWang/Tunveo\tv0.0.0-20261026235247-92366d00a703\t\ndep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\ndep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\ndep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\ndep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\ndep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\ndep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\nbuild\t-buildmode=exe\nbuild\t-compiler=gc\nbuild\t-race=true\nbuild\t-trimpath=true\nbuild\tCGO_ENABLED=1\nbuild\tGOARCH=amd64\nbuild\tGOOS=linux\nbuild\tGOAMD64=v1\nbuild\tvcs=git\nbuild\tvcs.revision=92366d00a7039d11086f7f25974988df7d6b953e\nbuild\tvcs.time=2026-10-26T23:52:47Z\nbuild\tvcs.modified=false\n",
+        "sample_count": 45,
+        "baseline_at_seconds": 10.003871971,
+        "peak_at_seconds": 167.005093026,
+        "statm_rss_delta": 75829248,
+        "heap_alloc_delta": 542712,
+        "rollup_delta_bytes": {
+          "AnonHugePages": -14680064,
+          "Anonymous": 75767808,
+          "FilePmdMapped": 0,
+          "KSM": 0,
+          "LazyFree": 0,
+          "Locked": 0,
+          "Private_Clean": 12894208,
+          "Private_Dirty": 62935040,
+          "Private_Hugetlb": 0,
+          "Pss": 75829248,
+          "Pss_Anon": 75767808,
+          "Pss_Dirty": 62935040,
+          "Pss_File": 61440,
+          "Pss_Shmem": 0,
+          "Referenced": 75829248,
+          "Rss": 75829248,
+          "Shared_Clean": 0,
+          "Shared_Dirty": 0,
+          "Shared_Hugetlb": 0,
+          "ShmemPmdMapped": 0,
+          "Swap": 0,
+          "SwapPss": 0
+        },
+        "max_read_seconds": 0.003197318,
+        "scheduler_timing": {
+          "max_tick_lag_seconds": 0.068804848,
+          "max_measure_seconds": 0.007867007,
+          "max_checkpoint_seconds": 0.065253162,
+          "max_snapshot_seconds": 0.068707178,
+          "missed_at_seconds": 0,
+          "expected_slot": 0,
+          "observed_slot": 0,
+          "missed_slots": 0
+        }
+      },
+      "scope": "post-checkpoint asynchronous smaps; different reads, not atomic attribution"
+    },
+    "scope": "function-entry/return observations and independently audited original pilots; no complete unmap/reuse ledger or resident attribution"
+  },
+  "fixed": {
+    "source_sha": "1074d2a5f296f75f3946a8e53b54a6e5deb48a7b",
+    "checkout_sha": "0c119b0c4158a50ec920315be2740e4ae2c86190",
+    "manifest": {
+      "description": {
+        "build_info": "go\tgo1.26.10\npath\tgithub.com/VortexWang/Tunveo/scripts/soak24h\nmod\tgithub.com/VortexWang/Tunveo\tv0.0.0-20261026235922-0c119b0c4158\t\ndep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\ndep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\ndep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\ndep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\ndep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\ndep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\nbuild\t-buildmode=exe\nbuild\t-compiler=gc\nbuild\t-race=true\nbuild\t-trimpath=true\nbuild\tCGO_ENABLED=1\nbuild\tGOARCH=amd64\nbuild\tGOOS=linux\nbuild\tGOAMD64=v1\nbuild\tvcs=git\nbuild\tvcs.revision=0c119b0c4158a50ec920315be2740e4ae2c86190\nbuild\tvcs.time=2026-10-26T23:59:22Z\nbuild\tvcs.modified=false\n",
+        "go_version": "go1.26.10",
+        "goarch": "amd64",
+        "goos": "linux"
+      },
+      "binary_sha256": "09334a037bd80d7a246ef611bcca2dff0c98b69053572eaf6a7f707c9c851d3f",
+      "pilot_only": true,
+      "traced_duration_seconds": 60,
+      "untraced_duration_seconds": 180,
+      "errors": [
+        "TimeoutExpired: Command '['gdb', '--batch', '--nx', '-x', '/home/runner/work/Tunveo/Tunveo/scripts/gdb_mmap.py', '--args', '/home/runner/work/Tunveo/Tunveo/bin/probe', '--transport', '3', '--mode', '1', '--duration', '60s', '--warmup', '12s', '--sample-interval', '5s', '--workers', '2', '--qps', '10', '--pool-min', '16', '--pool-max', '64', '--artifacts', '/home/runner/work/Tunveo/Tunveo/artifacts/experiment/traced/native']' timed out after 359.99998508199997 seconds"
+      ],
+      "control": "passed",
+      "untraced_exit_code": 1,
+      "untraced_audit": {
+        "status": "failed",
+        "error": "ValueError: active resource bound: rss",
+        "audited_events": 1919,
+        "baseline_at_seconds": 10.005747073,
+        "peak_at_seconds": 187.008180901,
+        "groups_delta_bytes": {
+          "file_mapping": {
+            "Size": 0,
+            "Rss": 0,
+            "Pss": 0,
+            "Anonymous": 0,
+            "Private_Dirty": 0,
+            "Swap": 0
+          },
+          "kernel_named": {
+            "Size": 0,
+            "Rss": 0,
+            "Pss": 0,
+            "Anonymous": 0,
+            "Private_Dirty": 0,
+            "Swap": 0
+          },
+          "other_anonymous": {
+            "Size": 30965760,
+            "Rss": 44711936,
+            "Pss": 44711936,
+            "Anonymous": 44711936,
+            "Private_Dirty": 44711936,
+            "Swap": 0
+          },
+          "race_metadata": {
+            "Size": 0,
+            "Rss": 2822144,
+            "Pss": 2822144,
+            "Anonymous": 2822144,
+            "Private_Dirty": 2822144,
+            "Swap": 0
+          },
+          "race_shadow": {
+            "Size": 0,
+            "Rss": 15822848,
+            "Pss": 15822848,
+            "Anonymous": 15822848,
+            "Private_Dirty": 15822848,
+            "Swap": 0
+          }
+        },
+        "smaps_rss_delta": 63356928,
+        "statm_rss_delta": 69586944,
+        "selected_checkpoint_age_seconds": [
+          0.00548379,
+          0.011778831
+        ],
+        "max_read_seconds": 0.003720809,
+        "samples": 42,
+        "rollup_audit": {
+          "report_sha256": "732779e23d4ad3be082826d16b4bd4f062844a52f7c7a4ea33441a43c19636cc",
+          "probe_status": "passed",
+          "build_info": "go\tgo1.26.10\npath\tgithub.com/VortexWang/Tunveo/scripts/soak24h\nmod\tgithub.com/VortexWang/Tunveo\tv0.0.0-20261026235922-0c119b0c4158\t\ndep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\ndep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\ndep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\ndep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\ndep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\ndep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\nbuild\t-buildmode=exe\nbuild\t-compiler=gc\nbuild\t-race=true\nbuild\t-trimpath=true\nbuild\tCGO_ENABLED=1\nbuild\tGOARCH=amd64\nbuild\tGOOS=linux\nbuild\tGOAMD64=v1\nbuild\tvcs=git\nbuild\tvcs.revision=0c119b0c4158a50ec920315be2740e4ae2c86190\nbuild\tvcs.time=2026-10-26T23:59:22Z\nbuild\tvcs.modified=false\n",
+          "sample_count": 45,
+          "baseline_at_seconds": 10.005747073,
+          "peak_at_seconds": 187.008180901,
+          "statm_rss_delta": 69586944,
+          "heap_alloc_delta": 132304,
+          "rollup_delta_bytes": {
+            "AnonHugePages": 18874368,
+            "Anonymous": 69586944,
+            "FilePmdMapped": 0,
+            "KSM": 0,
+            "LazyFree": 0,
+            "Locked": 0,
+            "Private_Clean": 0,
+            "Private_Dirty": 69586944,
+            "Private_Hugetlb": 0,
+            "Pss": 69586944,
+            "Pss_Anon": 69586944,
+            "Pss_Dirty": 69586944,
+            "Pss_File": 0,
+            "Pss_Shmem": 0,
+            "Referenced": 69586944,
+            "Rss": 69586944,
+            "Shared_Clean": 0,
+            "Shared_Dirty": 0,
+            "Shared_Hugetlb": 0,
+            "ShmemPmdMapped": 0,
+            "Swap": 0,
+            "SwapPss": 0
+          },
+          "max_read_seconds": 0.003093771,
+          "scheduler_timing": {
+            "max_tick_lag_seconds": 0.008384606,
+            "max_measure_seconds": 0.010176141,
+            "max_checkpoint_seconds": 0.011358938,
+            "max_snapshot_seconds": 0.019418067,
+            "missed_at_seconds": 0,
+            "expected_slot": 0,
+            "observed_slot": 0,
+            "missed_slots": 0
+          }
+        },
+        "scope": "post-checkpoint asynchronous smaps; different reads, not atomic attribution"
+      },
+      "status": "failed",
+      "scope": "GDB observer affects scheduling; caller evidence alone does not assign any prior 80MiB VMA or prove a leak; independent untraced pilot retains all original budgets"
+    },
+    "control": {
+      "gdb_state": {
+        "entry_calls": 1,
+        "returns": 1,
+        "finish_errors": [],
+        "out_of_scope": [],
+        "exit_code": 0,
+        "gdb_version": "15.1",
+        "scope": "entry/return breakpoint observations only; no complete mmap/unmap ledger, no RSS attribution"
+      },
+      "groups": {
+        "unresolved": {
+          "entries": 1,
+          "successful_returns": 1,
+          "cumulative_successful_virtual_bytes": 1048576
+        }
+      },
+      "rows": [
+        {
+          "id": 1,
+          "size": 1048576,
+          "address": 139638384283648,
+          "returned": true,
+          "successful": true,
+          "caller_category": "unresolved",
+          "backtrace": "#0  control_mmap (addr=addr@entry=0x0, size=size@entry=1048576, prot=prot@entry=3, flags=flags@entry=34, fd=fd@entry=-1, offset=offset@entry=0) at scripts/gdbcontrol/main.c:7\n#1  0x00000000004011d8 in control_parent (size=size@entry=1048576) at scripts/gdbcontrol/main.c:13\n#2  0x0000000000401274 in main () at scripts/gdbcontrol/main.c:24\n"
+        }
+      ],
+      "scope": "cumulative successful virtual requests, not live mappings or RSS; no unmap/reuse ledger; missing/unknown frames never guessed"
+    },
+    "traced": {
+      "complete_native_execution": false,
+      "gdb_result_missing": true,
+      "partial_entries": 4325,
+      "partial_entry_returns": 36,
+      "last_minus_first_record_seconds": 359.490984418,
+      "native_report_status": "running",
+      "native_measured_seconds": 0,
+      "scope": "360s timeout, no warmup/measured points or business coverage; no proof of tracer/inferior cleanup or observer-free host isolation before next window"
+    },
+    "untraced": {
+      "status": "failed",
+      "error": "ValueError: active resource bound: rss",
+      "audited_events": 1919,
+      "baseline_at_seconds": 10.005747073,
+      "peak_at_seconds": 187.008180901,
+      "groups_delta_bytes": {
+        "file_mapping": {
+          "Size": 0,
+          "Rss": 0,
+          "Pss": 0,
+          "Anonymous": 0,
+          "Private_Dirty": 0,
+          "Swap": 0
+        },
+        "kernel_named": {
+          "Size": 0,
+          "Rss": 0,
+          "Pss": 0,
+          "Anonymous": 0,
+          "Private_Dirty": 0,
+          "Swap": 0
+        },
+        "other_anonymous": {
+          "Size": 30965760,
+          "Rss": 44711936,
+          "Pss": 44711936,
+          "Anonymous": 44711936,
+          "Private_Dirty": 44711936,
+          "Swap": 0
+        },
+        "race_metadata": {
+          "Size": 0,
+          "Rss": 2822144,
+          "Pss": 2822144,
+          "Anonymous": 2822144,
+          "Private_Dirty": 2822144,
+          "Swap": 0
+        },
+        "race_shadow": {
+          "Size": 0,
+          "Rss": 15822848,
+          "Pss": 15822848,
+          "Anonymous": 15822848,
+          "Private_Dirty": 15822848,
+          "Swap": 0
+        }
+      },
+      "smaps_rss_delta": 63356928,
+      "statm_rss_delta": 69586944,
+      "selected_checkpoint_age_seconds": [
+        0.00548379,
+        0.011778831
+      ],
+      "max_read_seconds": 0.003720809,
+      "samples": 42,
+      "rollup_audit": {
+        "report_sha256": "732779e23d4ad3be082826d16b4bd4f062844a52f7c7a4ea33441a43c19636cc",
+        "probe_status": "passed",
+        "build_info": "go\tgo1.26.10\npath\tgithub.com/VortexWang/Tunveo/scripts/soak24h\nmod\tgithub.com/VortexWang/Tunveo\tv0.0.0-20261026235922-0c119b0c4158\t\ndep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\ndep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\ndep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\ndep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\ndep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\ndep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\nbuild\t-buildmode=exe\nbuild\t-compiler=gc\nbuild\t-race=true\nbuild\t-trimpath=true\nbuild\tCGO_ENABLED=1\nbuild\tGOARCH=amd64\nbuild\tGOOS=linux\nbuild\tGOAMD64=v1\nbuild\tvcs=git\nbuild\tvcs.revision=0c119b0c4158a50ec920315be2740e4ae2c86190\nbuild\tvcs.time=2026-10-26T23:59:22Z\nbuild\tvcs.modified=false\n",
+        "sample_count": 45,
+        "baseline_at_seconds": 10.005747073,
+        "peak_at_seconds": 187.008180901,
+        "statm_rss_delta": 69586944,
+        "heap_alloc_delta": 132304,
+        "rollup_delta_bytes": {
+          "AnonHugePages": 18874368,
+          "Anonymous": 69586944,
+          "FilePmdMapped": 0,
+          "KSM": 0,
+          "LazyFree": 0,
+          "Locked": 0,
+          "Private_Clean": 0,
+          "Private_Dirty": 69586944,
+          "Private_Hugetlb": 0,
+          "Pss": 69586944,
+          "Pss_Anon": 69586944,
+          "Pss_Dirty": 69586944,
+          "Pss_File": 0,
+          "Pss_Shmem": 0,
+          "Referenced": 69586944,
+          "Rss": 69586944,
+          "Shared_Clean": 0,
+          "Shared_Dirty": 0,
+          "Shared_Hugetlb": 0,
+          "ShmemPmdMapped": 0,
+          "Swap": 0,
+          "SwapPss": 0
+        },
+        "max_read_seconds": 0.003093771,
+        "scheduler_timing": {
+          "max_tick_lag_seconds": 0.008384606,
+          "max_measure_seconds": 0.010176141,
+          "max_checkpoint_seconds": 0.011358938,
+          "max_snapshot_seconds": 0.019418067,
+          "missed_at_seconds": 0,
+          "expected_slot": 0,
+          "observed_slot": 0,
+          "missed_slots": 0
+        }
+      },
+      "scope": "post-checkpoint asynchronous smaps; different reads, not atomic attribution"
+    },
+    "scope": "function-entry/return observations and independently audited original pilots; no complete unmap/reuse ledger or resident attribution"
+  }
+}

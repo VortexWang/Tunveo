@@ -1,0 +1,6 @@
+{
+  "actual_immutable_entry_address": "0x404940",
+  "covered": false,
+  "new_guard_rejects": true,
+  "scope": "offline replay of original CI ELF frames; no repeated live pilot"
+}

@@ -1,0 +1,46 @@
+{
+  "initial": {
+    "FDE_count": 11285,
+    "selected_entries": [
+      {
+        "symbol": "_ZN11__sanitizer13internal_mmapEPvmiiiy",
+        "address": "0x404940",
+        "covered_by_decoded_FDE": false
+      },
+      {
+        "symbol": "_ZN11__sanitizer9MmapNamedEPvmiiPKc",
+        "address": "0x404970",
+        "covered_by_decoded_FDE": false
+      },
+      {
+        "symbol": "_ZN6__tsan19TraceSwitchPartImplEPNS_11ThreadStateE",
+        "address": "0x41cf90",
+        "covered_by_decoded_FDE": false
+      }
+    ],
+    "guard_rejects_before_GDB": true
+  },
+  "fixed": {
+    "FDE_count": 11285,
+    "selected_entries": [
+      {
+        "symbol": "_ZN11__sanitizer13internal_mmapEPvmiiiy",
+        "address": "0x404940",
+        "covered_by_decoded_FDE": false
+      },
+      {
+        "symbol": "_ZN11__sanitizer9MmapNamedEPvmiiPKc",
+        "address": "0x404970",
+        "covered_by_decoded_FDE": false
+      },
+      {
+        "symbol": "_ZN6__tsan19TraceSwitchPartImplEPNS_11ThreadStateE",
+        "address": "0x41cf90",
+        "covered_by_decoded_FDE": false
+      }
+    ],
+    "guard_rejects_before_GDB": true
+  },
+  "local_control_entry_covered": true,
+  "scope": "decoded FDE entry coverage, not proof of root cause of GDB stall or correctness of every unwinder"
+}

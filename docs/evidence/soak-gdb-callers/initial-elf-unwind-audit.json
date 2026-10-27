@@ -1,0 +1,21 @@
+{
+  "FDE_count": 11285,
+  "selected": [
+    {
+      "symbol": "_ZN11__sanitizer13internal_mmapEPvmiiiy",
+      "address": "0x404940",
+      "covering_FDE": []
+    },
+    {
+      "symbol": "_ZN11__sanitizer9MmapNamedEPvmiiPKc",
+      "address": "0x404970",
+      "covering_FDE": []
+    },
+    {
+      "symbol": "_ZN6__tsan19TraceSwitchPartImplEPNS_11ThreadStateE",
+      "address": "0x41cf90",
+      "covering_FDE": []
+    }
+  ],
+  "scope": "readelf decoded FDE range coverage only, not proof of all GDB unwinder behavior"
+}
