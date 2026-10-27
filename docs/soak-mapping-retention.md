@@ -33,7 +33,7 @@ PR29已复算：RSS预算增量69.3359375MiB超过64MiB；峰值→末点总RSS�
 
 `experiment.json`始终标记`pilot_only=true`、`qualifies_24h=false`。控制、原负载映射、停载映射分别记录完成阶段；全部已审计映射及业务证据在原资源验证之前保存。如果资源超限，最终仍为failed、命令非零，`acceptance`不产生。若所有原守卫通过，状态仅为`diagnostic_passed`，不得解释为24h通过或历史失败消失。
 
-8项新增回归覆盖完整同进程归属、缺失/乱序/哈希/时钟/身份守卫、原负载及after_stop冻结、错误回执、完整及时的回执前缀、地址新代次、实际/proc/self采集及资源失败仍保留双阶段证据；全套Python结果以本轮日志为准。真实CI结果待运行；不预设会释放、不释放或长期有界。
+8项新增回归覆盖完整同进程归属、缺失/乱序/哈希/时钟/身份守卫、原负载及after_stop冻结、错误回执、完整及时的回执前缀、地址新代次、实际/proc/self采集及资源失败仍保留双阶段证据；全套Python结果以本轮日志为准。初始提交时真实CI尚未运行；本轮实测和独立复核见下文。
 
 ```sh
 python3 scripts/soak_mapping_retention.py --binary bin/probe \
@@ -41,4 +41,57 @@ python3 scripts/soak_mapping_retention.py --binary bin/probe \
   --artifacts artifacts/mapping-retention
 ```
 
-专项工作流`.github/workflows/soak-ledger-retention.yml`会构建原race探针及C控制，运行Python回归，再执行上述有界诊断；失败也上传全部artifacts，保留30天。只有读到实际CI原件并独立重放后，才补写真实数值和结论。
+专项工作流`.github/workflows/soak-ledger-retention.yml`会构建原race探针及C控制，运行Python回归，再执行上述有界诊断；失败也上传全部artifacts，保留30天。运行前不预设结果；以下已读取真实CI原件并独立重放，原失败状态保持。
+
+
+## 本轮真实CI与独立重放
+
+规范执行源码 `99a0ec17e7eea87d7cfee7c9856fffd970dec90b`，实际CI检出 `5c70c5d433d0b533a1b039239e92c0eec56ff24c`，完整Git树均为 `60ba41478f84e88662a08d8d8ea66a38d238675d`。探针构建信息为干净的实际CI检出、Go1.26.10 linux/amd64及race构建；规范/CI Git对象与七份审计依赖源码blob均已核对。后续文档证据提交不算新的负载运行。
+
+[专项CI40490226221](https://github.com/VortexWang/Tunveo/actions/runs/40490226221) **failed**，原错误为 `ValueError: active resource bound: rss`。本地和专项CI均86项Python通过。真实C控制、42个warmup/measured点与26个停载点（25个GC点+1个显式Go回收点）审计全部通过；完整负载180.000919539秒，1350TCP+450UDP无失败/丢弃，含预热1919业务事件均独立验证。完整捕获1284056事件，Go内存台账mmap1083、munmap50、brk3对；无Go mremap。本轮控制和目标/观察者实际身份及进程组均验证，未超时、未强制清理，原始资源/业务证据完整。
+
+[原始ZIP12727627992](https://github.com/VortexWang/Tunveo/actions/runs/40490226221/artifacts/12727627992) SHA256为 `6016e43d58134119343a0aca4b93d6e676cf554b5289863cfd2c43eefe08ee52`，与发布digest一致、CRC通过。原始逐线程记录已重新解析，上下文/真实syscall及包装配对、exec隔离、实际进程关系、所有原始smaps/hash/point/rollup、冻结load/after_stop与回执均复核，重放出的所有负载及停载结果与CI保存结果一致。停载读取最大耗时3.429477ms，最大距checkpoint24.549193ms，均满足100ms；另独立核对26点单调时钟相对原点存在共同合法区间，防止晚写报告伪装成新发布点。
+
+### 预算仍失败
+
+后半预热基线：负载时钟10.005479646秒、123805696B（118.0703125MiB）。measured峰值：187.008529215秒、203214848B（193.80078125MiB）。增量79409152B（**75.73046875MiB**），超64MiB **11.73046875MiB**。原验证器离线再运行得到相同资源失败，未出现acceptance，不用停载低值替代此峰值。
+
+### 同进程停载结果
+
+| 选点 | 所属时钟秒 | 总statm RSS MiB | 已观测运行库家族 MiB | 未归属匿名 MiB | race shadow MiB | Go命名堆 MiB |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| 原负载峰值 | 负载187.0085 | 193.80078125 | 61.80078125 | 16.27734375 | 50.234375 | 46 |
+| 首个停载GC | 停载0.0038 | 158.4453125 | 62.6015625 | 16.27734375 | 53.60546875 | 9.7265625 |
+| 末个停载GC | 停载120.0070 | 161.08984375 | 62.71484375 | 16.27734375 | 54.1484375 | 7.50390625 |
+| 显式Go回收后 | 停载120.0599 | 159.99609375 | 62.71484375 | 16.27734375 | 54.30078125 | 7.65625 |
+
+上表来自同一PID和唯一目标exec后的同一份台账；负载/停载时钟分开，排序与区间内调用使用原始CLOCK_MONOTONIC。smaps与statm相邻读取非原子、表未列全部分类，不能强制加总。
+
+| 区间 | 总RSS变化MiB | 家族变化MiB | 未知变化MiB | 已捕获内存调用 |
+| --- | ---: | ---: | ---: | --- |
+| 负载峰值→首个GC | -35.35546875 | +0.80078125 | 0 | mmap21、munmap1 |
+| 首个→末个GC | +2.64453125 | +0.11328125 | 0 | mmap132，无munmap |
+| 末个GC→Go回收 | -1.09375 | 0 | 0 | mmap6，无munmap |
+
+负载峰值→首个GC的Go命名堆驻留下降36.2734375MiB；该区间还包含原负载收尾、端点/fixture关闭与GC，不能把变化全部归给单一动作。120秒GC首末家族62.6015625→62.71484375MiB，显式Go回收前后家族保持62.71484375MiB；后两段的整匿名VMA端点比较未发现边界/代次/来源变更，家族/未知仍沿用完整整VMA来源证据。Go回收时HeapReleased增加1.109375MiB，但这不能作为上述家族RSS已释放的证明。
+
+这里只记录mmap/munmap/mremap/brk生命周期与已观测上下文；没有munmap不能证明不存在madvise等其他页回收行为。整VMA来源不是对象或缓存类型证明，120秒窗口内的保留也不能单独定性为泄漏、永久保留或长期有界。
+
+### 可关闭与继续阻断
+
+已关闭“同进程停载映射未覆盖”“回收前原始证据/回执未实测”的待验证项。没有关闭RSS资源失败、未知匿名来源、对象/缓存用途及长期行为；PR29和全部历史失败保持原样。常规CI40490226176为19/19成功；TLS40490226139的旧服务端请求TLS0分片failed，其余分片在本轮状态快照时仍有进行中项，不宣称完整兼容通过。
+
+下一步应核验家族映射的具体申请/复用/页回收路径及预期释放条件，必要时把madvise范围与现有代次、smaps驻留绑定，并核对固定Go race运行库源码。不得仅凭Go堆回落或短期家族稳定提高64MiB门槛。生产探针/引擎/依赖未改；保持草稿、未合并/发布，正式普通构建资格及24h仍pending、未启动。
+
+### 可复算证据
+
+见[固定源码审计脚本](evidence/soak-mapping-retention/audit-ci.py)、[精简结果](evidence/soak-mapping-retention/audit-summary.json)、[CI/树快照](evidence/soak-mapping-retention/ci-snapshot.json)与[SHA清单](evidence/soak-mapping-retention/sha256.json)。完整原始ZIP、七份固定源码、独立重放全量结果及日志另随 `Tunveo-PR30-Mapping-Retention-Evidence-2026-10-27.zip` 交付，摘要不替代原件；Actions原件在2026-11-26到期。
+
+```sh
+python3 docs/evidence/soak-mapping-retention/audit-ci.py \\
+  --archive pr30-mapping-retention.zip \\
+  --sha256 6016e43d58134119343a0aca4b93d6e676cf554b5289863cfd2c43eefe08ee52 \\
+  --scripts-dir scripts --output /tmp/pr30-full.json --summary /tmp/pr30-summary.json
+```
+
+离线脚本成功表示独立重现原始判定，输出仍是original_status=failed、qualifies_24h=false；不修改原件、不启动探针，也不回写原CI状态。
