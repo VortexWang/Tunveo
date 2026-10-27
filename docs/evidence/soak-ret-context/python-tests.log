@@ -1,0 +1,17 @@
+...........................E...............................
+======================================================================
+ERROR: test_only_complete_plain_ret_instruction_ranges_supported (test_soak_ret_context.RetContextTests.test_only_complete_plain_ret_instruction_ranges_supported)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/0db146b59a43/Tunveo/scripts/tests/test_soak_ret_context.py", line 34, in test_only_complete_plain_ret_instruction_ranges_supported
+    self.assertEqual(c.ret_sites(raw,0x100,3),[2])
+                     ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/0db146b59a43/Tunveo/scripts/soak_ret_context.py", line 40, in ret_sites
+    if cursor!=start+size or not sites:raise ValueError('complete symbol and at least one plain RET required')
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: complete symbol and at least one plain RET required
+
+----------------------------------------------------------------------
+Ran 59 tests in 4.585s
+
+FAILED (errors=1)

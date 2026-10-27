@@ -1,0 +1,194 @@
+[
+  {
+    "tag": "initial",
+    "source_sha": "110279ee306bc01a9f182bc09f57c92fff0fc027",
+    "checkout_sha": "d1720213fbc852bd8a5fb1741ef708517adfdf38",
+    "tree_sha": "10041c664833f9f4aa4f890b2b8931b14e38f195",
+    "run_id": 40430780499,
+    "artifacts": [
+      {
+        "id": 12701945892,
+        "name": "ret-site-context-qualification",
+        "size_in_bytes": 4452,
+        "url": "https://api.github.com/repos/VortexWang/Tunveo/actions/artifacts/12701945892",
+        "archive_download_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/artifacts/12701945892/zip",
+        "expired": false,
+        "created_at": "2026-10-27T01:09:10Z",
+        "expires_at": "2026-11-26T01:09:09Z",
+        "updated_at": "2026-10-27T01:09:10Z",
+        "digest": "sha256:2830e431348bdf9dbe240fe8daa25d14abb37d835a032e244da5df74d9f2fb1f",
+        "workflow_run": {
+          "id": 40430780499,
+          "repository_id": 1432849936,
+          "head_repository_id": 1432849936,
+          "head_branch": "test/soak-ret-site-context",
+          "head_sha": "110279ee306bc01a9f182bc09f57c92fff0fc027"
+        }
+      }
+    ]
+  },
+  {
+    "tag": "fixed",
+    "source_sha": "2f3d114d45496b64d7324e70dd70d7f9b1a50b06",
+    "checkout_sha": "64afe6d4eaaba157843edbef70d4c28dc525dd6f",
+    "tree_sha": "b0b954054438d5814fdad3700e738617325100ac",
+    "run_id": 40431040331,
+    "artifacts": [
+      {
+        "id": 12702446269,
+        "name": "ret-site-context-qualification",
+        "size_in_bytes": 4738,
+        "url": "https://api.github.com/repos/VortexWang/Tunveo/actions/artifacts/12702446269",
+        "archive_download_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/artifacts/12702446269/zip",
+        "expired": false,
+        "created_at": "2026-10-27T01:12:02Z",
+        "expires_at": "2026-11-26T01:12:01Z",
+        "updated_at": "2026-10-27T01:12:02Z",
+        "digest": "sha256:406e5a1c9eb6cf853cc61aa4113afdc294a0247f47012a9cc63c6eb0f9850bb8",
+        "workflow_run": {
+          "id": 40431040331,
+          "repository_id": 1432849936,
+          "head_repository_id": 1432849936,
+          "head_branch": "test/soak-ret-site-context",
+          "head_sha": "2f3d114d45496b64d7324e70dd70d7f9b1a50b06"
+        }
+      }
+    ],
+    "jobs": {
+      "jobs": [
+        {
+          "id": 121948475873,
+          "name": "qualify",
+          "status": "completed",
+          "conclusion": "failure",
+          "run_id": 40431040331,
+          "logs_url": null,
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1
+            },
+            {
+              "name": "Run actions/checkout@v6.0.2",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2
+            },
+            {
+              "name": "Run actions/setup-go@v6.1.0",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3
+            },
+            {
+              "name": "Install tracer on isolated CI VM",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4
+            },
+            {
+              "name": "Run python3 -m unittest discover -s scripts/tests",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 5
+            },
+            {
+              "name": "Build unchanged probe and known allocation control",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 6
+            },
+            {
+              "name": "C context control before bounded15s Go qualification",
+              "status": "completed",
+              "conclusion": "failure",
+              "number": 7
+            },
+            {
+              "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 8
+            },
+            {
+              "name": "Post Run actions/setup-go@v6.1.0",
+              "status": "completed",
+              "conclusion": "skipped",
+              "number": 15
+            },
+            {
+              "name": "Post Run actions/checkout@v6.0.2",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 16
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 17
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "tag": "build",
+    "source_sha": "b03b453dcedaa0f605522bcbe6aae471a5d9ce3b",
+    "checkout_sha": "b2e2a4f2e9c3deb8b4d5f529878e6fe469e424eb",
+    "tree_sha": "2c7d8d34a3887724cced31708eb0d86738993c9b",
+    "run_id": 40431855579,
+    "artifacts": [
+      {
+        "id": 12702840792,
+        "name": "ret-site-context-qualification",
+        "size_in_bytes": 2325717,
+        "url": "https://api.github.com/repos/VortexWang/Tunveo/actions/artifacts/12702840792",
+        "archive_download_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/artifacts/12702840792/zip",
+        "expired": false,
+        "created_at": "2026-10-27T01:22:15Z",
+        "expires_at": "2026-11-26T01:22:14Z",
+        "updated_at": "2026-10-27T01:22:15Z",
+        "digest": "sha256:1dac85cc6b5f8c19567fedbc86b74b4807ace557a9e30bbc6e2e2e4fc9f93d31",
+        "workflow_run": {
+          "id": 40431855579,
+          "repository_id": 1432849936,
+          "head_repository_id": 1432849936,
+          "head_branch": "test/soak-ret-site-context",
+          "head_sha": "b03b453dcedaa0f605522bcbe6aae471a5d9ce3b"
+        }
+      }
+    ]
+  },
+  {
+    "tag": "tail",
+    "source_sha": "47c822aae966c21ad1b1588ee7f88b69181f7bdb",
+    "checkout_sha": "e5d81c6c9cb66e2853ec84120fd03023fae323f6",
+    "tree_sha": "a1a74b465bc79195e7f9dab42a30cfe5af7fdd79",
+    "run_id": 40432734438,
+    "artifacts": [
+      {
+        "id": 12702048376,
+        "name": "ret-site-context-qualification",
+        "size_in_bytes": 2436855,
+        "url": "https://api.github.com/repos/VortexWang/Tunveo/actions/artifacts/12702048376",
+        "archive_download_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/artifacts/12702048376/zip",
+        "expired": false,
+        "created_at": "2026-10-27T01:31:40Z",
+        "expires_at": "2026-11-26T01:31:38Z",
+        "updated_at": "2026-10-27T01:31:40Z",
+        "digest": "sha256:f3b1cbe4352c1c0abf9e8d0bc4c767688e88c95aee5c5a1aabf06fa0ca8c3856",
+        "workflow_run": {
+          "id": 40432734438,
+          "repository_id": 1432849936,
+          "head_repository_id": 1432849936,
+          "head_branch": "test/soak-ret-site-context",
+          "head_sha": "47c822aae966c21ad1b1588ee7f88b69181f7bdb"
+        }
+      }
+    ]
+  }
+]

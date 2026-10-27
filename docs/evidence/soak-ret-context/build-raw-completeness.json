@@ -1,0 +1,14 @@
+{
+  "raw_events": 182639,
+  "per_thread_sequences_complete": true,
+  "counts": {
+    "(2, 'entry')": 87621,
+    "(3, 'entry')": 401,
+    "(3, 'ret')": 401,
+    "(2, 'ret')": 87621,
+    "(1, 'entry')": 6583,
+    "(1, 'ret')": 12
+  },
+  "new_auditor_on_immutable_old_capture": "non-nested C ABI stack",
+  "scope": "raw completeness and retained failure only; no invented tail exits or accepted context attribution"
+}

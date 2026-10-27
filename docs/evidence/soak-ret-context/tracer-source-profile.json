@@ -1,0 +1,17 @@
+{
+  "CMakeLists.txt": {
+    "sha256": "a40e9a6939e1bb8a745e049c2d836e279838a0dee657109b268f5d81ec934fba",
+    "blob": "fb478f11d155256879611427019aefe8e4e72b84",
+    "url": "https://github.com/bpftrace/bpftrace/blob/93c593f6dab2e930d6198cfaa52b29d19a8c0647/CMakeLists.txt"
+  },
+  "src/attached_probe.cpp": {
+    "sha256": "b9d8a0333dd85f0126bc91407b0c943940d2a0658cefbe17c0040e179d9d85d9",
+    "blob": "032e5ded432131d0963b197972f1bd6ec4217b42",
+    "url": "https://github.com/bpftrace/bpftrace/blob/93c593f6dab2e930d6198cfaa52b29d19a8c0647/src/attached_probe.cpp"
+  },
+  "src/child.cpp": {
+    "sha256": "b1e1edea4d3fb76c90490af131af820a582e1723d5eda4af171cc5444a85cb70",
+    "blob": "09b664160437e0211ddc35de00bcd3e5836bafb2",
+    "url": "https://github.com/bpftrace/bpftrace/blob/93c593f6dab2e930d6198cfaa52b29d19a8c0647/src/child.cpp"
+  }
+}

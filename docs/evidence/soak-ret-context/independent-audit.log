@@ -1,0 +1,6 @@
+initial failed None None
+fixed failed None None
+build failed {'exchanges': 150, 'measured_seconds': 15.000868819, 'resource_trend': {'goroutines': -1, 'fd': 2, 'heap_alloc': -103336, 'rss': 43249664}, 'qualifies_24h': False, 'status': 'pilot_passed'} non-nested C ABI stack
+tail pilot_passed {'exchanges': 150, 'measured_seconds': 15.001251628, 'resource_trend': {'goroutines': -6, 'fd': 0, 'heap_alloc': -1159128, 'rss': 26120192}, 'qualifies_24h': False, 'status': 'pilot_passed'} None
+CONTEXTS {'[2]': {'calls': 17, 'successful': 17, 'cumulative_successful_virtual_bytes': 31465472}, '[]': {'calls': 122, 'successful': 122, 'cumulative_successful_virtual_bytes': 422490112}, '[1]': {'calls': 272, 'successful': 272, 'cumulative_successful_virtual_bytes': 35651584}}
+PAIRS {'3': 411, '2': 88192, '1': 6664} TAIL {'1': 6647}
