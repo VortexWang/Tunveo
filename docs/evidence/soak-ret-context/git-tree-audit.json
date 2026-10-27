@@ -1,0 +1,18 @@
+{
+  "initial": {
+    "source_sha": "10041c664833f9f4aa4f890b2b8931b14e38f195",
+    "checkout_sha": "10041c664833f9f4aa4f890b2b8931b14e38f195"
+  },
+  "fixed": {
+    "source_sha": "b0b954054438d5814fdad3700e738617325100ac",
+    "checkout_sha": "b0b954054438d5814fdad3700e738617325100ac"
+  },
+  "build": {
+    "source_sha": "2c7d8d34a3887724cced31708eb0d86738993c9b",
+    "checkout_sha": "2c7d8d34a3887724cced31708eb0d86738993c9b"
+  },
+  "tail": {
+    "source_sha": "a1a74b465bc79195e7f9dab42a30cfe5af7fdd79",
+    "checkout_sha": "a1a74b465bc79195e7f9dab42a30cfe5af7fdd79"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "acceptance": {
+    "exchanges": 150,
+    "measured_seconds": 15.000868819,
+    "resource_trend": {
+      "goroutines": -1,
+      "fd": 2,
+      "heap_alloc": -103336,
+      "rss": 43249664
+    },
+    "qualifies_24h": false,
+    "status": "pilot_passed"
+  },
+  "audited_events": 269,
+  "counts": {
+    "tcp": 114,
+    "udp": 36,
+    "failed": 0,
+    "dropped": 0
+  },
+  "scope": "native business/resource guards only; original context qualification remains failed for missing lexical exits"
+}
