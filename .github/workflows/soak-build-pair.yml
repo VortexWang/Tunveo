@@ -20,12 +20,14 @@ jobs:
       - name: Test and build identical source
         timeout-minutes: 8
         run: |
+          python3 -m unittest discover -s scripts/tests
+          test -z "$(git status --porcelain)"
+          go build -trimpath -o bin/ordinary ./scripts/soak24h
+          test -z "$(git status --porcelain)"
+          go build -race -trimpath -o bin/race ./scripts/soak24h
           mkdir -p pair-meta
           uname -a > pair-meta/host.txt
           go version > pair-meta/go-version.txt
-          python3 -m unittest discover -s scripts/tests
-          go build -trimpath -o bin/ordinary ./scripts/soak24h
-          go build -race -trimpath -o bin/race ./scripts/soak24h
           sha256sum bin/ordinary bin/race > pair-meta/binary-sha256.txt
           bin/ordinary --describe > pair-meta/ordinary.json
           bin/race --describe > pair-meta/race.json
