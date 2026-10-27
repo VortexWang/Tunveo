@@ -36,11 +36,16 @@ def main():
     a.artifacts.mkdir(parents=True,exist_ok=False)
     result={'status':'failed','qualifies_24h':False,'order':['ordinary','race','race','ordinary'],'runs':[],'scope':'Same host sequential ABBA fresh processes; no BPF or observer ACK. Native 180s load +12s warmup +120s post-stop GC/scavenge. Not a causal comparison with instrumented PR31.'}
     meta={}
-    for name in ['ordinary','race']:
-        binary=getattr(a,name).resolve();d=json.loads(subprocess.check_output([str(binary),'--describe'],timeout=10))
-        info=d['build_info'];assert ('-race=true' in info)==(name=='race');assert 'vcs.modified=false' in info
-        rev=next(x for x in info.splitlines() if x.startswith('build\tvcs.revision='));meta[name]=(binary,rev)
-    assert meta['ordinary'][1]==meta['race'][1]
+    try:
+        for name in ['ordinary','race']:
+            binary=getattr(a,name).resolve();d=json.loads(subprocess.check_output([str(binary),'--describe'],timeout=10))
+            info=d['build_info'];assert ('-race=true' in info)==(name=='race');assert 'vcs.modified=false' in info, 'dirty or missing VCS build provenance'
+            rev=next(x for x in info.splitlines() if x.startswith('build\tvcs.revision='));meta[name]=(binary,rev)
+        assert meta['ordinary'][1]==meta['race'][1]
+    except (ValueError,KeyError,OSError,AssertionError,StopIteration,subprocess.SubprocessError) as error:
+        result['preflight_error']=type(error).__name__+': '+str(error)
+        (a.artifacts/'pair.json').write_text(json.dumps(result,indent=2)+'\n')
+        return 1
     result['source_revision']=meta['ordinary'][1]
     for i,name in enumerate(result['order']):
         folder=a.artifacts/f'{i+1}-{name}';binary=meta[name][0]
