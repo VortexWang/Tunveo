@@ -11,9 +11,10 @@ ARGS={'mmap':['addr','len','prot','flags','fd','off'],'munmap':['addr','len'],
       'mremap':['addr','old_len','new_len','flags','new_addr'],'brk':['brk']}
 
 
-def program(p):
+def program(p,call_args=None):
+    call_args=ARGS if call_args is None else call_args
     text=context.program(p).replace('nsecs,','nsecs(monotonic),')
-    for call,names in ARGS.items():
+    for call,names in call_args.items():
         fields=','.join('\\"a%d\\":%%llu'%i for i in range(len(names)))
         values=', '.join('args->'+n for n in names)
         for event in ('sys_enter','sys_exit'):
@@ -24,7 +25,8 @@ def program(p):
     return text
 
 
-def parse(raw,p,uid):
+def parse(raw,p,uid,call_args=None):
+    call_args=ARGS if call_args is None else call_args
     records=[];ledger={};begin=[];end=[]
     for line in raw.splitlines():
         if not line.strip():continue
@@ -47,7 +49,8 @@ def parse(raw,p,uid):
         for key in ('pid','tid','uid','seq','ns'):
             if type(r[key]) is not int or not 0<=r[key]<1<<64:raise ValueError('invalid unsigned event field')
         if r['event'] in ('sys_enter','sys_exit'):
-            keys=['a'+str(i) for i in range(len(ARGS[r['call']]))] if r['event']=='sys_enter' else ['value']
+            if r['call'] not in call_args:raise ValueError('unplanned syscall')
+            keys=['a'+str(i) for i in range(len(call_args[r['call']]))] if r['event']=='sys_enter' else ['value']
             if any(type(r[k]) is not int or not 0<=r[k]<1<<64 for k in keys):raise ValueError('invalid syscall field')
         if r['pid']!=pid or r['uid'] not in (0,uid) or (r['ns']>=epoch and r['uid']!=uid):raise ValueError('process/UID mismatch')
         threads.setdefault(r['tid'],[]).append(r)
@@ -76,13 +79,13 @@ def parse(raw,p,uid):
                     counts[str(r['kind'])]=counts.get(str(r['kind']),0)+1
                     if r['kind']==3:wrappers[(tid,entry['seq'])]=(entry,r)
             elif event=='sys_enter':
-                if pending is not None or r['call'] not in ARGS:raise ValueError('unpaired syscall entry')
+                if pending is not None or r['call'] not in call_args:raise ValueError('unpaired syscall entry')
                 pending=(r,[(x['kind'],x['seq']) for x in stack])
             elif event=='sys_exit':
                 if pending is None or pending[0]['call']!=r['call']:raise ValueError('unpaired syscall exit')
                 entry,ctx=pending;pending=None
                 if ctx!=[(x['kind'],x['seq']) for x in stack]:raise ValueError('context changed inside syscall')
-                call=dict(call=r['call'],tid=tid,id=f'{tid}:{entry["seq"]}',start_ns=entry['ns'],end_ns=r['ns'],args=[entry['a'+str(i)] for i in range(len(ARGS[r['call']]))],value=r['value'],contexts=ctx)
+                call=dict(call=r['call'],tid=tid,id=f'{tid}:{entry["seq"]}',start_ns=entry['ns'],end_ns=r['ns'],args=[entry['a'+str(i)] for i in range(len(call_args[r['call']]))],value=r['value'],contexts=ctx)
                 observed={k for k,s in ctx if k!=3}
                 call['owner']='trace_switch' if observed=={1} else 'internal_allocator' if observed=={2} else 'mixed_context_path' if observed else 'unresolved'
                 if r['ns']>=epoch:calls.append(call)
@@ -233,7 +236,7 @@ class Collector:
         context.dump(self.folder/'snapshots.json',dict(format_version=2,clock='CLOCK_MONOTONIC',binary_inode_verified=self.verified,records=self.records));self.seen.add(key)
 
 
-def audit_snapshots(folder,ledger,race,control=False):
+def audit_snapshots(folder,ledger,race,control=False,*,control_validator=None):
     capture=json.loads((folder/'snapshots.json').read_text());calls=prepare(ledger['calls']);out=[]
     if capture.get('format_version',1) not in (1,2):raise ValueError('unsupported snapshot format')
     execution=json.loads((folder/'execution.json').read_text())
@@ -246,7 +249,9 @@ def audit_snapshots(folder,ledger,race,control=False):
         if start<ledger['target_exec_ns'] or end-start>100000000 or not 0<=rec['checkpoint_age_seconds']<=.1:raise ValueError('snapshot timing/clock failure')
         if control and start<rec['point']['monotonic_ns']:raise ValueError('control clock mismatch')
         out.append(dict(key=rec['key'],point=rec['point'],**attribute(gzip.open(path,'rt').read(),race,calls,start,end)))
-    if control:
+    if control and control_validator is not None:
+        control_validator(out,capture,calls)
+    elif control:
         if [x['key'] for x in out]!=['held','hole','reused','moved','released']:raise ValueError('missing control snapshots')
         for row in out:
             point=row['point'];base=point['base'];current=point['current'];state=replay(calls,next(r['read_start_monotonic_ns'] for r in capture['records'] if r['key']==row['key']))

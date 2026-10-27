@@ -1,0 +1,108 @@
+{
+  "go_tag_commit": "4e8c85f5319d999bfd7617fdc191631e5634e3c5",
+  "llvm_commit": "51bfeff0e4b0757ff773da6882f4d538996c9b04",
+  "sources": [
+    {
+      "name": "go-race-README",
+      "url": "https://github.com/golang/go/blob/go1.26.10/src/runtime/race/README",
+      "sha256": "8e7ca72a2a50b5a8ba85884ad86a0321486e6880b4ebc465cbeffbf9005e27ad",
+      "bytes": 2414
+    },
+    {
+      "name": "race.go",
+      "url": "https://github.com/golang/go/blob/go1.26.10/src/runtime/race.go",
+      "sha256": "b4a356aa545dfd873b87ce0de264c15828d2ee1ff3507297afbb4a29d69a6479",
+      "bytes": 23013
+    },
+    {
+      "name": "tsan_rtl.cpp",
+      "url": "https://github.com/llvm/llvm-project/blob/51bfeff0e4b0757ff773da6882f4d538996c9b04/compiler-rt/lib/tsan/rtl/tsan_rtl.cpp",
+      "sha256": "7c10fc30b1b41386547ef7d9b12717e83b34fe923f329bf9fb5690ed1fb4b5be",
+      "bytes": 36809
+    },
+    {
+      "name": "sanitizer_posix.cpp",
+      "url": "https://github.com/llvm/llvm-project/blob/51bfeff0e4b0757ff773da6882f4d538996c9b04/compiler-rt/lib/sanitizer_common/sanitizer_posix.cpp",
+      "sha256": "87d762f4cba3dc565a1a7c9e800ee734cef55bde57f0f1828514a331104abefc",
+      "bytes": 12731
+    },
+    {
+      "name": "tsan_mman.cpp",
+      "url": "https://github.com/llvm/llvm-project/blob/51bfeff0e4b0757ff773da6882f4d538996c9b04/compiler-rt/lib/tsan/rtl/tsan_mman.cpp",
+      "sha256": "aa4d4eebbfbcb1c1bb14cc843f176b2e24fa6255f6b6904c52d3fbd16359ce7b",
+      "bytes": 15238
+    },
+    {
+      "name": "tsan_rtl.h",
+      "url": "https://github.com/llvm/llvm-project/blob/51bfeff0e4b0757ff773da6882f4d538996c9b04/compiler-rt/lib/tsan/rtl/tsan_rtl.h",
+      "sha256": "1cb47d4f4b7be9c787c5b316c3191156506497070537783d82190aa41e304409",
+      "bytes": 27282
+    },
+    {
+      "name": "sanitizer_allocator_internal.h",
+      "url": "https://github.com/llvm/llvm-project/blob/51bfeff0e4b0757ff773da6882f4d538996c9b04/compiler-rt/lib/sanitizer_common/sanitizer_allocator_internal.h",
+      "sha256": "0aa581531e32a82a59c74a8aaa07729fb5a635926464a0ee3bf7d38b1fc7973c",
+      "bytes": 2142
+    },
+    {
+      "name": "sanitizer_allocator.cpp",
+      "url": "https://github.com/llvm/llvm-project/blob/51bfeff0e4b0757ff773da6882f4d538996c9b04/compiler-rt/lib/sanitizer_common/sanitizer_allocator.cpp",
+      "sha256": "0b379ad791284c78143beb368138ddee4e10d4f802cbecc628b9317c0f4930b8",
+      "bytes": 7363
+    },
+    {
+      "name": "sanitizer_allocator_primary32.h",
+      "url": "https://github.com/llvm/llvm-project/blob/51bfeff0e4b0757ff773da6882f4d538996c9b04/compiler-rt/lib/sanitizer_common/sanitizer_allocator_primary32.h",
+      "sha256": "b95c7e2785e95c98a4147c34e6de4354cd9e1aa1f73856a601e01cfac50ac5d4",
+      "bytes": 13194
+    },
+    {
+      "name": "sanitizer_posix_libcdep.cpp",
+      "url": "https://github.com/llvm/llvm-project/blob/51bfeff0e4b0757ff773da6882f4d538996c9b04/compiler-rt/lib/sanitizer_common/sanitizer_posix_libcdep.cpp",
+      "sha256": "a8589cd7cdcef6b4dfd1a6ca9f966c5829f1088a9b809536a6a923e65a82ef95",
+      "bytes": 16478
+    },
+    {
+      "name": "tsan_rtl_thread.cpp",
+      "url": "https://github.com/llvm/llvm-project/blob/51bfeff0e4b0757ff773da6882f4d538996c9b04/compiler-rt/lib/tsan/rtl/tsan_rtl_thread.cpp",
+      "sha256": "0a219a20b732406e1b69262c1a989d64e54ffb8fab7f9f2660758c092d8fe18c",
+      "bytes": 10643
+    },
+    {
+      "name": "tsan_go.cpp",
+      "url": "https://github.com/llvm/llvm-project/blob/51bfeff0e4b0757ff773da6882f4d538996c9b04/compiler-rt/lib/tsan/go/tsan_go.cpp",
+      "sha256": "4371e3950ce0bfa0e6748d751ab131bd5cdb30c092f5914311a963f32a86d152",
+      "bytes": 7246
+    },
+    {
+      "name": "mem_linux.go",
+      "url": "https://github.com/golang/go/blob/go1.26.10/src/runtime/mem_linux.go",
+      "sha256": "08cc392d6b540338b966c9593691a700d8ac99ce4081f444f792b994e37b52c7",
+      "bytes": 5421
+    },
+    {
+      "name": "race_linux.patch",
+      "url": "https://github.com/golang/go/blob/go1.26.10/src/runtime/race/internal/amd64v1/race_linux.patch",
+      "sha256": "ee5b1bd2108a0067edbf707650ca220c09094d49aac54c6d2355991ad84e3965",
+      "bytes": 2836
+    },
+    {
+      "name": "linux-v6.17-madvise.c",
+      "url": "https://github.com/torvalds/linux/blob/v6.17/mm/madvise.c",
+      "sha256": "4c57f82e87717f0a4bceaada3d1d8fcbd2480de973b8642f6d51ab099dc95106",
+      "bytes": 59142
+    },
+    {
+      "name": "GO-LICENSE",
+      "url": "https://github.com/golang/go/blob/go1.26.10/LICENSE",
+      "sha256": "911f8f5782931320f5b8d1160a76365b83aea6447ee6c04fa6d5591467db9dad",
+      "bytes": 1453
+    },
+    {
+      "name": "LLVM-LICENSE.TXT",
+      "url": "https://github.com/llvm/llvm-project/blob/51bfeff0e4b0757ff773da6882f4d538996c9b04/compiler-rt/LICENSE.TXT",
+      "sha256": "1a8f1058753f1ba890de984e48f0242a3a5c29a6a8f2ed9fd813f36985387e8d",
+      "bytes": 16708
+    }
+  ]
+}
