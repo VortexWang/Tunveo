@@ -120,8 +120,8 @@
       {
         "id": 40498176545,
         "name": "Soak page advice ledger",
-        "status": "in_progress",
-        "conclusion": null,
+        "status": "completed",
+        "conclusion": "cancelled",
         "run_number": 3,
         "jobs_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/runs/40498176545/jobs",
         "logs_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/runs/40498176545/logs",
@@ -150,8 +150,8 @@
       {
         "id": 40498176720,
         "name": "TLS acceptance",
-        "status": "in_progress",
-        "conclusion": null,
+        "status": "completed",
+        "conclusion": "failure",
         "run_number": 33,
         "jobs_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/runs/40498176720/jobs",
         "logs_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/runs/40498176720/logs",
@@ -178,6 +178,196 @@
         "workflow_id": 395672756
       }
     ],
-    "scope": "analysis-only exact-state caching and outer analysis timeout; CI still pending in this snapshot, not qualified by the earlier measured window"
+    "scope": "cancelled after native capture; raw ZIP independently replayed without a final experiment.json; RSS failed; never rewritten as success",
+    "artifact": {
+      "id": 12732428949,
+      "sha256": "2c9674f29e066fc69a183fe0dcb2bc74fe7bc8528038161754245e608c79a635",
+      "size_in_bytes": 16681785
+    }
+  },
+  "time_budget": {
+    "source_sha": "f75a4fe9c1ae32edd912dfb133e2a20d59b6d7f5",
+    "checkout_sha": "4c2c26320dc9e20dd394679431dfaf9f11460952",
+    "tree_sha": "fe247fb62a6f9625d55bb686ffd955fd74e49cb8",
+    "run_id": 40506418306,
+    "conclusion": "failure",
+    "artifact": {
+      "id": 12736016050,
+      "name": "page-advice-ledger",
+      "size_in_bytes": 18118904,
+      "url": "https://api.github.com/repos/VortexWang/Tunveo/actions/artifacts/12736016050",
+      "archive_download_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/artifacts/12736016050/zip",
+      "expired": false,
+      "created_at": "2026-10-27T12:55:45Z",
+      "expires_at": "2026-11-26T12:55:42Z",
+      "updated_at": "2026-10-27T12:55:45Z",
+      "digest": "sha256:9ae8654ebe7e55719752ec546ea63758879eb7e6d544080eef24cace059ea89c",
+      "workflow_run": {
+        "id": 40506418306,
+        "repository_id": 1432849936,
+        "head_repository_id": 1432849936,
+        "head_branch": "test/soak-page-advice",
+        "head_sha": "f75a4fe9c1ae32edd912dfb133e2a20d59b6d7f5"
+      }
+    },
+    "jobs": [
+      {
+        "id": 122196744275,
+        "run_id": 40506418306,
+        "workflow_name": "Soak page advice ledger",
+        "head_branch": "test/soak-page-advice",
+        "run_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/runs/40506418306",
+        "run_attempt": 1,
+        "node_id": "CR_kwDOVWeOEM8AAAAcc35YUw",
+        "head_sha": "f75a4fe9c1ae32edd912dfb133e2a20d59b6d7f5",
+        "url": "https://api.github.com/repos/VortexWang/Tunveo/actions/jobs/122196744275",
+        "html_url": "https://github.com/VortexWang/Tunveo/actions/runs/40506418306/job/122196744275",
+        "status": "completed",
+        "conclusion": "failure",
+        "created_at": "2026-10-27T12:46:26Z",
+        "started_at": "2026-10-27T12:46:27Z",
+        "completed_at": "2026-10-27T12:55:47Z",
+        "name": "qualify",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1,
+            "started_at": "2026-10-27T12:46:28Z",
+            "completed_at": "2026-10-27T12:46:29Z"
+          },
+          {
+            "name": "Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2,
+            "started_at": "2026-10-27T12:46:29Z",
+            "completed_at": "2026-10-27T12:46:31Z"
+          },
+          {
+            "name": "Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3,
+            "started_at": "2026-10-27T12:46:31Z",
+            "completed_at": "2026-10-27T12:46:35Z"
+          },
+          {
+            "name": "Build pinned tracer with instruction-boundary checking and unsafe disabled",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4,
+            "started_at": "2026-10-27T12:46:35Z",
+            "completed_at": "2026-10-27T12:48:39Z"
+          },
+          {
+            "name": "Run python3 -m unittest discover -s scripts/tests",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5,
+            "started_at": "2026-10-27T12:48:39Z",
+            "completed_at": "2026-10-27T12:48:44Z"
+          },
+          {
+            "name": "Build unchanged probe and known allocation control",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6,
+            "started_at": "2026-10-27T12:48:44Z",
+            "completed_at": "2026-10-27T12:49:18Z"
+          },
+          {
+            "name": "Page discard and reuse control before bounded Go load and retention",
+            "status": "completed",
+            "conclusion": "failure",
+            "number": 7,
+            "started_at": "2026-10-27T12:49:18Z",
+            "completed_at": "2026-10-27T12:55:42Z"
+          },
+          {
+            "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8,
+            "started_at": "2026-10-27T12:55:42Z",
+            "completed_at": "2026-10-27T12:55:46Z"
+          },
+          {
+            "name": "Post Run actions/setup-go@v6.1.0",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 15,
+            "started_at": "2026-10-27T12:55:46Z",
+            "completed_at": "2026-10-27T12:55:46Z"
+          },
+          {
+            "name": "Post Run actions/checkout@v6.0.2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 16,
+            "started_at": "2026-10-27T12:55:46Z",
+            "completed_at": "2026-10-27T12:55:46Z"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 17,
+            "started_at": "2026-10-27T12:55:46Z",
+            "completed_at": "2026-10-27T12:55:46Z"
+          }
+        ],
+        "check_run_url": "https://api.github.com/repos/VortexWang/Tunveo/check-runs/122196744275",
+        "labels": [
+          "ubuntu-latest"
+        ],
+        "runner_id": 1000001379,
+        "runner_name": "GitHub Actions 1000001379",
+        "runner_group_id": 0,
+        "runner_group_name": "GitHub Actions"
+      }
+    ],
+    "workflows": [
+      {
+        "id": 40506418230,
+        "name": "CI",
+        "status": "completed",
+        "conclusion": "success",
+        "head": "f75a4fe9c1ae32edd912dfb133e2a20d59b6d7f5"
+      },
+      {
+        "id": 40506418196,
+        "name": "TLS acceptance",
+        "status": "in_progress",
+        "conclusion": null,
+        "head": "f75a4fe9c1ae32edd912dfb133e2a20d59b6d7f5"
+      },
+      {
+        "id": 40506418218,
+        "name": "Soak mapping lifecycle ledger",
+        "status": "in_progress",
+        "conclusion": null,
+        "head": "f75a4fe9c1ae32edd912dfb133e2a20d59b6d7f5"
+      },
+      {
+        "id": 40506418089,
+        "name": "Soak mapping lifecycle ledger 180s",
+        "status": "completed",
+        "conclusion": "failure",
+        "head": "f75a4fe9c1ae32edd912dfb133e2a20d59b6d7f5"
+      },
+      {
+        "id": 40506418065,
+        "name": "Soak mapping ledger post-stop retention",
+        "status": "completed",
+        "conclusion": "failure",
+        "head": "f75a4fe9c1ae32edd912dfb133e2a20d59b6d7f5"
+      }
+    ],
+    "regression_scope": "only workflow status checked for other workflows; failure causes not independently audited here",
+    "qualifies_24h": false,
+    "independently_replayed": true
   }
 }
+
