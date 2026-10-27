@@ -263,8 +263,8 @@ def audit_snapshots(folder,ledger,race,control=False):
 
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--binary',type=Path,required=True);p.add_argument('--control',type=Path,required=True);p.add_argument('--tracer',type=Path,required=True);p.add_argument('--artifacts',type=Path,required=True);a=p.parse_args();a.artifacts.mkdir(parents=True,exist_ok=False)
-    result={'status':'failed','pilot_only':True,'stages':[]}
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--binary',type=Path,required=True);p.add_argument('--control',type=Path,required=True);p.add_argument('--tracer',type=Path,required=True);p.add_argument('--artifacts',type=Path,required=True);p.add_argument('--duration',choices=('15s','180s'),default='15s');a=p.parse_args();a.artifacts.mkdir(parents=True,exist_ok=False)
+    result={'status':'failed','pilot_only':True,'duration':a.duration,'stages':[]}
     try:
         if os.sysconf('SC_PAGE_SIZE')!=PAGE:raise ValueError('only 4096-byte Linux pages supported')
         folder=a.artifacts/'control';collector=Collector(folder,a.control,True)
@@ -272,10 +272,11 @@ def main():
         rows=audit_snapshots(folder,ledger,False,True);result['control']=dict(ledger=ledger,snapshots=rows);result['stages'].append('control_passed')
         binary=a.binary.resolve();info=json.loads(subprocess.check_output([str(binary),'--describe']));assert mappings.supported(info)
         folder=a.artifacts/'pilot';collector=Collector(folder,binary);native=(folder/'native').resolve()
-        ledger=context.launch(binary,folder,context.SYMBOLS,['--transport','3','--mode','1','--duration','15s','--warmup','12s','--sample-interval','5s','--workers','2','--qps','10','--pool-min','16','--pool-max','64','--artifacts',str(native)],120,a.tracer,program_builder=program,auditor=parse,poll_hook=collector)
+        ledger=context.launch(binary,folder,context.SYMBOLS,['--transport','3','--mode','1','--duration',a.duration,'--warmup','12s','--sample-interval','5s','--workers','2','--qps','10','--pool-min','16','--pool-max','64','--artifacts',str(native)],(120 if a.duration=='15s' else 300),a.tracer,program_builder=program,auditor=parse,poll_hook=collector)
         rows=audit_snapshots(folder,ledger,True);r=json.loads((native/'report.json').read_text());assert r['build_info']==info['build_info'] and r['settings']['pid']==ledger['native_pid']
+        result.update(description=info,pilot=dict(ledger=ledger,snapshots=rows));result['stages'].append('mapping_audit_passed')
         result['events']=verify.validate_events(native/'exchanges.jsonl.gz',r);verify.validate_engine_logs(native,folder/'native-stderr.log',64,3);result['acceptance']=verify.validate_report(r,True)
-        result.update(status='pilot_passed',description=info,pilot=dict(ledger=ledger,snapshots=rows))
+        result.update(status='pilot_passed')
     except (ValueError,KeyError,OSError,AssertionError,subprocess.SubprocessError) as error:result['error']=type(error).__name__+': '+str(error)
     finally:context.dump(a.artifacts/'experiment.json',result)
     return int(result['status']!='pilot_passed')

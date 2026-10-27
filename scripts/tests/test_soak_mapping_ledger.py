@@ -65,5 +65,25 @@ class MappingLedgerTests(unittest.TestCase):
  def test_program_uses_one_explicit_monotonic_clock_and_no_return_trampoline(self):
   p=l.program(self.plan());self.assertNotIn('uretprobe:',p);self.assertNotIn('nsecs,',p);self.assertIn('nsecs(monotonic)',p);self.assertIn('sys_enter_mremap',p);self.assertIn('sched_process_exec',p)
 
+ def test_resource_failure_preserves_completed_mapping_evidence(self):
+  import tempfile
+  from unittest.mock import patch
+  for duration,seconds in [('15s',120),('180s',300)]:
+   with self.subTest(duration=duration),tempfile.TemporaryDirectory() as tmp:
+    out=Path(tmp)/'artifacts';binary=Path(tmp)/'probe';control=Path(tmp)/'control'
+    info={'build_info':{'revision':'pinned'}};ledger={'native_pid':42};rows=[{'proof':'complete'}]
+    def launch(target,folder,symbols,args,timeout,tracer,**kwargs):
+     if target==binary:
+      self.assertEqual(args[args.index('--duration')+1],duration);self.assertEqual(timeout,seconds)
+      native=folder/'native';native.mkdir(parents=True)
+      (native/'report.json').write_text(json.dumps(dict(build_info=info['build_info'],settings={'pid':42})))
+     return ledger
+    with patch.object(sys,'argv',['ledger','--binary',str(binary),'--control',str(control),'--tracer','/tracer','--artifacts',str(out),'--duration',duration]),patch.object(l.os,'sysconf',return_value=4096),patch.object(l,'Collector'),patch.object(l.context,'launch',side_effect=launch),patch.object(l.subprocess,'check_output',return_value=json.dumps(info).encode()),patch.object(l.mappings,'supported',return_value=True),patch.object(l,'audit_snapshots',return_value=rows),patch.object(l.verify,'validate_events',return_value={'exchanges':1800}),patch.object(l.verify,'validate_engine_logs'),patch.object(l.verify,'validate_report',side_effect=ValueError('active resource bound: rss')):
+     self.assertEqual(l.main(),1)
+    result=json.loads((out/'experiment.json').read_text())
+    self.assertEqual(result['status'],'failed');self.assertIn('active resource bound: rss',result['error'])
+    self.assertEqual(result['pilot'],{'ledger':ledger,'snapshots':rows});self.assertIn('mapping_audit_passed',result['stages'])
+    self.assertEqual(result['events'],{'exchanges':1800});self.assertNotIn('acceptance',result)
+
 
 if __name__=='__main__':unittest.main()
