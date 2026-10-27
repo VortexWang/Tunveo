@@ -1,0 +1,10 @@
+{
+  "initial": {
+    "source_sha": "39939b46a1ce5b413ca9a0ad3d0dbaa6ef404132",
+    "checkout_sha": "39939b46a1ce5b413ca9a0ad3d0dbaa6ef404132"
+  },
+  "fixed": {
+    "source_sha": "961a8573e1ba8851579e01ef25805d08933bfb4f",
+    "checkout_sha": "961a8573e1ba8851579e01ef25805d08933bfb4f"
+  }
+}

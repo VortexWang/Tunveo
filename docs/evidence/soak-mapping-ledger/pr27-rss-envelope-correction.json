@@ -1,0 +1,10 @@
+{
+  "source_zip_sha256": "f3b1cbe4352c1c0abf9e8d0bc4c767688e88c95aee5c5a1aabf06fa0ca8c3856",
+  "baseline_at_seconds": 10.005065803,
+  "peak_at_seconds": 22.008759564,
+  "baseline_rss": 131227648,
+  "peak_rss": 162365440,
+  "active_budget_delta": 31137792,
+  "measured_first_last_delta": 26120192,
+  "scope": "correct PR27 prose labels; raw ZIP and pass/fail verdict unchanged"
+}
