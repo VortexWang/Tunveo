@@ -64,7 +64,7 @@ jobs:
           gcc -g -O1 -fomit-frame-pointer -fno-optimize-sibling-calls -no-pie -o bin/advice-control scripts/advicecontrol/main.c
           sha256sum bin/probe bin/advice-control > artifacts/binary-sha256.txt
       - name: Page discard and reuse control before bounded Go load and retention
-        run: python3 scripts/soak_page_advice.py --binary bin/probe --control bin/advice-control --tracer "$RUNNER_TEMP/bpftrace-source/build/src/bpftrace" --artifacts artifacts/experiment
+        run: timeout --signal=TERM 20m python3 scripts/soak_page_advice.py --binary bin/probe --control bin/advice-control --tracer "$RUNNER_TEMP/bpftrace-source/build/src/bpftrace" --artifacts artifacts/experiment
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
