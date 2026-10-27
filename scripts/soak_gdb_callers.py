@@ -60,6 +60,11 @@ def read_calls(folder):
             'scope':'cumulative successful virtual requests, not live mappings or RSS; no unmap/reuse ledger; missing/unknown frames never guessed'}
 
 
+def unwind_entry_covered(raw,address):
+    ranges=[(int(a,16),int(b,16)) for a,b in re.findall(r'pc=([0-9a-f]+)\.\.([0-9a-f]+)',raw)]
+    return any(start<=address<end for start,end in ranges)
+
+
 def run_command(args,folder):
     return 'run '+shlex.join(args)+' >'+shlex.quote(str(folder/'native-stdout.log'))+' 2>'+shlex.quote(str(folder/'native-stderr.log'))+' < /dev/null'
 
@@ -67,6 +72,10 @@ def run_command(args,folder):
 def launch(binary,folder,symbol,args):
     folder.mkdir(parents=True,exist_ok=False)
     address,nm=symbol_address(binary,symbol)
+    frames=subprocess.check_output(['readelf','--debug-dump=frames',str(binary)],text=True)
+    (folder/'entry-unwind.txt').write_text(frames)
+    if not unwind_entry_covered(frames,address):
+        raise ValueError('GDB return probe blocked: no decoded FDE covers exact entry; do not use guessed FinishBreakpoint unwinding')
     dump(folder/'gdb-config.json',{'entry_symbol':symbol,'entry_address':address,'binary_sha256':hashlib.sha256(binary.read_bytes()).hexdigest(),'inferior_arguments':args,'run_command':run_command(args,folder.resolve())})
     (folder/'binary-symbols.txt').write_text(nm)
     env=dict(os.environ);env['TUNVEO_GDB_OUTPUT']=str(folder.resolve())

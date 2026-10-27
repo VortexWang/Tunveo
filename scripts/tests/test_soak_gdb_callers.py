@@ -33,6 +33,12 @@ class GDBCallerTests(unittest.TestCase):
   tokens=shlex.split(c.run_command(args,Path('/tmp/a b')))
   self.assertEqual(tokens[:1+len(args)],['run']+args)
   self.assertIn('>/tmp/a b/native-stdout.log',tokens)
+ def test_no_unwind_entry_coverage_blocks_return_probe(self):
+  raw='0000 FDE cie=0000 pc=0000000000405000..0000000000405100\n'
+  self.assertFalse(c.unwind_entry_covered(raw,0x404940))
+  self.assertTrue(c.unwind_entry_covered(raw,0x405000))
+  self.assertFalse(c.unwind_entry_covered(raw,0x405100))
+  self.assertFalse(c.unwind_entry_covered('no frame entries',0x404940))
  def test_nonzero_or_partial_execution_is_rejected(self):
   for state in ({'entry_calls':1,'returns':1,'exit_code':1},{'entry_calls':2,'returns':1,'exit_code':0}):
    with self.assertRaises(ValueError):self.audit([self.entry(),self.returned()],state)

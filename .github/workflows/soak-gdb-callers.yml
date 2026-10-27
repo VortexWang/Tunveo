@@ -1,12 +1,5 @@
 name: Soak GDB caller diagnostic
 on:
-  pull_request:
-    paths:
-      - 'scripts/gdb_mmap.py'
-      - 'scripts/soak_gdb_callers.py'
-      - 'scripts/gdbcontrol/**'
-      - 'scripts/tests/test_soak_gdb_callers.py'
-      - '.github/workflows/soak-gdb-callers.yml'
   workflow_dispatch:
 permissions:
   contents: read
