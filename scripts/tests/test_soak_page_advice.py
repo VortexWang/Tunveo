@@ -6,6 +6,18 @@ import soak_page_advice as a
 
 
 class PageAdviceTests(unittest.TestCase):
+ def test_layout_accepts_actual_pinned_tracer_output_with_optional_semicolons(self):
+  enter='tracepoint:syscalls:sys_enter_madvise\n int __syscall_nr\n unsigned long start\n size_t len_in\n int behavior\n'
+  exit='tracepoint:syscalls:sys_exit_madvise\n int __syscall_nr\n long ret\n'
+  a.validate_layout(enter,exit)
+  a.validate_layout('\n'.join(line+';' if i else line for i,line in enumerate(enter.strip().splitlines())),
+      '\n'.join(line+';' if i else line for i,line in enumerate(exit.strip().splitlines())))
+ def test_layout_still_rejects_changed_names_types_and_duplicate_fields(self):
+  enter='tracepoint:syscalls:sys_enter_madvise\n int __syscall_nr\n unsigned long start\n size_t len_in\n int behavior\n'
+  exit='tracepoint:syscalls:sys_exit_madvise\n int __syscall_nr\n long ret\n'
+  for bad in [enter.replace('start','addr'),enter.replace('size_t','int'),enter+'int behavior\n',enter.replace('enter_madvise','enter_mmap')]:
+   with self.assertRaises(ValueError):a.validate_layout(bad,exit)
+  with self.assertRaises(ValueError):a.validate_layout(enter,exit.replace('long ret','int ret'))
  def plan(self):
   return dict(binary='/probe',functions={'1':dict(symbol='parent',address=100,ret_offsets=[10]),
       '3':dict(symbol='mmap_wrapper',address=300,ret_offsets=[10])})
