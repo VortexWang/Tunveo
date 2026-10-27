@@ -1,0 +1,136 @@
+{
+  "source_sha": "d3650a1c2cbb214968e26f16424c2a5e0104b7a9",
+  "checkout_sha": "697040f541d60df39c9ecc87d5eef0ae53fd9859",
+  "source_tree": "3796b71a5a19b2e4df60f88b2347d27fbbcfd50b",
+  "checkout_tree": "3796b71a5a19b2e4df60f88b2347d27fbbcfd50b",
+  "workflow_runs": [
+    {
+      "id": 40464561031,
+      "name": "TLS acceptance",
+      "status": "completed",
+      "conclusion": "failure",
+      "run_attempt": 1,
+      "head_sha": "d3650a1c2cbb214968e26f16424c2a5e0104b7a9",
+      "html_url": "https://github.com/VortexWang/Tunveo/actions/runs/40464561031",
+      "updated_at": "2026-10-27T07:24:50Z"
+    },
+    {
+      "id": 40464561145,
+      "name": "Soak mapping lifecycle ledger 180s",
+      "status": "completed",
+      "conclusion": "failure",
+      "run_attempt": 1,
+      "head_sha": "d3650a1c2cbb214968e26f16424c2a5e0104b7a9",
+      "html_url": "https://github.com/VortexWang/Tunveo/actions/runs/40464561145",
+      "updated_at": "2026-10-27T07:07:15Z"
+    },
+    {
+      "id": 40464561044,
+      "name": "CI",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "head_sha": "d3650a1c2cbb214968e26f16424c2a5e0104b7a9",
+      "html_url": "https://github.com/VortexWang/Tunveo/actions/runs/40464561044",
+      "updated_at": "2026-10-27T07:06:56Z"
+    },
+    {
+      "id": 40464560997,
+      "name": "Soak mapping lifecycle ledger",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "head_sha": "d3650a1c2cbb214968e26f16424c2a5e0104b7a9",
+      "html_url": "https://github.com/VortexWang/Tunveo/actions/runs/40464560997",
+      "updated_at": "2026-10-27T07:04:27Z"
+    }
+  ],
+  "tls_jobs": [
+    {
+      "id": 122056752330,
+      "name": "matrix (2, upstream-tunveo, explicit-ip)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 122056752532,
+      "name": "matrix (2, tunveo-upstream, explicit-ip)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 122056752539,
+      "name": "matrix (2, tunveo-tunveo, explicit-dns)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 122056752559,
+      "name": "matrix (0, upstream-tunveo, explicit-ip)",
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "id": 122056752581,
+      "name": "matrix (2, tunveo-tunveo, default-ip)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 122056752590,
+      "name": "matrix (0, tunveo-tunveo, explicit-ip)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 122056752619,
+      "name": "matrix (1, tunveo-tunveo, explicit-ip)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 122056752635,
+      "name": "matrix (2, tunveo-tunveo, explicit-ip)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 122056752682,
+      "name": "matrix (1, tunveo-upstream, explicit-ip)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 122056752764,
+      "name": "matrix (1, upstream-tunveo, explicit-ip)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 122056752767,
+      "name": "matrix (0, tunveo-upstream, explicit-ip)",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "tls_failed_artifact": {
+    "id": 12715657366,
+    "name": "tls-0-upstream-tunveo-explicit-ip",
+    "size_in_bytes": 318262,
+    "url": "https://api.github.com/repos/VortexWang/Tunveo/actions/artifacts/12715657366",
+    "archive_download_url": "https://api.github.com/repos/VortexWang/Tunveo/actions/artifacts/12715657366/zip",
+    "expired": false,
+    "created_at": "2026-10-27T07:06:08Z",
+    "expires_at": "2026-11-10T07:06:07Z",
+    "updated_at": "2026-10-27T07:06:08Z",
+    "digest": "sha256:6dd5df1a0ccc7b3c2a87902cec3b0d61be76fcf959a29e94c7644e6489c4f689",
+    "workflow_run": {
+      "id": 40464561031,
+      "repository_id": 1432849936,
+      "head_repository_id": 1432849936,
+      "head_branch": "test/soak-mapping-ledger-180",
+      "head_sha": "d3650a1c2cbb214968e26f16424c2a5e0104b7a9"
+    }
+  },
+  "scope": "CI status snapshot, other successful TLS shards not independently reaudited; original failures retained"
+}
