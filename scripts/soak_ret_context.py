@@ -123,11 +123,19 @@ def group_alive(pgid):
     raise ValueError('cannot prove process-group state: '+result.stderr[:200])
 
 
+def bpf_child_command(launcher):
+    path=str(launcher.resolve())
+    if not re.fullmatch(r'/[A-Za-z0-9_./-]+',path):raise ValueError('unsupported child-script path')
+    return '/bin/sh '+path
+
+
 def launch(binary,folder,symbols,args,seconds):
     folder.mkdir(parents=True,exist_ok=False);binary=binary.resolve(strict=True)
     p=plan(binary,symbols);dump(folder/'plan.json',p);(folder/'program.bt').write_text(program(p))
     command='exec '+shlex.join(['setpriv','--reuid='+str(os.getuid()),'--regid='+str(os.getgid()),'--clear-groups','env','-i','PATH=/usr/bin:/bin',str(binary),*args])+' >'+shlex.quote(str((folder/'native-stdout.log').resolve()))+' 2>'+shlex.quote(str((folder/'native-stderr.log').resolve()))
-    cmd=['sudo','-n','bpftrace','-q',str((folder/'program.bt').resolve()),'-c',command]
+    launcher=folder/'target.sh'
+    launcher.write_text('#!/bin/sh\n'+command+'\n')
+    cmd=['sudo','-n','bpftrace','-q',str((folder/'program.bt').resolve()),'-c',bpf_child_command(launcher)]
     execution={'command':cmd,'expected_uid':os.getuid(),'timeout_seconds':seconds,'timed_out':False,'cleanup_signals':[]}
     with (folder/'events.log').open('w') as out,(folder/'bpftrace-stderr.log').open('w') as err:
         proc=subprocess.Popen(cmd,stdout=out,stderr=err,start_new_session=True)

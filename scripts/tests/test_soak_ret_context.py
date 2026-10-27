@@ -1,4 +1,4 @@
-import copy,json,sys,unittest
+import copy,json,sys,unittest,shlex
 from pathlib import Path
 from unittest.mock import patch
 from types import SimpleNamespace
@@ -37,6 +37,9 @@ class RetContextTests(unittest.TestCase):
  def test_generated_program_has_only_entry_and_explicit_ret_uprobes(self):
   text=c.program(self.plan());self.assertNotIn('uretprobe:',text);self.assertNotIn('ustack',text);self.assertNotIn('retval',text)
   self.assertIn('mapping+0xa',text);self.assertIn('reg("ax")',text);self.assertIn('/pid == cpid/',text)
+ def test_bpf_child_command_names_an_executable_without_shell_builtins(self):
+  self.assertEqual(shlex.split(c.bpf_child_command(Path('/tmp/target.sh'))),['/bin/sh','/tmp/target.sh'])
+  with self.assertRaises(ValueError):c.bpf_child_command(Path('/tmp/a b/target.sh'))
  def test_permission_error_is_not_process_group_disappearance(self):
   with patch.object(c.subprocess,'run',return_value=SimpleNamespace(returncode=1,stderr='Operation not permitted')):
    with self.assertRaises(ValueError):c.group_alive(123)
