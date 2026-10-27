@@ -374,4 +374,4 @@ PR29规范d3650a1c与实际CI697040f5完整树相同。180秒专项40464561145�
 
 ## 40. 页回收请求与整VMA驻留对齐（2026-10-27）
 
-接PR30家族停载仍保留，本轮核对Go1.26.10声明的LLVM固定源码及补丁，区分TracePart回收队列、内部primary分配器策略与实际OS归还；不把源码机制冒充全部家族RSS用途。新增同序号madvise请求/返回、调用时区间与代次、邻点整VMA/RSS及共存advice披露；真实4MiB discard/失败/重触碰/同址异来源复用控制先行。原负载、120秒GC停载及显式Go回收不变，64MiB超限仍failed并保留完整证据。101项Python通过，默认旧追踪程序逐字节一致，实际CI待运行，原资源/TLS失败保留，24h pending、未启动；见 [页回收诊断](soak-page-advice.md)。
+接PR30家族停载仍保留，本轮核对Go1.26.10声明的LLVM固定源码及补丁，区分TracePart回收队列、内部primary分配器策略与实际OS归还；不把源码机制冒充全部家族RSS用途。新增同序号madvise请求/返回、调用时区间与代次、邻点整VMA/RSS及共存advice披露；真实4MiB discard/失败/重触碰/同址异来源复用控制先行。原负载、120秒GC停载及显式Go回收不变，64MiB超限仍failed并保留完整证据。初版字段显示分号误判failed保留且无Go覆盖；修正版5a0dfea真实窗口103Python、七阶段C控制、42负载+26停载点和5994对madvise完整审计通过，但RSS+66.921875MiB仍failed。5288次DONTNEED有Go命名堆VMA邻点对照，稳定已观测运行库来源交集仅为704次shadow/metadata NOHUGEPAGE，不当59.16015625MiB匿名家族释放或缓存类型证明。原ZIP/digest/CRC、实际源码树、台账/请求/代次/回执已独立重放，原资源/TLS失败保留；分析缓存优化版本地104项通过、专项仍在运行，不能借前一窗口声称新源码已验证，24h pending、未启动；见 [页回收诊断](soak-page-advice.md)。
