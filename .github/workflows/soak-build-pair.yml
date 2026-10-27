@@ -1,0 +1,45 @@
+name: Ordinary and race paired RSS pilot
+on:
+  pull_request:
+    paths:
+      - 'scripts/soak_build_pair.py'
+      - 'scripts/tests/test_soak_build_pair.py'
+      - '.github/workflows/soak-build-pair.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  pair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v6.0.2
+      - uses: actions/setup-go@v6.1.0
+        with:
+          go-version-file: go.mod
+      - name: Test and build identical source
+        timeout-minutes: 8
+        run: |
+          python3 -m unittest discover -s scripts/tests
+          test -z "$(git status --porcelain)"
+          go build -trimpath -o bin/ordinary ./scripts/soak24h
+          test -z "$(git status --porcelain)"
+          go build -race -trimpath -o bin/race ./scripts/soak24h
+          mkdir -p pair-meta
+          uname -a > pair-meta/host.txt
+          go version > pair-meta/go-version.txt
+          sha256sum bin/ordinary bin/race > pair-meta/binary-sha256.txt
+          bin/ordinary --describe > pair-meta/ordinary.json
+          bin/race --describe > pair-meta/race.json
+      - name: Sequential ABBA with original resource gate
+        timeout-minutes: 24
+        run: python3 scripts/soak_build_pair.py --ordinary bin/ordinary --race bin/race --artifacts artifacts
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
+        timeout-minutes: 2
+        with:
+          name: ordinary-race-pair
+          path: |
+            artifacts
+            pair-meta
+          retention-days: 30

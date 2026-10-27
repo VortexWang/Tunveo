@@ -1,0 +1,528 @@
+{
+  "audit_status": "independently_replayed",
+  "original_status": "failed",
+  "qualifies_24h": false,
+  "checkout": "c69d0f0dc646acbcccc98ccd70c29eaa90697919",
+  "source_blobs": {
+    "verify_soak.py": "e0c0321054c8be6510f190b33d07966aad8635aa",
+    "soak_build_pair.py": "25f981cf6fdf09b660d73273620834b149932839"
+  },
+  "archive_sha256": "fecb714b9c85435f621e9b39a7df5cec4dc9894ec1b818d939accbf0c4d19bc5",
+  "runs": [
+    {
+      "run": 1,
+      "build": "ordinary",
+      "original_status": "pilot_passed",
+      "errors": [],
+      "resources": {
+        "active": {
+          "goroutines": {
+            "baseline": 77,
+            "peak": 79,
+            "delta": 2,
+            "allowance": 32,
+            "passed": true,
+            "violations": []
+          },
+          "fd": {
+            "baseline": 21,
+            "peak": 21,
+            "delta": 0,
+            "allowance": 16,
+            "passed": true,
+            "violations": []
+          },
+          "heap_alloc": {
+            "baseline": 26790696,
+            "peak": 28236656,
+            "delta": 1445960,
+            "allowance": 33554432,
+            "passed": true,
+            "violations": []
+          },
+          "rss": {
+            "baseline": 47321088,
+            "peak": 58454016,
+            "delta": 11132928,
+            "allowance": 67108864,
+            "passed": true,
+            "violations": []
+          }
+        },
+        "return": {
+          "goroutines": {
+            "baseline": 4,
+            "after_stop": 5,
+            "allowance": 4,
+            "passed": true
+          },
+          "fd": {
+            "baseline": 12,
+            "after_stop": 12,
+            "allowance": 2,
+            "passed": true
+          },
+          "heap_alloc": {
+            "baseline": 262776,
+            "after_stop": 2368136,
+            "allowance": 8388608,
+            "passed": true
+          }
+        },
+        "trend": {
+          "goroutines": {
+            "delta": 2,
+            "formal_allowance": 4,
+            "enforced_in_pilot": false
+          },
+          "fd": {
+            "delta": 0,
+            "formal_allowance": 2,
+            "enforced_in_pilot": false
+          },
+          "heap_alloc": {
+            "delta": 527184,
+            "formal_allowance": 8388608,
+            "enforced_in_pilot": false
+          },
+          "rss": {
+            "delta": 2494464,
+            "formal_allowance": 33554432,
+            "enforced_in_pilot": false
+          }
+        },
+        "qualifies_24h": false,
+        "warmup_rss": [
+          {
+            "at_seconds": 6.003404159,
+            "rss": 47288320
+          },
+          {
+            "at_seconds": 8.002718848,
+            "rss": 47308800
+          },
+          {
+            "at_seconds": 10.002918273,
+            "rss": 47321088
+          }
+        ]
+      },
+      "events": 1919
+    },
+    {
+      "run": 2,
+      "build": "race",
+      "original_status": "failed",
+      "errors": [
+        "report: active resource bound: rss"
+      ],
+      "resources": {
+        "active": {
+          "goroutines": {
+            "baseline": 77,
+            "peak": 92,
+            "delta": 15,
+            "allowance": 32,
+            "passed": true,
+            "violations": []
+          },
+          "fd": {
+            "baseline": 21,
+            "peak": 25,
+            "delta": 4,
+            "allowance": 16,
+            "passed": true,
+            "violations": []
+          },
+          "heap_alloc": {
+            "baseline": 25968776,
+            "peak": 27107864,
+            "delta": 1139088,
+            "allowance": 33554432,
+            "passed": true,
+            "violations": []
+          },
+          "rss": {
+            "baseline": 128090112,
+            "peak": 201576448,
+            "delta": 73486336,
+            "allowance": 67108864,
+            "passed": false,
+            "violations": [
+              {
+                "at_seconds": 102.009079898,
+                "value": 196612096
+              },
+              {
+                "at_seconds": 107.008096528,
+                "value": 200048640
+              },
+              {
+                "at_seconds": 112.008624536,
+                "value": 197054464
+              },
+              {
+                "at_seconds": 117.008508627,
+                "value": 195678208
+              },
+              {
+                "at_seconds": 122.008776007,
+                "value": 199335936
+              },
+              {
+                "at_seconds": 127.007342824,
+                "value": 198082560
+              },
+              {
+                "at_seconds": 132.008693424,
+                "value": 196874240
+              },
+              {
+                "at_seconds": 137.010320861,
+                "value": 201576448
+              },
+              {
+                "at_seconds": 142.007809656,
+                "value": 199335936
+              },
+              {
+                "at_seconds": 147.004606565,
+                "value": 198664192
+              },
+              {
+                "at_seconds": 157.008989362,
+                "value": 195350528
+              },
+              {
+                "at_seconds": 162.00898895,
+                "value": 197496832
+              },
+              {
+                "at_seconds": 167.008353164,
+                "value": 197873664
+              },
+              {
+                "at_seconds": 172.009280032,
+                "value": 198729728
+              },
+              {
+                "at_seconds": 177.009005145,
+                "value": 198094848
+              },
+              {
+                "at_seconds": 182.007130156,
+                "value": 200622080
+              }
+            ]
+          }
+        },
+        "return": {
+          "goroutines": {
+            "baseline": 4,
+            "after_stop": 5,
+            "allowance": 4,
+            "passed": true
+          },
+          "fd": {
+            "baseline": 12,
+            "after_stop": 12,
+            "allowance": 2,
+            "passed": true
+          },
+          "heap_alloc": {
+            "baseline": 271472,
+            "after_stop": 6922744,
+            "allowance": 8388608,
+            "passed": true
+          }
+        },
+        "trend": {
+          "goroutines": {
+            "delta": 4,
+            "formal_allowance": 4,
+            "enforced_in_pilot": false
+          },
+          "fd": {
+            "delta": 0,
+            "formal_allowance": 2,
+            "enforced_in_pilot": false
+          },
+          "heap_alloc": {
+            "delta": 84760,
+            "formal_allowance": 8388608,
+            "enforced_in_pilot": false
+          },
+          "rss": {
+            "delta": 19066880,
+            "formal_allowance": 33554432,
+            "enforced_in_pilot": false
+          }
+        },
+        "qualifies_24h": false,
+        "warmup_rss": [
+          {
+            "at_seconds": 6.007402185,
+            "rss": 123658240
+          },
+          {
+            "at_seconds": 8.004954997,
+            "rss": 124190720
+          },
+          {
+            "at_seconds": 10.004888754,
+            "rss": 128090112
+          }
+        ]
+      },
+      "events": 1919
+    },
+    {
+      "run": 3,
+      "build": "race",
+      "original_status": "failed",
+      "errors": [
+        "report: active resource bound: rss"
+      ],
+      "resources": {
+        "active": {
+          "goroutines": {
+            "baseline": 77,
+            "peak": 84,
+            "delta": 7,
+            "allowance": 32,
+            "passed": true,
+            "violations": []
+          },
+          "fd": {
+            "baseline": 21,
+            "peak": 21,
+            "delta": 0,
+            "allowance": 16,
+            "passed": true,
+            "violations": []
+          },
+          "heap_alloc": {
+            "baseline": 26488976,
+            "peak": 27676296,
+            "delta": 1187320,
+            "allowance": 33554432,
+            "passed": true,
+            "violations": []
+          },
+          "rss": {
+            "baseline": 130899968,
+            "peak": 202846208,
+            "delta": 71946240,
+            "allowance": 67108864,
+            "passed": false,
+            "violations": [
+              {
+                "at_seconds": 122.008898042,
+                "value": 198275072
+              },
+              {
+                "at_seconds": 142.009897666,
+                "value": 198406144
+              },
+              {
+                "at_seconds": 147.008501763,
+                "value": 199733248
+              },
+              {
+                "at_seconds": 152.008061265,
+                "value": 200167424
+              },
+              {
+                "at_seconds": 157.006972157,
+                "value": 202145792
+              },
+              {
+                "at_seconds": 162.008992589,
+                "value": 199147520
+              },
+              {
+                "at_seconds": 167.006711917,
+                "value": 199503872
+              },
+              {
+                "at_seconds": 172.007329168,
+                "value": 200937472
+              },
+              {
+                "at_seconds": 177.009116063,
+                "value": 201244672
+              },
+              {
+                "at_seconds": 182.00831859,
+                "value": 200339456
+              },
+              {
+                "at_seconds": 187.007803695,
+                "value": 202846208
+              }
+            ]
+          }
+        },
+        "return": {
+          "goroutines": {
+            "baseline": 4,
+            "after_stop": 5,
+            "allowance": 4,
+            "passed": true
+          },
+          "fd": {
+            "baseline": 12,
+            "after_stop": 12,
+            "allowance": 2,
+            "passed": true
+          },
+          "heap_alloc": {
+            "baseline": 271888,
+            "after_stop": 8385136,
+            "allowance": 8388608,
+            "passed": true
+          }
+        },
+        "trend": {
+          "goroutines": {
+            "delta": 4,
+            "formal_allowance": 4,
+            "enforced_in_pilot": false
+          },
+          "fd": {
+            "delta": 0,
+            "formal_allowance": 2,
+            "enforced_in_pilot": false
+          },
+          "heap_alloc": {
+            "delta": 202312,
+            "formal_allowance": 8388608,
+            "enforced_in_pilot": false
+          },
+          "rss": {
+            "delta": 23695360,
+            "formal_allowance": 33554432,
+            "enforced_in_pilot": false
+          }
+        },
+        "qualifies_24h": false,
+        "warmup_rss": [
+          {
+            "at_seconds": 6.005209829,
+            "rss": 122613760
+          },
+          {
+            "at_seconds": 8.0050294,
+            "rss": 128098304
+          },
+          {
+            "at_seconds": 10.005337235,
+            "rss": 130899968
+          }
+        ]
+      },
+      "events": 1919
+    },
+    {
+      "run": 4,
+      "build": "ordinary",
+      "original_status": "pilot_passed",
+      "errors": [],
+      "resources": {
+        "active": {
+          "goroutines": {
+            "baseline": 77,
+            "peak": 81,
+            "delta": 4,
+            "allowance": 32,
+            "passed": true,
+            "violations": []
+          },
+          "fd": {
+            "baseline": 21,
+            "peak": 24,
+            "delta": 3,
+            "allowance": 16,
+            "passed": true,
+            "violations": []
+          },
+          "heap_alloc": {
+            "baseline": 27793248,
+            "peak": 28824224,
+            "delta": 1030976,
+            "allowance": 33554432,
+            "passed": true,
+            "violations": []
+          },
+          "rss": {
+            "baseline": 47321088,
+            "peak": 56393728,
+            "delta": 9072640,
+            "allowance": 67108864,
+            "passed": true,
+            "violations": []
+          }
+        },
+        "return": {
+          "goroutines": {
+            "baseline": 4,
+            "after_stop": 5,
+            "allowance": 4,
+            "passed": true
+          },
+          "fd": {
+            "baseline": 12,
+            "after_stop": 12,
+            "allowance": 2,
+            "passed": true
+          },
+          "heap_alloc": {
+            "baseline": 269184,
+            "after_stop": 3940640,
+            "allowance": 8388608,
+            "passed": true
+          }
+        },
+        "trend": {
+          "goroutines": {
+            "delta": 2,
+            "formal_allowance": 4,
+            "enforced_in_pilot": false
+          },
+          "fd": {
+            "delta": 0,
+            "formal_allowance": 2,
+            "enforced_in_pilot": false
+          },
+          "heap_alloc": {
+            "delta": 254992,
+            "formal_allowance": 8388608,
+            "enforced_in_pilot": false
+          },
+          "rss": {
+            "delta": 397312,
+            "formal_allowance": 33554432,
+            "enforced_in_pilot": false
+          }
+        },
+        "qualifies_24h": false,
+        "warmup_rss": [
+          {
+            "at_seconds": 6.003388935,
+            "rss": 47288320
+          },
+          {
+            "at_seconds": 8.003349134,
+            "rss": 47300608
+          },
+          {
+            "at_seconds": 10.003268049,
+            "rss": 47321088
+          }
+        ]
+      },
+      "events": 1919
+    }
+  ],
+  "scope": "Four fresh processes, uninstrumented ABBA pilots on one host; not proof of causal race overhead or 24h behavior."
+}
