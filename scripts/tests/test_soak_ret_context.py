@@ -40,6 +40,16 @@ class RetContextTests(unittest.TestCase):
  def test_bpf_child_command_names_an_executable_without_shell_builtins(self):
   self.assertEqual(shlex.split(c.bpf_child_command(Path('/tmp/target.sh'))),['/bin/sh','/tmp/target.sh'])
   with self.assertRaises(ValueError):c.bpf_child_command(Path('/tmp/a b/target.sh'))
+ def test_only_observed_descendant_groups_are_eligible_for_cleanup(self):
+  parent=dict(pid=11,pgid=10,session=10);target=dict(pid=12,ppid=11,pgid=12,session=10)
+  self.assertEqual(c.owned_groups(10,target,parent,'/tracer\n',Path('/tracer')),[10,12])
+  for mutate in (lambda t:t.update(ppid=99),lambda t:t.update(pgid=90),lambda t:t.update(session=90)):
+   t=dict(target);mutate(t)
+   with self.assertRaises(ValueError):c.owned_groups(10,t,parent,'/tracer',Path('/tracer'))
+ def test_proc_stat_command_parentheses_do_not_shift_identity_fields(self):
+  fields=['S','11','10','10']+['0']*15+['1234']
+  identity=c.proc_identity('12 (target (with spaces)) '+' '.join(fields))
+  self.assertEqual(identity,dict(pid=12,ppid=11,pgid=10,session=10,start_ticks=1234))
  def test_permission_error_is_not_process_group_disappearance(self):
   with patch.object(c.subprocess,'run',return_value=SimpleNamespace(returncode=1,stderr='Operation not permitted')):
    with self.assertRaises(ValueError):c.group_alive(123)

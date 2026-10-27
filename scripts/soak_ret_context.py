@@ -129,13 +129,27 @@ def bpf_child_command(launcher):
     return '/bin/sh '+path
 
 
-def launch(binary,folder,symbols,args,seconds):
+def proc_identity(raw):
+    pid=int(raw.split(' ',1)[0]);fields=raw.rsplit(')',1)[1].split()
+    return dict(pid=pid,ppid=int(fields[1]),pgid=int(fields[2]),session=int(fields[3]),start_ticks=int(fields[19]))
+
+
+def owned_groups(group,target,parent,parent_exe,tracer):
+    if target['ppid']!=parent['pid'] or target['session']!=parent['session'] or parent['session'] not in (group,parent['pid']) or parent_exe.strip()!=str(tracer):
+        raise ValueError('unverified tracer/target process lineage')
+    groups={group,target['pgid'],parent['pgid']}
+    if not groups<={group,target['pid'],parent['pid']}:raise ValueError('unknown descendant process group')
+    return sorted(groups)
+
+
+def launch(binary,folder,symbols,args,seconds,tracer=Path('/usr/bin/bpftrace')):
     folder.mkdir(parents=True,exist_ok=False);binary=binary.resolve(strict=True)
+    tracer=tracer.resolve(strict=True)
     p=plan(binary,symbols);dump(folder/'plan.json',p);(folder/'program.bt').write_text(program(p))
     command='exec '+shlex.join(['setpriv','--reuid='+str(os.getuid()),'--regid='+str(os.getgid()),'--clear-groups','env','-i','PATH=/usr/bin:/bin',str(binary),*args])+' >'+shlex.quote(str((folder/'native-stdout.log').resolve()))+' 2>'+shlex.quote(str((folder/'native-stderr.log').resolve()))
     launcher=folder/'target.sh'
-    launcher.write_text('#!/bin/sh\n'+command+'\n')
-    cmd=['sudo','-n','bpftrace','-q',str((folder/'program.bt').resolve()),'-c',bpf_child_command(launcher)]
+    launcher.write_text('#!/bin/sh\nset -eu\ncat /proc/$$/stat >'+shlex.quote(str((folder/'target-before.stat').resolve()))+'\ncat /proc/$PPID/stat >'+shlex.quote(str((folder/'tracer-before.stat').resolve()))+'\nreadlink /proc/$PPID/exe >'+shlex.quote(str((folder/'tracer-exe.txt').resolve()))+'\n'+command+'\n')
+    cmd=['sudo','-n',str(tracer),'-q',str((folder/'program.bt').resolve()),'-c',bpf_child_command(launcher)]
     execution={'command':cmd,'expected_uid':os.getuid(),'timeout_seconds':seconds,'timed_out':False,'cleanup_signals':[]}
     with (folder/'events.log').open('w') as out,(folder/'bpftrace-stderr.log').open('w') as err:
         proc=subprocess.Popen(cmd,stdout=out,stderr=err,start_new_session=True)
@@ -143,19 +157,31 @@ def launch(binary,folder,symbols,args,seconds):
         try:execution['exit_code']=proc.wait(timeout=seconds)
         except subprocess.TimeoutExpired:execution['timed_out']=True
         finally:
-            # All descendants were created in our own new session. Never run the
-            # next stage without verifying this tracer/target group is gone.
-            for sig in ('TERM','KILL'):
-                if not group_alive(proc.pid):break
-                subprocess.run(['sudo','-n','kill','-'+sig,'--','-'+str(proc.pid)],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
-                execution['cleanup_signals'].append(sig)
-                until=time.monotonic()+5
-                while group_alive(proc.pid) and time.monotonic()<until:time.sleep(.1)
-            try:proc.wait(timeout=5)
-            except subprocess.TimeoutExpired:pass
-            execution['group_gone']=not group_alive(proc.pid)
+            groups=[proc.pid]
+            try:
+                target=proc_identity((folder/'target-before.stat').read_text())
+                parent=proc_identity((folder/'tracer-before.stat').read_text())
+                groups=owned_groups(proc.pid,target,parent,(folder/'tracer-exe.txt').read_text(),tracer)
+                execution.update(target_identity=target,tracer_identity=parent,target_identity_verified=True)
+            except (OSError,ValueError,IndexError) as error:
+                execution.update(target_identity_verified=False,identity_error=str(error))
+            execution['owned_groups']=groups
+            try:
+                for sig in ('TERM','KILL'):
+                    alive=[g for g in groups if group_alive(g)]
+                    if not alive:break
+                    for group in alive:
+                        subprocess.run(['sudo','-n','kill','-'+sig,'--','-'+str(group)],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+                    execution['cleanup_signals'].append(sig)
+                    until=time.monotonic()+5
+                    while any(group_alive(g) for g in groups) and time.monotonic()<until:time.sleep(.1)
+                try:proc.wait(timeout=5)
+                except subprocess.TimeoutExpired:pass
+                execution['group_gone']=not any(group_alive(g) for g in groups)
+            except ValueError as error:
+                execution.update(group_gone=False,cleanup_error=str(error))
             dump(folder/'execution.json',execution)
-    if execution['timed_out'] or execution.get('exit_code')!=0 or not execution['group_gone'] or execution['cleanup_signals']:
+    if execution['timed_out'] or execution.get('exit_code')!=0 or not execution['group_gone'] or execution['cleanup_signals'] or not execution['target_identity_verified']:
         raise ValueError('tracer/target did not complete cleanly; later stages blocked')
     stderr=(folder/'bpftrace-stderr.log').read_text()
     if re.search(r'(?i)lost|dropped|error|failed',stderr):raise ValueError('tracer reports loss or failure')
@@ -164,10 +190,10 @@ def launch(binary,folder,symbols,args,seconds):
 
 
 def main():
-    ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--binary',type=Path,required=True);ap.add_argument('--control',type=Path,required=True);ap.add_argument('--artifacts',type=Path,required=True);a=ap.parse_args()
+    ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--binary',type=Path,required=True);ap.add_argument('--control',type=Path,required=True);ap.add_argument('--artifacts',type=Path,required=True);ap.add_argument('--tracer',type=Path,default=Path('/usr/bin/bpftrace'));a=ap.parse_args()
     a.artifacts.mkdir(parents=True,exist_ok=False);manifest={'pilot_only':True,'qualification_seconds':15,'status':'failed','stages':[]}
     try:
-        c=launch(a.control,a.artifacts/'control',{1:'control_parent',3:'control_mmap'},[],45)
+        c=launch(a.control,a.artifacts/'control',{1:'control_parent',3:'control_mmap'},[],45,a.tracer)
         expected=json.loads((a.artifacts/'control/native-stdout.log').read_text());calls=c['mmap_calls']
         if len(calls)!=1 or calls[0]['observed_contexts']!=[1] or not calls[0]['successful'] or calls[0]['size']!=1048576 or calls[0]['value']!=expected['address'] or expected['checksum']!=1792 or expected['touched_pages']!=256:
             raise ValueError('known context/address/touched-allocation control failed')
@@ -176,7 +202,7 @@ def main():
         if not mappings.supported(info):raise ValueError('Go1.26.10 linux/amd64 race required')
         manifest['description']=info
         native=(a.artifacts/'qualification/native').resolve()
-        r=launch(binary,a.artifacts/'qualification',SYMBOLS,['--transport','3','--mode','1','--duration','15s','--warmup','12s','--sample-interval','5s','--workers','2','--qps','10','--pool-min','16','--pool-max','64','--artifacts',str(native)],120)
+        r=launch(binary,a.artifacts/'qualification',SYMBOLS,['--transport','3','--mode','1','--duration','15s','--warmup','12s','--sample-interval','5s','--workers','2','--qps','10','--pool-min','16','--pool-max','64','--artifacts',str(native)],120,a.tracer)
         report=json.loads((native/'report.json').read_text())
         if report['build_info']!=info['build_info'] or report['settings']['pid']!=r['native_pid']:raise ValueError('native identity/build mismatch')
         manifest['audited_events']=verify.validate_events(native/'exchanges.jsonl.gz',report)

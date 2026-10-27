@@ -12,7 +12,7 @@ permissions:
 jobs:
   qualify:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v6.0.2
         with:
@@ -20,15 +20,27 @@ jobs:
       - uses: actions/setup-go@v6.1.0
         with:
           go-version-file: go.mod
-      - name: Install tracer on isolated CI VM
+      - name: Build pinned tracer with instruction-boundary checking and unsafe disabled
         run: |
-          if ! command -v bpftrace >/dev/null; then
-            sudo apt-get update
-            sudo apt-get install -y bpftrace
-          fi
           mkdir -p artifacts
-          bpftrace --version > artifacts/bpftrace-version.txt
-          sudo bpftrace --info > artifacts/bpftrace-info.txt 2>&1
+          sudo apt-get update
+          sudo apt-get install -y cmake ninja-build bison flex g++ zlib1g-dev libelf-dev libbpf-dev libbpfcc-dev libcereal-dev libdw-dev libfl-dev binutils-dev libiberty-dev libzstd-dev llvm-18-dev libclang-18-dev libclang-cpp18-dev clang-18
+          tracer_source="$RUNNER_TEMP/bpftrace-source"
+          git init "$tracer_source"
+          git -C "$tracer_source" remote add origin https://github.com/bpftrace/bpftrace.git
+          git -C "$tracer_source" fetch --depth=1 origin 93c593f6dab2e930d6198cfaa52b29d19a8c0647
+          git -C "$tracer_source" checkout --detach FETCH_HEAD
+          git -C "$tracer_source" rev-parse HEAD > artifacts/tracer-source.txt
+          test "$(cat artifacts/tracer-source.txt)" = 93c593f6dab2e930d6198cfaa52b29d19a8c0647
+          cmake -S "$tracer_source" -B "$tracer_source/build" -G Ninja -DBUILD_TESTING=OFF -DENABLE_MAN=OFF -DENABLE_SKB_OUTPUT=OFF -DALLOW_UNSAFE_PROBE=OFF -DLLVM_DIR=/usr/lib/llvm-18/lib/cmake/llvm -DClang_DIR=/usr/lib/llvm-18/lib/cmake/clang -DCMAKE_BUILD_TYPE=Release '-DCMAKE_CXX_FLAGS_RELEASE=-O1 -DNDEBUG' > artifacts/tracer-configure.log 2>&1
+          cmake --build "$tracer_source/build" --parallel 2 --target bpftrace > artifacts/tracer-build.log 2>&1
+          cp "$tracer_source/build/CMakeCache.txt" artifacts/tracer-CMakeCache.txt
+          tracer_binary="$tracer_source/build/src/bpftrace"
+          sudo "$tracer_binary" --info > artifacts/bpftrace-info.txt 2>&1
+          "$tracer_binary" --version > artifacts/bpftrace-version.txt
+          sha256sum "$tracer_binary" > artifacts/tracer-binary.sha256
+          python3 -c "from pathlib import Path; s=Path('artifacts/bpftrace-info.txt').read_text(); assert 'bfd: yes' in s and 'unsafe probe: no' in s, s"
+          dpkg-query -W > artifacts/build-package-versions.txt
           uname -a > artifacts/kernel.txt
           cat /proc/sys/kernel/perf_event_paranoid > artifacts/perf-event-paranoid.txt
           cat /proc/sys/kernel/unprivileged_bpf_disabled > artifacts/unprivileged-bpf-disabled.txt
@@ -39,7 +51,7 @@ jobs:
           gcc -g -O1 -fomit-frame-pointer -fno-optimize-sibling-calls -no-pie -o bin/ret-control scripts/gdbcontrol/main.c
           sha256sum bin/probe bin/ret-control > artifacts/binary-sha256.txt
       - name: C context control before bounded15s Go qualification
-        run: python3 scripts/soak_ret_context.py --binary bin/probe --control bin/ret-control --artifacts artifacts/experiment
+        run: python3 scripts/soak_ret_context.py --binary bin/probe --control bin/ret-control --tracer "$RUNNER_TEMP/bpftrace-source/build/src/bpftrace" --artifacts artifacts/experiment
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
