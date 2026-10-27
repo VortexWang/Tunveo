@@ -21,3 +21,24 @@ CI40509713589在预检阶段失败，四次业务负载均未开始，不能计�
 修正将主机/版本/二进制描述采集移到两次编译之后，并在每次编译前要求git status --porcelain为空；不忽略新目录、不移除来源守卫。预检失败现在也写出pair.json以保留失败原因。原失败保留，修正版CI待核验；64MiB、原验证器及全部窗口参数不变。
 
 修正版本本地108项测试通过，新增脏构建及不同revision拒绝且保留预检失败文件的回归。
+
+## 完整配对CI与独立复算（2026-10-28）
+
+[CI40598755667](https://github.com/VortexWang/Tunveo/actions/runs/40598755667)已完整结束为failure；四次实验全部完成，原件上传成功。源码bee5ffaf5f06ae0e42f17d43104bf9df521e2702；实际干净检出c69d0f0dc646acbcccc98ccd70c29eaa90697919，两种构建revision相同，仅race构建含-race=true。108项测试通过；实验于北京时间06:59:11–07:20:45执行。源码树干净检查通过，首次预检失败没有被抹除。
+
+原ZIP12779192095为655159B，SHA256 fecb714b9c85435f621e9b39a7df5cec4dc9894ec1b818d939accbf0c4d19bc5；digest/CRC已核对。固定两份Python源码blob、全部四次runner文件哈希、二进制哈希、构建来源、PID及正常清理、参数、原summary、资源汇总、原验证器、事件及日志已独立重放，与CI保存结果一致。
+
+| 次序 | 构建 | 基线RSS MiB | 峰值RSS MiB | 增量MiB | 超限采样 | 原结果 |
+| --- | --- | ---: | ---: | ---: | ---: | --- |
+| 1 | ordinary | 45.12890625 | 55.74609375 | 10.6171875 | 0 | pilot_passed |
+| 2 | race | 122.15625 | 192.23828125 | 70.08203125 | 16 | failed：RSS |
+| 3 | race | 124.8359375 | 193.44921875 | 68.61328125 | 11 | failed：RSS |
+| 4 | ordinary | 45.12890625 | 53.78125 | 8.65234375 | 0 | pilot_passed |
+
+四次其余ACTIVE及全部RETURN资源检查通过，各1919个事件与日志独立审计通过。原RETURN不含RSS；短测趋势仅展示，没有宣称正式长期趋势验收。整个配对因两次race失败保持failed，qualifies_24h=false。普通构建两次短测通过不能关闭race历史失败或证明24h稳定。
+
+同一主机、固定源码、反向顺序的两次重复均显示：本窗口普通构建没有触发原RSS门槛，race构建在无BPF条件下仍超限。因此不能把PR31的失败仅归因于BPF；后续排查优先关注race引入的运行库驻留/触碰行为。本实验没有全量映射台账或对象级归属，不能把两种构建RSS差简单认定为纯TSan缓存字节，也不能排除业务代码在race下放大的生命周期问题。
+
+下一步：保持64MiB门槛，做同进程重复负载/停载周期的独立诊断，保留最初基线并观察各轮峰值、低水位和映射复用，避免每轮重置基线掩盖增长；先确认固定构建的TracePart/InternalAllocator入口可观测性，再逐步增加对象归属。普通构建仍需独立的更长前置验收，不能据两次180秒直接启动24h。草稿、未合并/发布、24h未启动。
+
+见本目录下[evidence/soak-build-pair/audit-pair.py](evidence/soak-build-pair/audit-pair.py)与[independent-pair.json](evidence/soak-build-pair/independent-pair.json)。原件和固定源码另随Tunveo-PR32-Paired-RSS-Evidence-2026-10-28.zip保留；本次固定审计器不运行探针。
