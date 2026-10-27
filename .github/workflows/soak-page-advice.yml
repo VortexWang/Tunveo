@@ -52,7 +52,7 @@ jobs:
           python3 -c "from pathlib import Path; s=Path('artifacts/bpftrace-info.txt').read_text(); assert 'bfd: yes' in s and 'unsafe probe: no' in s, s"
           sudo "$tracer_binary" -lv 'tracepoint:syscalls:sys_enter_madvise' > artifacts/madvise-enter-layout.txt 2>&1
           sudo "$tracer_binary" -lv 'tracepoint:syscalls:sys_exit_madvise' > artifacts/madvise-exit-layout.txt 2>&1
-          python3 -c "from pathlib import Path; s=Path('artifacts/madvise-enter-layout.txt').read_text(); assert all(x in s for x in ('start;', 'len_in;', 'behavior;')), s; assert 'ret;' in Path('artifacts/madvise-exit-layout.txt').read_text()"
+          python3 -c "import sys; from pathlib import Path; sys.path.insert(0,'scripts'); from soak_page_advice import validate_layout; validate_layout(Path('artifacts/madvise-enter-layout.txt').read_text(), Path('artifacts/madvise-exit-layout.txt').read_text())"
           dpkg-query -W > artifacts/build-package-versions.txt
           uname -a > artifacts/kernel.txt
           cat /proc/sys/kernel/perf_event_paranoid > artifacts/perf-event-paranoid.txt
