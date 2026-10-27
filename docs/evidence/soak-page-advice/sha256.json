@@ -2,6 +2,9 @@
   "audit-ci.py": "8b6bc5668dcf0fb7da76133071766beac89a592f6edda2a134101bbe80744097",
   "audit-summary.json": "2a3ca9085fa94a8095059b9fb198ae6017f15a1a6eace89b999931735c2515ba",
   "independent-audit.log": "7e391c241f1f1c8878621704008c0c0c53d9e6bff11f96c6af52498f90813e11",
-  "ci-snapshot.json": "6b9efb3d2e675cf477827cfb5bf3b416de61f1355343fc53488c40eb14395e59",
-  "regression-resources.json": "a78d59d51403251b34556c60ec1299846bce22859f8f95acb4fb703e3ee8c223"
+  "ci-snapshot.json": "f3d400c7153d1f8a70a678f21813d09d385bb930766f41a00070f1df6eb293d1",
+  "regression-resources.json": "a78d59d51403251b34556c60ec1299846bce22859f8f95acb4fb703e3ee8c223",
+  "audit-time-budget-ci.py": "078e92543df9ea64227145b7f9be2d5662a52e8435c66336828d94e6a41158ce",
+  "time-budget-summary.json": "3c5b37a7a184687ee58e673675c1fbf13d34668524cb2eee1d05440a112fe418",
+  "time-budget-replay.log": "eb6252345cfcdfc0e9bf9af206810fc768e77ad6f89cb5b0e11537025f700d4d"
 }
