@@ -22,7 +22,8 @@ permissions:
 jobs:
   qualify:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    # Step budgets total 56 minutes; reserve 4 minutes for setup/cleanup.
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v6.0.2
         with:
@@ -31,6 +32,7 @@ jobs:
         with:
           go-version-file: go.mod
       - name: Build pinned tracer with instruction-boundary checking and unsafe disabled
+        timeout-minutes: 25
         run: |
           mkdir -p artifacts
           sudo apt-get update
@@ -58,14 +60,18 @@ jobs:
           cat /proc/sys/kernel/perf_event_paranoid > artifacts/perf-event-paranoid.txt
           cat /proc/sys/kernel/unprivileged_bpf_disabled > artifacts/unprivileged-bpf-disabled.txt
       - run: python3 -m unittest discover -s scripts/tests
+        timeout-minutes: 2
       - name: Build unchanged probe and known allocation control
+        timeout-minutes: 3
         run: |
           go build -race -trimpath -o bin/probe ./scripts/soak24h
           gcc -g -O1 -fomit-frame-pointer -fno-optimize-sibling-calls -no-pie -o bin/advice-control scripts/advicecontrol/main.c
           sha256sum bin/probe bin/advice-control > artifacts/binary-sha256.txt
       - name: Page discard and reuse control before bounded Go load and retention
+        timeout-minutes: 21
         run: timeout --signal=TERM 20m python3 scripts/soak_page_advice.py --binary bin/probe --control bin/advice-control --tracer "$RUNNER_TEMP/bpftrace-source/build/src/bpftrace" --artifacts artifacts/experiment
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        timeout-minutes: 5
         if: always()
         with:
           name: page-advice-ledger
