@@ -5,6 +5,7 @@ Advice bytes are virtual request lengths, never reclaimed RSS. Neighboring
 whole-VMA RSS samples are descriptive, not single-syscall causal estimates.
 """
 import argparse
+from bisect import bisect_right
 from collections import Counter
 import gzip
 import hashlib
@@ -65,7 +66,19 @@ def behavior(raw):
     return signed
 
 
-def describe(call,mapping_calls):
+class MappingHistory:
+    """Exact replay cache for immutable prepared calls; no timestamp bucketing."""
+    def __init__(self,calls):
+        self.calls=calls;self.ends=[c['end_ns'] for c in calls];self.cache={}
+    def at(self,ns):
+        # replay depends on completed calls only. In-flight mutations remain
+        # checked separately by every caller, as in the uncached implementation.
+        count=bisect_right(self.ends,ns)
+        if count not in self.cache:self.cache[count]=ledger.replay(self.calls,ns)
+        return self.cache[count]
+
+
+def describe(call,mapping_calls,history=None):
     addr,length,raw=call['args'];kind=behavior(raw)
     value=call['value']
     if value==0:status='succeeded';errno=None
@@ -74,8 +87,9 @@ def describe(call,mapping_calls):
     if addr+length>1<<64:raise ValueError('madvise range overflow')
     if status=='succeeded' and addr%ledger.PAGE:raise ValueError('successful unaligned madvise')
     lo=addr//ledger.PAGE*ledger.PAGE;hi=ledger.rounded(addr+length) if length else lo
-    before=ledger.cover(lo,hi,ledger.replay(mapping_calls,call['start_ns'])) if length else ('empty',[])
-    after=ledger.cover(lo,hi,ledger.replay(mapping_calls,call['end_ns'])) if length else ('empty',[])
+    state=history.at if history is not None else lambda ns:ledger.replay(mapping_calls,ns)
+    before=ledger.cover(lo,hi,state(call['start_ns'])) if length else ('empty',[])
+    after=ledger.cover(lo,hi,state(call['end_ns'])) if length else ('empty',[])
     changed=any(c['start_ns']<=call['end_ns'] and c['end_ns']>=call['start_ns'] and
                 any(a<hi and lo<b for a,b in ledger.affected(c)) for c in mapping_calls)
     stable=before==after and not changed
@@ -122,6 +136,7 @@ def snapshot_rows(folder,parsed,race):
     family='observed_race_runtime' if race else 'observed_control_context'
     mapping_calls=ledger.prepare([dict(c,owner=family if c['contexts'] else 'unresolved')
                                  for c in parsed['calls'] if c['call']!='madvise'])
+    history=MappingHistory(mapping_calls)
     captures=[json.loads((folder/'snapshots.json').read_text())]
     if (folder/'retention-snapshots.json').exists():
         captures.append(json.loads((folder/'retention-snapshots.json').read_text()))
@@ -133,11 +148,12 @@ def snapshot_rows(folder,parsed,race):
                 raise ValueError('advice snapshot hash mismatch')
             raw=gzip.open(path,'rt').read();start,end=rec['read_start_monotonic_ns'],rec['read_end_monotonic_ns']
             attributed=ledger.attribute(raw,race,mapping_calls,start,end)
+            before,after=history.at(start),history.at(end)
             proof={(v['start'],v['end']):v for v in attributed['unnamed_vmas']}
             vmas=[]
             for vma in mappings.parse_smaps(raw,race)['mappings']:
-                lo,hi=vma['start'],vma['end'];a=ledger.cover(lo,hi,ledger.replay(mapping_calls,start))
-                b=ledger.cover(lo,hi,ledger.replay(mapping_calls,end))
+                lo,hi=vma['start'],vma['end'];a=ledger.cover(lo,hi,before)
+                b=ledger.cover(lo,hi,after)
                 inflight=any(c['start_ns']<=end and c['end_ns']>=start and
                     any(x<hi and lo<y for x,y in ledger.affected(c)) for c in mapping_calls)
                 item=dict(start=lo,end=hi,rss=vma['bytes']['Rss'],path=vma['path'],
@@ -156,7 +172,9 @@ def audit_advice(folder,parsed,race):
     mapping_calls=ledger.prepare([dict(c,owner=family if c['contexts'] else 'unresolved')
                                  for c in parsed['calls'] if c['call']!='madvise'])
     snapshots=snapshot_rows(folder,parsed,race)
-    advice=[describe(c,mapping_calls) for c in parsed['calls'] if c['call']=='madvise']
+    history=MappingHistory(mapping_calls)
+    advice=[describe(c,mapping_calls,history) for c in parsed['calls'] if c['call']=='madvise']
+    windows={}
     for event in advice:
         before=[i for i,s in enumerate(snapshots) if s['read_end_ns']<=event['start_ns']]
         after=[i for i,s in enumerate(snapshots) if s['read_start_ns']>=event['end_ns']]
@@ -167,6 +185,9 @@ def audit_advice(folder,parsed,race):
         event['neighbor_whole_vma_deltas']=[]
         if bi is None or ai is None:continue
         old,new=snapshots[bi],snapshots[ai];lo,hi=event['page_range']
+        pair=(bi,ai)
+        if pair not in windows:
+            windows[pair]=[c for c in advice if old['read_end_ns']<=c['end_ns']<=new['read_start_ns']]
         signature=lambda v:(v['start'],v['end'],v['path'],v['request_origin'],tuple(v['generations']))
         previous={signature(v):v for v in old['vmas'] if v['generations']}
         for v in new['vmas']:
@@ -179,8 +200,7 @@ def audit_advice(folder,parsed,race):
                 category=v['category'],path=v['path'],generations=v['generations'],
                 before_rss=previous[key]['rss'],after_rss=v['rss'],
                 rss_delta=v['rss']-previous[key]['rss'],
-                other_overlapping_advice=[c['id'] for c in advice if c['id']!=event['id'] and
-                    old['read_end_ns']<=c['end_ns']<=new['read_start_ns'] and
+                other_overlapping_advice=[c['id'] for c in windows[pair] if c['id']!=event['id'] and
                     c['page_range'][0]<v['end'] and v['start']<c['page_range'][1]]))
     counts=Counter((e['advice'],e['status'],e['request_origin'],e['address_band']) for e in advice)
     return dict(events=advice,snapshots=snapshots,
