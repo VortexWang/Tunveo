@@ -161,10 +161,10 @@ def owned_groups(group,target,parent,parent_exe,tracer):
     return sorted(groups)
 
 
-def launch(binary,folder,symbols,args,seconds,tracer=Path('/usr/bin/bpftrace')):
+def launch(binary,folder,symbols,args,seconds,tracer=Path('/usr/bin/bpftrace'),*,program_builder=None,auditor=None,poll_hook=None):
     folder.mkdir(parents=True,exist_ok=False);binary=binary.resolve(strict=True)
     tracer=tracer.resolve(strict=True)
-    p=plan(binary,symbols);dump(folder/'plan.json',p);(folder/'program.bt').write_text(program(p))
+    p=plan(binary,symbols);dump(folder/'plan.json',p);(folder/'program.bt').write_text((program_builder or program)(p))
     command='exec '+shlex.join(['setpriv','--reuid='+str(os.getuid()),'--regid='+str(os.getgid()),'--clear-groups','env','-i','PATH=/usr/bin:/bin',str(binary),*args])+' >'+shlex.quote(str((folder/'native-stdout.log').resolve()))+' 2>'+shlex.quote(str((folder/'native-stderr.log').resolve()))
     launcher=folder/'target.sh'
     launcher.write_text('#!/bin/sh\nset -eu\ncat /proc/$$/stat >'+shlex.quote(str((folder/'target-before.stat').resolve()))+'\ncat /proc/$PPID/stat >'+shlex.quote(str((folder/'tracer-before.stat').resolve()))+'\nreadlink /proc/$PPID/exe >'+shlex.quote(str((folder/'tracer-exe.txt').resolve()))+'\n'+command+'\n')
@@ -173,7 +173,16 @@ def launch(binary,folder,symbols,args,seconds,tracer=Path('/usr/bin/bpftrace')):
     with (folder/'events.log').open('w') as out,(folder/'bpftrace-stderr.log').open('w') as err:
         proc=subprocess.Popen(cmd,stdout=out,stderr=err,start_new_session=True)
         execution['process_group']=proc.pid
-        try:execution['exit_code']=proc.wait(timeout=seconds)
+        try:
+            if poll_hook is None:execution['exit_code']=proc.wait(timeout=seconds)
+            else:
+                deadline=time.monotonic()+seconds
+                while proc.poll() is None:
+                    poll_hook()
+                    if time.monotonic()>=deadline:raise subprocess.TimeoutExpired(cmd,seconds)
+                    try:proc.wait(timeout=.02)
+                    except subprocess.TimeoutExpired:pass
+                execution['exit_code']=proc.returncode
         except subprocess.TimeoutExpired:execution['timed_out']=True
         finally:
             groups=[proc.pid]
@@ -204,7 +213,7 @@ def launch(binary,folder,symbols,args,seconds,tracer=Path('/usr/bin/bpftrace')):
         raise ValueError('tracer/target did not complete cleanly; later stages blocked')
     stderr=(folder/'bpftrace-stderr.log').read_text()
     if re.search(r'(?i)lost|dropped|error|failed',stderr):raise ValueError('tracer reports loss or failure')
-    result=audit_events((folder/'events.log').read_text(),p,os.getuid());dump(folder/'context-audit.json',result)
+    result=(auditor or audit_events)((folder/'events.log').read_text(),p,os.getuid());dump(folder/'context-audit.json',result)
     return result
 
 

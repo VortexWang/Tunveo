@@ -359,3 +359,7 @@ PR26初版参数重定向覆盖导致启动退出2，修正版360秒超时；C�
 ## 36. 精确入口/RET/白名单尾出口上下文资格（2026-10-27）
 
 PR27保留启动器、工具无偏移能力及缺尾出口三轮failed；固定官方bpftrace0.21.2源码编入BFD/opcodes并关闭unsafe，实际记录TraceSwitchPartImpl→SlotUnlock尾部出口。规范47c822aa与CI e5d81c6c完整树相同，专项成功、64Python通过。190534事件闭合，Go15s150业务/269审计事件和原资源/计时守卫通过；控制及目标/观察者实际进程组均证明清理。272次成功mmap关联trace切换词法区间，累计34MiB虚拟申请，不当RSS或此前约80MiB驻留归属。下一步完整映射台账与同进程smaps绑定；预算及24h pending不变，见 [资格记录](soak-ret-context.md)。
+
+## 37. 完整捕获台账与同进程整VMA驻留（2026-10-27）
+
+PR28绑定同序号mmap/munmap/mremap/brk与exec、CPP入口/RET/尾出口及CLOCK_MONOTONIC外部smaps。真实控制验证4M→解除中间2M→异来源复用混合4M→移到8M→解除，读取前后代次稳定且整VMA覆盖才关联，不分摊RSS。初版晚填耗时误判保留failed，冻结原审计器可重现；修正版e1ca81e（CI树与5ea1d8e相同）专项及共享追踪器回归成功、77Python通过。两个Go15s共300业务/538事件。当前峰值未命名匿名RSS54.6836MiB中，35.9062MiB可整VMA关联到已观测race运行库家族，18.7773MiB仍未知；细分单Trace路径只有0.1328MiB，混合不强分。预算增量46.5117MiB与首末趋势42.3047MiB分开，更正PR27旧文字口径但数据/判定不变。尚未重现180秒历史超限，24h门槛继续pending，原64MiB预算不变；见 [台账与驻留证据](soak-mapping-ledger.md)。

@@ -1,0 +1,11 @@
+{
+  "exit_code": 0,
+  "elapsed_seconds": 2.024470457999996,
+  "final_marker": {
+    "phase": "released",
+    "base": 140210949062656,
+    "current": 140210939625472,
+    "monotonic_ns": 1690489902951
+  },
+  "scope": "local C lifecycle execution only; no cross-process proc read or BPF claim"
+}

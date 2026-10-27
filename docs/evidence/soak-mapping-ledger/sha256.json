@@ -1,0 +1,16 @@
+{
+  "audit-ci-driver.py": "fe75a1bcac1eb76ca69c5af34a3d9d95ff87850a81f8c88a32d40ab1828a847e",
+  "ci-metadata.json": "584b8c5f7eb0738e154a85a200afcb3976c047d79f26da980f3a401734843003",
+  "current-ci-status.json": "fb654cedfbccdf723c2f66b1af10fa1a6571bdd66e25c9ea6d94c48f82c22c96",
+  "git-tree-audit.json": "997fa733f58562e062ffb950aa17292c80875ee10aea8a92db21a19cee394826",
+  "independent-audit.json": "c11c6672b31414568a3cb90147d24f62282621de2c816293b62765bf011f3a78",
+  "independent-audit.log": "a6c0357ebb6850fb6ca1f715f0e7d713c31ea462c377d9acba8b2d6fd2968b8f",
+  "local-control-execution.json": "02e86367b6e75f56906e9babf24feeac68345ce25adf2996f96e5cf13debe7a7",
+  "mapping-ledger-fixed.zip": "2b59ae2abe0a31726a9d140174a8266c531bb42ab820225616560a7da729f2ff",
+  "mapping-ledger-initial.zip": "7462b15d93d6044b57bb84d3d260a2c9620feb0ac895dfda5583a778145ef8f2",
+  "mapping-rss.png": "ad668c7748cf1040613df81c8e04e18356717b3286c5cc5c698524013f081337",
+  "plot-driver.py": "ecb929dd4094d89e511cad7c867b2c2ff62e02ab6320978202ac22c204666fb1",
+  "pr27-rss-envelope-correction.json": "59a656add7a367624af9e6c61bea6ab9b4311d9108be1fc048b138ed4c8aead5",
+  "python-tests-finalization.log": "310ac303d1d19e7da7c7fa147a315373b236e2fc4255bd3790c226c87aa5adbd",
+  "python-tests.log": "fba5d30b697bc0594c32a35fb5801e64a51dbe027927c99b64864f055e38149e"
+}
