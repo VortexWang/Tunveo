@@ -17,3 +17,18 @@ class ResourceDiagnostics(unittest.TestCase):
         self.assertFalse(d['qualifies_24h']);self.assertFalse(d['trend']['rss']['enforced_in_pilot']);self.assertEqual(old,r)
     def test_insufficient_warmup_rejected(self):
         with self.assertRaises(ValueError):pair.resources({'settings':{'warmup_seconds':12},'points':[]})
+
+class PreflightEvidence(unittest.TestCase):
+    def run_preflight(self, descriptions):
+        import tempfile
+        from unittest.mock import patch
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp)/'out'
+            args=['soak_build_pair.py','--ordinary',str(Path(tmp)/'ordinary'),'--race',str(Path(tmp)/'race'),'--artifacts',str(root)]
+            with patch.object(sys,'argv',args),patch.object(pair.subprocess,'check_output',side_effect=[json.dumps({'build_info':x}).encode() for x in descriptions]),patch.object(pair.subprocess,'call') as launch:
+                self.assertEqual(pair.main(),1);launch.assert_not_called()
+            result=json.loads((root/'pair.json').read_text());self.assertEqual(result['runs'],[]);self.assertFalse(result['qualifies_24h']);self.assertIn('preflight_error',result)
+    def test_dirty_source_keeps_failure_without_load(self):
+        self.run_preflight(['build\tvcs.modified=true\nbuild\tvcs.revision='+'a'*40])
+    def test_mismatched_revisions_keep_failure_without_load(self):
+        self.run_preflight(['build\tvcs.modified=false\nbuild\tvcs.revision='+'a'*40,'build\tvcs.modified=false\nbuild\t-race=true\nbuild\tvcs.revision='+'b'*40])
