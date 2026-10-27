@@ -83,6 +83,14 @@ class PageAdviceTests(unittest.TestCase):
   calls=a.ledger.prepare([self.call(),self.call('munmap',14,18,[0x1000,4096],0,'unresolved','unmap')])
   e=a.describe(self.advice(),calls);self.assertTrue(e['mapping_changed_during_call'])
   self.assertEqual(e['request_origin'],'unresolved')
+ def test_completed_call_cache_matches_exact_replay_across_reuse_and_inflight_times(self):
+  calls=a.ledger.prepare([self.call(),self.call('munmap',4,7,[0x1000,8192],0,'unresolved','unmap'),
+      self.call(start=8,end=9,id='map2')])
+  history=a.MappingHistory(calls)
+  for ns in [0,1,2,3,4,6,7,8,9,10,6,3,0]:
+   self.assertEqual(history.at(ns),a.ledger.replay(calls,ns))
+  for advice in [self.advice(start=5,end=6),self.advice(start=9,end=10)]:
+   self.assertEqual(a.describe(advice,calls,history),a.describe(advice,calls))
  def snapshots(self):
   v=dict(start=0x1000,end=0x3000,path='',request_origin='observed_race_runtime',
       generations=['map1'],category='other_anonymous',rss=8192)
