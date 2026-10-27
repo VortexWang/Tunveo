@@ -1,0 +1,25 @@
+{
+  "run_id": 40509713589,
+  "source_commit": "f3ad87b70bd36576681f2b00c3dd0c034d722d51",
+  "artifact_id": 12736113645,
+  "sha256": "2e3e4a7c12049aa27239a808f5d62163bfb03edf54f774afe9b576ffa4874c9f",
+  "status": "failure",
+  "phase": "preflight",
+  "load_runs_started": 0,
+  "rss_result": null,
+  "cause": "Untracked pair-meta created before build caused vcs.modified=true; strict guard rejected source.",
+  "metadata": {
+    "pair-meta/ordinary.json": {
+      "build_info": "go\tgo1.26.10\npath\tgithub.com/VortexWang/Tunveo/scripts/soak24h\nmod\tgithub.com/VortexWang/Tunveo\tv0.0.0-20261027131020-3da6392d8228+dirty\t\ndep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\ndep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\ndep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\ndep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\ndep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\ndep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\nbuild\t-buildmode=exe\nbuild\t-compiler=gc\nbuild\t-trimpath=true\nbuild\tCGO_ENABLED=1\nbuild\tGOARCH=amd64\nbuild\tGOOS=linux\nbuild\tGOAMD64=v1\nbuild\tvcs=git\nbuild\tvcs.revision=3da6392d822858b1b548e4ffad9367e33e3b4382\nbuild\tvcs.time=2026-10-27T13:10:20Z\nbuild\tvcs.modified=true\n",
+      "go_version": "go1.26.10",
+      "goarch": "amd64",
+      "goos": "linux"
+    },
+    "pair-meta/race.json": {
+      "build_info": "go\tgo1.26.10\npath\tgithub.com/VortexWang/Tunveo/scripts/soak24h\nmod\tgithub.com/VortexWang/Tunveo\tv0.0.0-20261027131020-3da6392d8228+dirty\t\ndep\tgithub.com/coder/websocket\tv1.8.15\th1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNUA=\ndep\tgithub.com/quic-go/quic-go\tv0.60.0\th1:xcQioE8OM66UQLeUMHltK1CCcOu3JbVB4JAQdDQSB+0=\ndep\tgolang.org/x/crypto\tv0.57.0\th1:3ZVCjf8Ggz7zneR/EHRVx68Ctf+2pmIMP2UFhh9cC6M=\ndep\tgolang.org/x/net\tv0.60.0\th1:79p50tfZlm0J9YfoDsSi639qSXNGVwEzOPLCxM2FsYU=\ndep\tgolang.org/x/sys\tv0.48.0\th1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=\ndep\tgolang.org/x/text\tv0.42.0\th1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=\nbuild\t-buildmode=exe\nbuild\t-compiler=gc\nbuild\t-race=true\nbuild\t-trimpath=true\nbuild\tCGO_ENABLED=1\nbuild\tGOARCH=amd64\nbuild\tGOOS=linux\nbuild\tGOAMD64=v1\nbuild\tvcs=git\nbuild\tvcs.revision=3da6392d822858b1b548e4ffad9367e33e3b4382\nbuild\tvcs.time=2026-10-27T13:10:20Z\nbuild\tvcs.modified=true\n",
+      "go_version": "go1.26.10",
+      "goarch": "amd64",
+      "goos": "linux"
+    }
+  }
+}
