@@ -41,17 +41,35 @@ def ret_sites(raw,start,size):
     return sites
 
 
+def tail_sites(raw,start,size,allowed):
+    exits=[]
+    for line in raw.splitlines():
+        parts=line.split('\t')
+        if len(parts)<3 or not re.fullmatch(r'\s*[0-9a-f]+:\s*',parts[0]):continue
+        address=int(parts[0].strip()[:-1],16)
+        if not start<=address<start+size:continue
+        asm=parts[2].strip();match=re.match(r'(j[a-z]+)\s+([0-9a-f]+)\b',asm)
+        if asm.startswith('jmp') and not match:raise ValueError('unsupported indirect tail exit')
+        if match and not start<=int(match[2],16)<start+size:
+            target=int(match[2],16)
+            if match[1]!='jmp' or target not in allowed:raise ValueError('unplanned function-range exit')
+            exits.append(dict(offset=address-start,target=target,symbol=allowed[target]))
+    return exits
+
+
 def plan(binary,symbols):
     header=subprocess.check_output(['readelf','-h',str(binary)],text=True)
     if not re.search(r'Type:\s+EXEC\b',header):raise ValueError('ET_EXEC required')
     nm=subprocess.check_output(['nm','-S','--defined-only',str(binary)],text=True)
     functions={}
+    slot='_ZN6__tsan10SlotUnlockEPNS_11ThreadStateE'
+    slot_lines=[x.split() for x in nm.splitlines() if x.split()[-1:]==[slot]]
     for kind,symbol in symbols.items():
         lines=[x.split() for x in nm.splitlines() if x.split()[-1:]==[symbol]]
         if len(lines)!=1 or len(lines[0])!=4:raise ValueError('unique sized symbol required')
         start,size=int(lines[0][0],16),int(lines[0][1],16)
         raw=subprocess.check_output(['objdump','-dz','--insn-width=16','--disassemble='+symbol,str(binary)],text=True)
-        functions[str(kind)]={'symbol':symbol,'address':start,'size':size,'ret_offsets':ret_sites(raw,start,size),'disassembly':raw}
+        functions[str(kind)]={'symbol':symbol,'address':start,'size':size,'ret_offsets':ret_sites(raw,start,size),'tail_exits':tail_sites(raw,start,size,{int(slot_lines[0][0],16):slot} if kind==1 and len(slot_lines)==1 else {}),'disassembly':raw}
     return {'binary':str(binary),'binary_sha256':hashlib.sha256(binary.read_bytes()).hexdigest(),'functions':functions}
 
 
@@ -60,7 +78,7 @@ def program(p):
     if not re.fullmatch(r'/[A-Za-z0-9_./-]+',p['binary']):raise ValueError('unsupported tracer path literal')
     lines=['BEGIN { printf("{\\"event\\":\\"begin\\",\\"pid\\":%d}\\n", cpid); }']
     for kind,f in p['functions'].items():
-        for event,offset in [('entry',0)]+[('ret',x) for x in f['ret_offsets']]:
+        for event,offset in [('entry',0)]+[('ret',x) for x in f['ret_offsets']]+[('tail_exit',x['offset']) for x in f.get('tail_exits',[])]:
             site=f['address']+offset
             size='arg1' if event=='entry' and kind=='3' else '0'
             value='reg("ax")' if event=='ret' else '0'
@@ -83,18 +101,18 @@ def audit_events(raw,p,expected_uid):
         r=json.loads(line)
         if r['event']=='begin':begin.append(r);continue
         if r['event']=='end':end.append(r);continue
-        if r['event'] not in ('entry','ret'):raise ValueError('unknown event')
+        if r['event'] not in ('entry','ret','tail_exit'):raise ValueError('unknown event')
         records.append(r)
     if len(begin)!=1 or len(end)!=1 or begin[0]['pid']<=0 or begin[0]!=dict(event='begin',pid=end[0]['pid']):raise ValueError('incomplete begin/end')
     pid=begin[0]['pid'];threads={}
     for r in records:
         f=p['functions'][str(r['kind'])]
         if r['pid']!=pid or r['uid']!=expected_uid:raise ValueError('target PID/UID mismatch')
-        allowed=[f['address']] if r['event']=='entry' else [f['address']+n for n in f['ret_offsets']]
+        allowed=[f['address']] if r['event']=='entry' else [f['address']+n for n in f['ret_offsets']] if r['event']=='ret' else [f['address']+n['offset'] for n in f.get('tail_exits',[])]
         if r['site'] not in allowed:raise ValueError('event at unplanned instruction')
         threads.setdefault(r['tid'],[]).append(r)
     if set(threads)!=set(ledger) or not threads:raise ValueError('missing entire thread or empty capture')
-    maps=[];counts={}
+    maps=[];counts={};tail_counts={}
     for tid,rows in threads.items():
         rows.sort(key=lambda r:r['seq']);stack=[];previous=-1
         if [r['seq'] for r in rows]!=list(range(1,ledger[tid]+1)):raise ValueError('missing/duplicate per-thread events')
@@ -109,11 +127,12 @@ def audit_events(raw,p,expected_uid):
                 entry=stack.pop()
                 if (entry['kind'],entry['sp'])!=(r['kind'],r['sp']):raise ValueError('RET kind/SP does not match innermost entry')
                 counts[str(r['kind'])]=counts.get(str(r['kind']),0)+1
+                if r['event']=='tail_exit':tail_counts[str(r['kind'])]=tail_counts.get(str(r['kind']),0)+1
                 if r['kind']==3:
                     contexts=[e['kind'] for e in stack]
                     maps.append({'tid':tid,'entry_seq':entry['seq'],'return_seq':r['seq'],'size':entry['size'],'value':r['value'],'successful':r['value']<(1<<64)-4095,'observed_contexts':contexts})
         if stack:raise ValueError('unclosed contexts at process end')
-    return {'native_pid':pid,'events':len(records),'thread_ledger':ledger,'matched_pairs_by_kind':counts,'mmap_calls':maps,'scope':'completed exact entry/RET observations in one C ABI thread stack; cumulative virtual requests only; no full mmap/unmap ledger or RSS ownership'}
+    return {'native_pid':pid,'events':len(records),'thread_ledger':ledger,'matched_pairs_by_kind':counts,'matched_tail_exits_by_kind':tail_counts,'mmap_calls':maps,'scope':'completed exact entry/RET or whitelisted direct lexical tail-exit observations in one C ABI thread stack; cumulative virtual requests only; no full mmap/unmap ledger or RSS ownership'}
 
 
 def group_alive(pgid):

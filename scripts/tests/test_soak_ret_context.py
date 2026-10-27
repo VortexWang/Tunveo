@@ -46,6 +46,18 @@ class RetContextTests(unittest.TestCase):
   for mutate in (lambda t:t.update(ppid=99),lambda t:t.update(pgid=90),lambda t:t.update(session=90)):
    t=dict(target);mutate(t)
    with self.assertRaises(ValueError):c.owned_groups(10,t,parent,'/tracer',Path('/tracer'))
+ def test_tail_exit_closes_only_the_observed_lexical_context(self):
+  p=self.plan();p['functions']['1']['tail_exits']=[dict(offset=30,target=300,symbol='unlock')]
+  rows=self.rows();rows[-1].update(event='tail_exit',site=130)
+  a=c.audit_events(self.raw(rows),p,1001)
+  self.assertEqual(a['matched_tail_exits_by_kind'],{'1':1});self.assertEqual(a['mmap_calls'][0]['observed_contexts'],[1])
+  rows[-1]['sp']=999
+  with self.assertRaises(ValueError):c.audit_events(self.raw(rows),p,1001)
+ def test_only_whitelisted_direct_tail_targets_are_supported(self):
+  raw='  100:\te9 00 00 00 00 \tjmp 300 <unlock>\n'
+  self.assertEqual(c.tail_sites(raw,0x100,5,{0x300:'unlock'}),[dict(offset=0,target=0x300,symbol='unlock')])
+  for bad,allowed in ((raw,{}),(raw.replace('jmp','jne'),{0x300:'unlock'}),(raw.replace('300 <unlock>','*%rax'),{})):
+   with self.assertRaises(ValueError):c.tail_sites(bad,0x100,5,allowed)
  def test_proc_stat_command_parentheses_do_not_shift_identity_fields(self):
   fields=['S','11','10','10']+['0']*15+['1234']
   identity=c.proc_identity('12 (target (with spaces)) '+' '.join(fields))
