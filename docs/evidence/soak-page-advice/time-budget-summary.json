@@ -1,0 +1,324 @@
+{
+  "source_commit": "f75a4fe9c1ae32edd912dfb133e2a20d59b6d7f5",
+  "checkout_commit": "4c2c26320dc9e20dd394679431dfaf9f11460952",
+  "source_tree": "fe247fb62a6f9625d55bb686ffd955fd74e49cb8",
+  "audit_status": "independently_replayed",
+  "original_status": "failed",
+  "original_error": "ValueError: active resource bound: rss",
+  "qualifies_24h": false,
+  "budget": {
+    "baseline_at_seconds": 10.006786477,
+    "peak_at_seconds": 137.012429178,
+    "baseline_rss": 109846528,
+    "peak_rss": 184299520,
+    "delta_bytes": 74452992,
+    "allowance_bytes": 67108864
+  },
+  "capture": {
+    "events": 1292364,
+    "memory_syscalls": {
+      "brk": 3,
+      "mmap": 1121,
+      "munmap": 47,
+      "madvise": 3668
+    },
+    "load_snapshots": 42,
+    "poststop_snapshots": 26
+  },
+  "counts": {
+    "tcp": 1350,
+    "udp": 450,
+    "failed": 0,
+    "dropped": 0
+  },
+  "events": 1919,
+  "measured_seconds": 180.001144336,
+  "pinned_source_blobs": {
+    "soak_page_advice.py": "702bbca37f58cab64a9b5a0170f1866320c82130",
+    "soak_mapping_ledger.py": "610a54d636767bf92752bd165b60faafd961c7be",
+    "soak_mapping_retention.py": "1796b76f75a35c0b6245350244e260efae53345b",
+    "soak_ret_context.py": "eac5605150e51b9aec336277088e3981616ac28e",
+    "soak_mappings.py": "708301538c24476e4d244efb16cc5027c193efd5",
+    "verify_soak.py": "e0c0321054c8be6510f190b33d07966aad8635aa",
+    "audit_soak_os_memory.py": "0c5fbff721f98f94fb75f431da968679908d1171",
+    "audit_soak_retention.py": "3b06a71491258e62326f4d3d7f4dc4bdae10ca0b"
+  },
+  "clock_origin_interval_ns": [
+    406043281100,
+    406124589066
+  ],
+  "artifact": {
+    "id": 12736016050,
+    "run_id": 40506418306,
+    "sha256": "9ae8654ebe7e55719752ec546ea63758879eb7e6d544080eef24cace059ea89c",
+    "size_bytes": 18118904
+  },
+  "control": [
+    {
+      "key": "held",
+      "point": {
+        "phase": "held",
+        "base": 139695326494720,
+        "current": 139695326494720,
+        "monotonic_ns": 203394960306
+      },
+      "groups": {
+        "file_mapping": 1658880,
+        "kernel_named": 36864,
+        "unresolved": 32768,
+        "trace_switch": 4194304
+      }
+    },
+    {
+      "key": "discarded",
+      "point": {
+        "phase": "discarded",
+        "base": 139695326494720,
+        "current": 139695326494720,
+        "monotonic_ns": 203795656365
+      },
+      "groups": {
+        "file_mapping": 1658880,
+        "kernel_named": 36864,
+        "unresolved": 32768,
+        "trace_switch": 0
+      }
+    },
+    {
+      "key": "failed",
+      "point": {
+        "phase": "failed",
+        "base": 139695326494720,
+        "current": 139695326494720,
+        "monotonic_ns": 204195941434
+      },
+      "groups": {
+        "file_mapping": 1658880,
+        "kernel_named": 36864,
+        "unresolved": 32768,
+        "trace_switch": 0
+      }
+    },
+    {
+      "key": "retouched",
+      "point": {
+        "phase": "retouched",
+        "base": 139695326494720,
+        "current": 139695326494720,
+        "monotonic_ns": 204598386196
+      },
+      "groups": {
+        "file_mapping": 1658880,
+        "kernel_named": 36864,
+        "unresolved": 32768,
+        "trace_switch": 4194304
+      }
+    },
+    {
+      "key": "reused",
+      "point": {
+        "phase": "reused",
+        "base": 139695326494720,
+        "current": 139695326494720,
+        "monotonic_ns": 205000861327
+      },
+      "groups": {
+        "file_mapping": 1658880,
+        "kernel_named": 36864,
+        "unresolved": 32768,
+        "internal_allocator": 4194304
+      }
+    },
+    {
+      "key": "reused_discarded",
+      "point": {
+        "phase": "reused_discarded",
+        "base": 139695326494720,
+        "current": 139695326494720,
+        "monotonic_ns": 205401674895
+      },
+      "groups": {
+        "file_mapping": 1658880,
+        "kernel_named": 36864,
+        "unresolved": 32768,
+        "internal_allocator": 0
+      }
+    },
+    {
+      "key": "released",
+      "point": {
+        "phase": "released",
+        "base": 139695326494720,
+        "current": 139695326494720,
+        "monotonic_ns": 205802109494
+      },
+      "groups": {
+        "file_mapping": 1658880,
+        "kernel_named": 36864,
+        "unresolved": 32768
+      }
+    }
+  ],
+  "retention_selected": {
+    "first_gc": {
+      "key": [
+        "poststop_gc",
+        0.004640718
+      ],
+      "rss_bytes": 160407552,
+      "groups": {
+        "file_mapping": 14565376,
+        "unresolved": 22831104,
+        "kernel_named": 32768,
+        "[anon: Go: heap]": 6500352,
+        "[anon: Go: heap reservation]": 0,
+        "race_shadow": 51757056,
+        "race_metadata": 3383296,
+        "observed_race_runtime": 49852416,
+        "[anon: Go: immortal metadata]": 1974272,
+        "[anon: Go: profiler hash buckets]": 471040,
+        "[anon: Go: heap index]": 4096,
+        "[anon: Go: scavenge index]": 4096,
+        "[anon: Go: page summary]": 0,
+        "[anon: Go: page alloc]": 20480,
+        "[anon: Go: gc bits]": 196608,
+        "[anon: Go: page alloc index]": 4096,
+        "[anon: Go: GC span queue]": 32768,
+        "[anon: Go: allspans array]": 12288,
+        "[anon: Go: getrandom states]": 4096
+      }
+    },
+    "last_gc": {
+      "key": [
+        "poststop_gc",
+        120.008514413
+      ],
+      "rss_bytes": 153292800,
+      "groups": {
+        "file_mapping": 14565376,
+        "unresolved": 23199744,
+        "kernel_named": 32768,
+        "[anon: Go: heap]": 6131712,
+        "[anon: Go: heap reservation]": 0,
+        "race_shadow": 53338112,
+        "race_metadata": 3383296,
+        "observed_race_runtime": 50171904,
+        "[anon: Go: immortal metadata]": 1998848,
+        "[anon: Go: profiler hash buckets]": 528384,
+        "[anon: Go: heap index]": 4096,
+        "[anon: Go: scavenge index]": 4096,
+        "[anon: Go: page summary]": 0,
+        "[anon: Go: page alloc]": 20480,
+        "[anon: Go: gc bits]": 196608,
+        "[anon: Go: page alloc index]": 4096,
+        "[anon: Go: GC span queue]": 32768,
+        "[anon: Go: allspans array]": 12288,
+        "[anon: Go: getrandom states]": 4096
+      }
+    },
+    "go_scavenge": {
+      "key": [
+        "poststop_go_scavenge",
+        120.050719777
+      ],
+      "rss_bytes": 152678400,
+      "groups": {
+        "file_mapping": 14565376,
+        "unresolved": 23199744,
+        "kernel_named": 32768,
+        "[anon: Go: heap]": 5844992,
+        "[anon: Go: heap reservation]": 0,
+        "race_shadow": 53358592,
+        "race_metadata": 3383296,
+        "observed_race_runtime": 50171904,
+        "[anon: Go: immortal metadata]": 2002944,
+        "[anon: Go: profiler hash buckets]": 532480,
+        "[anon: Go: heap index]": 4096,
+        "[anon: Go: scavenge index]": 4096,
+        "[anon: Go: page summary]": 0,
+        "[anon: Go: page alloc]": 20480,
+        "[anon: Go: gc bits]": 196608,
+        "[anon: Go: page alloc index]": 4096,
+        "[anon: Go: GC span queue]": 32768,
+        "[anon: Go: allspans array]": 12288,
+        "[anon: Go: getrandom states]": 4096
+      }
+    },
+    "load_peak": {
+      "key": [
+        "measured",
+        137.012429178
+      ],
+      "rss_bytes": 184299520,
+      "groups": {
+        "file_mapping": 14565376,
+        "unresolved": 22568960,
+        "kernel_named": 32768,
+        "[anon: Go: heap]": 44109824,
+        "[anon: Go: heap reservation]": 0,
+        "race_shadow": 52551680,
+        "race_metadata": 2809856,
+        "observed_race_runtime": 45019136,
+        "[anon: Go: immortal metadata]": 1957888,
+        "[anon: Go: profiler hash buckets]": 413696,
+        "[anon: Go: heap index]": 4096,
+        "[anon: Go: scavenge index]": 4096,
+        "[anon: Go: page summary]": 0,
+        "[anon: Go: page alloc]": 20480,
+        "[anon: Go: gc bits]": 196608,
+        "[anon: Go: page alloc index]": 4096,
+        "[anon: Go: GC span queue]": 24576,
+        "[anon: Go: allspans array]": 12288,
+        "[anon: Go: getrandom states]": 4096
+      }
+    }
+  },
+  "advice": {
+    "counts": [
+      {
+        "advice": "DONTNEED",
+        "status": "succeeded",
+        "request_origin": "unresolved",
+        "address_band": "other_address",
+        "count": 2982
+      },
+      {
+        "advice": "NOHUGEPAGE",
+        "status": "succeeded",
+        "request_origin": "observed_race_runtime",
+        "address_band": "race_metadata",
+        "count": 2
+      },
+      {
+        "advice": "NOHUGEPAGE",
+        "status": "succeeded",
+        "request_origin": "observed_race_runtime",
+        "address_band": "race_shadow",
+        "count": 682
+      },
+      {
+        "advice": "NOHUGEPAGE",
+        "status": "succeeded",
+        "request_origin": "unresolved",
+        "address_band": "other_address",
+        "count": 2
+      }
+    ],
+    "events": 3668,
+    "stable_runtime_virtual_intersections": [
+      {
+        "advice": "NOHUGEPAGE",
+        "address_band": "race_metadata",
+        "count": 2
+      },
+      {
+        "advice": "NOHUGEPAGE",
+        "address_band": "race_shadow",
+        "count": 682
+      }
+    ],
+    "dontneed_guarded_go_heap_intersection_count": 2982,
+    "scope": "Stable virtual intersections include shadow/metadata; not unnamed anonymous RSS or reclaimed bytes. Whole-VMA neighbor deltas are not single-call causal effects."
+  },
+  "scope": "Full raw trace, snapshots, freeze/ACK, native identity/cleanup, source and build guards independently replayed and compared with CI output. Other workflow statuses are not independent diagnoses. Historical RSS failures retained; no 24h qualification."
+}
