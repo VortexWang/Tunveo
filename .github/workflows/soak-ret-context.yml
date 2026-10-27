@@ -1,0 +1,48 @@
+name: Soak RET-site context qualification
+on:
+  pull_request:
+    paths:
+      - 'scripts/soak_ret_context.py'
+      - 'scripts/tests/test_soak_ret_context.py'
+      - 'scripts/gdbcontrol/main.c'
+      - '.github/workflows/soak-ret-context.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6.0.2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-go@v6.1.0
+        with:
+          go-version-file: go.mod
+      - name: Install tracer on isolated CI VM
+        run: |
+          if ! command -v bpftrace >/dev/null; then
+            sudo apt-get update
+            sudo apt-get install -y bpftrace
+          fi
+          mkdir -p artifacts
+          bpftrace --version > artifacts/bpftrace-version.txt
+          sudo bpftrace --info > artifacts/bpftrace-info.txt 2>&1
+          uname -a > artifacts/kernel.txt
+          cat /proc/sys/kernel/perf_event_paranoid > artifacts/perf-event-paranoid.txt
+          cat /proc/sys/kernel/unprivileged_bpf_disabled > artifacts/unprivileged-bpf-disabled.txt
+      - run: python3 -m unittest discover -s scripts/tests
+      - name: Build unchanged probe and known allocation control
+        run: |
+          go build -race -trimpath -o bin/probe ./scripts/soak24h
+          gcc -g -O1 -fomit-frame-pointer -fno-optimize-sibling-calls -no-pie -o bin/ret-control scripts/gdbcontrol/main.c
+          sha256sum bin/probe bin/ret-control > artifacts/binary-sha256.txt
+      - name: C context control before bounded15s Go qualification
+        run: python3 scripts/soak_ret_context.py --binary bin/probe --control bin/ret-control --artifacts artifacts/experiment
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: ret-site-context-qualification
+          path: artifacts
+          retention-days: 30
