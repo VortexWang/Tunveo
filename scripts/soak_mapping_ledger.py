@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Paired mmap/munmap/mremap/brk ledger and whole-VMA context attribution."""
-import argparse,gzip,hashlib,json,os,re,subprocess,time
+import argparse,gzip,hashlib,json,math,os,re,subprocess,time
 from pathlib import Path
 import soak_ret_context as context
 import soak_mappings as mappings
@@ -117,6 +117,7 @@ def affected(call):
         if success(call):out.append((call['value'],call['value']+rounded(a[1])))
         elif a[3]&0x10:out.append((a[0],a[0]+rounded(a[1])))
     elif kind=='munmap':out.append((a[0],a[0]+rounded(a[1])))
+    elif kind=='brk' and a[0]:out.append((0,max(a[0],call['value'])))
     elif kind=='mremap':
         out.append((a[0],a[0]+rounded(a[1])))
         if success(call):out.append((call['value'],call['value']+rounded(a[2])))
@@ -184,6 +185,23 @@ def attribute(raw,race,calls,start,end):
     return dict(groups_rss_bytes=groups,unnamed_vmas=proof)
 
 
+LATE_TIMINGS={'checkpoint_seconds','snapshot_seconds'}
+
+
+def point_core(point):return {k:v for k,v in point.items() if k not in LATE_TIMINGS}
+
+
+def point_sha(point):return hashlib.sha256(json.dumps(point,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+
+
+def validate_published_point(published,final):
+    if point_core(published)!=point_core(final):raise ValueError('native resource/count/time core changed')
+    for key in LATE_TIMINGS:
+        a,b=published[key],final[key]
+        if not all(type(x) in (float,int) and math.isfinite(x) and x>=0 for x in (a,b)) or (a!=0 and a!=b):raise ValueError('invalid late timing finalization')
+    if final['snapshot_seconds']<final['measure_seconds']+final['checkpoint_seconds']:raise ValueError('incomplete final timing envelope')
+
+
 class Collector:
     def __init__(self,folder,binary,control=False):
         self.folder=folder;self.binary=binary.resolve();self.control=control;self.records=[];self.seen=set();self.pid=None;self.start=None;self.verified=False
@@ -211,15 +229,17 @@ class Collector:
         if same!=point or mappings.pid_identity(self.pid)!=self.start:raise ValueError('checkpoint/PID changed while reading smaps')
         relative=f'mappings/{len(self.records):03d}.smaps.gz';target=self.folder/relative;target.parent.mkdir(exist_ok=True)
         with gzip.open(target,'wt') as f:f.write(raw)
-        self.records.append(dict(key=key,point=point,file=relative,sha256=hashlib.sha256(target.read_bytes()).hexdigest(),read_start_monotonic_ns=start,read_end_monotonic_ns=end,checkpoint_age_seconds=(wall-mtime)/1e9,pid=self.pid,start_ticks=self.start))
-        context.dump(self.folder/'snapshots.json',dict(clock='CLOCK_MONOTONIC',binary_inode_verified=self.verified,records=self.records));self.seen.add(key)
+        self.records.append(dict(key=key,point=point,file=relative,sha256=hashlib.sha256(target.read_bytes()).hexdigest(),published_point_sha256=point_sha(point),point_core_sha256=point_sha(point_core(point)),read_start_monotonic_ns=start,read_end_monotonic_ns=end,checkpoint_age_seconds=(wall-mtime)/1e9,pid=self.pid,start_ticks=self.start))
+        context.dump(self.folder/'snapshots.json',dict(format_version=2,clock='CLOCK_MONOTONIC',binary_inode_verified=self.verified,records=self.records));self.seen.add(key)
 
 
 def audit_snapshots(folder,ledger,race,control=False):
     capture=json.loads((folder/'snapshots.json').read_text());calls=prepare(ledger['calls']);out=[]
+    if capture.get('format_version',1) not in (1,2):raise ValueError('unsupported snapshot format')
     execution=json.loads((folder/'execution.json').read_text())
     if capture['clock']!='CLOCK_MONOTONIC' or not capture['binary_inode_verified'] or not execution['target_identity_verified'] or not execution['group_gone']:raise ValueError('snapshot clock/executable/cleanup proof missing')
     for rec in capture['records']:
+        if capture.get('format_version',1)==2 and (rec['published_point_sha256']!=point_sha(rec['point']) or rec['point_core_sha256']!=point_sha(point_core(rec['point']))):raise ValueError('published point hash mismatch')
         path=folder/rec['file']
         if hashlib.sha256(path.read_bytes()).hexdigest()!=rec['sha256'] or rec['pid']!=ledger['native_pid'] or rec['pid']!=execution['target_identity']['pid'] or rec['start_ticks']!=str(execution['target_identity']['start_ticks']):raise ValueError('snapshot identity/hash mismatch')
         start,end=rec['read_start_monotonic_ns'],rec['read_end_monotonic_ns']
@@ -238,7 +258,7 @@ def audit_snapshots(folder,ledger,race,control=False):
     else:
         r=json.loads((folder/'native/report.json').read_text());wanted=[p for p in r['points'] if p['phase'] in ('warmup','measured')]
         if [x['key'] for x in out]!=[[p['phase'],p['at_seconds']] for p in wanted]:raise ValueError('missing native checkpoint mappings')
-        if any(row['point']!=point for row,point in zip(out,wanted)):raise ValueError('native point changed')
+        for row,point in zip(out,wanted):validate_published_point(row['point'],point)
     return out
 
 

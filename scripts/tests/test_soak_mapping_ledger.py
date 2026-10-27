@@ -34,6 +34,18 @@ class MappingLedgerTests(unittest.TestCase):
  def test_failed_fixed_mapping_invalidates_prior_claim_conservatively(self):
   calls=l.prepare([self.call(),self.call(start=3,end=4,args=[0x1000,8192,3,0x32,0,0],value=(1<<64)-12,id='2')])
   self.assertEqual(l.cover(0x1000,0x3000,l.replay(calls,5))[0],'unresolved')
+ def test_only_zero_to_final_native_timing_fields_may_change(self):
+  published=dict(resources={'rss':100},counts={'tcp':2},at_seconds=2,measure_seconds=.1,checkpoint_seconds=0,snapshot_seconds=0)
+  final=dict(published,checkpoint_seconds=.02,snapshot_seconds=.13)
+  l.validate_published_point(published,final)
+  for mutate in (lambda x:x.update(resources={'rss':101}),lambda x:x.update(counts={'tcp':3}),lambda x:x.update(at_seconds=3),lambda x:x.update(measure_seconds=.11),lambda x:x.update(checkpoint_seconds=-1),lambda x:x.update(snapshot_seconds=.01)):
+   bad=dict(final);mutate(bad)
+   with self.assertRaises(ValueError):l.validate_published_point(published,bad)
+  with self.assertRaises(ValueError):l.validate_published_point(final,dict(final,checkpoint_seconds=.03))
+ def test_brk_requests_conservatively_cover_possible_low_address_overlap(self):
+  c=self.call('brk',3,4,[0x8000],0x8000,id='2')
+  self.assertEqual(l.affected(c),[(0,0x8000)])
+  self.assertEqual(l.affected(self.call('brk',3,4,[0],0x8000,id='3')),[])
  def plan(self):
   return {'binary':'/tmp/probe','functions':{'1':{'symbol':'parent','address':100,'ret_offsets':[10]},'3':{'symbol':'mapping','address':200,'ret_offsets':[10]}}}
  def rows(self):
