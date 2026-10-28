@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Three cycles per process, fixed first warmup envelope, diagnostic only."""
-import argparse,gzip,hashlib,json,subprocess,sys
+import argparse,gzip,hashlib,json,subprocess,sys,os,re
 from pathlib import Path
 import verify_soak as v
 import soak_build_pair as pair
@@ -26,12 +26,41 @@ def fixed_envelope(reports):
     return {'pid':next(iter(pids)),'baseline':baseline,'cycles':rows,'passed':all(not c['violations'] for row in rows for c in row['checks'].values()),'qualifies_24h':False}
 
 
+def control_environment(mode, inherited):
+    env=dict(inherited)
+    if env.get('GODEBUG') or env.get('GORACE'):raise ValueError('THP controls require empty inherited GODEBUG/GORACE')
+    if mode=='go_heap':env['GODEBUG']='disablethp=1'
+    elif mode not in ('baseline','process'):raise ValueError('unknown THP control')
+    return env
+
+
+def thp_observation(raw, record, mode):
+    expected_env='disablethp=1' if mode=='go_heap' else ''
+    if record.get('godebug')!=expected_env or record.get('thp_enabled')!=('0' if mode=='process' else '1'):
+        raise ValueError('actual target THP/environment control not effective')
+    heap=False;total=0;go_heap=0
+    for line in raw.splitlines():
+        if re.match(r'^[0-9a-f]+-[0-9a-f]+ ',line):heap=line.endswith('[anon: Go: heap]')
+        m=re.fullmatch(r'AnonHugePages:\s+(\d+) kB',line)
+        if m:
+            value=int(m[1])*1024;total+=value
+            if heap:go_heap+=value
+    if mode=='process' and total:raise ValueError('process-disabled target still has AnonHugePages')
+    if mode=='go_heap' and go_heap:raise ValueError('Go heap control still has named-heap AnonHugePages')
+    return {'anon_huge_bytes':total,'go_named_heap_huge_bytes':go_heap}
+
+
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     for name in ('ordinary','race','artifacts'):p.add_argument('--'+name,type=Path,required=True)
-    a=p.parse_args();a.artifacts.mkdir(parents=True,exist_ok=False)
-    result={'status':'failed','qualifies_24h':False,'runs':[]};revision=None
-    for name in ('ordinary','race'):
+    p.add_argument('--thp-control',choices=['baseline','go_heap','process'])
+    p.add_argument('--launcher',type=Path)
+    p.add_argument('--build',choices=['all','ordinary','race'],default='all')
+    a=p.parse_args()
+    if a.thp_control and not a.launcher:p.error('THP controls require launcher')
+    a.artifacts.mkdir(parents=True,exist_ok=False)
+    result={'status':'failed','qualifies_24h':False,'thp_control':a.thp_control,'runs':[]};revision=None
+    for name in (('ordinary','race') if a.build=='all' else (a.build,)):
         folder=a.artifacts/name;binary=getattr(a,name).resolve();row={'build':name,'errors':[]};result['runs'].append(row)
         try:
             info=json.loads(subprocess.check_output([str(binary),'--describe'],timeout=10))['build_info']
@@ -40,8 +69,14 @@ def main():
             if revision is not None:assert rev==revision
             revision=rev;row['build_info']=info;row['binary_sha256']=hashlib.sha256(binary.read_bytes()).hexdigest()
             command=[str(binary),'--diagnostic-cycles','3','--transport','3','--mode','1','--duration','180s','--warmup','12s','--sample-interval','5s','--workers','2','--qps','10','--pool-min','16','--pool-max','64','--post-stop-observe','120s','--diagnostic-go-scavenge','--artifacts',str(folder)]
+            env=None
+            if a.thp_control:
+                env=control_environment(a.thp_control,os.environ)
+                evidence=a.artifacts/(name+'-control.json')
+                command=[str(a.launcher.resolve()),'disable' if a.thp_control=='process' else 'keep',str(evidence)]+command
+            row['command']=command
             with (a.artifacts/(name+'-stdout.log')).open('w') as out,(a.artifacts/(name+'-stderr.log')).open('w') as err:
-                proc=subprocess.Popen(command,stdout=out,stderr=err);row['pid']=proc.pid
+                proc=subprocess.Popen(command,stdout=out,stderr=err,env=env);row['pid']=proc.pid
                 try:row['exit_code']=proc.wait(timeout=3*432)
                 except subprocess.TimeoutExpired:
                     proc.terminate()
@@ -49,6 +84,9 @@ def main():
                     except subprocess.TimeoutExpired:proc.kill();proc.wait(timeout=5)
                     raise ValueError('native repeated run timed out')
             assert row['exit_code']==0
+            if a.thp_control:
+                control=json.loads(evidence.read_text());assert control=={'pid':row['pid'],'before':0,'after':int(a.thp_control=='process')}
+                row['launcher_control']=control;row['thp_observations']=[]
             reports=[];previous_mapping_end=-1
             for i in range(1,4):
                 cycle=folder/f'cycle-{i}';r=json.loads((cycle/'report.json').read_text());reports.append(r)
@@ -62,7 +100,9 @@ def main():
                 for record in records:
                     assert record['pid']==row['pid'] and record['cycle']==i and previous_mapping_end<=record['read_start_monotonic_ns']<=record['read_end_monotonic_ns']
                     previous_mapping_end=record['read_end_monotonic_ns']
-                    assert hashlib.sha256(gzip.decompress((cycle/record['file']).read_bytes())).hexdigest()==record['sha256_raw']
+                    raw=gzip.decompress((cycle/record['file']).read_bytes())
+                    assert hashlib.sha256(raw).hexdigest()==record['sha256_raw']
+                    if a.thp_control:row['thp_observations'].append(dict(cycle=i,**thp_observation(raw.decode(),record,a.thp_control)))
             row['fixed_envelope']=fixed_envelope(reports)
             if not row['fixed_envelope']['passed']:row['errors'].append('original first-cycle fixed active envelope exceeded')
         except (ValueError,KeyError,OSError,AssertionError,StopIteration,subprocess.SubprocessError) as e:row['errors'].append(type(e).__name__+': '+str(e))
