@@ -1,0 +1,1168 @@
+{
+  "audit_status": "independently_replayed",
+  "original_status": "failed",
+  "qualifies_24h": false,
+  "checkout": "cca2d7dc3c4dfff8642e12eb9819d506bf25b1d4",
+  "source_blobs": {
+    "verify_soak.py": "e0c0321054c8be6510f190b33d07966aad8635aa",
+    "soak_build_pair.py": "25f981cf6fdf09b660d73273620834b149932839",
+    "soak_cycles.py": "6c4271b3e1f7e6760357cf7c1c4334c50e0a3c27"
+  },
+  "archive_sha256": "7320d208f1f2e42a95e252dc72733f15aa947370b27b3c5b511876264df2337a",
+  "runs": [
+    {
+      "build": "ordinary",
+      "pid": 10000,
+      "errors": [],
+      "fixed_envelope": {
+        "pid": 10000,
+        "baseline": {
+          "goroutines": 77,
+          "fd": 21,
+          "heap_alloc": 27290248,
+          "rss": 53383168
+        },
+        "cycles": [
+          {
+            "cycle": 1,
+            "checks": {
+              "goroutines": {
+                "baseline": 77,
+                "peak": 79,
+                "allowance": 32,
+                "violations": []
+              },
+              "fd": {
+                "baseline": 21,
+                "peak": 21,
+                "allowance": 16,
+                "violations": []
+              },
+              "heap_alloc": {
+                "baseline": 27290248,
+                "peak": 28119496,
+                "allowance": 33554432,
+                "violations": []
+              },
+              "rss": {
+                "baseline": 53383168,
+                "peak": 62402560,
+                "allowance": 67108864,
+                "violations": []
+              }
+            },
+            "first_gc_rss": 50429952,
+            "last_gc_rss": 25772032,
+            "minimum_gc_rss": 23732224,
+            "go_scavenge_rss": 23859200,
+            "local_resources": {
+              "active": {
+                "goroutines": {
+                  "baseline": 77,
+                  "peak": 79,
+                  "delta": 2,
+                  "allowance": 32,
+                  "passed": true,
+                  "violations": []
+                },
+                "fd": {
+                  "baseline": 21,
+                  "peak": 21,
+                  "delta": 0,
+                  "allowance": 16,
+                  "passed": true,
+                  "violations": []
+                },
+                "heap_alloc": {
+                  "baseline": 27290248,
+                  "peak": 28119496,
+                  "delta": 829248,
+                  "allowance": 33554432,
+                  "passed": true,
+                  "violations": []
+                },
+                "rss": {
+                  "baseline": 53383168,
+                  "peak": 62402560,
+                  "delta": 9019392,
+                  "allowance": 67108864,
+                  "passed": true,
+                  "violations": []
+                }
+              },
+              "return": {
+                "goroutines": {
+                  "baseline": 4,
+                  "after_stop": 5,
+                  "allowance": 4,
+                  "passed": true
+                },
+                "fd": {
+                  "baseline": 12,
+                  "after_stop": 12,
+                  "allowance": 2,
+                  "passed": true
+                },
+                "heap_alloc": {
+                  "baseline": 271216,
+                  "after_stop": 2356688,
+                  "allowance": 8388608,
+                  "passed": true
+                }
+              },
+              "trend": {
+                "goroutines": {
+                  "delta": 2,
+                  "formal_allowance": 4,
+                  "enforced_in_pilot": false
+                },
+                "fd": {
+                  "delta": 0,
+                  "formal_allowance": 2,
+                  "enforced_in_pilot": false
+                },
+                "heap_alloc": {
+                  "delta": 193776,
+                  "formal_allowance": 8388608,
+                  "enforced_in_pilot": false
+                },
+                "rss": {
+                  "delta": 2465792,
+                  "formal_allowance": 33554432,
+                  "enforced_in_pilot": false
+                }
+              },
+              "qualifies_24h": false,
+              "warmup_rss": [
+                {
+                  "at_seconds": 6.003689423,
+                  "rss": 49135616
+                },
+                {
+                  "at_seconds": 8.003441896,
+                  "rss": 49152000
+                },
+                {
+                  "at_seconds": 10.004019677,
+                  "rss": 53383168
+                }
+              ]
+            }
+          },
+          {
+            "cycle": 2,
+            "checks": {
+              "goroutines": {
+                "baseline": 77,
+                "peak": 79,
+                "allowance": 32,
+                "violations": []
+              },
+              "fd": {
+                "baseline": 21,
+                "peak": 21,
+                "allowance": 16,
+                "violations": []
+              },
+              "heap_alloc": {
+                "baseline": 27290248,
+                "peak": 28145888,
+                "allowance": 33554432,
+                "violations": []
+              },
+              "rss": {
+                "baseline": 53383168,
+                "peak": 64811008,
+                "allowance": 67108864,
+                "violations": []
+              }
+            },
+            "first_gc_rss": 49475584,
+            "last_gc_rss": 43171840,
+            "minimum_gc_rss": 25243648,
+            "go_scavenge_rss": 41287680,
+            "local_resources": {
+              "active": {
+                "goroutines": {
+                  "baseline": 77,
+                  "peak": 79,
+                  "delta": 2,
+                  "allowance": 32,
+                  "passed": true,
+                  "violations": []
+                },
+                "fd": {
+                  "baseline": 21,
+                  "peak": 21,
+                  "delta": 0,
+                  "allowance": 16,
+                  "passed": true,
+                  "violations": []
+                },
+                "heap_alloc": {
+                  "baseline": 27355400,
+                  "peak": 28145888,
+                  "delta": 790488,
+                  "allowance": 33554432,
+                  "passed": true,
+                  "violations": []
+                },
+                "rss": {
+                  "baseline": 48136192,
+                  "peak": 64811008,
+                  "delta": 16674816,
+                  "allowance": 67108864,
+                  "passed": true,
+                  "violations": []
+                }
+              },
+              "return": {
+                "goroutines": {
+                  "baseline": 5,
+                  "after_stop": 5,
+                  "allowance": 4,
+                  "passed": true
+                },
+                "fd": {
+                  "baseline": 12,
+                  "after_stop": 12,
+                  "allowance": 2,
+                  "passed": true
+                },
+                "heap_alloc": {
+                  "baseline": 516320,
+                  "after_stop": 2366120,
+                  "allowance": 8388608,
+                  "passed": true
+                }
+              },
+              "trend": {
+                "goroutines": {
+                  "delta": 2,
+                  "formal_allowance": 4,
+                  "enforced_in_pilot": false
+                },
+                "fd": {
+                  "delta": 0,
+                  "formal_allowance": 2,
+                  "enforced_in_pilot": false
+                },
+                "heap_alloc": {
+                  "delta": 209840,
+                  "formal_allowance": 8388608,
+                  "enforced_in_pilot": false
+                },
+                "rss": {
+                  "delta": 6254592,
+                  "formal_allowance": 33554432,
+                  "enforced_in_pilot": false
+                }
+              },
+              "qualifies_24h": false,
+              "warmup_rss": [
+                {
+                  "at_seconds": 6.0047407,
+                  "rss": 46432256
+                },
+                {
+                  "at_seconds": 8.004748077,
+                  "rss": 47063040
+                },
+                {
+                  "at_seconds": 10.003812264,
+                  "rss": 48136192
+                }
+              ]
+            }
+          },
+          {
+            "cycle": 3,
+            "checks": {
+              "goroutines": {
+                "baseline": 77,
+                "peak": 79,
+                "allowance": 32,
+                "violations": []
+              },
+              "fd": {
+                "baseline": 21,
+                "peak": 21,
+                "allowance": 16,
+                "violations": []
+              },
+              "heap_alloc": {
+                "baseline": 27290248,
+                "peak": 28452344,
+                "allowance": 33554432,
+                "violations": []
+              },
+              "rss": {
+                "baseline": 53383168,
+                "peak": 64679936,
+                "allowance": 67108864,
+                "violations": []
+              }
+            },
+            "first_gc_rss": 47968256,
+            "last_gc_rss": 54157312,
+            "minimum_gc_rss": 23908352,
+            "go_scavenge_rss": 52457472,
+            "local_resources": {
+              "active": {
+                "goroutines": {
+                  "baseline": 77,
+                  "peak": 79,
+                  "delta": 2,
+                  "allowance": 32,
+                  "passed": true,
+                  "violations": []
+                },
+                "fd": {
+                  "baseline": 21,
+                  "peak": 21,
+                  "delta": 0,
+                  "allowance": 16,
+                  "passed": true,
+                  "violations": []
+                },
+                "heap_alloc": {
+                  "baseline": 27626552,
+                  "peak": 28452344,
+                  "delta": 825792,
+                  "allowance": 33554432,
+                  "passed": true,
+                  "violations": []
+                },
+                "rss": {
+                  "baseline": 63971328,
+                  "peak": 64679936,
+                  "delta": 708608,
+                  "allowance": 67108864,
+                  "passed": true,
+                  "violations": []
+                }
+              },
+              "return": {
+                "goroutines": {
+                  "baseline": 5,
+                  "after_stop": 5,
+                  "allowance": 4,
+                  "passed": true
+                },
+                "fd": {
+                  "baseline": 12,
+                  "after_stop": 12,
+                  "allowance": 2,
+                  "passed": true
+                },
+                "heap_alloc": {
+                  "baseline": 525648,
+                  "after_stop": 2374672,
+                  "allowance": 8388608,
+                  "passed": true
+                }
+              },
+              "trend": {
+                "goroutines": {
+                  "delta": 2,
+                  "formal_allowance": 4,
+                  "enforced_in_pilot": false
+                },
+                "fd": {
+                  "delta": 0,
+                  "formal_allowance": 2,
+                  "enforced_in_pilot": false
+                },
+                "heap_alloc": {
+                  "delta": 290464,
+                  "formal_allowance": 8388608,
+                  "enforced_in_pilot": false
+                },
+                "rss": {
+                  "delta": 126976,
+                  "formal_allowance": 33554432,
+                  "enforced_in_pilot": false
+                }
+              },
+              "qualifies_24h": false,
+              "warmup_rss": [
+                {
+                  "at_seconds": 6.004373703,
+                  "rss": 63913984
+                },
+                {
+                  "at_seconds": 8.003950723,
+                  "rss": 63942656
+                },
+                {
+                  "at_seconds": 10.003882781,
+                  "rss": 63971328
+                }
+              ]
+            }
+          }
+        ],
+        "passed": true,
+        "qualifies_24h": false
+      },
+      "audited_events": [
+        1919,
+        1919,
+        1919
+      ],
+      "mapping_counts": [
+        71,
+        71,
+        71
+      ]
+    },
+    {
+      "build": "race",
+      "pid": 10197,
+      "errors": [
+        "cycle-1 report: active resource bound: rss",
+        "cycle-2 report: active resource bound: rss",
+        "original first-cycle fixed active envelope exceeded"
+      ],
+      "fixed_envelope": {
+        "pid": 10197,
+        "baseline": {
+          "goroutines": 77,
+          "fd": 21,
+          "heap_alloc": 27123688,
+          "rss": 138227712
+        },
+        "cycles": [
+          {
+            "cycle": 1,
+            "checks": {
+              "goroutines": {
+                "baseline": 77,
+                "peak": 95,
+                "allowance": 32,
+                "violations": []
+              },
+              "fd": {
+                "baseline": 21,
+                "peak": 25,
+                "allowance": 16,
+                "violations": []
+              },
+              "heap_alloc": {
+                "baseline": 27123688,
+                "peak": 27195456,
+                "allowance": 33554432,
+                "violations": []
+              },
+              "rss": {
+                "baseline": 138227712,
+                "peak": 208273408,
+                "allowance": 67108864,
+                "violations": [
+                  {
+                    "at_seconds": 187.009527897,
+                    "value": 208273408
+                  }
+                ]
+              }
+            },
+            "first_gc_rss": 192942080,
+            "last_gc_rss": 171765760,
+            "minimum_gc_rss": 168742912,
+            "go_scavenge_rss": 168960000,
+            "local_resources": {
+              "active": {
+                "goroutines": {
+                  "baseline": 77,
+                  "peak": 95,
+                  "delta": 18,
+                  "allowance": 32,
+                  "passed": true,
+                  "violations": []
+                },
+                "fd": {
+                  "baseline": 21,
+                  "peak": 25,
+                  "delta": 4,
+                  "allowance": 16,
+                  "passed": true,
+                  "violations": []
+                },
+                "heap_alloc": {
+                  "baseline": 27123688,
+                  "peak": 27195456,
+                  "delta": 71768,
+                  "allowance": 33554432,
+                  "passed": true,
+                  "violations": []
+                },
+                "rss": {
+                  "baseline": 138227712,
+                  "peak": 208273408,
+                  "delta": 70045696,
+                  "allowance": 67108864,
+                  "passed": false,
+                  "violations": [
+                    {
+                      "at_seconds": 187.009527897,
+                      "value": 208273408
+                    }
+                  ]
+                }
+              },
+              "return": {
+                "goroutines": {
+                  "baseline": 4,
+                  "after_stop": 5,
+                  "allowance": 4,
+                  "passed": true
+                },
+                "fd": {
+                  "baseline": 12,
+                  "after_stop": 12,
+                  "allowance": 2,
+                  "passed": true
+                },
+                "heap_alloc": {
+                  "baseline": 274472,
+                  "after_stop": 2353816,
+                  "allowance": 8388608,
+                  "passed": true
+                }
+              },
+              "trend": {
+                "goroutines": {
+                  "delta": 6,
+                  "formal_allowance": 4,
+                  "enforced_in_pilot": false
+                },
+                "fd": {
+                  "delta": 0,
+                  "formal_allowance": 2,
+                  "enforced_in_pilot": false
+                },
+                "heap_alloc": {
+                  "delta": 223936,
+                  "formal_allowance": 8388608,
+                  "enforced_in_pilot": false
+                },
+                "rss": {
+                  "delta": 28446720,
+                  "formal_allowance": 33554432,
+                  "enforced_in_pilot": false
+                }
+              },
+              "qualifies_24h": false,
+              "warmup_rss": [
+                {
+                  "at_seconds": 6.005932374,
+                  "rss": 129368064
+                },
+                {
+                  "at_seconds": 8.007016999,
+                  "rss": 135991296
+                },
+                {
+                  "at_seconds": 10.006107222,
+                  "rss": 138227712
+                }
+              ]
+            }
+          },
+          {
+            "cycle": 2,
+            "checks": {
+              "goroutines": {
+                "baseline": 77,
+                "peak": 94,
+                "allowance": 32,
+                "violations": []
+              },
+              "fd": {
+                "baseline": 21,
+                "peak": 25,
+                "allowance": 16,
+                "violations": []
+              },
+              "heap_alloc": {
+                "baseline": 27123688,
+                "peak": 27171608,
+                "allowance": 33554432,
+                "violations": []
+              },
+              "rss": {
+                "baseline": 138227712,
+                "peak": 285982720,
+                "allowance": 67108864,
+                "violations": [
+                  {
+                    "at_seconds": 42.010057885,
+                    "value": 207724544
+                  },
+                  {
+                    "at_seconds": 47.00987016,
+                    "value": 207400960
+                  },
+                  {
+                    "at_seconds": 52.010271311,
+                    "value": 207306752
+                  },
+                  {
+                    "at_seconds": 57.01066723,
+                    "value": 207990784
+                  },
+                  {
+                    "at_seconds": 62.011052922,
+                    "value": 209879040
+                  },
+                  {
+                    "at_seconds": 67.009550004,
+                    "value": 210223104
+                  },
+                  {
+                    "at_seconds": 72.01031329,
+                    "value": 210038784
+                  },
+                  {
+                    "at_seconds": 77.010456645,
+                    "value": 211681280
+                  },
+                  {
+                    "at_seconds": 87.009517556,
+                    "value": 210300928
+                  },
+                  {
+                    "at_seconds": 92.009690301,
+                    "value": 217120768
+                  },
+                  {
+                    "at_seconds": 97.011270096,
+                    "value": 226848768
+                  },
+                  {
+                    "at_seconds": 102.010540894,
+                    "value": 236445696
+                  },
+                  {
+                    "at_seconds": 107.010188618,
+                    "value": 245219328
+                  },
+                  {
+                    "at_seconds": 112.011149552,
+                    "value": 251019264
+                  },
+                  {
+                    "at_seconds": 117.012049803,
+                    "value": 255488000
+                  },
+                  {
+                    "at_seconds": 122.01116008,
+                    "value": 264323072
+                  },
+                  {
+                    "at_seconds": 127.010734497,
+                    "value": 262524928
+                  },
+                  {
+                    "at_seconds": 132.01148952,
+                    "value": 269135872
+                  },
+                  {
+                    "at_seconds": 137.011666713,
+                    "value": 274862080
+                  },
+                  {
+                    "at_seconds": 142.010970278,
+                    "value": 278147072
+                  },
+                  {
+                    "at_seconds": 147.01076035,
+                    "value": 280342528
+                  },
+                  {
+                    "at_seconds": 152.008171076,
+                    "value": 277843968
+                  },
+                  {
+                    "at_seconds": 157.011312752,
+                    "value": 274153472
+                  },
+                  {
+                    "at_seconds": 162.009049759,
+                    "value": 284397568
+                  },
+                  {
+                    "at_seconds": 167.007114761,
+                    "value": 275210240
+                  },
+                  {
+                    "at_seconds": 172.008971349,
+                    "value": 268455936
+                  },
+                  {
+                    "at_seconds": 177.010758925,
+                    "value": 273342464
+                  },
+                  {
+                    "at_seconds": 182.010792002,
+                    "value": 280379392
+                  },
+                  {
+                    "at_seconds": 187.011037561,
+                    "value": 285982720
+                  }
+                ]
+              }
+            },
+            "first_gc_rss": 279744512,
+            "last_gc_rss": 258973696,
+            "minimum_gc_rss": 254435328,
+            "go_scavenge_rss": 256167936,
+            "local_resources": {
+              "active": {
+                "goroutines": {
+                  "baseline": 77,
+                  "peak": 94,
+                  "delta": 17,
+                  "allowance": 32,
+                  "passed": true,
+                  "violations": []
+                },
+                "fd": {
+                  "baseline": 21,
+                  "peak": 25,
+                  "delta": 4,
+                  "allowance": 16,
+                  "passed": true,
+                  "violations": []
+                },
+                "heap_alloc": {
+                  "baseline": 26667664,
+                  "peak": 27171608,
+                  "delta": 503944,
+                  "allowance": 33554432,
+                  "passed": true,
+                  "violations": []
+                },
+                "rss": {
+                  "baseline": 181612544,
+                  "peak": 285982720,
+                  "delta": 104370176,
+                  "allowance": 67108864,
+                  "passed": false,
+                  "violations": [
+                    {
+                      "at_seconds": 112.011149552,
+                      "value": 251019264
+                    },
+                    {
+                      "at_seconds": 117.012049803,
+                      "value": 255488000
+                    },
+                    {
+                      "at_seconds": 122.01116008,
+                      "value": 264323072
+                    },
+                    {
+                      "at_seconds": 127.010734497,
+                      "value": 262524928
+                    },
+                    {
+                      "at_seconds": 132.01148952,
+                      "value": 269135872
+                    },
+                    {
+                      "at_seconds": 137.011666713,
+                      "value": 274862080
+                    },
+                    {
+                      "at_seconds": 142.010970278,
+                      "value": 278147072
+                    },
+                    {
+                      "at_seconds": 147.01076035,
+                      "value": 280342528
+                    },
+                    {
+                      "at_seconds": 152.008171076,
+                      "value": 277843968
+                    },
+                    {
+                      "at_seconds": 157.011312752,
+                      "value": 274153472
+                    },
+                    {
+                      "at_seconds": 162.009049759,
+                      "value": 284397568
+                    },
+                    {
+                      "at_seconds": 167.007114761,
+                      "value": 275210240
+                    },
+                    {
+                      "at_seconds": 172.008971349,
+                      "value": 268455936
+                    },
+                    {
+                      "at_seconds": 177.010758925,
+                      "value": 273342464
+                    },
+                    {
+                      "at_seconds": 182.010792002,
+                      "value": 280379392
+                    },
+                    {
+                      "at_seconds": 187.011037561,
+                      "value": 285982720
+                    }
+                  ]
+                }
+              },
+              "return": {
+                "goroutines": {
+                  "baseline": 5,
+                  "after_stop": 5,
+                  "allowance": 4,
+                  "passed": true
+                },
+                "fd": {
+                  "baseline": 12,
+                  "after_stop": 12,
+                  "allowance": 2,
+                  "passed": true
+                },
+                "heap_alloc": {
+                  "baseline": 520848,
+                  "after_stop": 2907944,
+                  "allowance": 8388608,
+                  "passed": true
+                }
+              },
+              "trend": {
+                "goroutines": {
+                  "delta": 4,
+                  "formal_allowance": 4,
+                  "enforced_in_pilot": false
+                },
+                "fd": {
+                  "delta": 0,
+                  "formal_allowance": 2,
+                  "enforced_in_pilot": false
+                },
+                "heap_alloc": {
+                  "delta": -97144,
+                  "formal_allowance": 8388608,
+                  "enforced_in_pilot": false
+                },
+                "rss": {
+                  "delta": 76275712,
+                  "formal_allowance": 33554432,
+                  "enforced_in_pilot": false
+                }
+              },
+              "qualifies_24h": false,
+              "warmup_rss": [
+                {
+                  "at_seconds": 6.007880845,
+                  "rss": 177307648
+                },
+                {
+                  "at_seconds": 8.007915822,
+                  "rss": 181612544
+                },
+                {
+                  "at_seconds": 10.007441003,
+                  "rss": 180793344
+                }
+              ]
+            }
+          },
+          {
+            "cycle": 3,
+            "checks": {
+              "goroutines": {
+                "baseline": 77,
+                "peak": 84,
+                "allowance": 32,
+                "violations": []
+              },
+              "fd": {
+                "baseline": 21,
+                "peak": 23,
+                "allowance": 16,
+                "violations": []
+              },
+              "heap_alloc": {
+                "baseline": 27123688,
+                "peak": 27162736,
+                "allowance": 33554432,
+                "violations": []
+              },
+              "rss": {
+                "baseline": 138227712,
+                "peak": 314613760,
+                "allowance": 67108864,
+                "violations": [
+                  {
+                    "at_seconds": 12.007237271,
+                    "value": 268156928
+                  },
+                  {
+                    "at_seconds": 17.008256049,
+                    "value": 279900160
+                  },
+                  {
+                    "at_seconds": 22.008168005,
+                    "value": 275152896
+                  },
+                  {
+                    "at_seconds": 27.006873987,
+                    "value": 274972672
+                  },
+                  {
+                    "at_seconds": 32.00819367,
+                    "value": 273862656
+                  },
+                  {
+                    "at_seconds": 37.008077628,
+                    "value": 272470016
+                  },
+                  {
+                    "at_seconds": 42.008567406,
+                    "value": 272457728
+                  },
+                  {
+                    "at_seconds": 47.00830225,
+                    "value": 280444928
+                  },
+                  {
+                    "at_seconds": 52.010024967,
+                    "value": 285843456
+                  },
+                  {
+                    "at_seconds": 57.010211881,
+                    "value": 292999168
+                  },
+                  {
+                    "at_seconds": 62.01052521,
+                    "value": 295022592
+                  },
+                  {
+                    "at_seconds": 67.009050202,
+                    "value": 297627648
+                  },
+                  {
+                    "at_seconds": 72.010704821,
+                    "value": 299851776
+                  },
+                  {
+                    "at_seconds": 77.010462407,
+                    "value": 300814336
+                  },
+                  {
+                    "at_seconds": 82.010292308,
+                    "value": 299454464
+                  },
+                  {
+                    "at_seconds": 87.006623039,
+                    "value": 298700800
+                  },
+                  {
+                    "at_seconds": 92.010404177,
+                    "value": 289927168
+                  },
+                  {
+                    "at_seconds": 97.010587778,
+                    "value": 295915520
+                  },
+                  {
+                    "at_seconds": 102.010467201,
+                    "value": 298401792
+                  },
+                  {
+                    "at_seconds": 107.006950829,
+                    "value": 304033792
+                  },
+                  {
+                    "at_seconds": 112.010660429,
+                    "value": 289652736
+                  },
+                  {
+                    "at_seconds": 117.01018406,
+                    "value": 297889792
+                  },
+                  {
+                    "at_seconds": 122.01124391,
+                    "value": 298909696
+                  },
+                  {
+                    "at_seconds": 127.009012047,
+                    "value": 303902720
+                  },
+                  {
+                    "at_seconds": 132.013156443,
+                    "value": 299196416
+                  },
+                  {
+                    "at_seconds": 137.007812143,
+                    "value": 288067584
+                  },
+                  {
+                    "at_seconds": 142.010422154,
+                    "value": 285884416
+                  },
+                  {
+                    "at_seconds": 147.007303079,
+                    "value": 294776832
+                  },
+                  {
+                    "at_seconds": 152.010161503,
+                    "value": 288116736
+                  },
+                  {
+                    "at_seconds": 157.010449259,
+                    "value": 294539264
+                  },
+                  {
+                    "at_seconds": 162.007696843,
+                    "value": 299307008
+                  },
+                  {
+                    "at_seconds": 167.007287204,
+                    "value": 280760320
+                  },
+                  {
+                    "at_seconds": 172.007680452,
+                    "value": 283856896
+                  },
+                  {
+                    "at_seconds": 177.009653918,
+                    "value": 299651072
+                  },
+                  {
+                    "at_seconds": 182.010097088,
+                    "value": 302985216
+                  },
+                  {
+                    "at_seconds": 187.008852146,
+                    "value": 314613760
+                  }
+                ]
+              }
+            },
+            "first_gc_rss": 283766784,
+            "last_gc_rss": 282390528,
+            "minimum_gc_rss": 281886720,
+            "go_scavenge_rss": 280047616,
+            "local_resources": {
+              "active": {
+                "goroutines": {
+                  "baseline": 77,
+                  "peak": 84,
+                  "delta": 7,
+                  "allowance": 32,
+                  "passed": true,
+                  "violations": []
+                },
+                "fd": {
+                  "baseline": 21,
+                  "peak": 23,
+                  "delta": 2,
+                  "allowance": 16,
+                  "passed": true,
+                  "violations": []
+                },
+                "heap_alloc": {
+                  "baseline": 25084064,
+                  "peak": 27162736,
+                  "delta": 2078672,
+                  "allowance": 33554432,
+                  "passed": true,
+                  "violations": []
+                },
+                "rss": {
+                  "baseline": 267407360,
+                  "peak": 314613760,
+                  "delta": 47206400,
+                  "allowance": 67108864,
+                  "passed": true,
+                  "violations": []
+                }
+              },
+              "return": {
+                "goroutines": {
+                  "baseline": 5,
+                  "after_stop": 5,
+                  "allowance": 4,
+                  "passed": true
+                },
+                "fd": {
+                  "baseline": 12,
+                  "after_stop": 12,
+                  "allowance": 2,
+                  "passed": true
+                },
+                "heap_alloc": {
+                  "baseline": 681440,
+                  "after_stop": 3904480,
+                  "allowance": 8388608,
+                  "passed": true
+                }
+              },
+              "trend": {
+                "goroutines": {
+                  "delta": 4,
+                  "formal_allowance": 4,
+                  "enforced_in_pilot": false
+                },
+                "fd": {
+                  "delta": 0,
+                  "formal_allowance": 2,
+                  "enforced_in_pilot": false
+                },
+                "heap_alloc": {
+                  "delta": 857376,
+                  "formal_allowance": 8388608,
+                  "enforced_in_pilot": false
+                },
+                "rss": {
+                  "delta": 19804160,
+                  "formal_allowance": 33554432,
+                  "enforced_in_pilot": false
+                }
+              },
+              "qualifies_24h": false,
+              "warmup_rss": [
+                {
+                  "at_seconds": 6.007692157,
+                  "rss": 266399744
+                },
+                {
+                  "at_seconds": 8.00709011,
+                  "rss": 265109504
+                },
+                {
+                  "at_seconds": 10.007005462,
+                  "rss": 267407360
+                }
+              ]
+            }
+          }
+        ],
+        "passed": false,
+        "qualifies_24h": false
+      },
+      "audited_events": [
+        1919,
+        1919,
+        1919
+      ],
+      "mapping_counts": [
+        71,
+        71,
+        71
+      ]
+    }
+  ],
+  "scope": "Diagnostic GC/scavenge and smaps overhead retained; equal virtual addresses do not establish mapping generations or object reuse."
+}
