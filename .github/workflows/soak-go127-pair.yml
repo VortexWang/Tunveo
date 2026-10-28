@@ -1,0 +1,106 @@
+name: Go 1.26 and 1.27 same-host RSS pilot
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/soak-go127-pair.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      GOTOOLCHAIN: local
+      GOMAXPROCS: '2'
+      GODEBUG: ''
+      GORACE: ''
+      GOEXPERIMENT: ''
+    steps:
+      - uses: actions/checkout@v6.0.2
+      - name: Python regression
+        run: python3 -m unittest discover -s scripts/tests
+      - uses: actions/setup-go@v6.1.0
+        with:
+          go-version: '1.26.10'
+          cache: false
+      - name: Build old toolchain from clean unchanged source
+        timeout-minutes: 10
+        run: |
+          test -z "$(git status --porcelain)"
+          test "$(go env GOVERSION)" = go1.26.10
+          go mod download
+          go mod verify
+          go test ./scripts/soak24h
+          go build -trimpath -o bin/1.26.10/ordinary ./scripts/soak24h
+          go build -race -trimpath -o bin/1.26.10/race ./scripts/soak24h
+          test -z "$(git status --porcelain)"
+      - uses: actions/setup-go@v6.1.0
+        with:
+          go-version: '1.27.3'
+          cache: false
+      - name: Build new toolchain from same clean source
+        timeout-minutes: 10
+        run: |
+          test -z "$(git status --porcelain)"
+          test "$(go env GOVERSION)" = go1.27.3
+          go mod verify
+          go test ./scripts/soak24h
+          go build -trimpath -o bin/1.27.3/ordinary ./scripts/soak24h
+          go build -race -trimpath -o bin/1.27.3/race ./scripts/soak24h
+          test -z "$(git status --porcelain)"
+      - name: Freeze host and exact binary provenance
+        run: |
+          mkdir -p artifacts/meta
+          uname -a > artifacts/meta/host.txt
+          printf 'GOMAXPROCS=%s\nGOTOOLCHAIN=%s\nGODEBUG=%s\nGORACE=%s\nGOEXPERIMENT=%s\n' "$GOMAXPROCS" "$GOTOOLCHAIN" "$GODEBUG" "$GORACE" "$GOEXPERIMENT" > artifacts/meta/environment.txt
+          git rev-parse HEAD HEAD^{tree} > artifacts/meta/source.txt
+          sha256sum go.mod go.sum scripts/soak_build_pair.py scripts/verify_soak.py > artifacts/meta/source-sha256.txt
+          sha256sum bin/*/* > artifacts/meta/binary-sha256.txt
+          for version in 1.26.10 1.27.3; do
+            for build in ordinary race; do
+              bin/$version/$build --describe > artifacts/meta/$version-$build.json
+            done
+          done
+      - name: Old new new old toolchains using unchanged ordinary race ABBA
+        timeout-minutes: 90
+        run: |
+          python3 - <<'PY'
+          import json, subprocess, sys
+          from pathlib import Path
+          order = ['1.26.10', '1.27.3', '1.27.3', '1.26.10']
+          result = {'status': 'running', 'qualifies_24h': False, 'toolchain_order': order, 'runs': [], 'scope': 'Fresh-process short pilot; each version has four ordinary and four race samples. Not the PR35 three-cycle profile or 24h acceptance.'}
+          for index, version in enumerate(order, 1):
+              folder = Path('artifacts') / f'{index}-{version}'
+              command = [sys.executable, 'scripts/soak_build_pair.py', '--ordinary', f'bin/{version}/ordinary', '--race', f'bin/{version}/race', '--artifacts', str(folder)]
+              code = subprocess.call(command)
+              row = {'index': index, 'version': version, 'exit_code': code}
+              try:
+                  pair = json.loads((folder / 'pair.json').read_text())
+                  assert not pair['qualifies_24h'] and len(pair['runs']) == 4
+                  assert pair['order'] == ['ordinary', 'race', 'race', 'ordinary']
+                  row['status'] = pair['status']
+                  row['samples'] = []
+                  for position, sample in enumerate(pair['runs'], 1):
+                      report = json.loads((folder / f"{position}-{sample['build']}" / 'native/report.json').read_text())
+                      assert 'go\tgo' + version in report['build_info'].splitlines()
+                      rss = sample['resources']['active']['rss']
+                      assert rss['allowance'] == 64 * 1024 * 1024
+                      row['samples'].append({'build': sample['build'], 'rss': rss, 'errors': sample['errors'], 'exit_code': sample['exit_code']})
+              except (OSError, ValueError, KeyError, AssertionError) as error:
+                  row['error'] = type(error).__name__ + ': ' + str(error)
+              result['runs'].append(row)
+              Path('artifacts/toolchain-comparison.json').write_text(json.dumps(result, indent=2) + '\n')
+          passed = all(r['exit_code'] == 0 and r.get('status') == 'pilot_passed' and 'error' not in r for r in result['runs'])
+          result['status'] = 'pilot_passed' if passed else 'failed'
+          Path('artifacts/toolchain-comparison.json').write_text(json.dumps(result, indent=2) + '\n')
+          raise SystemExit(0 if passed else 1)
+          PY
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
+        with:
+          name: go126-go127-pair
+          path: |
+            artifacts
+            bin
+          retention-days: 30
