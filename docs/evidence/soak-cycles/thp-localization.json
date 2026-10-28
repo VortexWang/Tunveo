@@ -1,0 +1,1356 @@
+{
+  "archive_sha256": "7320d208f1f2e42a95e252dc72733f15aa947370b27b3c5b511876264df2337a",
+  "rows": [
+    {
+      "build": "ordinary",
+      "cycle": 1,
+      "mapping_record": {
+        "cycle": 1,
+        "file": "mapping-070.smaps.gz",
+        "load_points": 43,
+        "pid": 10000,
+        "read_end_monotonic_ns": 317189057783,
+        "read_start_monotonic_ns": 317188076856,
+        "retention_points": 26,
+        "sha256_raw": "b5c2e0a1a94f5b96495a29b933c3f4695085264af43543c6d1986fa1d1dc42bb",
+        "status": "running"
+      },
+      "resource_rss": 23859200,
+      "resource_rollup": {
+        "AnonHugePages": 2097152,
+        "Anonymous": 12587008,
+        "FilePmdMapped": 0,
+        "KSM": 0,
+        "LazyFree": 0,
+        "Locked": 0,
+        "Private_Clean": 9736192,
+        "Private_Dirty": 12587008,
+        "Private_Hugetlb": 0,
+        "Pss": 22369280,
+        "Pss_Anon": 12587008,
+        "Pss_Dirty": 12587008,
+        "Pss_File": 9782272,
+        "Pss_Shmem": 0,
+        "Referenced": 23859200,
+        "Rss": 23859200,
+        "Shared_Clean": 1536000,
+        "Shared_Dirty": 0,
+        "Shared_Hugetlb": 0,
+        "ShmemPmdMapped": 0,
+        "Swap": 0,
+        "SwapPss": 0
+      },
+      "snapshot_groups": {
+        "file": {
+          "Rss": 11395072,
+          "AnonHugePages": 0
+        },
+        "unnamed_anonymous": {
+          "Rss": 2289664,
+          "AnonHugePages": 2097152
+        },
+        "other_named": {
+          "Rss": 2695168,
+          "AnonHugePages": 0
+        },
+        "go_named_heap": {
+          "Rss": 7991296,
+          "AnonHugePages": 0
+        }
+      },
+      "huge_page_vmas": [
+        {
+          "start": 14602240,
+          "end": 48431104,
+          "permissions": "rw-p",
+          "name": "",
+          "bytes": {
+            "KernelPageSize": 4096,
+            "MMUPageSize": 4096,
+            "Rss": 2138112,
+            "Anonymous": 2138112,
+            "LazyFree": 0,
+            "AnonHugePages": 2097152
+          },
+          "vm_flags": [
+            "rd",
+            "wr",
+            "mr",
+            "mw",
+            "me",
+            "ac",
+            "sd"
+          ],
+          "category": "unnamed_anonymous"
+        }
+      ],
+      "snapshot_huge_bytes": 2097152
+    },
+    {
+      "build": "ordinary",
+      "cycle": 2,
+      "mapping_record": {
+        "cycle": 2,
+        "file": "mapping-070.smaps.gz",
+        "load_points": 43,
+        "pid": 10000,
+        "read_end_monotonic_ns": 639389942799,
+        "read_start_monotonic_ns": 639388991347,
+        "retention_points": 26,
+        "sha256_raw": "e00ae00a90d45f7b4814660e0c5f6a93ea10b972649905fe6b6ae3f0a29eefe6",
+        "status": "running"
+      },
+      "resource_rss": 41287680,
+      "resource_rollup": {
+        "AnonHugePages": 20971520,
+        "Anonymous": 30015488,
+        "FilePmdMapped": 0,
+        "KSM": 0,
+        "LazyFree": 0,
+        "Locked": 0,
+        "Private_Clean": 9736192,
+        "Private_Dirty": 30015488,
+        "Private_Hugetlb": 0,
+        "Pss": 39797760,
+        "Pss_Anon": 30015488,
+        "Pss_Dirty": 30015488,
+        "Pss_File": 9782272,
+        "Pss_Shmem": 0,
+        "Referenced": 41287680,
+        "Rss": 41287680,
+        "Shared_Clean": 1536000,
+        "Shared_Dirty": 0,
+        "Shared_Hugetlb": 0,
+        "ShmemPmdMapped": 0,
+        "Swap": 0,
+        "SwapPss": 0
+      },
+      "snapshot_groups": {
+        "file": {
+          "Rss": 11395072,
+          "AnonHugePages": 0
+        },
+        "unnamed_anonymous": {
+          "Rss": 2289664,
+          "AnonHugePages": 2097152
+        },
+        "other_named": {
+          "Rss": 2928640,
+          "AnonHugePages": 0
+        },
+        "go_named_heap": {
+          "Rss": 25239552,
+          "AnonHugePages": 18874368
+        }
+      },
+      "huge_page_vmas": [
+        {
+          "start": 14602240,
+          "end": 48431104,
+          "permissions": "rw-p",
+          "name": "",
+          "bytes": {
+            "KernelPageSize": 4096,
+            "MMUPageSize": 4096,
+            "Rss": 2138112,
+            "Anonymous": 2138112,
+            "LazyFree": 0,
+            "AnonHugePages": 2097152
+          },
+          "vm_flags": [
+            "rd",
+            "wr",
+            "mr",
+            "mw",
+            "me",
+            "ac",
+            "sd"
+          ],
+          "category": "unnamed_anonymous"
+        },
+        {
+          "start": 56936049410048,
+          "end": 56936099741696,
+          "permissions": "rw-p",
+          "name": "[anon: Go: heap]",
+          "bytes": {
+            "KernelPageSize": 4096,
+            "MMUPageSize": 4096,
+            "Rss": 25239552,
+            "Anonymous": 25239552,
+            "LazyFree": 0,
+            "AnonHugePages": 18874368
+          },
+          "vm_flags": [
+            "rd",
+            "wr",
+            "mr",
+            "mw",
+            "me",
+            "ac",
+            "sd"
+          ],
+          "category": "go_named_heap"
+        }
+      ],
+      "snapshot_huge_bytes": 20971520
+    },
+    {
+      "build": "ordinary",
+      "cycle": 3,
+      "mapping_record": {
+        "cycle": 3,
+        "file": "mapping-070.smaps.gz",
+        "load_points": 43,
+        "pid": 10000,
+        "read_end_monotonic_ns": 961593130475,
+        "read_start_monotonic_ns": 961592205683,
+        "retention_points": 26,
+        "sha256_raw": "39661decb7aa3904eeca58236b36f5f7a3d709df46c33f76b317a73c237f4f3f",
+        "status": "running"
+      },
+      "resource_rss": 52457472,
+      "resource_rollup": {
+        "AnonHugePages": 33554432,
+        "Anonymous": 41185280,
+        "FilePmdMapped": 0,
+        "KSM": 0,
+        "LazyFree": 0,
+        "Locked": 0,
+        "Private_Clean": 9736192,
+        "Private_Dirty": 41185280,
+        "Private_Hugetlb": 0,
+        "Pss": 50967552,
+        "Pss_Anon": 41185280,
+        "Pss_Dirty": 41185280,
+        "Pss_File": 9782272,
+        "Pss_Shmem": 0,
+        "Referenced": 52457472,
+        "Rss": 52457472,
+        "Shared_Clean": 1536000,
+        "Shared_Dirty": 0,
+        "Shared_Hugetlb": 0,
+        "ShmemPmdMapped": 0,
+        "Swap": 0,
+        "SwapPss": 0
+      },
+      "snapshot_groups": {
+        "file": {
+          "Rss": 11395072,
+          "AnonHugePages": 0
+        },
+        "unnamed_anonymous": {
+          "Rss": 2301952,
+          "AnonHugePages": 2097152
+        },
+        "other_named": {
+          "Rss": 3088384,
+          "AnonHugePages": 0
+        },
+        "go_named_heap": {
+          "Rss": 36229120,
+          "AnonHugePages": 31457280
+        }
+      },
+      "huge_page_vmas": [
+        {
+          "start": 14602240,
+          "end": 48431104,
+          "permissions": "rw-p",
+          "name": "",
+          "bytes": {
+            "KernelPageSize": 4096,
+            "MMUPageSize": 4096,
+            "Rss": 2138112,
+            "Anonymous": 2138112,
+            "LazyFree": 0,
+            "AnonHugePages": 2097152
+          },
+          "vm_flags": [
+            "rd",
+            "wr",
+            "mr",
+            "mw",
+            "me",
+            "ac",
+            "sd"
+          ],
+          "category": "unnamed_anonymous"
+        },
+        {
+          "start": 56936049410048,
+          "end": 56936099741696,
+          "permissions": "rw-p",
+          "name": "[anon: Go: heap]",
+          "bytes": {
+            "KernelPageSize": 4096,
+            "MMUPageSize": 4096,
+            "Rss": 36229120,
+            "Anonymous": 36229120,
+            "LazyFree": 0,
+            "AnonHugePages": 31457280
+          },
+          "vm_flags": [
+            "rd",
+            "wr",
+            "mr",
+            "mw",
+            "me",
+            "ac",
+            "sd"
+          ],
+          "category": "go_named_heap"
+        }
+      ],
+      "snapshot_huge_bytes": 33554432
+    },
+    {
+      "build": "race",
+      "cycle": 1,
+      "mapping_record": {
+        "cycle": 1,
+        "file": "mapping-070.smaps.gz",
+        "load_points": 43,
+        "pid": 10197,
+        "read_end_monotonic_ns": 317314302297,
+        "read_start_monotonic_ns": 317311020641,
+        "retention_points": 26,
+        "sha256_raw": "3d82c9d535bc2cb4beb5ba58f091b19af71047981ff33698095e385cbcd7544f",
+        "status": "running"
+      },
+      "resource_rss": 168960000,
+      "resource_rollup": {
+        "AnonHugePages": 54525952,
+        "Anonymous": 154435584,
+        "FilePmdMapped": 0,
+        "KSM": 0,
+        "LazyFree": 0,
+        "Locked": 0,
+        "Private_Clean": 12988416,
+        "Private_Dirty": 154435584,
+        "Private_Hugetlb": 0,
+        "Pss": 167470080,
+        "Pss_Anon": 154435584,
+        "Pss_Dirty": 154435584,
+        "Pss_File": 13034496,
+        "Pss_Shmem": 0,
+        "Referenced": 168960000,
+        "Rss": 168960000,
+        "Shared_Clean": 1536000,
+        "Shared_Dirty": 0,
+        "Shared_Hugetlb": 0,
+        "ShmemPmdMapped": 0,
+        "Swap": 0,
+        "SwapPss": 0
+      },
+      "snapshot_groups": {
+        "file": {
+          "Rss": 14655488,
+          "AnonHugePages": 0
+        },
+        "unnamed_anonymous": {
+          "Rss": 84500480,
+          "AnonHugePages": 52428800
+        },
+        "other_named": {
+          "Rss": 2969600,
+          "AnonHugePages": 0
+        },
+        "go_named_heap": {
+          "Rss": 8155136,
+          "AnonHugePages": 2097152
+        },
+        "race_shadow": {
+          "Rss": 55537664,
+          "AnonHugePages": 0
+        },
+        "race_metadata": {
+          "Rss": 3682304,
+          "AnonHugePages": 0
+        }
+      },
+      "huge_page_vmas": [
+        {
+          "start": 18538496,
+          "end": 68321280,
+          "permissions": "rw-p",
+          "name": "",
+          "bytes": {
+            "KernelPageSize": 4096,
+            "MMUPageSize": 4096,
+            "Rss": 16896000,
+            "Anonymous": 16896000,
+            "LazyFree": 0,
+            "AnonHugePages": 16777216
+          },
+          "vm_flags": [
+            "rd",
+            "wr",
+            "mr",
+            "mw",
+            "me",
+            "ac",
+            "sd"
+          ],
+          "category": "unnamed_anonymous"
+        },
+        {
+          "start": 824633720832,
+          "end": 824692441088,
+          "permissions": "rw-p",
+          "name": "[anon: Go: heap]",
+          "bytes": {
+            "KernelPageSize": 4096,
+            "MMUPageSize": 4096,
+            "Rss": 8155136,
+            "Anonymous": 8155136,
+            "LazyFree": 0,
+            "AnonHugePages": 2097152
+          },
+          "vm_flags": [
+            "rd",
+            "wr",
+            "mr",
+            "mw",
+            "me",
+            "ac",
+            "sd"
+          ],
+          "category": "go_named_heap"
+        },
+        {
+          "start": 139633165860864,
+          "end": 139633173200896,
+          "permissions": "rw-p",
+          "name": "",
+          "bytes": {
+            "KernelPageSize": 4096,
+            "MMUPageSize": 4096,
+            "Rss": 7340032,
+            "Anonymous": 7340032,
+            "LazyFree": 0,
+            "AnonHugePages": 6291456
+          },
+          "vm_flags": [
+            "rd",
+            "wr",
+            "mr",
+            "mw",
+            "me",
+            "ac",
+            "sd"
+          ],
+          "category": "unnamed_anonymous"
+        },
+        {
+          "start": 139633346215936,
+          "end": 139633351458816,
+          "permissions": "rw-p",
+          "name": "",
+          "bytes": {
+            "KernelPageSize": 4096,
+            "MMUPageSize": 4096,
+            "Rss": 5242880,
+            "Anonymous": 5242880,
+            "LazyFree": 0,
+            "AnonHugePages": 4194304
+          },
+          "vm_flags": [
+            "rd",
+            "wr",
+            "mr",
+            "mw",
+            "me",
+            "ac",
+            "sd"
+          ],
+          "category": "unnamed_anonymous"
+        },
+        {
+          "start": 139633351540736,
+          "end": 139633359847424,
+          "permissions": "rw-p",
+          "name": "",
+          "bytes": {
+            "KernelPageSize": 4096,
+            "MMUPageSize": 4096,
+            "Rss": 8306688,
+            "Anonymous": 8306688,
+            "LazyFree": 0,
+            "AnonHugePages": 6291456
+          },
+          "vm_flags": [
+            "rd",
+            "wr",
+            "mr",
+            "mw",
+            "me",
+            "ac",
+            "sd"
+          ],
+          "category": "unnamed_anonymous"
+        },
+        {
+          "start": 139633359880192,
+          "end": 139633364426752,
+          "permissions": "rw-p",
+          "name": "",
+          "bytes": {
+            "KernelPageSize": 4096,
+            "MMUPageSize": 4096,
+            "Rss": 4546560,
+            "Anonymous": 4546560,
+            "LazyFree": 0,
+            "AnonHugePages": 2097152
+          },
+          "vm_flags": [
+            "rd",
+            "wr",
+            "mr",
+            "mw",
+            "me",
+            "ac",
+            "sd"
+          ],
+          "category": "unnamed_anonymous"
+        },
+        {
+          "start": 139633381208064,
+          "end": 139633394446336,
+          "permissions": "rw-p",
+          "name": "",
+          "bytes": {
+            "KernelPageSize": 4096,
+            "MMUPageSize": 4096,
+            "Rss": 13180928,
+            "Anonymous": 13180928,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          },
+          "vm_flags": [
+            "rd",
+            "wr",
+            "mr",
+            "mw",
+            "me",
+            "ac",
+            "sd"
+          ],
+          "category": "unnamed_anonymous"
+        },
+        {
+          "start": 139633411227648,
+          "end": 139633413459968,
+          "permissions": "rw-p",
+          "name": "",
+          "bytes": {
+            "KernelPageSize": 4096,
+            "MMUPageSize": 4096,
+            "Rss": 2101248,
+            "Anonymous": 2101248,
+            "LazyFree": 0,
+            "AnonHugePages": 2097152
+          },
+          "vm_flags": [
+            "rd",
+            "wr",
+            "mr",
+            "mw",
+            "me",
+            "ac",
+            "sd"
+          ],
+          "category": "unnamed_anonymous"
+        },
+        {
+          "start": 139633767743488,
+          "end": 139633776132096,
+          "permissions": "rw-p",
+          "name": "",
+          "bytes": {
+            "KernelPageSize": 4096,
+            "MMUPageSize": 4096,
+            "Rss": 2097152,
+            "Anonymous": 2097152,
+            "LazyFree": 0,
+            "AnonHugePages": 2097152
+          },
+          "vm_flags": [
+            "rd",
+            "wr",
+            "mr",
+            "mw",
+            "me",
+            "nr",
+            "sd"
+          ],
+          "category": "unnamed_anonymous"
+        },
+        {
+          "start": 139634964471808,
+          "end": 139634968363008,
+          "permissions": "rw-p",
+          "name": "",
+          "bytes": {
+            "KernelPageSize": 4096,
+            "MMUPageSize": 4096,
+            "Rss": 3092480,
+            "Anonymous": 3092480,
+            "LazyFree": 0,
+            "AnonHugePages": 2097152
+          },
+          "vm_flags": [
+            "rd",
+            "wr",
+            "mr",
+            "mw",
+            "me",
+            "ac",
+            "sd"
+          ],
+          "category": "unnamed_anonymous"
+        }
+      ],
+      "snapshot_huge_bytes": 54525952
+    },
+    {
+      "build": "race",
+      "cycle": 2,
+      "mapping_record": {
+        "cycle": 2,
+        "file": "mapping-070.smaps.gz",
+        "load_points": 43,
+        "pid": 10197,
+        "read_end_monotonic_ns": 639693514771,
+        "read_start_monotonic_ns": 639690755993,
+        "retention_points": 26,
+        "sha256_raw": "53215e503eea48de7c7fdd726f4f4d58011f63d51ece97f7d14a62daac232390",
+        "status": "running"
+      },
+      "resource_rss": 256167936,
+      "resource_rollup": {
+        "AnonHugePages": 153092096,
+        "Anonymous": 241647616,
+        "FilePmdMapped": 0,
+        "KSM": 0,
+        "LazyFree": 0,
+        "Locked": 0,
+        "Private_Clean": 12984320,
+        "Private_Dirty": 241647616,
+        "Private_Hugetlb": 0,
+        "Pss": 254678016,
+        "Pss_Anon": 241647616,
+        "Pss_Dirty": 241647616,
+        "Pss_File": 13030400,
+        "Pss_Shmem": 0,
+        "Referenced": 256167936,
+        "Rss": 256167936,
+        "Shared_Clean": 1536000,
+        "Shared_Dirty": 0,
+        "Shared_Hugetlb": 0,
+        "ShmemPmdMapped": 0,
+        "Swap": 0,
+        "SwapPss": 0
+      },
+      "snapshot_groups": {
+        "file": {
+          "Rss": 14655488,
+          "AnonHugePages": 0
+        },
+        "unnamed_anonymous": {
+          "Rss": 175927296,
+          "AnonHugePages": 153092096
+        },
+        "other_named": {
+          "Rss": 3235840,
+          "AnonHugePages": 0
+        },
+        "go_named_heap": {
+          "Rss": 5623808,
+          "AnonHugePages": 0
+        },
+        "race_shadow": {
+          "Rss": 51843072,
+          "AnonHugePages": 0
+        },
+        "race_metadata": {
+          "Rss": 5595136,
+          "AnonHugePages": 0
+        }
+      },
+      "huge_page_vmas": [
+        {
+          "start": 18538496,
+          "end": 68321280,
+          "permissions": "rw-p",
+          "name": "",
+          "bytes": {
+            "KernelPageSize": 4096,
+            "MMUPageSize": 4096,
+            "Rss": 16896000,
+            "Anonymous": 16896000,
+            "LazyFree": 0,
+            "AnonHugePages": 16777216
+          },
+          "vm_flags": [
+            "rd",
+            "wr",
+            "mr",
+            "mw",
+            "me",
+            "ac",
+            "sd"
+          ],
+          "category": "unnamed_anonymous"
+        },
+        {
+          "start": 139632861249536,
+          "end": 139632876589056,
+          "permissions": "rw-p",
+          "name": "",
+          "bytes": {
+            "KernelPageSize": 4096,
+            "MMUPageSize": 4096,
+            "Rss": 15208448,
+            "Anonymous": 15208448,
+            "LazyFree": 0,
+            "AnonHugePages": 14680064
+          },
+          "vm_flags": [
+            "rd",
+            "wr",
+            "mr",
+            "mw",
+            "me",
+            "ac",
+            "sd"
+          ],
+          "category": "unnamed_anonymous"
+        },
+        {
+          "start": 139632943562752,
+          "end": 139633010806784,
+          "permissions": "rw-p",
+          "name": "",
+          "bytes": {
+            "KernelPageSize": 4096,
+            "MMUPageSize": 4096,
+            "Rss": 67112960,
+            "Anonymous": 67112960,
+            "LazyFree": 0,
+            "AnonHugePages": 67108864
+          },
+          "vm_flags": [
+            "rd",
+            "wr",
+            "mr",
+            "mw",
+            "me",
+            "ac",
+            "sd"
+          ],
+          "category": "unnamed_anonymous"
+        },
+        {
+          "start": 139633144889344,
+          "end": 139633164812288,
+          "permissions": "rw-p",
+          "name": "",
+          "bytes": {
+            "KernelPageSize": 4096,
+            "MMUPageSize": 4096,
+            "Rss": 18927616,
+            "Anonymous": 18927616,
+            "LazyFree": 0,
+            "AnonHugePages": 18874368
+          },
+          "vm_flags": [
+            "rd",
+            "wr",
+            "mr",
+            "mw",
+            "me",
+            "ac",
+            "sd"
+          ],
+          "category": "unnamed_anonymous"
+        },
+        {
+          "start": 139633165598720,
+          "end": 139633173200896,
+          "permissions": "rw-p",
+          "name": "",
+          "bytes": {
+            "KernelPageSize": 4096,
+            "MMUPageSize": 4096,
+            "Rss": 7602176,
+            "Anonymous": 7602176,
+            "LazyFree": 0,
+            "AnonHugePages": 6291456
+          },
+          "vm_flags": [
+            "rd",
+            "wr",
+            "mr",
+            "mw",
+            "me",
+            "ac",
+            "sd"
+          ],
+          "category": "unnamed_anonymous"
+        },
+        {
+          "start": 139633346215936,
+          "end": 139633351458816,
+          "permissions": "rw-p",
+          "name": "",
+          "bytes": {
+            "KernelPageSize": 4096,
+            "MMUPageSize": 4096,
+            "Rss": 5242880,
+            "Anonymous": 5242880,
+            "LazyFree": 0,
+            "AnonHugePages": 4194304
+          },
+          "vm_flags": [
+            "rd",
+            "wr",
+            "mr",
+            "mw",
+            "me",
+            "ac",
+            "sd"
+          ],
+          "category": "unnamed_anonymous"
+        },
+        {
+          "start": 139633351540736,
+          "end": 139633359847424,
+          "permissions": "rw-p",
+          "name": "",
+          "bytes": {
+            "KernelPageSize": 4096,
+            "MMUPageSize": 4096,
+            "Rss": 8306688,
+            "Anonymous": 8306688,
+            "LazyFree": 0,
+            "AnonHugePages": 6291456
+          },
+          "vm_flags": [
+            "rd",
+            "wr",
+            "mr",
+            "mw",
+            "me",
+            "ac",
+            "sd"
+          ],
+          "category": "unnamed_anonymous"
+        },
+        {
+          "start": 139633359880192,
+          "end": 139633364426752,
+          "permissions": "rw-p",
+          "name": "",
+          "bytes": {
+            "KernelPageSize": 4096,
+            "MMUPageSize": 4096,
+            "Rss": 4546560,
+            "Anonymous": 4546560,
+            "LazyFree": 0,
+            "AnonHugePages": 2097152
+          },
+          "vm_flags": [
+            "rd",
+            "wr",
+            "mr",
+            "mw",
+            "me",
+            "ac",
+            "sd"
+          ],
+          "category": "unnamed_anonymous"
+        },
+        {
+          "start": 139633381208064,
+          "end": 139633394446336,
+          "permissions": "rw-p",
+          "name": "",
+          "bytes": {
+            "KernelPageSize": 4096,
+            "MMUPageSize": 4096,
+            "Rss": 13213696,
+            "Anonymous": 13213696,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          },
+          "vm_flags": [
+            "rd",
+            "wr",
+            "mr",
+            "mw",
+            "me",
+            "ac",
+            "sd"
+          ],
+          "category": "unnamed_anonymous"
+        },
+        {
+          "start": 139633411227648,
+          "end": 139633413459968,
+          "permissions": "rw-p",
+          "name": "",
+          "bytes": {
+            "KernelPageSize": 4096,
+            "MMUPageSize": 4096,
+            "Rss": 2101248,
+            "Anonymous": 2101248,
+            "LazyFree": 0,
+            "AnonHugePages": 2097152
+          },
+          "vm_flags": [
+            "rd",
+            "wr",
+            "mr",
+            "mw",
+            "me",
+            "ac",
+            "sd"
+          ],
+          "category": "unnamed_anonymous"
+        },
+        {
+          "start": 139633767743488,
+          "end": 139633776132096,
+          "permissions": "rw-p",
+          "name": "",
+          "bytes": {
+            "KernelPageSize": 4096,
+            "MMUPageSize": 4096,
+            "Rss": 2097152,
+            "Anonymous": 2097152,
+            "LazyFree": 0,
+            "AnonHugePages": 2097152
+          },
+          "vm_flags": [
+            "rd",
+            "wr",
+            "mr",
+            "mw",
+            "me",
+            "nr",
+            "sd"
+          ],
+          "category": "unnamed_anonymous"
+        },
+        {
+          "start": 139634964471808,
+          "end": 139634968363008,
+          "permissions": "rw-p",
+          "name": "",
+          "bytes": {
+            "KernelPageSize": 4096,
+            "MMUPageSize": 4096,
+            "Rss": 3096576,
+            "Anonymous": 3096576,
+            "LazyFree": 0,
+            "AnonHugePages": 2097152
+          },
+          "vm_flags": [
+            "rd",
+            "wr",
+            "mr",
+            "mw",
+            "me",
+            "ac",
+            "sd"
+          ],
+          "category": "unnamed_anonymous"
+        }
+      ],
+      "snapshot_huge_bytes": 153092096
+    },
+    {
+      "build": "race",
+      "cycle": 3,
+      "mapping_record": {
+        "cycle": 3,
+        "file": "mapping-070.smaps.gz",
+        "load_points": 43,
+        "pid": 10197,
+        "read_end_monotonic_ns": 962072553283,
+        "read_start_monotonic_ns": 962069405753,
+        "retention_points": 26,
+        "sha256_raw": "8f9c3a6b4e7748c958de6db80850cfeed5bbc1f8ed6f6a412a56497d43604b64",
+        "status": "running"
+      },
+      "resource_rss": 280047616,
+      "resource_rollup": {
+        "AnonHugePages": 165675008,
+        "Anonymous": 265527296,
+        "FilePmdMapped": 0,
+        "KSM": 0,
+        "LazyFree": 0,
+        "Locked": 0,
+        "Private_Clean": 12984320,
+        "Private_Dirty": 265527296,
+        "Private_Hugetlb": 0,
+        "Pss": 278557696,
+        "Pss_Anon": 265527296,
+        "Pss_Dirty": 265527296,
+        "Pss_File": 13030400,
+        "Pss_Shmem": 0,
+        "Referenced": 280047616,
+        "Rss": 280047616,
+        "Shared_Clean": 1536000,
+        "Shared_Dirty": 0,
+        "Shared_Hugetlb": 0,
+        "ShmemPmdMapped": 0,
+        "Swap": 0,
+        "SwapPss": 0
+      },
+      "snapshot_groups": {
+        "file": {
+          "Rss": 14655488,
+          "AnonHugePages": 0
+        },
+        "unnamed_anonymous": {
+          "Rss": 195121152,
+          "AnonHugePages": 165675008
+        },
+        "other_named": {
+          "Rss": 3395584,
+          "AnonHugePages": 0
+        },
+        "go_named_heap": {
+          "Rss": 9060352,
+          "AnonHugePages": 0
+        },
+        "race_shadow": {
+          "Rss": 51527680,
+          "AnonHugePages": 0
+        },
+        "race_metadata": {
+          "Rss": 6942720,
+          "AnonHugePages": 0
+        }
+      },
+      "huge_page_vmas": [
+        {
+          "start": 18538496,
+          "end": 68321280,
+          "permissions": "rw-p",
+          "name": "",
+          "bytes": {
+            "KernelPageSize": 4096,
+            "MMUPageSize": 4096,
+            "Rss": 16896000,
+            "Anonymous": 16896000,
+            "LazyFree": 0,
+            "AnonHugePages": 16777216
+          },
+          "vm_flags": [
+            "rd",
+            "wr",
+            "mr",
+            "mw",
+            "me",
+            "ac",
+            "sd"
+          ],
+          "category": "unnamed_anonymous"
+        },
+        {
+          "start": 139632847093760,
+          "end": 139632858759168,
+          "permissions": "rw-p",
+          "name": "",
+          "bytes": {
+            "KernelPageSize": 4096,
+            "MMUPageSize": 4096,
+            "Rss": 11665408,
+            "Anonymous": 11665408,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          },
+          "vm_flags": [
+            "rd",
+            "wr",
+            "mr",
+            "mw",
+            "me",
+            "ac",
+            "sd"
+          ],
+          "category": "unnamed_anonymous"
+        },
+        {
+          "start": 139632858759168,
+          "end": 139632876589056,
+          "permissions": "rw-p",
+          "name": "",
+          "bytes": {
+            "KernelPageSize": 4096,
+            "MMUPageSize": 4096,
+            "Rss": 17698816,
+            "Anonymous": 17698816,
+            "LazyFree": 0,
+            "AnonHugePages": 16777216
+          },
+          "vm_flags": [
+            "rd",
+            "wr",
+            "mr",
+            "mw",
+            "me",
+            "ac",
+            "sd"
+          ],
+          "category": "unnamed_anonymous"
+        },
+        {
+          "start": 139632943562752,
+          "end": 139633010806784,
+          "permissions": "rw-p",
+          "name": "",
+          "bytes": {
+            "KernelPageSize": 4096,
+            "MMUPageSize": 4096,
+            "Rss": 67112960,
+            "Anonymous": 67112960,
+            "LazyFree": 0,
+            "AnonHugePages": 67108864
+          },
+          "vm_flags": [
+            "rd",
+            "wr",
+            "mr",
+            "mw",
+            "me",
+            "ac",
+            "sd"
+          ],
+          "category": "unnamed_anonymous"
+        },
+        {
+          "start": 139633144889344,
+          "end": 139633164812288,
+          "permissions": "rw-p",
+          "name": "",
+          "bytes": {
+            "KernelPageSize": 4096,
+            "MMUPageSize": 4096,
+            "Rss": 18927616,
+            "Anonymous": 18927616,
+            "LazyFree": 0,
+            "AnonHugePages": 18874368
+          },
+          "vm_flags": [
+            "rd",
+            "wr",
+            "mr",
+            "mw",
+            "me",
+            "ac",
+            "sd"
+          ],
+          "category": "unnamed_anonymous"
+        },
+        {
+          "start": 139633165598720,
+          "end": 139633173200896,
+          "permissions": "rw-p",
+          "name": "",
+          "bytes": {
+            "KernelPageSize": 4096,
+            "MMUPageSize": 4096,
+            "Rss": 7602176,
+            "Anonymous": 7602176,
+            "LazyFree": 0,
+            "AnonHugePages": 6291456
+          },
+          "vm_flags": [
+            "rd",
+            "wr",
+            "mr",
+            "mw",
+            "me",
+            "ac",
+            "sd"
+          ],
+          "category": "unnamed_anonymous"
+        },
+        {
+          "start": 139633346215936,
+          "end": 139633351458816,
+          "permissions": "rw-p",
+          "name": "",
+          "bytes": {
+            "KernelPageSize": 4096,
+            "MMUPageSize": 4096,
+            "Rss": 5242880,
+            "Anonymous": 5242880,
+            "LazyFree": 0,
+            "AnonHugePages": 4194304
+          },
+          "vm_flags": [
+            "rd",
+            "wr",
+            "mr",
+            "mw",
+            "me",
+            "ac",
+            "sd"
+          ],
+          "category": "unnamed_anonymous"
+        },
+        {
+          "start": 139633351540736,
+          "end": 139633359847424,
+          "permissions": "rw-p",
+          "name": "",
+          "bytes": {
+            "KernelPageSize": 4096,
+            "MMUPageSize": 4096,
+            "Rss": 8306688,
+            "Anonymous": 8306688,
+            "LazyFree": 0,
+            "AnonHugePages": 6291456
+          },
+          "vm_flags": [
+            "rd",
+            "wr",
+            "mr",
+            "mw",
+            "me",
+            "ac",
+            "sd"
+          ],
+          "category": "unnamed_anonymous"
+        },
+        {
+          "start": 139633359880192,
+          "end": 139633364426752,
+          "permissions": "rw-p",
+          "name": "",
+          "bytes": {
+            "KernelPageSize": 4096,
+            "MMUPageSize": 4096,
+            "Rss": 4546560,
+            "Anonymous": 4546560,
+            "LazyFree": 0,
+            "AnonHugePages": 2097152
+          },
+          "vm_flags": [
+            "rd",
+            "wr",
+            "mr",
+            "mw",
+            "me",
+            "ac",
+            "sd"
+          ],
+          "category": "unnamed_anonymous"
+        },
+        {
+          "start": 139633381208064,
+          "end": 139633394446336,
+          "permissions": "rw-p",
+          "name": "",
+          "bytes": {
+            "KernelPageSize": 4096,
+            "MMUPageSize": 4096,
+            "Rss": 13213696,
+            "Anonymous": 13213696,
+            "LazyFree": 0,
+            "AnonHugePages": 10485760
+          },
+          "vm_flags": [
+            "rd",
+            "wr",
+            "mr",
+            "mw",
+            "me",
+            "ac",
+            "sd"
+          ],
+          "category": "unnamed_anonymous"
+        },
+        {
+          "start": 139633411227648,
+          "end": 139633413459968,
+          "permissions": "rw-p",
+          "name": "",
+          "bytes": {
+            "KernelPageSize": 4096,
+            "MMUPageSize": 4096,
+            "Rss": 2101248,
+            "Anonymous": 2101248,
+            "LazyFree": 0,
+            "AnonHugePages": 2097152
+          },
+          "vm_flags": [
+            "rd",
+            "wr",
+            "mr",
+            "mw",
+            "me",
+            "ac",
+            "sd"
+          ],
+          "category": "unnamed_anonymous"
+        },
+        {
+          "start": 139633767743488,
+          "end": 139633776132096,
+          "permissions": "rw-p",
+          "name": "",
+          "bytes": {
+            "KernelPageSize": 4096,
+            "MMUPageSize": 4096,
+            "Rss": 2097152,
+            "Anonymous": 2097152,
+            "LazyFree": 0,
+            "AnonHugePages": 2097152
+          },
+          "vm_flags": [
+            "rd",
+            "wr",
+            "mr",
+            "mw",
+            "me",
+            "nr",
+            "sd"
+          ],
+          "category": "unnamed_anonymous"
+        },
+        {
+          "start": 139634964471808,
+          "end": 139634968363008,
+          "permissions": "rw-p",
+          "name": "",
+          "bytes": {
+            "KernelPageSize": 4096,
+            "MMUPageSize": 4096,
+            "Rss": 3096576,
+            "Anonymous": 3096576,
+            "LazyFree": 0,
+            "AnonHugePages": 2097152
+          },
+          "vm_flags": [
+            "rd",
+            "wr",
+            "mr",
+            "mw",
+            "me",
+            "ac",
+            "sd"
+          ],
+          "category": "unnamed_anonymous"
+        }
+      ],
+      "snapshot_huge_bytes": 165675008
+    }
+  ],
+  "scope": "First running checkpoint with complete 26 retention points, adjacent to Go-scavenge resource sample; smaps read is non-atomic. Fixed race address bands are address classification only. VMA names/bounds are not allocator callers, object identity or mapping generations. AnonHugePages is part of RSS, not additive."
+}
