@@ -28,3 +28,20 @@ PR35 独立证据复核后，仍不能把未命名匿名 RSS 全部归给 TraceP
 本地8项回归通过：含真实C多线程运行与ELF偏移核验，以及丢失/重复、未完成返回、SP/size/指针/PID/地址错误和冻结摘要守卫。实际BPF挂载、原生15秒负载及CI完整回归尚待运行。新job60分钟（各步骤上限合计50分钟，保留调度/清理余量），工具构建35分钟上限，实际调用步骤5分钟上限；失败不能跳过控制后继续长窗。
 
 参考官方说明：[bpftrace uprobe/uretprobe](https://bpftrace.org/docs/pre-release/language)、[固定tracer源码](https://github.com/bpftrace/bpftrace/tree/93c593f6dab2e930d6198cfaa52b29d19a8c0647)、[Linux uprobe文件偏移](https://www.kernel.org/doc/html/v6.12/trace/uprobetracer.html)。本轮草稿、未合并/发布，24小时验收未启动。
+
+
+## 首轮失败与 exec 边界修复（2026-10-28）
+
+执行源码54934d13c65bc84d1cda46f08007eaa570aceb87，专项CI40637846118失败；128项Python测试、冻结ZIP/ELF恢复、tracer构建均通过。原包artifact12794067481，SHA256 f92df50b4d33dd8daaad461f00c1f13b83c74af255d457c6c51fb6cf19807950，CRC复核通过。C控制原生输出32次/4线程，实际CALL和after各32条；但审计首先遇到同PID启动链降权前UID0的47对mmap，触发预期UID1001守卫。目标UID1001还记录67对mmap。无tracer报错、无超时/清理信号，进程关系验证通过。Go qualification目录不存在，即未启动。首轮必须保留失败，不能事后过滤UID0给出通过。
+
+修复只增加sched_process_exec事件并明确执行阶段：全程事件和每线程序号保留，必须唯一匹配精确目标绝对路径，目标exec的PID/TID必须是原主进程、UID必须是原预期用户；此前只接受同一主线程启动链的UID0/原用户事件，且不得有目标CALL；目标exec之后每条记录仍强制原UID，不允许再次exec、缺失边界或跨exec未完成系统调用/调用上下文。旧证据没有exec标记，修复后仍拒绝，需真实重跑。BPF实际exec边界与真实控制结果待新的CI核验。
+
+本地现在12项回归通过，新增启动root mmap完整留存、缺失/重复/错误UID目标exec、目标后错误UID和重新exec拒绝。采样阶段的身份守卫、完整序号、调用/返回/SP/系统调用配对和64MiB预算均未放宽。
+
+## 并行TLS失败（保留）
+
+TLS CI40637845981的tls=0/upstream→tunveo/explicit-ip任务失败，其余10个任务成功。原包artifact12794067707，SHA256 892650dcb1011dfca5fe45da7492c8c030485bf22b6dcc61ec28be0382d1800b，CRC复核通过。案例0151（transport3/mode2/pool64..1024）上游server日志显示SIGSEGV，栈为NodePassProject/nph2 v1.1.1的Pool.Ready→NodePass Common.SetControlConn→Server.Start；本地Tunveo客户端随后连接关闭。此证据定位了上游崩溃点，不证明完整根因或所有失败均同源，不能豁免兼容验收。
+
+PR36只新增诊断脚本/C fixture/测试/文档/workflow，未改生产引擎或TLS依赖；该事实不足以证明兼容行为无需修复。当前先保留TLS失败与原日志，后续针对上游崩溃路径单独复现；不修改/跳过矩阵，不把上游崩溃解释为TLS验收通过。
+
+TLS原包160个案例中40个失败，全部transport3：mode1/mode2各20个（两档pool、各10轮），对应40份上游server日志均含panic；其余120个通过。仍需单独确定触发根因，不能因此关闭兼容失败。exec路径最长限定小于256字节，tracer显式BPFTRACE_STRLEN=256，避免默认字符串截断导致边界误判；该环境值只影响tracer，原目标仍由原launch的env -i启动。
