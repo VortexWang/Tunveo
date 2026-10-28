@@ -1,0 +1,76 @@
+name: Qualified aligned mapping calls
+on:
+  pull_request:
+    paths:
+      - 'scripts/soak_aligned_calls.py'
+      - 'scripts/alignedcontrol/main.c'
+      - 'scripts/tests/test_aligned_calls.py'
+      - '.github/workflows/soak-aligned-calls.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  qualify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v6.0.2
+      - name: Regression and multi-thread control
+        timeout-minutes: 5
+        run: |
+          python3 -m unittest discover -s scripts/tests
+          gcc -Wall -Wextra -Werror -g -O1 -fno-optimize-sibling-calls -fno-omit-frame-pointer -no-pie -pthread -o /tmp/aligned-control scripts/alignedcontrol/main.c
+      - name: Recover byte-pinned target and already-qualified tracer
+        timeout-minutes: 5
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p artifacts/binaries
+          gh api repos/VortexWang/Tunveo/actions/artifacts/12793001666/zip > artifacts/original-race.zip
+          python3 -c "import sys; from pathlib import Path; sys.path.insert(0,'scripts'); from soak_callsite_control import extract; extract(Path('artifacts/original-race.zip'),Path('artifacts/binaries/probe'))"
+          gh api repos/VortexWang/Tunveo/actions/artifacts/12813365084/zip > "$RUNNER_TEMP/page-origin.zip"
+          python3 - <<'PY'
+          import hashlib,json,os,zipfile
+          from pathlib import Path
+          source=Path(os.environ['RUNNER_TEMP'])/'page-origin.zip'
+          digest=hashlib.sha256(source.read_bytes()).hexdigest()
+          assert digest=='616f8c4da929312196c654dda4c28dac997ba12c1eafdd4b8caa32f920bc7850'
+          with zipfile.ZipFile(source) as z:
+              assert z.testzip() is None and len(z.namelist())==len(set(z.namelist()))
+              data=z.read('binaries/tracer')
+              assert hashlib.sha256(data).hexdigest()=='fbe7876f21ca1bc80dd688bbb143dd14f7dfa95d2ba63a819bd5b844eaeda9c9'
+              dest=Path('artifacts/binaries/tracer');dest.write_bytes(data);dest.chmod(0o755)
+              for name in ('tracer-source.txt','tracer-CMakeCache.txt','bpftrace-info.txt','bpftrace-version.txt'):
+                  Path('artifacts/pr39-'+name).write_bytes(z.read(name))
+          Path('artifacts/tracer-provenance.json').write_text(json.dumps(dict(artifact=12813365084,archive_sha256=digest,tracer_sha256=hashlib.sha256(data).hexdigest(),source_revision='93c593f6dab2e930d6198cfaa52b29d19a8c0647'))+'\n')
+          PY
+          cp /tmp/aligned-control artifacts/binaries/control
+          sha256sum artifacts/binaries/* > artifacts/binary-sha256.txt
+      - name: Verify tracer runtime and instruction boundary guard
+        timeout-minutes: 5
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libbpf1 libbpfcc libclang1-18 libllvm18 binutils
+          ldd artifacts/binaries/tracer > artifacts/tracer-ldd.txt
+          if grep -q 'not found' artifacts/tracer-ldd.txt; then exit 1; fi
+          sudo artifacts/binaries/tracer --info > artifacts/bpftrace-info.txt 2>&1
+          artifacts/binaries/tracer --version > artifacts/bpftrace-version.txt
+          python3 -c "from pathlib import Path; s=Path('artifacts/bpftrace-info.txt').read_text(); assert 'bfd: yes' in s and 'unsafe probe: no' in s, s"
+          dpkg-query -W > artifacts/runtime-package-versions.txt
+          uname -a > artifacts/kernel.txt
+          for syscall_name in mmap munmap mremap madvise brk; do
+            sudo artifacts/binaries/tracer -lv "tracepoint:syscalls:sys_enter_$syscall_name" > "artifacts/layout-enter-$syscall_name.txt"
+            sudo artifacts/binaries/tracer -lv "tracepoint:syscalls:sys_exit_$syscall_name" > "artifacts/layout-exit-$syscall_name.txt"
+          done
+      - name: Known aligned control then frozen 15s and 180s retention
+        timeout-minutes: 10
+        run: |
+          python3 scripts/soak_aligned_calls.py --binary artifacts/binaries/probe --control artifacts/binaries/control --tracer artifacts/binaries/tracer --artifacts artifacts/experiment
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
+        timeout-minutes: 2
+        with:
+          name: qualified-aligned-calls
+          path: artifacts
+          retention-days: 30
