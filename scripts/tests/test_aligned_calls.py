@@ -88,4 +88,8 @@ class Aligned(unittest.TestCase):
         rows=[r for r in self.rows() if r.get('kind')!=5]
         for n,r in enumerate(rows,1):r['seq']=n
         with self.assertRaises(ValueError):self.parse(rows)
+    def test_ambiguous_mapping_rejected(self):
+        parsed=self.parse(self.rows());f=next(f for f in parsed['context_frames'] if f['kind']==4)
+        calls=copy.deepcopy(parsed['calls']);next(c for c in calls if c['id']=='42:8')['ambiguous']=True
+        with self.assertRaisesRegex(ValueError,'ambiguity'):a.validate_aligned(f,calls)
 if __name__=='__main__':unittest.main()
