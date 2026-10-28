@@ -1,0 +1,39 @@
+name: Same process repeated RSS cycles
+on:
+  pull_request:
+    paths:
+      - 'scripts/soak_cycles.py'
+      - 'scripts/tests/test_soak_cycles.py'
+      - 'scripts/soak24h/**'
+      - '.github/workflows/soak-cycles.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  cycles:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v6.0.2
+      - uses: actions/setup-go@v6.1.0
+        with:
+          go-version-file: go.mod
+      - name: Regression and clean builds
+        timeout-minutes: 8
+        run: |
+          python3 -m unittest discover -s scripts/tests
+          go test ./scripts/soak24h
+          test -z "$(git status --porcelain)"
+          go build -trimpath -o bin/ordinary ./scripts/soak24h
+          test -z "$(git status --porcelain)"
+          go build -race -trimpath -o bin/race ./scripts/soak24h
+      - name: Three cycles per process with frozen initial envelope
+        timeout-minutes: 46
+        run: python3 scripts/soak_cycles.py --ordinary bin/ordinary --race bin/race --artifacts artifacts/cycles
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
+        timeout-minutes: 3
+        with:
+          name: same-process-cycles
+          path: artifacts/cycles
+          retention-days: 30

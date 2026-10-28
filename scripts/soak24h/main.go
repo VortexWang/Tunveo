@@ -407,6 +407,7 @@ loop:
 	return failure
 }
 func main() {
+	cycles := flag.Int("diagnostic-cycles", 1, "1 or 3 same-process cycles; pilot diagnostic only")
 	diagnosticFlag := flag.Bool("goroutine-diagnostics", false, "write bounded local goroutine stacks at warmup maxima and budget excursions")
 	describe := flag.Bool("describe", false, "print build metadata without running")
 	poolMin := flag.Int("pool-min", 16, "minimum idle pool")
@@ -435,6 +436,19 @@ func main() {
 		fmt.Fprintln(os.Stderr, "invalid soak settings")
 		os.Exit(2)
 	}
+	if *cycles != 1 && (*cycles != 3 || *duration != 180*time.Second || *warmup != 12*time.Second || *interval != 5*time.Second || *postStop != 120*time.Second || !*goScavenge || *observerAck || *diagnosticFlag) {
+		fmt.Fprintln(os.Stderr, "invalid repeated diagnostic profile")
+		os.Exit(2)
+	}
+	rootFolder := *folder
+	if *cycles > 1 {
+		if e := os.Mkdir(rootFolder, 0700); e != nil { panic(e) }
+	}
+	experimentStart := time.Now()
+	failed := false
+	for cycle := 1; cycle <= *cycles; cycle++ {
+		if *cycles > 1 { *folder = filepath.Join(rootFolder, fmt.Sprintf("cycle-%d", cycle)) }
+		runCycle := func() bool {
 	if e := os.Mkdir(*folder, 0700); e != nil {
 		panic(e)
 	}
@@ -460,11 +474,23 @@ func main() {
 	if b, ok := debug.ReadBuildInfo(); ok {
 		r.Build = b.String()
 	}
+	if *cycles > 1 {
+		r.Settings["diagnostic_cycles"] = *cycles
+		r.Settings["diagnostic_cycle_index"] = cycle
+	}
 	r.Settings["post_stop_observe_seconds"] = postStop.Seconds()
 	r.Settings["diagnostic_go_scavenge"] = *goScavenge
 	r.Settings["post_stop_observer_ack"] = *observerAck
 	path := filepath.Join(*folder, "report.json")
-	checkpoint := func() error { return writeResult(path, r) }
+	mapSequence := 0
+	checkpoint := func() error {
+		if e := writeResult(path, r); e != nil { return e }
+		if *cycles > 1 {
+			mapSequence++
+			return captureCycleMapping(*folder, mapSequence, r, experimentStart)
+		}
+		return nil
+	}
 	if e := checkpoint(); e != nil {
 		panic(e)
 	}
@@ -583,7 +609,10 @@ func main() {
 		panic(e)
 	}
 	fmt.Fprintf(os.Stderr, "transport=%d mode=%d status=%s measured=%.3f error=%s\n", *transport, *mode, r.Status, r.Measured, r.Error)
-	if r.Status != "passed" {
-		os.Exit(1)
+	return r.Status == "passed"
+		}
+		if !runCycle() { failed = true; break }
 	}
+	if failed { os.Exit(1) }
 }
+

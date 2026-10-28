@@ -1,0 +1,119 @@
+{
+  "rows": [
+    {
+      "build": "ordinary",
+      "cycle": 1,
+      "stage": "poststop_go_scavenge",
+      "rss_bytes": 23859200,
+      "heap_alloc": 649800,
+      "heap_inuse": 1777664,
+      "heap_released": 46899200,
+      "goroutines": 2,
+      "fd": 6,
+      "rollup_bytes": {
+        "Rss": 23859200,
+        "Anonymous": 12587008,
+        "LazyFree": 0,
+        "AnonHugePages": 2097152,
+        "Pss_File": 9782272,
+        "Private_Dirty": 12587008
+      }
+    },
+    {
+      "build": "ordinary",
+      "cycle": 2,
+      "stage": "poststop_go_scavenge",
+      "rss_bytes": 41287680,
+      "heap_alloc": 659144,
+      "heap_inuse": 1785856,
+      "heap_released": 44826624,
+      "goroutines": 2,
+      "fd": 6,
+      "rollup_bytes": {
+        "Rss": 41287680,
+        "Anonymous": 30015488,
+        "LazyFree": 0,
+        "AnonHugePages": 20971520,
+        "Pss_File": 9782272,
+        "Private_Dirty": 30015488
+      }
+    },
+    {
+      "build": "ordinary",
+      "cycle": 3,
+      "stage": "poststop_go_scavenge",
+      "rss_bytes": 52457472,
+      "heap_alloc": 667488,
+      "heap_inuse": 1802240,
+      "heap_released": 46374912,
+      "goroutines": 2,
+      "fd": 6,
+      "rollup_bytes": {
+        "Rss": 52457472,
+        "Anonymous": 41185280,
+        "LazyFree": 0,
+        "AnonHugePages": 33554432,
+        "Pss_File": 9782272,
+        "Private_Dirty": 41185280
+      }
+    },
+    {
+      "build": "race",
+      "cycle": 1,
+      "stage": "poststop_go_scavenge",
+      "rss_bytes": 168960000,
+      "heap_alloc": 654232,
+      "heap_inuse": 1769472,
+      "heap_released": 54452224,
+      "goroutines": 2,
+      "fd": 6,
+      "rollup_bytes": {
+        "Rss": 168960000,
+        "Anonymous": 154435584,
+        "LazyFree": 0,
+        "AnonHugePages": 54525952,
+        "Pss_File": 13034496,
+        "Private_Dirty": 154435584
+      }
+    },
+    {
+      "build": "race",
+      "cycle": 2,
+      "stage": "poststop_go_scavenge",
+      "rss_bytes": 256167936,
+      "heap_alloc": 655848,
+      "heap_inuse": 1785856,
+      "heap_released": 59072512,
+      "goroutines": 2,
+      "fd": 6,
+      "rollup_bytes": {
+        "Rss": 256167936,
+        "Anonymous": 241647616,
+        "LazyFree": 0,
+        "AnonHugePages": 153092096,
+        "Pss_File": 13030400,
+        "Private_Dirty": 241647616
+      }
+    },
+    {
+      "build": "race",
+      "cycle": 3,
+      "stage": "poststop_go_scavenge",
+      "rss_bytes": 280047616,
+      "heap_alloc": 659752,
+      "heap_inuse": 1794048,
+      "heap_released": 58195968,
+      "goroutines": 2,
+      "fd": 6,
+      "rollup_bytes": {
+        "Rss": 280047616,
+        "Anonymous": 265527296,
+        "LazyFree": 0,
+        "AnonHugePages": 165675008,
+        "Pss_File": 13030400,
+        "Private_Dirty": 265527296
+      }
+    }
+  ],
+  "scope": "AnonHugePages is part of anonymous RSS, not additive. Correlation is not causal attribution. GC/scavenge/smaps diagnostics may affect residency."
+}
