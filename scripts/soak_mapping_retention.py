@@ -54,8 +54,9 @@ def acknowledge(folder, report, records):
 
 
 class Collector:
-    def __init__(self, folder, binary):
+    def __init__(self, folder, binary, *, acknowledger=None):
         self.folder = folder
+        self.acknowledger = acknowledge if acknowledger is None else acknowledger
         self.binary = binary.resolve()
         self.active = ledger.Collector(folder, binary)
         self.records = []
@@ -113,7 +114,7 @@ class Collector:
         context.dump(self.folder/'retention-snapshots.json', dict(format_version=1,
             clock='CLOCK_MONOTONIC', records=self.records))
         self.seen.add(key)
-        acknowledge(self.folder, newer, self.records)
+        self.acknowledger(self.folder, newer, self.records)
 
 
 def audit_retention(folder, parsed, report):
