@@ -1,0 +1,28 @@
+{
+  "audit_status": "independently_replayed_rejection",
+  "execution_source": "11c2da59d06e11a6d5d037f5e7d79ed3f9710f8f",
+  "source_blobs": {
+    "audit_soak_os_memory.py": "0c5fbff721f98f94fb75f431da968679908d1171",
+    "audit_soak_retention.py": "3b06a71491258e62326f4d3d7f4dc4bdae10ca0b",
+    "soak_call_lifecycle.py": "0847600f9edce17e44de47e384a0992d54167828",
+    "soak_callsite_control.py": "ab76a87a1ebe6281b0372c6614f6a70aad8f7660",
+    "soak_mapping_ledger.py": "610a54d636767bf92752bd165b60faafd961c7be",
+    "soak_mapping_retention.py": "ae88355fbc1363aa3f60c45cb9e773544a07bf70",
+    "soak_mappings.py": "708301538c24476e4d244efb16cc5027c193efd5",
+    "soak_ret_context.py": "eac5605150e51b9aec336277088e3981616ac28e",
+    "verify_soak.py": "e0c0321054c8be6510f190b33d07966aad8635aa",
+    "soak_aligned_calls.py": "01a7507f8c9cc97c23ed8f24df2e4e94e95514c9"
+  },
+  "archive_sha256": "40838f1a377b66ad4ffe4f1c420262b4d1e6e01be5341b6a8a1a0543383731f1",
+  "qualifies_24h": false,
+  "stages": [
+    {
+      "stage": "control",
+      "status": "rejected",
+      "error": "aligned syscall coverage/ambiguity/failure"
+    }
+  ],
+  "original_status": "failed",
+  "original_error": "ValueError: aligned syscall coverage/ambiguity/failure",
+  "limits": "Control ambiguity failure reproduced from original bytes. No Go load or RSS result exists in this run."
+}

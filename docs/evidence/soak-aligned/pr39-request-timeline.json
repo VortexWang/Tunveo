@@ -1,0 +1,45 @@
+{
+  "artifact": 12813365084,
+  "archive_sha256": "616f8c4da929312196c654dda4c28dac997ba12c1eafdd4b8caa32f920bc7850",
+  "request_origin": "unresolved in PR39; new-run AP32 qualification must not be applied retroactively",
+  "scope": "Stable historical virtual generation and present status counts, never RSS/PSS or physical exclusive bytes",
+  "selected": [
+    {
+      "key": [
+        "warmup",
+        8.004618305
+      ],
+      "mmap_requests_completed_before_page_capture": 9,
+      "surviving_generations": 9,
+      "surviving_virtual_bytes": 9437184,
+      "pages": 2304,
+      "present_first": 1019,
+      "present_second": 1019
+    },
+    {
+      "key": [
+        "measured",
+        182.008128402
+      ],
+      "mmap_requests_completed_before_page_capture": 31,
+      "surviving_generations": 31,
+      "surviving_virtual_bytes": 32505856,
+      "pages": 7936,
+      "present_first": 5117,
+      "present_second": 5117
+    },
+    {
+      "key": [
+        "poststop_go_scavenge",
+        120.124549527
+      ],
+      "mmap_requests_completed_before_page_capture": 32,
+      "surviving_generations": 32,
+      "surviving_virtual_bytes": 33554432,
+      "pages": 8192,
+      "present_first": 5410,
+      "present_second": 5410
+    }
+  ],
+  "total_2MiB_requests": 32
+}
