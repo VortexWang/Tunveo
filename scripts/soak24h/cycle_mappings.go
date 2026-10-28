@@ -7,6 +7,7 @@ import (
  "fmt"
  "os"
  "path/filepath"
+ "strings"
  "time"
 )
 
@@ -24,6 +25,11 @@ func captureCycleMapping(folder string, sequence int, r *result, origin time.Tim
  if closeErr := f.Close(); err == nil { err = closeErr }
  if err != nil { return err }
  record := map[string]any{"file":name,"sha256_raw":fmt.Sprintf("%x",sha256.Sum256(raw)),"pid":os.Getpid(),"cycle":r.Settings["diagnostic_cycle_index"],"load_points":len(r.Points),"retention_points":len(r.Retention),"status":r.Status,"read_start_monotonic_ns":start,"read_end_monotonic_ns":end}
+ status, err := os.ReadFile("/proc/self/status"); if err != nil { return err }
+ thp := ""
+ for _, line := range strings.Split(string(status), "\n") { if strings.HasPrefix(line,"THP_enabled:") { thp = strings.TrimSpace(strings.TrimPrefix(line,"THP_enabled:")) } }
+ record["thp_enabled"] = thp
+ record["godebug"] = os.Getenv("GODEBUG")
  index, err := os.OpenFile(filepath.Join(folder,"mapping-index.jsonl"),os.O_CREATE|os.O_WRONLY|os.O_APPEND,0600); if err != nil { return err }
  err = json.NewEncoder(index).Encode(record)
  if closeErr := index.Close(); err == nil { err = closeErr }
