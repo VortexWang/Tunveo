@@ -22,3 +22,16 @@ func TestCycleMappingIndex(t *testing.T) {
  }
  if s.Err()!=nil || n!=2 { t.Fatalf("records=%d err=%v",n,s.Err()) }
 }
+
+func TestMetadataOnlyOmitsFullMappingFiles(t *testing.T) {
+ folder:=t.TempDir()
+ r:=&result{Status:"running",Settings:map[string]any{"diagnostic_cycle_index":1,"diagnostic_mapping_policy":"metadata_only"}}
+ if err:=captureCycleMapping(folder,1,r,time.Now());err!=nil { t.Fatal(err) }
+ raw,err:=os.ReadFile(filepath.Join(folder,"mapping-index.jsonl"));if err!=nil {t.Fatal(err)}
+ var record map[string]any;if err:=json.Unmarshal(raw,&record);err!=nil {t.Fatal(err)}
+ if record["mapping_policy"]!="metadata_only" || record["pid"].(float64)!=float64(os.Getpid()) { t.Fatal(record) }
+ if _,ok:=record["file"];ok {t.Fatal("metadata-only falsely advertises raw mapping")}
+ if _,ok:=record["sha256_raw"];ok {t.Fatal("metadata-only falsely advertises hash")}
+ files,err:=filepath.Glob(filepath.Join(folder,"mapping-*.smaps.gz"));if err!=nil || len(files)!=0 {t.Fatal(files,err)}
+ if _,ok:=record["thp_enabled"];!ok {t.Fatal("missing target THP status")}
+}
