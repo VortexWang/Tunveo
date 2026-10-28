@@ -1,0 +1,72 @@
+name: Frozen ELF direct-call qualification
+on:
+  pull_request:
+    paths:
+      - 'scripts/soak_callsite_control.py'
+      - 'scripts/callsitecontrol/main.c'
+      - 'scripts/tests/test_callsite_control.py'
+      - '.github/workflows/soak-callsite-control.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v6.0.2
+        with:
+          fetch-depth: 0
+      - name: Regression and native control build
+        timeout-minutes: 5
+        run: |
+          python3 -m unittest discover -s scripts/tests
+          gcc -Wall -Wextra -Werror -g -O1 -fno-optimize-sibling-calls -fno-omit-frame-pointer -no-pie -pthread -o /tmp/callsite-control scripts/callsitecontrol/main.c
+      - name: Recover byte-pinned PR35 ELF
+        timeout-minutes: 3
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p artifacts/binaries
+          gh api repos/VortexWang/Tunveo/actions/artifacts/12793001666/zip > artifacts/original-race.zip
+          python3 -c "import sys; from pathlib import Path; sys.path.insert(0,'scripts'); from soak_callsite_control import extract; extract(Path('artifacts/original-race.zip'),Path('artifacts/binaries/probe'))"
+          cp /tmp/callsite-control artifacts/binaries/control
+          sha256sum artifacts/binaries/* > artifacts/binary-sha256.txt
+      - name: Build pinned tracer with instruction-boundary checking and unsafe disabled
+        timeout-minutes: 35
+        run: |
+          mkdir -p artifacts
+          sudo apt-get update
+          sudo apt-get install -y cmake ninja-build bison flex g++ zlib1g-dev libelf-dev libbpf-dev libbpfcc-dev libcereal-dev libdw-dev libfl-dev binutils-dev libiberty-dev libzstd-dev llvm-18-dev libclang-18-dev libclang-cpp18-dev clang-18
+          tracer_source="$RUNNER_TEMP/bpftrace-source"
+          git init "$tracer_source"
+          git -C "$tracer_source" remote add origin https://github.com/bpftrace/bpftrace.git
+          git -C "$tracer_source" fetch --depth=1 origin 93c593f6dab2e930d6198cfaa52b29d19a8c0647
+          git -C "$tracer_source" checkout --detach FETCH_HEAD
+          git -C "$tracer_source" rev-parse HEAD > artifacts/tracer-source.txt
+          test "$(cat artifacts/tracer-source.txt)" = 93c593f6dab2e930d6198cfaa52b29d19a8c0647
+          cmake -S "$tracer_source" -B "$tracer_source/build" -G Ninja -DBUILD_TESTING=OFF -DENABLE_MAN=OFF -DENABLE_SKB_OUTPUT=OFF -DALLOW_UNSAFE_PROBE=OFF -DLLVM_DIR=/usr/lib/llvm-18/lib/cmake/llvm -DClang_DIR=/usr/lib/llvm-18/lib/cmake/clang -DCMAKE_BUILD_TYPE=Release '-DCMAKE_CXX_FLAGS_RELEASE=-O1 -DNDEBUG' > artifacts/tracer-configure.log 2>&1
+          cmake --build "$tracer_source/build" --parallel 2 --target bpftrace > artifacts/tracer-build.log 2>&1
+          cp "$tracer_source/build/CMakeCache.txt" artifacts/tracer-CMakeCache.txt
+          tracer_binary="$tracer_source/build/src/bpftrace"
+          sudo "$tracer_binary" --info > artifacts/bpftrace-info.txt 2>&1
+          "$tracer_binary" --version > artifacts/bpftrace-version.txt
+          sha256sum "$tracer_binary" > artifacts/tracer-binary.sha256
+          python3 -c "from pathlib import Path; s=Path('artifacts/bpftrace-info.txt').read_text(); assert 'bfd: yes' in s and 'unsafe probe: no' in s, s"
+          dpkg-query -W > artifacts/build-package-versions.txt
+          uname -a > artifacts/kernel.txt
+          cat /proc/sys/kernel/perf_event_paranoid > artifacts/perf-event-paranoid.txt
+          cat /proc/sys/kernel/unprivileged_bpf_disabled > artifacts/unprivileged-bpf-disabled.txt
+      - name: Known C calls before bounded real TracePart call control
+        timeout-minutes: 5
+        run: |
+          python3 scripts/soak_callsite_control.py --binary artifacts/binaries/probe --control artifacts/binaries/control --tracer "$RUNNER_TEMP/bpftrace-source/build/src/bpftrace" --artifacts artifacts/experiment
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
+        timeout-minutes: 2
+        with:
+          name: frozen-callsite-control
+          path: artifacts
+          retention-days: 30
+
