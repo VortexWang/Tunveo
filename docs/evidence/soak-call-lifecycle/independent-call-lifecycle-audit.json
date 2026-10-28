@@ -1,0 +1,727 @@
+{
+  "audit_status": "independently_replayed",
+  "execution_source": "1ec8bfe38f53312d9349b7698f49c8eecb2cca91",
+  "archive_sha256": "4871869f855e1237453e3795260fb0525f665599fff1c55738614210510ad5b3",
+  "source_blobs": {
+    "audit_soak_os_memory.py": "0c5fbff721f98f94fb75f431da968679908d1171",
+    "audit_soak_retention.py": "3b06a71491258e62326f4d3d7f4dc4bdae10ca0b",
+    "soak_call_lifecycle.py": "0847600f9edce17e44de47e384a0992d54167828",
+    "soak_callsite_control.py": "ab76a87a1ebe6281b0372c6614f6a70aad8f7660",
+    "soak_mapping_ledger.py": "610a54d636767bf92752bd165b60faafd961c7be",
+    "soak_mapping_retention.py": "1796b76f75a35c0b6245350244e260efae53345b",
+    "soak_mappings.py": "708301538c24476e4d244efb16cc5027c193efd5",
+    "soak_ret_context.py": "eac5605150e51b9aec336277088e3981616ac28e",
+    "verify_soak.py": "e0c0321054c8be6510f190b33d07966aad8635aa"
+  },
+  "native_elf_sha256": "2b332b9b27afeecca123e2d3fb5819c31bd787406d1393b1335e649a78eec391",
+  "tracer_elf_sha256": "fbe7876f21ca1bc80dd688bbb143dd14f7dfa95d2ba63a819bd5b844eaeda9c9",
+  "original_status": "failed",
+  "stages": [
+    {
+      "stage": "control",
+      "native_pid": 3734,
+      "events": 216,
+      "call_count": 1,
+      "cumulative_virtual_requested": 4194304,
+      "memory_calls": {
+        "brk": 3,
+        "mmap": 12,
+        "munmap": 5,
+        "madvise": 2,
+        "mremap": 1
+      },
+      "ambiguous_calls": 0,
+      "snapshots": 8,
+      "selected": [],
+      "errors": []
+    },
+    {
+      "stage": "15s",
+      "native_pid": 3756,
+      "events": 2508,
+      "call_count": 278,
+      "cumulative_virtual_requested": 36438016,
+      "memory_calls": {
+        "brk": 3,
+        "mmap": 479,
+        "munmap": 30,
+        "madvise": 380
+      },
+      "ambiguous_calls": 0,
+      "snapshots": 9,
+      "selected": [
+        {
+          "key": [
+            "measured",
+            22.007051524
+          ],
+          "rss": 171499520,
+          "heap_alloc": 25527696,
+          "groups_rss_bytes": {
+            "file_mapping": 15310848,
+            "unresolved": 94912512,
+            "kernel_named": 36864,
+            "[anon: Go: heap]": 46137344,
+            "[anon: Go: heap reservation]": 0,
+            "[anon: Go: immortal metadata]": 1855488,
+            "validated_tracepart_call": 12951552,
+            "[anon: Go: profiler hash buckets]": 172032,
+            "[anon: Go: heap index]": 4096,
+            "[anon: Go: scavenge index]": 4096,
+            "[anon: Go: page summary]": 0,
+            "[anon: Go: page alloc]": 20480,
+            "[anon: Go: gc bits]": 196608,
+            "[anon: Go: GC span queue]": 16384,
+            "[anon: Go: page alloc index]": 4096,
+            "[anon: Go: allspans array]": 12288,
+            "[anon: Go: getrandom states]": 4096
+          },
+          "unresolved_by_address_category": {
+            "other_anonymous": 44941312,
+            "race_shadow": 48926720,
+            "race_metadata": 1044480
+          },
+          "validated_virtual_mapped_bytes": 36438016,
+          "validated_path_vmas": [
+            {
+              "start": 140160093761536,
+              "end": 140160108834816,
+              "rss": 12546048,
+              "address_category": "other_anonymous",
+              "request_path": "validated_tracepart_call",
+              "generations": [
+                "3756:372",
+                "3756:376",
+                "3756:384",
+                "3756:388",
+                "3756:392",
+                "3756:396",
+                "3756:400",
+                "3756:404",
+                "3756:408",
+                "3756:412",
+                "3756:416",
+                "3756:420",
+                "3756:424",
+                "3756:428",
+                "3756:432",
+                "3756:436",
+                "3756:440",
+                "3756:444",
+                "3756:448",
+                "3756:452",
+                "3761:102",
+                "3761:106",
+                "3761:110",
+                "3761:114",
+                "3761:118",
+                "3761:122",
+                "3761:126",
+                "3761:130",
+                "3761:134",
+                "3761:138",
+                "3761:142",
+                "3761:146",
+                "3761:150",
+                "3761:154",
+                "3761:158",
+                "3761:162",
+                "3761:166",
+                "3761:170",
+                "3761:174",
+                "3761:178",
+                "3761:182",
+                "3761:186",
+                "3761:190",
+                "3761:194",
+                "3761:198",
+                "3761:202",
+                "3761:54",
+                "3761:58",
+                "3761:62",
+                "3761:66",
+                "3761:70",
+                "3761:74",
+                "3761:78",
+                "3761:82",
+                "3761:86",
+                "3761:90",
+                "3761:94",
+                "3761:98",
+                "3762:110",
+                "3762:114",
+                "3762:118",
+                "3762:122",
+                "3762:126",
+                "3762:130",
+                "3762:134",
+                "3762:138",
+                "3762:142",
+                "3762:34",
+                "3762:38",
+                "3762:42",
+                "3762:46",
+                "3762:50",
+                "3762:54",
+                "3762:58",
+                "3762:62",
+                "3762:66",
+                "3762:70",
+                "3762:74",
+                "3762:78",
+                "3762:82",
+                "3762:86",
+                "3762:90",
+                "3762:94",
+                "3762:98",
+                "3763:32",
+                "3763:36",
+                "3763:48",
+                "3763:52",
+                "3763:56",
+                "3763:60",
+                "3763:64",
+                "3763:76",
+                "3763:82",
+                "3763:86",
+                "3763:94",
+                "3764:120",
+                "3764:124",
+                "3764:128",
+                "3764:132",
+                "3764:136",
+                "3764:34",
+                "3764:38",
+                "3764:42",
+                "3764:46",
+                "3764:50",
+                "3764:54",
+                "3764:58",
+                "3764:62",
+                "3764:66",
+                "3764:70",
+                "3764:74",
+                "3764:78",
+                "3764:82",
+                "3764:86",
+                "3764:90"
+              ],
+              "overlapping_operation": false
+            },
+            {
+              "start": 140160222097408,
+              "end": 140160222228480,
+              "rss": 4096,
+              "address_category": "other_anonymous",
+              "request_path": "validated_tracepart_call",
+              "generations": [
+                "3764:18"
+              ],
+              "overlapping_operation": false
+            },
+            {
+              "start": 140161426956288,
+              "end": 140161427349504,
+              "rss": 266240,
+              "address_category": "other_anonymous",
+              "request_path": "validated_tracepart_call",
+              "generations": [
+                "3756:316",
+                "3756:324",
+                "3762:10"
+              ],
+              "overlapping_operation": false
+            },
+            {
+              "start": 140161435435008,
+              "end": 140161435566080,
+              "rss": 131072,
+              "address_category": "other_anonymous",
+              "request_path": "validated_tracepart_call",
+              "generations": [
+                "3756:304"
+              ],
+              "overlapping_operation": false
+            },
+            {
+              "start": 140161435828224,
+              "end": 140161435959296,
+              "rss": 4096,
+              "address_category": "other_anonymous",
+              "request_path": "validated_tracepart_call",
+              "generations": [
+                "3756:296"
+              ],
+              "overlapping_operation": false
+            }
+          ]
+        }
+      ],
+      "errors": [],
+      "business_events": 269,
+      "rss": {
+        "baseline": 125607936,
+        "peak": 171499520,
+        "delta": 45891584,
+        "violations": 0,
+        "measured_points": 3
+      },
+      "all_active": {
+        "goroutines": {
+          "baseline": 77,
+          "peak": 81,
+          "allowance": 32,
+          "violations": 0
+        },
+        "fd": {
+          "baseline": 21,
+          "peak": 24,
+          "allowance": 16,
+          "violations": 0
+        },
+        "heap_alloc": {
+          "baseline": 25569176,
+          "peak": 26547496,
+          "allowance": 33554432,
+          "violations": 0
+        },
+        "rss": {
+          "baseline": 125607936,
+          "peak": 171499520,
+          "allowance": 67108864,
+          "violations": 0
+        }
+      },
+      "return": {
+        "goroutines": {
+          "baseline": 4,
+          "after_stop": 5,
+          "allowance": 4,
+          "passed": true
+        },
+        "fd": {
+          "baseline": 12,
+          "after_stop": 12,
+          "allowance": 2,
+          "passed": true
+        },
+        "heap_alloc": {
+          "baseline": 255880,
+          "after_stop": 2808016,
+          "allowance": 8388608,
+          "passed": true
+        }
+      }
+    },
+    {
+      "stage": "180s",
+      "native_pid": 3792,
+      "events": 6914,
+      "call_count": 301,
+      "cumulative_virtual_requested": 39452672,
+      "memory_calls": {
+        "brk": 3,
+        "mmap": 1094,
+        "munmap": 50,
+        "madvise": 1925
+      },
+      "ambiguous_calls": 0,
+      "snapshots": 68,
+      "selected": [
+        {
+          "key": [
+            "measured",
+            187.007153551
+          ],
+          "rss": 205373440,
+          "heap_alloc": 26665224,
+          "groups_rss_bytes": {
+            "file_mapping": 15310848,
+            "unresolved": 135667712,
+            "kernel_named": 36864,
+            "[anon: Go: heap]": 49364992,
+            "[anon: Go: heap reservation]": 0,
+            "[anon: Go: immortal metadata]": 1990656,
+            "validated_tracepart_call": 2195456,
+            "[anon: Go: profiler hash buckets]": 528384,
+            "[anon: Go: heap index]": 4096,
+            "[anon: Go: scavenge index]": 4096,
+            "[anon: Go: page summary]": 0,
+            "[anon: Go: page alloc]": 20480,
+            "[anon: Go: gc bits]": 196608,
+            "[anon: Go: page alloc index]": 4096,
+            "[anon: Go: GC span queue]": 32768,
+            "[anon: Go: allspans array]": 12288,
+            "[anon: Go: getrandom states]": 4096
+          },
+          "unresolved_by_address_category": {
+            "other_anonymous": 80269312,
+            "race_shadow": 52158464,
+            "race_metadata": 3239936
+          },
+          "validated_virtual_mapped_bytes": 39452672,
+          "validated_path_vmas": [
+            {
+              "start": 139802058543104,
+              "end": 139802060378112,
+              "rss": 1671168,
+              "address_category": "other_anonymous",
+              "request_path": "validated_tracepart_call",
+              "generations": [
+                "3792:362",
+                "3797:34",
+                "3797:38",
+                "3797:42",
+                "3797:46",
+                "3798:30",
+                "3798:34",
+                "3799:18",
+                "3799:22",
+                "3799:26",
+                "3799:30",
+                "3799:34",
+                "3799:38",
+                "3800:26"
+              ],
+              "overlapping_operation": false
+            },
+            {
+              "start": 139803284078592,
+              "end": 139803284471808,
+              "rss": 393216,
+              "address_category": "other_anonymous",
+              "request_path": "validated_tracepart_call",
+              "generations": [
+                "3792:316",
+                "3792:324",
+                "3798:12"
+              ],
+              "overlapping_operation": false
+            },
+            {
+              "start": 139803286306816,
+              "end": 139803286437888,
+              "rss": 131072,
+              "address_category": "other_anonymous",
+              "request_path": "validated_tracepart_call",
+              "generations": [
+                "3792:304"
+              ],
+              "overlapping_operation": false
+            }
+          ]
+        },
+        {
+          "key": [
+            "poststop_gc",
+            0.002970583
+          ],
+          "rss": 177250304,
+          "heap_alloc": 714704,
+          "groups_rss_bytes": {
+            "file_mapping": 15310848,
+            "unresolved": 141914112,
+            "kernel_named": 36864,
+            "[anon: Go: heap]": 5726208,
+            "[anon: Go: heap reservation]": 0,
+            "[anon: Go: immortal metadata]": 1998848,
+            "validated_tracepart_call": 2195456,
+            "[anon: Go: profiler hash buckets]": 552960,
+            "[anon: Go: heap index]": 4096,
+            "[anon: Go: scavenge index]": 4096,
+            "[anon: Go: page summary]": 0,
+            "[anon: Go: page alloc]": 20480,
+            "[anon: Go: gc bits]": 196608,
+            "[anon: Go: page alloc index]": 4096,
+            "[anon: Go: GC span queue]": 32768,
+            "[anon: Go: allspans array]": 12288,
+            "[anon: Go: getrandom states]": 4096
+          },
+          "unresolved_by_address_category": {
+            "other_anonymous": 81338368,
+            "race_shadow": 57262080,
+            "race_metadata": 3313664
+          },
+          "validated_virtual_mapped_bytes": 39452672,
+          "validated_path_vmas": [
+            {
+              "start": 139802058543104,
+              "end": 139802060378112,
+              "rss": 1671168,
+              "address_category": "other_anonymous",
+              "request_path": "validated_tracepart_call",
+              "generations": [
+                "3792:362",
+                "3797:34",
+                "3797:38",
+                "3797:42",
+                "3797:46",
+                "3798:30",
+                "3798:34",
+                "3799:18",
+                "3799:22",
+                "3799:26",
+                "3799:30",
+                "3799:34",
+                "3799:38",
+                "3800:26"
+              ],
+              "overlapping_operation": false
+            },
+            {
+              "start": 139803284078592,
+              "end": 139803284471808,
+              "rss": 393216,
+              "address_category": "other_anonymous",
+              "request_path": "validated_tracepart_call",
+              "generations": [
+                "3792:316",
+                "3792:324",
+                "3798:12"
+              ],
+              "overlapping_operation": false
+            },
+            {
+              "start": 139803286306816,
+              "end": 139803286437888,
+              "rss": 131072,
+              "address_category": "other_anonymous",
+              "request_path": "validated_tracepart_call",
+              "generations": [
+                "3792:304"
+              ],
+              "overlapping_operation": false
+            }
+          ]
+        },
+        {
+          "key": [
+            "poststop_gc",
+            120.004743153
+          ],
+          "rss": 167624704,
+          "heap_alloc": 808760,
+          "groups_rss_bytes": {
+            "file_mapping": 15310848,
+            "unresolved": 142233600,
+            "kernel_named": 36864,
+            "[anon: Go: heap]": 4898816,
+            "[anon: Go: heap reservation]": 0,
+            "[anon: Go: immortal metadata]": 2019328,
+            "validated_tracepart_call": 2359296,
+            "[anon: Go: profiler hash buckets]": 602112,
+            "[anon: Go: heap index]": 4096,
+            "[anon: Go: scavenge index]": 4096,
+            "[anon: Go: page summary]": 0,
+            "[anon: Go: page alloc]": 20480,
+            "[anon: Go: gc bits]": 196608,
+            "[anon: Go: page alloc index]": 4096,
+            "[anon: Go: GC span queue]": 32768,
+            "[anon: Go: allspans array]": 12288,
+            "[anon: Go: getrandom states]": 4096
+          },
+          "unresolved_by_address_category": {
+            "other_anonymous": 81481728,
+            "race_shadow": 57438208,
+            "race_metadata": 3313664
+          },
+          "validated_virtual_mapped_bytes": 39452672,
+          "validated_path_vmas": [
+            {
+              "start": 139802058543104,
+              "end": 139802060378112,
+              "rss": 1835008,
+              "address_category": "other_anonymous",
+              "request_path": "validated_tracepart_call",
+              "generations": [
+                "3792:362",
+                "3797:34",
+                "3797:38",
+                "3797:42",
+                "3797:46",
+                "3798:30",
+                "3798:34",
+                "3799:18",
+                "3799:22",
+                "3799:26",
+                "3799:30",
+                "3799:34",
+                "3799:38",
+                "3800:26"
+              ],
+              "overlapping_operation": false
+            },
+            {
+              "start": 139803284078592,
+              "end": 139803284471808,
+              "rss": 393216,
+              "address_category": "other_anonymous",
+              "request_path": "validated_tracepart_call",
+              "generations": [
+                "3792:316",
+                "3792:324",
+                "3798:12"
+              ],
+              "overlapping_operation": false
+            },
+            {
+              "start": 139803286306816,
+              "end": 139803286437888,
+              "rss": 131072,
+              "address_category": "other_anonymous",
+              "request_path": "validated_tracepart_call",
+              "generations": [
+                "3792:304"
+              ],
+              "overlapping_operation": false
+            }
+          ]
+        },
+        {
+          "key": [
+            "poststop_go_scavenge",
+            120.046988419
+          ],
+          "rss": 166518784,
+          "heap_alloc": 637672,
+          "groups_rss_bytes": {
+            "file_mapping": 15310848,
+            "unresolved": 142090240,
+            "kernel_named": 36864,
+            "[anon: Go: heap]": 4325376,
+            "[anon: Go: heap reservation]": 0,
+            "[anon: Go: immortal metadata]": 2019328,
+            "validated_tracepart_call": 2359296,
+            "[anon: Go: profiler hash buckets]": 610304,
+            "[anon: Go: heap index]": 4096,
+            "[anon: Go: scavenge index]": 4096,
+            "[anon: Go: page summary]": 0,
+            "[anon: Go: page alloc]": 20480,
+            "[anon: Go: gc bits]": 196608,
+            "[anon: Go: page alloc index]": 4096,
+            "[anon: Go: GC span queue]": 32768,
+            "[anon: Go: allspans array]": 12288,
+            "[anon: Go: getrandom states]": 4096
+          },
+          "unresolved_by_address_category": {
+            "other_anonymous": 81481728,
+            "race_shadow": 57290752,
+            "race_metadata": 3317760
+          },
+          "validated_virtual_mapped_bytes": 39452672,
+          "validated_path_vmas": [
+            {
+              "start": 139802058543104,
+              "end": 139802060378112,
+              "rss": 1835008,
+              "address_category": "other_anonymous",
+              "request_path": "validated_tracepart_call",
+              "generations": [
+                "3792:362",
+                "3797:34",
+                "3797:38",
+                "3797:42",
+                "3797:46",
+                "3798:30",
+                "3798:34",
+                "3799:18",
+                "3799:22",
+                "3799:26",
+                "3799:30",
+                "3799:34",
+                "3799:38",
+                "3800:26"
+              ],
+              "overlapping_operation": false
+            },
+            {
+              "start": 139803284078592,
+              "end": 139803284471808,
+              "rss": 393216,
+              "address_category": "other_anonymous",
+              "request_path": "validated_tracepart_call",
+              "generations": [
+                "3792:316",
+                "3792:324",
+                "3798:12"
+              ],
+              "overlapping_operation": false
+            },
+            {
+              "start": 139803286306816,
+              "end": 139803286437888,
+              "rss": 131072,
+              "address_category": "other_anonymous",
+              "request_path": "validated_tracepart_call",
+              "generations": [
+                "3792:304"
+              ],
+              "overlapping_operation": false
+            }
+          ]
+        }
+      ],
+      "errors": [
+        "active resource bound: rss"
+      ],
+      "business_events": 1919,
+      "rss": {
+        "baseline": 129204224,
+        "peak": 205373440,
+        "delta": 76169216,
+        "violations": 16,
+        "measured_points": 36
+      },
+      "all_active": {
+        "goroutines": {
+          "baseline": 77,
+          "peak": 81,
+          "allowance": 32,
+          "violations": 0
+        },
+        "fd": {
+          "baseline": 21,
+          "peak": 21,
+          "allowance": 16,
+          "violations": 0
+        },
+        "heap_alloc": {
+          "baseline": 26464176,
+          "peak": 27198120,
+          "allowance": 33554432,
+          "violations": 0
+        },
+        "rss": {
+          "baseline": 129204224,
+          "peak": 205373440,
+          "allowance": 67108864,
+          "violations": 16
+        }
+      },
+      "return": {
+        "goroutines": {
+          "baseline": 4,
+          "after_stop": 5,
+          "allowance": 4,
+          "passed": true
+        },
+        "fd": {
+          "baseline": 12,
+          "after_stop": 12,
+          "allowance": 2,
+          "passed": true
+        },
+        "heap_alloc": {
+          "baseline": 256200,
+          "after_stop": 2873680,
+          "allowance": 8388608,
+          "passed": true
+        }
+      }
+    }
+  ],
+  "events": 9638,
+  "snapshots": 85,
+  "qualifies_24h": false,
+  "scope": "Raw events and ELF/offset/identity/point/hash evidence replayed offline; call-only projection explicit and original IDs retained. Whole-VMA request lineage only, not object or absence-of-leak proof. Snapshot comparator uses pinned executable logic plus independent interval/coverage invariants. No native targets or tracer executed by this audit."
+}
