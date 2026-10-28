@@ -1,0 +1,52 @@
+name: Snapshot overhead ABBA and static runtime symbols
+on:
+  pull_request:
+    paths:
+      - 'scripts/soak_snapshot_compare.py'
+      - 'scripts/inventory_runtime_symbols.py'
+      - 'scripts/tests/test_snapshot_compare.py'
+      - '.github/workflows/soak-snapshot-controls.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    strategy:
+      fail-fast: false
+      matrix:
+        build: [ordinary, race]
+    steps:
+      - uses: actions/checkout@v6.0.2
+      - uses: actions/setup-go@v6.1.0
+        with:
+          go-version-file: go.mod
+      - name: Regression and clean source builds
+        timeout-minutes: 8
+        run: |
+          python3 -m unittest discover -s scripts/tests
+          go test ./scripts/soak24h
+          test -z "$(git status --porcelain)"
+          go build -trimpath -o bin/ordinary ./scripts/soak24h
+          test -z "$(git status --porcelain)"
+          go build -race -trimpath -o bin/race ./scripts/soak24h
+          gcc -Wall -Wextra -Werror -O1 -o bin/thp-control scripts/thpcontrol/main.c
+      - name: Freeze exact ELF and candidate symbol inventory
+        timeout-minutes: 3
+        run: |
+          mkdir -p artifacts/binaries
+          cp 'bin/${{ matrix.build }}' artifacts/binaries/probe
+          cp bin/thp-control artifacts/binaries/thp-control
+          sha256sum artifacts/binaries/* > artifacts/binary-sha256.txt
+          python3 scripts/inventory_runtime_symbols.py --binary 'bin/${{ matrix.build }}' --artifacts artifacts/symbols
+      - name: Full metadata metadata full under process THP control
+        timeout-minutes: 90
+        run: python3 scripts/soak_snapshot_compare.py --ordinary bin/ordinary --race bin/race --launcher bin/thp-control --build '${{ matrix.build }}' --artifacts artifacts/comparison
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
+        timeout-minutes: 3
+        with:
+          name: snapshot-${{ matrix.build }}
+          path: artifacts
+          retention-days: 30
