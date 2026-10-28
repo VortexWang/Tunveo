@@ -1,0 +1,531 @@
+{
+  "audit_status": "independently_replayed",
+  "source_commit": "04df7573f508faf43e5cba47bed7be6fa7f0886d",
+  "checkout": "b362c900b25935f39b3b8b271fc8664c4bde9a3c",
+  "tree": "f14b24dd748cb8c63759f36e3ece498e75ba50b8",
+  "source_blobs": {
+    "verify_soak.py": "e0c0321054c8be6510f190b33d07966aad8635aa",
+    "soak_build_pair.py": "25f981cf6fdf09b660d73273620834b149932839",
+    "soak_cycles.py": "9f48dda1f23035e856365f2fe9bdb138ed786f0e",
+    "soak_snapshot_compare.py": "c8ef8257f0ffbd4f6149caf46b3a37340c9c39fb",
+    "inventory_runtime_symbols.py": "050717ff98685312b5d740472393d2e428b97af3"
+  },
+  "events": 46056,
+  "full_smaps": 852,
+  "metadata_records": 852,
+  "qualifies_24h": false,
+  "jobs": [
+    {
+      "build": "ordinary",
+      "archive_sha256": "2bb064b836a9273074c4a534eea9b0ea68730c63c427d47d0974b69676c3d47b",
+      "binary_sha256": "e6123217c4f1b59aa317221b53cbcdb516a1e1981f13f06699e9a76a00bd8f74",
+      "launcher_sha256": "91916a702e0aa7d5968161e11d04f9c69526c95e7b3ed7ccff0388d0c03e3f19",
+      "status": "diagnostic_passed",
+      "candidates": [],
+      "samples": [
+        {
+          "index": 1,
+          "policy": "full",
+          "pid": 10014,
+          "status": "diagnostic_passed",
+          "errors": [],
+          "cycles": [
+            {
+              "cycle": 1,
+              "records": 71,
+              "post_scavenge_rss": 17403904,
+              "post_scavenge_heap_alloc": 648568,
+              "baseline_rss": 29016064,
+              "peak_rss": 45686784,
+              "rss_delta": 16670720,
+              "rss_violations": 0,
+              "other_active_failures": [],
+              "return_failures": []
+            },
+            {
+              "cycle": 2,
+              "records": 71,
+              "post_scavenge_rss": 17743872,
+              "post_scavenge_heap_alloc": 665688,
+              "baseline_rss": 29016064,
+              "peak_rss": 51027968,
+              "rss_delta": 22011904,
+              "rss_violations": 0,
+              "other_active_failures": [],
+              "return_failures": []
+            },
+            {
+              "cycle": 3,
+              "records": 71,
+              "post_scavenge_rss": 17825792,
+              "post_scavenge_heap_alloc": 658184,
+              "baseline_rss": 29016064,
+              "peak_rss": 50769920,
+              "rss_delta": 21753856,
+              "rss_violations": 0,
+              "other_active_failures": [],
+              "return_failures": []
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "policy": "metadata_only",
+          "pid": 10197,
+          "status": "diagnostic_passed",
+          "errors": [],
+          "cycles": [
+            {
+              "cycle": 1,
+              "records": 71,
+              "post_scavenge_rss": 17227776,
+              "post_scavenge_heap_alloc": 665816,
+              "baseline_rss": 25800704,
+              "peak_rss": 44466176,
+              "rss_delta": 18665472,
+              "rss_violations": 0,
+              "other_active_failures": [],
+              "return_failures": []
+            },
+            {
+              "cycle": 2,
+              "records": 71,
+              "post_scavenge_rss": 17715200,
+              "post_scavenge_heap_alloc": 653752,
+              "baseline_rss": 25800704,
+              "peak_rss": 44851200,
+              "rss_delta": 19050496,
+              "rss_violations": 0,
+              "other_active_failures": [],
+              "return_failures": []
+            },
+            {
+              "cycle": 3,
+              "records": 71,
+              "post_scavenge_rss": 17715200,
+              "post_scavenge_heap_alloc": 664744,
+              "baseline_rss": 25800704,
+              "peak_rss": 45314048,
+              "rss_delta": 19513344,
+              "rss_violations": 0,
+              "other_active_failures": [],
+              "return_failures": []
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "policy": "metadata_only",
+          "pid": 10366,
+          "status": "diagnostic_passed",
+          "errors": [],
+          "cycles": [
+            {
+              "cycle": 1,
+              "records": 71,
+              "post_scavenge_rss": 17330176,
+              "post_scavenge_heap_alloc": 655480,
+              "baseline_rss": 29724672,
+              "peak_rss": 43339776,
+              "rss_delta": 13615104,
+              "rss_violations": 0,
+              "other_active_failures": [],
+              "return_failures": []
+            },
+            {
+              "cycle": 2,
+              "records": 71,
+              "post_scavenge_rss": 17346560,
+              "post_scavenge_heap_alloc": 657128,
+              "baseline_rss": 29724672,
+              "peak_rss": 44437504,
+              "rss_delta": 14712832,
+              "rss_violations": 0,
+              "other_active_failures": [],
+              "return_failures": []
+            },
+            {
+              "cycle": 3,
+              "records": 71,
+              "post_scavenge_rss": 18075648,
+              "post_scavenge_heap_alloc": 668976,
+              "baseline_rss": 29724672,
+              "peak_rss": 45838336,
+              "rss_delta": 16113664,
+              "rss_violations": 0,
+              "other_active_failures": [],
+              "return_failures": []
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "policy": "full",
+          "pid": 10455,
+          "status": "diagnostic_passed",
+          "errors": [],
+          "cycles": [
+            {
+              "cycle": 1,
+              "records": 71,
+              "post_scavenge_rss": 17399808,
+              "post_scavenge_heap_alloc": 659640,
+              "baseline_rss": 34996224,
+              "peak_rss": 49512448,
+              "rss_delta": 14516224,
+              "rss_violations": 0,
+              "other_active_failures": [],
+              "return_failures": []
+            },
+            {
+              "cycle": 2,
+              "records": 71,
+              "post_scavenge_rss": 17915904,
+              "post_scavenge_heap_alloc": 663128,
+              "baseline_rss": 34996224,
+              "peak_rss": 50597888,
+              "rss_delta": 15601664,
+              "rss_violations": 0,
+              "other_active_failures": [],
+              "return_failures": []
+            },
+            {
+              "cycle": 3,
+              "records": 71,
+              "post_scavenge_rss": 17833984,
+              "post_scavenge_heap_alloc": 660824,
+              "baseline_rss": 34996224,
+              "peak_rss": 50962432,
+              "rss_delta": 15966208,
+              "rss_violations": 0,
+              "other_active_failures": [],
+              "return_failures": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "build": "race",
+      "archive_sha256": "3722365efe2bf1f7f7378e2bae89fe5c3ad00ddb065449440e01208d746d63ce",
+      "binary_sha256": "2b332b9b27afeecca123e2d3fb5819c31bd787406d1393b1335e649a78eec391",
+      "launcher_sha256": "91916a702e0aa7d5968161e11d04f9c69526c95e7b3ed7ccff0388d0c03e3f19",
+      "status": "failed",
+      "candidates": [
+        {
+          "name": "__tsan::TraceSwitchPart(__tsan::ThreadState*)",
+          "address": 4316608,
+          "size": 117,
+          "returns": 1
+        },
+        {
+          "name": "__tsan::TraceSwitchPartImpl(__tsan::ThreadState*)",
+          "address": 4312976,
+          "size": 3622,
+          "returns": 1
+        },
+        {
+          "name": "__sanitizer::InternalAlloc(unsigned long, __sanitizer::SizeClassAllocator32LocalCache<__sanitizer::SizeClassAllocator32<__sanitizer::AP32> >*, unsigned long)",
+          "address": 4292912,
+          "size": 142,
+          "returns": 1
+        },
+        {
+          "name": "__sanitizer::InternalAllocatorLock()",
+          "address": 4241856,
+          "size": 167,
+          "returns": 1
+        },
+        {
+          "name": "__sanitizer::InternalAllocatorUnlock()",
+          "address": 4242032,
+          "size": 67,
+          "returns": 1
+        },
+        {
+          "name": "__sanitizer::ReportInternalAllocatorOutOfMemory(unsigned long)",
+          "address": 4251152,
+          "size": 42,
+          "returns": 0
+        },
+        {
+          "name": "__sanitizer::InternalFree(void*, __sanitizer::SizeClassAllocator32LocalCache<__sanitizer::SizeClassAllocator32<__sanitizer::AP32> >*)",
+          "address": 4297696,
+          "size": 1091,
+          "returns": 2
+        },
+        {
+          "name": "__sanitizer::MmapOrDieOnFatalError(unsigned long, char const*)",
+          "address": 4261696,
+          "size": 186,
+          "returns": 1
+        },
+        {
+          "name": "__sanitizer::MmapOrDie(unsigned long, char const*, bool)",
+          "address": 4251408,
+          "size": 194,
+          "returns": 1
+        },
+        {
+          "name": "__sanitizer::UnmapOrDie(void*, unsigned long)",
+          "address": 4263536,
+          "size": 89,
+          "returns": 2
+        },
+        {
+          "name": "__sanitizer::ReleaseMemoryPagesToOS(unsigned long, unsigned long)",
+          "address": 4235424,
+          "size": 124,
+          "returns": 1
+        },
+        {
+          "name": "__sanitizer::internal_mmap(void*, unsigned long, int, int, int, unsigned long long)",
+          "address": 4213056,
+          "size": 37,
+          "returns": 1
+        },
+        {
+          "name": "__sanitizer::MmapFixedOrDie(unsigned long, unsigned long, char const*)",
+          "address": 4263152,
+          "size": 255,
+          "returns": 1
+        },
+        {
+          "name": "__sanitizer::internal_munmap(void*, unsigned long)",
+          "address": 4213360,
+          "size": 8,
+          "returns": 1
+        },
+        {
+          "name": "__sanitizer::MmapFixedNoAccess(unsigned long, unsigned long, char const*)",
+          "address": 4213232,
+          "size": 15,
+          "returns": 0
+        },
+        {
+          "name": "__sanitizer::MmapFixedNoReserve(unsigned long, unsigned long, char const*)",
+          "address": 4281968,
+          "size": 257,
+          "returns": 2
+        },
+        {
+          "name": "__sanitizer::MmapFixedSuperNoReserve(unsigned long, unsigned long, char const*)",
+          "address": 4282240,
+          "size": 60,
+          "returns": 2
+        },
+        {
+          "name": "__sanitizer::MmapFixedOrDieOnFatalError(unsigned long, unsigned long, char const*)",
+          "address": 4262864,
+          "size": 266,
+          "returns": 1
+        },
+        {
+          "name": "__tsan::DontNeedShadowFor(unsigned long, unsigned long)",
+          "address": 4235552,
+          "size": 38,
+          "returns": 0
+        }
+      ],
+      "samples": [
+        {
+          "index": 1,
+          "policy": "full",
+          "pid": 9945,
+          "status": "failed",
+          "errors": [
+            "cycle-1 report: active resource bound: rss",
+            "cycle-2 report: active resource bound: rss",
+            "original first-cycle fixed active envelope exceeded"
+          ],
+          "cycles": [
+            {
+              "cycle": 1,
+              "records": 71,
+              "post_scavenge_rss": 155570176,
+              "post_scavenge_heap_alloc": 664680,
+              "baseline_rss": 122290176,
+              "peak_rss": 196136960,
+              "rss_delta": 73846784,
+              "rss_violations": 8,
+              "other_active_failures": [],
+              "return_failures": []
+            },
+            {
+              "cycle": 2,
+              "records": 71,
+              "post_scavenge_rss": 238804992,
+              "post_scavenge_heap_alloc": 664808,
+              "baseline_rss": 122290176,
+              "peak_rss": 263270400,
+              "rss_delta": 140980224,
+              "rss_violations": 19,
+              "other_active_failures": [],
+              "return_failures": []
+            },
+            {
+              "cycle": 3,
+              "records": 71,
+              "post_scavenge_rss": 256086016,
+              "post_scavenge_heap_alloc": 660856,
+              "baseline_rss": 122290176,
+              "peak_rss": 283627520,
+              "rss_delta": 161337344,
+              "rss_violations": 36,
+              "other_active_failures": [],
+              "return_failures": []
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "policy": "metadata_only",
+          "pid": 10139,
+          "status": "failed",
+          "errors": [
+            "cycle-1 report: active resource bound: rss",
+            "cycle-2 report: active resource bound: rss",
+            "original first-cycle fixed active envelope exceeded"
+          ],
+          "cycles": [
+            {
+              "cycle": 1,
+              "records": 71,
+              "post_scavenge_rss": 150224896,
+              "post_scavenge_heap_alloc": 664632,
+              "baseline_rss": 111329280,
+              "peak_rss": 188850176,
+              "rss_delta": 77520896,
+              "rss_violations": 21,
+              "other_active_failures": [],
+              "return_failures": []
+            },
+            {
+              "cycle": 2,
+              "records": 71,
+              "post_scavenge_rss": 235773952,
+              "post_scavenge_heap_alloc": 667384,
+              "baseline_rss": 111329280,
+              "peak_rss": 272134144,
+              "rss_delta": 160804864,
+              "rss_violations": 32,
+              "other_active_failures": [],
+              "return_failures": []
+            },
+            {
+              "cycle": 3,
+              "records": 71,
+              "post_scavenge_rss": 244113408,
+              "post_scavenge_heap_alloc": 658312,
+              "baseline_rss": 111329280,
+              "peak_rss": 289689600,
+              "rss_delta": 178360320,
+              "rss_violations": 36,
+              "other_active_failures": [],
+              "return_failures": []
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "policy": "metadata_only",
+          "pid": 10306,
+          "status": "failed",
+          "errors": [
+            "cycle-1 report: active resource bound: rss",
+            "cycle-2 report: active resource bound: rss",
+            "original first-cycle fixed active envelope exceeded"
+          ],
+          "cycles": [
+            {
+              "cycle": 1,
+              "records": 71,
+              "post_scavenge_rss": 155013120,
+              "post_scavenge_heap_alloc": 652680,
+              "baseline_rss": 105299968,
+              "peak_rss": 186621952,
+              "rss_delta": 81321984,
+              "rss_violations": 19,
+              "other_active_failures": [],
+              "return_failures": []
+            },
+            {
+              "cycle": 2,
+              "records": 71,
+              "post_scavenge_rss": 237391872,
+              "post_scavenge_heap_alloc": 668568,
+              "baseline_rss": 105299968,
+              "peak_rss": 276819968,
+              "rss_delta": 171520000,
+              "rss_violations": 35,
+              "other_active_failures": [],
+              "return_failures": []
+            },
+            {
+              "cycle": 3,
+              "records": 71,
+              "post_scavenge_rss": 247427072,
+              "post_scavenge_heap_alloc": 658696,
+              "baseline_rss": 105299968,
+              "peak_rss": 291991552,
+              "rss_delta": 186691584,
+              "rss_violations": 36,
+              "other_active_failures": [],
+              "return_failures": []
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "policy": "full",
+          "pid": 10402,
+          "status": "failed",
+          "errors": [
+            "cycle-1 report: active resource bound: rss",
+            "cycle-2 report: active resource bound: rss",
+            "original first-cycle fixed active envelope exceeded"
+          ],
+          "cycles": [
+            {
+              "cycle": 1,
+              "records": 71,
+              "post_scavenge_rss": 159301632,
+              "post_scavenge_heap_alloc": 653816,
+              "baseline_rss": 118005760,
+              "peak_rss": 189657088,
+              "rss_delta": 71651328,
+              "rss_violations": 7,
+              "other_active_failures": [],
+              "return_failures": []
+            },
+            {
+              "cycle": 2,
+              "records": 71,
+              "post_scavenge_rss": 228429824,
+              "post_scavenge_heap_alloc": 669048,
+              "baseline_rss": 118005760,
+              "peak_rss": 257548288,
+              "rss_delta": 139542528,
+              "rss_violations": 23,
+              "other_active_failures": [],
+              "return_failures": []
+            },
+            {
+              "cycle": 3,
+              "records": 71,
+              "post_scavenge_rss": 247787520,
+              "post_scavenge_heap_alloc": 651832,
+              "baseline_rss": 118005760,
+              "peak_rss": 285618176,
+              "rss_delta": 167612416,
+              "rss_violations": 36,
+              "other_active_failures": [],
+              "return_failures": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "limits": "Archived ELF bytes, nm symbols and candidate disassembly replayed without executing targets. Metadata-only omits full VMA samples; absent mappings are not zero. Does not prove runtime calls, allocator ownership, mapping generation, or uprobe safety. Report/rollup/logging overhead remains. Historical failures retained."
+}

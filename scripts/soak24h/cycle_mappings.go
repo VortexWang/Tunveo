@@ -14,17 +14,24 @@ import (
 // Whole smaps only: matching addresses do not prove unchanged mapping generations.
 func captureCycleMapping(folder string, sequence int, r *result, origin time.Time) error {
  start := time.Since(origin).Nanoseconds()
- raw, err := os.ReadFile("/proc/self/smaps")
- end := time.Since(origin).Nanoseconds()
- if err != nil { return err }
- name := fmt.Sprintf("mapping-%03d.smaps.gz", sequence)
- f, err := os.Create(filepath.Join(folder, name)); if err != nil { return err }
- z := gzip.NewWriter(f)
- _, err = z.Write(raw)
- if closeErr := z.Close(); err == nil { err = closeErr }
- if closeErr := f.Close(); err == nil { err = closeErr }
- if err != nil { return err }
- record := map[string]any{"file":name,"sha256_raw":fmt.Sprintf("%x",sha256.Sum256(raw)),"pid":os.Getpid(),"cycle":r.Settings["diagnostic_cycle_index"],"load_points":len(r.Points),"retention_points":len(r.Retention),"status":r.Status,"read_start_monotonic_ns":start,"read_end_monotonic_ns":end}
+ record := map[string]any{"pid":os.Getpid(),"cycle":r.Settings["diagnostic_cycle_index"],"load_points":len(r.Points),"retention_points":len(r.Retention),"status":r.Status,"read_start_monotonic_ns":start}
+ policy := "full"
+ if r.Settings["diagnostic_mapping_policy"] == "metadata_only" { policy = "metadata_only" }
+ record["mapping_policy"] = policy
+ if policy == "full" {
+  raw, err := os.ReadFile("/proc/self/smaps"); if err != nil { return err }
+  record["read_end_monotonic_ns"] = time.Since(origin).Nanoseconds()
+  name := fmt.Sprintf("mapping-%03d.smaps.gz",sequence)
+  f, err := os.Create(filepath.Join(folder,name)); if err != nil { return err }
+  z := gzip.NewWriter(f)
+  _, err = z.Write(raw)
+  if e := z.Close(); err == nil { err = e }
+  if e := f.Close(); err == nil { err = e }
+  if err != nil { return err }
+  record["file"] = name
+  record["sha256_raw"] = fmt.Sprintf("%x",sha256.Sum256(raw))
+ }
+ if policy == "metadata_only" { record["read_end_monotonic_ns"] = time.Since(origin).Nanoseconds() }
  status, err := os.ReadFile("/proc/self/status"); if err != nil { return err }
  thp := ""
  for _, line := range strings.Split(string(status), "\n") { if strings.HasPrefix(line,"THP_enabled:") { thp = strings.TrimSpace(strings.TrimPrefix(line,"THP_enabled:")) } }

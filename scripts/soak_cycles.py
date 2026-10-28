@@ -55,11 +55,13 @@ def main():
     for name in ('ordinary','race','artifacts'):p.add_argument('--'+name,type=Path,required=True)
     p.add_argument('--thp-control',choices=['baseline','go_heap','process'])
     p.add_argument('--launcher',type=Path)
+    p.add_argument('--mapping-policy',choices=['full','metadata_only'],default='full')
     p.add_argument('--build',choices=['all','ordinary','race'],default='all')
     a=p.parse_args()
     if a.thp_control and not a.launcher:p.error('THP controls require launcher')
+    if a.mapping_policy=='metadata_only' and a.thp_control!='process':p.error('metadata-only requires verified process THP control')
     a.artifacts.mkdir(parents=True,exist_ok=False)
-    result={'status':'failed','qualifies_24h':False,'thp_control':a.thp_control,'runs':[]};revision=None
+    result={'status':'failed','qualifies_24h':False,'thp_control':a.thp_control,'mapping_policy':a.mapping_policy,'runs':[]};revision=None
     for name in (('ordinary','race') if a.build=='all' else (a.build,)):
         folder=a.artifacts/name;binary=getattr(a,name).resolve();row={'build':name,'errors':[]};result['runs'].append(row)
         try:
@@ -69,6 +71,7 @@ def main():
             if revision is not None:assert rev==revision
             revision=rev;row['build_info']=info;row['binary_sha256']=hashlib.sha256(binary.read_bytes()).hexdigest()
             command=[str(binary),'--diagnostic-cycles','3','--transport','3','--mode','1','--duration','180s','--warmup','12s','--sample-interval','5s','--workers','2','--qps','10','--pool-min','16','--pool-max','64','--post-stop-observe','120s','--diagnostic-go-scavenge','--artifacts',str(folder)]
+            if a.mapping_policy=='metadata_only':command.append('--diagnostic-mapping-metadata-only')
             env=None
             if a.thp_control:
                 env=control_environment(a.thp_control,os.environ)
@@ -91,7 +94,11 @@ def main():
             for i in range(1,4):
                 cycle=folder/f'cycle-{i}';r=json.loads((cycle/'report.json').read_text());reports.append(r)
                 assert r['build_info']==info and r['settings']['pid']==row['pid']
-                s=r['settings'];assert (r['transport'],r['mode'],s['tls'],s['duration_seconds'],s['warmup_seconds'],s['sample_interval_seconds'],s['workers'],s['qps'],s['pool_min'],s['pool_max'])==(3,1,1,180,12,5,2,10,16,64)
+                s=r['settings'];assert s.get('diagnostic_mapping_policy')==a.mapping_policy
+                if a.thp_control=='process':
+                    for point in r['points']+r['post_stop_observation']:
+                        assert point['resources']['os_memory']['bytes']['AnonHugePages']==0
+                assert (r['transport'],r['mode'],s['tls'],s['duration_seconds'],s['warmup_seconds'],s['sample_interval_seconds'],s['workers'],s['qps'],s['pool_min'],s['pool_max'])==(3,1,1,180,12,5,2,10,16,64)
                 for label,fn in [('report',lambda:v.validate_report(r,True)),('events',lambda:v.validate_events(cycle/'exchanges.jsonl.gz',r)),('logs',lambda:v.validate_engine_logs(cycle,a.artifacts/(name+'-stderr.log'),64,3))]:
                     try:fn()
                     except (ValueError,KeyError,OSError,EOFError) as e:row['errors'].append(f'cycle-{i} {label}: {e}')
@@ -100,9 +107,16 @@ def main():
                 for record in records:
                     assert record['pid']==row['pid'] and record['cycle']==i and previous_mapping_end<=record['read_start_monotonic_ns']<=record['read_end_monotonic_ns']
                     previous_mapping_end=record['read_end_monotonic_ns']
-                    raw=gzip.decompress((cycle/record['file']).read_bytes())
-                    assert hashlib.sha256(raw).hexdigest()==record['sha256_raw']
-                    if a.thp_control:row['thp_observations'].append(dict(cycle=i,**thp_observation(raw.decode(),record,a.thp_control)))
+                    assert record['mapping_policy']==a.mapping_policy
+                    if a.mapping_policy=='full':
+                        raw=gzip.decompress((cycle/record['file']).read_bytes())
+                        assert hashlib.sha256(raw).hexdigest()==record['sha256_raw']
+                        if a.thp_control:row['thp_observations'].append(dict(cycle=i,**thp_observation(raw.decode(),record,a.thp_control)))
+                    else:
+                        assert 'file' not in record and 'sha256_raw' not in record
+                        assert not list(cycle.glob('mapping-*.smaps.gz'))
+                        assert record['thp_enabled']=='0' and record['godebug']==''
+                        row['thp_observations'].append({'cycle':i,'anon_huge_bytes':None,'go_named_heap_huge_bytes':None,'scope':'metadata only; THP checked by target status and existing resource rollup, no full VMA sample'})
             row['fixed_envelope']=fixed_envelope(reports)
             if not row['fixed_envelope']['passed']:row['errors'].append('original first-cycle fixed active envelope exceeded')
         except (ValueError,KeyError,OSError,AssertionError,StopIteration,subprocess.SubprocessError) as e:row['errors'].append(type(e).__name__+': '+str(e))
