@@ -1,0 +1,94 @@
+{
+  "audit_status": "independently_replayed",
+  "execution_source": "ed10f1438a675f677fd13aba9a6b241d0f9cf2d1",
+  "source_blobs": {
+    "soak_callsite_control.py": "ab76a87a1ebe6281b0372c6614f6a70aad8f7660",
+    "soak_ret_context.py": "eac5605150e51b9aec336277088e3981616ac28e",
+    "soak_mappings.py": "708301538c24476e4d244efb16cc5027c193efd5",
+    "verify_soak.py": "e0c0321054c8be6510f190b33d07966aad8635aa"
+  },
+  "archive_sha256": "0d0e188611cfb478e5afa268f320c98bc1b4967d9dc057d804ec78c0fff1d593",
+  "native_binary_sha256": "2b332b9b27afeecca123e2d3fb5819c31bd787406d1393b1335e649a78eec391",
+  "source_checkout_of_native_binary": "b362c900b25935f39b3b8b271fc8664c4bde9a3c",
+  "business_events": 269,
+  "stages": {
+    "control": {
+      "native_pid": 3609,
+      "target_exec": {
+        "event": "exec",
+        "site": 0,
+        "path": "/home/runner/work/Tunveo/Tunveo/artifacts/binaries/control",
+        "pid": 3609,
+        "tid": 3609,
+        "uid": 1001,
+        "seq": 142,
+        "ns": 227830506864,
+        "sp": 0,
+        "size": 0,
+        "value": 0,
+        "tag": 0,
+        "flags": 0
+      },
+      "events": 296,
+      "launcher_events": 141,
+      "call_count": 32,
+      "call_tids": 4,
+      "cumulative_virtual_requested": 2162688,
+      "site": {
+        "call": 4198999,
+        "after": 4199004,
+        "callee": 4198934,
+        "call_file_offset": 4695,
+        "after_file_offset": 4700,
+        "call_hex": "e8baffffff",
+        "after_hex": "5d",
+        "callee_symbol": "control_map"
+      }
+    },
+    "qualification": {
+      "native_pid": 3642,
+      "target_exec": {
+        "event": "exec",
+        "site": 0,
+        "path": "/home/runner/work/Tunveo/Tunveo/artifacts/binaries/probe",
+        "pid": 3642,
+        "tid": 3642,
+        "uid": 1001,
+        "seq": 142,
+        "ns": 229712149830,
+        "sp": 0,
+        "size": 0,
+        "value": 0,
+        "tag": 0,
+        "flags": 0
+      },
+      "events": 1676,
+      "launcher_events": 141,
+      "call_count": 283,
+      "call_tids": 8,
+      "cumulative_virtual_requested": 37093376,
+      "site": {
+        "call": 4315388,
+        "after": 4315393,
+        "callee": 4251408,
+        "call_file_offset": 121084,
+        "after_file_offset": 121089,
+        "call_hex": "e80f06ffff",
+        "after_hex": "660fefc0",
+        "callee_symbol": "_ZN11__sanitizer9MmapOrDieEmPKcb"
+      }
+    }
+  },
+  "pilot_rss": {
+    "baseline": 106356736,
+    "peak": 149458944,
+    "delta": 43102208,
+    "budget": 67108864,
+    "measured_points": 3,
+    "pilot_trend_delta": 38346752,
+    "trend_enforced_in_pilot": false
+  },
+  "qualifies_24h": false,
+  "historical_failures_retained": true,
+  "limitations": "No archived tracer ELF: only its recorded hash, source and build/configuration logs are available. No offline execution of targets. Callsite/ELF checks and original-event replay establish this path only; cumulative virtual requests are neither RSS ownership nor live object bytes. No munmap/mremap/madvise generation ledger, 180s/three-cycle replay, or tracer overhead control in this run."
+}
