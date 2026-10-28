@@ -1,0 +1,2076 @@
+{
+  "audit_status": "independently_replayed",
+  "execution_source": "a93ec401627bdc91cd1b6f84c0325695f1298968",
+  "source_blobs": {
+    "audit_soak_os_memory.py": "0c5fbff721f98f94fb75f431da968679908d1171",
+    "audit_soak_retention.py": "3b06a71491258e62326f4d3d7f4dc4bdae10ca0b",
+    "soak_call_lifecycle.py": "0847600f9edce17e44de47e384a0992d54167828",
+    "soak_callsite_control.py": "ab76a87a1ebe6281b0372c6614f6a70aad8f7660",
+    "soak_mapping_ledger.py": "610a54d636767bf92752bd165b60faafd961c7be",
+    "soak_mapping_retention.py": "ae88355fbc1363aa3f60c45cb9e773544a07bf70",
+    "soak_mappings.py": "708301538c24476e4d244efb16cc5027c193efd5",
+    "soak_pagemap.py": "bc2cdbce1d52341b60d1e3d1eaa2e35172d79bb9",
+    "soak_ret_context.py": "eac5605150e51b9aec336277088e3981616ac28e",
+    "verify_soak.py": "e0c0321054c8be6510f190b33d07966aad8635aa"
+  },
+  "archive_sha256": "616f8c4da929312196c654dda4c28dac997ba12c1eafdd4b8caa32f920bc7850",
+  "qualifies_24h": false,
+  "original_status": "failed",
+  "stages": [
+    {
+      "stage": "control-disabled",
+      "native_pid": 3899,
+      "events": 218,
+      "call_count": 1,
+      "checkpoints": 10,
+      "status_vectors": 92,
+      "page_entries": 19816,
+      "selected": [],
+      "errors": [],
+      "held_anon_huge_bytes": 0,
+      "read_zero_present_pages": 1024,
+      "read_zero_smaps_rss": 0
+    },
+    {
+      "stage": "control-enabled",
+      "native_pid": 3921,
+      "events": 220,
+      "call_count": 1,
+      "checkpoints": 10,
+      "status_vectors": 92,
+      "page_entries": 19816,
+      "selected": [],
+      "errors": [],
+      "held_anon_huge_bytes": 4194304,
+      "read_zero_present_pages": 1024,
+      "read_zero_smaps_rss": 0
+    },
+    {
+      "stage": "15s",
+      "native_pid": 3944,
+      "events": 3222,
+      "call_count": 267,
+      "checkpoints": 9,
+      "status_vectors": 718,
+      "page_entries": 776670,
+      "selected": [
+        {
+          "key": [
+            "warmup",
+            10.00459026
+          ],
+          "native_rss": 129191936,
+          "page_started_ns": 285176099210,
+          "page_finished_ns": 285201546229,
+          "by_origin": {
+            "unresolved": {
+              "pages": 35669,
+              "present_first": 5883,
+              "present_second": 5883,
+              "swapped_first": 0,
+              "swapped_second": 0
+            },
+            "validated_tracepart_call": {
+              "pages": 8288,
+              "present_first": 5340,
+              "present_second": 5340,
+              "swapped_first": 0,
+              "swapped_second": 0
+            }
+          },
+          "added_vmas": 0,
+          "entries_changed": 0,
+          "residency_changed": 0,
+          "scope": "present/swapped counts, not RSS/PSS or physical exclusive bytes",
+          "ELF_zero_fill_address_matches": [
+            {
+              "start": 18538496,
+              "end": 68321280,
+              "present_first": 4139,
+              "present_second": 4139,
+              "scope": "ELF zero-fill address match, not writer/object attribution"
+            }
+          ]
+        },
+        {
+          "key": [
+            "measured",
+            22.008229927
+          ],
+          "native_rss": 171139072,
+          "page_started_ns": 297175890820,
+          "page_finished_ns": 297203214872,
+          "by_origin": {
+            "unresolved": {
+              "pages": 37345,
+              "present_first": 6975,
+              "present_second": 6975,
+              "swapped_first": 0,
+              "swapped_second": 0
+            },
+            "validated_tracepart_call": {
+              "pages": 8448,
+              "present_first": 6961,
+              "present_second": 6961,
+              "swapped_first": 0,
+              "swapped_second": 0
+            }
+          },
+          "added_vmas": 0,
+          "entries_changed": 0,
+          "residency_changed": 0,
+          "scope": "present/swapped counts, not RSS/PSS or physical exclusive bytes",
+          "ELF_zero_fill_address_matches": [
+            {
+              "start": 18538496,
+              "end": 68321280,
+              "present_first": 4139,
+              "present_second": 4139,
+              "scope": "ELF zero-fill address match, not writer/object attribution"
+            }
+          ]
+        }
+      ],
+      "errors": [],
+      "business_events": 269,
+      "quality": {
+        "max_capture_ns": 27324052,
+        "added_vmas": 0,
+        "topology_changed_ranges": 0,
+        "residency_changed_entries": 0
+      },
+      "rss": {
+        "baseline": 129191936,
+        "peak": 171139072,
+        "delta": 41947136,
+        "violations": 0,
+        "measured_points": 3
+      }
+    },
+    {
+      "stage": "180s",
+      "native_pid": 3980,
+      "events": 6514,
+      "call_count": 300,
+      "checkpoints": 68,
+      "status_vectors": 7872,
+      "page_entries": 6689052,
+      "selected": [
+        {
+          "key": [
+            "warmup",
+            8.004618305
+          ],
+          "native_rss": 129306624,
+          "page_started_ns": 318973207676,
+          "page_finished_ns": 318998694625,
+          "by_origin": {
+            "unresolved": {
+              "pages": 35665,
+              "present_first": 5849,
+              "present_second": 5849,
+              "swapped_first": 0,
+              "swapped_second": 0
+            },
+            "validated_tracepart_call": {
+              "pages": 8032,
+              "present_first": 4899,
+              "present_second": 4899,
+              "swapped_first": 0,
+              "swapped_second": 0
+            }
+          },
+          "added_vmas": 0,
+          "entries_changed": 0,
+          "residency_changed": 0,
+          "scope": "present/swapped counts, not RSS/PSS or physical exclusive bytes",
+          "ELF_zero_fill_address_matches": [
+            {
+              "start": 18538496,
+              "end": 68321280,
+              "present_first": 4139,
+              "present_second": 4139,
+              "scope": "ELF zero-fill address match, not writer/object attribution"
+            }
+          ]
+        },
+        {
+          "key": [
+            "measured",
+            182.008128402
+          ],
+          "native_rss": 204619776,
+          "page_started_ns": 492992207469,
+          "page_finished_ns": 493024842482,
+          "by_origin": {
+            "unresolved": {
+              "pages": 41597,
+              "present_first": 10454,
+              "present_second": 10454,
+              "swapped_first": 0,
+              "swapped_second": 0
+            },
+            "validated_tracepart_call": {
+              "pages": 9600,
+              "present_first": 9241,
+              "present_second": 9241,
+              "swapped_first": 0,
+              "swapped_second": 0
+            }
+          },
+          "added_vmas": 0,
+          "entries_changed": 0,
+          "residency_changed": 0,
+          "scope": "present/swapped counts, not RSS/PSS or physical exclusive bytes",
+          "ELF_zero_fill_address_matches": [
+            {
+              "start": 18538496,
+              "end": 68321280,
+              "present_first": 4139,
+              "present_second": 4139,
+              "scope": "ELF zero-fill address match, not writer/object attribution"
+            }
+          ]
+        },
+        {
+          "key": [
+            "poststop_gc",
+            0.003839929
+          ],
+          "native_rss": 196571136,
+          "page_started_ns": 503014691825,
+          "page_finished_ns": 503047502288,
+          "by_origin": {
+            "unresolved": {
+              "pages": 41853,
+              "present_first": 10751,
+              "present_second": 10751,
+              "swapped_first": 0,
+              "swapped_second": 0
+            },
+            "validated_tracepart_call": {
+              "pages": 9600,
+              "present_first": 9245,
+              "present_second": 9245,
+              "swapped_first": 0,
+              "swapped_second": 0
+            }
+          },
+          "added_vmas": 0,
+          "entries_changed": 0,
+          "residency_changed": 0,
+          "scope": "present/swapped counts, not RSS/PSS or physical exclusive bytes",
+          "ELF_zero_fill_address_matches": [
+            {
+              "start": 18538496,
+              "end": 68321280,
+              "present_first": 4139,
+              "present_second": 4139,
+              "scope": "ELF zero-fill address match, not writer/object attribution"
+            }
+          ]
+        },
+        {
+          "key": [
+            "poststop_gc",
+            120.006333856
+          ],
+          "native_rss": 161017856,
+          "page_started_ns": 623024515447,
+          "page_finished_ns": 623057681886,
+          "by_origin": {
+            "unresolved": {
+              "pages": 41853,
+              "present_first": 10751,
+              "present_second": 10751,
+              "swapped_first": 0,
+              "swapped_second": 0
+            },
+            "validated_tracepart_call": {
+              "pages": 9600,
+              "present_first": 9306,
+              "present_second": 9306,
+              "swapped_first": 0,
+              "swapped_second": 0
+            }
+          },
+          "added_vmas": 0,
+          "entries_changed": 0,
+          "residency_changed": 0,
+          "scope": "present/swapped counts, not RSS/PSS or physical exclusive bytes",
+          "ELF_zero_fill_address_matches": [
+            {
+              "start": 18538496,
+              "end": 68321280,
+              "present_first": 4139,
+              "present_second": 4139,
+              "scope": "ELF zero-fill address match, not writer/object attribution"
+            }
+          ]
+        },
+        {
+          "key": [
+            "poststop_go_scavenge",
+            120.124549527
+          ],
+          "native_rss": 159805440,
+          "page_started_ns": 623133856175,
+          "page_finished_ns": 623166555935,
+          "by_origin": {
+            "unresolved": {
+              "pages": 41853,
+              "present_first": 10751,
+              "present_second": 10751,
+              "swapped_first": 0,
+              "swapped_second": 0
+            },
+            "validated_tracepart_call": {
+              "pages": 9600,
+              "present_first": 9306,
+              "present_second": 9306,
+              "swapped_first": 0,
+              "swapped_second": 0
+            }
+          },
+          "added_vmas": 0,
+          "entries_changed": 0,
+          "residency_changed": 0,
+          "scope": "present/swapped counts, not RSS/PSS or physical exclusive bytes",
+          "ELF_zero_fill_address_matches": [
+            {
+              "start": 18538496,
+              "end": 68321280,
+              "present_first": 4139,
+              "present_second": 4139,
+              "scope": "ELF zero-fill address match, not writer/object attribution"
+            }
+          ],
+          "unresolved_by_stable_creation_generation": [
+            {
+              "generation": "no_stable_generation",
+              "pages": 12154,
+              "present_first": 4139,
+              "present_second": 4139,
+              "surviving_virtual_bytes_at_page_end": null,
+              "creation_request": null
+            },
+            {
+              "generation": "3980:293",
+              "pages": 2048,
+              "present_first": 512,
+              "present_second": 512,
+              "surviving_virtual_bytes_at_page_end": 8388608,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3980,
+                "id": "3980:293",
+                "start_ns": 305829124358,
+                "end_ns": 305829126848,
+                "args": [
+                  0,
+                  8388608,
+                  3,
+                  16418
+                ],
+                "value": 140448737787904,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3997:427",
+              "pages": 256,
+              "present_first": 256,
+              "present_second": 256,
+              "surviving_virtual_bytes_at_page_end": 1048576,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3997,
+                "id": "3997:427",
+                "start_ns": 469658614172,
+                "end_ns": 469658648024,
+                "args": [
+                  0,
+                  2097152,
+                  3,
+                  34
+                ],
+                "value": 140448037339136,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3988:465",
+              "pages": 256,
+              "present_first": 256,
+              "present_second": 256,
+              "surviving_virtual_bytes_at_page_end": 1048576,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3988,
+                "id": "3988:465",
+                "start_ns": 449758889604,
+                "end_ns": 449758920702,
+                "args": [
+                  0,
+                  2097152,
+                  3,
+                  34
+                ],
+                "value": 140448043630592,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3998:617",
+              "pages": 256,
+              "present_first": 256,
+              "present_second": 256,
+              "surviving_virtual_bytes_at_page_end": 1048576,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3998,
+                "id": "3998:617",
+                "start_ns": 429758898276,
+                "end_ns": 429758934478,
+                "args": [
+                  0,
+                  2097152,
+                  3,
+                  34
+                ],
+                "value": 140448117030912,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3998:593",
+              "pages": 256,
+              "present_first": 256,
+              "present_second": 256,
+              "surviving_virtual_bytes_at_page_end": 1048576,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3998,
+                "id": "3998:593",
+                "start_ns": 409708725539,
+                "end_ns": 409708744917,
+                "args": [
+                  0,
+                  2097152,
+                  3,
+                  34
+                ],
+                "value": 140448119128064,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "4017:181",
+              "pages": 256,
+              "present_first": 256,
+              "present_second": 256,
+              "surviving_virtual_bytes_at_page_end": 1048576,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 4017,
+                "id": "4017:181",
+                "start_ns": 389758100417,
+                "end_ns": 389758129857,
+                "args": [
+                  0,
+                  2097152,
+                  3,
+                  34
+                ],
+                "value": 140448123322368,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3988:297",
+              "pages": 256,
+              "present_first": 256,
+              "present_second": 256,
+              "surviving_virtual_bytes_at_page_end": 1048576,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3988,
+                "id": "3988:297",
+                "start_ns": 369759121668,
+                "end_ns": 369759153074,
+                "args": [
+                  0,
+                  2097152,
+                  3,
+                  34
+                ],
+                "value": 140448125419520,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3997:231",
+              "pages": 256,
+              "present_first": 256,
+              "present_second": 256,
+              "surviving_virtual_bytes_at_page_end": 1048576,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3997,
+                "id": "3997:231",
+                "start_ns": 349858870944,
+                "end_ns": 349858900729,
+                "args": [
+                  0,
+                  2097152,
+                  3,
+                  34
+                ],
+                "value": 140448129613824,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3997:219",
+              "pages": 256,
+              "present_first": 256,
+              "present_second": 256,
+              "surviving_virtual_bytes_at_page_end": 1048576,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3997,
+                "id": "3997:219",
+                "start_ns": 348158758852,
+                "end_ns": 348158789521,
+                "args": [
+                  0,
+                  2097152,
+                  3,
+                  34
+                ],
+                "value": 140448131710976,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3988:213",
+              "pages": 256,
+              "present_first": 256,
+              "present_second": 256,
+              "surviving_virtual_bytes_at_page_end": 1048576,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3988,
+                "id": "3988:213",
+                "start_ns": 330158300657,
+                "end_ns": 330158326179,
+                "args": [
+                  0,
+                  2097152,
+                  3,
+                  34
+                ],
+                "value": 140448138002432,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3988:199",
+              "pages": 256,
+              "present_first": 256,
+              "present_second": 256,
+              "surviving_virtual_bytes_at_page_end": 1048576,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3988,
+                "id": "3988:199",
+                "start_ns": 327258518657,
+                "end_ns": 327258550210,
+                "args": [
+                  0,
+                  2097152,
+                  3,
+                  34
+                ],
+                "value": 140448142196736,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3988:195",
+              "pages": 256,
+              "present_first": 256,
+              "present_second": 256,
+              "surviving_virtual_bytes_at_page_end": 1048576,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3988,
+                "id": "3988:195",
+                "start_ns": 326258754346,
+                "end_ns": 326258782117,
+                "args": [
+                  0,
+                  2097152,
+                  3,
+                  34
+                ],
+                "value": 140448144293888,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3997:165",
+              "pages": 256,
+              "present_first": 256,
+              "present_second": 256,
+              "surviving_virtual_bytes_at_page_end": 1048576,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3997,
+                "id": "3997:165",
+                "start_ns": 325060653554,
+                "end_ns": 325060681696,
+                "args": [
+                  0,
+                  2097152,
+                  3,
+                  34
+                ],
+                "value": 140448148488192,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3986:201",
+              "pages": 256,
+              "present_first": 256,
+              "present_second": 256,
+              "surviving_virtual_bytes_at_page_end": 1048576,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3986,
+                "id": "3986:201",
+                "start_ns": 312424098181,
+                "end_ns": 312424130389,
+                "args": [
+                  0,
+                  2097152,
+                  3,
+                  34
+                ],
+                "value": 140448169459712,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3987:111",
+              "pages": 256,
+              "present_first": 256,
+              "present_second": 256,
+              "surviving_virtual_bytes_at_page_end": 1048576,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3987,
+                "id": "3987:111",
+                "start_ns": 306015922810,
+                "end_ns": 306015959006,
+                "args": [
+                  0,
+                  2097152,
+                  3,
+                  34
+                ],
+                "value": 140448597278720,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3980:217",
+              "pages": 256,
+              "present_first": 256,
+              "present_second": 256,
+              "surviving_virtual_bytes_at_page_end": 1048576,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3980,
+                "id": "3980:217",
+                "start_ns": 305827707656,
+                "end_ns": 305827709293,
+                "args": [
+                  0,
+                  2097152,
+                  3,
+                  34
+                ],
+                "value": 140449933164544,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3980:213",
+              "pages": 256,
+              "present_first": 256,
+              "present_second": 256,
+              "surviving_virtual_bytes_at_page_end": 1048576,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3980,
+                "id": "3980:213",
+                "start_ns": 305827695005,
+                "end_ns": 305827702326,
+                "args": [
+                  0,
+                  2097152,
+                  3,
+                  34
+                ],
+                "value": 140449935261696,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3980:291",
+              "pages": 256,
+              "present_first": 256,
+              "present_second": 256,
+              "surviving_virtual_bytes_at_page_end": 1048576,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3980,
+                "id": "3980:291",
+                "start_ns": 305829106547,
+                "end_ns": 305829120640,
+                "args": [
+                  0,
+                  1048576,
+                  3,
+                  34
+                ],
+                "value": 140449936310272,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "4017:483",
+              "pages": 256,
+              "present_first": 174,
+              "present_second": 174,
+              "surviving_virtual_bytes_at_page_end": 1048576,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 4017,
+                "id": "4017:483",
+                "start_ns": 489658515077,
+                "end_ns": 489658546437,
+                "args": [
+                  0,
+                  2097152,
+                  3,
+                  34
+                ],
+                "value": 140448035241984,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3997:471",
+              "pages": 256,
+              "present_first": 159,
+              "present_second": 159,
+              "surviving_virtual_bytes_at_page_end": 1048576,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3997,
+                "id": "3997:471",
+                "start_ns": 501059403533,
+                "end_ns": 501059432213,
+                "args": [
+                  0,
+                  2097152,
+                  3,
+                  34
+                ],
+                "value": 140448033144832,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3997:423",
+              "pages": 256,
+              "present_first": 135,
+              "present_second": 135,
+              "surviving_virtual_bytes_at_page_end": 1048576,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3997,
+                "id": "3997:423",
+                "start_ns": 467460101547,
+                "end_ns": 467460132106,
+                "args": [
+                  0,
+                  2097152,
+                  3,
+                  34
+                ],
+                "value": 140448041533440,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "4017:283",
+              "pages": 256,
+              "present_first": 131,
+              "present_second": 131,
+              "surviving_virtual_bytes_at_page_end": 1048576,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 4017,
+                "id": "4017:283",
+                "start_ns": 438658862072,
+                "end_ns": 438658890685,
+                "args": [
+                  0,
+                  2097152,
+                  3,
+                  34
+                ],
+                "value": 140448045727744,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3980:209",
+              "pages": 256,
+              "present_first": 123,
+              "present_second": 123,
+              "surviving_virtual_bytes_at_page_end": 1048576,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3980,
+                "id": "3980:209",
+                "start_ns": 305827558574,
+                "end_ns": 305827561003,
+                "args": [
+                  0,
+                  2097152,
+                  3,
+                  34
+                ],
+                "value": 140449937358848,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "4017:379",
+              "pages": 256,
+              "present_first": 118,
+              "present_second": 118,
+              "surviving_virtual_bytes_at_page_end": 1048576,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 4017,
+                "id": "4017:379",
+                "start_ns": 468158684168,
+                "end_ns": 468158723381,
+                "args": [
+                  0,
+                  2097152,
+                  3,
+                  34
+                ],
+                "value": 140448039436288,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3980:193",
+              "pages": 256,
+              "present_first": 114,
+              "present_second": 114,
+              "surviving_virtual_bytes_at_page_end": 1048576,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3980,
+                "id": "3980:193",
+                "start_ns": 305825199257,
+                "end_ns": 305825212484,
+                "args": [
+                  0,
+                  2097152,
+                  3,
+                  34
+                ],
+                "value": 140449939456000,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3988:365",
+              "pages": 256,
+              "present_first": 104,
+              "present_second": 104,
+              "surviving_virtual_bytes_at_page_end": 1048576,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3988,
+                "id": "3988:365",
+                "start_ns": 394664647865,
+                "end_ns": 394664678900,
+                "args": [
+                  0,
+                  2097152,
+                  3,
+                  34
+                ],
+                "value": 140448121225216,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3987:303",
+              "pages": 256,
+              "present_first": 97,
+              "present_second": 97,
+              "surviving_virtual_bytes_at_page_end": 1048576,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3987,
+                "id": "3987:303",
+                "start_ns": 365460439744,
+                "end_ns": 365460470906,
+                "args": [
+                  0,
+                  2097152,
+                  3,
+                  34
+                ],
+                "value": 140448127516672,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3988:237",
+              "pages": 256,
+              "present_first": 85,
+              "present_second": 85,
+              "surviving_virtual_bytes_at_page_end": 1048576,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3988,
+                "id": "3988:237",
+                "start_ns": 346557656797,
+                "end_ns": 346557686941,
+                "args": [
+                  0,
+                  2097152,
+                  3,
+                  34
+                ],
+                "value": 140448133808128,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3986:617",
+              "pages": 128,
+              "present_first": 83,
+              "present_second": 83,
+              "surviving_virtual_bytes_at_page_end": 524288,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3986,
+                "id": "3986:617",
+                "start_ns": 459758984929,
+                "end_ns": 459759034837,
+                "args": [
+                  0,
+                  524288,
+                  3,
+                  34
+                ],
+                "value": 140448145604608,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3998:759",
+              "pages": 22,
+              "present_first": 22,
+              "present_second": 22,
+              "surviving_virtual_bytes_at_page_end": 90112,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3998,
+                "id": "3998:759",
+                "start_ns": 467877245035,
+                "end_ns": 467877259145,
+                "args": [
+                  0,
+                  90112,
+                  3,
+                  34
+                ],
+                "value": 140448149557248,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3986:511",
+              "pages": 22,
+              "present_first": 22,
+              "present_second": 22,
+              "surviving_virtual_bytes_at_page_end": 90112,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3986,
+                "id": "3986:511",
+                "start_ns": 397859428235,
+                "end_ns": 397859458595,
+                "args": [
+                  0,
+                  90112,
+                  3,
+                  34
+                ],
+                "value": 140448150474752,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "4017:75",
+              "pages": 22,
+              "present_first": 22,
+              "present_second": 22,
+              "surviving_virtual_bytes_at_page_end": 90112,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 4017,
+                "id": "4017:75",
+                "start_ns": 332961503306,
+                "end_ns": 332961527586,
+                "args": [
+                  0,
+                  90112,
+                  3,
+                  34
+                ],
+                "value": 140448150958080,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3997:173",
+              "pages": 22,
+              "present_first": 22,
+              "present_second": 22,
+              "surviving_virtual_bytes_at_page_end": 90112,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3997,
+                "id": "3997:173",
+                "start_ns": 327459529768,
+                "end_ns": 327459557570,
+                "args": [
+                  0,
+                  90112,
+                  3,
+                  34
+                ],
+                "value": 140448151441408,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3997:171",
+              "pages": 22,
+              "present_first": 22,
+              "present_second": 22,
+              "surviving_virtual_bytes_at_page_end": 90112,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3997,
+                "id": "3997:171",
+                "start_ns": 326958047559,
+                "end_ns": 326958078977,
+                "args": [
+                  0,
+                  90112,
+                  3,
+                  34
+                ],
+                "value": 140448151793664,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3997:169",
+              "pages": 22,
+              "present_first": 22,
+              "present_second": 22,
+              "surviving_virtual_bytes_at_page_end": 90112,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3997,
+                "id": "3997:169",
+                "start_ns": 326460754974,
+                "end_ns": 326460784616,
+                "args": [
+                  0,
+                  90112,
+                  3,
+                  34
+                ],
+                "value": 140448151883776,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3998:263",
+              "pages": 22,
+              "present_first": 22,
+              "present_second": 22,
+              "surviving_virtual_bytes_at_page_end": 90112,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3998,
+                "id": "3998:263",
+                "start_ns": 325758702875,
+                "end_ns": 325758720663,
+                "args": [
+                  0,
+                  90112,
+                  3,
+                  34
+                ],
+                "value": 140448151973888,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3998:261",
+              "pages": 22,
+              "present_first": 22,
+              "present_second": 22,
+              "surviving_virtual_bytes_at_page_end": 90112,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3998,
+                "id": "3998:261",
+                "start_ns": 325459810798,
+                "end_ns": 325459841337,
+                "args": [
+                  0,
+                  90112,
+                  3,
+                  34
+                ],
+                "value": 140448152064000,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3998:69",
+              "pages": 22,
+              "present_first": 22,
+              "present_second": 22,
+              "surviving_virtual_bytes_at_page_end": 90112,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3998,
+                "id": "3998:69",
+                "start_ns": 312961349681,
+                "end_ns": 312961388741,
+                "args": [
+                  0,
+                  90112,
+                  3,
+                  34
+                ],
+                "value": 140448172511232,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3988:121",
+              "pages": 22,
+              "present_first": 22,
+              "present_second": 22,
+              "surviving_virtual_bytes_at_page_end": 90112,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3988,
+                "id": "3988:121",
+                "start_ns": 312426577642,
+                "end_ns": 312426595504,
+                "args": [
+                  0,
+                  90112,
+                  3,
+                  34
+                ],
+                "value": 140448585428992,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3997:41",
+              "pages": 22,
+              "present_first": 22,
+              "present_second": 22,
+              "surviving_virtual_bytes_at_page_end": 90112,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3997,
+                "id": "3997:41",
+                "start_ns": 311960243720,
+                "end_ns": 311960273662,
+                "args": [
+                  0,
+                  90112,
+                  3,
+                  34
+                ],
+                "value": 140448585519104,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3997:3",
+              "pages": 22,
+              "present_first": 22,
+              "present_second": 22,
+              "surviving_virtual_bytes_at_page_end": 90112,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3997,
+                "id": "3997:3",
+                "start_ns": 311423116006,
+                "end_ns": 311423132074,
+                "args": [
+                  0,
+                  90112,
+                  3,
+                  34
+                ],
+                "value": 140448615129088,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3988:67",
+              "pages": 22,
+              "present_first": 22,
+              "present_second": 22,
+              "surviving_virtual_bytes_at_page_end": 90112,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3988,
+                "id": "3988:67",
+                "start_ns": 305911353919,
+                "end_ns": 305911366727,
+                "args": [
+                  0,
+                  90112,
+                  3,
+                  34
+                ],
+                "value": 140448718946304,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3987:9",
+              "pages": 22,
+              "present_first": 22,
+              "present_second": 22,
+              "surviving_virtual_bytes_at_page_end": 90112,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3987,
+                "id": "3987:9",
+                "start_ns": 305830443116,
+                "end_ns": 305830445196,
+                "args": [
+                  0,
+                  90112,
+                  3,
+                  34
+                ],
+                "value": 140449935040512,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "4017:97",
+              "pages": 256,
+              "present_first": 20,
+              "present_second": 20,
+              "surviving_virtual_bytes_at_page_end": 1048576,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 4017,
+                "id": "4017:97",
+                "start_ns": 340059232407,
+                "end_ns": 340059263873,
+                "args": [
+                  0,
+                  2097152,
+                  3,
+                  34
+                ],
+                "value": 140448135905280,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3980:319",
+              "pages": 256,
+              "present_first": 19,
+              "present_second": 19,
+              "surviving_virtual_bytes_at_page_end": 1048576,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3980,
+                "id": "3980:319",
+                "start_ns": 305832533565,
+                "end_ns": 305832543143,
+                "args": [
+                  0,
+                  2097152,
+                  3,
+                  34
+                ],
+                "value": 140448614055936,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3997:179",
+              "pages": 256,
+              "present_first": 13,
+              "present_second": 13,
+              "surviving_virtual_bytes_at_page_end": 1048576,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3997,
+                "id": "3997:179",
+                "start_ns": 329476345835,
+                "end_ns": 329476366211,
+                "args": [
+                  0,
+                  2097152,
+                  3,
+                  34
+                ],
+                "value": 140448140099584,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "4017:63",
+              "pages": 256,
+              "present_first": 11,
+              "present_second": 11,
+              "surviving_virtual_bytes_at_page_end": 1048576,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 4017,
+                "id": "4017:63",
+                "start_ns": 325757590306,
+                "end_ns": 325757620658,
+                "args": [
+                  0,
+                  2097152,
+                  3,
+                  34
+                ],
+                "value": 140448146391040,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3980:227",
+              "pages": 256,
+              "present_first": 10,
+              "present_second": 10,
+              "surviving_virtual_bytes_at_page_end": 1048576,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3980,
+                "id": "3980:227",
+                "start_ns": 305827921136,
+                "end_ns": 305827927862,
+                "args": [
+                  0,
+                  2097152,
+                  3,
+                  34
+                ],
+                "value": 140449928970240,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3980:183",
+              "pages": 13,
+              "present_first": 5,
+              "present_second": 5,
+              "surviving_virtual_bytes_at_page_end": 53248,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3980,
+                "id": "3980:183",
+                "start_ns": 305824321021,
+                "end_ns": 305824323541,
+                "args": [
+                  140449943674880,
+                  52624,
+                  3,
+                  50
+                ],
+                "value": 140449943674880,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3980:301",
+              "pages": 2048,
+              "present_first": 4,
+              "present_second": 4,
+              "surviving_virtual_bytes_at_page_end": 8392704,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3980,
+                "id": "3980:301",
+                "start_ns": 305829570677,
+                "end_ns": 305829577515,
+                "args": [
+                  0,
+                  8392704,
+                  0,
+                  131106
+                ],
+                "value": 140448729395200,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3985:11",
+              "pages": 2048,
+              "present_first": 3,
+              "present_second": 3,
+              "surviving_virtual_bytes_at_page_end": 8392704,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3985,
+                "id": "3985:11",
+                "start_ns": 305830486930,
+                "end_ns": 305830490205,
+                "args": [
+                  0,
+                  8392704,
+                  0,
+                  131106
+                ],
+                "value": 140448626626560,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3988:139",
+              "pages": 2048,
+              "present_first": 2,
+              "present_second": 2,
+              "surviving_virtual_bytes_at_page_end": 8392704,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3988,
+                "id": "3988:139",
+                "start_ns": 315435704057,
+                "end_ns": 315435723610,
+                "args": [
+                  0,
+                  8392704,
+                  0,
+                  131106
+                ],
+                "value": 140448157003776,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3987:119",
+              "pages": 2048,
+              "present_first": 2,
+              "present_second": 2,
+              "surviving_virtual_bytes_at_page_end": 8392704,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3987,
+                "id": "3987:119",
+                "start_ns": 310957257884,
+                "end_ns": 310957276844,
+                "args": [
+                  0,
+                  8392704,
+                  0,
+                  131106
+                ],
+                "value": 140448173649920,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3985:161",
+              "pages": 2048,
+              "present_first": 2,
+              "present_second": 2,
+              "surviving_virtual_bytes_at_page_end": 8392704,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3985,
+                "id": "3985:161",
+                "start_ns": 310956971905,
+                "end_ns": 310957012671,
+                "args": [
+                  0,
+                  8392704,
+                  0,
+                  131106
+                ],
+                "value": 140448588886016,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3980:311",
+              "pages": 2048,
+              "present_first": 2,
+              "present_second": 2,
+              "surviving_virtual_bytes_at_page_end": 8392704,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3980,
+                "id": "3980:311",
+                "start_ns": 305830693989,
+                "end_ns": 305830726587,
+                "args": [
+                  0,
+                  8392704,
+                  0,
+                  131106
+                ],
+                "value": 140448618233856,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3985:9",
+              "pages": 2048,
+              "present_first": 2,
+              "present_second": 2,
+              "surviving_virtual_bytes_at_page_end": 8392704,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3985,
+                "id": "3985:9",
+                "start_ns": 305829976874,
+                "end_ns": 305829984099,
+                "args": [
+                  0,
+                  8392704,
+                  0,
+                  131106
+                ],
+                "value": 140448635019264,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3980:309",
+              "pages": 2048,
+              "present_first": 2,
+              "present_second": 2,
+              "surviving_virtual_bytes_at_page_end": 8392704,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3980,
+                "id": "3980:309",
+                "start_ns": 305829831218,
+                "end_ns": 305829839694,
+                "args": [
+                  0,
+                  8392704,
+                  0,
+                  131106
+                ],
+                "value": 140448643411968,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3980:307",
+              "pages": 2048,
+              "present_first": 2,
+              "present_second": 2,
+              "surviving_virtual_bytes_at_page_end": 8392704,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3980,
+                "id": "3980:307",
+                "start_ns": 305829747569,
+                "end_ns": 305829754959,
+                "args": [
+                  0,
+                  8392704,
+                  0,
+                  131106
+                ],
+                "value": 140448721002496,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3980:207",
+              "pages": 16,
+              "present_first": 2,
+              "present_second": 2,
+              "surviving_virtual_bytes_at_page_end": 65536,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3980,
+                "id": "3980:207",
+                "start_ns": 305827546664,
+                "end_ns": 305827549454,
+                "args": [
+                  0,
+                  65536,
+                  3,
+                  34
+                ],
+                "value": 140449945169920,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3980:185",
+              "pages": 3,
+              "present_first": 2,
+              "present_second": 2,
+              "surviving_virtual_bytes_at_page_end": 12288,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3980,
+                "id": "3980:185",
+                "start_ns": 305824340051,
+                "end_ns": 305824344087,
+                "args": [
+                  0,
+                  12288,
+                  3,
+                  34
+                ],
+                "value": 140449945235456,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "4017:1",
+              "pages": 33,
+              "present_first": 1,
+              "present_second": 1,
+              "surviving_virtual_bytes_at_page_end": 67108864,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 4017,
+                "id": "4017:1",
+                "start_ns": 315435836247,
+                "end_ns": 315435854301,
+                "args": [
+                  0,
+                  134217728,
+                  0,
+                  34
+                ],
+                "value": 140447913607168,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3998:1",
+              "pages": 33,
+              "present_first": 1,
+              "present_second": 1,
+              "surviving_virtual_bytes_at_page_end": 67108864,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3998,
+                "id": "3998:1",
+                "start_ns": 310959064921,
+                "end_ns": 310959069464,
+                "args": [
+                  0,
+                  134217728,
+                  0,
+                  34
+                ],
+                "value": 140448037339136,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3989:1",
+              "pages": 33,
+              "present_first": 1,
+              "present_second": 1,
+              "surviving_virtual_bytes_at_page_end": 67108864,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3989,
+                "id": "3989:1",
+                "start_ns": 305830808169,
+                "end_ns": 305830820348,
+                "args": [
+                  0,
+                  134217728,
+                  0,
+                  34
+                ],
+                "value": 140448182042624,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3997:1",
+              "pages": 33,
+              "present_first": 1,
+              "present_second": 1,
+              "surviving_virtual_bytes_at_page_end": 67108864,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3997,
+                "id": "3997:1",
+                "start_ns": 310957089201,
+                "end_ns": 310957105629,
+                "args": [
+                  140448249151488,
+                  67108864,
+                  0,
+                  34
+                ],
+                "value": 140448249151488,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3987:1",
+              "pages": 33,
+              "present_first": 1,
+              "present_second": 1,
+              "surviving_virtual_bytes_at_page_end": 67108864,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3987,
+                "id": "3987:1",
+                "start_ns": 305830062720,
+                "end_ns": 305830072013,
+                "args": [
+                  0,
+                  134217728,
+                  0,
+                  34
+                ],
+                "value": 140448316260352,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3988:1",
+              "pages": 33,
+              "present_first": 1,
+              "present_second": 1,
+              "surviving_virtual_bytes_at_page_end": 67108864,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3988,
+                "id": "3988:1",
+                "start_ns": 305830544899,
+                "end_ns": 305830560473,
+                "args": [
+                  140448383369216,
+                  67108864,
+                  0,
+                  34
+                ],
+                "value": 140448383369216,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3986:1",
+              "pages": 33,
+              "present_first": 1,
+              "present_second": 1,
+              "surviving_virtual_bytes_at_page_end": 67108864,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3986,
+                "id": "3986:1",
+                "start_ns": 305829877042,
+                "end_ns": 305829879903,
+                "args": [
+                  140448584695808,
+                  67108864,
+                  0,
+                  34
+                ],
+                "value": 140448450478080,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3985:1",
+              "pages": 33,
+              "present_first": 1,
+              "present_second": 1,
+              "surviving_virtual_bytes_at_page_end": 67108864,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3985,
+                "id": "3985:1",
+                "start_ns": 305829812453,
+                "end_ns": 305829826138,
+                "args": [
+                  0,
+                  134217728,
+                  0,
+                  34
+                ],
+                "value": 140448517586944,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3984:1",
+              "pages": 33,
+              "present_first": 1,
+              "present_second": 1,
+              "surviving_virtual_bytes_at_page_end": 67108864,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3984,
+                "id": "3984:1",
+                "start_ns": 305829634929,
+                "end_ns": 305829650697,
+                "args": [
+                  0,
+                  134217728,
+                  0,
+                  34
+                ],
+                "value": 140448593084416,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3980:223",
+              "pages": 256,
+              "present_first": 1,
+              "present_second": 1,
+              "surviving_virtual_bytes_at_page_end": 1048576,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3980,
+                "id": "3980:223",
+                "start_ns": 305827846069,
+                "end_ns": 305827847664,
+                "args": [
+                  0,
+                  2097152,
+                  3,
+                  34
+                ],
+                "value": 140449931067392,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3980:323",
+              "pages": 1,
+              "present_first": 1,
+              "present_second": 1,
+              "surviving_virtual_bytes_at_page_end": 4096,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3980,
+                "id": "3980:323",
+                "start_ns": 305832550230,
+                "end_ns": 305832552213,
+                "args": [
+                  0,
+                  4096,
+                  3,
+                  34
+                ],
+                "value": 140449945264128,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3980:201",
+              "pages": 1,
+              "present_first": 1,
+              "present_second": 1,
+              "surviving_virtual_bytes_at_page_end": 4096,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3980,
+                "id": "3980:201",
+                "start_ns": 305827472100,
+                "end_ns": 305827473212,
+                "args": [
+                  0,
+                  4096,
+                  3,
+                  34
+                ],
+                "value": 140449945276416,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3980:197",
+              "pages": 1,
+              "present_first": 1,
+              "present_second": 1,
+              "surviving_virtual_bytes_at_page_end": 4096,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3980,
+                "id": "3980:197",
+                "start_ns": 305825219780,
+                "end_ns": 305825222562,
+                "args": [
+                  0,
+                  4096,
+                  3,
+                  34
+                ],
+                "value": 140449945284608,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3980:171",
+              "pages": 2,
+              "present_first": 1,
+              "present_second": 1,
+              "surviving_virtual_bytes_at_page_end": 8192,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3980,
+                "id": "3980:171",
+                "start_ns": 305824256906,
+                "end_ns": 305824266076,
+                "args": [
+                  0,
+                  8192,
+                  3,
+                  34
+                ],
+                "value": 140449945288704,
+                "owner": "unresolved"
+              }
+            },
+            {
+              "generation": "3980:199",
+              "pages": 1,
+              "present_first": 0,
+              "present_second": 0,
+              "surviving_virtual_bytes_at_page_end": 4096,
+              "creation_request": {
+                "call": "mmap",
+                "tid": 3980,
+                "id": "3980:199",
+                "start_ns": 305827456751,
+                "end_ns": 305827469234,
+                "args": [
+                  0,
+                  4096,
+                  3,
+                  34
+                ],
+                "value": 140449945280512,
+                "owner": "unresolved"
+              }
+            }
+          ],
+          "untracked_regions": [
+            {
+              "start": 18538496,
+              "end": 68321280,
+              "pages": 12154,
+              "present_first": 4139,
+              "present_second": 4139,
+              "bounds_within_ELF_zero_fill_tail": true
+            }
+          ]
+        }
+      ],
+      "errors": [
+        "active resource bound: rss"
+      ],
+      "business_events": 1919,
+      "quality": {
+        "max_capture_ns": 39312956,
+        "added_vmas": 0,
+        "topology_changed_ranges": 0,
+        "residency_changed_entries": 0
+      },
+      "rss": {
+        "baseline": 129306624,
+        "peak": 204619776,
+        "delta": 75313152,
+        "violations": 11,
+        "measured_points": 36
+      }
+    }
+  ],
+  "static_next_call_candidates": [
+    {
+      "symbol": "_ZN11__sanitizer20SizeClassAllocator32INS_4AP32EE13AllocateBatchEPNS_14AllocatorStatsEPNS_30SizeClassAllocator32LocalCacheIS2_EEm",
+      "demangled": "__sanitizer::SizeClassAllocator32<__sanitizer::AP32>::AllocateBatch(__sanitizer::AllocatorStats*, __sanitizer::SizeClassAllocator32LocalCache<__sanitizer::SizeClassAllocator32<__sanitizer::AP32> >*, unsigned long)",
+      "address": 4405664,
+      "size": 251,
+      "file_offset": 211360,
+      "bytes_sha256": "1d841260424bbe957b603bd808acc11eec67838806170143636ac195442afd56",
+      "qualification": "static candidate only; actual execution and association with 2MiB requests unverified"
+    },
+    {
+      "symbol": "_ZN11__sanitizer28MmapAlignedOrDieOnFatalErrorEmmPKc",
+      "demangled": "__sanitizer::MmapAlignedOrDieOnFatalError(unsigned long, unsigned long, char const*)",
+      "address": 4268848,
+      "size": 406,
+      "file_offset": 74544,
+      "bytes_sha256": "8fb8f24012348f264b63ee3efffa13c89b0e7680a14a1bc378406d1ab84bd6cd",
+      "qualification": "static candidate only; actual execution and association with 2MiB requests unverified"
+    }
+  ],
+  "ELF_zero_fill_full_page_ranges": [
+    {
+      "start": 18538496,
+      "end": 68321280,
+      "p_vaddr": 18010112,
+      "p_filesz": 526656,
+      "p_memsz": 50310240,
+      "flags": 6
+    }
+  ],
+  "totals": {
+    "events": 10174,
+    "checkpoints": 97,
+    "status_vectors": 8774,
+    "page_entries": 7505354
+  },
+  "limits": "Pinned executable parser replay plus independent status-bit/count conservation. No archived binary execution. Status-only two reads are not atomic; no PFNs, no object lifecycle, no page-count-to-RSS conversion, no new observation overhead control or 24h qualification."
+}
