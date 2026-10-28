@@ -35,14 +35,19 @@ __attribute__((noinline)) void *control_batch(void *allocator,void *stats,void *
     return p;
 }
 static pthread_barrier_t barrier;
+/* Keep all four TIDs but avoid cross-thread reuse during syscall exit probes.
+ * The production auditor still rejects ambiguous overlapping memory operations. */
+static pthread_mutex_t mapping_lock=PTHREAD_MUTEX_INITIALIZER;
 static void *worker(void *unused) {
     (void)unused;
     int b=pthread_barrier_wait(&barrier);if(b!=0 && b!=PTHREAD_BARRIER_SERIAL_THREAD)abort();
     for(size_t i=0;i<8;i++) {
+        if(pthread_mutex_lock(&mapping_lock))abort();
         size_t n=(size_t)4096<<i;void *p=control_batch(NULL,NULL,NULL,i);
         ((volatile char*)p)[0]=1;
         printf("{\"tid\":%ld,\"size\":%zu,\"alignment\":%zu,\"pointer\":%llu}\n",syscall(SYS_gettid),n,n,(unsigned long long)(uintptr_t)p);
         if(munmap(p,n))abort();
+        if(pthread_mutex_unlock(&mapping_lock))abort();
     }
     return NULL;
 }
