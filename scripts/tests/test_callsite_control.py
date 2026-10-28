@@ -11,9 +11,17 @@ class CallsiteTests(unittest.TestCase):
         for event,site,size,value,sp in [('call',100,4096,0,5000),('mmap_entry',0,4096,0,0),('mmap_exit',0,0,8192,0),('after',105,0,8192,5000)]:
             n=len(rows)+1;rows.append(dict(event=event,site=site,size=size,value=value,sp=sp,pid=10,tid=11,uid=1000,seq=n,ns=n,tag=1,flags=0))
         return rows
-    def run_audit(self,rows,ledger=4):
-        raw='\n'.join([json.dumps(dict(event='begin',pid=10))]+[json.dumps(r) for r in rows]+[json.dumps(dict(event='end',pid=10)),f'@seq[11]: {ledger}'])
-        with patch.object(c,'call_site',return_value=self.site):return c.audit(raw,{},1000)
+    def run_audit(self,rows,ledger=4,prefix=None,execs=None):
+        prefix=prefix or []
+        if execs is None:execs=[dict(event='exec',site=0,path='/frozen/control',pid=10,tid=10,uid=1000,seq=len(prefix)+1,ns=0)]
+        prefix=[dict(r,ns=r['ns']+100) for r in prefix]
+        execs=[dict(r,ns=r['ns']+100) for r in execs]
+        rows=[dict(r,ns=r['ns']+100) for r in rows]
+        main=prefix+execs
+        lines=[json.dumps(dict(event='begin',pid=10))]+[json.dumps(r) for r in main+rows]+[json.dumps(dict(event='end',pid=10)),f'@seq[11]: {ledger}']
+        if main:lines.append(f'@seq[10]: {max(r["seq"] for r in main)}')
+        raw='\n'.join(lines)
+        with patch.object(c,'call_site',return_value=self.site):return c.audit(raw,{'binary':'/frozen/control'},1000)
     def test_completed_call_and_syscall(self):
         r=self.run_audit(self.rows());self.assertEqual(r['calls'][0]['pointer'],8192)
     def test_loss_and_duplicate_rejected(self):
@@ -56,5 +64,23 @@ class CallsiteTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as t:
             path=Path(t)/'bad.zip';path.write_bytes(b'wrong')
             with self.assertRaisesRegex(ValueError,'digest'):c.extract(path,Path(t)/'probe')
+    def test_root_launcher_mmaps_retained_before_exec(self):
+        prefix=[]
+        for n,event in enumerate(['mmap_entry','mmap_exit'],1):prefix.append(dict(event=event,site=0,pid=10,tid=10,uid=0,seq=n,ns=n-3,size=8192,value=8192,sp=0,tag=0,flags=0))
+        r=self.run_audit(self.rows(),prefix=prefix)
+        self.assertEqual(r['launcher_events'],2);self.assertEqual(r['target_exec']['uid'],1000)
+        self.assertEqual(len(r['calls']),1)
+    def test_missing_duplicate_or_wrong_uid_exec_rejected(self):
+        with self.assertRaisesRegex(ValueError,'exec boundary'):self.run_audit(self.rows(),execs=[])
+        e=dict(event='exec',site=0,path='/frozen/control',pid=10,tid=10,uid=1000,seq=1,ns=0)
+        with self.assertRaisesRegex(ValueError,'exec boundary'):self.run_audit(self.rows(),execs=[e,e])
+        e['uid']=0
+        with self.assertRaisesRegex(ValueError,'exec PID/UID'):self.run_audit(self.rows(),execs=[e])
+    def test_root_event_after_exec_rejected(self):
+        rows=self.rows();rows[1]['uid']=0
+        with self.assertRaisesRegex(ValueError,'after target exec'):self.run_audit(rows)
+    def test_reexec_after_target_rejected(self):
+        rows=self.rows();rows.append(dict(event='exec',path='/unexpected',site=0,pid=10,tid=11,uid=1000,seq=5,ns=5))
+        with self.assertRaisesRegex(ValueError,'unexpected exec'):self.run_audit(rows,5)
 
 if __name__=='__main__':unittest.main()
