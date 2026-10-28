@@ -38,3 +38,7 @@ PR36已经真实核对冻结ELF中TraceSwitchPartImpl→MmapOrDie的CALL、参�
 job65分钟：回归5、下载3、工具构建35、布局/工具归档2、控制+负载15、上传2分钟上限，另留调度/清理余量。所有历史RSS与TLS失败保留，草稿/未合并/发布，qualifies_24h=false，24h未启动。
 
 参考：[Linux mmap/munmap](https://man7.org/linux/man-pages/man2/mmap.2.html)、[mremap](https://man7.org/linux/man-pages/man2/mremap.2.html)、[madvise](https://man7.org/linux/man-pages/man2/madvise.2.html)。实际支持范围以上述控制和失败守卫为准。
+
+## 实际CI与独立复核
+
+[实际结果与判定](soak-call-lifecycle-results.md)：执行源码1ec8bfe38f53312d9349b7698f49c8eecb2cca91的CI40675864824完整结束，146项Python回归、C8阶段控制、15秒和180秒+120秒证据均通过完整性核验；最终因180秒RSS增量72.640625MiB（16/36点超64MiB）失败。9638事件/85份完整smaps已固定源码重放，工具ELF字节也已核对。37.625MiB已知虚拟映射保留，但混合VMA不能按长度分摊RSS；回收后只有2.25MiB整VMA可关联到该CALL路径，其余仍未归属。保留全部RSS/TLS失败，不启动24h。
