@@ -1,0 +1,1683 @@
+{
+  "audit_status": "independently_replayed",
+  "execution_source": "bf91f3c343986457c164939c65c5b2baed6a5e68",
+  "source_blobs": {
+    "audit_soak_os_memory.py": "0c5fbff721f98f94fb75f431da968679908d1171",
+    "audit_soak_retention.py": "3b06a71491258e62326f4d3d7f4dc4bdae10ca0b",
+    "soak_call_lifecycle.py": "0847600f9edce17e44de47e384a0992d54167828",
+    "soak_callsite_control.py": "ab76a87a1ebe6281b0372c6614f6a70aad8f7660",
+    "soak_mapping_ledger.py": "610a54d636767bf92752bd165b60faafd961c7be",
+    "soak_mapping_retention.py": "ae88355fbc1363aa3f60c45cb9e773544a07bf70",
+    "soak_mappings.py": "708301538c24476e4d244efb16cc5027c193efd5",
+    "soak_ret_context.py": "eac5605150e51b9aec336277088e3981616ac28e",
+    "verify_soak.py": "e0c0321054c8be6510f190b33d07966aad8635aa",
+    "soak_aligned_calls.py": "01a7507f8c9cc97c23ed8f24df2e4e94e95514c9"
+  },
+  "archive_sha256": "196d02b5b834bd0fed42038f5359dd32f05f98ab6b5c4549f30902cc3d9b1559",
+  "qualifies_24h": false,
+  "stages": [
+    {
+      "stage": "control",
+      "events": 580,
+      "native_pid": 2738,
+      "tracepart_calls": 1,
+      "aligned_calls": 32,
+      "ap32_calls": 32,
+      "aligned_with_ap32_parent": 32,
+      "aligned_parameters": {
+        "4096:4096": 4,
+        "8192:8192": 4,
+        "16384:16384": 4,
+        "32768:32768": 4,
+        "65536:65536": 4,
+        "131072:131072": 4,
+        "262144:262144": 4,
+        "524288:524288": 4
+      },
+      "mmap_syscalls": 46,
+      "selected": []
+    },
+    {
+      "stage": "15s",
+      "events": 5394,
+      "native_pid": 2770,
+      "tracepart_calls": 286,
+      "aligned_calls": 15,
+      "ap32_calls": 503,
+      "aligned_with_ap32_parent": 15,
+      "aligned_parameters": {
+        "1048576:1048576": 15
+      },
+      "mmap_syscalls": 496,
+      "selected": [
+        {
+          "key": [
+            "warmup",
+            10.007100063
+          ],
+          "native_rss": 104620032,
+          "origins": {
+            "validated_tracepart_call": {
+              "surviving_virtual_bytes": 33554432,
+              "surviving_generations": 256
+            },
+            "validated_aligned_request": {
+              "surviving_virtual_bytes": 9437184,
+              "surviving_generations": 9
+            },
+            "unresolved": {
+              "surviving_virtual_bytes": 2241904640,
+              "surviving_generations": 130
+            }
+          },
+          "aligned_generations": [
+            {
+              "mmap_id": "2770:195",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2770:215",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2770:223",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2770:230",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2770:245",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2770:269",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2770:377",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2770:495",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2775:247",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            }
+          ],
+          "whole_vma_rss": {
+            "file_mapping": 15376384,
+            "unresolved": 55640064,
+            "kernel_named": 36864,
+            "[anon: Go: heap]": 19660800,
+            "[anon: Go: heap reservation]": 0,
+            "validated_tracepart_call": 10145792,
+            "validated_aligned_request": 2412544,
+            "[anon: Go: immortal metadata]": 1622016,
+            "[anon: Go: profiler hash buckets]": 143360,
+            "[anon: Go: heap index]": 4096,
+            "[anon: Go: scavenge index]": 4096,
+            "[anon: Go: page summary]": 0,
+            "[anon: Go: page alloc]": 20480,
+            "[anon: Go: gc bits]": 196608,
+            "[anon: Go: GC span queue]": 16384,
+            "[anon: Go: page alloc index]": 4096,
+            "[anon: Go: allspans array]": 8192,
+            "[anon: Go: getrandom states]": 4096
+          },
+          "scope": "virtual mapping replay plus separately read whole-VMA RSS; no proportional attribution or atomic claim"
+        },
+        {
+          "key": [
+            "measured",
+            22.007908407
+          ],
+          "native_rss": 147181568,
+          "origins": {
+            "validated_tracepart_call": {
+              "surviving_virtual_bytes": 34209792,
+              "surviving_generations": 261
+            },
+            "validated_aligned_request": {
+              "surviving_virtual_bytes": 15728640,
+              "surviving_generations": 15
+            },
+            "unresolved": {
+              "surviving_virtual_bytes": 2242912256,
+              "surviving_generations": 157
+            }
+          },
+          "aligned_generations": [
+            {
+              "mmap_id": "2770:195",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2770:215",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2770:223",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2770:230",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2770:245",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2770:269",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2770:377",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2770:495",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2775:247",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2781:199",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2770:725",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2781:233",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2785:141",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2770:827",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2770:843",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            }
+          ],
+          "whole_vma_rss": {
+            "file_mapping": 15376384,
+            "unresolved": 80752640,
+            "kernel_named": 36864,
+            "[anon: Go: heap]": 28082176,
+            "[anon: Go: heap reservation]": 0,
+            "validated_aligned_request": 5730304,
+            "validated_tracepart_call": 11051008,
+            "[anon: Go: immortal metadata]": 1830912,
+            "[anon: Go: profiler hash buckets]": 184320,
+            "[anon: Go: heap index]": 4096,
+            "[anon: Go: scavenge index]": 4096,
+            "[anon: Go: page summary]": 0,
+            "[anon: Go: page alloc]": 20480,
+            "[anon: Go: gc bits]": 196608,
+            "[anon: Go: GC span queue]": 16384,
+            "[anon: Go: page alloc index]": 4096,
+            "[anon: Go: allspans array]": 12288,
+            "[anon: Go: getrandom states]": 4096
+          },
+          "scope": "virtual mapping replay plus separately read whole-VMA RSS; no proportional attribution or atomic claim"
+        }
+      ],
+      "errors": [],
+      "rss": {
+        "baseline": 104620032,
+        "peak": 147181568,
+        "delta": 42561536,
+        "violations": 0,
+        "points": 3
+      },
+      "business_events": 269,
+      "checkpoints": 9
+    },
+    {
+      "stage": "180s",
+      "events": 12554,
+      "native_pid": 2812,
+      "tracepart_calls": 305,
+      "aligned_calls": 32,
+      "ap32_calls": 1341,
+      "aligned_with_ap32_parent": 32,
+      "aligned_parameters": {
+        "1048576:1048576": 32
+      },
+      "mmap_syscalls": 1101,
+      "selected": [
+        {
+          "key": [
+            "warmup",
+            10.00676722
+          ],
+          "native_rss": 104751104,
+          "origins": {
+            "validated_tracepart_call": {
+              "surviving_virtual_bytes": 34078720,
+              "surviving_generations": 260
+            },
+            "validated_aligned_request": {
+              "surviving_virtual_bytes": 9437184,
+              "surviving_generations": 9
+            },
+            "unresolved": {
+              "surviving_virtual_bytes": 2242166784,
+              "surviving_generations": 126
+            }
+          },
+          "aligned_generations": [
+            {
+              "mmap_id": "2812:195",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2812:215",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2812:223",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2812:230",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2812:245",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2812:269",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2812:377",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2819:209",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2819:251",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            }
+          ],
+          "whole_vma_rss": {
+            "file_mapping": 15376384,
+            "unresolved": 66822144,
+            "kernel_named": 36864,
+            "[anon: Go: heap]": 18317312,
+            "[anon: Go: heap reservation]": 0,
+            "[anon: Go: immortal metadata]": 1626112,
+            "validated_tracepart_call": 1396736,
+            "validated_aligned_request": 1437696,
+            "[anon: Go: profiler hash buckets]": 118784,
+            "[anon: Go: heap index]": 4096,
+            "[anon: Go: scavenge index]": 4096,
+            "[anon: Go: page summary]": 0,
+            "[anon: Go: page alloc]": 20480,
+            "[anon: Go: gc bits]": 196608,
+            "[anon: Go: GC span queue]": 16384,
+            "[anon: Go: page alloc index]": 4096,
+            "[anon: Go: allspans array]": 8192,
+            "[anon: Go: getrandom states]": 4096
+          },
+          "scope": "virtual mapping replay plus separately read whole-VMA RSS; no proportional attribution or atomic claim"
+        },
+        {
+          "key": [
+            "measured",
+            167.011055097
+          ],
+          "native_rss": 185114624,
+          "origins": {
+            "validated_tracepart_call": {
+              "surviving_virtual_bytes": 38666240,
+              "surviving_generations": 295
+            },
+            "validated_aligned_request": {
+              "surviving_virtual_bytes": 31457280,
+              "surviving_generations": 30
+            },
+            "unresolved": {
+              "surviving_virtual_bytes": 2243379200,
+              "surviving_generations": 216
+            }
+          },
+          "aligned_generations": [
+            {
+              "mmap_id": "2812:195",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2812:215",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2812:223",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2812:230",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2812:245",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2812:269",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2812:377",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2819:209",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2819:251",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2817:291",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2819:383",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2821:403",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2817:361",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2819:455",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2819:473",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2826:273",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2821:857",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2827:351",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2827:360",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2826:591",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2826:623",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2827:747",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2817:779",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2827:819",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2826:871",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2827:949",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2817:1005",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2821:1743",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2828:1205",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2821:1765",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            }
+          ],
+          "whole_vma_rss": {
+            "file_mapping": 15376384,
+            "unresolved": 112488448,
+            "kernel_named": 36864,
+            "[anon: Go: heap]": 36982784,
+            "[anon: Go: heap reservation]": 0,
+            "validated_aligned_request": 13291520,
+            "validated_tracepart_call": 2592768,
+            "[anon: Go: immortal metadata]": 1974272,
+            "[anon: Go: profiler hash buckets]": 454656,
+            "[anon: Go: heap index]": 4096,
+            "[anon: Go: scavenge index]": 4096,
+            "[anon: Go: page summary]": 0,
+            "[anon: Go: page alloc]": 20480,
+            "[anon: Go: gc bits]": 196608,
+            "[anon: Go: GC span queue]": 32768,
+            "[anon: Go: page alloc index]": 4096,
+            "[anon: Go: allspans array]": 12288,
+            "[anon: Go: getrandom states]": 4096
+          },
+          "scope": "virtual mapping replay plus separately read whole-VMA RSS; no proportional attribution or atomic claim"
+        },
+        {
+          "key": [
+            "poststop_gc",
+            0.004519092
+          ],
+          "native_rss": 156475392,
+          "origins": {
+            "validated_tracepart_call": {
+              "surviving_virtual_bytes": 39976960,
+              "surviving_generations": 305
+            },
+            "validated_aligned_request": {
+              "surviving_virtual_bytes": 33554432,
+              "surviving_generations": 32
+            },
+            "unresolved": {
+              "surviving_virtual_bytes": 2243379200,
+              "surviving_generations": 222
+            }
+          },
+          "aligned_generations": [
+            {
+              "mmap_id": "2812:195",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2812:215",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2812:223",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2812:230",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2812:245",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2812:269",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2812:377",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2819:209",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2819:251",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2817:291",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2819:383",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2821:403",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2817:361",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2819:455",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2819:473",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2826:273",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2821:857",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2827:351",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2827:360",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2826:591",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2826:623",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2827:747",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2817:779",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2827:819",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2826:871",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2827:949",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2817:1005",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2821:1743",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2828:1205",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2821:1765",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2827:1421",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2821:1843",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            }
+          ],
+          "whole_vma_rss": {
+            "file_mapping": 15376384,
+            "unresolved": 111751168,
+            "kernel_named": 36864,
+            "[anon: Go: heap]": 4472832,
+            "[anon: Go: heap reservation]": 0,
+            "validated_aligned_request": 15327232,
+            "[anon: Go: immortal metadata]": 1978368,
+            "validated_tracepart_call": 2465792,
+            "[anon: Go: profiler hash buckets]": 499712,
+            "[anon: Go: heap index]": 4096,
+            "[anon: Go: scavenge index]": 4096,
+            "[anon: Go: page summary]": 0,
+            "[anon: Go: page alloc]": 20480,
+            "[anon: Go: gc bits]": 196608,
+            "[anon: Go: GC span queue]": 32768,
+            "[anon: Go: page alloc index]": 4096,
+            "[anon: Go: allspans array]": 12288,
+            "[anon: Go: getrandom states]": 4096
+          },
+          "scope": "virtual mapping replay plus separately read whole-VMA RSS; no proportional attribution or atomic claim"
+        },
+        {
+          "key": [
+            "poststop_gc",
+            120.009017905
+          ],
+          "native_rss": 153653248,
+          "origins": {
+            "validated_tracepart_call": {
+              "surviving_virtual_bytes": 39976960,
+              "surviving_generations": 305
+            },
+            "validated_aligned_request": {
+              "surviving_virtual_bytes": 33554432,
+              "surviving_generations": 32
+            },
+            "unresolved": {
+              "surviving_virtual_bytes": 2243379200,
+              "surviving_generations": 229
+            }
+          },
+          "aligned_generations": [
+            {
+              "mmap_id": "2812:195",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2812:215",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2812:223",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2812:230",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2812:245",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2812:269",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2812:377",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2819:209",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2819:251",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2817:291",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2819:383",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2821:403",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2817:361",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2819:455",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2819:473",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2826:273",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2821:857",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2827:351",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2827:360",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2826:591",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2826:623",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2827:747",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2817:779",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2827:819",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2826:871",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2827:949",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2817:1005",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2821:1743",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2828:1205",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2821:1765",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2827:1421",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2821:1843",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            }
+          ],
+          "whole_vma_rss": {
+            "file_mapping": 15376384,
+            "unresolved": 113246208,
+            "kernel_named": 36864,
+            "[anon: Go: heap]": 4345856,
+            "[anon: Go: heap reservation]": 0,
+            "validated_aligned_request": 15327232,
+            "[anon: Go: immortal metadata]": 2002944,
+            "validated_tracepart_call": 2502656,
+            "[anon: Go: profiler hash buckets]": 552960,
+            "[anon: Go: heap index]": 4096,
+            "[anon: Go: scavenge index]": 4096,
+            "[anon: Go: page summary]": 0,
+            "[anon: Go: page alloc]": 20480,
+            "[anon: Go: gc bits]": 196608,
+            "[anon: Go: GC span queue]": 32768,
+            "[anon: Go: page alloc index]": 4096,
+            "[anon: Go: allspans array]": 12288,
+            "[anon: Go: getrandom states]": 4096
+          },
+          "scope": "virtual mapping replay plus separately read whole-VMA RSS; no proportional attribution or atomic claim"
+        },
+        {
+          "key": [
+            "poststop_go_scavenge",
+            120.043509477
+          ],
+          "native_rss": 152408064,
+          "origins": {
+            "validated_tracepart_call": {
+              "surviving_virtual_bytes": 39976960,
+              "surviving_generations": 305
+            },
+            "validated_aligned_request": {
+              "surviving_virtual_bytes": 33554432,
+              "surviving_generations": 32
+            },
+            "unresolved": {
+              "surviving_virtual_bytes": 2243379200,
+              "surviving_generations": 228
+            }
+          },
+          "aligned_generations": [
+            {
+              "mmap_id": "2812:195",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2812:215",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2812:223",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2812:230",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2812:245",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2812:269",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2812:377",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2819:209",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2819:251",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2817:291",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2819:383",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2821:403",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2817:361",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2819:455",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2819:473",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2826:273",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2821:857",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2827:351",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2827:360",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2826:591",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2826:623",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2827:747",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2817:779",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2827:819",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2826:871",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2827:949",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2817:1005",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2821:1743",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2828:1205",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2821:1765",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2827:1421",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            },
+            {
+              "mmap_id": "2821:1843",
+              "size": 1048576,
+              "alignment": 1048576,
+              "surviving_virtual_bytes": 1048576,
+              "endpoint_pieces_equal": true,
+              "ap32_parent": true
+            }
+          ],
+          "whole_vma_rss": {
+            "file_mapping": 15376384,
+            "unresolved": 113098752,
+            "kernel_named": 36864,
+            "[anon: Go: heap]": 3760128,
+            "[anon: Go: heap reservation]": 0,
+            "validated_aligned_request": 15327232,
+            "[anon: Go: immortal metadata]": 2002944,
+            "validated_tracepart_call": 2502656,
+            "[anon: Go: profiler hash buckets]": 557056,
+            "[anon: Go: heap index]": 4096,
+            "[anon: Go: scavenge index]": 4096,
+            "[anon: Go: page summary]": 0,
+            "[anon: Go: page alloc]": 20480,
+            "[anon: Go: gc bits]": 196608,
+            "[anon: Go: GC span queue]": 32768,
+            "[anon: Go: page alloc index]": 4096,
+            "[anon: Go: allspans array]": 12288,
+            "[anon: Go: getrandom states]": 4096
+          },
+          "scope": "virtual mapping replay plus separately read whole-VMA RSS; no proportional attribution or atomic claim"
+        }
+      ],
+      "errors": [
+        "active resource bound: rss"
+      ],
+      "rss": {
+        "baseline": 104751104,
+        "peak": 185114624,
+        "delta": 80363520,
+        "violations": 17,
+        "points": 36
+      },
+      "business_events": 1919,
+      "checkpoints": 68
+    }
+  ],
+  "original_status": "failed",
+  "original_error": null,
+  "totals": {
+    "events": 18528,
+    "tracepart_calls": 592,
+    "aligned_calls": 79,
+    "ap32_calls": 1876,
+    "checkpoints": 77
+  },
+  "limits": "Actual new-run request/trim lineage only. No PFNs or page-status measurement in this run, no object lifecycle, no observation overhead control, no retroactive attribution of PR39 pages, no 24h acceptance."
+}
