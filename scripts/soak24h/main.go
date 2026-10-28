@@ -407,6 +407,7 @@ loop:
 	return failure
 }
 func main() {
+	metadataOnly := flag.Bool("diagnostic-mapping-metadata-only", false, "three-cycle diagnostic: omit full smaps read/compress/hash")
 	cycles := flag.Int("diagnostic-cycles", 1, "1 or 3 same-process cycles; pilot diagnostic only")
 	diagnosticFlag := flag.Bool("goroutine-diagnostics", false, "write bounded local goroutine stacks at warmup maxima and budget excursions")
 	describe := flag.Bool("describe", false, "print build metadata without running")
@@ -440,6 +441,7 @@ func main() {
 		fmt.Fprintln(os.Stderr, "invalid repeated diagnostic profile")
 		os.Exit(2)
 	}
+	if *metadataOnly && *cycles != 3 { fmt.Fprintln(os.Stderr,"metadata-only requires diagnostic cycles"); os.Exit(2) }
 	rootFolder := *folder
 	if *cycles > 1 {
 		if e := os.Mkdir(rootFolder, 0700); e != nil { panic(e) }
@@ -475,6 +477,7 @@ func main() {
 		r.Build = b.String()
 	}
 	if *cycles > 1 {
+		if *metadataOnly { r.Settings["diagnostic_mapping_policy"] = "metadata_only" } else { r.Settings["diagnostic_mapping_policy"] = "full" }
 		r.Settings["diagnostic_cycles"] = *cycles
 		r.Settings["diagnostic_cycle_index"] = cycle
 	}
