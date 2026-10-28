@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Direct CALL/next-instruction control on a byte-pinned PR35 ELF; no RSS ownership."""
-import argparse,hashlib,json,re,struct,subprocess,zipfile
+import argparse,hashlib,json,re,struct,subprocess,zipfile,os
 from pathlib import Path
 import soak_ret_context as context
 import verify_soak as verify
@@ -62,7 +62,7 @@ def call_site(p):
 
 def program(p):
     site=call_site(p);binary=p['binary']
-    if not re.fullmatch(r'/[A-Za-z0-9_./-]+',binary):raise ValueError('unsupported path')
+    if not re.fullmatch(r'/[A-Za-z0-9_./-]+',binary) or len(binary.encode())>=256:raise ValueError('unsupported path')
     lines=['BEGIN { printf("{\\"event\\":\\"begin\\",\\"pid\\":%d}\\n", cpid); }']
     probes=[('call',f'uprobe:{binary}:0x{site["call"]:x}','reg("di")','0','reg("si")','reg("dx")',site['call']),('after',f'uprobe:{binary}:0x{site["after"]:x}','0','reg("ax")','0','0',site['after']),('mmap_entry','tracepoint:syscalls:sys_enter_mmap','args.len','args.addr','args.flags','args.prot',0),('mmap_exit','tracepoint:syscalls:sys_exit_mmap','0','(uint64)args.ret','0','0',0)]
     for event,probe,size,value,tag,flags,addr in probes:
@@ -70,6 +70,7 @@ def program(p):
         quoted=fmt.replace('"','\\"')
         sp='reg("sp")' if event in ('call','after') else '0'
         lines.append(f'{probe} /pid == cpid/ {{ @seq[tid] = @seq[tid] + 1; printf("{quoted}",pid,tid,uid,@seq[tid],nsecs,{sp},{size},{value},{tag},{flags}); }}')
+    lines.append('tracepoint:sched:sched_process_exec /pid == cpid/ { @seq[tid] = @seq[tid] + 1; printf("{\\"event\\":\\"exec\\",\\"site\\":0,\\"path\\":\\"%s\\",\\"pid\\":%d,\\"tid\\":%d,\\"uid\\":%d,\\"seq\\":%llu,\\"ns\\":%llu,\\"sp\\":0,\\"size\\":0,\\"value\\":0,\\"tag\\":0,\\"flags\\":0}\\n",str(args.filename,256),pid,tid,uid,@seq[tid],nsecs); }')
     lines.append('END { printf("{\\"event\\":\\"end\\",\\"pid\\":%d}\\n", cpid); }')
     return '\n'.join(lines)+'\n'
 
@@ -85,12 +86,23 @@ def audit(raw,p,uid):
         r=json.loads(line)
         if r['event']=='begin':beg.append(r)
         elif r['event']=='end':end.append(r)
-        elif r['event'] in ('call','after','mmap_entry','mmap_exit'):records.append(r)
+        elif r['event'] in ('call','after','mmap_entry','mmap_exit','exec'):records.append(r)
         else:raise ValueError('unknown event')
     if len(beg)!=1 or len(end)!=1 or beg[0]['pid']<=0 or beg[0]['pid']!=end[0]['pid']:raise ValueError('incomplete begin/end')
     pid=beg[0]['pid'];threads={};calls=[];syscalls=0
+    boundaries=[r for r in records if r['event']=='exec' and r.get('path')==p['binary']]
+    if len(boundaries)!=1:raise ValueError('exactly one target exec boundary required')
+    boundary=boundaries[0]
+    if (boundary['pid'],boundary['tid'],boundary['uid'])!=(pid,pid,uid):raise ValueError('target exec PID/UID mismatch')
+    target_ns=boundary['ns'];launcher_events=0
     for r in records:
-        if r['pid']!=pid or r['uid']!=uid:raise ValueError('PID/UID mismatch')
+        if r['pid']!=pid:raise ValueError('PID/UID mismatch')
+        if r['ns']>=target_ns:
+            if r['uid']!=uid:raise ValueError('PID/UID mismatch after target exec')
+            if r['event']=='exec' and r is not boundary:raise ValueError('unexpected exec after target')
+        else:
+            launcher_events+=1
+            if r['uid'] not in (0,uid) or r['tid']!=pid or r['event'] in ('call','after'):raise ValueError('invalid pre-target launcher event')
         if r['site']!=({'call':site['call'],'after':site['after']}.get(r['event'],0)):raise ValueError('unplanned site')
         threads.setdefault(r['tid'],[]).append(r)
     if not threads or set(threads)!=set(ledger):raise ValueError('missing thread or empty capture')
@@ -100,7 +112,9 @@ def audit(raw,p,uid):
         for r in rows:
             if r['ns']<last:raise ValueError('backward clock')
             last=r['ns'];event=r['event']
-            if event=='call':
+            if event=='exec':
+                if stack or pending is not None:raise ValueError('exec crosses unfinished context')
+            elif event=='call':
                 if pending is not None or (stack and r['sp']>=stack[-1]['entry']['sp']):raise ValueError('unsupported nesting')
                 stack.append({'entry':r,'maps':[]})
             elif event=='mmap_entry':
@@ -121,13 +135,15 @@ def audit(raw,p,uid):
                 calls.append({'tid':tid,'call_seq':entry['seq'],'after_seq':r['seq'],'size':entry['size'],'pointer':r['value'],'mmap_entry_seq':m['entry']['seq'],'mmap_exit_seq':m['exit']['seq']})
         if stack or pending is not None:raise ValueError('unclosed call/syscall at end')
     if not calls:raise ValueError('candidate path not observed')
-    return {'native_pid':pid,'site':site,'events':len(records),'thread_ledger':ledger,'mmap_syscalls':syscalls,'calls':calls,'scope':'completed direct call and its mmap only; no free/unmap generations, whole-runtime coverage, RSS ownership or acceptance'}
+    return {'native_pid':pid,'site':site,'events':len(records),'thread_ledger':ledger,'target_exec':boundary,'launcher_events':launcher_events,'mmap_syscalls':syscalls,'calls':calls,'scope':'pre-target launcher events retained and sequenced; target UID enforced from exact exec; completed direct call and its mmap only; no free/unmap generations, whole-runtime coverage, RSS ownership or acceptance'}
 
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     for n in ('binary','control','tracer','artifacts'):p.add_argument('--'+n,type=Path,required=True)
     a=p.parse_args();a.artifacts.mkdir(parents=True,exist_ok=False);result={'status':'failed','qualifies_24h':False,'historical_rss_failures_retained':True,'rss_budget':67108864,'stages':[]}
     try:
+        os.environ['BPFTRACE_STRLEN']='256'
+        result['tracer_environment']={'BPFTRACE_STRLEN':'256'}
         if sha(a.binary.read_bytes())!=BINARY_SHA:raise ValueError('only PR35 frozen ELF accepted')
         c=context.launch(a.control,a.artifacts/'control',{1:'control_site'},[],60,a.tracer,program_builder=program,auditor=audit)
         expected=[json.loads(l) for l in (a.artifacts/'control/native-stdout.log').read_text().splitlines()]
