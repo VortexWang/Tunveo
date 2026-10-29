@@ -1,0 +1,41 @@
+name: Audit async checkpoint retention evidence
+on:
+  pull_request:
+    paths: ['.github/workflows/soak-async-evidence.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v6.0.2
+      - name: Inspect original artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for id in 12884168643 12883799447 12883284898; do gh api repos/VortexWang/Tunveo/actions/artifacts/$id/zip > /tmp/$id.zip; done
+          python3 - <<'PY'
+          import json,zipfile,hashlib
+          from pathlib import Path
+          pins={12884168643:'ce4866ab4d59a25032f660ef20aeeca7b7f1e74bc4519393ce778c2202d43c6d',12883799447:'84256fd1f35bf73ef44eb19ad15bf4be14ddf669ebee75e54ce88f8539c2ce4a',12883284898:'51f3b5add32dabaa257d84ba4e5e48167aac71ed6c9de426d91aaab724b7ed69'}
+          for ident,h in pins.items():
+              p=Path('/tmp')/(str(ident)+'.zip');assert hashlib.sha256(p.read_bytes()).hexdigest()==h
+              with zipfile.ZipFile(p) as z:
+                  assert z.testzip() is None and len(z.namelist())==len(set(z.namelist()))
+                  out=dict(artifact=ident,sha256=h,results=[],reports=[],acks=[],rejections=[])
+                  for n in z.namelist():
+                      if n.endswith(('experiment.json','summary.json','post-stop-audit.json')):
+                          o=json.loads(z.read(n));out['results'].append(dict(path=n,status=o.get('status'),error=o.get('error'),stages=o.get('stages')))
+                      elif n.endswith('native/report.json'):
+                          o=json.loads(z.read(n));w=[x for x in o['points'] if x['phase']=='warmup' and x['at_seconds']>=o['settings']['warmup_seconds']/2];m=[x for x in o['points'] if x['phase']=='measured'];q=dict(path=n,status=o['status'],error=o.get('error'),points=len(m),poststop=len(o.get('post_stop_observation',[])))
+                          if w and m:
+                              base=max(x['resources']['rss'] for x in w);peak=max(x['resources']['rss'] for x in m);q.update(baseline=base,peak=peak,delta=peak-base,violations=sum(not 0<x['resources']['rss']<=base+67108864 for x in m))
+                          out['reports'].append(q)
+                      elif n.endswith('post-stop-observer-ack.json'):out['acks'].append(n)
+                      elif n.endswith('rejected-timing.json'):
+                          o=json.loads(z.read(n));out['rejections'].append(dict(path=n,key=o.get('key'),duration_ns=o['read_end_monotonic_ns']-o['read_start_monotonic_ns'],age=o['checkpoint_age_seconds']))
+                  print('AUDIT_ROW '+json.dumps(out,sort_keys=True))
+          PY
