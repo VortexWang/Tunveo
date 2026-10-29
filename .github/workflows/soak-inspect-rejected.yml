@@ -1,0 +1,47 @@
+name: Inspect rejected retention timing
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/soak-inspect-rejected.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v6.0.2
+      - name: Read original fixed evidence
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for id in 12871680561 12870564820 12871381966 12870853057 12871093180; do
+            gh api repos/VortexWang/Tunveo/actions/artifacts/$id/zip > /tmp/$id.zip
+          done
+          python3 - <<'PY'
+          import hashlib,json,zipfile,sys
+          from pathlib import Path
+          sys.path.insert(0,'scripts')
+          import verify_soak as v
+          artifacts={12871680561:'0579c881deded384d03e195f38f09e4e4e5267f50ed9a452e64a5618dcccbbe4',12870564820:'433aee2581918886ee3447cc716cbcb557c962c02ceb9473f72fc8710a4167a3',12871381966:'39a33e92082d20667ce9817fb7d28edc302ed47647d22d47cba71ac86a763c85',12870853057:'b424d5c4791ac20cb51b7f50701a0157055e55ba68a163ff9bd2402e73417206',12871093180:'98109406623fd8d20cc16b71dcdf613545bdc9691c0e5a988bba487d6ca34e72'}
+          for ident,digest in artifacts.items():
+              file=Path('/tmp')/(str(ident)+'.zip');assert hashlib.sha256(file.read_bytes()).hexdigest()==digest
+              with zipfile.ZipFile(file) as z:
+                  assert z.testzip() is None and len(z.namelist())==len(set(z.namelist()))
+                  names=z.namelist()
+                  out={'artifact':ident,'sha256':digest,'rejected':[],'summaries':[],'reports':[]}
+                  for name in names:
+                      if name.endswith('rejected-timing.json'):
+                          row=json.loads(z.read(name));out['rejected'].append({'path':name,'key':row.get('key'),'duration_ns':row['read_end_monotonic_ns']-row['read_start_monotonic_ns'],'checkpoint_age_seconds':row['checkpoint_age_seconds'],'read_start_monotonic_ns':row['read_start_monotonic_ns'],'read_end_monotonic_ns':row['read_end_monotonic_ns'],'pid':row.get('pid'),'start_ticks':row.get('start_ticks')})
+                      elif name.endswith(('experiment.json','summary.json','comparison.json','retention.json')):
+                          row=json.loads(z.read(name));out['summaries'].append(dict(path=name,status=row.get('status'),stages=row.get('stages'),error=row.get('error')))
+                      elif name.endswith('native/report.json'):
+                          row=json.loads(z.read(name));warm=[p for p in row['points'] if p['phase']=='warmup' and p['at_seconds']>=row['settings']['warmup_seconds']/2];active=[p for p in row['points'] if p['phase']=='measured']
+                          item={'path':name,'status':row.get('status'),'error':row.get('error'),'points':len(active)}
+                          if warm and active:
+                              base=max(p['resources']['rss'] for p in warm);peak=max(p['resources']['rss'] for p in active);item.update(baseline=base,peak=peak,delta=peak-base,violations=sum(not 0<p['resources']['rss']<=base+67108864 for p in active))
+                          out['reports'].append(item)
+                  print('AUDIT_ROW '+json.dumps(out,sort_keys=True))
+          PY

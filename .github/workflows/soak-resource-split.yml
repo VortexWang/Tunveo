@@ -1,0 +1,56 @@
+name: Ordinary and race diagnostic pilots
+on:
+  pull_request:
+    paths:
+      - 'scripts/soak_mapping_retention.py'
+      - 'scripts/tests/test_soak_mapping_retention.py'
+      - '.github/workflows/soak-resource-split.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  pilot:
+    strategy:
+      fail-fast: false
+      matrix:
+        build: [ordinary, race]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6.0.2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-go@v6.1.0
+        with:
+          go-version-file: go.mod
+      - name: Regression
+        run: python3 -m unittest discover -s scripts/tests
+      - name: Build clean selected probe
+        env:
+          SELECTED_BUILD: ${{ matrix.build }}
+        run: |
+          test -z "$(git status --porcelain)"
+          mkdir -p bin
+          if test "$SELECTED_BUILD" = race; then
+            go build -race -trimpath -o bin/probe ./scripts/soak24h
+          else
+            go build -trimpath -o bin/probe ./scripts/soak24h
+          fi
+          sha256sum bin/probe
+          bin/probe --describe > probe-description.json
+      - name: Independent 180 second pilot with unchanged budget
+        timeout-minutes: 8
+        run: |
+          python3 scripts/verify_soak.py --binary bin/probe --transport 3 --mode 1 --duration-seconds 180 --warmup-seconds 12 --sample-seconds 5 --workers 2 --qps 10 --pool-min 16 --pool-max 64 --pilot --artifacts artifacts
+      - name: Print result
+        if: always()
+        run: |
+          if test -f artifacts/summary.json; then cat artifacts/summary.json; fi
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
+        with:
+          name: resource-pilot-${{ matrix.build }}
+          path: |
+            artifacts
+            probe-description.json
+          retention-days: 30

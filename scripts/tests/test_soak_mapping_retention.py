@@ -48,6 +48,15 @@ class MappingRetentionTests(unittest.TestCase):
             start_ns=2,end_ns=3,args=[0,8192,3,34,0,0],value=0x1000,contexts=[[1,1]],owner='trace_switch')])
         return parsed,report,capture
 
+    def test_rejected_timing_evidence_is_saved_without_ack(self):
+        with tempfile.TemporaryDirectory() as temp:
+            folder=Path(temp)
+            record=dict(read_start_monotonic_ns=1,read_end_monotonic_ns=100000002,checkpoint_age_seconds=.01)
+            with self.assertRaises(ValueError):
+                r.validate_and_record_timing(folder,record)
+            self.assertEqual(json.loads((folder/'rejected-timing.json').read_text()),record)
+            self.assertFalse((folder/'native/post-stop-observer-ack.json').exists())
+
     def test_same_process_complete_retention_and_raw_mapping_attribution(self):
         with tempfile.TemporaryDirectory() as temp:
             folder=Path(temp);parsed,report,_=self.fixture(folder)
