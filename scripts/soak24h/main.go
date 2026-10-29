@@ -560,8 +560,8 @@ func main() {
 		signals := make(chan os.Signal, 1)
 		signal.Notify(signals, os.Interrupt, syscall.SIGTERM)
 		defer signal.Stop(signals)
-		// Multi-cycle mapping observations depend on synchronous checkpoint timing.
-        if *cycles > 1 {
+		// External post-stop and multi-cycle observations require synchronous publication.
+        if !asyncCheckpointEligible(*cycles, *postStop, *diagnosticFlag) {
             return runLoad(r, front, *workers, *qps, *warmup, *duration, *interval, a, done, signals, checkpoint, diagnostics)
         }
         writer := newCheckpointWriter(path, 8, writeCheckpointBytes)
