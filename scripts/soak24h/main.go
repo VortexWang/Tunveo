@@ -560,7 +560,18 @@ func main() {
 		signals := make(chan os.Signal, 1)
 		signal.Notify(signals, os.Interrupt, syscall.SIGTERM)
 		defer signal.Stop(signals)
-		return runLoad(r, front, *workers, *qps, *warmup, *duration, *interval, a, done, signals, checkpoint, diagnostics)
+		// Multi-cycle mapping observations depend on synchronous checkpoint timing.
+        if *cycles > 1 {
+            return runLoad(r, front, *workers, *qps, *warmup, *duration, *interval, a, done, signals, checkpoint, diagnostics)
+        }
+        writer := newCheckpointWriter(path, 8, writeCheckpointBytes)
+        loadErr := runLoad(r, front, *workers, *qps, *warmup, *duration, *interval, a, done, signals, func() error { return writer.submit(r) }, diagnostics)
+        // Wait for all accepted snapshots before any later synchronous write.
+        if writeErr := writer.finish(); writeErr != nil {
+            if loadErr != nil { return fmt.Errorf("%v; checkpoint write: %w", loadErr, writeErr) }
+            return fmt.Errorf("checkpoint write: %w", writeErr)
+        }
+        return loadErr
 	}
 	failure := operation()
 	var endpoints []endpoint
