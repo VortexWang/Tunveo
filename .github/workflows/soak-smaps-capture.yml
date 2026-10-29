@@ -1,0 +1,19 @@
+name: Bounded smaps capture qualification
+on:
+  pull_request:
+    paths:
+      - 'scripts/soak_smaps_capture.py'
+      - 'scripts/soak_mapping_ledger.py'
+      - 'scripts/tests/test_smaps_capture.py'
+      - '.github/workflows/soak-smaps-capture.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6.0.2
+      - name: Python regression
+        run: python3 -m unittest discover -s scripts/tests
