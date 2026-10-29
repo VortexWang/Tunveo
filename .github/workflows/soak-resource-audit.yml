@@ -1,0 +1,44 @@
+name: Audit independent resource pilots
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/soak-resource-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6.0.2
+      - name: Verify original evidence and resource bounds
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api repos/VortexWang/Tunveo/actions/artifacts/12871435612/zip > /tmp/ordinary.zip
+          gh api repos/VortexWang/Tunveo/actions/artifacts/12871420661/zip > /tmp/race.zip
+          python3 - <<'PY'
+          import hashlib,json,sys,zipfile,tempfile
+          from pathlib import Path
+          sys.path.insert(0,'scripts')
+          import verify_soak as verify
+          for kind,digest in [('ordinary','12426263ad657ef09838e52fd792260562d1de03d20102cd90a6d9b213462c3f'),('race','31e6f286c9195b0a8681d554a9e46f1596835de1d55899627ad9062931470ab9')]:
+              archive=Path('/tmp')/(kind+'.zip'); assert hashlib.sha256(archive.read_bytes()).hexdigest()==digest
+              with zipfile.ZipFile(archive) as z, tempfile.TemporaryDirectory() as t:
+                  assert z.testzip() is None and len(z.namelist())==len(set(z.namelist()))
+                  assert all(not Path(n).is_absolute() and '..' not in Path(n).parts for n in z.namelist())
+                  z.extractall(t);root=Path(t);summaryfile=next(root.rglob('summary.json'));folder=summaryfile.parent
+                  summary=json.loads(summaryfile.read_text());report=json.loads((folder/'native/report.json').read_text())
+                  for n,h in summary['files'].items():assert hashlib.sha256((folder/n).read_bytes()).hexdigest()==h
+                  errors=[]
+                  try: verify.validate_report(report,True)
+                  except ValueError as exc: errors.append(str(exc))
+                  assert (not errors and summary['status']=='pilot_passed') or (errors and summary['error']=='ValueError: '+errors[0])
+                  warm=[x for x in report['points'] if x['phase']=='warmup' and x['at_seconds']>=report['settings']['warmup_seconds']/2]
+                  active=[x for x in report['points'] if x['phase']=='measured'];base=max(x['resources']['rss'] for x in warm);peak=max(x['resources']['rss'] for x in active)
+                  events=verify.validate_events(folder/'native/exchanges.jsonl.gz',report)
+                  verify.validate_engine_logs(folder/'native',folder/'stderr.log',64,3)
+                  print('AUDIT_ROW '+json.dumps(dict(kind=kind,baseline=base,peak=peak,delta=peak-base,violations=sum(not 0<x['resources']['rss']<=base+67108864 for x in active),points=len(active),errors=errors,events=events,build_info=report['build_info'],source_digest=digest,qualifies_24h=False)))
+          PY
