@@ -1,0 +1,58 @@
+name: Audit frozen aligned page ABBA artifact
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/soak-combined-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6.0.2
+      - name: Recover and verify immutable artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api repos/VortexWang/Tunveo/actions/artifacts/12867117685/zip > /tmp/combined.zip
+          python3 - <<'PY'
+          import hashlib,json,zipfile,sys
+          from collections import Counter
+          from pathlib import Path
+          data=Path('/tmp/combined.zip').read_bytes()
+          assert hashlib.sha256(data).hexdigest()=='e51f37e2acd3e452779b521f40bbe8c2d322ef91b313dd6feed79b21e0a50ca2'
+          sys.path.insert(0,'scripts')
+          import verify_soak as verify
+          with zipfile.ZipFile('/tmp/combined.zip') as z:
+              assert z.testzip() is None and len(z.namelist())==len(set(z.namelist()))
+              e=json.loads(z.read('experiment/experiment.json'))
+              assert e['rss_budget']==67108864 and not e['qualifies_24h'] and e['historical_failures_retained']
+              for n,h in e['files'].items():
+                  assert not n.startswith('/') and '..' not in Path(n).parts
+                  assert hashlib.sha256(z.read('experiment/'+n)).hexdigest()==h,n
+              for name in ('1-no-page','2-page','3-page','4-no-page'):
+                  report=json.loads(z.read('experiment/'+name+'/native/report.json'))
+                  warm=[p for p in report['points'] if p['phase']=='warmup' and p['at_seconds']>=report['settings']['warmup_seconds']/2]
+                  active=[p for p in report['points'] if p['phase']=='measured']
+                  base=max(p['resources']['rss'] for p in warm);peak=max(active,key=lambda p:p['resources']['rss'])
+                  errors=[]
+                  try:verify.validate_report(report,True)
+                  except ValueError as exc:errors.append(str(exc))
+                  assert errors==e[name]['errors']
+                  row=dict(stage=name,baseline=base,peak=peak['resources']['rss'],delta=peak['resources']['rss']-base,violations=sum(not 0<p['resources']['rss']<=base+67108864 for p in active),points=len(active),errors=errors,aligned_calls=len(e[name]['ledger']['aligned_calls']),ap32_parent=e[name]['ledger']['aligned_with_ap32_parent'])
+                  if e[name]['page_observation']:
+                      pages=e[name]['pages'];keys=[[max(warm,key=lambda p:p['resources']['rss'])['phase'],max(warm,key=lambda p:p['resources']['rss'])['at_seconds']],[peak['phase'],peak['at_seconds']],[report['post_stop_observation'][-1]['phase'],report['post_stop_observation'][-1]['at_seconds']]]
+                      row['selected']=[]
+                      for key in keys:
+                          p=next(q for q in pages if q['key']==key);counts={}
+                          for ran in p['ranges']:
+                              for origin,stats in ran['by_origin'].items():
+                                  v=counts.setdefault(origin,dict(pages=0,present_first=0,present_second=0))
+                                  for k in v:v[k]+=stats[k]
+                          row['selected'].append(dict(key=key,by_origin=counts))
+                  print('AUDIT_ROW '+json.dumps(row,sort_keys=True))
+              print('AUDIT_STATUS '+json.dumps(dict(status=e['status'],stages=e['stages'],error=e.get('error'))))
+          PY
