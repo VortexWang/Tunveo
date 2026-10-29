@@ -48,7 +48,7 @@ jobs:
           Path('artifacts/tracer-provenance.json').write_text(json.dumps(dict(artifact=12813365084,archive_sha256=digest,tracer_sha256=hashlib.sha256(data).hexdigest(),source_revision='93c593f6dab2e930d6198cfaa52b29d19a8c0647'))+'\n')
           PY
           cp /tmp/aligned-control artifacts/binaries/control
-          cp /tmp/page-control artifacts/binaries/page-control
+          cp /tmp/page-control artifacts/binaries/page
           sha256sum artifacts/binaries/* > artifacts/binary-sha256.txt
       - name: Verify tracer runtime and instruction boundary guard
         timeout-minutes: 5
@@ -69,7 +69,7 @@ jobs:
       - name: Controls then four 180s ABBA processes with 120s retention
         timeout-minutes: 35
         run: |
-          python3 scripts/soak_combined.py --binary artifacts/binaries/probe --aligned-control artifacts/binaries/control --page-control artifacts/binaries/page-control --tracer artifacts/binaries/tracer --artifacts artifacts/experiment
+          python3 scripts/soak_combined.py --binary artifacts/binaries/probe --aligned-control artifacts/binaries/control --page-control artifacts/binaries/page --tracer artifacts/binaries/tracer --artifacts artifacts/experiment
       - name: Report diagnostic stage and error
         if: always()
         run: |
