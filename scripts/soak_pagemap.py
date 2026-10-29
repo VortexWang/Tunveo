@@ -98,12 +98,16 @@ def at_page(lo,state,starts):
     return ('unresolved',None)
 def stats(values):
     return dict(pages=len(values),present_pages=sum(bool(v&256) for v in values),swapped_pages=sum(bool(v&128) for v in values),neither_pages=sum(not v&384 for v in values),flag_histogram=dict(Counter(str(v) for v in values)))
-def page_origin(lo,before,final,bs,fs,unstable,us,topology):
+def page_origin(lo,before,final,bs,fs,unstable,us,topology,known_labels=None):
+    if known_labels is None:known_labels={life.LABEL}
     u=bisect.bisect_right(us,lo+PAGE-1)-1;changing=u>=0 and unstable[u][1]>lo
     left=at_page(lo,before,bs);right=at_page(lo,final,fs)
-    if topology and not changing and left==right and left[0]==life.LABEL and left[1] is not None:return left
+    if topology and not changing and left==right and left[0] in known_labels and left[1] is not None:return left
     return ('unresolved',None)
-def analyze(folder,parsed):
+def analyze(folder,parsed,known_labels=None):
+    if known_labels is None:known_labels={life.LABEL}
+    else:known_labels=set(known_labels)
+    if not known_labels or 'unresolved' in known_labels:raise ValueError('invalid known page origins')
     index=json.loads((folder/'page-status-index.json').read_text())
     if index['version']!=1 or index['clock']!='CLOCK_MONOTONIC' or index['PFNs_saved'] is not False:raise ValueError('bad page status schema')
     sources={n:json.loads((folder/n).read_text())['records'] for n in {r['source_index'] for r in index['records']}}
@@ -135,7 +139,7 @@ def analyze(folder,parsed):
             if x['pages']*PAGE!=v['end']-v['start']:raise ValueError('page number mismatch')
             by_origin={};generations={}
             for i,(fa,fb) in enumerate(zip(a,b)):
-                lo=v['start']+i*PAGE;label,gen=page_origin(lo,before,final,bs,fs,unstable,us,topology);known=label==life.LABEL
+                lo=v['start']+i*PAGE;label,gen=page_origin(lo,before,final,bs,fs,unstable,us,topology,known_labels);known=label in known_labels
                 q=by_origin.setdefault(label,dict(pages=0,present_first=0,present_second=0,swapped_first=0,swapped_second=0));q['pages']+=1;q['present_first']+=bool(fa&256);q['present_second']+=bool(fb&256);q['swapped_first']+=bool(fa&128);q['swapped_second']+=bool(fb&128)
                 if known:
                     q=generations.setdefault(gen,dict(pages=0,present_first=0,present_second=0));q['pages']+=1;q['present_first']+=bool(fa&256);q['present_second']+=bool(fb&256)
