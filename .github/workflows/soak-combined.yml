@@ -76,6 +76,19 @@ jobs:
           if test -f artifacts/experiment/experiment.json; then
             python3 -c "import json; r=json.load(open('artifacts/experiment/experiment.json')); print(json.dumps({k:r.get(k) for k in ('status','stages','error')},indent=2))"
           fi
+          python3 - <<'PY'
+          import glob,json,pathlib
+          for name in glob.glob('artifacts/experiment/page-control-*/events.log'):
+              path=pathlib.Path(name);print('CONTROL',path.parent.name)
+              for line in path.read_text().splitlines():
+                  try: row=json.loads(line)
+                  except ValueError: continue
+                  if row.get('event') in ('begin','end','exec'): print(json.dumps(row))
+              plan=path.parent/'plan.json'
+              if plan.exists(): print('EXPECTED',json.loads(plan.read_text())['binary'])
+              err=path.parent/'bpftrace-stderr.log'
+              if err.exists(): print('TRACER STDERR',err.read_text())
+          PY
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         if: always()
         timeout-minutes: 2
