@@ -1,0 +1,43 @@
+name: Async checkpoint qualification with observer guard
+on:
+  pull_request:
+    paths:
+      - 'scripts/soak24h/**'
+      - '.github/workflows/soak-async-checkpoint.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6.0.2
+      - uses: actions/setup-go@v6.1.0
+        with:
+          go-version-file: go.mod
+      - name: Go and race regression
+        run: |
+          go test ./scripts/soak24h
+          go test -race ./scripts/soak24h
+          python3 -m unittest discover -s scripts/tests
+      - name: Build ordinary and race
+        run: |
+          mkdir -p bin
+          go build -trimpath -o bin/ordinary ./scripts/soak24h
+          go build -race -trimpath -o bin/race ./scripts/soak24h
+      - name: Run ordinary short pilot
+        timeout-minutes: 4
+        run: |
+          python3 scripts/verify_soak.py --binary bin/ordinary --transport 3 --mode 1 --duration-seconds 15 --warmup-seconds 12 --sample-seconds 5 --pilot --artifacts artifacts/ordinary
+      - name: Run race short pilot
+        if: always()
+        timeout-minutes: 4
+        run: |
+          python3 scripts/verify_soak.py --binary bin/race --transport 3 --mode 1 --duration-seconds 15 --warmup-seconds 12 --sample-seconds 5 --pilot --artifacts artifacts/race
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
+        with:
+          name: async-checkpoint-qualification
+          path: artifacts
+          retention-days: 30
