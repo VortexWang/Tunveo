@@ -1,0 +1,43 @@
+name: Audit ordinary 30m and early exit
+on:
+  pull_request:
+    paths: ['.github/workflows/soak-30m-audit.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6.0.2
+      - name: Audit immutable original artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api repos/VortexWang/Tunveo/actions/artifacts/12872717761/zip > /tmp/30m.zip
+          gh api repos/VortexWang/Tunveo/actions/artifacts/12870604610/zip > /tmp/early.zip
+          python3 - <<'PY'
+          import json,hashlib,zipfile,tempfile,sys
+          from pathlib import Path
+          sys.path.insert(0,'scripts')
+          import verify_soak as v
+          for kind,digest in [('30m','9d0508642ea4b0f8d23c1f020d27b73ab42bc1b670d5bb9755220f5035e710ff'),('early','29324b63f141223d4d6b42c91dae53689853443cf2fc4171a82cb20a1d739101')]:
+              path=Path('/tmp')/(kind+'.zip');assert hashlib.sha256(path.read_bytes()).hexdigest()==digest
+              with zipfile.ZipFile(path) as z,tempfile.TemporaryDirectory() as t:
+                  assert z.testzip() is None and len(z.namelist())==len(set(z.namelist()))
+                  assert all(not Path(n).is_absolute() and '..' not in Path(n).parts for n in z.namelist());z.extractall(t)
+                  root=Path(t);sf=next(root.rglob('summary.json'));folder=sf.parent;summary=json.loads(sf.read_text());report=json.loads((folder/'native/report.json').read_text())
+                  for n,h in summary['files'].items():assert hashlib.sha256((folder/n).read_bytes()).hexdigest()==h
+                  w=[p for p in report['points'] if p['phase']=='warmup' and p['at_seconds']>=report['settings']['warmup_seconds']/2];m=[p for p in report['points'] if p['phase']=='measured']
+                  row=dict(kind=kind,archive_sha256=digest,status=summary['status'],summary_error=summary.get('error'),exit_code=summary['exit_code'],probe_status=report.get('status'),probe_error=report.get('error'),measured_seconds=report.get('measured_seconds'),counts=report.get('counts'),warmup_counts=report.get('warmup_counts'),points=len(m),qualifies_24h=summary['qualifies_24h'],build_info=report['build_info'])
+                  if w and m:
+                      b=max(p['resources']['rss'] for p in w);peak=max(p['resources']['rss'] for p in m);row.update(baseline=b,peak=peak,delta=peak-b,violations=sum(not 0<p['resources']['rss']<=b+67108864 for p in m))
+                  if kind=='30m':
+                      validated=v.validate_report(report,True);row['validated']=validated;row['events']=v.validate_events(folder/'native/exchanges.jsonl.gz',report);v.validate_engine_logs(folder/'native',folder/'stderr.log',64,3)
+                      assert summary['status']=='pilot_passed' and not summary['qualifies_24h'] and summary['exit_code']==0 and report['settings']['duration_seconds']==1800
+                  else:
+                      assert summary['status']=='failed' and summary['exit_code']!=0 and report['status']=='failed'
+                  print('AUDIT_ROW '+json.dumps(row,sort_keys=True))
+          PY
