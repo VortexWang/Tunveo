@@ -4,6 +4,7 @@ import (
     "encoding/json"
     "fmt"
     "os"
+    "time"
 )
 
 // checkpointWriter serializes immutable snapshots in order. Its bounded queue
@@ -50,4 +51,10 @@ func (w *checkpointWriter) submit(r *result) error {
 func (w *checkpointWriter) finish() error {
     close(w.pending)
     return <-w.done
+}
+
+// Timed external post-stop observers and multi-cycle mapping capture retain
+// the synchronous publication contract until their handshake is qualified.
+func asyncCheckpointEligible(cycles int, postStop time.Duration, diagnostics bool) bool {
+    return cycles == 1 && postStop == 0 && !diagnostics
 }
