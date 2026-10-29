@@ -70,6 +70,12 @@ jobs:
         timeout-minutes: 35
         run: |
           python3 scripts/soak_combined.py --binary artifacts/binaries/probe --aligned-control artifacts/binaries/control --page-control artifacts/binaries/page-control --tracer artifacts/binaries/tracer --artifacts artifacts/experiment
+      - name: Report diagnostic stage and error
+        if: always()
+        run: |
+          if test -f artifacts/experiment/experiment.json; then
+            python3 -c "import json; r=json.load(open('artifacts/experiment/experiment.json')); print(json.dumps({k:r.get(k) for k in ('status','stages','error')},indent=2))"
+          fi
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         if: always()
         timeout-minutes: 2
