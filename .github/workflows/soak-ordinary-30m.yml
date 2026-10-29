@@ -1,0 +1,58 @@
+name: Ordinary 30 minute resource pilot
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/soak-ordinary-30m.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  ordinary:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v6.0.2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-go@v6.1.0
+        with:
+          go-version-file: go.mod
+      - name: Build clean ordinary probe
+        run: |
+          test -z "$(git status --porcelain)"
+          mkdir -p bin
+          go build -trimpath -o bin/probe ./scripts/soak24h
+          bin/probe --describe > probe-description.json
+          python3 - <<'PY'
+          import json,sys
+          sys.path.insert(0,'scripts');import verify_soak
+          d=json.load(open('probe-description.json'))
+          verify_soak.validate_build(d['build_info'])
+          PY
+      - name: Run continuous ordinary pilot with unchanged 64MiB bound
+        timeout-minutes: 35
+        run: |
+          python3 scripts/verify_soak.py --binary bin/probe --transport 3 --mode 1 --duration-seconds 1800 --warmup-seconds 12 --sample-seconds 5 --workers 2 --qps 10 --pool-min 16 --pool-max 64 --pilot --artifacts artifacts
+      - name: Report original result
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          f=Path('artifacts/summary.json')
+          if f.exists():print('SUMMARY',f.read_text())
+          f=Path('artifacts/native/report.json')
+          if f.exists():
+              r=json.loads(f.read_text());w=[p for p in r['points'] if p['phase']=='warmup' and p['at_seconds']>=r['settings']['warmup_seconds']/2];m=[p for p in r['points'] if p['phase']=='measured']
+              if w and m:
+                  b=max(p['resources']['rss'] for p in w);peak=max(p['resources']['rss'] for p in m)
+                  print('RSS',json.dumps(dict(baseline=b,peak=peak,delta=peak-b,points=len(m),violations=sum(not 0<p['resources']['rss']<=b+67108864 for p in m))))
+          PY
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
+        with:
+          name: ordinary-30-minute-pilot
+          path: |
+            artifacts
+            probe-description.json
+          retention-days: 30
