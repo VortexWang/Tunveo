@@ -33,6 +33,14 @@ def timely(record, exec_ns=0):
         raise ValueError('post-stop mapping timing failure')
 
 
+def validate_and_record_timing(folder, record):
+    try:
+        timely(record)
+    except ValueError:
+        context.dump(folder/'rejected-timing.json', record)
+        raise
+
+
 def acknowledge(folder, report, records):
     """Only acknowledge a complete, timely prefix, after raw evidence is durable."""
     points = report['post_stop_observation']
@@ -109,12 +117,7 @@ class Collector:
             read_start_monotonic_ns=start, read_end_monotonic_ns=end,
             checkpoint_age_seconds=(wall-mtime)/1e9, pid=pid, start_ticks=identity,
             load_evidence_sha256=load_sha)
-        try:
-            timely(record)
-        except ValueError:
-            # Preserve the rejected timing evidence; no ACK or accepted record.
-            context.dump(self.folder/'rejected-timing.json', record)
-            raise
+        validate_and_record_timing(self.folder, record)
         self.records.append(record)
         context.dump(self.folder/'retention-snapshots.json', dict(format_version=1,
             clock='CLOCK_MONOTONIC', records=self.records))
