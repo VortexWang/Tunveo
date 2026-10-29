@@ -42,7 +42,7 @@ jobs:
                   try:verify.validate_report(report,True)
                   except ValueError as exc:errors.append(str(exc))
                   assert errors==e[name]['errors']
-                  row=dict(stage=name,baseline=base,peak=peak['resources']['rss'],delta=peak['resources']['rss']-base,violations=sum(not 0<p['resources']['rss']<=base+67108864 for p in active),points=len(active),errors=errors,aligned_calls=len(e[name]['ledger']['aligned_calls']),ap32_parent=e[name]['ledger']['aligned_with_ap32_parent'])
+                  row=dict(probe_status=report.get('status'),probe_error=report.get('error'),stage=name,baseline=base,peak=peak['resources']['rss'],delta=peak['resources']['rss']-base,violations=sum(not 0<p['resources']['rss']<=base+67108864 for p in active),points=len(active),errors=errors,aligned_calls=len(e[name]['ledger']['aligned_calls']),ap32_parent=e[name]['ledger']['aligned_with_ap32_parent'])
                   if e[name]['page_observation']:
                       pages=e[name]['pages'];keys=[[max(warm,key=lambda p:p['resources']['rss'])['phase'],max(warm,key=lambda p:p['resources']['rss'])['at_seconds']],[peak['phase'],peak['at_seconds']],[report['post_stop_observation'][-1]['phase'],report['post_stop_observation'][-1]['at_seconds']]]
                       row['selected']=[]
