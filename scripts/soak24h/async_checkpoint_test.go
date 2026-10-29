@@ -54,3 +54,10 @@ func TestSlowCheckpointDoesNotBlockLoad(t *testing.T) {
     if err!=nil || writeErr!=nil {t.Fatalf("slow writer blocked load: load=%v write=%v",err,writeErr)}
     if r.Warmup.Dropped!=0 || r.Counts.Dropped!=0 {t.Fatalf("dropped work: warm=%+v measured=%+v",r.Warmup,r.Counts)}
 }
+
+func TestCheckpointEligibilityKeepsObservationSynchronous(t *testing.T) {
+    if !asyncCheckpointEligible(1, 0, false) { t.Fatal("ordinary single cycle must be eligible") }
+    for _, c := range []struct{ cycles int; post time.Duration; diagnostics bool }{{2,0,false},{1,time.Second,false},{1,0,true}} {
+        if asyncCheckpointEligible(c.cycles,c.post,c.diagnostics) { t.Fatalf("observer unexpectedly async: %+v",c) }
+    }
+}
