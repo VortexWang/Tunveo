@@ -27,6 +27,13 @@ class PagemapTests(unittest.TestCase):
         a=[(4096,8192,p.life.LABEL,'old')];b=[(4096,8192,p.life.LABEL,'new')]
         self.assertEqual(p.page_origin(4096,a,a,[4096],[4096],[],[],True),(p.life.LABEL,'old'))
         self.assertEqual(p.page_origin(4096,a,b,[4096],[4096],[],[],True),('unresolved',None))
+    def test_aligned_origin_is_opt_in_and_requires_stable_generation(self):
+        label='validated_aligned_request';s=[(4096,8192,label,'tid:8')];t=[(4096,8192,label,'tid:9')]
+        self.assertEqual(p.page_origin(4096,s,s,[4096],[4096],[],[],True),('unresolved',None))
+        allowed={p.life.LABEL,label}
+        self.assertEqual(p.page_origin(4096,s,s,[4096],[4096],[],[],True,allowed),(label,'tid:8'))
+        self.assertEqual(p.page_origin(4096,s,t,[4096],[4096],[],[],True,allowed),('unresolved',None))
+        self.assertEqual(p.page_origin(4096,s,s,[4096],[4096],[(4096,8192)],[4096],True,allowed),('unresolved',None))
     def test_mutation_or_topology_change_invalidates_origin(self):
         s=[(4096,8192,p.life.LABEL,'old')]
         self.assertEqual(p.page_origin(4096,s,s,[4096],[4096],[(8191,8192)],[8191],True),('unresolved',None))
