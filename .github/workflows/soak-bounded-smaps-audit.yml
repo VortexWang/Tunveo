@@ -1,0 +1,34 @@
+name: Audit bounded smaps control failure
+on:
+  pull_request:
+    paths: ['.github/workflows/soak-bounded-smaps-audit.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Inspect fixed original artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api repos/VortexWang/Tunveo/actions/artifacts/12887445826/zip > /tmp/evidence.zip
+          python3 - <<'PY'
+          import json,hashlib,zipfile
+          from pathlib import Path
+          p=Path('/tmp/evidence.zip');assert hashlib.sha256(p.read_bytes()).hexdigest()=='af4f077a879eecd9e916fa0cc3fd6e4b92d81755509609e388f5fb232e7397f3'
+          with zipfile.ZipFile(p) as z:
+              assert z.testzip() is None and len(z.namelist())==len(set(z.namelist()))
+              e=json.loads(z.read('experiment/experiment.json'))
+              for n,h in e.get('files',{}).items():assert hashlib.sha256(z.read('experiment/'+n)).hexdigest()==h
+              print('RESULT',json.dumps({k:e.get(k) for k in ('status','stages','error')}))
+              for n in z.namelist():
+                  if n.endswith('rejected-timing.json') or ('rejected-mappings/' in n and n.endswith('.json')): print('REJECTION',n,z.read(n).decode())
+                  if n.endswith('bpftrace-stderr.log') or n.endswith('native-stderr.log'):
+                      s=z.read(n).decode(errors='replace')
+                      if s:print('STDERR',n,s[-2000:])
+              print('FILES',json.dumps(z.namelist()))
+          PY
