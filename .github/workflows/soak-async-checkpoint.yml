@@ -1,4 +1,4 @@
-name: Async checkpoint qualification
+name: Async checkpoint qualification with observer guard
 on:
   pull_request:
     paths:
