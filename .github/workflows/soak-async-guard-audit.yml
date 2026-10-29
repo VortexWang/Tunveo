@@ -1,0 +1,38 @@
+name: Audit guarded checkpoint mapping evidence
+on:
+  pull_request:
+    paths: ['.github/workflows/soak-async-guard-audit.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6.0.2
+      - name: Inspect fixed original evidence
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api repos/VortexWang/Tunveo/actions/artifacts/12885451465/zip > /tmp/mapping.zip
+          python3 - <<'PY'
+          import hashlib,json,zipfile
+          from pathlib import Path
+          p=Path('/tmp/mapping.zip')
+          assert hashlib.sha256(p.read_bytes()).hexdigest()=='671f59c1f61985363d74af48ecff1c44dfe1e849f5c0e94d706de89f7e5d5472'
+          with zipfile.ZipFile(p) as z:
+              assert z.testzip() is None and len(z.namelist())==len(set(z.namelist()))
+              result=json.loads(z.read('experiment/experiment.json'))
+              for n,h in result.get('files',{}).items():
+                  assert not n.startswith('/') and '..' not in Path(n).parts
+                  assert hashlib.sha256(z.read('experiment/'+n)).hexdigest()==h,n
+              report=json.loads(z.read('experiment/pilot/native/report.json'))
+              w=[p for p in report['points'] if p['phase']=='warmup' and p['at_seconds']>=report['settings']['warmup_seconds']/2]
+              m=[p for p in report['points'] if p['phase']=='measured']
+              q=dict(status=result.get('status'),error=result.get('error'),stages=result.get('stages'),report_status=report.get('status'),report_error=report.get('error'),points=len(m),poststop_points=len(report.get('post_stop_observation',[])),acks=[n for n in z.namelist() if n.endswith('post-stop-observer-ack.json')],rejections=[n for n in z.namelist() if n.endswith('rejected-timing.json')])
+              if w and m:
+                  b=max(x['resources']['rss'] for x in w);p=max(x['resources']['rss'] for x in m);q.update(baseline=b,peak=p,delta=p-b,violations=sum(not 0<x['resources']['rss']<=b+67108864 for x in m))
+              print('AUDIT_ROW '+json.dumps(q,sort_keys=True))
+          PY
