@@ -32,7 +32,10 @@ def main():
             stage['business_events']=aligned.verify.validate_events(native/'exchanges.jsonl.gz',report);aligned.verify.validate_engine_logs(native,folder/'native-stderr.log',64,3)
             if observe:stage['pages']=page.analyze(folder,parsed,{page.life.LABEL,aligned.LABEL})
             try:stage['resources']=aligned.verify.validate_report(report,True)
-            except ValueError as e:stage['errors'].append(str(e))
+            except ValueError as e:
+                message=str(e)
+                if not (message.startswith('active resource bound: ') or message.startswith('resource did not return: ')):raise
+                stage['errors'].append(message)
             result['stages'].append(name+'_evidence_complete')
         result['status']='diagnostic_passed' if all(not result[f'{i+1}-'+('page' if v else 'no-page')]['errors'] for i,v in enumerate((False,True,True,False))) else 'failed'
     except (ValueError,KeyError,OSError,AssertionError,subprocess.SubprocessError) as e:result['error']=type(e).__name__+': '+str(e)
