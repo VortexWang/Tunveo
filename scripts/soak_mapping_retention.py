@@ -109,7 +109,12 @@ class Collector:
             read_start_monotonic_ns=start, read_end_monotonic_ns=end,
             checkpoint_age_seconds=(wall-mtime)/1e9, pid=pid, start_ticks=identity,
             load_evidence_sha256=load_sha)
-        timely(record)
+        try:
+            timely(record)
+        except ValueError:
+            # Preserve the rejected timing evidence; no ACK or accepted record.
+            context.dump(self.folder/'rejected-timing.json', record)
+            raise
         self.records.append(record)
         context.dump(self.folder/'retention-snapshots.json', dict(format_version=1,
             clock='CLOCK_MONOTONIC', records=self.records))
