@@ -5,6 +5,7 @@ from pathlib import Path
 import soak_ret_context as context
 import soak_mappings as mappings
 import verify_soak as verify
+import soak_smaps_capture as smaps_capture
 PAGE=4096
 CONTROL={1:'control_trace',2:'control_other',3:'control_mmap'}
 ARGS={'mmap':['addr','len','prot','flags','fd','off'],'munmap':['addr','len'],
@@ -227,9 +228,14 @@ class Collector:
             point=doc['points'][-1];key=(point['phase'],point['at_seconds'])
             if point['phase'] not in ('warmup','measured'):return
         if key in self.seen:return
-        mtime=path.stat().st_mtime_ns;wall=time.time_ns();start=time.monotonic_ns();raw=Path(f'/proc/{self.pid}/smaps').read_text();end=time.monotonic_ns()
-        newer=json.loads(path.read_text());same=newer if self.control else newer['points'][-1]
-        if same!=point or mappings.pid_identity(self.pid)!=self.start:raise ValueError('checkpoint/PID changed while reading smaps')
+        mtime=path.stat().st_mtime_ns
+        def guard():
+            newer=json.loads(path.read_text());same=newer if self.control else newer['points'][-1]
+            if same!=point or mappings.pid_identity(self.pid)!=self.start:raise ValueError('checkpoint/PID changed while reading smaps')
+            exe=Path(f'/proc/{self.pid}/exe').stat();expected=self.binary.stat()
+            if (exe.st_dev,exe.st_ino)!=(expected.st_dev,expected.st_ino):raise ValueError('executable changed while reading smaps')
+            if not 0 <= (time.time_ns()-mtime)/1e9 <= .1:raise ValueError('smaps checkpoint age exceeded 100ms')
+        raw,start,end,wall=smaps_capture.capture(self.folder,len(self.records),lambda:Path(f'/proc/{self.pid}/smaps').read_text(),guard,lambda raw:mappings.parse_smaps(raw,False),dict(pid=self.pid,start_ticks=self.start,key=key))
         relative=f'mappings/{len(self.records):03d}.smaps.gz';target=self.folder/relative;target.parent.mkdir(exist_ok=True)
         with gzip.open(target,'wt') as f:f.write(raw)
         self.records.append(dict(key=key,point=point,file=relative,sha256=hashlib.sha256(target.read_bytes()).hexdigest(),published_point_sha256=point_sha(point),point_core_sha256=point_sha(point_core(point)),read_start_monotonic_ns=start,read_end_monotonic_ns=end,checkpoint_age_seconds=(wall-mtime)/1e9,pid=self.pid,start_ticks=self.start))
